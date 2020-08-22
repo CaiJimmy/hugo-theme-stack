@@ -1,0 +1,56 @@
+.taxonomy-type {
+    text-transform: uppercase;
+    color: var(--body-text-color);
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+}
+
+.taxonomy-card {
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background);
+    padding: 20px 20px;
+    @include box_shadow(1);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+
+    .taxonomy-term {
+        font-size: 2.2rem;
+        margin: 0;
+        margin-top: 15px;
+        color: var(--card-text-color-main);
+
+        & + .taxonomy-description {
+            margin-top: 15px;
+        }
+    }
+
+    .taxonomy-description {
+        font-weight: normal;
+        color: var(--card-text-color-secondary);
+        font-size: 1.8rem;
+        margin: 0;
+    }
+
+    .taxonomy-details {
+        flex-grow: 1;
+        padding: 10px 0;
+        margin-right: 20px;
+    }
+
+    .taxonomy-image {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .taxonomy-count {
+        color: var(--card-text-color-tertiary);
+        font-size: 1.4rem;
+        margin: 0;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,25 @@
+{{ define "body_class" }}3-column{{ end }}
+{{ define "main" }}
+<div class="container extended flex on-phone--column align-items--flex-start">
+    {{ partialCached "sidebar/left.html" . }}
+
+    <main class="main full-width">
+        {{ $postSection := $.Site.Params.postSection }}
+        {{ $v1 := where .Site.RegularPages "Section" $postSection }}
+        {{ $v2 := where .Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $.Scratch.Set "filtered" ($v1 | intersect $v2) }}
+        {{ $pag := .Paginate ($.Scratch.Get "filtered") }}
+        
+        <section class="article-list">
+            {{ range $index, $element := $pag.Pages }}
+                {{ partial "article-list/default" . }}
+            {{ end }}
+            {{- partial "pagination.html" . -}}
+        </section>
+
+        {{ partialCached "footer" . }}
+    </main>
+    
+    {{ partialCached "sidebar/right.html" . }}
+</div>
+{{ end }}

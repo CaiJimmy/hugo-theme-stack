@@ -1,0 +1,11 @@
+{{- with .Description -}}
+    {{- . -}}
+{{- else -}}
+    {{- if .IsPage -}}
+        {{- .Summary -}}
+    {{- else -}}
+        {{- with .Site.Params.subtitle -}}
+            {{- . -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

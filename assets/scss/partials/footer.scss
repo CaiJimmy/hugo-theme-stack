@@ -1,0 +1,30 @@
+footer.site-footer {
+    padding: 20px 0 40px 0;
+    font-size: 1.4rem;
+    line-height: 1.75;
+
+    &:before {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 50px;
+        background: var(--body-text-color);
+        margin-bottom: 20px;
+    }
+
+    .copyright {
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .powerby {
+        color: var(--body-text-color);
+        font-weight: normal;
+        font-size: 1.2rem;
+
+        a {
+            color: var(--body-text-color);
+        }
+    }
+}

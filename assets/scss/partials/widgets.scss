@@ -1,0 +1,79 @@
+.widget {
+    .widget-title {
+        text-transform: uppercase;
+        color: var(--body-text-color);
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+    }
+
+    .widget-icon {
+        svg {
+            width: 32px;
+            height: 32px;
+            stroke-width: 1.33px;
+            color: var(--body-text-color);
+        }
+    }
+}
+
+/* Tag cloud widget */
+.tagCloud {
+    .tagCloud-tags {
+        display: flex;
+        flex-wrap: wrap;
+
+        a {
+            background: var(--card-background);
+            @include box_shadow(1);
+            border-radius: var(--tag-border-radius);
+            padding: 8px 20px;
+
+            color: var(--card-text-color-main);
+            margin-bottom: 10px;
+            margin-right: 5px;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+/* Tweet widget */
+.tweet-container {
+    .tweet--item {
+        .tweet--text {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            line-height: 1.75;
+        }
+
+        .tweet--time {
+            text-transform: uppercase;
+            a {
+                color: var(--body-text-color);
+            }
+        }
+    }
+}
+
+.widget.archive {
+    .archive-year {
+        margin-bottom: 10px;
+        a {
+            background-color: var(--card-background);
+            padding: 15px 25px;
+            border-radius: var(--card-border-radius);
+            @include box_shadow(1);
+            display: flex;
+            
+            span.year {
+                flex: 1;
+                color: var(--card-text-color-main);
+            }
+
+            span.count {
+                color: var(--card-text-color-tertiary);
+            }
+        }
+    }
+}

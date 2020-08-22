@@ -1,0 +1,150 @@
+.sidebar {
+    padding: 0 15px;
+    &.sticky {
+        @media (min-width: ($on-phone + 1)) {
+            position: sticky;
+        }
+    }
+}
+
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    @media (max-width: $on-phone) {
+        width: 100%;
+        padding: 30px 0;
+        max-width: none;
+    }
+
+    &.sticky {
+        top: 30px;
+    }
+
+    @media (min-width: $on-phone + 1) {
+        //justify-content: right;
+        //text-align: right;
+        width: 25%;
+        margin-right: 1%;
+    }
+
+    @media (min-width: $on-tablet) {
+        width: 25%;
+        margin-right: 1%;
+    }
+
+    @media (min-width: $on-desktop) {
+        width: 20%;
+    }
+
+    @media (min-width: $on-desktop-large) {
+        width: 15%;
+    }
+}
+
+.right-sidebar {
+    flex-shrink: 0;
+
+    &.sticky {
+        top: 30px;
+    }
+    
+    @media (max-width: $on-desktop - 1) {
+        display: none;
+    }
+
+    @media (min-width: $on-tablet) {
+        width: 25%;
+        margin-left: 1%;
+    }
+
+    @media (min-width: $on-desktop + 1) {
+        width: 25%;
+    }
+}
+
+.site-info {
+    z-index: 1;
+    transition: box-shadow 0.5s ease;
+    @media (max-width: $on-phone) {
+        padding: 15px 30px;
+    }
+
+    .site-avatar {
+        position: relative;
+        margin: 0;
+        margin-bottom: 30px;
+        width: 150px;
+        height: 150px;
+
+        @media (min-width: $on-phone + 1) {
+            //margin-left: auto;
+        }
+
+        @media (max-width: $on-desktop) {
+            height: 120px;
+            width: 120px;
+        }
+
+        .site-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            @include box_shadow(1);
+        }
+
+        .emoji {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 100%;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            font-size: 20px;
+            background-color: var(--card-background);
+            @include box_shadow(2);
+
+            @media (max-width: $on-desktop) {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+            }
+        }
+    }
+
+    .site-name {
+        color: var(--accent-color);
+        font-size: 2.4rem;
+        margin: 0;
+    }
+
+    .site-description {
+        color: var(--body-text-color);
+        font-weight: lighter;
+        margin: 10px 0;
+        font-size: 2rem;
+
+        @media (max-width: $on-desktop) {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.sidebar {
+    .widget {
+        &:not(:last-of-type) {
+            margin-bottom: 40px;
+            &:after {
+                content: "";
+                width: 100px;
+                height: 2px;
+                background-color: var(--body-text-color);
+                display: block;
+                margin-top: 40px;
+            }
+        }
+    }
+}

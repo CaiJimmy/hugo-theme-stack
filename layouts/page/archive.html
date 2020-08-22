@@ -1,0 +1,39 @@
+{{ define "body_class" }}2-column{{ end }}
+{{ define "main" }}
+<div class="container extended flex on-phone--column align-items--flex-start">
+
+    {{ partial "sidebar/left.html" . }}
+
+    <main class="main template-archive">
+        <div class="widget">
+            <h1 class="widget-title">Categories</h1>
+            <div class="category-list">
+                <div class="article-list--tile">
+                    {{ range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+                        {{ partial "article-list/tile" (dict "context" . "size" "250x150") }}
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+        {{ $postSection := $.Site.Params.postSection }}
+        {{ $v1 := where .Site.RegularPages "Section" $postSection }}
+        {{ $v2 := where .Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $filtered := $v1 | intersect $v2 }}
+        {{ range $filtered.GroupByDate "2006" }}
+        {{ $id := lower (replace .Key " " "-") }}
+        <div class="archive-group" id="{{ $id }}">
+            <h3 class="archive-date"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h3>
+            <div class="article-list--compact">
+                {{ range .Pages }}
+                    {{ partial "article-list/compact" . }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{ partial "footer.html" . }}
+    </main>
+</div>
+
+{{ end }}

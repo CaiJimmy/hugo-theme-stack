@@ -1,0 +1,131 @@
+@import "variables.scss";
+@import "helper/shadow.scss";
+
+@import "external/normalize.scss";
+
+@import "partials/menu.scss";
+@import "partials/article.scss";
+@import "partials/widgets.scss";
+@import "partials/footer.scss";
+@import "partials/pagination.scss";
+@import "partials/sidebar.scss";
+@import "partials/base.scss";
+@import "partials/layout/archive.scss";
+@import "partials/layout/article.scss";
+@import "partials/layout/taxonomy.scss";
+@import "partials/layout/404.scss";
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+    &:hover {
+        color: var(--accent-color-darker);
+    }
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+
+    &.extended {
+        @media (min-width: $on-phone) {
+            max-width: 720px;
+        }
+
+        @media (min-width: $on-tablet) {
+            max-width: 972px;
+        }
+
+        @media (min-width: $on-desktop) {
+            max-width: 1200px;
+        }
+
+        @media (min-width: $on-desktop-large) {
+            max-width: 1536px;
+        }
+    }
+}
+
+#content {
+    @media (min-width: $on-phone) {
+        padding-top: 30px;
+    }
+
+    @media (min-width: $on-tablet) {
+        padding-top: 50px;
+    }
+}
+
+main.main {
+    min-width: 0;
+    padding: 0 15px;
+    max-width: 100%;
+    @media (min-width: $on-phone + 1) {
+        padding: 0 15px;
+    }
+    flex-grow: 1;
+}
+
+.main-grid {
+    @media (max-width: $on-phone) {
+        flex-direction: column;
+    }
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.on-phone--column {
+        @media (max-width: $on-phone) {
+            flex-direction: column;
+        }
+    }
+
+    &.align-items--flex-start {
+        align-items: flex-start;
+    }
+
+    .grow {
+        flex-grow: 1;
+    }
+
+    .do-not-shrink {
+        flex-shrink: 0;
+    }
+
+    .do-not-overflow {
+        min-width: 0;
+        flex-shrink: 1;
+        max-width: 100%;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+}
+
+.alert {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 5;
+    background: var(--card-background);
+    max-width: 400px;
+    padding: 15px 20px;
+    border-radius: var(--card-border-radius);
+    line-height: 1.75;
+    @include box_shadow(2);
+    color: var(--card-text-color-secondary);
+
+    @media (max-width: $on-phone) {
+        max-width: 100vw;
+        width: calc(100% - 30px);
+        left: 15px;
+    }
+}

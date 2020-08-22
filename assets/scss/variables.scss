@@ -1,0 +1,92 @@
+$fallback-font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial,
+    "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN",
+    "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp",
+    sans-serif;
+$base-font-family: "Lato", $fallback-font-family;
+$container-width: 1200px;
+$container-padding: 15px;
+
+$defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
+$defaultTagColors: #fff, #fff, #fff, #fff, #fff;
+
+$on-phone: 740px;
+$on-tablet: 1024px;
+$on-desktop: 1519px;
+$on-desktop-large: 1920px;
+
+/*
+*   CSS Variables
+*/
+$body-background: #f5f5fa;
+$accent-color: #34495e;
+$accent-color-darker: #2c3e50;
+$accent-color-text: #fff;
+
+$card-background: #fff;
+$card-background-selected: #eaeaea;
+
+$card-text-color-main: #000;
+$card-text-color-secondary: #747474;
+$card-text-color-tertiary: #bababa;
+$card-separator-color: rgba(218, 218, 218, 0.5);
+
+$card-border-radius: 10px;
+
+$body-text-color: #bababa;
+
+$tag-border-radius: 4px;
+
+:root {
+    --body-background: #{$body-background};
+    --accent-color: #{$accent-color};
+    --accent-color-darker: #{$accent-color-darker};
+    --accent-color-text: #{$accent-color-text};
+
+    --card-background: #{$card-background};
+    --card-background-selected: #{$card-background-selected};
+
+    --card-text-color-main: #{$card-text-color-main};
+    --card-text-color-secondary: #{$card-text-color-secondary};
+    --card-text-color-tertiary: #{$card-text-color-tertiary};
+    --card-separator-color: #{$card-separator-color};
+
+    --card-border-radius: #{$card-border-radius};
+
+    --body-text-color: #{$body-text-color};
+
+    --tag-border-radius: #{$tag-border-radius};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        $body-background: #303030;
+        $accent-color: #ecf0f1;
+        $accent-color-darker: #bdc3c7;
+
+        $accent-color-text: #000;
+
+        $card-background: #424242;
+        $card-background-selected: rgba(255, 255, 255, 0.16);
+
+        $card-text-color-main: rgba(255, 255, 255, 0.9);
+        $card-text-color-secondary: rgba(255, 255, 255, 0.7);
+        $card-text-color-tertiary: rgba(255, 255, 255, 0.5);
+        $card-separator-color: rgba(255, 255, 255, 0.12);
+
+        $body-text-color: rgba(255, 255, 255, 0.7);
+
+        --body-background: #{$body-background};
+        --accent-color: #{$accent-color};
+        --accent-color-darker: #{$accent-color-darker};
+        --accent-color-text: #{$accent-color-text};
+
+        --card-background: #{$card-background};
+        --card-background-selected: #{$card-background-selected};
+        --card-text-color-main: #{$card-text-color-main};
+        --card-text-color-secondary: #{$card-text-color-secondary};
+        --card-text-color-tertiary: #{$card-text-color-tertiary};
+        --card-separator-color: #{$card-separator-color};
+
+        --body-text-color: #{$body-text-color};
+    }
+}

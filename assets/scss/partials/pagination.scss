@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    background-color: var(--card-background);
+    @include box_shadow(1);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    .page-link {
+        padding: 16px 32px;
+        display: inline-flex;
+
+        &.current {
+            font-weight: bold;
+            background-color: var(--card-background-selected);
+            color: var(--card-text-color-main);
+        }
+
+        color: var(--card-text-color-secondary);
+    }
+}

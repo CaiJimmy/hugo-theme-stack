@@ -1,0 +1,32 @@
+.archive-group {
+    margin-bottom: 40px;
+    .archive-date {
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+        font-weight: 500;
+
+        a {
+            color: var(--body-text-color);
+        }
+    }
+}
+
+.template-archive {
+    .category-list {
+        margin-bottom: 40px;
+        overflow-x: auto;
+
+        .article-list--tile {
+            display: flex;
+            padding-bottom: 15px;
+
+            article {
+                width: 250px;
+                height: 150px;
+                margin-right: 20px;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

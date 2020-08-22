@@ -1,0 +1,2 @@
+{{- $image := .Resources.GetMatch (printf "%s" (.Params.image | safeURL)) -}}
+{{ return $image }}

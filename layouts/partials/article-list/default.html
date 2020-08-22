@@ -1,0 +1,51 @@
+<article class="{{ if .Params.image }}has-image{{ end }}">
+    {{ if .Params.image }}
+        {{- $image := partial "helper/image" . -}}
+        {{- $thumbnailNotDesktop := $image.Resize "x500 smart" -}}
+        
+    <div class="article-image">
+        <img src="{{ $thumbnailNotDesktop.RelPermalink }}" 
+            width="{{ $thumbnailNotDesktop.Width }}" height="{{ $thumbnailNotDesktop.Height }}" loading="lazy"
+            alt="Featured image of post {{ .Title }}" />
+    </div>
+    {{ end }}
+
+    {{ $i := .Params.image }}
+    {{ $context := . }}
+
+    <div class="article-details">
+        {{ with $categories := .Params.categories }}
+        <header class="article-category">
+            {{ range first 1 $categories }}
+                {{ if $i }}
+                    {{- $image := partial "helper/image" $context -}}
+                    {{- $20x := $image.Fill "20x20 smart"  -}}
+                    <a href="/categories/{{ . | urlize }}" class="color-tag"
+                        data-image="{{ $20x.RelPermalink }}">{{ . | humanize }}</a>
+                {{ else }}
+                    <a href="/categories/{{ . | urlize }}">{{ . | humanize }}</a>
+                {{ end }}
+            {{ end }}
+        </header>
+        {{ end }}
+
+        <h2 class="article-title">
+            <a href="{{ .Permalink }}">
+                {{- .Title -}}
+            </a>
+        </h2>
+
+        {{ with .Params.description }}
+        <h3 class="article-subtitle">
+            {{ . }}
+        </h3>
+        {{ end }}
+
+        <footer class="article-time">
+            {{ (resources.Get "icons/clock.svg").Content | safeHTML }}
+            <time data-timeago="true" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                {{- .Date.Format ( or .Site.Params.dateFormat "Jan 02, 2006" ) -}}
+            </time>
+        </footer>
+    </div>
+</article>
