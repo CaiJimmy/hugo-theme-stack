@@ -287,17 +287,14 @@
     }
 
     a {
-        position: relative;
-        &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 100%;
-            background-color: var(--accent-color);
-            opacity: 0.2;
-            height: 3px;
+        border-bottom: 1px solid var(--accent-color);
+        box-shadow: 0px -2px 0px var(--accent-color) inset;
+
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0px -20px 0px var(--accent-color) inset;
+            color: var(--accent-color-text);
         }
     }
 }
