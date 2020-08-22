@@ -1,0 +1,62 @@
+baseurl = "https://example.com/"
+languageCode = "en-us"
+theme = "hugo-theme-stack"
+paginate = 5
+
+[params]
+    twitter = "0xJimmy"
+    postSection = "post"
+    emoji = "🍥"
+    avatar = "img/avatar.jpg"
+    logo = "/avatar.jpg"
+    subtitle = "和世界分享刚编的破事"
+    postLicense = "Licenced under CC BY-NC-SA 4.0"
+    [params.widgets]
+        enabled = ['archive', 'tag-cloud']
+        [params.widgets.tagCloud]
+            limit = 10
+            
+[menu]
+    [[menu.main]]
+        identifier = "home"
+        name = "首页"
+        url = "/"
+        weight = -100
+        pre = "home"
+    [[menu.main]]
+        identifier = "about-cn"
+        name = "关于"
+        url = "/about/"
+        weight = -90
+        pre = "user"
+    [[menu.main]]
+        identifier = "links"
+        name = "邻居"
+        url = "/links/"
+        weight = -80
+        pre = "link"
+    [[menu.main]]
+        identifier = "archive"
+        name = "归档"
+        url = "/archive/"
+        weight = -70
+        pre = "archive"
+    [[menu.main]]
+        identifier = "guestbook"
+        name = "留言板"
+        url = "/guestbook/"
+        weight = -60
+        pre = "messages"
+
+[related]
+    includeNewer = true
+    threshold = 60
+    toLower = false
+
+    [[related.indices]]
+        name = "tags"
+        weight = 100
+
+    [[related.indices]]
+        name = "categories"
+        weight = 200
