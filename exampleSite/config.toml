@@ -9,6 +9,7 @@ paginate = 5
     avatar = "img/avatar.jpg"
     subtitle = "和世界分享刚编的破事"
     postLicense = "Licenced under CC BY-NC-SA 4.0"
+    favicon = ""
     [params.widgets]
         enabled = ['archive', 'tag-cloud']
         [params.widgets.tagCloud]
