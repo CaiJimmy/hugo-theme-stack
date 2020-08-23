@@ -4,17 +4,19 @@ theme = "hugo-theme-stack"
 paginate = 5
 
 [params]
-    twitter = "0xJimmy"
     postSection = "post"
     emoji = "🍥"
     avatar = "img/avatar.jpg"
-    logo = "/avatar.jpg"
     subtitle = "和世界分享刚编的破事"
     postLicense = "Licenced under CC BY-NC-SA 4.0"
     [params.widgets]
         enabled = ['archive', 'tag-cloud']
         [params.widgets.tagCloud]
             limit = 10
+    [params.opengraph]
+        defaultImage = "img/logo.png"
+        [params.opengraph.twitter]
+            site = "0xJimmy"
             
 [menu]
     [[menu.main]]

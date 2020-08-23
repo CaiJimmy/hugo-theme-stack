@@ -10,7 +10,7 @@
   	{{- end -}}
 '>
 
-{{ with .Site.Params.twitter }}
+{{ with .Site.Params.opengraph.twitter.site }}
 <meta name="twitter:site" content="{{ . }}">
 {{ end }}
 <meta name="twitter:title" content="{{ partial "data/title" . }}">
@@ -40,12 +40,13 @@
 	{{- end -}}
 {{- end -}}
 
-<meta name="twitter:card" content="summary_large_image">
-
 {{- if .Params.image -}}
 	{{ $image := partial "helper/image" . }}
+	<meta name="twitter:card" content="summary_large_image">
 	<meta property='og:image' content='{{ absURL $image.RelPermalink }}' />
 	<meta name="twitter:image" content='{{ absURL $image.RelPermalink }}' />
-{{- else -}}
-	<meta property='og:image' content='{{ absURL .Site.Params.logo }}' />
+{{- else if .Site.Params.opengraph.defaultImage -}}
+	{{ $image := resources.Get .Site.Params.opengraph.defaultImage }}
+	<meta property='og:image' content='{{ absURL $image.RelPermalink }}' />
+	<meta name="twitter:image" content='{{ absURL $image.RelPermalink }}' />
 {{- end -}}
