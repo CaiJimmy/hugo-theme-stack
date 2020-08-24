@@ -301,8 +301,7 @@
         }
     }
 
-    a {
-        border-bottom: 1px solid var(--accent-color);
+    a.link {
         box-shadow: 0px -2px 0px var(--accent-color) inset;
 
         transition: all 0.3s ease;
