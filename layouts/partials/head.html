@@ -21,4 +21,6 @@
         {{- $favicon := $logo.Resize "32x" -}}
         <link rel="icon" type="image/png" href="{{ $favicon.RelPermalink }}" />
     {{- end -}}
+
+    {{ partial "head/custom.html" . }}
 </head>
