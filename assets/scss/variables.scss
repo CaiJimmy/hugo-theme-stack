@@ -1,13 +1,3 @@
-$fallback-font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial,
-    "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN",
-    "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp",
-    sans-serif;
-$base-font-family: "Lato", $fallback-font-family;
-
-$article-font-family: $base-font-family;
-
-$code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-
 $defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
 $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
@@ -38,10 +28,15 @@ $on-desktop-large: 1920px;
     --card-border-radius: 10px;
     --tag-border-radius: 4px;
 
-    --base-font-family: #{$base-font-family};
-    --fallback-font-family: #{$fallback-font-family};
-    --article-font-family: #{$article-font-family};
-    --code-font-family: #{$code-font-family};
+    /**
+    *   Font variables
+    */
+    --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
+    --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
+
+    --base-font-family: "Lato", var(--sys-font-family), var(--zh-font-family);
+    --article-font-family: var(--base-font-family);
+    --code-font-family: Menlo, Monaco, Consolas, "Courier New";
 
     /*
         Article style
