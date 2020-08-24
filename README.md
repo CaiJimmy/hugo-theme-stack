@@ -2,6 +2,8 @@
 # Hugo Theme Stack
 Just another simple theme for Hugo
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a2d2807a-a905-4bcb-97da-8da8d847da3d/deploy-status)](https://app.netlify.com/sites/hugo-theme-stack/deploys)
+
 ## Requirements
 
 - Hugo extended >= 0.74
