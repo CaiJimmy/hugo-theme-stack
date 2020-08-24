@@ -194,12 +194,8 @@
 
 .article-content {
     font-family: var(--article-font-family);
-    font-size: 1.7rem;
-    line-height: 1.85;
-
-    @media (max-width: $on-tablet) {
-        font-size: 1.6rem;
-    }
+    font-size: var(--article-font-size);
+    line-height: var(--article-line-height);
 
     & > p {
         margin: 1.5em 0;

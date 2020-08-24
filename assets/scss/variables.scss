@@ -35,8 +35,17 @@ $on-desktop-large: 1920px;
     --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
 
     --base-font-family: "Lato", var(--sys-font-family), var(--zh-font-family);
-    --article-font-family: var(--base-font-family);
     --code-font-family: Menlo, Monaco, Consolas, "Courier New";
+
+    /**
+    *   Article content font settings
+    */
+    --article-font-family: var(--base-font-family);
+    --article-font-size: 1.7rem;
+    @media (max-width: $on-tablet) {
+        --article-font-size: 1.6rem;
+    }
+    --article-line-height: 1.85;
 
     /*
         Article style
