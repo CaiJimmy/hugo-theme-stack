@@ -4,8 +4,7 @@ $fallback-font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, 
     sans-serif;
 $base-font-family: "Lato", $fallback-font-family;
 
-$article-font-family: -apple-system, BlinkMacSystemFont, "noto-sans", "Segoe UI", "Droid Sans", "Helvetica Neue",
-    "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+$article-font-family: $base-font-family;
 
 $code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 
@@ -27,6 +26,10 @@ $body-background: #f5f5fa;
 $accent-color: #34495e;
 $accent-color-darker: #2c3e50;
 $accent-color-text: #fff;
+
+$link-background-color: 189, 195, 199;
+$link-background-opacity: 0.5;
+$link-background-opacity-hover: 0.7;
 
 $card-background: #fff;
 $card-background-selected: #eaeaea;
@@ -77,6 +80,10 @@ $tag-border-radius: 4px;
     @media (max-width: $on-tablet) {
         --content-padding: 20px;
     }
+
+    --link-background-color: #{$link-background-color};
+    --link-background-opacity: #{$link-background-opacity};
+    --link-background-opacity-hover: #{$link-background-opacity-hover};
 }
 
 @media (prefers-color-scheme: dark) {

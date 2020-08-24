@@ -60,12 +60,7 @@
 
         .article-content {
             margin: var(--content-padding) 0;
-            line-height: 1.75;
             color: var(--card-text-color-main);
-
-            @media (max-width: $on-tablet) {
-                font-size: 1.6rem;
-            }
 
             img {
                 max-width: 100%;
@@ -198,6 +193,12 @@
 
 .article-content {
     font-family: var(--article-font-family);
+    font-size: 1.7rem;
+    line-height: 1.85;
+
+    @media (max-width: $on-tablet) {
+        font-size: 1.6rem;
+    }
 
     & > p {
         margin: 1.5em 0;
@@ -289,13 +290,12 @@
     }
 
     a.link {
-        box-shadow: 0px -2px 0px var(--accent-color) inset;
+        box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
 
         transition: all 0.3s ease;
 
         &:hover {
-            box-shadow: 0px -20px 0px var(--accent-color) inset;
-            color: var(--accent-color-text);
+            box-shadow: 0px -10px 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
         }
     }
 }
