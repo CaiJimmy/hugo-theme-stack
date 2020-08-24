@@ -6,13 +6,15 @@
     </button>
 
     <header class="site-info">
-        <figure class="site-avatar">
-            {{ $avatar := resources.Get (.Site.Params.avatar) }}
-            {{ $avatarResized := $avatar.Resize "300x300" }}
-            <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-                height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
-            <span class="emoji">{{ .Site.Params.emoji }}</span>
-        </figure>
+        {{ if .Site.Params.avatar }}
+            <figure class="site-avatar">
+                {{ $avatar := resources.Get (.Site.Params.avatar) }}
+                {{ $avatarResized := $avatar.Resize "300x300" }}
+                <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
+                    height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                <span class="emoji">{{ .Site.Params.emoji }}</span>
+            </figure>
+        {{ end }}
         <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
         <h2 class="site-description">{{ .Site.Params.subtitle }}</h2>
     </header>
@@ -24,7 +26,9 @@
 
         <li {{ if $active }} class='current' {{ end }}>
             <a href='{{ .URL }}'>
-                {{ (resources.Get (delimit (slice "icons/" .Pre ".svg") "")).Content | safeHTML }}
+                {{ if .Pre }}
+                    {{ (resources.Get (delimit (slice "icons/" .Pre ".svg") "")).Content | safeHTML }}
+                {{ end }}
                 <span>{{- .Name -}}</span>
             </a>
         </li>
