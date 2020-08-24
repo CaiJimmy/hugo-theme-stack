@@ -10,7 +10,7 @@ html {
 body {
     background: var(--body-background);
     margin: 0;
-    font-family: $base-font-family;
+    font-family: var(--base-font-family);
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

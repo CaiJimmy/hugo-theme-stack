@@ -204,8 +204,7 @@
 }
 
 .article-content {
-    font-family: -apple-system, BlinkMacSystemFont, "noto-sans", "Segoe UI", "Droid Sans", "Helvetica Neue",
-        "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+    font-family: var(--article-font-family);
 
     p {
         margin: 1.5em 0;
@@ -243,7 +242,7 @@
         padding: 1px 2px;
         border: 1px solid #eee;
         border-radius: 3px;
-        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-family: var(--code-font-family);
         word-wrap: break-word;
     }
 
@@ -272,7 +271,7 @@
         display: block;
         background-color: #fafafa;
         color: #999;
-        font-family: Consolas, monospace;
+        font-family: var(--code-font-family);
         line-height: 1.428571429;
         word-break: break-all;
         padding: 20px;

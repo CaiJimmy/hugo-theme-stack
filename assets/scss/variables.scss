@@ -3,6 +3,12 @@ $fallback-font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, 
     "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp",
     sans-serif;
 $base-font-family: "Lato", $fallback-font-family;
+
+$article-font-family: -apple-system, BlinkMacSystemFont, "noto-sans", "Segoe UI", "Droid Sans", "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+
+$code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+
 $container-width: 1200px;
 $container-padding: 15px;
 
@@ -55,6 +61,11 @@ $tag-border-radius: 4px;
     --body-text-color: #{$body-text-color};
 
     --tag-border-radius: #{$tag-border-radius};
+
+    --base-font-family: #{$base-font-family};
+    --fallback-font-family: #{$fallback-font-family};
+    --article-font-family: #{$article-font-family};
+    --code-font-family: #{$code-font-family};
 }
 
 @media (prefers-color-scheme: dark) {
