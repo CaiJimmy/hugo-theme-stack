@@ -62,12 +62,10 @@
 
         .article-content {
             margin: 30px 0;
-            padding: 0 30px;
             line-height: 1.75;
             color: var(--card-text-color-main);
 
             @media (max-width: $on-tablet) {
-                padding: 0 20px;
                 font-size: 1.6rem;
             }
 
@@ -204,10 +202,29 @@
 }
 
 .article-content {
+    --content-side-padding: 30px;
+    --blockquote-border-size: 4px;
+    --heading-border-size: 4px;
+
+    @media (max-width: $on-tablet) {
+        --content-side-padding: 20px;
+    }
+
     font-family: var(--article-font-family);
 
     p {
         margin: 1.5em 0;
+        padding: 0 var(--content-side-padding);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        padding: 0 calc(var(--content-side-padding) - var(--heading-border-size));
+        border-left: var(--heading-border-size) solid var(--accent-color);
     }
 
     figure {
@@ -223,8 +240,12 @@
     blockquote {
         position: relative;
         margin: 10px 0;
-        border-left: 4px solid var(--card-separator-color);
-        padding-left: 20px;
+        border-left: var(--blockquote-border-size) solid var(--card-separator-color);
+        padding: 0 calc(var(--content-side-padding) - var(--blockquote-border-size));
+    }
+
+    ul {
+        margin: 0 var(--content-side-padding);
     }
 
     hr {
@@ -254,14 +275,10 @@
         margin: 20px 0;
 
         figure {
-            margin: 0 5px;
+            margin: 0;
 
-            a:after {
-                display: none;
-            }
-
-            img {
-                //width: 100%;
+            & + figure {
+                margin-left: 10px;
             }
         }
     }
@@ -274,8 +291,7 @@
         font-family: var(--code-font-family);
         line-height: 1.428571429;
         word-break: break-all;
-        padding: 20px;
-        border-radius: var(--card-border-radius);
+        padding: var(--content-side-padding);
 
         code {
             color: unset;
