@@ -1,5 +1,5 @@
 .archive-group {
-    margin-bottom: 40px;
+    margin-bottom: var(--section-separation);
     .archive-date {
         text-transform: uppercase;
         margin-bottom: 10px;
@@ -14,7 +14,7 @@
 
 .template-archive {
     .category-list {
-        margin-bottom: 40px;
+        margin-bottom: var(--section-separation);
         overflow-x: auto;
 
         .article-list--tile {

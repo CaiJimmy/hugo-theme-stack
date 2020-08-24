@@ -9,33 +9,34 @@
 .taxonomy-card {
     border-radius: var(--card-border-radius);
     background-color: var(--card-background);
-    padding: 20px 20px;
+    padding: var(--small-card-padding);
     @include box_shadow(1);
-    margin-bottom: 40px;
+    margin-bottom: var(--section-separation);
     display: flex;
     align-items: center;
+
+    --separation: 15px;
 
     .taxonomy-term {
         font-size: 2.2rem;
         margin: 0;
-        margin-top: 15px;
+        margin-top: calc(var(--separation) / 2);
         color: var(--card-text-color-main);
 
         & + .taxonomy-description {
-            margin-top: 15px;
+            margin-top: var(--separation);
         }
     }
 
     .taxonomy-description {
         font-weight: normal;
         color: var(--card-text-color-secondary);
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         margin: 0;
     }
 
     .taxonomy-details {
         flex-grow: 1;
-        padding: 10px 0;
         margin-right: 20px;
     }
 

@@ -6,8 +6,7 @@
     article {
         display: flex;
         flex-direction: column;
-
-        margin-bottom: 40px;
+        margin-bottom: var(--section-separation);
         background-color: var(--card-background);
         @include box_shadow(1);
         border-radius: var(--card-border-radius);
@@ -139,16 +138,15 @@
     border-radius: var(--card-border-radius);
     @include box_shadow(1);
     background-color: var(--card-background);
-    padding: 0 15px;
 
     & + .pagination {
-        margin-top: 40px;
+        margin-top: var(--section-separation);
     }
 
     article {
         display: flex;
         align-items: center;
-        padding: 25px 10px;
+        padding: var(--small-card-padding);
 
         &:not(:last-of-type) {
             border-bottom: 2px solid var(--card-separator-color);

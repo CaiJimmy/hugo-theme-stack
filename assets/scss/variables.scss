@@ -60,6 +60,10 @@ $on-desktop-large: 1920px;
     --link-background-color: 189, 195, 199;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
+
+    --section-separation: 40px;
+
+    --small-card-padding: 25px;
 }
 
 @media (prefers-color-scheme: dark) {

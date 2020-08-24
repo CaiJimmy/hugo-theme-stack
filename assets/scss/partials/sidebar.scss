@@ -49,7 +49,7 @@
     &.sticky {
         top: 30px;
     }
-    
+
     @media (max-width: $on-desktop - 1) {
         display: none;
     }
@@ -136,14 +136,14 @@
 .sidebar {
     .widget {
         &:not(:last-of-type) {
-            margin-bottom: 40px;
+            margin-bottom: var(--section-separation);
             &:after {
                 content: "";
                 width: 100px;
                 height: 2px;
                 background-color: var(--body-text-color);
                 display: block;
-                margin-top: 40px;
+                margin-top: var(--section-separation);
             }
         }
     }

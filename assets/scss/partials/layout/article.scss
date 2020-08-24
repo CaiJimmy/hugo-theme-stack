@@ -38,7 +38,7 @@
         overflow: hidden;
 
         &.main-article {
-            margin-bottom: 40px;
+            margin-bottom: var(--section-separation);
         }
 
         .article-header {
@@ -152,7 +152,7 @@
 }
 
 .related-contents--wrapper {
-    margin-bottom: 40px;
+    margin-bottom: var(--section-separation);
     .widget-title {
         //padding-left: 15px;
     }

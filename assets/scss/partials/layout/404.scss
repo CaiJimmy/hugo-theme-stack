@@ -2,5 +2,5 @@
     background-color: var(--card-background);
     @include box_shadow(1);
     border-radius: var(--card-border-radius);
-    padding: 30px;
+    padding: var(--content-padding);
 }
