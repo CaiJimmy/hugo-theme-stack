@@ -271,8 +271,8 @@
     pre {
         overflow-x: auto;
         display: block;
-        background-color: #fafafa;
-        color: #999;
+        background-color: var(--pre-background);
+        color: var(--pre-text-color);
         font-family: var(--code-font-family);
         line-height: 1.428571429;
         word-break: break-all;
