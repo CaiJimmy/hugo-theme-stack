@@ -22,48 +22,24 @@ $on-desktop-large: 1920px;
 /*
 *   CSS Variables
 */
-$body-background: #f5f5fa;
-$accent-color: #34495e;
-$accent-color-darker: #2c3e50;
-$accent-color-text: #fff;
-
-$link-background-color: 189, 195, 199;
-$link-background-opacity: 0.5;
-$link-background-opacity-hover: 0.7;
-
-$card-background: #fff;
-$card-background-selected: #eaeaea;
-
-$card-text-color-main: #000;
-$card-text-color-secondary: #747474;
-$card-text-color-tertiary: #bababa;
-$card-separator-color: rgba(218, 218, 218, 0.5);
-
-$card-border-radius: 10px;
-
-$body-text-color: #bababa;
-
-$tag-border-radius: 4px;
-
 :root {
-    --body-background: #{$body-background};
-    --accent-color: #{$accent-color};
-    --accent-color-darker: #{$accent-color-darker};
-    --accent-color-text: #{$accent-color-text};
+    --body-background: #f5f5fa;
+    --accent-color: #34495e;
+    --accent-color-darker: #2c3e50;
+    --accent-color-text: #fff;
 
-    --card-background: #{$card-background};
-    --card-background-selected: #{$card-background-selected};
+    --card-background: #fff;
+    --card-background-selected: #eaeaea;
 
-    --card-text-color-main: #{$card-text-color-main};
-    --card-text-color-secondary: #{$card-text-color-secondary};
-    --card-text-color-tertiary: #{$card-text-color-tertiary};
-    --card-separator-color: #{$card-separator-color};
+    --card-text-color-main: #000;
+    --card-text-color-secondary: #747474;
+    --card-text-color-tertiary: #bababa;
+    --card-separator-color: rgba(218, 218, 218, 0.5);
 
-    --card-border-radius: #{$card-border-radius};
+    --body-text-color: #bababa;
 
-    --body-text-color: #{$body-text-color};
-
-    --tag-border-radius: #{$tag-border-radius};
+    --card-border-radius: 10px;
+    --tag-border-radius: 4px;
 
     --base-font-family: #{$base-font-family};
     --fallback-font-family: #{$fallback-font-family};
@@ -81,41 +57,25 @@ $tag-border-radius: 4px;
         --content-padding: 20px;
     }
 
-    --link-background-color: #{$link-background-color};
-    --link-background-opacity: #{$link-background-opacity};
-    --link-background-opacity-hover: #{$link-background-opacity-hover};
+    --link-background-color: 189, 195, 199;
+    --link-background-opacity: 0.5;
+    --link-background-opacity-hover: 0.7;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        $body-background: #303030;
-        $accent-color: #ecf0f1;
-        $accent-color-darker: #bdc3c7;
+        --body-background: #303030;
+        --accent-color: #ecf0f1;
+        --accent-color-darker: #bdc3c7;
+        --accent-color-text: #000;
 
-        $accent-color-text: #000;
+        --card-background: #424242;
+        --card-background-selected: rgba(255, 255, 255, 0.16);
+        --card-text-color-main: rgba(255, 255, 255, 0.9);
+        --card-text-color-secondary: rgba(255, 255, 255, 0.7);
+        --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
+        --card-separator-color: rgba(255, 255, 255, 0.12);
 
-        $card-background: #424242;
-        $card-background-selected: rgba(255, 255, 255, 0.16);
-
-        $card-text-color-main: rgba(255, 255, 255, 0.9);
-        $card-text-color-secondary: rgba(255, 255, 255, 0.7);
-        $card-text-color-tertiary: rgba(255, 255, 255, 0.5);
-        $card-separator-color: rgba(255, 255, 255, 0.12);
-
-        $body-text-color: rgba(255, 255, 255, 0.7);
-
-        --body-background: #{$body-background};
-        --accent-color: #{$accent-color};
-        --accent-color-darker: #{$accent-color-darker};
-        --accent-color-text: #{$accent-color-text};
-
-        --card-background: #{$card-background};
-        --card-background-selected: #{$card-background-selected};
-        --card-text-color-main: #{$card-text-color-main};
-        --card-text-color-secondary: #{$card-text-color-secondary};
-        --card-text-color-tertiary: #{$card-text-color-tertiary};
-        --card-separator-color: #{$card-separator-color};
-
-        --body-text-color: #{$body-text-color};
+        --body-text-color: rgba(255, 255, 255, 0.7);
     }
 }
