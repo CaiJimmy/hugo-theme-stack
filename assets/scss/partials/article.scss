@@ -120,10 +120,6 @@
 }
 
 .article-tags {
-    & + .article-copyright {
-        margin-top: 30px;
-    }
-    
     a {
         color: var(--accent-color-text);
         background-color: var(--accent-color);
