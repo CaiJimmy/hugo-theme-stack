@@ -1,0 +1,16 @@
+<footer class="article-footer">
+    {{ with $tags := .Params.Tags }}
+    <section class="article-tags">
+        {{ range $tags }}
+        <a href="/tags/{{ . | urlize }}">{{ . | humanize }}</a>
+        {{ end }}
+    </section>
+    {{ end }}
+
+    {{ if .Site.Params.postLicense }}
+    <section class="article-copyright">
+        {{ (resources.Get "icons/copyright.svg").Content | safeHTML }}
+        <span>{{ .Site.Params.postLicense }}</span>
+    </section>
+    {{ end }}
+</footer>
