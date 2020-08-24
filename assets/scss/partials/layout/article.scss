@@ -1,15 +1,5 @@
 @import "variables.scss";
 
-:root {
-    --content-side-padding: 30px;
-    --blockquote-border-size: 4px;
-    --heading-border-size: 4px;
-
-    @media (max-width: $on-tablet) {
-        --content-side-padding: 20px;
-    }
-}
-
 .article-page {
     .left-sidebar {
         @media (max-width: $on-tablet) {
@@ -63,13 +53,13 @@
             }
 
             .article-details {
-                padding: var(--content-side-padding);
+                padding: var(--content-padding);
                 padding-bottom: 0;
             }
         }
 
         .article-content {
-            margin: var(--content-side-padding) 0;
+            margin: var(--content-padding) 0;
             line-height: 1.75;
             color: var(--card-text-color-main);
 
@@ -84,10 +74,10 @@
         }
 
         .article-footer {
-            padding: var(--content-side-padding);
+            padding: var(--content-padding);
 
             .article-copyright {
-                margin-top: var(--content-side-padding);
+                margin-top: var(--content-padding);
                 color: var(--card-text-color-tertiary);
                 text-transform: uppercase;
                 display: flex;
@@ -209,9 +199,9 @@
 .article-content {
     font-family: var(--article-font-family);
 
-    p {
+    & > p {
         margin: 1.5em 0;
-        padding: 0 var(--content-side-padding);
+        padding: 0 var(--content-padding);
     }
 
     h1,
@@ -220,7 +210,7 @@
     h4,
     h5,
     h6 {
-        padding: 0 calc(var(--content-side-padding) - var(--heading-border-size));
+        padding: 0 calc(var(--content-padding) - var(--heading-border-size));
         border-left: var(--heading-border-size) solid var(--accent-color);
     }
 
@@ -238,11 +228,11 @@
         position: relative;
         margin: 10px 0;
         border-left: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 0 calc(var(--content-side-padding) - var(--blockquote-border-size));
+        padding: 0 calc(var(--content-padding) - var(--blockquote-border-size));
     }
 
     ul {
-        margin: 0 var(--content-side-padding);
+        margin: 0 var(--content-padding);
     }
 
     hr {
@@ -288,7 +278,7 @@
         font-family: var(--code-font-family);
         line-height: 1.428571429;
         word-break: break-all;
-        padding: var(--content-side-padding);
+        padding: var(--content-padding);
 
         code {
             color: unset;

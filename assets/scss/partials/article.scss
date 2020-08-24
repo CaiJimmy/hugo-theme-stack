@@ -45,11 +45,7 @@
     flex-direction: column;
     justify-content: center;
 
-    padding: 25px 20px;
-
-    @media (max-width: $on-desktop) {
-        padding: 20px;
-    }
+    padding: var(--content-padding);
 }
 
 .article-category {

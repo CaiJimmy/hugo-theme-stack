@@ -66,6 +66,17 @@ $tag-border-radius: 4px;
     --fallback-font-family: #{$fallback-font-family};
     --article-font-family: #{$article-font-family};
     --code-font-family: #{$code-font-family};
+
+    /*
+        Article style
+    */
+    --content-padding: 30px;
+    --blockquote-border-size: 4px;
+    --heading-border-size: 4px;
+
+    @media (max-width: $on-tablet) {
+        --content-padding: 20px;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
