@@ -2,12 +2,17 @@ baseurl = "https://example.com/"
 languageCode = "en-us"
 theme = "hugo-theme-stack"
 paginate = 5
+title = "Example Site"
 
+[permalinks]
+    post = "/p/:slug/"
+    page = "/:slug/"
+    
 [params]
     postSection = "post"
     emoji = "🍥"
-    avatar = "img/avatar.jpg"
-    subtitle = "和世界分享刚编的破事"
+    avatar = "img/avatar.png"
+    subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     postLicense = "Licenced under CC BY-NC-SA 4.0"
     favicon = ""
     [params.widgets]
@@ -15,41 +20,29 @@ paginate = 5
         [params.widgets.tagCloud]
             limit = 10
     [params.opengraph]
-        defaultImage = "img/logo.png"
+        defaultImage = ""
         [params.opengraph.twitter]
-            site = "0xJimmy"
+            site = ""
             
 [menu]
     [[menu.main]]
         identifier = "home"
-        name = "首页"
+        name = "Home"
         url = "/"
         weight = -100
         pre = "home"
     [[menu.main]]
         identifier = "about-cn"
-        name = "关于"
+        name = "About"
         url = "/about/"
         weight = -90
         pre = "user"
     [[menu.main]]
-        identifier = "links"
-        name = "邻居"
-        url = "/links/"
-        weight = -80
-        pre = "link"
-    [[menu.main]]
         identifier = "archive"
-        name = "归档"
+        name = "Archive"
         url = "/archive/"
         weight = -70
         pre = "archive"
-    [[menu.main]]
-        identifier = "guestbook"
-        name = "留言板"
-        url = "/guestbook/"
-        weight = -60
-        pre = "messages"
 
 [related]
     includeNewer = true
