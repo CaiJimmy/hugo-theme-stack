@@ -16,7 +16,7 @@
     <div class="article-details">
         {{ with $categories := .Params.categories }}
         <header class="article-category">
-            {{ range first 1 $categories }}
+            {{ range $categories }}
                 {{ if $i }}
                     {{- $image := partial "helper/image" $context -}}
                     {{- $20x := $image.Fill "20x20 smart"  -}}
