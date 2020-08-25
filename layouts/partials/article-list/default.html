@@ -4,9 +4,11 @@
         {{- $thumbnailNotDesktop := $image.Resize "x500 smart" -}}
         
     <div class="article-image">
-        <img src="{{ $thumbnailNotDesktop.RelPermalink }}" 
-            width="{{ $thumbnailNotDesktop.Width }}" height="{{ $thumbnailNotDesktop.Height }}" loading="lazy"
-            alt="Featured image of post {{ .Title }}" />
+        <a href="{{ .Permalink }}">
+            <img src="{{ $thumbnailNotDesktop.RelPermalink }}" 
+                width="{{ $thumbnailNotDesktop.Width }}" height="{{ $thumbnailNotDesktop.Height }}" loading="lazy"
+                alt="Featured image of post {{ .Title }}" />
+        </a>
     </div>
     {{ end }}
 
