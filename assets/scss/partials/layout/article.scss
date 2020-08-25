@@ -242,12 +242,10 @@
     }
 
     code {
-        color: #808080;
-        font-size: 0.96em;
-        background-color: #f9f9f7;
-        padding: 1px 2px;
-        border: 1px solid #eee;
-        border-radius: 3px;
+        color: var(--code-text-color);
+        background-color: var(--code-background-color);
+        padding: 2px 4px;
+        border-radius: var(--tag-border-radius);
         font-family: var(--code-font-family);
         word-wrap: break-word;
     }

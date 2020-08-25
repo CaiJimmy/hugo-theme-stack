@@ -68,6 +68,9 @@ $on-desktop-large: 1920px;
 
     --pre-background: #272822;
     --pre-text-color: #f8f8f2;
+
+    --code-background-color: rgba(0, 0, 0, 0.12);
+    --code-text-color: #808080;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -85,5 +88,8 @@ $on-desktop-large: 1920px;
         --card-separator-color: rgba(255, 255, 255, 0.12);
 
         --body-text-color: rgba(255, 255, 255, 0.7);
+
+        --code-background-color: #272822;
+        --code-text-color: rgba(255, 255, 255, 0.9);
     }
 }
