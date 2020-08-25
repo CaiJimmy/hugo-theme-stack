@@ -17,6 +17,8 @@ title = "Example Site"
     favicon = ""
     [params.widgets]
         enabled = ['archive', 'tag-cloud']
+        [params.widgets.archive]
+            limit = 5
         [params.widgets.tagCloud]
             limit = 10
     [params.opengraph]

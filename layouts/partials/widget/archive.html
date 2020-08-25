@@ -7,12 +7,22 @@
     {{ $v1 := where .Site.RegularPages "Section" "post" }}
     {{ $v2 := where .Site.RegularPages "Params.hidden" "!=" true }}
     {{ $filtered := $v1 | intersect $v2 }}
-    {{ range $filtered.GroupByDate "2006" }}
+    {{ $archive := $filtered.GroupByDate "2006" }}
+
+    {{ range first .Site.Params.widgets.archive.limit ($archive) }}
         {{ $id := lower (replace .Key " " "-") }}
         <div class="archive-year">
             <a href="{{ $.Site.BaseURL }}/archive#{{ $id }}">
                 <span class="year">{{ .Key }}</span>
                 <span class="count">{{ len .Pages }}</span>
+            </a> 
+        </div>
+    {{ end }}
+
+    {{ if gt (len $archive) .Site.Params.widgets.archive.limit }}
+        <div class="archive-year">
+            <a href="{{ $.Site.BaseURL }}/archive">
+                <span class="year">More</span>
             </a> 
         </div>
     {{ end }}
