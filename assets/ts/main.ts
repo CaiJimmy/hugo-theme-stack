@@ -25,9 +25,11 @@ let Stack = {
          * Add color to tags
          */
         document.querySelectorAll('.color-tag').forEach(async (tag: HTMLLinkElement) => {
-            const imageURL = tag.getAttribute('data-image');
+            const imageURL = tag.getAttribute('data-image'),
+                id = tag.getAttribute('data-id'),
+                key = tag.getAttribute('data-key');
 
-            const colors = await getColor(imageURL);
+            const colors = await getColor(id, key, imageURL);
 
             tag.style.color = colors.Vibrant.bodyTextColor;
             tag.style.background = colors.Vibrant.hex;
@@ -47,9 +49,11 @@ let Stack = {
                     articles.forEach(async articles => {
                         const image = articles.querySelector('img'),
                             imageURL = image.src,
+                            id = image.getAttribute('data-id'),
+                            key = image.getAttribute('data-key'),
                             articleDetails: HTMLDivElement = articles.querySelector('.article-details');
 
-                        const colors = await getColor(imageURL);
+                        const colors = await getColor(id, key, imageURL);
 
                         articleDetails.style.background = `
                         linear-gradient(0deg, 

@@ -1,4 +1,5 @@
 interface colorScheme {
+    key: string,                        /// Regenerate color scheme when the image is changed
     DarkMuted: {
         hex: string,
         rgb: Number[],
@@ -13,20 +14,21 @@ interface colorScheme {
 
 let colorsCache: { [key: string]: colorScheme } = {};
 
-if (localStorage.hasOwnProperty('colorsCache')) {
+if (localStorage.hasOwnProperty('StackColorsCache')) {
     try {
-        colorsCache = JSON.parse(localStorage.getItem('colorsCache'));
+        colorsCache = JSON.parse(localStorage.getItem('StackColorsCache'));
     }
     catch (e) {
         colorsCache = {};
     }
 }
 
-async function getColor(imageURL: string) {
-    if (!colorsCache.hasOwnProperty(imageURL)) {
+async function getColor(id: string, key: string, imageURL: string) {
+    if (!id || !colorsCache.hasOwnProperty(id) || colorsCache[id].key !== key) {
         const palette = await Vibrant.from(imageURL).getPalette();
 
-        colorsCache[imageURL] = {
+        colorsCache[id] = {
+            key: key,
             Vibrant: {
                 hex: palette.Vibrant.hex,
                 rgb: palette.Vibrant.rgb,
@@ -39,9 +41,10 @@ async function getColor(imageURL: string) {
             }
         }
 
-        localStorage.setItem('colorsCache', JSON.stringify(colorsCache));
+        localStorage.setItem('StackColorsCache', JSON.stringify(colorsCache));
     }
-    return colorsCache[imageURL];
+
+    return colorsCache[id];
 }
 
 export {

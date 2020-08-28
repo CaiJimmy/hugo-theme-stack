@@ -20,10 +20,10 @@
         <header class="article-category">
             {{ range $categories }}
                 {{ if $i }}
-                    {{- $image := partial "helper/image" $context -}}
+                    {{- $image := partial "helper/image" $context | resources.Fingerprint "md5"  -}}
                     {{- $20x := $image.Fill "20x20 smart"  -}}
                     <a href="/categories/{{ . | urlize }}" class="color-tag"
-                        data-image="{{ $20x.RelPermalink }}">{{ . | humanize }}</a>
+                        data-image="{{ $20x.RelPermalink }}" data-id="{{ $context.Slug }}" data-key="{{ $image.Data.Integrity }}">{{ . | humanize }}</a>
                 {{ else }}
                     <a href="/categories/{{ . | urlize }}">{{ . | humanize }}</a>
                 {{ end }}

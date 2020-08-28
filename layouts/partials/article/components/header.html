@@ -5,9 +5,6 @@
     {{- $tablet := $image.Resize "1024x" -}}
     {{- $desktop := $image.Resize "2000x" -}}
 
-    {{- $20x := $image.Fill "20x20 smart"  -}}
-    {{- .Scratch.Set "20x" $20x  -}}
-
     <div class="article-image">
         <img srcset="{{ $tablet.RelPermalink }} 1024w, {{ $desktop.RelPermalink }} 2000w"
             src="{{ $desktop.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}"
@@ -16,13 +13,17 @@
     </div>
     {{ end }}
 
+    {{ $i := .Params.image }}
+    {{ $context := . }}
     <div class="article-details">
-        {{ with $category := .Params.categories }}
+        {{ with $categories := .Params.categories }}
         <header class="article-category">
-            {{ range $category }}
-                {{ if $.Params.image }}
+            {{ range $categories }}
+                {{ if $i }}
+                    {{- $image := partial "helper/image" $context | resources.Fingerprint "md5"  -}}
+                    {{- $20x := $image.Fill "20x20 smart"  -}}
                     <a href="/categories/{{ . | urlize }}" class="color-tag"
-                        data-image="{{ ($.Scratch.Get "20x").RelPermalink }}">{{ . | humanize }}</a>
+                        data-image="{{ $20x.RelPermalink }}" data-id="{{ $context.Slug }}" data-key="{{ $image.Data.Integrity }}">{{ . | humanize }}</a>
                 {{ else }}
                     <a href="/categories/{{ . | urlize }}">{{ . | humanize }}</a>
                 {{ end }}
