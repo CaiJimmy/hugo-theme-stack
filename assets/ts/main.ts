@@ -26,10 +26,10 @@ let Stack = {
          */
         document.querySelectorAll('.color-tag').forEach(async (tag: HTMLLinkElement) => {
             const imageURL = tag.getAttribute('data-image'),
-                id = tag.getAttribute('data-id'),
-                key = tag.getAttribute('data-key');
+                key = tag.getAttribute('data-key'),
+                hash = tag.getAttribute('data-hash');
 
-            const colors = await getColor(id, key, imageURL);
+            const colors = await getColor(key, hash, imageURL);
 
             tag.style.color = colors.Vibrant.bodyTextColor;
             tag.style.background = colors.Vibrant.hex;
@@ -49,11 +49,11 @@ let Stack = {
                     articles.forEach(async articles => {
                         const image = articles.querySelector('img'),
                             imageURL = image.src,
-                            id = image.getAttribute('data-id'),
                             key = image.getAttribute('data-key'),
+                            hash = image.getAttribute('data-hash'),
                             articleDetails: HTMLDivElement = articles.querySelector('.article-details');
 
-                        const colors = await getColor(id, key, imageURL);
+                        const colors = await getColor(key, hash, imageURL);
 
                         articleDetails.style.background = `
                         linear-gradient(0deg, 
