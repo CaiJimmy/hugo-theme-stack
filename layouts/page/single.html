@@ -10,6 +10,8 @@
         {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}} 
             {{ partial "article/components/comment" . }}
         {{ end }}
+
+        {{ partialCached "footer" . }}
     </main>
 </div>
 
