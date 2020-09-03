@@ -125,7 +125,11 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin: 30px 0;
+    margin-top: 25px;
+
+    @media (min-width: $on-desktop-large){
+        margin-top: 30px;
+    }
 
     @media (max-width: $on-phone) {
         background-color: var(--card-background);
@@ -149,10 +153,10 @@
         padding: 10px 0;
 
         &:not(:last-of-type) {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
 
-            @media (max-width: $on-desktop) {
-                margin-bottom: 10px;
+            @media (min-width: $on-desktop-large) {
+                margin-bottom: 20px;
             }
         }
 
@@ -175,9 +179,9 @@
 
             margin-right: 40px;
 
-            @media (max-width: $on-desktop) {
-                width: 30px;
-                height: 30px;
+            @media (max-width: $on-desktop-large) {
+                width: 25px;
+                height: 25px;
             }
         }
 

@@ -54,6 +54,10 @@ $on-desktop-large: 1920px;
     --blockquote-border-size: 4px;
     --heading-border-size: 4px;
 
+    @media (max-width: $on-desktop-large) {
+        --content-padding: 25px;
+    }
+    
     @media (max-width: $on-tablet) {
         --content-padding: 20px;
     }

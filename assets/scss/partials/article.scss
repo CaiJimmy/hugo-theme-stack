@@ -15,15 +15,15 @@
         .article-image {
             img {
                 width: 100%;
-                height: 250px;
+                height: 200px;
                 object-fit: cover;
 
                 @media (max-width: $on-tablet) {
                     height: 150px;
                 }
 
-                @media (max-width: $on-desktop) {
-                    height: 200px;
+                @media (min-width: $on-desktop-large) {
+                    height: 250px;
                 }
             }
         }
@@ -66,7 +66,7 @@
 }
 
 .article-title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 600;
     margin: 10px 0;
     color: var(--card-text-color-main);
@@ -79,19 +79,24 @@
         }
     }
 
+    @media (min-width: $on-desktop-large) {
+        font-size: 2.4rem;
+    }
+
     @media (max-width: $on-desktop) {
-        font-size: 1.5em;
+        font-size: 2rem;
     }
 }
 
 .article-subtitle {
     font-weight: lighter;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--card-text-color-secondary);
     margin: 5px 0;
     line-height: 1.5;
-    @media (max-width: $on-desktop) {
-        font-size: 1.8rem;
+
+    @media (min-width: $on-desktop-large) {
+        font-size: 2rem;
     }
 }
 

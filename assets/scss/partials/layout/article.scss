@@ -46,8 +46,7 @@
                 img {
                     height: auto;
                     width: 100%;
-                    max-height: 500px;
-                    width: 100%;
+                    max-height: 50vh;
                     object-fit: cover;
                 }
             }
@@ -235,10 +234,11 @@
 
     hr {
         width: 100px;
-        margin: 40px 0;
+        margin: 40px auto;
         background: var(--card-text-color-tertiary);
-        height: 4px;
+        height: 2px;
         border: 0;
+        opacity: 0.55;
     }
 
     code {

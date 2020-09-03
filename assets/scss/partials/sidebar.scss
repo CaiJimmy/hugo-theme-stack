@@ -74,15 +74,11 @@
     .site-avatar {
         position: relative;
         margin: 0;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         width: 150px;
         height: 150px;
 
-        @media (min-width: $on-phone + 1) {
-            //margin-left: auto;
-        }
-
-        @media (max-width: $on-desktop) {
+        @media (max-width: $on-desktop-large) {
             height: 120px;
             width: 120px;
         }
@@ -107,7 +103,7 @@
             background-color: var(--card-background);
             @include box_shadow(2);
 
-            @media (max-width: $on-desktop) {
+            @media (max-width: $on-desktop-large) {
                 width: 40px;
                 height: 40px;
                 line-height: 40px;
@@ -119,6 +115,10 @@
         color: var(--accent-color);
         font-size: 2.4rem;
         margin: 0;
+
+        @media (max-width: $on-desktop-large) {
+            font-size: 2rem;
+        }
     }
 
     .site-description {
@@ -127,8 +127,8 @@
         margin: 10px 0;
         font-size: 2rem;
 
-        @media (max-width: $on-desktop) {
-            font-size: 1.8rem;
+        @media (max-width: $on-desktop-large) {
+            font-size: 1.75rem;
         }
     }
 }
