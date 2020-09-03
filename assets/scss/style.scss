@@ -47,24 +47,19 @@ a {
     }
 }
 
-#content {
-    @media (min-width: $on-phone) {
-        padding-top: 30px;
+main.main {
+    min-width: 0;
+    padding: 0 15px;
+    max-width: 100%;
+    flex-grow: 1;
+
+    @media (min-width: $on-phone + 1) {
+        padding-top: 15px;
     }
 
     @media (min-width: $on-tablet) {
         padding-top: 50px;
     }
-}
-
-main.main {
-    min-width: 0;
-    padding: 0 15px;
-    max-width: 100%;
-    @media (min-width: $on-phone + 1) {
-        padding: 0 15px;
-    }
-    flex-grow: 1;
 }
 
 .main-grid {

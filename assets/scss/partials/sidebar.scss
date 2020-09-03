@@ -19,14 +19,15 @@
     }
 
     &.sticky {
-        top: 30px;
+        top: 0;
     }
 
     @media (min-width: $on-phone + 1) {
         width: 25%;
         margin-right: 1%;
+        padding-top: 50px;
     }
-    
+
     @media (min-width: $on-desktop) {
         width: 20%;
     }
