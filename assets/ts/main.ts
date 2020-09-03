@@ -9,14 +9,6 @@ let Stack = {
          */
         menu();
 
-        /**
-         * Add timeago
-         */
-        const timeagoElements = document.querySelectorAll('article time[data-timeago=true]');
-        if (timeagoElements.length) {
-            timeago.render(timeagoElements);
-        }
-
         if (document.querySelector('.article-content')) {
             createGallery('.article-content');
         }
