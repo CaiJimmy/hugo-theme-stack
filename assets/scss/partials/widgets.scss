@@ -2,7 +2,7 @@
     .widget-title {
         text-transform: uppercase;
         color: var(--body-text-color);
-        font-weight: normal;
+        font-weight: bold;
         margin: 0;
         margin-bottom: 10px;
         font-size: 1.6rem;
@@ -12,7 +12,7 @@
         svg {
             width: 32px;
             height: 32px;
-            stroke-width: 1.33px;
+            stroke-width: 1.6;
             color: var(--body-text-color);
         }
     }

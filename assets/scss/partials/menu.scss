@@ -127,7 +127,7 @@
     flex-direction: column;
     margin-top: 25px;
 
-    @media (min-width: $on-desktop-large){
+    @media (min-width: $on-desktop-large) {
         margin-top: 30px;
     }
 
@@ -173,16 +173,10 @@
         }
 
         svg {
-            width: 32px;
-            height: 32px;
+            width: 25px;
+            height: 25px;
             stroke-width: 1.33;
-
             margin-right: 40px;
-
-            @media (max-width: $on-desktop-large) {
-                width: 25px;
-                height: 25px;
-            }
         }
 
         a {
@@ -190,9 +184,10 @@
             display: inline-flex;
             align-items: center;
             color: var(--body-text-color);
+            font-size: 1.5rem;
 
             @media (max-width: $on-desktop) {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
         }
 

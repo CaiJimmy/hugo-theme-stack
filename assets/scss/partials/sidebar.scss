@@ -23,17 +23,10 @@
     }
 
     @media (min-width: $on-phone + 1) {
-        //justify-content: right;
-        //text-align: right;
         width: 25%;
         margin-right: 1%;
     }
-
-    @media (min-width: $on-tablet) {
-        width: 25%;
-        margin-right: 1%;
-    }
-
+    
     @media (min-width: $on-desktop) {
         width: 20%;
     }
@@ -123,12 +116,12 @@
 
     .site-description {
         color: var(--body-text-color);
-        font-weight: lighter;
+        font-weight: normal;
         margin: 10px 0;
-        font-size: 2rem;
+        font-size: 1.8rem;
 
         @media (max-width: $on-desktop-large) {
-            font-size: 1.75rem;
+            font-size: 1.6rem;
         }
     }
 }

@@ -66,7 +66,7 @@
 }
 
 .article-title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 600;
     margin: 10px 0;
     color: var(--card-text-color-main);
@@ -86,10 +86,14 @@
     @media (max-width: $on-desktop) {
         font-size: 2rem;
     }
+
+    & + .article-subtitle {
+        margin-top: 0;
+    }
 }
 
 .article-subtitle {
-    font-weight: lighter;
+    font-weight: normal;
     font-size: 1.8rem;
     color: var(--card-text-color-secondary);
     margin: 5px 0;
@@ -97,6 +101,10 @@
 
     @media (min-width: $on-desktop-large) {
         font-size: 2rem;
+    }
+
+    @media (max-width: $on-desktop) {
+        font-size: 1.6rem;
     }
 }
 
