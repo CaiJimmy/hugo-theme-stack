@@ -152,14 +152,10 @@
 
 .related-contents--wrapper {
     margin-bottom: var(--section-separation);
-    .widget-title {
-        //padding-left: 15px;
-    }
 }
 
 .related-contents {
     overflow-x: auto;
-    //padding: 0 15px;
     padding-bottom: 15px;
 
     & > .flex {
@@ -170,23 +166,19 @@
         margin-right: 15px;
         flex-shrink: 0;
         overflow: hidden;
-
-        @media (max-width: $on-phone) {
-            height: 250px;
-            width: 200px;
-        }
-
-        @media (min-width: $on-phone) {
-            height: 200px;
-            width: 300px;
-        }
+        width: 250px;
+        height: 150px;
 
         .article-title {
             font-size: 1.8rem;
+            margin: 0;
         }
 
-        .article-details {
-            transition: background-color 0.5s ease;
+        &.has-image {
+            .article-details {
+                padding: 20px;
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+            }
         }
     }
 }
