@@ -172,9 +172,9 @@
 
         .article-title {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
 
-            @media (max-width: $on-phone) {
+            @media (max-width: $on-tablet) {
                 font-size: 1.6rem;
             }
         }
