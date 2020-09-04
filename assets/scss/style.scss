@@ -30,7 +30,7 @@ a {
 
     &.extended {
         @media (min-width: $on-phone) {
-            max-width: 720px;
+            max-width: 800px;
         }
 
         @media (min-width: $on-tablet) {
@@ -54,10 +54,6 @@ main.main {
     flex-grow: 1;
 
     @media (min-width: $on-phone + 1) {
-        padding-top: 15px;
-    }
-
-    @media (min-width: $on-tablet) {
         padding-top: 50px;
     }
 }
