@@ -41,7 +41,7 @@
     flex-shrink: 0;
 
     &.sticky {
-        top: 30px;
+        top: 0;
     }
 
     @media (max-width: $on-desktop - 1) {
@@ -51,6 +51,7 @@
     @media (min-width: $on-tablet) {
         width: 25%;
         margin-left: 1%;
+        padding-top: 50px;
     }
 
     @media (min-width: $on-desktop + 1) {
