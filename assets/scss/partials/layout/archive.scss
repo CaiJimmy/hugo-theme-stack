@@ -26,6 +26,15 @@
                 height: 150px;
                 margin-right: 20px;
                 flex-shrink: 0;
+
+                .article-title {
+                    margin: 0;
+                    font-size: 2rem;
+                }
+
+                .article-details {
+                    padding: 20px;
+                }
             }
         }
     }
