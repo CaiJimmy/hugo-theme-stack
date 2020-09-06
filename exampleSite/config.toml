@@ -16,7 +16,9 @@ title = "Example Site"
         avatar = "img/avatar.png"
         subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     [params.article]
-        defaultLicense = "Licenced under CC BY-NC-SA 4.0"
+        [params.article.license]
+            enabled = true 
+            default = "Licenced under CC BY-NC-SA 4.0"
     [params.widgets]
         enabled = ['archive', 'tag-cloud']
         [params.widgets.archive]
