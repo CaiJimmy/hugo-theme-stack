@@ -23,12 +23,12 @@ Clone / Download this repository to `theme` folder, and edit your site config fo
 Libraries / Resources used in this theme:
 
   - [Vibrant-Colors/node-vibrant](https://github.com/Vibrant-Colors/node-vibrant)
-  - [timeago.js](https://timeago.org/)
   - [Normalize.css](https://necolas.github.io/normalize.css/)
   - [Tabler icons](https://tablericons.com/)
   - [Pure CSS implementation of Google Photos / 500px image layout](https://github.com/xieranmaya/blog/issues/6)
   - [artchen/hexo-theme-element](https://github.com/artchen/hexo-theme-element)
+  - [MunifTanjim/minimo](https://github.com/MunifTanjim/minimo)
 
-Licensed under the GNU General Public License v3.0
+**Licensed under the GNU General Public License v3.0**
 
 Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
