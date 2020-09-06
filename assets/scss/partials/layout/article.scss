@@ -71,14 +71,20 @@
             padding: var(--content-padding);
             padding-top: 0;
 
-            .article-copyright {
+            section:not(:first-child) {
                 margin-top: var(--content-padding);
+            }
+
+            section {
                 color: var(--card-text-color-tertiary);
                 text-transform: uppercase;
                 display: flex;
                 align-items: center;
+                font-size: 1.4rem;
 
                 svg {
+                    width: 20px;
+                    height: 20px;
                     margin-right: 15px;
                     stroke-width: 1.33;
                 }
