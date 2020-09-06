@@ -7,10 +7,10 @@
     </section>
     {{ end }}
 
-    {{ if .Site.Params.article.license.enabled }}
+    {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
     <section class="article-copyright">
         {{ (resources.Get "icons/copyright.svg").Content | safeHTML }}
-        <span>{{ .Site.Params.article.license.default }}</span>
+        <span>{{ default .Site.Params.article.license.default .Params.license }}</span>
     </section>
     {{ end }}
 </footer>
