@@ -5,8 +5,8 @@
     border-radius: var(--card-border-radius);
     overflow: hidden;
     flex-wrap: wrap;
-    margin-bottom: var(--section-separation);
-    
+    margin: var(--section-separation) 0;
+
     .page-link {
         padding: 16px 32px;
         display: inline-flex;

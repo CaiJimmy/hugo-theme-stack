@@ -6,11 +6,14 @@
     article {
         display: flex;
         flex-direction: column;
-        margin-bottom: var(--section-separation);
         background-color: var(--card-background);
         @include box_shadow(1);
         border-radius: var(--card-border-radius);
         overflow: hidden;
+
+        &:not(:last-of-type) {
+            margin-bottom: var(--section-separation);
+        }
 
         .article-image {
             img {

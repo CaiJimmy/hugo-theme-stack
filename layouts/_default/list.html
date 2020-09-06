@@ -1,0 +1,24 @@
+{{ define "body_class" }}3-column{{ end }}
+{{ define "main" }}
+<div class="container extended flex on-phone--column align-items--flex-start">
+    {{ partialCached "sidebar/left.html" . }}
+
+    <main class="main full-width">
+        <div class="widget">
+            <h3 class="widget-title">{{ .Title }}</h3>
+        </div>
+
+        <section class="article-list--compact">
+            {{ range .Paginator.Pages }}
+                {{ partial "article-list/compact" . }}
+            {{ end }}
+        </section>
+
+        {{- partial "pagination.html" . -}}
+
+        {{ partialCached "footer" . }}
+    </main>
+
+    {{ partialCached "sidebar/right.html" . }}
+</div>
+{{ end }}
