@@ -38,24 +38,7 @@
     }
 }
 
-/* Tweet widget */
-.tweet-container {
-    .tweet--item {
-        .tweet--text {
-            font-size: 1.6rem;
-            color: var(--accent-color);
-            line-height: 1.75;
-        }
-
-        .tweet--time {
-            text-transform: uppercase;
-            a {
-                color: var(--body-text-color);
-            }
-        }
-    }
-}
-
+/* Archive widget */
 .widget.archive {
     .archive-year {
         margin-bottom: 10px;

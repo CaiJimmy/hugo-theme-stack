@@ -93,36 +93,6 @@
     }
 }
 
-#TableOfContents {
-    background: var(--card-background);
-    border-radius: var(--card-border-radius);
-    @include box_shadow(1);
-    ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-
-        li {
-            padding: 15px 30px;
-            padding-right: 50px;
-            position: relative;
-
-            &:not(:last-of-type) {
-                border-bottom: 1px solid var(--card-separator-color);
-            }
-
-            a {
-                color: var(--accent-color);
-            }
-
-            ul {
-                border-top: 1px solid var(--card-separator-color);
-                margin-top: 15px;
-            }
-        }
-    }
-}
-
 #article-toolbar {
     background: var(--card-background);
     @include box_shadow(1);

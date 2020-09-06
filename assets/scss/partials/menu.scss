@@ -204,11 +204,3 @@
         }
     }
 }
-
-@media (max-width: $on-phone) {
-    .show-menu {
-        .site-info {
-            //@include box_shadow(2);
-        }
-    }
-}
