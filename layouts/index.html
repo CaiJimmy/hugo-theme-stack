@@ -4,11 +4,10 @@
     {{ partialCached "sidebar/left.html" . }}
 
     <main class="main full-width">
-        {{ $postSection := $.Site.Params.postSection }}
-        {{ $v1 := where .Site.RegularPages "Section" $postSection }}
-        {{ $v2 := where .Site.RegularPages "Params.hidden" "!=" true }}
-        {{ $.Scratch.Set "filtered" ($v1 | intersect $v2) }}
-        {{ $pag := .Paginate ($.Scratch.Get "filtered") }}
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $filtered := ($pages | intersect $notHidden) }}
+        {{ $pag := .Paginate ($filtered) }}
         
         <section class="article-list">
             {{ range $index, $element := $pag.Pages }}

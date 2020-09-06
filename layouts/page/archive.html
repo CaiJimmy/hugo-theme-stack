@@ -16,10 +16,10 @@
             </div>
         </div>
 
-        {{ $postSection := $.Site.Params.postSection }}
-        {{ $v1 := where .Site.RegularPages "Section" $postSection }}
-        {{ $v2 := where .Site.RegularPages "Params.hidden" "!=" true }}
-        {{ $filtered := $v1 | intersect $v2 }}
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $filtered := ($pages | intersect $notHidden) }}
+
         {{ range $filtered.GroupByDate "2006" }}
         {{ $id := lower (replace .Key " " "-") }}
         <div class="archive-group" id="{{ $id }}">

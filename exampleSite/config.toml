@@ -9,7 +9,7 @@ title = "Example Site"
     page = "/:slug/"
     
 [params]
-    postSection = "post"
+    mainSections = ["post"]
     favicon = ""
     [params.sidebar]
         emoji = "🍥"

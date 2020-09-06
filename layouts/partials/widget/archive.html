@@ -4,9 +4,9 @@
     </div>
     <h1 class="widget-title">Archive</h1>
 
-    {{ $v1 := where .Site.RegularPages "Section" "post" }}
-    {{ $v2 := where .Site.RegularPages "Params.hidden" "!=" true }}
-    {{ $filtered := $v1 | intersect $v2 }}
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $archive := $filtered.GroupByDate "2006" }}
 
     {{ range first .Site.Params.widgets.archive.limit ($archive) }}

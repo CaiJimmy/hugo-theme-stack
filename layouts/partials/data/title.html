@@ -3,10 +3,10 @@
 {{- $authorName := .Site.Author.name -}}
 
 {{- if .IsHome -}}
-    {{- $v1 := where .Site.RegularPages "Type" "post" -}}
-    {{- $v2 := where .Site.RegularPages "Params.hidden" "!=" true -}}
-    {{- $filtered := $v1 | intersect $v2 -}}
-	{{- $pag := .Paginate ($filtered) -}}
+    {{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $pag := .Paginate ($filtered) }}
     {{ if .Paginator.HasPrev }}{{ .Paginator }} - {{ end }}{{ $siteTitle }}
 {{- else if eq .Kind "term" -}}
 	{{- $pag := .Paginate (where .Data.Pages "Type" "post") -}}
