@@ -12,7 +12,7 @@
     {{ range first .Site.Params.widgets.archive.limit ($archive) }}
         {{ $id := lower (replace .Key " " "-") }}
         <div class="archive-year">
-            <a href="{{ $.Site.BaseURL }}/archive#{{ $id }}">
+            <a href="{{ $.Site.BaseURL }}{{ $.Site.Params.widgets.archive.path }}#{{ $id }}">
                 <span class="year">{{ .Key }}</span>
                 <span class="count">{{ len .Pages }}</span>
             </a> 
