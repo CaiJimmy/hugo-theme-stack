@@ -7,12 +7,17 @@
 
 [context.production]
     command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${URL}/"
-
-[context.production.environment]
-    HUGO_ENV = "production"
+    [context.production.environment]
+        HUGO_ENV = "production"
 
 [context.branch-deploy]
     command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}/"
 
 [context.deploy-preview]
     command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}/"
+
+[[plugins]]
+    package = "netlify-plugin-hugo-cache-resources"
+	[plugins.inputs]
+	# If it should show more verbose logs (optional, default = true)
+	debug = true
