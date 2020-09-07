@@ -31,7 +31,7 @@ Clone / Download this repository to `theme` folder, and edit your site config fo
 
 [Wiki](https://github.com/CaiJimmy/hugo-theme-stack/wiki/)
 
-[中文介绍](https://blog.jimmycai.com/p/hugo-theme-stack/)
+[中文文档](https://www.notion.so/jimmycai/Hugo-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4)
 
 ## Copyright
 
