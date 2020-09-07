@@ -5,16 +5,19 @@
     {{ partial "sidebar/left.html" . }}
 
     <main class="main template-archive">
+        {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+        {{ if $categories }}
         <div class="widget">
             <h1 class="widget-title">Categories</h1>
             <div class="category-list">
                 <div class="article-list--tile">
-                    {{ range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+                    {{ range $categories }}
                         {{ partial "article-list/tile" (dict "context" . "size" "250x150") }}
                     {{ end }}
                 </div>
             </div>
         </div>
+        {{ end }}
 
         {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
         {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
