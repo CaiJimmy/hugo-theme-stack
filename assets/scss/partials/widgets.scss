@@ -34,6 +34,11 @@
             margin-bottom: 10px;
             margin-right: 5px;
             font-size: 1.4rem;
+            transition: box-shadow 0.3s ease;
+
+            &:hover {
+                @include box_shadow(2);
+            }
         }
     }
 }
@@ -48,12 +53,17 @@
             border-radius: var(--card-border-radius);
             @include box_shadow(1);
             display: flex;
+            transition: box-shadow 0.3s ease;
 
-            @media (max-width: $on-desktop-large){
+            &:hover {
+                @include box_shadow(2);
+            }
+
+            @media (max-width: $on-desktop-large) {
                 padding: 12px 20px;
                 font-size: 1.4rem;
             }
-            
+
             span.year {
                 flex: 1;
                 color: var(--card-text-color-main);

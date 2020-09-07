@@ -11,6 +11,12 @@
         border-radius: var(--card-border-radius);
         overflow: hidden;
 
+        transition: box-shadow .3s ease;
+        
+        &:hover {
+            @include box_shadow(2);
+        }
+
         &:not(:last-of-type) {
             margin-bottom: var(--section-separation);
         }
