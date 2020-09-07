@@ -10,6 +10,10 @@ $on-desktop-large: 1920px;
 *   CSS Variables
 */
 :root {
+    @media (min-width: $on-phone + 1) {
+        --main-top-padding: 50px;
+    }
+
     --body-background: #f5f5fa;
     --accent-color: #34495e;
     --accent-color-darker: #2c3e50;

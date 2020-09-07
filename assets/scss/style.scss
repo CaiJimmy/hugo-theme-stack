@@ -52,10 +52,7 @@ main.main {
     padding: 0 15px;
     max-width: 100%;
     flex-grow: 1;
-
-    @media (min-width: $on-phone + 1) {
-        padding-top: 50px;
-    }
+    padding-top: var(--main-top-padding);
 }
 
 .main-grid {

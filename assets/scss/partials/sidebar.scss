@@ -25,7 +25,7 @@
     @media (min-width: $on-phone + 1) {
         width: 25%;
         margin-right: 1%;
-        padding: 50px 15px;
+        padding: var(--main-top-padding) 15px;
         max-height: 100vh;
     }
 
