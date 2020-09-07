@@ -94,11 +94,7 @@
 }
 
 #article-toolbar {
-    background: var(--card-background);
-    @include box_shadow(1);
-    border-radius: var(--card-border-radius);
     margin-bottom: 20px;
-    padding: 15px 20px;
     display: flex;
     align-items: center;
 
@@ -111,13 +107,28 @@
     }
 
     .back-home {
-        color: var(--card-text-color-secondary);
+        background: var(--card-background);
+        border-radius: var(--tag-border-radius);
+        color: var(--card-text-color-tertiary);
         margin-right: 30px;
         display: inline-flex;
         align-items: center;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        padding: 10px 20px 10px 15px;
+
+        transition: box-shadow 0.3s ease;
+
+        @include box_shadow(1);
+
+        &:hover {
+            @include box_shadow(2);
+        }
 
         svg {
             margin-right: 5px;
+            width: 20px;
+            height: 20px;
         }
 
         span {
