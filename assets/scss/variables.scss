@@ -1,7 +1,7 @@
 $defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
 $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
-$on-phone: 740px;
+$on-phone: 812px;
 $on-tablet: 1024px;
 $on-desktop: 1519px;
 $on-desktop-large: 1920px;
@@ -57,7 +57,7 @@ $on-desktop-large: 1920px;
     @media (max-width: $on-desktop-large) {
         --content-padding: 25px;
     }
-    
+
     @media (max-width: $on-tablet) {
         --content-padding: 20px;
     }
