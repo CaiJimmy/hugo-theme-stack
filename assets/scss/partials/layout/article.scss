@@ -1,8 +1,16 @@
 @import "variables.scss";
 
-.article-page {
+.article-and-sidebar {
     @media (min-width: $on-phone) and (max-width: $on-tablet) {
-        --main-top-padding: 30px;
+        --main-top-padding: 50px;
+    }
+}
+
+.article-page {
+    &.with-toolbar {
+        @media (max-width: $on-tablet) {
+            --main-top-padding: 0;
+        }
     }
 
     .left-sidebar {
@@ -98,12 +106,11 @@
 }
 
 #article-toolbar {
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
 
-    @media (max-width: $on-phone) {
-        margin-top: 20px;
+    @media (max-width: $on-tablet) {
+        margin: 20px 0;
     }
 
     @media (min-width: $on-tablet) {
