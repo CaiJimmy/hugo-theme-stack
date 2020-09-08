@@ -56,7 +56,7 @@ $on-desktop-large: 1920px;
     */
     --content-padding: 30px;
     --blockquote-border-size: 4px;
-    --blockquote-background-color: #efefee;
+    --blockquote-background-color: rgb(248 248 248);
 
     --heading-border-size: 4px;
 
@@ -108,6 +108,6 @@ $on-desktop-large: 1920px;
         --table-border-color: #717171;
         --tr-even-background-color: #545454;
 
-        --blockquote-background-color: #545454;
+        --blockquote-background-color: rgb(75 75 75);
     }
 }
