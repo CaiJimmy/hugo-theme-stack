@@ -287,4 +287,29 @@
             box-shadow: 0px -10px 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
         }
     }
+
+    table {
+        margin: 0 var(--content-padding);
+        width: 100%;
+        max-width: calc(100% - var(--content-padding) * 2);
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 1.5em;
+        font-size: 0.96em;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 4px 8px 4px 10px;
+        border: 1px solid var(--table-border-color);
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+    tr:nth-child(even) {
+        background-color: var(--tr-even-background-color);
+    }
 }
