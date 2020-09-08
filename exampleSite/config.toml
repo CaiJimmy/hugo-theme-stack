@@ -1,4 +1,4 @@
-baseurl = "https://example.com/"
+baseurl = "https://theme-stack.jimmycai.com/"
 languageCode = "en-us"
 theme = "hugo-theme-stack"
 paginate = 5

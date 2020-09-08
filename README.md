@@ -6,7 +6,7 @@ Just another simple theme for Hugo
 
 ## Demo
 
-[Example Site](https://hugo-theme-stack.netlify.app/)
+[Example Site](https://theme-stack.jimmycai.com/)
 
 ## Features
 
