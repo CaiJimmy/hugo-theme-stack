@@ -2,7 +2,6 @@
     <meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<meta name='description' content='{{ chomp (partial "data/description" . | plainify ) }}'>
-    <base href='{{ .Site.BaseURL }}'>
     
 	<title>{{ (trim (partial "data/title" .) "\n" ) | safeHTML }}</title>
 	<link rel='canonical' href='{{ .Permalink }}'>
