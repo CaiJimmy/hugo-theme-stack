@@ -15,9 +15,3 @@
 
 [context.deploy-preview]
     command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}/"
-
-[[plugins]]
-    package = "netlify-plugin-hugo-cache-resources"
-	[plugins.inputs]
-	# If it should show more verbose logs (optional, default = true)
-	debug = true
