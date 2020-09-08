@@ -3,10 +3,6 @@ languageCode = "en-us"
 theme = "hugo-theme-stack"
 paginate = 5
 title = "Example Site"
-
-[permalinks]
-    post = "/p/:slug/"
-    page = "/:slug/"
     
 [params]
     mainSections = ["post"]
