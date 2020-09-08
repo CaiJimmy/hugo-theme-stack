@@ -3,6 +3,7 @@ languageCode = "en-us"
 theme = "hugo-theme-stack"
 paginate = 5
 title = "Example Site"
+disqusShortname = "hugo-theme-stack"            # Change it to your Disqus shortname before using
     
 [params]
     mainSections = ["post"]
