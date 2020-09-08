@@ -19,6 +19,10 @@ title = "Example Site"
         [params.article.license]
             enabled = true 
             default = "Licenced under CC BY-NC-SA 4.0"
+    [params.comments]
+        enabled = true
+        # Only Disqus is available so far
+        provider = "disqus"
     [params.widgets]
         enabled = ['archive', 'tag-cloud']
         [params.widgets.archive]

@@ -1,0 +1,5 @@
+{{ if .Site.Params.comments.enabled }}
+    <div class="comments-container provider-{{ .Site.Params.comments.provider }}">
+        {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
+    </div>
+{{ end }}
