@@ -56,6 +56,8 @@ $on-desktop-large: 1920px;
     */
     --content-padding: 30px;
     --blockquote-border-size: 4px;
+    --blockquote-background-color: #efefee;
+
     --heading-border-size: 4px;
 
     @media (max-width: $on-desktop-large) {
@@ -105,5 +107,7 @@ $on-desktop-large: 1920px;
 
         --table-border-color: #717171;
         --tr-even-background-color: #545454;
+
+        --blockquote-background-color: #545454;
     }
 }

@@ -219,7 +219,8 @@
         position: relative;
         margin: 10px 0;
         border-left: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 0 calc(var(--content-padding) - var(--blockquote-border-size));
+        padding: 15px calc(var(--content-padding) - var(--blockquote-border-size));
+        background-color: var(--blockquote-background-color);
     }
 
     & > ul {
