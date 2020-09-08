@@ -223,8 +223,9 @@
         background-color: var(--blockquote-background-color);
     }
 
-    & > ul {
-        margin: 0 var(--content-padding);
+    & > ul,
+    & > ol {
+        margin: 1em var(--content-padding);
     }
 
     hr {
