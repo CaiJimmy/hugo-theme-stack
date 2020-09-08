@@ -1,6 +1,1 @@
-.comments-container {
-    background-color: var(--card-background);
-    border-radius: var(--card-border-radius);
-    @include box_shadow(1);
-    padding: var(--content-padding);
-}
+@import "provider/disqus.scss"
