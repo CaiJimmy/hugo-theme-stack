@@ -30,6 +30,15 @@ a {
     &:hover {
         color: var(--accent-color-darker);
     }
+
+    &.link {
+        box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0px -10px 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+        }
+    }
 }
 
 .container {
