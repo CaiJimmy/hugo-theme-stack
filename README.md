@@ -50,3 +50,4 @@ Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
   - [artchen/hexo-theme-element](https://github.com/artchen/hexo-theme-element)
   - [MunifTanjim/minimo](https://github.com/MunifTanjim/minimo)
   - [lepture/yue.css](https://github.com/lepture/yue.css)
+  - Markdown gallery syntax from [Typlog](https://typlog.com/)
