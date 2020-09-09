@@ -13,8 +13,9 @@
             {{ range $index, $element := $pag.Pages }}
                 {{ partial "article-list/default" . }}
             {{ end }}
-            {{- partial "pagination.html" . -}}
         </section>
+        
+        {{- partial "pagination.html" . -}}
 
         {{ partialCached "footer" . }}
     </main>
