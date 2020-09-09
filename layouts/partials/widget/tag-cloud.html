@@ -5,7 +5,7 @@
     <div class="widget-icon">
         {{ (resources.Get "icons/tag.svg").Content | safeHTML }}
     </div>
-    <h1 class="widget-title">Tags</h1>
+    <h1 class="widget-title">{{ T "widgetTagCloudTitle" }}</h1>
 
     <div class="tagCloud-tags">
         {{ range first .Site.Params.widgets.tagCloud.limit $v2 }}

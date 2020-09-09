@@ -2,7 +2,7 @@
     <div class="widget-icon">
         {{ (resources.Get "icons/infinity.svg").Content | safeHTML }}
     </div>
-    <h1 class="widget-title">Archive</h1>
+    <h1 class="widget-title">{{ T "widgetArchiveTitle" }}</h1>
 
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
@@ -22,7 +22,7 @@
     {{ if gt (len $archive) .Site.Params.widgets.archive.limit }}
         <div class="archive-year">
             <a href="{{ $.Site.BaseURL }}/archive">
-                <span class="year">More</span>
+                <span class="year">{{ T "widgetArchiveMore" }}</span>
             </a> 
         </div>
     {{ end }}

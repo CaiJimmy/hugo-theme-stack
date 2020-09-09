@@ -1,7 +1,7 @@
 <aside class="widget related-contents--wrapper">
     {{ $related := .Site.RegularPages.Related . | first 5 }}
     {{ with $related }}
-        <h1 class="widget-title">Related contents</h1>
+        <h1 class="widget-title">{{ T "relatedContents" }}</h1>
         <div class="related-contents">
             <div class="flex article-list--tile">
                 {{ range . }}
