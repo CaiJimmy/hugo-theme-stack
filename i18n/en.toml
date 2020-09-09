@@ -5,7 +5,7 @@
     other = "Related contents"
 
 [lastUpdatedOn]
-    other ="Last updated on "
+    other ="Last updated on {{ .Count }}"
 
 [widgetArchiveTitle]
     other = "Archive"
