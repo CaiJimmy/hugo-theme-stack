@@ -46,7 +46,7 @@
     article {
         background: var(--card-background);
         border-radius: var(--card-border-radius);
-        @include box_shadow(1);
+        box-shadow: var(--shadow-l1);
         overflow: hidden;
 
         &.main-article {
@@ -134,10 +134,10 @@
 
         transition: box-shadow 0.3s ease;
 
-        @include box_shadow(1);
+        box-shadow: var(--shadow-l1);
 
         &:hover {
-            @include box_shadow(2);
+            box-shadow: var(--shadow-l2);
         }
 
         svg {

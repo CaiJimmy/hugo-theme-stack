@@ -26,7 +26,7 @@
 
         a {
             background: var(--card-background);
-            @include box_shadow(1);
+            box-shadow: var(--shadow-l1);
             border-radius: var(--tag-border-radius);
             padding: 8px 20px;
 
@@ -37,7 +37,7 @@
             transition: box-shadow 0.3s ease;
 
             &:hover {
-                @include box_shadow(2);
+                box-shadow: var(--shadow-l2);
             }
         }
     }
@@ -51,12 +51,12 @@
             background-color: var(--card-background);
             padding: 15px 25px;
             border-radius: var(--card-border-radius);
-            @include box_shadow(1);
+            box-shadow: var(--shadow-l1);
             display: flex;
             transition: box-shadow 0.3s ease;
 
             &:hover {
-                @include box_shadow(2);
+                box-shadow: var(--shadow-l2);
             }
 
             @media (max-width: $on-desktop-large) {

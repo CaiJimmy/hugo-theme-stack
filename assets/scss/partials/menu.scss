@@ -136,7 +136,7 @@
         background-color: var(--card-background);
         margin-top: 0;
         padding: 15px 0;
-        @include box_shadow(1);
+        box-shadow: var(--shadow-l1);
         display: none;
 
         &.show {

@@ -7,14 +7,14 @@
         display: flex;
         flex-direction: column;
         background-color: var(--card-background);
-        @include box_shadow(1);
+        box-shadow: var(--shadow-l1);
         border-radius: var(--card-border-radius);
         overflow: hidden;
 
         transition: box-shadow .3s ease;
         
         &:hover {
-            @include box_shadow(2);
+            box-shadow: var(--shadow-l2);
         }
 
         &:not(:last-of-type) {
@@ -157,7 +157,7 @@
 /* Compact style article list */
 .article-list--compact {
     border-radius: var(--card-border-radius);
-    @include box_shadow(1);
+    box-shadow: var(--shadow-l1);
     background-color: var(--card-background);
 
     & + .pagination {
@@ -205,12 +205,12 @@
         position: relative;
         height: 350px;
         width: 250px;
-        @include box_shadow(1);
+        box-shadow: var(--shadow-l1);
         transition: box-shadow 0.3s ease;
         background-color: var(--card-background);
 
         &:hover {
-            @include box_shadow(2);
+            box-shadow: var(--shadow-l2);
         }
 
         &.has-image {

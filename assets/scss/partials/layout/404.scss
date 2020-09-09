@@ -1,6 +1,6 @@
 .not-found-card {
     background-color: var(--card-background);
-    @include box_shadow(1);
+    box-shadow: var(--shadow-l1);
     border-radius: var(--card-border-radius);
     padding: var(--content-padding);
 }

@@ -1,7 +1,7 @@
 .pagination {
     display: flex;
     background-color: var(--card-background);
-    @include box_shadow(1);
+    box-shadow: var(--shadow-l1);
     border-radius: var(--card-border-radius);
     overflow: hidden;
     flex-wrap: wrap;
