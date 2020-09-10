@@ -4,7 +4,8 @@
     <!-- If page has `image` field set -->
     {{ $result = merge $result (dict "exists" true) }}
 
-    {{ if strings.HasPrefix $imageField "http" }}
+    {{ $url := urls.Parse $imageField }}
+    {{ if or (eq $url.Scheme "http") (eq $url.Scheme "https") }}
         <!-- Is a external image -->
         {{ $result = merge $result (dict "src" $imageField) }}
     {{ else }}
