@@ -40,11 +40,15 @@
 	{{- end -}}
 {{- end -}}
 
-{{- if .Params.image -}}
-	{{ $image := partial "helper/image" . }}
+{{ $image := partial "helper/image" . }}
+{{- if $image.exists -}}
+	{{ $imagePermalink := $image.src }}
+	{{ if $image.local }}
+		{{ $imagePermalink = absURL $image.src.RelPermalink }}
+	{{ end }}
 	<meta name="twitter:card" content="summary_large_image">
-	<meta property='og:image' content='{{ absURL $image.RelPermalink }}' />
-	<meta name="twitter:image" content='{{ absURL $image.RelPermalink }}' />
+	<meta property='og:image' content='{{ $imagePermalink }}' />
+	<meta name="twitter:image" content='{{ $imagePermalink }}' />
 {{- else if .Site.Params.opengraph.defaultImage -}}
 	{{ $image := resources.Get .Site.Params.opengraph.defaultImage }}
 	<meta property='og:image' content='{{ absURL $image.RelPermalink }}' />

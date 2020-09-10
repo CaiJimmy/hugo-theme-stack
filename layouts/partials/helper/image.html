@@ -1,2 +1,31 @@
-{{- $image := .Resources.GetMatch (printf "%s" (.Params.image | safeURL)) -}}
-{{ return $image }}
+{{ $result := dict "exists" false "local" false "isDefault" false }}
+{{ $imageField := .Params.image }}
+{{ if $imageField }}
+    <!-- If page has `image` field set -->
+    {{ $result = merge $result (dict "exists" true) }}
+
+    {{ if strings.HasPrefix $imageField "http" }}
+        <!-- Is a external image -->
+        {{ $result = merge $result (dict "src" $imageField) }}
+    {{ else }}
+        {{ $pageResourceImage := .Resources.GetMatch (printf "%s" ($imageField | safeURL)) }}
+        {{ $siteResourceImage := resources.GetMatch (printf "%s" ($imageField | safeURL)) }}
+        
+        {{ if $pageResourceImage }}
+            <!-- If image is found under page bundle -->
+            {{ $result = merge $result (dict "local" true) }}
+            {{ $result = merge $result (dict "src" $pageResourceImage) }}
+        {{ else if $siteResourceImage }}
+            <!-- Try search image under site's assets folder -->
+            {{ $result = merge $result (dict "local" true) }}
+            {{ $result = merge $result (dict "src" $siteResourceImage) }}
+        {{ else }}
+            <!-- Can not find the image -->
+            {{ errorf "Failed loading image: %q" $imageField }}
+            {{ $result = merge $result (dict "exists" false) }}
+        {{ end }}
+    {{ end }}
+
+{{ end }}
+
+{{ return $result }}
