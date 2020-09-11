@@ -10,12 +10,6 @@
   	{{- end -}}
 '>
 
-{{ with .Site.Params.opengraph.twitter.site }}
-<meta name="twitter:site" content="{{ . }}">
-{{ end }}
-<meta name="twitter:title" content="{{ partial "data/title" . }}">
-<meta name="twitter:description" content="{{ chomp (partial "data/description" . | plainify ) }}">
-
 {{- with .Params.locale -}}
   	<meta property='og:locale' content='{{ . }}'>
 {{- end -}}
@@ -42,7 +36,5 @@
 
 {{ $image := partial "helper/image" (dict "Context" . "Type" "opengraph") }}
 {{- if $image.exists -}}
-	<meta name="twitter:card" content="summary_large_image">
-	<meta property='og:image' content='{{ absURL $image.permalink }}' />
-	<meta name="twitter:image" content='{{ absURL $image.permalink }}' />
+    <meta property='og:image' content='{{ absURL $image.permalink }}' />
 {{- end -}}

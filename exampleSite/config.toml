@@ -40,6 +40,7 @@ DefaultContentLanguage = "en"                   # Theme i18n support
     [params.opengraph]
         [params.opengraph.twitter]
             site = ""
+            card = "summary_large_image"
     [params.defaultImage]
         [params.defaultImage.article]
             enabled = false

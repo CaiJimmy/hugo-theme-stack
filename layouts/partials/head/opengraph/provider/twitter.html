@@ -1,0 +1,12 @@
+{{- with .Site.Params.opengraph.twitter.site -}}
+    <meta name="twitter:site" content="{{ . }}">
+{{- end -}}
+
+<meta name="twitter:title" content="{{ partial "data/title" . }}">
+<meta name="twitter:description" content="{{ chomp (partial "data/description" . | plainify ) }}">
+
+{{- $image := partial "helper/image" (dict "Context" . "Type" "opengraph") -}}
+{{- if $image.exists -}}
+	<meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">
+	<meta name="twitter:image" content='{{ absURL $image.permalink }}' />
+{{- end -}}
