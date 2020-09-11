@@ -1,17 +1,18 @@
 {{ $result := dict "exists" false "permalink" nil "resource" nil "isDefault" false }}
-{{ $imageField := .Context.Params.image }}
+{{ $imageField := default "image" .Context.Site.Params.featuredImageField }}
+{{ $imageValue := index .Context.Params $imageField }}
 
-{{ if $imageField }}
+{{ if $imageValue }}
     <!-- If page has `image` field set -->
     {{ $result = merge $result (dict "exists" true) }}
 
-    {{ $url := urls.Parse $imageField }}
+    {{ $url := urls.Parse $imageValue }}
     {{ if or (eq $url.Scheme "http") (eq $url.Scheme "https") }}
         <!-- Is a external image -->
-        {{ $result = merge $result (dict "permalink" $imageField) }}
+        {{ $result = merge $result (dict "permalink" $imageValue) }}
     {{ else }}
-        {{ $pageResourceImage := .Context.Resources.GetMatch (printf "%s" ($imageField | safeURL)) }}
-        {{ $siteResourceImage := resources.GetMatch (printf "%s" ($imageField | safeURL)) }}
+        {{ $pageResourceImage := .Context.Resources.GetMatch (printf "%s" ($imageValue | safeURL)) }}
+        {{ $siteResourceImage := resources.GetMatch (printf "%s" ($imageValue | safeURL)) }}
         
         {{ if $pageResourceImage }}
             <!-- If image is found under page bundle -->
@@ -23,7 +24,7 @@
             {{ $result = merge $result (dict "resource" $siteResourceImage) }}
         {{ else }}
             <!-- Can not find the image -->
-            {{ errorf "Failed loading image: %q" $imageField }}
+            {{ errorf "Failed loading image: %q" $imageValue }}
             {{ $result = merge $result (dict "exists" false) }}
         {{ end }}
     {{ end }}
