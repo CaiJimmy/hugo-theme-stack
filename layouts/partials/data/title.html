@@ -1,16 +1,38 @@
 {{- $title := .Title -}}
 {{- $siteTitle := .Site.Title -}}
-{{- $authorName := .Site.Author.name -}}
 
 {{- if .IsHome -}}
+    <!-- Homepage, and it's pagination -->
+
+    <!-- Build paginator -->
     {{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $pag := .Paginate ($filtered) }}
-    {{ if .Paginator.HasPrev }}{{ .Paginator }} - {{ end }}{{ $siteTitle }}
+
+    {{ if .Paginator.HasPrev }}
+        <!-- Paginated. Append page number to title -->
+        {{ $title = printf "%s - %s" .Paginator $siteTitle }}
+    {{ else }}
+        {{ $title = $siteTitle}}
+    {{ end }}
 {{- else if eq .Kind "term" -}}
-	{{- $pag := .Paginate (where .Data.Pages "Type" "post") -}}
-  	{{ title .Data.Singular }}: {{ $title }}{{ if .Paginator.HasPrev }} - {{ .Paginator }}{{ end }} - {{ $siteTitle }}
-{{- else -}}
-    {{- $title -}}
+    <!-- Taxonomy page -->
+
+    <!-- Build paginator -->
+    {{ $notHidden := where .Pages "Params.hidden" "!=" true }}
+    {{ $pag := .Paginate ($notHidden) }}
+
+    <!-- {TAXONOMY_TYPE}: {TAXONOMY_TERM} -->
+    {{ $title = slice (title .Data.Singular) ": " $title }}
+
+    {{ if .Paginator.HasPrev }}
+        <!-- Add page number-->
+        {{ $title = $title | append " - " .Paginator }}
+    {{ end }} 
+
+    {{ $title = $title | append " - " $siteTitle }}
+    {{ $title = delimit $title "" }}
 {{- end -}}
+
+{{ return $title }}
