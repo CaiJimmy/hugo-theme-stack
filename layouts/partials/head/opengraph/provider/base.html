@@ -1,5 +1,8 @@
-<meta property='og:title' content='{{ partial "data/title" . }}'>
-<meta property='og:description' content='{{ chomp (partial "data/description" . | plainify ) }}'>
+{{- $title := partial "data/title" . -}}
+{{- $description := partial "data/description" . -}}
+
+<meta property='og:title' content='{{ $title }}'>
+<meta property='og:description' content='{{ $description }}'>
 <meta property='og:url' content='{{ .Permalink }}'>
 <meta property='og:site_name' content='{{ .Site.Title }}'>
 <meta property='og:type' content='

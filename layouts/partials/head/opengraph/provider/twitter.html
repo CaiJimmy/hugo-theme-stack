@@ -2,8 +2,11 @@
     <meta name="twitter:site" content="{{ . }}">
 {{- end -}}
 
-<meta name="twitter:title" content="{{ partial "data/title" . }}">
-<meta name="twitter:description" content="{{ chomp (partial "data/description" . | plainify ) }}">
+{{- $title := partial "data/title" . -}}
+{{- $description := partial "data/description" . -}}
+
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
 
 {{- $image := partial "helper/image" (dict "Context" . "Type" "opengraph") -}}
 {{- if $image.exists -}}

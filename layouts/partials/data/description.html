@@ -1,11 +1,12 @@
-{{- with .Description -}}
-    {{- . -}}
-{{- else -}}
-    {{- if .IsPage -}}
-        {{- .Summary -}}
-    {{- else -}}
-        {{- with .Site.Params.subtitle -}}
-            {{- . -}}
-        {{- end -}}
-    {{- end -}}
-{{- end -}}
+<!-- Use site subtitle by default -->
+{{ $description := .Site.Params.subtitle }}
+
+{{ if .Description }}
+    <!-- Page description exists -->
+    {{ $description = .Description }}
+{{ else if .IsPage }}
+    <!-- Use page summary -->
+    {{ $description = .Summary }}
+{{ end }}
+
+{{ return ($description | plainify)}}

@@ -1,10 +1,13 @@
 <head>
     <meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name='description' content='{{ chomp (partial "data/description" . | plainify ) }}'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    {{- $description := partial "data/description" . -}}
+    <meta name='description' content='{{ $description }}'>
 
     {{- $title := partial "data/title" . -}}
-	<title>{{ $title }}</title>
+    <title>{{ $title }}</title>
+    
     <link rel='canonical' href='{{ .Permalink }}'>
     
     {{- partial "head/style.html" . -}}
