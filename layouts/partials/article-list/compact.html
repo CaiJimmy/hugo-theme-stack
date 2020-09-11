@@ -12,13 +12,17 @@
         </footer>
     </div>
 
-    {{ if .Params.image }}
-    {{- $image := partial "helper/image" . -}}
-    {{- $thumbnail := $image.Fill "120x120" -}}
+    {{ $image := partial "helper/image" (dict "Context" . "Type" "articleList") }}
     
-    <div class="article-image">
-        <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
-            height="{{ $thumbnail.Height }}" loading="lazy">
-    </div>
+    {{ if $image.exists }}
+        <div class="article-image">
+            {{ if $image.resource }}
+                {{- $thumbnail := $image.resource.Fill "120x120" -}}
+                <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
+                    height="{{ $thumbnail.Height }}" loading="lazy">
+            {{ else }}
+                <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+            {{ end }}
+        </div>
     {{ end }}
 </article>

@@ -1,16 +1,19 @@
 <header class="article-header">
-    {{ if .Params.image }}
-    {{- $image := partial "helper/image" . -}}
+    {{ $image := partial "helper/image" (dict "Context" . "Type" "article") }}
 
-    {{- $tablet := $image.Resize "1024x" -}}
-    {{- $desktop := $image.Resize "2000x" -}}
+    {{ if $image.exists }}
+        <div class="article-image">
+            {{ if $image.resource }}
+                {{- $tablet := $image.resource.Resize "1024x" -}}
+                {{- $desktop := $image.resource.Resize "2000x" -}}
 
-    <div class="article-image">
-        <img srcset="{{ $tablet.RelPermalink }} 1024w, {{ $desktop.RelPermalink }} 2000w"
-            src="{{ $desktop.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}"
-            loading="lazy"
-            alt="Featured image of post {{ .Title }}" />
-    </div>
+                <img srcset="{{ $tablet.RelPermalink }} 1024w, {{ $desktop.RelPermalink }} 2000w"
+                    src="{{ $desktop.RelPermalink }}" width="{{ $image.resource.Width }}" height="{{ $image.resource.Height }}" loading="lazy"
+                    alt="Featured image of post {{ .Title }}" />
+            {{ else }}
+                <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+            {{ end }}
+        </div>
     {{ end }}
 
     {{ partial "article/components/details" . }}
