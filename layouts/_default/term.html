@@ -39,7 +39,7 @@
         
         {{- partial "pagination.html" . -}}
 
-        {{ partial "footer" . }}
+        {{ partialCached "footer/footer" . }}
     </main>
 </div>
 {{ end }}
