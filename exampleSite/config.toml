@@ -12,7 +12,6 @@ DefaultContentLanguage = "en"                   # Theme i18n support
     
 [params]
     mainSections = ["post"]
-    favicon = ""
     featuredImageField = "image"
     [params.dateFormat]
         published = "Jan 02, 2006"
