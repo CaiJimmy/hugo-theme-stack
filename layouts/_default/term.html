@@ -15,7 +15,7 @@
                 {{ end }}
             </div>
 
-            {{ $image := partial "helper/image" (dict "Context" .) }}
+            {{ $image := partial "helper/image" (dict "Context" . "Type" "taxonomy") }}
             {{ if $image.exists }}
                 <div class="taxonomy-image">
                     {{ if $image.resource }}   

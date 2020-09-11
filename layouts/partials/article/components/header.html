@@ -1,5 +1,5 @@
 <header class="article-header">
-    {{ $image := partial "helper/image" (dict "Context" .) }}
+    {{ $image := partial "helper/image" (dict "Context" . "Type" "article") }}
 
     {{ if $image.exists }}
         <div class="article-image">
