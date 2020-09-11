@@ -1,19 +1,18 @@
 <head>
     <meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<meta name='description' content='{{ chomp (partial "data/description" . | plainify ) }}'>
+    <meta name='description' content='{{ chomp (partial "data/description" . | plainify ) }}'>
     
 	<title>{{ (trim (partial "data/title" .) "\n" ) | safeHTML }}</title>
-	<link rel='canonical' href='{{ .Permalink }}'>
-
-    {{ partial "head/style.html" . }}
-    {{ partial "head/script.html" . }}
+    <link rel='canonical' href='{{ .Permalink }}'>
     
-    {{ partial "head/opengraph/include.html" . }}
+    {{- partial "head/style.html" . -}}
+    {{- partial "head/script.html" . -}}
+    {{- partial "head/opengraph/include.html" . -}}
 
-    {{ range .AlternativeOutputFormats -}}
+    {{- range .AlternativeOutputFormats -}}
         <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
-    {{ end -}}
+    {{- end -}}
 
     {{- if .Site.Params.favicon -}}
         {{- $logo := resources.Get .Site.Params.favicon -}}
@@ -21,5 +20,5 @@
         <link rel="icon" type="image/png" href="{{ $favicon.RelPermalink }}" />
     {{- end -}}
 
-    {{ partial "head/custom.html" . }}
+    {{- partial "head/custom.html" . -}}
 </head>
