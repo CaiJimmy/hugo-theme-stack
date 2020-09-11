@@ -1,4 +1,4 @@
-{{ $image := partial "helper/image" . }}
+{{ $image := partial "helper/image" (dict "Context" .) }}
 {{ $context := . }}
 <div class="article-details">
     {{ with $categories := .Params.categories }}

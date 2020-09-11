@@ -1,4 +1,4 @@
-{{ $image := partial "helper/image" . }}
+{{ $image := partial "helper/image" (dict "Context" .) }}
 <article class="{{ if $image.exists }}has-image{{ end }}">
     {{ if $image.exists }}
         <div class="article-image">

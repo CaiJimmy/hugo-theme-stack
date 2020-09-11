@@ -12,7 +12,7 @@
         </footer>
     </div>
 
-    {{ $image := partial "helper/image" . }}
+    {{ $image := partial "helper/image" (dict "Context" .) }}
     
     {{ if $image.exists }}
         <div class="article-image">
