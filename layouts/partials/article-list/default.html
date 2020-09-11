@@ -1,19 +1,18 @@
-<article class="{{ if .Params.image }}has-image{{ end }}">
-    {{ $image := partial "helper/image" . }}
-
+{{ $image := partial "helper/image" . }}
+<article class="{{ if $image.exists }}has-image{{ end }}">
     {{ if $image.exists }}
         <div class="article-image">
             <a href="{{ .Permalink }}">
-                {{ if $image.local }}
-                    {{- $thumbnail := $image.src.Fill "800x250" -}}
-                    {{- $thumbnailRetina := $image.src.Fill "1600x500" -}}
+                {{ if $image.resource }}
+                    {{- $thumbnail := $image.resource.Fill "800x250" -}}
+                    {{- $thumbnailRetina := $image.resource.Fill "1600x500" -}}
 
                     <img src="{{ $thumbnail.RelPermalink }}" 
                         srcset="{{ $thumbnail.RelPermalink }} 1x, {{ $thumbnailRetina.RelPermalink }} 2x"
                         width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" loading="lazy"
                         alt="Featured image of post {{ .Title }}" />
                 {{ else }}
-                    <img src="{{ $image.src }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+                    <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
                 {{ end }}
             </a>
         </div>

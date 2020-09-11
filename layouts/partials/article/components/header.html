@@ -3,15 +3,15 @@
 
     {{ if $image.exists }}
         <div class="article-image">
-            {{ if $image.local }}
-                {{- $tablet := $image.src.Resize "1024x" -}}
-                {{- $desktop := $image.src.Resize "2000x" -}}
+            {{ if $image.resource }}
+                {{- $tablet := $image.resource.Resize "1024x" -}}
+                {{- $desktop := $image.resource.Resize "2000x" -}}
 
                 <img srcset="{{ $tablet.RelPermalink }} 1024w, {{ $desktop.RelPermalink }} 2000w"
-                    src="{{ $desktop.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy"
+                    src="{{ $desktop.RelPermalink }}" width="{{ $image.resource.Width }}" height="{{ $image.resource.Height }}" loading="lazy"
                     alt="Featured image of post {{ .Title }}" />
             {{ else }}
-                <img src="{{ $image.src }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+                <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
             {{ end }}
         </div>
     {{ end }}

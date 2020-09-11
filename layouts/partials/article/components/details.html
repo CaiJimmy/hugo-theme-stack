@@ -4,8 +4,8 @@
     {{ with $categories := .Params.categories }}
     <header class="article-category">
         {{ range $categories }}
-            {{ if and $image.exists $image.local }}
-                {{- $imageRaw := $image.src | resources.Fingerprint "md5"  -}}
+            {{ if and $image.exists $image.resource }}
+                {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
                 {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
                 <a href="/categories/{{ . | urlize }}" class="color-tag"
                     data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ . | humanize }}</a>

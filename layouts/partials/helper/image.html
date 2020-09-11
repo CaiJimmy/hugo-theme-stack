@@ -1,4 +1,4 @@
-{{ $result := dict "exists" false "local" false "isDefault" false }}
+{{ $result := dict "exists" false "permalink" nil "resource" nil "isDefault" false }}
 {{ $imageField := .Params.image }}
 {{ if $imageField }}
     <!-- If page has `image` field set -->
@@ -7,19 +7,19 @@
     {{ $url := urls.Parse $imageField }}
     {{ if or (eq $url.Scheme "http") (eq $url.Scheme "https") }}
         <!-- Is a external image -->
-        {{ $result = merge $result (dict "src" $imageField) }}
+        {{ $result = merge $result (dict "permalink" $imageField) }}
     {{ else }}
         {{ $pageResourceImage := .Resources.GetMatch (printf "%s" ($imageField | safeURL)) }}
         {{ $siteResourceImage := resources.GetMatch (printf "%s" ($imageField | safeURL)) }}
         
         {{ if $pageResourceImage }}
             <!-- If image is found under page bundle -->
-            {{ $result = merge $result (dict "local" true) }}
-            {{ $result = merge $result (dict "src" $pageResourceImage) }}
+            {{ $result = merge $result (dict "permalink" $pageResourceImage.RelPermalink) }}
+            {{ $result = merge $result (dict "resource" $pageResourceImage) }}
         {{ else if $siteResourceImage }}
             <!-- Try search image under site's assets folder -->
-            {{ $result = merge $result (dict "local" true) }}
-            {{ $result = merge $result (dict "src" $siteResourceImage) }}
+            {{ $result = merge $result (dict "permalink" $siteResourceImage.RelPermalink) }}
+            {{ $result = merge $result (dict "resource" $siteResourceImage) }}
         {{ else }}
             <!-- Can not find the image -->
             {{ errorf "Failed loading image: %q" $imageField }}

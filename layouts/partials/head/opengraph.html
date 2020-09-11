@@ -42,13 +42,9 @@
 
 {{ $image := partial "helper/image" . }}
 {{- if $image.exists -}}
-	{{ $imagePermalink := $image.src }}
-	{{ if $image.local }}
-		{{ $imagePermalink = absURL $image.src.RelPermalink }}
-	{{ end }}
 	<meta name="twitter:card" content="summary_large_image">
-	<meta property='og:image' content='{{ $imagePermalink }}' />
-	<meta name="twitter:image" content='{{ $imagePermalink }}' />
+	<meta property='og:image' content='{{ $image.permalink }}' />
+	<meta name="twitter:image" content='{{ $image.permalink }}' />
 {{- else if .Site.Params.opengraph.defaultImage -}}
 	{{ $image := resources.Get .Site.Params.opengraph.defaultImage }}
 	<meta property='og:image' content='{{ absURL $image.RelPermalink }}' />
