@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     {{- partial "head/head.html" . -}}
-    <body>
-        <div id="content">
-            {{- block "main" . }}{{- end }}
+    <body class="{{ block `body-class` . }}{{ end }}">
+        <div class="container extended flex on-phone--column align-items--flex-start {{ block `container-class` . }}{{end}}">
+            {{ partial "sidebar/left.html" . }}
+            <main class="main full-width">
+                {{- block "main" . }}{{- end }}
+            </main>
+            {{- block "right-sidebar" . -}}{{ end }}
         </div>
         {{ partial "footer/script.html" . }}
         {{ partial "footer/style.html" . }}

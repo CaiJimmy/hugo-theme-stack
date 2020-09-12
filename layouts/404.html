@@ -1,13 +1,7 @@
-{{ define "body_class" }}2-column{{ end }}
 {{ define "main" }}
-<div class="container extended flex on-phone--column align-items--flex-start">
-    {{ partial "sidebar/left.html" . }}
-
-    <main class="main full-width">
-        <div class="not-found-card">
-            <h1 class="article-title">{{ T "notFoundTitle" }}</h1>
-            <h2 class="article-subtitle">{{ T "notFoundSubtitle" }}</h2>
-        </div>
-    </main>
-</div>
+    <div class="not-found-card">
+        <h1 class="article-title">{{ T "notFoundTitle" }}</h1>
+        <h2 class="article-subtitle">{{ T "notFoundSubtitle" }}</h2>
+    </div>
+    {{ partialCached "footer/footer" . }}
 {{ end }}
