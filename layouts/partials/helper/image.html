@@ -12,20 +12,14 @@
         {{ $result = merge $result (dict "permalink" $imageValue) }}
     {{ else }}
         {{ $pageResourceImage := .Context.Resources.GetMatch (printf "%s" ($imageValue | safeURL)) }}
-        {{ $siteResourceImage := resources.GetMatch (printf "%s" ($imageValue | safeURL)) }}
         
         {{ if $pageResourceImage }}
             <!-- If image is found under page bundle -->
             {{ $result = merge $result (dict "permalink" $pageResourceImage.RelPermalink) }}
             {{ $result = merge $result (dict "resource" $pageResourceImage) }}
-        {{ else if $siteResourceImage }}
-            <!-- Try search image under site's assets folder -->
-            {{ $result = merge $result (dict "permalink" $siteResourceImage.RelPermalink) }}
-            {{ $result = merge $result (dict "resource" $siteResourceImage) }}
         {{ else }}
-            <!-- Can not find the image -->
-            {{ errorf "Failed loading image: %q" $imageValue }}
-            {{ $result = merge $result (dict "exists" false) }}
+            <!-- Can not find the image under page bundle. Could be a relative linked image -->
+            {{ $result = merge $result (dict "permalink" $imageValue) }}
         {{ end }}
 
     {{ end }}
