@@ -1,5 +1,6 @@
 ![Stack](https://i.imgur.com/qj9onpz.jpg)
 # Hugo Theme Stack
+
 Just another simple theme for Hugo
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a2d2807a-a905-4bcb-97da-8da8d847da3d/deploy-status)](https://app.netlify.com/sites/hugo-theme-stack/deploys)
@@ -8,9 +9,14 @@ Just another simple theme for Hugo
 
 [Example Site](https://theme-stack.jimmycai.com/)
 
+## Documentation & more information
+
+[Documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) | [中文文档](https://www.notion.so/jimmycai/Hugo-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4)
+
 ## Features
 
--  Full Vanilla JS
+-  Full Vanilla JS, without jQuery
+-  No CSS framework
 -  PhotoSwipe integration
 -  Responsive images
 -  Lazy load images by default
@@ -19,19 +25,13 @@ Just another simple theme for Hugo
 
 ## Requirements
 
-- Hugo extended >= 0.74
+- **Hugo extended >= 0.74**
 
 It's built and tested on version 0.74, might not work correctly on older versions of Hugo.
 
 ## Installation
 
 Clone / Download this repository to `theme` folder, and edit your site config following `exampleSite/config.toml`.
-
-## Documentation & more information
-
-[Wiki](https://github.com/CaiJimmy/hugo-theme-stack/wiki/)
-
-[中文文档](https://www.notion.so/jimmycai/Hugo-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4)
 
 ## Copyright
 
