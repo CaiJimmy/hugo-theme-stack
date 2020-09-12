@@ -1,43 +1,53 @@
-![Stack](https://i.imgur.com/qj9onpz.jpg)
+![Stack](https://i.imgur.com/cCiHOGS.jpg)
 # Hugo Theme Stack
 
-Just another simple theme for Hugo
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a2d2807a-a905-4bcb-97da-8da8d847da3d/deploy-status)](https://app.netlify.com/sites/hugo-theme-stack/deploys)
+> Card-style Hugo theme designed for bloggers.
 
 ## Demo
 
 [Example Site](https://theme-stack.jimmycai.com/)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a2d2807a-a905-4bcb-97da-8da8d847da3d/deploy-status)](https://app.netlify.com/sites/hugo-theme-stack/deploys)
+
 ## Documentation & more information
 
-[Documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) | [中文文档](https://www.notion.so/jimmycai/Hugo-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4)
+[Documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) | [中文文档](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4)
 
-## Features
+## Introduction
 
--  Full Vanilla JS, without jQuery
--  No CSS framework
--  PhotoSwipe integration
--  Responsive images
--  Lazy load images by default
--  Archive page
--  Dark mode
+Stack is a simple card-style Hugo theme designed for bloggers, some of its features are:
+
+- Responsive images support
+- Lazy load images
+- Dark mode
+- [PhotoSwipe](https://photoswipe.com/) integration
+- Archive page template
+- Full native JavaScript, no jQuery or any other frameworks are used
+- No CSS framework, keep it simple and minimal
+- External dependencies (like PhotoSwipe's library) are being loaded selectively, or asynchronously
+- Properly cropped thumbnails
+
+The only JavaScript library being used is [node-vibrant](https://github.com/Vibrant-Colors/node-vibrant) for generating colour schemes for articles.
+
+![Page Insight](https://i.imgur.com/0hUWmMh.png)
 
 ## Requirements
 
-- **Hugo extended >= 0.74**
-
-It's built and tested on version 0.74, might not work correctly on older versions of Hugo.
+This theme uses SCSS and TypeScript. For that reason, it's necessary to use **Hugo Extended version ≥ 0.74.0**.
 
 ## Installation
 
 Clone / Download this repository to `theme` folder, and edit your site config following `exampleSite/config.toml`.
+
+Check [documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) for more details.
 
 ## Copyright
 
 **Licensed under the GNU General Public License v3.0**
 
 Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
+
+If you want to port this theme to another blogging platform, please let me know🙏.
 
 ## Thanks to
 
