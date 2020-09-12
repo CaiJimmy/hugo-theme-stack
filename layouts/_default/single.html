@@ -1,30 +1,21 @@
-{{ define "body_class" }}2-column{{ end }}
+{{ define "container-class" }}article-page with-toolbar{{ end }}
 {{ define "main" }}
-<div class="container extended flex on-phone--column align-items--flex-start article-page with-toolbar">
-    {{ partial "sidebar/left.html" . }}
-
-    <div class="flex column do-not-overflow full-width">
-        <main class="main">
-            <div id="article-toolbar">
-                <a href="{{ .Site.BaseURL }}" class="back-home">
-                    {{ (resources.Get "icons/back.svg").Content | safeHTML }}
-                    <span>Back</span>
-                </a>
-            </div>
-
-            {{ partial "article/article.html" . }}
-
-            {{ partial "article/components/related-contents" . }}
-
-            {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}}
-                {{ partial "comments/include" . }}
-            {{ end }}
-
-            {{ partialCached "footer/footer" . }}
-        </main>
+    <div id="article-toolbar">
+        <a href="{{ .Site.BaseURL }}" class="back-home">
+            {{ (resources.Get "icons/back.svg").Content | safeHTML }}
+            <span>Back</span>
+        </a>
     </div>
-</div>
 
-{{- partial "article/components/photoswipe.html" . -}}
+    {{ partial "article/article.html" . }}
 
+    {{ partial "article/components/related-contents" . }}
+
+    {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}}
+        {{ partial "comments/include" . }}
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+
+    {{- partial "article/components/photoswipe.html" . -}}
 {{ end }}

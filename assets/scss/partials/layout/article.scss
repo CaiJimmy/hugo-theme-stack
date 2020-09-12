@@ -1,6 +1,6 @@
 @import "variables.scss";
 
-.article-and-sidebar {
+.keep-sidebar {
     @media (min-width: $on-phone) and (max-width: $on-tablet) {
         --main-top-padding: 50px;
     }
@@ -13,7 +13,7 @@
         }
     }
 
-    .left-sidebar {
+    &:not(.keep-sidebar) .left-sidebar {
         @media (max-width: $on-tablet) {
             display: none;
         }

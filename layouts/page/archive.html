@@ -1,42 +1,34 @@
-{{ define "body_class" }}2-column{{ end }}
+{{ define "body-class" }}template-archive{{ end }}
 {{ define "main" }}
-<div class="container extended flex on-phone--column align-items--flex-start">
-
-    {{ partial "sidebar/left.html" . }}
-
-    <main class="main template-archive">
-        {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-        {{ if $categories }}
-        <div class="widget">
-            <h1 class="widget-title">Categories</h1>
-            <div class="category-list">
-                <div class="article-list--tile">
-                    {{ range $categories }}
-                        {{ partial "article-list/tile" (dict "context" . "size" "250x150") }}
-                    {{ end }}
-                </div>
-            </div>
-        </div>
-        {{ end }}
-
-        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-        {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
-        {{ $filtered := ($pages | intersect $notHidden) }}
-
-        {{ range $filtered.GroupByDate "2006" }}
-        {{ $id := lower (replace .Key " " "-") }}
-        <div class="archive-group" id="{{ $id }}">
-            <h3 class="archive-date"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h3>
-            <div class="article-list--compact">
-                {{ range .Pages }}
-                    {{ partial "article-list/compact" . }}
+    {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+    {{ if $categories }}
+    <div class="widget">
+        <h1 class="widget-title">Categories</h1>
+        <div class="category-list">
+            <div class="article-list--tile">
+                {{ range $categories }}
+                    {{ partial "article-list/tile" (dict "context" . "size" "250x150") }}
                 {{ end }}
             </div>
         </div>
-        {{ end }}
+    </div>
+    {{ end }}
 
-        {{ partialCached "footer/footer" . }}
-    </main>
-</div>
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
 
+    {{ range $filtered.GroupByDate "2006" }}
+    {{ $id := lower (replace .Key " " "-") }}
+    <div class="archive-group" id="{{ $id }}">
+        <h3 class="archive-date"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h3>
+        <div class="article-list--compact">
+            {{ range .Pages }}
+                {{ partial "article-list/compact" . }}
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
 {{ end }}

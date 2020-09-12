@@ -1,20 +1,12 @@
-{{ define "body_class" }}2-column{{ end }}
+{{ define "body-class" }}article-page keep-sidebar{{ end }}
 {{ define "main" }}
-<div class="container extended flex on-phone--column align-items--flex-start article-and-sidebar">
+    {{ partial "article/article.html" . }}
 
-    {{ partial "sidebar/left.html" . }}
+    {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}} 
+        {{ partial "comments/include" . }}
+    {{ end }}
 
-    <main class="main article-page do-not-overflow full-width">
-        {{ partial "article/article.html" . }}
+    {{ partialCached "footer/footer" . }}
 
-        {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}} 
-            {{ partial "comments/include" . }}
-        {{ end }}
-
-        {{ partialCached "footer/footer" . }}
-    </main>
-</div>
-
-{{ partial "article/components/photoswipe" . }}
-
+    {{ partial "article/components/photoswipe" . }}
 {{ end }}

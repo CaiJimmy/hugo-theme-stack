@@ -1,25 +1,19 @@
-{{ define "body_class" }}3-column{{ end }}
 {{ define "main" }}
-<div class="container extended flex on-phone--column align-items--flex-start">
-    {{ partialCached "sidebar/left.html" . }}
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $pag := .Paginate ($filtered) }}
 
-    <main class="main full-width">
-        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-        {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
-        {{ $filtered := ($pages | intersect $notHidden) }}
-        {{ $pag := .Paginate ($filtered) }}
-        
-        <section class="article-list">
-            {{ range $index, $element := $pag.Pages }}
-                {{ partial "article-list/default" . }}
-            {{ end }}
-        </section>
-        
-        {{- partial "pagination.html" . -}}
+    <section class="article-list">
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
 
-        {{ partialCached "footer/footer" . }}
-    </main>
-    
+    {{- partial "pagination.html" . -}}
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
     {{ partialCached "sidebar/right.html" . }}
-</div>
 {{ end }}

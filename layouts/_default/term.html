@@ -1,45 +1,37 @@
-{{ define "body_class" }}2-column{{ end }}
 {{ define "main" }}
-<div class="container extended flex on-phone--column">
-    {{ partial "sidebar/left.html" . }}
-
-    <main class="main">
-        
-        <h3 class="taxonomy-type">{{ .Type | singularize  | humanize }}</h3>
-        <div class="taxonomy-card">
-            <div class="taxonomy-details">
-                <h3 class="taxonomy-count">{{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}</h3>
-                <h1 class="taxonomy-term">{{ .Title }}</h1>
-                {{ with .Params.description }}
-                    <h2 class="taxonomy-description">{{ . }}</h2>
-                {{ end }}
-            </div>
-
-            {{ $image := partial "helper/image" (dict "Context" . "Type" "taxonomy") }}
-            {{ if $image.exists }}
-                <div class="taxonomy-image">
-                    {{ if $image.resource }}   
-                        {{- $thumbnail := $image.resource.Fill "120x120" -}}
-                        <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
-                            height="{{ $thumbnail.Height }}" loading="lazy">
-                    {{ else }}
-                        <img src="{{ $image.permalink }}" loading="lazy">
-                    {{ end }}
-                </div>
+    <h3 class="taxonomy-type">{{ .Type | singularize  | humanize }}</h3>
+    <div class="taxonomy-card">
+        <div class="taxonomy-details">
+            <h3 class="taxonomy-count">{{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}</h3>
+            <h1 class="taxonomy-term">{{ .Title }}</h1>
+            {{ with .Params.description }}
+                <h2 class="taxonomy-description">{{ . }}</h2>
             {{ end }}
         </div>
-        
-        <section class="article-list--compact">
-            {{ $v2 := where .Pages "Params.hidden" "!=" true }}
-            {{ $pag := .Paginate (.Pages) }}
-            {{ range $pag.Pages }}
-                {{ partial "article-list/compact" . }}
-            {{ end }}
-        </section>
-        
-        {{- partial "pagination.html" . -}}
 
-        {{ partialCached "footer/footer" . }}
-    </main>
-</div>
+        {{ $image := partial "helper/image" (dict "Context" . "Type" "taxonomy") }}
+        {{ if $image.exists }}
+            <div class="taxonomy-image">
+                {{ if $image.resource }}   
+                    {{- $thumbnail := $image.resource.Fill "120x120" -}}
+                    <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
+                        height="{{ $thumbnail.Height }}" loading="lazy">
+                {{ else }}
+                    <img src="{{ $image.permalink }}" loading="lazy">
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
+    
+    <section class="article-list--compact">
+        {{ $v2 := where .Pages "Params.hidden" "!=" true }}
+        {{ $pag := .Paginate (.Pages) }}
+        {{ range $pag.Pages }}
+            {{ partial "article-list/compact" . }}
+        {{ end }}
+    </section>
+    
+    {{- partial "pagination.html" . -}}
+
+    {{ partialCached "footer/footer" . }}
 {{ end }}
