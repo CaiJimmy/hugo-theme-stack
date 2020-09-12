@@ -62,6 +62,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --content-padding: 20px;
     }
 
+    --small-card-padding: 25px;
+
     @media (prefers-color-scheme: dark) {
         --card-background: #424242;
         --card-background-selected: rgba(255, 255, 255, 0.16);
@@ -96,8 +98,6 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --link-background-color: 189, 195, 199;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
-
-    --small-card-padding: 25px;
 
     --pre-background-color: #272822;
     --pre-text-color: #f8f8f2;
