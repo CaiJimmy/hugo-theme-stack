@@ -64,13 +64,13 @@ DefaultContentLanguage = "en"                   # Theme i18n support
     [[menu.main]]
         identifier = "about-cn"
         name = "About"
-        url = "/about/"
+        url = "about"
         weight = -90
         pre = "user"
     [[menu.main]]
         identifier = "archives"
         name = "Archives"
-        url = "/archives/"
+        url = "archives"
         weight = -70
         pre = "archives"
 
