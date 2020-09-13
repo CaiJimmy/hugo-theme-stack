@@ -68,11 +68,11 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         weight = -90
         pre = "user"
     [[menu.main]]
-        identifier = "archive"
-        name = "Archive"
-        url = "/archive/"
+        identifier = "archives"
+        name = "Archives"
+        url = "/archives/"
         weight = -70
-        pre = "archive"
+        pre = "archives"
 
 [related]
     includeNewer = true
