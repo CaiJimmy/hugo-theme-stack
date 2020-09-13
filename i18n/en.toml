@@ -7,10 +7,10 @@
 [lastUpdatedOn]
     other ="Last updated on {{ .Count }}"
 
-[widgetArchiveTitle]
-    other = "Archive"
+[widgetArchivesTitle]
+    other = "Archives"
 
-[widgetArchiveMore]
+[widgetArchivesMore]
     other = "More"
 
 [widgetTagCloudTitle]

@@ -1,4 +1,4 @@
-{{ define "body-class" }}template-archive{{ end }}
+{{ define "body-class" }}template-archives{{ end }}
 {{ define "main" }}
     {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
     {{ if $categories }}
@@ -20,8 +20,8 @@
 
     {{ range $filtered.GroupByDate "2006" }}
     {{ $id := lower (replace .Key " " "-") }}
-    <div class="archive-group" id="{{ $id }}">
-        <h3 class="archive-date"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h3>
+    <div class="archives-group" id="{{ $id }}">
+        <h3 class="archives-date"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h3>
         <div class="article-list--compact">
             {{ range .Pages }}
                 {{ partial "article-list/compact" . }}

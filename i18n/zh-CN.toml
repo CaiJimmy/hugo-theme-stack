@@ -7,10 +7,10 @@
 [lastUpdatedOn]
     other ="最后更新于 {{ .Count }}"
 
-[widgetArchiveTitle]
+[widgetArchivesTitle]
     other = "归档"
 
-[widgetArchiveMore]
+[widgetArchivesMore]
     other = "更多"
 
 [widgetTagCloudTitle]

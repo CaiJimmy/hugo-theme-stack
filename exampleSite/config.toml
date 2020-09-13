@@ -29,11 +29,11 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         # Only Disqus is available so far
         provider = "disqus"
     [params.widgets]
-        enabled = ['archive', 'tag-cloud']
-        [params.widgets.archive]
+        enabled = ['archives', 'tag-cloud']
+        [params.widgets.archives]
             limit = 5
-            ### Archive page relative URL
-            path = "archive"       
+            ### Archives page relative URL
+            path = "archives"       
         [params.widgets.tagCloud]
             limit = 10
     [params.opengraph]
