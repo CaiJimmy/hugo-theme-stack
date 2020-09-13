@@ -1,5 +1,4 @@
 {{ $tags := .Site.Taxonomies.tags.ByCount }}
-{{ $v2 := where $tags "Term" "not in" (slice "hugo" "tag" "rss") }}
 
 <section class="widget tagCloud">
     <div class="widget-icon">
@@ -8,8 +7,8 @@
     <h1 class="widget-title">{{ T "widgetTagCloudTitle" }}</h1>
 
     <div class="tagCloud-tags">
-        {{ range first .Site.Params.widgets.tagCloud.limit $v2 }}
-        <a href="{{ $.Site.BaseURL }}tags/{{ .Term | urlize }}/" class="font_size_{{ .Count }}">
+        {{ range first .Site.Params.widgets.tagCloud.limit $tags }}
+        <a href="{{ printf `tags/%s` (.Term | urlize) | relLangURL }}" class="font_size_{{ .Count }}">
             {{ .Term | humanize }}
         </a>
         {{ end }}

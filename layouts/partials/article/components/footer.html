@@ -2,7 +2,7 @@
     {{ with $tags := .Params.Tags }}
     <section class="article-tags">
         {{ range $tags }}
-        <a href="/tags/{{ . | urlize }}">{{ . | humanize }}</a>
+        <a href="{{ printf `tags/%s` (. | urlize) | relLangURL }}">{{ . | humanize }}</a>
         {{ end }}
     </section>
     {{ end }}

@@ -7,10 +7,10 @@
             {{ if and $image.exists $image.resource }}
                 {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
                 {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
-                <a href="/categories/{{ . | urlize }}" class="color-tag"
+                <a href="{{ printf `categories/%s` (. | urlize) | relLangURL }}" class="color-tag"
                     data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ . | humanize }}</a>
             {{ else }}
-                <a href="/categories/{{ . | urlize }}">{{ . | humanize }}</a>
+                <a href="{{ printf `categories/%s` (. | urlize) | relLangURL }}">{{ . | humanize }}</a>
             {{ end }}
         {{ end }}
     </header>
