@@ -4,10 +4,22 @@
 name = "Stack"
 license = "GPL-3.0-only"
 licenselink = "https://github.com/CaiJimmy/hugo-theme-stack/blob/master/LICENSE"
-description = "Just another simple Hugo theme"
+description = "Card-style Hugo theme designed for bloggers"
 homepage = "https://blog.jimmycai.com/p/hugo-theme-stack"
-tags = []
-features = []
+tags = [
+    "blog", 
+    "responsive", 
+    "clean", 
+    "light", 
+    "dark", 
+    "personal"
+]
+features = [
+    "disqus",
+    "photoswipe",
+    "opengraph",
+    "widgets"
+]
 min_version = "0.74.0"
 
 [author]
