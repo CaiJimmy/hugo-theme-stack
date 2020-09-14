@@ -25,7 +25,7 @@
         <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
     </header>
 
-    <nav class="menu" id="main-menu">
+    <ol class="menu" id="main-menu">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
         {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
@@ -39,5 +39,5 @@
             </a>
         </li>
         {{ end }}
-    </nav>
+    </ol>
 </aside>
