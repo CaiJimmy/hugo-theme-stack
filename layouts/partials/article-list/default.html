@@ -8,7 +8,7 @@
                     {{- $thumbnailRetina := $image.resource.Fill "1600x500" -}}
 
                     <img src="{{ $thumbnail.RelPermalink }}" 
-                        srcset="{{ $thumbnail.RelPermalink }} 1x, {{ $thumbnailRetina.RelPermalink }} 2x"
+                        srcset="{{ $thumbnail.RelPermalink }} 800w, {{ $thumbnailRetina.RelPermalink }} 1600w"
                         width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" loading="lazy"
                         alt="Featured image of post {{ .Title }}" />
                 {{ else }}
