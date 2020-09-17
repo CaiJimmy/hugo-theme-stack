@@ -18,5 +18,5 @@
         </div>
     {{ end }}
 
-    {{ partial "article/components/details" . }}
+    {{ partialCached "article/components/details" . .RelPermalink }}
 </article>
