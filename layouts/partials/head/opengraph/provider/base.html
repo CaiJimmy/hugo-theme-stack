@@ -1,5 +1,5 @@
-{{- $title := partial "data/title" . -}}
-{{- $description := partial "data/description" . -}}
+{{- $title := partialCached "data/title" . .RelPermalink -}}
+{{- $description := partialCached "data/description" . .RelPermalink -}}
 
 <meta property='og:title' content='{{ $title }}'>
 <meta property='og:description' content='{{ $description }}'>
@@ -37,7 +37,7 @@
 	{{- end -}}
 {{- end -}}
 
-{{ $image := partial "helper/image" (dict "Context" . "Type" "opengraph") }}
+{{ $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink }}
 {{- if $image.exists -}}
     <meta property='og:image' content='{{ absURL $image.permalink }}' />
 {{- end -}}

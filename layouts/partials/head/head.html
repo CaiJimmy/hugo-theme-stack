@@ -2,10 +2,10 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     
-    {{- $description := partial "data/description" . -}}
+    {{- $description := partialCached "data/description" . .RelPermalink -}}
     <meta name='description' content='{{ $description }}'>
 
-    {{- $title := partial "data/title" . -}}
+    {{- $title := partialCached "data/title" . .RelPermalink -}}
     <title>{{ $title }}</title>
     
     <link rel='canonical' href='{{ .Permalink }}'>

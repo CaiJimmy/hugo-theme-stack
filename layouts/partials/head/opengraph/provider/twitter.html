@@ -2,13 +2,13 @@
     <meta name="twitter:site" content="{{ . }}">
 {{- end -}}
 
-{{- $title := partial "data/title" . -}}
-{{- $description := partial "data/description" . -}}
+{{- $title := partialCached "data/title" . .RelPermalink -}}
+{{- $description := partialCached "data/description" . .RelPermalink -}}
 
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
 
-{{- $image := partial "helper/image" (dict "Context" . "Type" "opengraph") -}}
+{{- $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink -}}
 {{- if $image.exists -}}
 	<meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">
 	<meta name="twitter:image" content='{{ absURL $image.permalink }}' />

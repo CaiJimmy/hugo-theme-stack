@@ -1,4 +1,4 @@
-{{ $image := partial "helper/image" (dict "Context" . "Type" "articleList") }}
+{{ $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink }}
 <article class="{{ if $image.exists }}has-image{{ end }}">
     {{ if $image.exists }}
         <div class="article-image">
