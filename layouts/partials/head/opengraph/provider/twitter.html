@@ -2,8 +2,8 @@
     <meta name="twitter:site" content="{{ . }}">
 {{- end -}}
 
-{{- $title := partial "data/title" . -}}
-{{- $description := partial "data/description" . -}}
+{{- $title := partialCached "data/title" . .RelPermalink -}}
+{{- $description := partialCached "data/description" . .RelPermalink -}}
 
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
