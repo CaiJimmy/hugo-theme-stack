@@ -1,5 +1,5 @@
 <header class="article-header">
-    {{ $image := partial "helper/image" (dict "Context" . "Type" "article") }}
+    {{ $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink }}
 
     {{ if $image.exists }}
         <div class="article-image">
