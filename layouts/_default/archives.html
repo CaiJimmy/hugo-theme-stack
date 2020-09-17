@@ -7,7 +7,7 @@
         <div class="category-list">
             <div class="article-list--tile">
                 {{ range $categories }}
-                    {{ partial "article-list/tile" (dict "context" . "size" "250x150") }}
+                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
                 {{ end }}
             </div>
         </div>

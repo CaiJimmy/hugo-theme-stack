@@ -37,7 +37,7 @@
 	{{- end -}}
 {{- end -}}
 
-{{ $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink }}
+{{ $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" }}
 {{- if $image.exists -}}
     <meta property='og:image' content='{{ absURL $image.permalink }}' />
 {{- end -}}
