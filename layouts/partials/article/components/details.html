@@ -1,4 +1,4 @@
-{{ $image := partialCached "helper/image" (dict "Context" .) .RelPermalink }}
+{{ $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" }}
 {{ $context := . }}
 <div class="article-details">
     {{ with $categories := .Params.categories }}

@@ -8,7 +8,7 @@
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
 
-{{- $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink -}}
+{{- $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" -}}
 {{- if $image.exists -}}
 	<meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">
 	<meta name="twitter:image" content='{{ absURL $image.permalink }}' />

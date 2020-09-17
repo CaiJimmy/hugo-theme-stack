@@ -9,7 +9,7 @@
             {{ end }}
         </div>
 
-        {{ $image := partialCached "helper/image" (dict "Context" . "Type" "taxonomy") .RelPermalink }}
+        {{- $image := partialCached "helper/image" (dict "Context" . "Type" "taxonomy") .RelPermalink "taxonomy" -}}
         {{ if $image.exists }}
             <div class="taxonomy-image">
                 {{ if $image.resource }}   
