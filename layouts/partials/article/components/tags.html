@@ -1,0 +1,10 @@
+{{- $tags := .Params.Tags -}}
+{{ if $tags }}
+    <section class="article-tags">
+        {{ range $tag := $tags }}
+            {{ with $.Site.GetPage (printf "/tags/%s" $tag) }}
+                <a href="{{ .Permalink }}">{{ .Title | humanize }}</a>
+            {{ end }}
+        {{ end }}
+    </section>
+{{ end }}
