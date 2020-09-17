@@ -17,4 +17,4 @@
     command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}"
 
 [[plugins]]
-    package = "/.netlify/plugins/netlify-plugin-hugo-cache-resources"
+    package = "./.netlify/plugins/netlify-plugin-hugo-cache-resources"
