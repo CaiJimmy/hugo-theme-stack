@@ -1,0 +1,4 @@
+{{- $light := resources.Get "css/highlight/light.css" | minify -}}
+{{- $dark := resources.Get "css/highlight/dark.css" | minify -}}
+<link rel="stylesheet" href="{{ $light.Permalink }}" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="{{ $dark.Permalink }}" media="(prefers-color-scheme: dark)">

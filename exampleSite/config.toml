@@ -86,3 +86,7 @@ DefaultContentLanguage = "en"                   # Theme i18n support
     [[related.indices]]
         name = "categories"
         weight = 200
+
+[markup]
+    [markup.highlight]
+        noClasses = false
