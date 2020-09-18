@@ -1,11 +1,5 @@
 <footer class="article-footer">
-    {{ with $tags := .Params.Tags }}
-    <section class="article-tags">
-        {{ range $tags }}
-        <a href="{{ printf `tags/%s` (. | urlize) | relLangURL }}">{{ . | humanize }}</a>
-        {{ end }}
-    </section>
-    {{ end }}
+    {{ partial "article/components/tags" . }}
 
     {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
     <section class="article-copyright">

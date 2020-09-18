@@ -1,16 +1,18 @@
 {{ $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" }}
-{{ $context := . }}
+{{- $context := . -}}
+{{- $categories := .Params.categories -}}
 <div class="article-details">
-    {{ with $categories := .Params.categories }}
+    {{ if $categories }}
     <header class="article-category">
-        {{ range $categories }}
+        {{ range $category := $categories }}
+            {{ $term := $.Site.GetPage (printf "/categories/%s" $category) }}
             {{ if and $image.exists $image.resource }}
                 {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
                 {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
-                <a href="{{ printf `categories/%s` (. | urlize) | relLangURL }}" class="color-tag"
-                    data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ . | humanize }}</a>
+                <a href="{{ $term.Permalink }}" class="color-tag"
+                    data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ $term.Title | humanize }}</a>
             {{ else }}
-                <a href="{{ printf `categories/%s` (. | urlize) | relLangURL }}">{{ . | humanize }}</a>
+                <a href="{{ $term.Permalink }}">{{ $term.Title | humanize }}</a>
             {{ end }}
         {{ end }}
     </header>
