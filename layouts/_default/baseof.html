@@ -2,6 +2,19 @@
 <html lang="{{ .Site.LanguageCode }}">
     {{- partial "head/head.html" . -}}
     <body class="{{ block `body-class` . }}{{ end }}">
+        <script>
+            (function() {
+                const darkModeKey = 'StackDarkMode';
+                const darkModeItem = localStorage.getItem(darkModeKey);
+                const darkModeEnabled = localStorage.getItem(darkModeKey) === 'true';
+                const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+                if(darkModeItem && darkModeEnabled || !darkModeItem && supportDarkMode){
+                    document.body.classList.add('theme-dark');
+                }
+            })();
+        </script>
+
         <div class="container extended flex on-phone--column align-items--flex-start {{ block `container-class` . }}{{end}}">
             {{ partial "sidebar/left.html" . }}
             <main class="main full-width">

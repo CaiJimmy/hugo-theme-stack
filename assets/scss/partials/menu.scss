@@ -128,6 +128,7 @@
     flex-direction: column;
     margin-top: 25px;
     overflow-y: auto;
+    flex-grow: 1;
 
     @media (min-width: $on-desktop-large) {
         margin-top: 30px;
@@ -203,5 +204,32 @@
                 font-weight: bold;
             }
         }
+    }
+}
+
+.theme-dark {
+    #dark-mode-toggle {
+        color: var(--accent-color);
+        font-weight: 700;
+
+        .icon-tabler-toggle-left {
+            display: none;
+        }
+
+        .icon-tabler-toggle-right {
+            display: unset;
+        }
+    }
+}
+
+#dark-mode-toggle {
+    margin-top: auto;
+    color: var(--body-text-color);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .icon-tabler-toggle-right {
+        display: none;
     }
 }

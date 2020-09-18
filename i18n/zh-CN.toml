@@ -21,3 +21,6 @@
 
 [notFoundSubtitle]
     other = "页面不存在"
+
+[darkModeToggle]
+    other = "暗色模式"

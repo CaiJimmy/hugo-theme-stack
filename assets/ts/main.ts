@@ -9,9 +9,12 @@
 import { createGallery } from "./gallery"
 import { getColor } from './color';
 import menu from './menu';
+import darkmode from "./darkmode";
 
 let Stack = {
     init: () => {
+        darkmode();
+        
         /**
          * Bind menu event
          */

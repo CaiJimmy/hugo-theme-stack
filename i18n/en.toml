@@ -21,3 +21,6 @@
 
 [notFoundSubtitle]
     other = "This page does not exist."
+
+[darkModeToggle]
+    other = "Dark Mode"

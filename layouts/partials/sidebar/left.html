@@ -39,5 +39,11 @@
             </a>
         </li>
         {{ end }}
+
+        <li id="dark-mode-toggle">
+            {{ (resources.Get "icons/toggle-left.svg").Content | safeHTML }}
+            {{ (resources.Get "icons/toggle-right.svg").Content | safeHTML }}
+            <span>{{ T "darkModeToggle" }}</span>
+        </li>
     </ol>
 </aside>
