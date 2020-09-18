@@ -8,9 +8,10 @@
 
     <div class="tagCloud-tags">
         {{ range first .Site.Params.widgets.tagCloud.limit $tags }}
-        <a href="{{ printf `tags/%s` (.Term | urlize) | relLangURL }}" class="font_size_{{ .Count }}">
-            {{ .Term | humanize }}
-        </a>
+            {{ $term := $.Site.GetPage (printf "/tags/%s" .Term) }}
+            <a href="{{ $term.Permalink }}" class="font_size_{{ .Count }}">
+                {{ $term.Title | humanize }}
+            </a>
         {{ end }}
     </div>
 </section>
