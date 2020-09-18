@@ -5,15 +5,14 @@
     {{ if $categories }}
     <header class="article-category">
         {{ range $category := $categories }}
-            {{ with $.Site.GetPage (printf "/categories/%s" $category) }}
-                {{ if and $image.exists $image.resource }}
-                    {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
-                    {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
-                    <a href="{{ .Permalink }}" class="color-tag"
-                        data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ .Title | humanize }}</a>
-                {{ else }}
-                    <a href="{{ printf `categories/%s` (. | urlize) | relLangURL }}">{{ .Title | humanize }}</a>
-                {{ end }}
+            {{ $term := $.Site.GetPage (printf "/categories/%s" $category) }}
+            {{ if and $image.exists $image.resource }}
+                {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
+                {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
+                <a href="{{ $term.Permalink }}" class="color-tag"
+                    data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ $term.Title | humanize }}</a>
+            {{ else }}
+                <a href="{{ $term.Permalink }}">{{ $term.Title | humanize }}</a>
             {{ end }}
         {{ end }}
     </header>
