@@ -52,6 +52,7 @@ export default () => {
              * Remove listener once user set color preference in website
              */
             mql.removeEventListener('change', mediaQueryListener);
+            listening = false;
         }
     })
 }
