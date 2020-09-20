@@ -9,20 +9,16 @@
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $archives := $filtered.GroupByDate "2006" }}
 
-    {{ range first .Site.Params.widgets.archives.limit ($archives) }}
-        {{ $id := lower (replace .Key " " "-") }}
+    {{ range $index, $item := first (add .Site.Params.widgets.archives.limit 1) ($archives) }}
+        {{- $id := lower (replace $item.Key " " "-") -}}
         <div class="archives-year">
             <a href="{{ $.Site.Params.widgets.archives.path | relLangURL }}#{{ $id }}">
-                <span class="year">{{ .Key }}</span>
-                <span class="count">{{ len .Pages }}</span>
-            </a> 
-        </div>
-    {{ end }}
-
-    {{ if gt (len $archives) .Site.Params.widgets.archives.limit }}
-        <div class="archives-year">
-            <a href="{{ $.Site.Params.widgets.archives.path | relLangURL }}">
-                <span class="year">{{ T "widgetArchivesMore" }}</span>
+                {{ if eq $index $.Site.Params.widgets.archives.limit }}
+                    <span class="year">{{ T "widgetArchivesMore" }}</span>
+                {{ else }}
+                    <span class="year">{{ .Key }}</span>
+                    <span class="count">{{ len $item.Pages }}</span>
+                {{ end }}
             </a> 
         </div>
     {{ end }}
