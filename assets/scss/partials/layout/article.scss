@@ -64,13 +64,13 @@
             }
 
             .article-details {
-                padding: var(--content-padding);
+                padding: var(--card-padding);
                 padding-bottom: 0;
             }
         }
 
         .article-content {
-            margin: var(--content-padding) 0;
+            margin: var(--card-padding) 0;
             color: var(--card-text-color-main);
 
             img {
@@ -80,11 +80,11 @@
         }
 
         .article-footer {
-            padding: var(--content-padding);
+            padding: var(--card-padding);
             padding-top: 0;
 
             section:not(:first-child) {
-                margin-top: var(--content-padding);
+                margin-top: var(--card-padding);
             }
 
             section {
@@ -192,7 +192,7 @@
 
     & > p {
         margin: 1.5em 0;
-        padding: 0 var(--content-padding);
+        padding: 0 var(--card-padding);
     }
 
     h1,
@@ -201,7 +201,7 @@
     h4,
     h5,
     h6 {
-        padding: 0 calc(var(--content-padding) - var(--heading-border-size));
+        padding: 0 calc(var(--card-padding) - var(--heading-border-size));
         border-left: var(--heading-border-size) solid var(--accent-color);
     }
 
@@ -219,13 +219,13 @@
         position: relative;
         margin: 10px 0;
         border-left: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 15px calc(var(--content-padding) - var(--blockquote-border-size));
+        padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
     }
 
     & > ul,
     & > ol {
-        margin: 1em var(--content-padding);
+        margin: 1em var(--card-padding);
     }
 
     hr {
@@ -270,7 +270,7 @@
         font-family: var(--code-font-family);
         line-height: 1.428571429;
         word-break: break-all;
-        padding: var(--content-padding);
+        padding: var(--card-padding);
 
         code {
             color: unset;
@@ -281,9 +281,9 @@
     }
 
     table {
-        margin: 0 var(--content-padding);
+        margin: 0 var(--card-padding);
         width: 100%;
-        max-width: calc(100% - var(--content-padding) * 2);
+        max-width: calc(100% - var(--card-padding) * 2);
         border-collapse: collapse;
         border-spacing: 0;
         margin-bottom: 1.5em;

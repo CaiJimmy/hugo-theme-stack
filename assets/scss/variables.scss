@@ -54,12 +54,12 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --card-border-radius: 10px;
 
-    --content-padding: 30px;
+    --card-padding: 30px;
     @media (max-width: $on-desktop-large) {
-        --content-padding: 25px;
+        --card-padding: 25px;
     }
     @media (max-width: $on-tablet) {
-        --content-padding: 20px;
+        --card-padding: 20px;
     }
 
     --small-card-padding: 25px;
