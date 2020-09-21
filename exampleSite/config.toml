@@ -21,6 +21,7 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         avatar = "img/avatar.png"
         subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     [params.article]
+        math = false
         [params.article.license]
             enabled = true 
             default = "Licenced under CC BY-NC-SA 4.0"
