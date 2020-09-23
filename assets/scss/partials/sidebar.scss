@@ -23,18 +23,9 @@
     }
 
     @media (min-width: $on-phone + 1) {
-        width: 25%;
         margin-right: 1%;
         padding: var(--main-top-padding) 15px;
         max-height: 100vh;
-    }
-
-    @media (min-width: $on-desktop) {
-        width: 20%;
-    }
-
-    @media (min-width: $on-desktop-large) {
-        width: 15%;
     }
 }
 
@@ -50,13 +41,8 @@
     }
 
     @media (min-width: $on-tablet) {
-        width: 25%;
         margin-left: 1%;
         padding-top: 50px;
-    }
-
-    @media (min-width: $on-desktop + 1) {
-        width: 25%;
     }
 }
 
