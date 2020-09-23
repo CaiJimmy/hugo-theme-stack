@@ -41,23 +41,3 @@ a {
         }
     }
 }
-
-.alert {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 5;
-    background: var(--card-background);
-    max-width: 400px;
-    padding: 15px 20px;
-    border-radius: var(--card-border-radius);
-    line-height: 1.75;
-    color: var(--card-text-color-secondary);
-    box-shadow: var(--shadow-l2);
-
-    @media (max-width: $on-phone) {
-        max-width: 100vw;
-        width: calc(100% - 30px);
-        left: 15px;
-    }
-}
