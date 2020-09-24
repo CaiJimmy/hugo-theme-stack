@@ -1,27 +1,27 @@
 <article>
-    <div class="article-details">
-        <h2 class="article-title">
-            <a href="{{ .Permalink }}">
+    <a href="{{ .Permalink }}">
+        <div class="article-details">
+            <h2 class="article-title">
                 {{- .Title -}}
-            </a>
-        </h2>
-        <footer class="article-time">
-            <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-            </time>
-        </footer>
-    </div>
-
-    {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
-    {{ if $image.exists }}
-        <div class="article-image">
-            {{ if $image.resource }}
-                {{- $thumbnail := $image.resource.Fill "120x120" -}}
-                <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
-                    height="{{ $thumbnail.Height }}" loading="lazy">
-            {{ else }}
-                <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
-            {{ end }}
+            </h2>
+            <footer class="article-time">
+                <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                </time>
+            </footer>
         </div>
-    {{ end }}
+
+        {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
+        {{ if $image.exists }}
+            <div class="article-image">
+                {{ if $image.resource }}
+                    {{- $thumbnail := $image.resource.Fill "120x120" -}}
+                    <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
+                        height="{{ $thumbnail.Height }}" loading="lazy">
+                {{ else }}
+                    <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+                {{ end }}
+            </div>
+        {{ end }}
+    </a>
 </article>

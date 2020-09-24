@@ -11,8 +11,8 @@
         border-radius: var(--card-border-radius);
         overflow: hidden;
 
-        transition: box-shadow .3s ease;
-        
+        transition: box-shadow 0.3s ease;
+
         &:hover {
             box-shadow: var(--shadow-l2);
         }
@@ -159,24 +159,32 @@
     border-radius: var(--card-border-radius);
     box-shadow: var(--shadow-l1);
     background-color: var(--card-background);
+    --image-size: 60px;
+
+    @media (max-width: $on-tablet) {
+        --image-size: 50px;
+    }
 
     & + .pagination {
         margin-top: var(--section-separation);
     }
 
     article {
-        display: flex;
-        align-items: center;
-        padding: var(--small-card-padding);
+        & > a {
+            display: flex;
+            align-items: center;
+            padding: var(--small-card-padding);
+        }
 
         &:not(:last-of-type) {
-            border-bottom: 2px solid var(--card-separator-color);
+            border-bottom: 1.5px solid var(--card-separator-color);
         }
 
         .article-details {
             flex-grow: 1;
             padding: 0;
             padding-right: 15px;
+            min-height: var(--image-size);
         }
 
         .article-title {
@@ -190,9 +198,13 @@
 
         .article-image {
             img {
-                width: 60px;
-                height: 60px;
+                width: var(--image-size);
+                height: var(--image-size);
             }
+        }
+
+        .article-time {
+            font-size: 1.4rem;
         }
     }
 }

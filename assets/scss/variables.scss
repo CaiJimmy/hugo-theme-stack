@@ -63,6 +63,9 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     }
 
     --small-card-padding: 25px;
+    @media (max-width: $on-tablet) {
+        --small-card-padding: 25px 20px;
+    }
 
     @media (prefers-color-scheme: dark) {
         --card-background: #424242;
