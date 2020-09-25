@@ -80,8 +80,8 @@
         }
 
         .article-footer {
-            padding: var(--card-padding);
-            padding-top: 0;
+            margin: var(--card-padding);
+            margin-top: 0;
 
             section:not(:first-child) {
                 margin-top: var(--card-padding);
