@@ -42,7 +42,7 @@
 
     @media (min-width: $on-tablet) {
         margin-left: 1%;
-        padding-top: 50px;
+        padding-top: var(--main-top-padding);
     }
 }
 
@@ -117,16 +117,15 @@
 
 .sidebar {
     .widget {
-        &:not(:last-of-type) {
-            margin-bottom: var(--section-separation);
-            &:after {
-                content: "";
-                width: 100px;
-                height: 2px;
-                background-color: var(--body-text-color);
-                display: block;
-                margin-top: var(--section-separation);
-            }
+        margin-bottom: var(--section-separation);
+
+        &:not(:last-of-type):after {
+            content: "";
+            width: 100px;
+            height: 2px;
+            background-color: var(--body-text-color);
+            display: block;
+            margin-top: var(--section-separation);
         }
     }
 }
