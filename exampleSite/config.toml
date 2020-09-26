@@ -31,7 +31,7 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         # Only Disqus is available so far
         provider = "disqus"
     [params.widgets]
-        enabled = ['archives', 'tag-cloud']
+        enabled = ['search', 'archives', 'tag-cloud']
         [params.widgets.archives]
             limit = 5
             ### Archives page relative URL
@@ -75,6 +75,12 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         url = "archives"
         weight = -70
         pre = "archives"
+    [[menu.main]]
+        identifier = "search"
+        name = "Search"
+        url = "search"
+        weight = -60
+        pre = "search"
 
 [related]
     includeNewer = true
