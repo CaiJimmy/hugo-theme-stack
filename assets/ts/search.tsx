@@ -15,6 +15,11 @@ const searchResultTitle = document.querySelector('.search-result--title') as HTM
 
 let data: pageData[];
 
+/**
+ * createElement
+ * Edited from:
+ * @link https://stackoverflow.com/a/42405694
+ */
 function createElement(tag, attrs, children) {
     var element = document.createElement(tag);
 
@@ -47,6 +52,26 @@ window.createElement = createElement;
 
 function escapeRegExp(string) {
     return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Escape HTML tags as HTML entities
+ * Edited from:
+ * @link https://stackoverflow.com/a/5499821
+ */
+const tagsToReplace = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;'
+};
+
+function replaceTag(tag) {
+    return tagsToReplace[tag] || tag;
+}
+
+function replaceHTMLEnt(str) {
+    return str.replace(/[&<>"]/g, replaceTag);
 }
 
 async function getData() {
@@ -118,7 +143,7 @@ function clear() {
 async function doSearch(keywords: string[]) {
     const startTime = performance.now();
 
-    const results = await searchKeyword(keywords);
+    const results = await searchKeywords(keywords);
     clear();
 
     for (const item of results) {
@@ -130,14 +155,15 @@ async function doSearch(keywords: string[]) {
     searchResultTitle.innerText = `${results.length} pages (${((endTime - startTime) / 1000).toPrecision(1)} seconds)`;
 }
 
-function marker(match, p1, p2, p3, offset, string) {
+function marker(match) {
     return '<mark>' + match + '</mark>';
 }
 
-async function searchKeyword(keywords: string[]) {
+async function searchKeywords(keywords: string[]) {
     const rawData = await getData();
     let results: pageData[] = [];
 
+    /// Sort keywords by their length
     keywords.sort((a, b) => {
         return b.length - a.length
     });
@@ -152,15 +178,18 @@ async function searchKeyword(keywords: string[]) {
         let matched = false;
 
         for (const keyword of keywords) {
-            const regex = new RegExp(escapeRegExp(keyword), 'gi');
+            if (keyword === '') continue;
 
-            const contentMatch = regex.exec(item.content);
+            const regex = new RegExp(escapeRegExp(replaceHTMLEnt(keyword)), 'gi');
+
+            const contentMatch = regex.exec(result.content);
             regex.lastIndex = 0;            /// Reset regex
-            const titleMatch = regex.exec(item.title);
+
+            const titleMatch = regex.exec(result.title);
             regex.lastIndex = 0;            /// Reset regex
 
             if (titleMatch) {
-                result.title = item.title.replace(regex, marker);
+                result.title = result.title.replace(regex, marker);
             }
 
             if (titleMatch || contentMatch) {
@@ -215,7 +244,7 @@ const render = (item: pageData) => {
     </article>;
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     handleQueryString();
     bindQueryStringChange();
     bindSearchForm();

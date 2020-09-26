@@ -5,7 +5,7 @@
 {{- $result := slice -}}
 
 {{- range $filtered -}}
-    {{- $data := dict "title" .Title "date" .Date "permalink" .Permalink "content" (htmlUnescape .Plain) -}}
+    {{- $data := dict "title" .Title "date" .Date "permalink" .Permalink "content" (.Plain) -}}
 
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
     {{- if and $image.exists $image.resource -}}
