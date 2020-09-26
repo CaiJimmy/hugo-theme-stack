@@ -1,0 +1,22 @@
+{{ define "body-class" }}template-search{{ end }}
+{{ define "main" }}
+<form action="{{ .Permalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .Permalink }}"{{- end }}>
+    <p>
+        <label>Keyword</label>
+        <input name="keyword" placeholder="Type something..." />
+    </p>
+
+    <button title="Search">
+        {{ (resources.Get "icons/search.svg").Content | safeHTML }}
+    </button>
+</form>
+
+<h3 class="search-result--title"></h3>
+<div class="search-result--list article-list--compact"></div>
+
+{{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}
+{{- $searchScript := resources.Get "ts/search.tsx" | js.Build $opts -}}
+<script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
+
+{{ partialCached "footer/footer" . }}
+{{ end }}
