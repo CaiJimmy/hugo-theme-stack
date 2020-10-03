@@ -25,7 +25,7 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         math = false
         [params.article.license]
             enabled = true 
-            default = "Licenced under CC BY-NC-SA 4.0"
+            default = "Licensed under CC BY-NC-SA 4.0"
     [params.comments]
         enabled = true
         # Only Disqus is available so far
