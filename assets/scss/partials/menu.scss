@@ -126,7 +126,8 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
+    margin-top: var(--sidebar-element-separation);
+    margin-bottom: 0;
     overflow-y: auto;
 
     @media (min-width: $on-desktop-large) {
@@ -179,6 +180,11 @@
             height: 25px;
             stroke-width: 1.33;
             margin-right: 40px;
+
+            @media (max-width: $on-desktop-large) {
+                width: 20px;
+                height: 20px;
+            }
         }
 
         a {
@@ -188,7 +194,7 @@
             color: var(--body-text-color);
             font-size: 1.5rem;
 
-            @media (max-width: $on-desktop) {
+            @media (max-width: $on-desktop-large) {
                 font-size: 1.4rem;
             }
         }
