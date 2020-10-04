@@ -75,10 +75,14 @@
 }
 
 .article-title {
-    font-size: 2.4rem;
     font-weight: 600;
     margin: 10px 0;
     color: var(--card-text-color-main);
+    font-size: 2.2rem;
+
+    @media (min-width: $on-desktop-large) {
+        font-size: 2.4rem;
+    }
 
     a {
         color: var(--card-text-color-main);
@@ -88,14 +92,6 @@
         }
     }
 
-    @media (min-width: $on-desktop-large) {
-        font-size: 2.4rem;
-    }
-
-    @media (max-width: $on-desktop) {
-        font-size: 2rem;
-    }
-
     & + .article-subtitle {
         margin-top: 0;
     }
@@ -103,17 +99,13 @@
 
 .article-subtitle {
     font-weight: normal;
-    font-size: 1.8rem;
     color: var(--card-text-color-secondary);
     margin: 5px 0;
     line-height: 1.5;
 
+    font-size: 1.75rem;
     @media (min-width: $on-desktop-large) {
         font-size: 2rem;
-    }
-
-    @media (max-width: $on-desktop) {
-        font-size: 1.6rem;
     }
 }
 

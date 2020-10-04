@@ -6,8 +6,13 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 */
 :root {
     @media (min-width: $on-phone + 1) {
+        --main-top-padding: 35px;
+    }
+
+    @media (min-width: $on-desktop-large) {
         --main-top-padding: 50px;
     }
+
 
     --body-background: #f5f5fa;
 
