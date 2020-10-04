@@ -28,8 +28,12 @@ DefaultContentLanguage = "en"                   # Theme i18n support
             default = "Licensed under CC BY-NC-SA 4.0"
     [params.comments]
         enabled = true
-        # Only Disqus is available so far
-        provider = "disqus"
+        provider = "disqus"         # Available: disqus, utterances    
+        [params.comments.utterances]
+            repo = ""
+            issueTerm = "pathname"
+            label = ""             # Optional
+            theme="preferred-color-scheme"
     [params.widgets]
         enabled = ['search', 'archives', 'tag-cloud']
         [params.widgets.archives]
