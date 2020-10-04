@@ -51,6 +51,14 @@ Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
 
 If you want to port this theme to another blogging platform, please let me know🙏.
 
+## Sponsoring
+
+If you like this theme, consider supporting its development:
+
+<a href="https://www.buymeacoffee.com/jimmycai" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+Your support is greatly appreciated :)
+
 ## Thanks to
 
   - [Vibrant-Colors/node-vibrant](https://github.com/Vibrant-Colors/node-vibrant)
