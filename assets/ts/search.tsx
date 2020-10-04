@@ -63,7 +63,8 @@ const tagsToReplace = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
-    '"': '&quot;'
+    '"': '&quot;',
+    '…': '&hellip;'
 };
 
 function replaceTag(tag) {
@@ -84,7 +85,7 @@ async function getData() {
     return data;
 }
 
-function updateQueryString(keywords: string) {
+function updateQueryString(keywords: string, replaceState = false) {
     const pageURL = new URL(window.location.toString());
 
     if (keywords === '') {
@@ -94,7 +95,12 @@ function updateQueryString(keywords: string) {
         pageURL.searchParams.set('keyword', keywords);
     }
 
-    window.history.pushState('', '', pageURL.toString());
+    if (replaceState) {
+        window.history.replaceState('', '', pageURL.toString());
+    }
+    else {
+        window.history.pushState('', '', pageURL.toString());
+    }
 }
 
 function bindQueryStringChange() {
@@ -118,11 +124,12 @@ function handleQueryString() {
 
 function bindSearchForm() {
     let lastSearch = '';
-    searchForm.addEventListener('submit', async (e) => {
+
+    const eventHandler = (e) => {
         e.preventDefault();
         const keywords = searchInput.value;
 
-        updateQueryString(keywords);
+        updateQueryString(keywords, true);
 
         if (keywords === '') {
             return clear();
@@ -132,7 +139,10 @@ function bindSearchForm() {
         lastSearch = keywords;
 
         doSearch(keywords.split(' '));
-    })
+    }
+
+    searchInput.addEventListener('input', eventHandler);
+    searchInput.addEventListener('compositionend', eventHandler);
 }
 
 function clear() {
