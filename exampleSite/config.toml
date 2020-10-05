@@ -47,14 +47,6 @@ DefaultContentLanguage = "en"                   # Theme i18n support
             site = ""
             card = "summary_large_image"
     [params.defaultImage]
-        [params.defaultImage.article]
-            enabled = false
-            local = false
-            src = ""
-        [params.defaultImage.articleList]
-            enabled = false
-            local = true
-            src = ""
         [params.defaultImage.opengraph]
             enabled = false
             local = false
