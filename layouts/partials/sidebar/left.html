@@ -33,7 +33,7 @@
         <li {{ if $active }} class='current' {{ end }}>
             <a href='{{ .URL | absLangURL }}'>
                 {{ if .Pre }}
-                    {{ (resources.Get (delimit (slice "icons/" .Pre ".svg") "")).Content | safeHTML }}
+                    {{ partial "helper/icon" .Pre }}
                 {{ end }}
                 <span>{{- .Name -}}</span>
             </a>

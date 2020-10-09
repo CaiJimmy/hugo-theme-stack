@@ -30,7 +30,7 @@
 
     {{- if not .Date.IsZero -}}
     <footer class="article-time">
-        {{ (resources.Get "icons/clock.svg").Content | safeHTML }}
+        {{ partial "helper/icon" "clock" }}
         <time class="article-time--published">
             {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
         </time>
