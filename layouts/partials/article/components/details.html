@@ -5,7 +5,7 @@
     {{ if $categories }}
     <header class="article-category">
         {{ range $category := $categories }}
-            {{ $term := $.Site.GetPage (printf "/categories/%s" $category) }}
+            {{ $term := $.Site.GetPage (printf "/categories/%s" $category | urlize ) }}
             {{ if and $image.exists $image.resource }}
                 {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
                 {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
