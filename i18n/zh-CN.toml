@@ -5,7 +5,7 @@
     other = "相关文章"
 
 [lastUpdatedOn]
-    other ="最后更新于 {{ . }}"
+    other ="最后更新于"
 
 [widgetArchivesTitle]
     other = "归档"
