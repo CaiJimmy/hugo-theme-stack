@@ -22,7 +22,7 @@
         </a>
     </h2>
 
-    {{ with .Params.description }}
+    {{ with or .Params.description .Params.subtitle }}
     <h3 class="article-subtitle">
         {{ . }}
     </h3>
