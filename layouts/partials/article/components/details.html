@@ -1,18 +1,21 @@
 {{ $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" }}
 {{- $context := . -}}
-{{- $categories := .Params.categories -}}
 <div class="article-details">
-    {{ if $categories }}
+    {{ if .Params.categories }}
     <header class="article-category">
-        {{ range $category := $categories }}
-            {{ $term := $.Site.GetPage (printf "/categories/%s" $category) }}
+        {{ range (.GetTerms "categories") }}
             {{ if and $image.exists $image.resource }}
                 {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
                 {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
-                <a href="{{ $term.Permalink }}" class="color-tag"
-                    data-image="{{ $20x.RelPermalink }}" data-key="{{ $context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">{{ $term.Title | humanize }}</a>
+                <a href="{{ .Permalink }}" 
+                    class="color-tag"
+                    data-image="{{ $20x.RelPermalink }}" 
+                    data-key="{{ $context.Slug }}" 
+                    data-hash="{{ $imageRaw.Data.Integrity }}">
+                    {{ .LinkTitle }}
+                </a>
             {{ else }}
-                <a href="{{ $term.Permalink }}">{{ $term.Title | humanize }}</a>
+                <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
             {{ end }}
         {{ end }}
     </header>
@@ -32,7 +35,7 @@
 
     {{- if not .Date.IsZero -}}
     <footer class="article-time">
-        {{ (resources.Get "icons/clock.svg").Content | safeHTML }}
+        {{ partial "helper/icon" "clock" }}
         <time class="article-time--published">
             {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
         </time>

@@ -3,14 +3,14 @@
 
     {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
     <section class="article-copyright">
-        {{ (resources.Get "icons/copyright.svg").Content | safeHTML }}
+        {{ partial "helper/icon" "copyright" }}
         <span>{{ default .Site.Params.article.license.default .Params.license }}</span>
     </section>
     {{ end }}
 
     {{- if ne .Lastmod .Date -}}
     <section class="article-time">
-        {{ (resources.Get "icons/clock.svg").Content | safeHTML }}
+        {{ partial "helper/icon" "clock" }}
         <span class="article-time--modified">
             {{ T "lastUpdatedOn" }} {{ .Lastmod.Format ( or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 15:04 MST" ) }}
         </span>

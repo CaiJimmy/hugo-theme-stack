@@ -35,7 +35,12 @@ The only JavaScript library being used is [node-vibrant](https://github.com/Vibr
 
 This theme uses SCSS and TypeScript. For that reason, it's necessary to use **Hugo ≥ 0.74.0**.
 
-**Note**: You'll need Hugo Extended version to edit SCSS files
+Use Hugo Extended version if you want to:
+
+* Use the latest feature/fix from `master` branch
+* Edit SCSS files
+  
+**Compiled CSS are updated once per release.**
 
 ## Installation
 

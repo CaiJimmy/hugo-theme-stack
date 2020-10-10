@@ -1,16 +1,13 @@
-{{ $tags := .Site.Taxonomies.tags.ByCount }}
-
 <section class="widget tagCloud">
     <div class="widget-icon">
-        {{ (resources.Get "icons/tag.svg").Content | safeHTML }}
+        {{ partial "helper/icon" "tag" }}
     </div>
     <h1 class="widget-title">{{ T "widgetTagCloudTitle" }}</h1>
 
     <div class="tagCloud-tags">
-        {{ range first .Site.Params.widgets.tagCloud.limit $tags }}
-            {{ $term := $.Site.GetPage (printf "/tags/%s" .Term) }}
-            <a href="{{ $term.Permalink }}" class="font_size_{{ .Count }}">
-                {{ $term.Title | humanize }}
+        {{ range first .Site.Params.widgets.tagCloud.limit .Site.Taxonomies.tags.ByCount }}
+            <a href="{{ .Page.Permalink }}" class="font_size_{{ .Count }}">
+                {{ .Page.Title }}
             </a>
         {{ end }}
     </div>
