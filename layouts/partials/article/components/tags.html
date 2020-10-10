@@ -1,7 +1,7 @@
 {{ if .Params.Tags }}
     <section class="article-tags">
         {{ range (.GetTerms "tags") }}
-            <a href="{{ .Permalink }}">{{ .LinkTitle | humanize }}</a>
+            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
         {{ end }}
     </section>
 {{ end }}
