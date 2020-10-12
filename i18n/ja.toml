@@ -1,0 +1,23 @@
+[toggleMenu]
+    other = "メニューを開く・閉じる"
+    
+[relatedContents]
+    other = "関連するコンテンツ"
+
+[lastUpdatedOn]
+    other = "最終更新"
+
+[widgetArchivesTitle]
+    other = "アーカイブ"
+
+[widgetArchivesMore]
+    other = "さらに見る"
+
+[widgetTagCloudTitle]
+    other = "タグ"
+
+[notFoundTitle]
+    other = "404 Not Found"
+
+[notFoundSubtitle]
+    other = "指定されたページは存在しません。"
