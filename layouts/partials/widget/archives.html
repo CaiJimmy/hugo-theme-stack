@@ -2,7 +2,7 @@
     <div class="widget-icon">
         {{ partial "helper/icon" "infinity" }}
     </div>
-    <h1 class="widget-title">{{ T "widgetArchivesTitle" }}</h1>
+    <h2 class="widget-title section-title">{{ T "widgetArchivesTitle" }}</h2>
 
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
