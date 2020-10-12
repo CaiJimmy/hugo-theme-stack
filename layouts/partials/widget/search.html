@@ -4,7 +4,7 @@
         <input name="keyword" required placeholder="Type something..." />
     
         <button title="Search">
-            {{ (resources.Get "icons/search.svg").Content | safeHTML }}
+            {{ partial "helper/icon" "search" }}
         </button>
     </p>
 </form>
