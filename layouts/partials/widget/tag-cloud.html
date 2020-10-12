@@ -2,7 +2,7 @@
     <div class="widget-icon">
         {{ partial "helper/icon" "tag" }}
     </div>
-    <h1 class="widget-title">{{ T "widgetTagCloudTitle" }}</h1>
+    <h2 class="widget-title section-title">{{ T "widgetTagCloudTitle" }}</h2>
 
     <div class="tagCloud-tags">
         {{ range first .Site.Params.widgets.tagCloud.limit .Site.Taxonomies.tags.ByCount }}

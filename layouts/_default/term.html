@@ -1,5 +1,5 @@
 {{ define "main" }}
-    <h3 class="taxonomy-type">{{ .Type | singularize  | humanize }}</h3>
+    <h3 class="taxonomy-type section-title">{{ .Type | singularize | humanize }}</h3>
     <div class="taxonomy-card">
         <div class="taxonomy-details">
             <h3 class="taxonomy-count">{{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}</h3>
