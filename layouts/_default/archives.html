@@ -2,14 +2,12 @@
 {{ define "main" }}
     {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
     {{ if $categories }}
-    <div class="widget">
-        <h1 class="widget-title">Categories</h1>
-        <div class="category-list">
-            <div class="article-list--tile">
-                {{ range $categories }}
-                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
-                {{ end }}
-            </div>
+    <h2 class="section-title">Categories</h2>
+    <div class="category-list">
+        <div class="article-list--tile">
+            {{ range $categories }}
+                {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
+            {{ end }}
         </div>
     </div>
     {{ end }}
@@ -21,7 +19,7 @@
     {{ range $filtered.GroupByDate "2006" }}
     {{ $id := lower (replace .Key " " "-") }}
     <div class="archives-group" id="{{ $id }}">
-        <h3 class="archives-date"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h3>
+        <h2 class="archives-date section-title"><a href="{{ $.Permalink }}#{{ $id }}">{{ .Key }}</a></h2>
         <div class="article-list--compact">
             {{ range .Pages }}
                 {{ partial "article-list/compact" . }}

@@ -42,3 +42,17 @@ a {
         }
     }
 }
+
+.section-title {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--body-text-color);
+
+    a {
+        color: var(--body-text-color);
+    }
+}

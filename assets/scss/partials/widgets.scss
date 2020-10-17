@@ -1,13 +1,4 @@
 .widget {
-    .widget-title {
-        text-transform: uppercase;
-        color: var(--body-text-color);
-        font-weight: bold;
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 1.6rem;
-    }
-
     .widget-icon {
         svg {
             width: 32px;
@@ -45,27 +36,26 @@
 
 /* Archives widget */
 .widget.archives {
+    .widget-archive--list {
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        background-color: var(--card-background);
+    }
+
     .archives-year {
-        margin-bottom: 10px;
+        &:not(:last-of-type) {
+            border-bottom: 1.5px solid var(--card-separator-color);
+        }
+
         a {
-            background-color: var(--card-background);
-            padding: 15px 25px;
-            border-radius: var(--card-border-radius);
-            box-shadow: var(--shadow-l1);
+            font-size: 1.4rem;
+            padding: 18px 25px;
             display: flex;
-            transition: box-shadow 0.3s ease;
-
-            &:hover {
-                box-shadow: var(--shadow-l2);
-            }
-
-            @media (max-width: $on-desktop-large) {
-                font-size: 1.4rem;
-            }
 
             span.year {
                 flex: 1;
                 color: var(--card-text-color-main);
+                font-weight: bold;
             }
 
             span.count {
