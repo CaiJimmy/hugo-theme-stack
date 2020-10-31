@@ -7,7 +7,7 @@
             {{ if and $image.exists $image.resource }}
                 {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
                 {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
-                <a href="{{ .Permalink }}" 
+                <a href="{{ .RelPermalink }}" 
                     class="color-tag"
                     data-image="{{ $20x.RelPermalink }}" 
                     data-key="{{ $context.Slug }}" 
@@ -15,14 +15,14 @@
                     {{ .LinkTitle }}
                 </a>
             {{ else }}
-                <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
             {{ end }}
         {{ end }}
     </header>
     {{ end }}
 
     <h2 class="article-title">
-        <a href="{{ .Permalink }}">
+        <a href="{{ .RelPermalink }}">
             {{- .Title -}}
         </a>
     </h2>
