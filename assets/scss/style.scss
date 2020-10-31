@@ -24,6 +24,8 @@
 @import "partials/layout/taxonomy.scss";
 @import "partials/layout/404.scss";
 
+@import "custom.scss";
+
 a {
     text-decoration: none;
     color: var(--accent-color);
