@@ -2,7 +2,7 @@
 <article class="{{ if $image.exists }}has-image{{ end }}">
     {{ if $image.exists }}
         <div class="article-image">
-            <a href="{{ .Permalink }}">
+            <a href="{{ .RelPermalink }}">
                 {{ if $image.resource }}
                     {{- $thumbnail := $image.resource.Fill "800x250" -}}
                     {{- $thumbnailRetina := $image.resource.Fill "1600x500" -}}
