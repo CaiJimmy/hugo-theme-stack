@@ -9,6 +9,7 @@
 import { createGallery } from "./gallery"
 import { getColor } from './color';
 import menu from './menu';
+import createElement from './createElement';
 
 let Stack = {
     init: () => {
@@ -74,4 +75,12 @@ window.addEventListener('load', () => {
     }, 0);
 })
 
+declare global {
+    interface Window {
+        createElement: any;
+        Stack: any
+    }
+}
+
 window.Stack = Stack;
+window.createElement = createElement;

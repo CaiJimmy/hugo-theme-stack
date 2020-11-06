@@ -1,0 +1,82 @@
+.search-form {
+    margin-bottom: var(--section-separation);
+    position: relative;
+    --button-size: 80px;
+
+    &.widget {
+        --button-size: 60px;
+
+        label {
+            font-size: 1.3rem;
+            top: 10px;
+        }
+
+        input {
+            font-size: 1.5rem;
+            padding: 30px 20px 15px 20px;
+        }
+    }
+
+    p {
+        position: relative;
+        margin: 0;
+    }
+
+    label {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 1.4rem;
+        color: var(--card-text-color-tertiary);
+    }
+
+    input {
+        padding: 40px 20px 20px;
+        border-radius: var(--card-border-radius);
+        background-color: var(--card-background);
+        box-shadow: var(--shadow-l1);
+        color: var(--card-text-color-main);
+        width: 100%;
+        border: 0;
+        -webkit-appearance: none;
+
+        transition: box-shadow 0.3s ease;
+
+        font-size: 1.8rem;
+
+        &:focus {
+            outline: 0;
+            box-shadow: var(--shadow-l2);
+        }
+    }
+
+    button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: var(--button-size);
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+
+        padding: 0 10px;
+
+        &:focus {
+            outline: 0;
+
+            svg {
+                stroke-width: 2;
+                color: var(--accent-color);
+            }
+        }
+
+        svg {
+            color: var(--card-text-color-secondary);
+            stroke-width: 1.33;
+            transition: all 0.3s ease;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

@@ -21,3 +21,12 @@
 
 [notFoundSubtitle]
     other = "页面不存在"
+
+[searchTitle]
+    other = "搜索"
+
+[searchPlaceholder]
+    other = "输入关键词..."
+
+[searchResultTitle]
+    other = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"

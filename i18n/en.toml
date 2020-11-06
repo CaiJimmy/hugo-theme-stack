@@ -21,3 +21,12 @@
 
 [notFoundSubtitle]
     other = "This page does not exist."
+
+[searchTitle]
+    other = "Search"
+
+[searchPlaceholder]
+    other = "Type something..."
+
+[searchResultTitle]
+    other = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
