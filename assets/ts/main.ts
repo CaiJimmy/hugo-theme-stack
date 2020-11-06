@@ -75,7 +75,6 @@ window.addEventListener('load', () => {
     }, 0);
 })
 
-
 declare global {
     interface Window {
         createElement: any;
