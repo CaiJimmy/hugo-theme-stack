@@ -39,12 +39,14 @@ class Search {
     private input: HTMLInputElement;
     private list: HTMLDivElement;
     private resultTitle: HTMLHeadElement;
+    private resultTitleTemplate: string;
 
-    constructor({ form, input, list, resultTitle }) {
+    constructor({ form, input, list, resultTitle, resultTitleTemplate }) {
         this.form = form;
         this.input = input;
         this.list = list;
         this.resultTitle = resultTitle;
+        this.resultTitleTemplate = resultTitleTemplate;
 
         this.handleQueryString();
         this.bindQueryStringChange();
@@ -136,7 +138,11 @@ class Search {
 
         const endTime = performance.now();
 
-        this.resultTitle.innerText = `${results.length} pages (${((endTime - startTime) / 1000).toPrecision(1)} seconds)`;
+        this.resultTitle.innerText = this.generateResultTitle(results.length, ((endTime - startTime) / 1000).toPrecision(1));
+    }
+
+    private generateResultTitle(resultLen, time) {
+        return this.resultTitleTemplate.replace("#PAGES_COUNT", resultLen).replace("#TIME_SECONDS", time);
     }
 
     public async getData() {
@@ -231,6 +237,12 @@ class Search {
     }
 }
 
+declare global {
+    interface Window {
+        searchResultTitleTemplate: string;
+    }
+}
+
 window.addEventListener('load', () => {
     setTimeout(function () {
         const searchForm = document.querySelector('.search-form') as HTMLFormElement,
@@ -242,7 +254,8 @@ window.addEventListener('load', () => {
             form: searchForm,
             input: searchInput,
             list: searchResultList,
-            resultTitle: searchResultTitle
+            resultTitle: searchResultTitle,
+            resultTitleTemplate: window.searchResultTitleTemplate
         });
     }, 0);
 })
