@@ -1,5 +1,5 @@
 <aside class="related-contents--wrapper">
-    {{ $related := .Site.RegularPages.Related . | first 5 }}
+    {{ $related := (where (.Site.RegularPages.Related .) "Params.hidden" "!=" true) | first 5 }}
     {{ with $related }}
         <h2 class="section-title">{{ T "relatedContents" }}</h2>
         <div class="related-contents">
