@@ -1,8 +1,8 @@
 {{ define "main" }}
-    <h3 class="taxonomy-type section-title">{{ .Type | singularize | humanize }}</h3>
+    <h3 class="taxonomy-type section-title">{{ T "category" }}</h3>
     <div class="taxonomy-card">
         <div class="taxonomy-details">
-            <h3 class="taxonomy-count">{{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}</h3>
+            <h3 class="taxonomy-count">{{ len .Pages }} {{ T "searchResultPost" }}{{ if gt (len .Pages) 1 }}s{{ end }}</h3>
             <h1 class="taxonomy-term">{{ .Title }}</h1>
             {{ with .Params.description }}
                 <h2 class="taxonomy-description">{{ . }}</h2>

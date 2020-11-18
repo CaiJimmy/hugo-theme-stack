@@ -30,3 +30,18 @@
 
 [searchResultTitle]
     other = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+
+[searchResultPost]
+    other = "Post"
+
+[categories]
+    other = "Categories"
+
+[category]
+    other = "Category"
+
+[footerBuiltWith]
+    other = "Built with"
+
+[footerDesignedBy]
+    other = "designed by"
