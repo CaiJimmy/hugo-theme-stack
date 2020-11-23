@@ -21,8 +21,10 @@
                         {{ errorf "Failed loading avatar from %q" . }}
                     {{ end }}
                 {{ end }}
-                
-                <span class="emoji">{{ $.Site.Params.sidebar.emoji }}</span>
+
+                {{ with $.Site.Params.sidebar.emoji }}
+                    <span class="emoji">{{ . }}</span>
+                {{ end }}
             </figure>
         {{ end }}
         <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
