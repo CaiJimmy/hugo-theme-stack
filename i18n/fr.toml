@@ -30,3 +30,9 @@
 
 [searchResultTitle]
     other = "#PAGES_COUNT pages (#TIME_SECONDS secondes)" 
+
+[footerBuiltWith]
+    other = "Généré avec"
+
+[footerDesignedBy]
+    other = "conçu par"
