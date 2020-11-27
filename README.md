@@ -11,7 +11,7 @@
 
 ## Documentation & more information
 
-[Documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) | [中文文档](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4)
+[Documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) | [中文文档](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) | [README 中文](README_ZH.md)
 
 ## Introduction
 
