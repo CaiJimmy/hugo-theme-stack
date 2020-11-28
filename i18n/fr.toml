@@ -1,0 +1,38 @@
+[toggleMenu]
+    other = "Afficher le menu"
+
+[relatedContents]
+    other = "Contenus liés"
+
+[lastUpdatedOn]
+    other = "Dernière mise à jour le"
+
+[widgetArchivesTitle]
+    other = "Archives"
+
+[widgetArchivesMore]
+    other = "Autres"
+
+[widgetTagCloudTitle]
+    other = "Mots clés"
+
+[notFoundTitle]
+    other = "Page non trouvée"
+
+[notFoundSubtitle]
+    other = "Cette page n'existe pas."
+
+[searchTitle]
+    other = "Rechercher"
+
+[searchPlaceholder]
+    other = "Cherchez un article, une publication, etc."
+
+[searchResultTitle]
+    other = "#PAGES_COUNT pages (#TIME_SECONDS secondes)" 
+
+[footerBuiltWith]
+    other = "Généré avec {{ .Generator }}"
+
+[footerDesignedBy]
+    other = "Thème {{ .Theme }} conçu par {{ .DesignedBy }}"
