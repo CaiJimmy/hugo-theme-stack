@@ -32,7 +32,7 @@
     other = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
 
 [footerBuiltWith]
-    other = "Built with"
-
+    other = "Built with {{ .Generator }}"
+    
 [footerDesignedBy]
-    other = "designed by"
+    other = "Theme {{ .Theme }} designed by {{ .DesignedBy }}"
