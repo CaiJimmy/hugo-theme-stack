@@ -2,7 +2,7 @@
 {{ define "main" }}
     {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
     {{ if $categories }}
-    <h2 class="section-title">Categories</h2>
+    <h2 class="section-title">{{ T "categoriesTitle" }}</h2>
     <div class="category-list">
         <div class="article-list--tile">
             {{ range $categories }}
