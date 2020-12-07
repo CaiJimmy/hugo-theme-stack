@@ -33,3 +33,9 @@
 
 [searchResultTitle]
     other = "#PAGES_COUNT páginas (#TIME_SECONDS segundos)"
+
+[footerBuiltWith]
+    other = "Criado com {{ .Generator }}"
+
+[footerDesignedBy]
+    other = "Tema {{ .Theme }} desenvolvido por {{ .DesignedBy }}"
