@@ -16,6 +16,9 @@
 [widgetTagCloudTitle]
     other = "Tags"
 
+[categoriesTitle]
+    other = "Categories"
+
 [notFoundTitle]
     other = "Not Found"
 
