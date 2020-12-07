@@ -1,0 +1,38 @@
+[toggleMenu]
+    other = "메뉴 여닫기"
+    
+[relatedContents]
+    other = "관련 글"
+
+[lastUpdatedOn]
+    other ="마지막 수정: "
+
+[widgetArchivesTitle]
+    other = "보관함"
+
+[widgetArchivesMore]
+    other = "더보기"
+
+[widgetTagCloudTitle]
+    other = "태그"
+
+[notFoundTitle]
+    other = "찾을 수 없음"
+
+[notFoundSubtitle]
+    other = "페이지를 찾을 수 없습니다."
+
+[searchTitle]
+    other = "검색"
+
+[searchPlaceholder]
+    other = "검색어를 입력하세요..."
+
+[searchResultTitle]
+    other = "#PAGES_COUNT 페이지 (#TIME_SECONDS 초)"
+
+[footerBuiltWith]
+    other = "{{ .Generator }}로 만듦"
+    
+[footerDesignedBy]
+    other = "{{ .DesignedBy }}의 {{ .Theme }} 테마 사용 중"
