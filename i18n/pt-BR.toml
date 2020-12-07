@@ -1,0 +1,32 @@
+[toggleMenu]
+    other = "Alternar Menu"
+    
+[relatedContents]
+    other = "Conteúdos Relacionados"
+
+[lastUpdatedOn]
+    other ="Última atualização em"
+
+[widgetArchivesTitle]
+    other = "Arquivos"
+
+[widgetArchivesMore]
+    other = "Mais"
+
+[widgetTagCloudTitle]
+    other = "Tags"
+
+[notFoundTitle]
+    other = "Não Encontrado"
+
+[notFoundSubtitle]
+    other = "Esta página não existe."
+
+[searchTitle]
+    other = "Busca"
+
+[searchPlaceholder]
+    other = "Digite algo..."
+
+[searchResultTitle]
+    other = "#PAGES_COUNT páginas (#TIME_SECONDS segundos)"
