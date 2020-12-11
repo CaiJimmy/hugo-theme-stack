@@ -1,0 +1,38 @@
+[toggleMenu]
+    other = "Tampilkan Menu"
+    
+[relatedContents]
+    other = "Konten terkait"
+
+[lastUpdatedOn]
+    other = "Terakhir diperbarui pada"
+
+[widgetArchivesTitle]
+    other = "Arsip"
+
+[widgetArchivesMore]
+    other = "Lebih"
+
+[widgetTagCloudTitle]
+    other = "Tag"
+
+[notFoundTitle]
+    other = "Not Found"
+
+[notFoundSubtitle]
+    other = "Halaman ini tidak ada."
+
+[searchTitle]
+    other = "Cari"
+
+[searchPlaceholder]
+    other = "Ketik sesuatu..."
+
+[searchResultTitle]
+    other = "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
+
+[footerBuiltWith]
+    other = "Dibangun dengan {{ .Generator }}"
+    
+[footerDesignedBy]
+    other = "Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}"
