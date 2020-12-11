@@ -8,14 +8,18 @@
     <header class="site-info">
         {{ with .Site.Params.sidebar.avatar }}
             <figure class="site-avatar">
-                {{ $avatar := resources.Get (.) }}
-
-                {{ if $avatar }}
-                    {{ $avatarResized := $avatar.Resize "300x300" }}
-                    <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-                        height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                {{ if not .local }}
+                    <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 {{ else }}
-                    {{ errorf "Failed loading avatar from %q" . }}
+                    {{ $avatar := resources.Get (.src) }}
+                    
+                    {{ if $avatar }}
+                        {{ $avatarResized := $avatar.Resize "300x" }}
+                        <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
+                            height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                    {{ else }}
+                        {{ errorf "Failed loading avatar from %q" . }}
+                    {{ end }}
                 {{ end }}
 
                 {{ with $.Site.Params.sidebar.emoji }}
