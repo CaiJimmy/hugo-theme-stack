@@ -8,10 +8,10 @@
     <header class="site-info">
         {{ with .Site.Params.sidebar.avatar }}
             <figure class="site-avatar">
-                {{ if in (.) "http" }}
-                    <img src="{{ . }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                {{ if not .local }}
+                    <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 {{ else }}
-                    {{$avatar := resources.Get (.) }}
+                    {{ $avatar := resources.Get (.src) }}
                     
                     {{ if $avatar }}
                         {{ $avatarResized := $avatar.Resize "300x" }}

@@ -21,8 +21,10 @@ DefaultContentLanguage = "en"                   # Theme i18n support
         
     [params.sidebar]
         emoji = "🍥"
-        avatar = "img/avatar.png"
         subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        [params.sidebar.avatar]
+            local = true
+            src = "img/avatar.png"
         
     [params.article]
         math = false
