@@ -16,6 +16,9 @@
 [widgetTagCloudTitle]
     other = "Tags"
 
+[categoriesTitle]
+    other = "Categories"
+
 [notFoundTitle]
     other = "Not Found"
 
@@ -30,3 +33,9 @@
 
 [searchResultTitle]
     other = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+
+[footerBuiltWith]
+    other = "Built with {{ .Generator }}"
+    
+[footerDesignedBy]
+    other = "Theme {{ .Theme }} designed by {{ .DesignedBy }}"
