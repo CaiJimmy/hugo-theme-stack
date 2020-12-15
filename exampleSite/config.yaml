@@ -1,4 +1,4 @@
-baseurl: 'https://example.com'
+baseurl: https://example.com
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
@@ -7,8 +7,8 @@ disqusShortname: hugo-theme-stack           # Change it to your Disqus shortname
 DefaultContentLanguage: en                  # Theme i18n support
 
 permalinks:
-    post: '/p/:slug/'
-    page: '/:slug/'
+    post: /p/:slug/
+    page: /:slug/
 
 params:
     mainSections:
@@ -75,7 +75,7 @@ menu:
             weight: -100
             pre: home
         -
-            identifier: about-cn
+            identifier: about
             name: About
             url: about
             weight: -90
