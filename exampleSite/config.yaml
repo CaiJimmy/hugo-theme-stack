@@ -3,8 +3,13 @@ languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
 title: Example Site
-disqusShortname: hugo-theme-stack           # Change it to your Disqus shortname before using
-DefaultContentLanguage: en                  # Theme i18n support
+
+# Change it to your Disqus shortname before using
+disqusShortname: hugo-theme-stack
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn
+DefaultContentLanguage: en
 
 permalinks:
     post: /p/:slug/
@@ -37,9 +42,9 @@ params:
         enabled: true
         provider: disqus
         utterances:
-            repo: 
+            repo:
             issueTerm: pathname
-            label: 
+            label:
             theme: preferred-color-scheme
 
     widgets:
@@ -51,59 +56,57 @@ params:
         archives:
             limit: 5
             path: archives
-            
+
         tagCloud:
             limit: 10
 
     opengraph:
         twitter:
-            site: 
+            site:
             card: summary_large_image
 
     defaultImage:
         opengraph:
             enabled: false
             local: false
-            src: 
-            
+            src:
+
 menu:
     main:
-        -
-            identifier: home
-            name: Home
-            url: /
-            weight: -100
-            pre: home
-        -
-            identifier: about
-            name: About
-            url: about
-            weight: -90
-            pre: user
-        -
-            identifier: archives
-            name: Archives
-            url: archives
-            weight: -70
-            pre: archives
-        -
-            identifier: search
-            name: Search
-            url: search
-            weight: -60
-            pre: search
+        - identifier: home
+          name: Home
+          url: /
+          weight: -100
+          pre: home
+
+        - identifier: about
+          name: About
+          url: about
+          weight: -90
+          pre: user
+
+        - identifier: archives
+          name: Archives
+          url: archives
+          weight: -70
+          pre: archives
+
+        - identifier: search
+          name: Search
+          url: search
+          weight: -60
+          pre: search
 
 related:
     includeNewer: true
     threshold: 60
     toLower: false
     indices:
-        -
-            name: tags
-            weight: 100
-        -
-            name: categories
-            weight: 200
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
 
 markup:
     highlight:
