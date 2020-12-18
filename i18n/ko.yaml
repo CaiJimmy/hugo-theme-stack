@@ -1,0 +1,38 @@
+toggleMenu:
+    other: 메뉴 여닫기
+
+article:
+    relatedContents:
+        other: 관련 글
+    lastUpdatedOn:
+        other: "마지막 수정: "
+
+notFound:
+    title:
+        other: 찾을 수 없음
+    subtitle:
+        other: 페이지를 찾을 수 없습니다.
+
+widget:
+    archives:
+        title:
+            other: 보관함
+        more:
+            other: 더보기
+    tagCloud:
+        title:
+            other: 태그
+
+search:
+    title:
+        other: 검색
+    placeholder:
+        other: 검색어를 입력하세요...
+    resultTitle:
+        other: "#PAGES_COUNT 페이지 (#TIME_SECONDS 초)"
+
+footer:
+    builtWith:
+        other: "{{ .Generator }}로 만듦"
+    designedBy:
+        other: "{{ .DesignedBy }}의 {{ .Theme }} 테마 사용 중"

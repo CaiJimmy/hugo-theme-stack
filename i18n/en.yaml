@@ -37,6 +37,6 @@ search:
 
 footer:
     builtWith:
-        other: "Built with {{ .Generator }}"
+        other: Built with {{ .Generator }}
     designedBy:
-        other: "Theme {{ .Theme }} designed by {{ .DesignedBy }}"
+        other: Theme {{ .Theme }} designed by {{ .DesignedBy }}
