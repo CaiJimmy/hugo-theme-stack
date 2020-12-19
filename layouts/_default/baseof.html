@@ -7,13 +7,19 @@
     <body class="{{ block `body-class` . }}{{ end }}">
         <script>
             (function() {
-                const darkModeKey = 'StackDarkMode';
-                const darkModeItem = localStorage.getItem(darkModeKey);
-                const darkModeEnabled = localStorage.getItem(darkModeKey) === 'true';
+                const colorSchemeKey = 'StackColorScheme';
+                const colorSchemeItem = localStorage.getItem(colorSchemeKey);
                 const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-                if(darkModeItem && darkModeEnabled || !darkModeItem && supportDarkMode){
-                    document.body.classList.add('theme-dark');
+                if (colorSchemeItem && colorSchemeItem == 'dark' || !colorSchemeItem && supportDarkMode || colorSchemeItem === 'auto' && supportDarkMode) {
+                    /**
+                     * Enable dark mode if:
+                     * 1. If dark mode is set already (in local storage)
+                     * 2. No color scheme preference is set in localstorage, and user's browser indicates preference for dark mode
+                     */
+                    document.body.dataset.scheme = 'dark';
+                } else {
+                    document.body.dataset.scheme = 'light';
                 }
             })();
         </script>

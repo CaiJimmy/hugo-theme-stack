@@ -19,10 +19,10 @@ export default () => {
 
     const setBodyClass = () => {
         if (darkMode) {
-            document.body.classList.add('theme-dark');
+            document.body.dataset.scheme = 'dark';
         }
         else {
-            document.body.classList.remove('theme-dark');
+            document.body.dataset.scheme = 'light';
         }
     }
 
