@@ -7,8 +7,8 @@
 {{ define "main" }}
 <form action="{{ .Permalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .Permalink }}"{{- end }}>
     <p>
-        <label>{{ T "searchTitle" }}</label>
-        <input name="keyword" placeholder="{{ T `searchPlaceholder` }}" />
+        <label>{{ T "search.title" }}</label>
+        <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
     </p>
 
     <button title="Search">
@@ -20,7 +20,7 @@
 <div class="search-result--list article-list--compact"></div>
 
 <script>
-    window.searchResultTitleTemplate = "{{ T `searchResultTitle` }}"
+    window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
 </script>
 
 {{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}

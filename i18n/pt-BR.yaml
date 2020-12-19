@@ -1,0 +1,42 @@
+toggleMenu:
+    other: Alternar Menu
+
+archives:
+    categories:
+        other: Categorias
+
+article:
+    relatedContents:
+        other: Conteúdos Relacionados
+    lastUpdatedOn:
+        other: Última atualização em
+
+notFound:
+    title:
+        other: Não Encontrado
+    subtitle:
+        other: Esta página não existe.
+
+widget:
+    archives:
+        title:
+            other: Arquivos
+        more:
+            other: Mais
+    tagCloud:
+        title:
+            other: Tags
+
+search:
+    title:
+        other: Busca
+    placeholder:
+        other: Digite algo...
+    resultTitle:
+        other: "#PAGES_COUNT páginas (#TIME_SECONDS segundos)"
+
+footer:
+    builtWith:
+        other: Criado com {{ .Generator }}
+    designedBy:
+        other: Tema {{ .Theme }} desenvolvido por {{ .DesignedBy }}

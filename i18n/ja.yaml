@@ -1,0 +1,24 @@
+toggleMenu:
+    other: メニューを開く・閉じる
+
+article:
+    relatedContents:
+        other: 関連するコンテンツ
+    lastUpdatedOn:
+        other: 最終更新
+
+notFound:
+    title:
+        other: 404 Not Found
+    subtitle:
+        other: 指定されたページは存在しません。
+
+widget:
+    archives:
+        title:
+            other: アーカイブ
+        more:
+            other: さらに見る
+    tagCloud:
+        title:
+            other: タグ
