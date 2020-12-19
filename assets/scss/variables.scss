@@ -6,8 +6,13 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 */
 :root {
     @media (min-width: $on-phone + 1) {
+        --main-top-padding: 35px;
+    }
+
+    @media (min-width: $on-desktop-large) {
         --main-top-padding: 50px;
     }
+
 
     --body-background: #f5f5fa;
 
@@ -54,15 +59,18 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --card-border-radius: 10px;
 
-    --content-padding: 30px;
+    --card-padding: 30px;
     @media (max-width: $on-desktop-large) {
-        --content-padding: 25px;
+        --card-padding: 25px;
     }
     @media (max-width: $on-tablet) {
-        --content-padding: 20px;
+        --card-padding: 20px;
     }
 
     --small-card-padding: 25px;
+    @media (max-width: $on-tablet) {
+        --small-card-padding: 25px 20px;
+    }
 
     .theme-dark {
         --card-background: #424242;

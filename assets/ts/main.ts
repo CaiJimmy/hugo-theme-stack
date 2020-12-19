@@ -10,6 +10,7 @@ import { createGallery } from "./gallery"
 import { getColor } from './color';
 import menu from './menu';
 import darkmode from "./darkmode";
+import createElement from './createElement';
 
 let Stack = {
     init: () => {
@@ -68,29 +69,6 @@ let Stack = {
 
             observer.observe(articleTile)
         }
-    },
-    alert: (content, time = 5000, animationSpeed = 500) => {
-        const alert = document.createElement('div');
-        alert.innerHTML = content;
-        alert.className = 'alert';
-        alert.style.visibility = 'hidden';
-        document.body.appendChild(alert);
-
-        alert.style.transform = `translateY(${alert.clientHeight + 50}px)`;
-        alert.style.transition = `transform ${animationSpeed / 1000}s ease`;
-
-        setTimeout(() => {
-            alert.style.removeProperty('visibility');
-            alert.style.transform = `translateY(0)`;
-        }, animationSpeed);
-
-        setTimeout(() => {
-            alert.style.transform = `translateY(${alert.clientHeight + 50}px)`;
-        }, animationSpeed + time);
-
-        setTimeout(() => {
-            alert.remove();
-        }, 2 * animationSpeed + time);
     }
 }
 
@@ -100,4 +78,12 @@ window.addEventListener('load', () => {
     }, 0);
 })
 
+declare global {
+    interface Window {
+        createElement: any;
+        Stack: any
+    }
+}
+
 window.Stack = Stack;
+window.createElement = createElement;

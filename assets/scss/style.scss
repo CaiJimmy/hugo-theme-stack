@@ -8,6 +8,7 @@
 
 @import "breakpoints.scss";
 @import "variables.scss";
+@import "grid.scss";
 
 @import "external/normalize.scss";
 
@@ -22,6 +23,9 @@
 @import "partials/layout/article.scss";
 @import "partials/layout/taxonomy.scss";
 @import "partials/layout/404.scss";
+@import "partials/layout/search.scss";
+
+@import "custom.scss";
 
 a {
     text-decoration: none;
@@ -41,96 +45,16 @@ a {
     }
 }
 
-.container {
-    margin-left: auto;
-    margin-right: auto;
+.section-title {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--body-text-color);
 
-    &.extended {
-        @media (min-width: $on-phone) {
-            max-width: 800px;
-        }
-
-        @media (min-width: $on-tablet) {
-            max-width: 972px;
-        }
-
-        @media (min-width: $on-desktop) {
-            max-width: 1200px;
-        }
-
-        @media (min-width: $on-desktop-large) {
-            max-width: 1536px;
-        }
-    }
-}
-
-main.main {
-    min-width: 0;
-    padding: 0 15px;
-    max-width: 100%;
-    flex-grow: 1;
-    padding-top: var(--main-top-padding);
-}
-
-.main-grid {
-    @media (max-width: $on-phone) {
-        flex-direction: column;
-    }
-}
-
-.flex {
-    display: flex;
-    flex-direction: row;
-
-    &.column {
-        flex-direction: column;
-    }
-
-    &.on-phone--column {
-        @media (max-width: $on-phone) {
-            flex-direction: column;
-        }
-    }
-
-    &.align-items--flex-start {
-        align-items: flex-start;
-    }
-
-    .grow {
-        flex-grow: 1;
-    }
-
-    .do-not-shrink {
-        flex-shrink: 0;
-    }
-
-    .do-not-overflow {
-        min-width: 0;
-        flex-shrink: 1;
-        max-width: 100%;
-    }
-
-    .full-width {
-        width: 100%;
-    }
-}
-
-.alert {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 5;
-    background: var(--card-background);
-    max-width: 400px;
-    padding: 15px 20px;
-    border-radius: var(--card-border-radius);
-    line-height: 1.75;
-    color: var(--card-text-color-secondary);
-    box-shadow: var(--shadow-l2);
-
-    @media (max-width: $on-phone) {
-        max-width: 100vw;
-        width: calc(100% - 30px);
-        left: 15px;
+    a {
+        color: var(--body-text-color);
     }
 }

@@ -8,17 +8,23 @@
     <header class="site-info">
         {{ with .Site.Params.sidebar.avatar }}
             <figure class="site-avatar">
-                {{ $avatar := resources.Get (.) }}
-
-                {{ if $avatar }}
-                    {{ $avatarResized := $avatar.Resize "300x300" }}
-                    <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-                        height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                {{ if not .local }}
+                    <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 {{ else }}
-                    {{ errorf "Failed loading avatar from %q" . }}
+                    {{ $avatar := resources.Get (.src) }}
+                    
+                    {{ if $avatar }}
+                        {{ $avatarResized := $avatar.Resize "300x" }}
+                        <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
+                            height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                    {{ else }}
+                        {{ errorf "Failed loading avatar from %q" . }}
+                    {{ end }}
                 {{ end }}
 
-                <span class="emoji">{{ $.Site.Params.sidebar.emoji }}</span>
+                {{ with $.Site.Params.sidebar.emoji }}
+                    <span class="emoji">{{ . }}</span>
+                {{ end }}
             </figure>
         {{ end }}
         <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
@@ -31,9 +37,9 @@
         {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
 
         <li {{ if $active }} class='current' {{ end }}>
-            <a href='{{ .URL | absLangURL }}'>
+            <a href='{{ .URL | relURL }}'>
                 {{ if .Pre }}
-                    {{ (resources.Get (delimit (slice "icons/" .Pre ".svg") "")).Content | safeHTML }}
+                    {{ partial "helper/icon" .Pre }}
                 {{ end }}
                 <span>{{- .Name -}}</span>
             </a>
@@ -43,7 +49,7 @@
         <li id="dark-mode-toggle">
             {{ (resources.Get "icons/toggle-left.svg").Content | safeHTML }}
             {{ (resources.Get "icons/toggle-right.svg").Content | safeHTML }}
-            <span>{{ T "darkModeToggle" }}</span>
+            <span>{{ T "darkMode.toggle" }}</span>
         </li>
     </ol>
 </aside>

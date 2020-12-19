@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-    {{- partial "head/head.html" . -}}
+    <head>
+        {{- partial "head/head.html" . -}}
+        {{- block "head" . -}}{{ end }}
+    </head>
     <body class="{{ block `body-class` . }}{{ end }}">
         <script>
             (function() {
@@ -15,7 +18,7 @@
             })();
         </script>
 
-        <div class="container extended flex on-phone--column align-items--flex-start {{ block `container-class` . }}{{end}}">
+        <div class="container flex on-phone--column align-items--flex-start {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }} {{ block `container-class` . }}{{end}}">
             {{ partial "sidebar/left.html" . }}
             <main class="main full-width">
                 {{- block "main" . }}{{- end }}

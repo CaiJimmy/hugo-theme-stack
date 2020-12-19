@@ -1,0 +1,119 @@
+.container {
+    margin-left: auto;
+    margin-right: auto;
+
+    &.extended {
+        @media (min-width: $on-phone) {
+            max-width: 800px;
+
+            .left-sidebar {
+                width: 25%;
+            }
+        }
+
+        @media (min-width: $on-tablet) {
+            max-width: 972px;
+
+            .right-sidebar {
+                width: 25%;
+            }
+        }
+
+        @media (min-width: $on-desktop) {
+            max-width: 1200px;
+
+            .left-sidebar {
+                width: 20%;
+            }
+
+            .right-sidebar {
+                width: 25%;
+            }
+        }
+
+        @media (min-width: $on-desktop-large) {
+            max-width: 1536px;
+
+            .left-sidebar {
+                width: 15%;
+            }
+        }
+    }
+
+    &.compact {
+        @media (min-width: $on-phone) {
+            max-width: 800px;
+
+            .left-sidebar {
+                width: 25%;
+            }
+        }
+
+        @media (min-width: $on-tablet) {
+            max-width: 972px;
+        }
+
+        @media (min-width: $on-desktop) {
+            max-width: 1050px;
+
+            .left-sidebar {
+                width: 20%;
+            }
+        }
+
+        @media (min-width: $on-desktop-large) {
+            max-width: 1300px;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.on-phone--column {
+        @media (max-width: $on-phone) {
+            flex-direction: column;
+        }
+    }
+
+    &.align-items--flex-start {
+        align-items: flex-start;
+    }
+
+    .grow {
+        flex-grow: 1;
+    }
+
+    .do-not-shrink {
+        flex-shrink: 0;
+    }
+
+    .do-not-overflow {
+        min-width: 0;
+        flex-shrink: 1;
+        max-width: 100%;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+}
+
+main.main {
+    min-width: 0;
+    padding: 0 15px;
+    max-width: 100%;
+    flex-grow: 1;
+    padding-top: var(--main-top-padding);
+}
+
+.main-grid {
+    @media (max-width: $on-phone) {
+        flex-direction: column;
+    }
+}
