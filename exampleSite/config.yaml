@@ -20,6 +20,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
+    favicon:
 
     dateFormat:
         published: Jan 02, 2006
