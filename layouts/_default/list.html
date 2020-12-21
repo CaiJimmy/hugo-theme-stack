@@ -1,7 +1,5 @@
 {{ define "main" }}
-    <div class="widget">
-        <h3 class="widget-title">{{ .Title }}</h3>
-    </div>
+    <h3 class="section-title">{{ .Title }}</h3>
 
     <section class="article-list--compact">
         {{ range .Paginator.Pages }}
