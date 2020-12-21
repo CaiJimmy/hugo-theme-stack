@@ -5,8 +5,7 @@
 *   @website: https://jimmycai.com
 *   @link: https://github.com/CaiJimmy/hugo-theme-stack
 */
-
-import { createGallery } from "ts/gallery"
+import StackGallery from "ts/gallery";
 import { getColor } from 'ts/color';
 import menu from 'ts/menu';
 import createElement from 'ts/createElement';
@@ -18,8 +17,9 @@ let Stack = {
          */
         menu();
 
-        if (document.querySelector('.article-content')) {
-            createGallery('.article-content');
+        const articleContent = document.querySelector('.article-content') as HTMLElement;
+        if (articleContent) {
+            new StackGallery(articleContent);
         }
 
         /**
