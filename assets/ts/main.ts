@@ -6,10 +6,10 @@
 *   @link: https://github.com/CaiJimmy/hugo-theme-stack
 */
 
-import { createGallery } from "./gallery"
-import { getColor } from './color';
-import menu from './menu';
-import createElement from './createElement';
+import { createGallery } from "ts/gallery"
+import { getColor } from 'ts/color';
+import menu from 'ts/menu';
+import createElement from 'ts/createElement';
 
 let Stack = {
     init: () => {
