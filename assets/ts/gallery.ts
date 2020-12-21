@@ -115,6 +115,22 @@ class StackGallery {
         return Promise.all(tasks);
     }
 
+    private openGallery(index: number) {
+        const pswp = document.querySelector('.pswp') as HTMLDivElement;
+        const ps = new window.PhotoSwipe(pswp, window.PhotoSwipeUI_Default, this.items, {
+            index: index,
+            getThumbBoundsFn: (index) => {
+                const thumbnail = this.items[index].el.getElementsByTagName('img')[0],
+                    pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                    rect = thumbnail.getBoundingClientRect();
+
+                return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+            }
+        });
+
+        ps.init();
+    }
+
     private initPS() {
         const pswp = document.querySelector('.pswp') as HTMLDivElement;
         pswp.style.removeProperty('display');
@@ -124,20 +140,7 @@ class StackGallery {
 
             a.addEventListener('click', (e) => {
                 e.preventDefault();
-
-                const pswp = document.querySelector('.pswp') as HTMLDivElement;
-                const ps = new window.PhotoSwipe(pswp, window.PhotoSwipeUI_Default, this.items, {
-                    index: index,
-                    getThumbBoundsFn: (index) => {
-                        const thumbnail = this.items[index].el.getElementsByTagName('img')[0],
-                            pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                            rect = thumbnail.getBoundingClientRect();
-
-                        return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
-                    }
-                });
-
-                ps.init();
+                this.openGallery(index);
             })
         }
     }
