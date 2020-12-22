@@ -1,53 +1,64 @@
-export default () => {
-    const toggleDarkMode = document.getElementById('dark-mode-toggle');
-    const darkModeKey = 'StackDarkMode';
-    const darkModeItem = localStorage.getItem(darkModeKey);
-    const darkModeEnabled = localStorage.getItem(darkModeKey) === 'true';
-    const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+type colorScheme = 'light' | 'dark' | 'auto';
 
-    let darkMode = false;
+const colorSchemeKey = 'StackColorScheme';
+const mql = window.matchMedia('(prefers-color-scheme: dark)');
+const schemeSelect = document.getElementById('schemeSelect') as HTMLSelectElement;
 
-    if (darkModeItem && darkModeEnabled || !darkModeItem && supportDarkMode) {
-        /**
-         * Enable dark mode if:
-         * 1. If dark mode is set already (in local storage)
-         * 2. No color scheme preference is set in localstorage, and user's browser indicates preference for dark mode
-         */
-        darkMode = true;
-    }
+const supportDarkMode = () => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+}
 
-    const setBodyClass = () => {
-        if (darkMode) {
+const saveScheme = (scheme: colorScheme) => {
+    localStorage.setItem(colorSchemeKey, scheme);
+}
+
+const getScheme = () => {
+    return localStorage.getItem(colorSchemeKey) as colorScheme;
+};
+
+const setScheme = (scheme: colorScheme) => {
+    if (scheme === 'auto') {
+        if (supportDarkMode()) {
             document.body.dataset.scheme = 'dark';
         }
         else {
             document.body.dataset.scheme = 'light';
         }
     }
-
-    const mediaQueryListener = (e) => {
-        darkMode = e.matches;
-        setBodyClass();
+    else {
+        document.body.dataset.scheme = scheme;
     }
-    
-    let listening = false;
-    if (!darkModeItem) {
-        /**
-         * If no dark mode preference is set in local storage, listen to browser color preference change
-         */
-        mql.addEventListener('change', mediaQueryListener);
-        listening = true;
-    }
+}
 
+const mediaQueryListener = (e) => {
+    setScheme('auto');
+}
+
+export default () => {
     document.body.style.setProperty('transition', 'background-color .3s ease');
 
-    toggleDarkMode.addEventListener('click', (e) => {
-        darkMode = !darkMode;
-        setBodyClass();
-        localStorage.setItem(darkModeKey, darkMode.toString());
+    if (!getScheme()) {
+        /// First time visiting
+        setScheme('auto');
+        saveScheme('auto')
+        mql.addEventListener('change', mediaQueryListener);
+    }
+    else {
+        setScheme(getScheme());
+    }
 
-        if (listening) {
+    schemeSelect.value = getScheme();
+
+    schemeSelect.addEventListener('change', (e) => {
+        const value = schemeSelect.value as colorScheme;
+
+        setScheme(value);
+        saveScheme(value);
+
+        if (value === 'auto') {
+            mql.addEventListener('change', mediaQueryListener);
+        }
+        else {
             /**
              * Remove listener once user set color preference in website
              */

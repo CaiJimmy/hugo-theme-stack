@@ -46,10 +46,14 @@
         </li>
         {{ end }}
 
-        <li id="dark-mode-toggle">
-            {{ (resources.Get "icons/toggle-left.svg").Content | safeHTML }}
-            {{ (resources.Get "icons/toggle-right.svg").Content | safeHTML }}
-            <span>{{ T "darkMode.toggle" }}</span>
+        <li id="schemeSelectItem">
+            {{ (resources.Get "icons/brightness.svg").Content | safeHTML }}
+
+            <select id="schemeSelect">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="auto">Auto</option>
+            </select>
         </li>
     </ol>
 </aside>
