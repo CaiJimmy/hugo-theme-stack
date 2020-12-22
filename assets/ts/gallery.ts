@@ -17,15 +17,23 @@ interface PhotoSwipeItem {
 }
 
 class StackGallery {
+    private galleryUID: number;
     private items: PhotoSwipeItem[] = [];
 
-    constructor(container: HTMLElement) {
+    constructor(container: HTMLElement, galleryUID = 1) {
+        this.galleryUID = galleryUID;
+
         StackGallery.createGallery(container);
-        this.initItems(container);
-        StackGallery.loadPS().then(() => { this.initPS() });
+        this.loadItems(container);
+
+        StackGallery.loadPS().then(() => {
+            const pswp = document.querySelector('.pswp') as HTMLDivElement;
+            pswp.style.removeProperty('display');
+            this.bindClick();
+        });
     }
 
-    private initItems(container: HTMLElement) {
+    private loadItems(container: HTMLElement) {
         this.items = [];
 
         const figures = container.querySelectorAll('figure');
@@ -82,10 +90,10 @@ class StackGallery {
      * @param figures 
      */
     public static wrap(figures: HTMLElement[]) {
-        let galleryContainer = document.createElement('div');
+        const galleryContainer = document.createElement('div');
         galleryContainer.className = 'gallery';
 
-        let parentNode = figures[0].parentNode,
+        const parentNode = figures[0].parentNode,
             first = figures[0];
 
         parentNode.insertBefore(galleryContainer, first)
@@ -115,10 +123,11 @@ class StackGallery {
         return Promise.all(tasks);
     }
 
-    private openGallery(index: number) {
+    public open(index: number) {
         const pswp = document.querySelector('.pswp') as HTMLDivElement;
         const ps = new window.PhotoSwipe(pswp, window.PhotoSwipeUI_Default, this.items, {
             index: index,
+            galleryUID: this.galleryUID,
             getThumbBoundsFn: (index) => {
                 const thumbnail = this.items[index].el.getElementsByTagName('img')[0],
                     pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
@@ -131,16 +140,13 @@ class StackGallery {
         ps.init();
     }
 
-    private initPS() {
-        const pswp = document.querySelector('.pswp') as HTMLDivElement;
-        pswp.style.removeProperty('display');
-
+    private bindClick() {
         for (const [index, item] of this.items.entries()) {
             const a = item.el.querySelector('a');
 
             a.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.openGallery(index);
+                this.open(index);
             })
         }
     }
