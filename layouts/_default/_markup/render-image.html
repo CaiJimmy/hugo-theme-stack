@@ -7,7 +7,7 @@
 	{{- with $alt -}}
 	{{- $caption = . | safeHTML -}}
 	{{- end -}}
-	<figure>
+	<figure style="flex-grow: {{ div (mul $image.Width 100) $image.Height }}; flex-basis: {{ div (mul $image.Width 240) $image.Height }}px">
 		<a href="{{ $image.RelPermalink }}" data-size="{{ $image.Width }}x{{ $image.Height }}">
 			<img srcset="{{ $small.RelPermalink }} 480w, {{ $big.RelPermalink }} 1024w"
 				src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy"
