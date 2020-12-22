@@ -3,7 +3,7 @@
     {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
     {{ if $categories }}
     <h2 class="section-title">{{ T "archives.categories" }}</h2>
-    <div class="category-list">
+    <div class="subsection-list">
         <div class="article-list--tile">
             {{ range $categories }}
                 {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}

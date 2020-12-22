@@ -1,8 +1,51 @@
 {{ define "main" }}
-    <h3 class="section-title">{{ .Title }}</h3>
+    <h3 class="section-title">
+        {{ if eq .Parent (.GetPage "/") }}
+            {{ T "list.section" }}
+        {{ else }}
+            {{ .Parent.Title }}
+        {{ end }}
+    </h3>
 
+    <div class="section-card">
+        <div class="section-details">
+            <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
+            <h1 class="section-term">{{ .Title }}</h1>
+            {{ with .Params.description }}
+                <h2 class="section-description">{{ . }}</h2>
+            {{ end }}
+        </div>
+
+        {{- $image := partialCached "helper/image" (dict "Context" . "Type" "section") .RelPermalink "section" -}}
+        {{ if $image.exists }}
+            <div class="section-image">
+                {{ if $image.resource }}   
+                    {{- $thumbnail := $image.resource.Fill "120x120" -}}
+                    <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}"
+                        height="{{ $thumbnail.Height }}" loading="lazy">
+                {{ else }}
+                    <img src="{{ $image.permalink }}" loading="lazy">
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
+
+    {{ $subsections := .Sections }}
+    {{ with $subsections }}
+        <h2 class="section-title">{{ T "list.subsection" (len $subsections) }}</h2>
+        <div class="subsection-list">
+            <div class="article-list--tile">
+                {{ range . }}
+                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "section") }}
+                {{ end }}
+            </div>
+        </div>
+    {{ end }}
+    
+    {{/* List only pages that are not a subsection */}}
+    {{ $paginator := .Paginate (.Pages | complement $subsections) }}
     <section class="article-list--compact">
-        {{ range .Paginator.Pages }}
+        {{ range $paginator.Pages }}
             {{ partial "article-list/compact" . }}
         {{ end }}
     </section>

@@ -1,31 +1,3 @@
 .archives-group {
     margin-bottom: var(--section-separation);
 }
-
-.template-archives {
-    .category-list {
-        margin-bottom: var(--section-separation);
-        overflow-x: auto;
-
-        .article-list--tile {
-            display: flex;
-            padding-bottom: 15px;
-
-            article {
-                width: 250px;
-                height: 150px;
-                margin-right: 20px;
-                flex-shrink: 0;
-
-                .article-title {
-                    margin: 0;
-                    font-size: 1.8rem;
-                }
-
-                .article-details {
-                    padding: 20px;
-                }
-            }
-        }
-    }
-}
