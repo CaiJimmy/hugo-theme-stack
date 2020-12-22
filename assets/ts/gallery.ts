@@ -21,11 +21,11 @@ class StackGallery {
     private items: PhotoSwipeItem[] = [];
 
     constructor(container: HTMLElement, galleryUID = 1) {
-        if (window.PhotoSwipe == undefined) {
+        if (window.PhotoSwipe == undefined || window.PhotoSwipeUI_Default == undefined) {
             console.error("PhotoSwipe lib not loaded.");
             return;
         }
-        
+
         this.galleryUID = galleryUID;
 
         StackGallery.createGallery(container);
