@@ -23,20 +23,6 @@ let Stack = {
         }
 
         /**
-         * Add color to tags
-         */
-        document.querySelectorAll('.color-tag').forEach(async (tag: HTMLLinkElement) => {
-            const imageURL = tag.getAttribute('data-image'),
-                key = tag.getAttribute('data-key'),
-                hash = tag.getAttribute('data-hash');
-
-            const colors = await getColor(key, hash, imageURL);
-
-            tag.style.color = colors.Vibrant.bodyTextColor;
-            tag.style.background = colors.Vibrant.hex;
-        })
-
-        /**
          * Add linear gradient background to tile style article
          */
         const articleTile = document.querySelector('.article-list--tile');
