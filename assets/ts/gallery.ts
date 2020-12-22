@@ -83,8 +83,7 @@ class StackGallery {
     }
 
     /**
-     * Wrap adjacent figure tags with div.gallery, and append style
-     * Reference: https://github.com/xieranmaya/blog/issues/6
+     * Wrap adjacent figure tags with div.gallery
      * @param figures 
      */
     public static wrap(figures: HTMLElement[]) {
@@ -97,12 +96,6 @@ class StackGallery {
         parentNode.insertBefore(galleryContainer, first)
 
         for (const figure of figures) {
-            const width = figure.querySelector('img').width,
-                height = figure.querySelector('img').height;
-
-            figure.style.flexGrow = `${width * 100 / height}`;
-            figure.style.flexBasis = `${width * 240 / height}px`;
-
             galleryContainer.appendChild(figure);
         }
     }
