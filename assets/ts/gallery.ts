@@ -1,5 +1,3 @@
-import { loadScript, loadStyle } from 'ts/utils';
-
 declare global {
     interface Window {
         PhotoSwipe: any;
