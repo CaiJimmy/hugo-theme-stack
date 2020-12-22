@@ -21,16 +21,16 @@ class StackGallery {
     private items: PhotoSwipeItem[] = [];
 
     constructor(container: HTMLElement, galleryUID = 1) {
+        if (window.PhotoSwipe == undefined) {
+            console.error("PhotoSwipe lib not loaded.");
+            return;
+        }
+        
         this.galleryUID = galleryUID;
 
         StackGallery.createGallery(container);
         this.loadItems(container);
-
-        StackGallery.loadPS().then(() => {
-            const pswp = document.querySelector('.pswp') as HTMLDivElement;
-            pswp.style.removeProperty('display');
-            this.bindClick();
-        });
+        this.bindClick();
     }
 
     private loadItems(container: HTMLElement) {
@@ -107,20 +107,6 @@ class StackGallery {
 
             galleryContainer.appendChild(figure);
         }
-    }
-
-    /**
-     * Load PhotoSwipe library dynamically
-     */
-    public static loadPS() {
-        const tasks = [
-            loadScript("https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"),
-            loadScript("https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"),
-            loadStyle("https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"),
-            loadStyle("https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css")
-        ];
-
-        return Promise.all(tasks);
     }
 
     public open(index: number) {
