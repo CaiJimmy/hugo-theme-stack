@@ -1,27 +1,35 @@
-{{- with .Site.Params.colorScheme -}}
-    {{/* If toggle is disabled, set color to default */}}
-    {{- $defaultColorScheme := default "default" .default -}}
-    {{- if not .toggle -}}
-        <script>
-            (function() {
-                const colorSchemeKey = 'StackColorScheme';
-                localStorage.setItem(colorSchemeKey, {{ $defaultColorScheme }});
-            })();
-        </script>
-    {{- end -}}
+{{- $defaultColorScheme := default "auto" .Site.Params.colorScheme.default -}}
+{{- if not (default false .Site.Params.colorScheme.toggle) -}}
+    {{/* If toggle is disabled, force default scheme */}}
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "{{ $defaultColorScheme }}");
+        })();
+    </script>
+{{- else -}}
+    {{/* Otherwise set to default scheme only if no preference is set by user */}}
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "{{ $defaultColorScheme }}");
+            }
+        })();
+    </script>
 {{- end -}}
+
 <script>
     (function() {
         const colorSchemeKey = 'StackColorScheme';
         const colorSchemeItem = localStorage.getItem(colorSchemeKey);
         const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-        if (colorSchemeItem == 'dark' || !colorSchemeItem && supportDarkMode || colorSchemeItem === 'auto' && supportDarkMode) {
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             /**
              * Enable dark mode if:
              * 1. If dark mode is set already (in local storage)
-             * 2. No color scheme preference is set in localstorage, and user's browser indicates preference for dark mode
-             * 3. Auto mode & prefere color scheme is dark
+             * 2. Auto mode & prefere color scheme is dark
              */
             document.body.dataset.scheme = 'dark';
         } else {
