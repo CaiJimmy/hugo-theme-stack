@@ -4,12 +4,25 @@
         <div class="article-image">
             <a href="{{ .RelPermalink }}">
                 {{ if $image.resource }}
-                    {{- $thumbnail := $image.resource.Fill "800x250" -}}
-                    {{- $thumbnailRetina := $image.resource.Fill "1600x500" -}}
+                    {{- $Permalink := $image.resource.RelPermalink -}}
+                    {{- $Width := $image.resource.Width -}}
+                    {{- $Height := $image.resource.Height -}}
+                    {{- $Srcset := "" -}}
+                    
+                    {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                        {{- $thumbnail := $image.resource.Fill "800x250" -}}
+                        {{- $thumbnailRetina := $image.resource.Fill "1600x500" -}}
+                        {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
+                        {{- $Permalink = $thumbnail.RelPermalink -}}
+                        {{- $Width = $thumbnail.Width -}}
+                        {{- $Height = $thumbnail.Height -}}
+                    {{- end -}}
 
-                    <img src="{{ $thumbnail.RelPermalink }}" 
-                        srcset="{{ $thumbnail.RelPermalink }} 800w, {{ $thumbnailRetina.RelPermalink }} 1600w"
-                        width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" loading="lazy"
+                    <img src="{{ $Permalink }}"
+                        {{ with $Srcset }}srcset="{{ . }}"{{ end }}
+                        width="{{ $Width }}" 
+                        height="{{ $Height }}" 
+                        loading="lazy"
                         alt="Featured image of post {{ .Title }}" />
                 {{ else }}
                     <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />

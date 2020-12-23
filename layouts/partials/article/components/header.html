@@ -3,12 +3,22 @@
     {{ if $image.exists }}
         <div class="article-image">
             {{ if $image.resource }}
-                {{- $tablet := $image.resource.Resize "1024x" -}}
-                {{- $desktop := $image.resource.Resize "2000x" -}}
-
-                <img srcset="{{ $tablet.RelPermalink }} 1024w, {{ $desktop.RelPermalink }} 2000w"
-                    src="{{ $desktop.RelPermalink }}" width="{{ $image.resource.Width }}" height="{{ $image.resource.Height }}" loading="lazy"
-                    alt="Featured image of post {{ .Title }}" />
+                {{- if (default true .Site.Params.imageProcessing.cover.enabled) -}}
+                    {{- $tablet := $image.resource.Resize "1024x" -}}
+                    {{- $desktop := $image.resource.Resize "2000x" -}}
+                    <img srcset="{{ $tablet.RelPermalink }} 1024w, {{ $desktop.RelPermalink }} 2000w"
+                        src="{{ $desktop.RelPermalink }}" 
+                        width="{{ $image.resource.Width }}" 
+                        height="{{ $image.resource.Height }}" 
+                        loading="lazy"
+                        alt="Featured image of post {{ .Title }}" />
+                {{- else -}}
+                    <img src="{{ $image.resource.RelPermalink }}" 
+                        width="{{ $image.resource.Width }}" 
+                        height="{{ $image.resource.Height }}" 
+                        loading="lazy"
+                        alt="Featured image of post {{ .Title }}" />
+                {{- end -}}
             {{ else }}
                 <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
             {{ end }}

@@ -9,8 +9,12 @@
 
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
     {{- if and $image.exists $image.resource -}}
-        {{- $thumbnail := $image.resource.Fill "120x120" -}}
-        {{- $image := dict "image" (absURL $thumbnail.Permalink) -}}
+        {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+            {{- $thumbnail := $image.resource.Fill "120x120" -}}
+            {{- $image := dict "image" (absURL $thumbnail.Permalink) -}}
+        {{- else -}}
+            {{- $image := dict "image" (absURL $image.resource.Permalink) -}}
+        {{- end -}}
         {{- $data = merge $data $image -}}
     {{ end }}
 

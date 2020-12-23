@@ -1,19 +1,27 @@
 {{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
 {{- if $image -}}
-	{{- $small := $image.Resize "480x" -}}
-	{{- $big := $image.Resize "1024x" -}}
 	{{- $alt := .PlainText | safeHTML -}}
-	{{- $caption := "" -}}
-	{{- with $alt -}}
-	{{- $caption = . | safeHTML -}}
-	{{- end -}}
 	<figure style="flex-grow: {{ div (mul $image.Width 100) $image.Height }}; flex-basis: {{ div (mul $image.Width 240) $image.Height }}px">
 		<a href="{{ $image.RelPermalink }}" data-size="{{ $image.Width }}x{{ $image.Height }}">
-			<img srcset="{{ $small.RelPermalink }} 480w, {{ $big.RelPermalink }} 1024w"
-				src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy"
-				alt="{{ if $alt }}{{ $alt }}{{ else if $caption }}{{ $caption | markdownify | plainify }}{{ else }}&nbsp;{{ end }}">
+			{{- $Permalink := $image.RelPermalink -}}
+			{{- $Width := $image.Width -}}
+			{{- $Height := $image.Height -}}
+			{{- $Srcset := "" -}}
+
+			{{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
+				{{- $small := $image.Resize "480x" -}}
+				{{- $big := $image.Resize "1024x" -}}
+				{{- $Srcset = printf "%s 480w, %s 1024w" $small.RelPermalink $big.RelPermalink -}}
+			{{- end -}}
+			
+			<img src="{{ $Permalink }}"
+				{{ with $Srcset }}srcset="{{ . }}"{{ end }}
+				width="{{ $Width }}"
+				height="{{ $Height }}"
+				loading="lazy"
+				{{ with $alt }}alt="{{ . }}"{{ end }}>
 		</a>
-		{{ with $caption }}
+		{{ with $alt }}
 		<figcaption>{{ . | markdownify }}</figcaption>
 		{{ end }}
 	</figure>
