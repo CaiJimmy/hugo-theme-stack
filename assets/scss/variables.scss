@@ -1,6 +1,18 @@
 $defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
 $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
+[data-scheme="light"] {
+    --pre-text-color: #272822;
+    --pre-background-color: #fafafa;
+    @import "partials/highlight/light.scss";
+}
+
+[data-scheme="dark"] {
+    --pre-text-color: #f8f8f2;
+    --pre-background-color: #272822;
+    @import "partials/highlight/dark.scss";
+}
+
 /*
 *   Global style
 */
@@ -13,7 +25,6 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --main-top-padding: 50px;
     }
 
-
     --body-background: #f5f5fa;
 
     --accent-color: #34495e;
@@ -25,7 +36,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --section-separation: 40px;
 
-    @media (prefers-color-scheme: dark) {
+    [data-scheme="dark"] {
         --body-background: #303030;
         --accent-color: #ecf0f1;
         --accent-color-darker: #bdc3c7;
@@ -72,7 +83,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --small-card-padding: 25px 20px;
     }
 
-    @media (prefers-color-scheme: dark) {
+    [data-scheme="dark"] {
         --card-background: #424242;
         --card-background-selected: rgba(255, 255, 255, 0.16);
         --card-text-color-main: rgba(255, 255, 255, 0.9);
@@ -116,7 +127,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --table-border-color: #dadada;
     --tr-even-background-color: #efefee;
 
-    @media (prefers-color-scheme: dark) {
+    [data-scheme="dark"] {
         --code-background-color: #272822;
         --code-text-color: rgba(255, 255, 255, 0.9);
 
