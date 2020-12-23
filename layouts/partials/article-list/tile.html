@@ -6,10 +6,23 @@
             <div class="article-image">
                 {{ if $image.resource }}
                     {{- $imageRaw := $image.resource | resources.Fingerprint "md5" -}}
-                    {{- $thumbnail := $imageRaw.Fill .size -}}
+                    {{- $Permalink := $imageRaw.RelPermalink -}}
+                    {{- $Width := $imageRaw.Width -}}
+                    {{- $Height := $imageRaw.Height -}}
 
-                    <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" 
-                        loading="lazy" data-key="{{ .context.Slug }}" data-hash="{{ $imageRaw.Data.Integrity }}">
+                    {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                        {{- $thumbnail := $imageRaw.Fill .size -}}
+                        {{- $Permalink = $thumbnail.RelPermalink -}}
+                        {{- $Width = $thumbnail.Width -}}
+                        {{- $Height = $thumbnail.Height -}}
+                    {{- end -}}
+                    
+                    <img src="{{ $Permalink }}" 
+                        width="{{ $Width }}" 
+                        height="{{ $Height }}" 
+                        loading="lazy" 
+                        data-key="{{ .context.Slug }}" 
+                        data-hash="{{ $imageRaw.Data.Integrity }}">
                 {{ else }}
                     <img src="{{ $image.permalink }}" loading="lazy" data-key="{{ .context.Slug }}" data-hash="{{ $image.permalink }}"/>
                 {{ end }}
