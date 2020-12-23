@@ -79,6 +79,10 @@ params:
             local: false
             src:
 
+    colorScheme:
+        toggle: true
+        default: auto
+
 menu:
     main:
         - identifier: home

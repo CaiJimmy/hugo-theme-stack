@@ -8,8 +8,12 @@ class StackDarkMode {
     constructor(toggleEl: HTMLElement) {
         this.bindMatchMedia();
         this.currentScheme = this.getSavedScheme();
-        this.setBodyClass();
-        this.bindClick(toggleEl);
+
+        if (toggleEl)
+            this.bindClick(toggleEl);
+
+        if (document.body.style.transition == '')
+            document.body.style.setProperty('transition', 'background-color .3s ease');
     }
 
     private saveScheme() {
@@ -49,9 +53,6 @@ class StackDarkMode {
     }
 
     private setBodyClass() {
-        if (document.body.style.transition == '')
-            document.body.style.setProperty('transition', 'background-color .3s ease');
-
         if (this.isDark()) {
             document.body.dataset.scheme = 'dark';
         }

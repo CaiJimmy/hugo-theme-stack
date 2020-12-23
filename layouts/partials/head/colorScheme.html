@@ -1,3 +1,15 @@
+{{- with .Site.Params.colorScheme -}}
+    {{/* If toggle is disabled, set color to default */}}
+    {{- $defaultColorScheme := default "default" .default -}}
+    {{- if not .toggle -}}
+        <script>
+            (function() {
+                const colorSchemeKey = 'StackColorScheme';
+                localStorage.setItem(colorSchemeKey, {{ $defaultColorScheme }});
+            })();
+        </script>
+    {{- end -}}
+{{- end -}}
 <script>
     (function() {
         const colorSchemeKey = 'StackColorScheme';

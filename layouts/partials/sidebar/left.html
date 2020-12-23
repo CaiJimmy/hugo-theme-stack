@@ -46,10 +46,12 @@
         </li>
         {{ end }}
 
-        <li id="dark-mode-toggle">
-            {{ partial "helper/icon" "toggle-left" }}
-            {{ partial "helper/icon" "toggle-right" }}
-            <span>Dark Mode</span>
-        </li>
+        {{ if (default false .Site.Params.colorScheme.toggle) }}
+            <li id="dark-mode-toggle">
+                {{ partial "helper/icon" "toggle-left" }}
+                {{ partial "helper/icon" "toggle-right" }}
+                <span>Dark Mode</span>
+            </li>
+        {{ end }}
     </ol>
 </aside>
