@@ -20,22 +20,19 @@ Stack is a simple card-style Hugo theme designed for bloggers, some of its featu
 - Responsive images support
 - Lazy load images
 - Dark mode
+- Local search
 - [PhotoSwipe](https://photoswipe.com/) integration
 - Archive page template
 - Full native JavaScript, no jQuery or any other frameworks are used
 - No CSS framework, keep it simple and minimal
-- External dependencies (like PhotoSwipe's library) are being loaded selectively, or asynchronously
 - Properly cropped thumbnails
-
-The only JavaScript library being used is [node-vibrant](https://github.com/Vibrant-Colors/node-vibrant) for generating colour schemes for articles.
-
-![Page Insight](https://i.imgur.com/0hUWmMh.png)
+- Subsection support
 
 ## Requirements
 
-This theme uses SCSS and TypeScript. For that reason, it's necessary to use **Hugo ≥ 0.78.0**.
+It's necessary to use **Hugo ≥ 0.78.0**.
 
-Use Hugo Extended version if you want to:
+Use Hugo Extended version (recommended) if you want to:
 
 * Use the latest feature/fix from `master` branch
 * Edit SCSS files
@@ -46,7 +43,7 @@ Use Hugo Extended version if you want to:
 
 Clone / Download this repository to `theme` folder, and edit your site config following `exampleSite/config.toml`.
 
-Check [documentation](https://www.notion.so/jimmycai/Hugo-Theme-Stack-511aec5b9ed845ce9b6e3ae0bf7fb6d4) for more details.
+Check [documentation](https://docs.stack.jimmycai.com/) for more details.
 
 ## Copyright
 
@@ -58,7 +55,7 @@ If you want to port this theme to another blogging platform, please let me know�
 
 ## Sponsoring
 
-If you like this theme, consider supporting its development:
+If you like this theme, give it a star, and consider supporting its development:
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C530AXX)
 
