@@ -1,6 +1,9 @@
 toggleMenu:
     other: 切换菜单
 
+darkMode:
+    other: 暗色模式
+
 archives:
     categories:
         other: 分类
