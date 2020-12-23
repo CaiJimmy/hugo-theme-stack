@@ -38,7 +38,14 @@ class StackDarkMode {
     }
 
     private isDark() {
-        return (this.currentScheme == 'dark' || this.currentScheme == 'auto' && this.preferDarkMode);
+        return (this.currentScheme == 'dark' || this.currentScheme == 'auto' && this.systemPreferScheme == 'dark');
+    }
+
+    private dispatchEvent(colorScheme: colorScheme) {
+        const event = new CustomEvent('onColorSchemeChange', {
+            detail: colorScheme
+        });
+        window.dispatchEvent(event);
     }
 
     private setBodyClass() {
@@ -51,6 +58,8 @@ class StackDarkMode {
         else {
             document.body.dataset.scheme = 'light';
         }
+
+        this.dispatchEvent(document.body.dataset.scheme as colorScheme);
     }
 
     private getSavedScheme(): colorScheme {
