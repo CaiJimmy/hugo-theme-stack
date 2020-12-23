@@ -1,6 +1,6 @@
 type colorScheme = 'light' | 'dark' | 'auto';
 
-class StackDarkMode {
+class StackColorScheme {
     private localStorageKey = 'StackColorScheme';
     private currentScheme: colorScheme;
     private systemPreferScheme: colorScheme;
@@ -83,4 +83,4 @@ class StackDarkMode {
     }
 }
 
-export default StackDarkMode;
+export default StackColorScheme;
