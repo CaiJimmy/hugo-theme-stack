@@ -1,0 +1,39 @@
+{{- $defaultColorScheme := default "auto" .Site.Params.colorScheme.default -}}
+{{- if not (default false .Site.Params.colorScheme.toggle) -}}
+    {{/* If toggle is disabled, force default scheme */}}
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "{{ $defaultColorScheme }}");
+        })();
+    </script>
+{{- else -}}
+    {{/* Otherwise set to default scheme only if no preference is set by user */}}
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "{{ $defaultColorScheme }}");
+            }
+        })();
+    </script>
+{{- end -}}
+
+<script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            /**
+             * Enable dark mode if:
+             * 1. If dark mode is set already (in local storage)
+             * 2. Auto mode & prefere color scheme is dark
+             */
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script>

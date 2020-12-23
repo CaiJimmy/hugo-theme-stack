@@ -79,6 +79,13 @@ params:
             local: false
             src:
 
+    colorScheme:
+        # Display toggle
+        toggle: true
+        
+        # Available values: auto, light, dark
+        default: auto
+
 menu:
     main:
         - identifier: home

@@ -9,6 +9,7 @@ import StackGallery from "ts/gallery";
 import { getColor } from 'ts/color';
 import menu from 'ts/menu';
 import createElement from 'ts/createElement';
+import StackColorScheme from 'ts/colorScheme';
 
 let Stack = {
     init: () => {
@@ -52,6 +53,8 @@ let Stack = {
 
             observer.observe(articleTile)
         }
+
+        new StackColorScheme(document.getElementById('dark-mode-toggle'));
     }
 }
 
