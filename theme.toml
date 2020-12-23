@@ -20,7 +20,7 @@ features = [
     "opengraph",
     "widgets"
 ]
-min_version = "0.74.0"
+min_version = "0.78.0"
 
 [author]
   name = "Jimmy Cai"
