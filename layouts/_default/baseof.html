@@ -5,26 +5,8 @@
         {{- block "head" . -}}{{ end }}
     </head>
     <body class="{{ block `body-class` . }}{{ end }}">
-        <script>
-            (function() {
-                const colorSchemeKey = 'StackColorScheme';
-                const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-                const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-                if (colorSchemeItem == 'dark' || !colorSchemeItem && supportDarkMode || colorSchemeItem === 'auto' && supportDarkMode) {
-                    /**
-                     * Enable dark mode if:
-                     * 1. If dark mode is set already (in local storage)
-                     * 2. No color scheme preference is set in localstorage, and user's browser indicates preference for dark mode
-                     * 3. Auto mode & prefere color scheme is dark
-                     */
-                    document.body.dataset.scheme = 'dark';
-                } else {
-                    document.body.dataset.scheme = 'light';
-                }
-            })();
-        </script>
-
+        {{- partial "head/darkmode" . -}}
+        
         <div class="container flex on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }} {{ block `container-class` . }}{{end}}">
             {{ partial "sidebar/left.html" . }}
             <main class="main full-width">
