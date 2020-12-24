@@ -113,7 +113,5 @@ main.main {
 }
 
 .main-grid {
-    @media (max-width: $on-phone) {
-        flex-direction: column;
-    }
+    min-height: 100vh;
 }
