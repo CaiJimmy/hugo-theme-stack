@@ -305,4 +305,8 @@
     tr:nth-child(even) {
         background-color: var(--tr-even-background-color);
     }
+
+    .twitter-tweet {
+        color: var(--card-text-color-main);
+    }
 }
