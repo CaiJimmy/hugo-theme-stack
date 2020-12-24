@@ -6,7 +6,7 @@
     </head>
     <body class="{{ block `body-class` . }}{{ end }}">
         {{- partial "head/colorScheme" . -}}
-        <div class="container flex on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }} {{ block `container-class` . }}{{end}}">
+        <div class="container main-container flex on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }} {{ block `container-class` . }}{{end}}">
             {{ partial "sidebar/left.html" . }}
             <main class="main full-width">
                 {{- block "main" . }}{{- end }}

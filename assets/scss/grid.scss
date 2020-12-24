@@ -112,8 +112,6 @@ main.main {
     padding-top: var(--main-top-padding);
 }
 
-.main-grid {
-    @media (max-width: $on-phone) {
-        flex-direction: column;
-    }
+.main-container {
+    min-height: 100vh;
 }
