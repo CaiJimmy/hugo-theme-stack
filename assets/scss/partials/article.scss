@@ -193,6 +193,7 @@
             img {
                 width: var(--image-size);
                 height: var(--image-size);
+                object-fit: cover;
             }
         }
 
@@ -200,7 +201,7 @@
             font-size: 1.4rem;
         }
 
-        .article-preview{
+        .article-preview {
             font-size: 1.4rem;
             color: var(--card-text-color-tertiary);
             margin-top: 10px;
