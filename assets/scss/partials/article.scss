@@ -56,24 +56,6 @@
     padding: var(--card-padding);
 }
 
-.article-category {
-    margin-bottom: 10px;
-    a {
-        display: inline-block;
-        text-decoration: none;
-        padding: 8px 16px;
-        font-size: 1.4rem;
-        background: nth($defaultTagBackgrounds, 1);
-        color: nth($defaultTagColors, 1);
-        border-radius: var(--tag-border-radius);
-
-        @media (max-width: $on-phone) {
-            font-size: 1.25rem;
-            padding: 8px 14px;
-        }
-    }
-}
-
 .article-title {
     font-weight: 600;
     margin: 10px 0;
@@ -128,11 +110,12 @@
     }
 }
 
+.article-category,
 .article-tags {
     a {
         color: var(--accent-color-text);
         background-color: var(--accent-color);
-        padding: 8px 18px;
+        padding: 8px 16px;
         border-radius: var(--tag-border-radius);
         display: inline-block;
         font-size: 1.4rem;
