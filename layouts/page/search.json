@@ -8,15 +8,17 @@
     {{- $data := dict "title" .Title "date" .Date "permalink" .Permalink "content" (.Plain) -}}
 
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
-    {{- if and $image.exists $image.resource -}}
-        {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+    {{- if $image.exists -}}
+        {{- $imagePermalink := "" -}}
+        {{- if and $image.resource (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
             {{- $thumbnail := $image.resource.Fill "120x120" -}}
-            {{- $image := dict "image" (absURL $thumbnail.Permalink) -}}
+            {{- $imagePermalink = (absURL $thumbnail.Permalink) -}}
         {{- else -}}
-            {{- $image := dict "image" (absURL $image.resource.Permalink) -}}
+            {{- $imagePermalink = $image.permalink -}}
         {{- end -}}
-        {{- $data = merge $data $image -}}
-    {{ end }}
+        
+        {{- $data = merge $data (dict "image" (absURL $imagePermalink)) -}}
+    {{- end -}}
 
     {{- $result = $result | append $data -}}
 {{- end -}}
