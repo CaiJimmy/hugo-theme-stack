@@ -55,6 +55,6 @@ search:
 
 footer:
     builtWith:
-        other: {{ .Generator }} ile oluşturuldu.
+        other: "{{ .Generator }} ile oluşturuldu."
     designedBy:
-        other: {{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı
+        other: "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"
