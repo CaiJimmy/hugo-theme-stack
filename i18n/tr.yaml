@@ -4,9 +4,6 @@ toggleMenu:
 darkMode:
     other: Koyu Mod
 
-subtitle:
-    other: Biraz yazınca blog olacak
-
 list:
     page:
         one: "{{ .Count }} makale"
