@@ -1,0 +1,18 @@
+{{ $vid := (.Get 0) }}
+{{ $videopage := (.Get 1) }}
+{{ if (strings.HasPrefix $vid "av") }}
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+        <iframe src="//player.bilibili.com/player.html?aid={{ strings.TrimPrefix "av" $vid }}&page={{ $videopage }}&high_quality=1&as_wide=1"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+    </div>
+{{ else if (strings.HasPrefix $vid "AV") }}
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+        <iframe src="//player.bilibili.com/player.html?aid={{ strings.TrimPrefix "AV" $vid }}&page={{ $videopage }}&high_quality=1&as_wide=1"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+    </div>
+{{ else if (strings.HasPrefix $vid "BV" )}}
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?bvid={{ $vid }}&page={{ $videopage }}&high_quality=1&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+</div>
+{{ else }}
+    <p>Bilibili 视频av号或BV号错误！请检查视频av号或BV号是否正确</p>
+    <p>当前视频av或BV号：{{ $vid }}，视频分P：{{ $videopage }}</p>
+{{ end }}
