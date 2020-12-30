@@ -8,6 +8,7 @@ list:
     page:
         one: "{{ .Count }} страница"
         few: "{{ .Count }} страницы"
+        many: "{{ .Count }} страниц"
         other: "{{ .Count }} страниц"
 
     section:
@@ -15,7 +16,9 @@ list:
 
     subsection:
         one: Подраздел
-        other: Подразделы
+        few: Подраздела
+        many: Подразделов
+        other: Подразделов
 
 archives:
     categories:
