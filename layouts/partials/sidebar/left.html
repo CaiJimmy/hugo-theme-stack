@@ -45,6 +45,14 @@
             </a>
         </li>
         {{ end }}
+        {{ range .Translations }}
+        <li>
+            <a href="{{ .RelPermalink }}">
+                {{ partial "helper/icon" "translation" }}
+                <span>{{ .Language.LanguageName }}</span>
+            </a>
+        </li>
+        {{ end }}
 
         {{ if (default false .Site.Params.colorScheme.toggle) }}
             <li id="dark-mode-toggle">
