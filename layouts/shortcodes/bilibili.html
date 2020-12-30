@@ -1,0 +1,24 @@
+{{ $vid := (.Get 0) }}
+{{ $videopage := default 1 (.Get 1) }}
+{{ $basicQuery := querify "page" $videopage "high_quality" 1 "as_wide" 1 }}
+{{ $videoQuery := "" }}
+
+{{ if strings.HasPrefix (lower $vid) "av" }}
+    {{ $videoQuery = querify "aid" (strings.TrimPrefix "av" (lower $vid)) }}
+{{ else if strings.HasPrefix (lower $vid) "bv" }}
+    {{ $videoQuery = querify "bvid" $vid }}
+{{ else }}
+    <p>Bilibili 视频av号或BV号错误！请检查视频av号或BV号是否正确</p>
+    <p>当前视频av或BV号：{{ $vid }}，视频分P：{{ $videopage }}</p>
+{{ end }}
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+    <iframe src="//player.bilibili.com/player.html?{{ $basicQuery | safeURL }}&{{ $videoQuery | safeURL }}"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"
+            style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"
+    >
+    </iframe>
+</div>
