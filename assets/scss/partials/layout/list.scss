@@ -1,4 +1,4 @@
-.taxonomy-card {
+.section-card {
     border-radius: var(--card-border-radius);
     background-color: var(--card-background);
     padding: var(--small-card-padding);
@@ -9,41 +9,67 @@
 
     --separation: 15px;
 
-    .taxonomy-term {
+    .section-term {
         font-size: 2.2rem;
         margin: 0;
         margin-top: calc(var(--separation) / 2);
         color: var(--card-text-color-main);
 
-        & + .taxonomy-description {
+        & + .section-description {
             margin-top: var(--separation);
         }
     }
 
-    .taxonomy-description {
+    .section-description {
         font-weight: normal;
         color: var(--card-text-color-secondary);
         font-size: 1.6rem;
         margin: 0;
     }
 
-    .taxonomy-details {
+    .section-details {
         flex-grow: 1;
         margin-right: 20px;
     }
 
-    .taxonomy-image {
+    .section-image {
         img {
             width: 60px;
             height: 60px;
         }
     }
 
-    .taxonomy-count {
+    .section-count {
         color: var(--card-text-color-tertiary);
         font-size: 1.4rem;
         margin: 0;
         font-weight: bold;
         text-transform: uppercase;
+    }
+}
+
+.subsection-list {
+    margin-bottom: var(--section-separation);
+    overflow-x: auto;
+
+    .article-list--tile {
+        display: flex;
+        padding-bottom: 15px;
+
+        article {
+            width: 250px;
+            height: 150px;
+            margin-right: 20px;
+            flex-shrink: 0;
+
+            .article-title {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+            .article-details {
+                padding: 20px;
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 <form action="/search" class="search-form widget" {{ with .OutputFormats.Get "json" -}}data-json="{{ .Permalink }}" {{- end }}>
     <p>
-        <label>{{ T "searchTitle" }}</label>
-        <input name="keyword" required placeholder="{{ T `searchPlaceholder` }}" />
+        <label>{{ T "search.title" }}</label>
+        <input name="keyword" required placeholder="{{ T `search.placeholder` }}" />
     
         <button title="Search">
             {{ partial "helper/icon" "search" }}

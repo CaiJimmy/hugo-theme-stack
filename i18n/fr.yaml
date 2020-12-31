@@ -1,0 +1,38 @@
+toggleMenu:
+    other: Afficher le menu
+
+article:
+    relatedContents:
+        other: Contenus liés
+    lastUpdatedOn:
+        other: Dernière mise à jour le
+
+notFound:
+    title:
+        other: Page non trouvée
+    subtitle:
+        other: Cette page n'existe pas.
+
+widget:
+    archives:
+        title:
+            other: Archives
+        more:
+            other: Autres
+    tagCloud:
+        title:
+            other: Mots clés
+
+search:
+    title:
+        other: Rechercher
+    placeholder:
+        other: Cherchez un article, une publication, etc.
+    resultTitle:
+        other: "#PAGES_COUNT pages (#TIME_SECONDS secondes)"
+
+footer:
+    builtWith:
+        other: Généré avec {{ .Generator }}
+    designedBy:
+        other: Thème {{ .Theme }} conçu par {{ .DesignedBy }}

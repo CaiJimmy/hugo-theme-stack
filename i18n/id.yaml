@@ -1,0 +1,38 @@
+toggleMenu:
+    other: Tampilkan Menu
+
+article:
+    relatedContents:
+        other: Konten terkait
+    lastUpdatedOn:
+        other: Terakhir diperbarui pada
+
+notFound:
+    title:
+        other: Not Found
+    subtitle:
+        other: Halaman ini tidak ada.
+
+widget:
+    archives:
+        title:
+            other: Arsip
+        more:
+            other: Lebih
+    tagCloud:
+        title:
+            other: Tag
+
+search:
+    title:
+        other: Cari
+    placeholder:
+        other: Ketik sesuatu...
+    resultTitle:
+        other: "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
+
+footer:
+    builtWith:
+        other: Dibangun dengan {{ .Generator }}
+    designedBy:
+        other: Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}

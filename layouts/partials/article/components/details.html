@@ -1,22 +1,10 @@
-{{ $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" }}
-{{- $context := . -}}
 <div class="article-details">
     {{ if .Params.categories }}
     <header class="article-category">
         {{ range (.GetTerms "categories") }}
-            {{ if and $image.exists $image.resource }}
-                {{- $imageRaw := $image.resource | resources.Fingerprint "md5"  -}}
-                {{- $20x := $imageRaw.Fill "20x20 smart"  -}}
-                <a href="{{ .RelPermalink }}" 
-                    class="color-tag"
-                    data-image="{{ $20x.RelPermalink }}" 
-                    data-key="{{ $context.Slug }}" 
-                    data-hash="{{ $imageRaw.Data.Integrity }}">
-                    {{ .LinkTitle }}
-                </a>
-            {{ else }}
-                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            {{ end }}
+            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                {{ .LinkTitle }}
+            </a>
         {{ end }}
     </header>
     {{ end }}

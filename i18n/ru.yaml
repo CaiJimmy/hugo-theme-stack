@@ -1,0 +1,61 @@
+toggleMenu:
+    other: Показать/скрыть меню
+
+darkMode:
+    other: Тёмный режим
+
+list:
+    page:
+        one: "{{ .Count }} страница"
+        few: "{{ .Count }} страницы"
+        many: "{{ .Count }} страниц"
+        other: "{{ .Count }} страниц"
+
+    section:
+        other: Разделы
+
+    subsection:
+        one: Подраздел
+        few: Подраздела
+        many: Подразделов
+        other: Подразделов
+
+archives:
+    categories:
+        other: Категории
+
+article:
+    relatedContents:
+        other: Также рекомендуем
+    lastUpdatedOn:
+        other: Обновлено
+
+notFound:
+    title:
+        other: Не найшено
+    subtitle:
+        other: Запрашиваемая страница не существует
+
+widget:
+    archives:
+        title:
+            other: Архивы
+        more:
+            other: Ещё
+    tagCloud:
+        title:
+            other: Теги
+
+search:
+    title:
+        other: Поиск
+    placeholder:
+        other: Введите что-нибудь...
+    resultTitle:
+        other: "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
+
+footer:
+    builtWith:
+        other: Создано при помощи {{ .Generator }}
+    designedBy:
+        other: Тема {{ .Theme }} дизайн {{ .DesignedBy }}

@@ -2,7 +2,7 @@
     <div class="widget-icon">
         {{ partial "helper/icon" "infinity" }}
     </div>
-    <h2 class="widget-title section-title">{{ T "widgetArchivesTitle" }}</h2>
+    <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
 
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
@@ -15,7 +15,7 @@
             <div class="archives-year">
                 <a href="{{ $.Site.Params.widgets.archives.path | relLangURL }}#{{ $id }}">
                     {{ if eq $index $.Site.Params.widgets.archives.limit }}
-                        <span class="year">{{ T "widgetArchivesMore" }}</span>
+                        <span class="year">{{ T "widget.archives.more" }}</span>
                     {{ else }}
                         <span class="year">{{ .Key }}</span>
                         <span class="count">{{ len $item.Pages }}</span>

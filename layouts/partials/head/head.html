@@ -17,4 +17,8 @@
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{- end -}}
 
+{{ with .Site.Params.favicon }}
+    <link rel="shortcut icon" href="{{ . }}" />
+{{ end }}
+
 {{- partial "head/custom.html" . -}}
