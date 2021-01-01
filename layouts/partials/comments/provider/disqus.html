@@ -10,3 +10,11 @@
         padding: var(--card-padding);
     }
 </style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        DISQUS.reset({
+            reload: true
+        });
+    })
+</script>
