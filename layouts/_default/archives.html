@@ -1,11 +1,12 @@
 {{ define "body-class" }}template-archives{{ end }}
 {{ define "main" }}
-    {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-    {{ if $categories }}
-    <h2 class="section-title">{{ T "archives.categories" }}</h2>
+    {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
+    {{- $terms := $taxonomy.Pages -}}
+    {{ if $terms }}
+    <h2 class="section-title">{{ $taxonomy.Title }}</h2>
     <div class="subsection-list">
         <div class="article-list--tile">
-            {{ range $categories }}
+            {{ range $terms }}
                 {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
             {{ end }}
         </div>
