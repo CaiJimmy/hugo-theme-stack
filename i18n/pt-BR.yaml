@@ -1,10 +1,6 @@
 toggleMenu:
     other: Alternar Menu
 
-archives:
-    categories:
-        other: Categorias
-
 article:
     relatedContents:
         other: Conteúdos Relacionados

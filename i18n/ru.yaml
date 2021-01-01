@@ -20,10 +20,6 @@ list:
         many: Подразделов
         other: Подразделов
 
-archives:
-    categories:
-        other: Категории
-
 article:
     relatedContents:
         other: Также рекомендуем
