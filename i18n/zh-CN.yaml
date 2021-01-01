@@ -4,10 +4,6 @@ toggleMenu:
 darkMode:
     other: 暗色模式
 
-archives:
-    categories:
-        other: 分类
-
 article:
     relatedContents:
         other: 相关文章

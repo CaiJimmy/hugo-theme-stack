@@ -16,10 +16,6 @@ list:
         one: Subsection
         other: Subsections
 
-archives:
-    categories:
-        other: Categories
-
 article:
     relatedContents:
         other: Related contents
