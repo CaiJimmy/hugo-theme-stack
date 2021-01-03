@@ -15,10 +15,14 @@ list:
         other: Разделы
 
     subsection:
-        one: Подраздел
-        few: Подраздела
-        many: Подразделов
-        other: Подразделов
+        one: "{{ .Count }} подраздел"
+        few: "{{ .Count }} подраздела"
+        many: "{{ .Count }} подразделов"
+        other: "{{ .Count }} подразделов"
+
+archives:
+    categories:
+        other: Категории
 
 article:
     relatedContents:
@@ -28,7 +32,7 @@ article:
 
 notFound:
     title:
-        other: Не найшено
+        other: Не найдено
     subtitle:
         other: Запрашиваемая страница не существует
 
@@ -54,4 +58,4 @@ footer:
     builtWith:
         other: Создано при помощи {{ .Generator }}
     designedBy:
-        other: Тема {{ .Theme }} дизайн {{ .DesignedBy }}
+        other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
