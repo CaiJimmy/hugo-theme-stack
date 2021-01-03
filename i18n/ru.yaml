@@ -12,13 +12,13 @@ list:
         other: "{{ .Count }} страниц"
 
     section:
-        other: Разделы
+        other: Раздел
 
     subsection:
-        one: "{{ .Count }} подраздел"
-        few: "{{ .Count }} подраздела"
-        many: "{{ .Count }} подразделов"
-        other: "{{ .Count }} подразделов"
+        one: Подраздел
+        few: Подразделы
+        many: Подразделы
+        other: Подразделы
 
 archives:
     categories:
