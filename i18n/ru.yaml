@@ -12,13 +12,13 @@ list:
         other: "{{ .Count }} страниц"
 
     section:
-        other: Разделы
+        other: Раздел
 
     subsection:
         one: Подраздел
-        few: Подраздела
-        many: Подразделов
-        other: Подразделов
+        few: Подразделы
+        many: Подразделы
+        other: Подразделы
 
 article:
     relatedContents:
@@ -28,7 +28,7 @@ article:
 
 notFound:
     title:
-        other: Не найшено
+        other: Не найдено
     subtitle:
         other: Запрашиваемая страница не существует
 
@@ -54,4 +54,4 @@ footer:
     builtWith:
         other: Создано при помощи {{ .Generator }}
     designedBy:
-        other: Тема {{ .Theme }} дизайн {{ .DesignedBy }}
+        other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
