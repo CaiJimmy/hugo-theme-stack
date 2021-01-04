@@ -9,6 +9,8 @@ class StackColorScheme {
         this.bindMatchMedia();
         this.currentScheme = this.getSavedScheme();
 
+        this.dispatchEvent(document.body.dataset.scheme as colorScheme);
+
         if (toggleEl)
             this.bindClick(toggleEl);
 
