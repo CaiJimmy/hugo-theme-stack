@@ -51,6 +51,9 @@ params:
             issueTerm: pathname
             label:
             theme: preferred-color-scheme
+        remark42:
+            host: # remark42服务端地址
+            site: # remark site id参数
 
     widgets:
         enabled:
