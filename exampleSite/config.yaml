@@ -54,6 +54,7 @@ params:
         remark42:
             host: # remark42服务端地址
             site: # remark site id参数
+            locale: zh # en zh 语言
 
     widgets:
         enabled:

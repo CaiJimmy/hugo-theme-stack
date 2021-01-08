@@ -1,6 +1,4 @@
-<div id="remark42">
-
-</div>
+<div id="remark42"></div>
 <script>
     var remark_config = {
       host: "{{ .Site.Params.comments.remark42.host }}", // hostname of remark server, same as REMARK_URL in backend config, e.g. "https://demo.remark42.com"
@@ -31,9 +29,9 @@
                        // If you deal with query parameters make sure you pass only significant part of it
                        // in well defined order
       max_shown_comments: 10, // optional param; if it isn't defined default value (15) will be used
-      theme: 'dark', // optional param; if it isn't defined default value ('light') will be used
+      theme: document.body.dataset.scheme, // optional param; if it isn't defined default value ('light') will be used
     //   page_title: 'Moving to Remark42', // optional param; if it isn't defined `document.title` will be used
-      locale: 'zh', // set up locale and language, if it isn't defined default value ('en') will be used
+      locale: '{{ .Site.Params.comments.remark42.locale }}', // set up locale and language, if it isn't defined default value ('en') will be used
       show_email_subscription: true // optional param; by default it is `true` and you can see email subscription feature
                                      // in interface when enable it from backend side
                                      // if you set this param in `false` you will get notifications email notifications as admin
@@ -50,11 +48,7 @@
     })(remark_config.components || ['embed']);
 </script>
 <script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (REMARK42) {
-            REMARK42.reset({
-                reload: true
-            });
-        }
-    })
+  window.addEventListener('onColorSchemeChange', (e) => {
+    window.REMARK42.changeTheme(document.body.dataset.scheme);
+  })
 </script>
