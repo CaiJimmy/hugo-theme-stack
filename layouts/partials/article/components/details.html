@@ -21,12 +21,24 @@
     </h3>
     {{ end }}
 
-    {{- if not .Date.IsZero -}}
-    <footer class="article-time">
-        {{ partial "helper/icon" "clock" }}
-        <time class="article-time--published">
-            {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-        </time>
+    <footer class="article-time article-meta">
+        {{- if not .Date.IsZero -}}
+        <section>
+            {{ partial "helper/icon" "clock" }}
+            <time class="article-time--published">
+                {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+            </time>
+        </section>
+        {{- end -}}
+
+        {{- if .Site.Params.comments.valine.enable -}}
+        <section>
+            {{ partial "helper/icon" "eye" }}
+            <span id="{{ .RelPermalink }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
+                <span class="post-meta-item-text"></span>
+                <span class="leancloud-visitors-count">loading</span>
+            </span>
+        </section>
+        {{- end -}}
     </footer>
-    {{- end -}}
 </div>

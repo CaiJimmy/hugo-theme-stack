@@ -5,3 +5,19 @@
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}
 
 <script type="text/javascript" src="{{ $script.RelPermalink }}" defer></script>
+
+<!-- valine -->
+{{- if .Site.Params.comments.valine.enable -}}
+    <script src='//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+    <script type="text/javascript">
+        new Valine({
+            el: '#vcomments' ,
+            appId: '{{ .Site.Params.comments.valine.appId }}',
+            appKey: '{{ .Site.Params.comments.valine.appKey }}',
+            verify: '{{ .Site.Params.comments.valine.verify }}', 
+            avatar:'{{ .Site.Params.comments.valine.avatar }}', 
+            placeholder: '{{ .Site.Params.comments.valine.placeholder }}',
+            visitor: '{{ .Site.Params.valine.comments.visitor }}'
+        });
+    </script>
+{{- end -}}

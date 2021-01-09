@@ -51,6 +51,14 @@ params:
             issueTerm: pathname
             label:
             theme: preferred-color-scheme
+        valine:
+            enable: false
+            appId: # leancloud appId
+            appKey: # leancloud appKey
+            verify: false # Verification code
+            avatar: wavatar  # Gravatar style
+            placeholder: 说点什么吧...
+            visitor: true # Article reading statistic
 
     widgets:
         enabled:
