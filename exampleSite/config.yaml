@@ -60,7 +60,6 @@ params:
 
         archives:
             limit: 5
-            path: archives
 
         tagCloud:
             limit: 10
@@ -82,7 +81,7 @@ params:
     colorScheme:
         # Display toggle
         toggle: true
-        
+
         # Available values: auto, light, dark
         default: auto
 

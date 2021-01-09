@@ -4,10 +4,6 @@ toggleMenu:
 darkMode:
     other: ダークモード
 
-archives:
-    categories:
-        other: 分類
-
 article:
     relatedContents:
         other: 関連するコンテンツ

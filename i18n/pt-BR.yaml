@@ -1,9 +1,20 @@
 toggleMenu:
     other: Alternar Menu
 
-archives:
-    categories:
-        other: Categorias
+darkMode:
+    other: Modo Escuro
+
+list:
+    page:
+        one: "{{ .Count }} página"
+        other: "{{ .Count }} páginas"
+
+    section:
+        other: Seção
+
+    subsection:
+        one: Subseção
+        other: Subseções
 
 article:
     relatedContents:

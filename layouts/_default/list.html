@@ -42,8 +42,17 @@
         {{ end }}
     </div>
 
-    {{ $subsections := .Sections }}
-    {{ with $subsections }}
+    {{- $subsections := .Sections -}}
+    {{- $pages := .Pages | complement $subsections -}}
+    
+    {{- if eq (len $pages) 0 -}}
+        {{/* If there are no normal pages, display subsections in list style, with pagination */}}
+        {{/* This happens with taxonomies like categories or tags */}}
+        {{- $pages = $subsections -}}
+        {{- $subsections = slice -}}
+    {{- end -}}
+
+    {{- with $subsections -}}
         <h2 class="section-title">{{ T "list.subsection" (len $subsections) }}</h2>
         <div class="subsection-list">
             <div class="article-list--tile">
@@ -52,10 +61,10 @@
                 {{ end }}
             </div>
         </div>
-    {{ end }}
+    {{- end -}}
     
     {{/* List only pages that are not a subsection */}}
-    {{ $paginator := .Paginate (.Pages | complement $subsections) }}
+    {{ $paginator := .Paginate $pages }}
     <section class="article-list--compact">
         {{ range $paginator.Pages }}
             {{ partial "article-list/compact" . }}
