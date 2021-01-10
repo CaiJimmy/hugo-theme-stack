@@ -1,0 +1,24 @@
+<div style="margin: 20px;">
+<meting-js style="margin: 10px;"
+    name="{{ .Params.audio.name }}"
+    artist="{{ .Params.audio.artist }}"
+    url="{{ .Params.audio.url }}" 
+    {{ if .Params.audio.cover }}
+        cover="{{ .Params.audio.cover }}"
+    {{ else }}
+        cover="/images/logo.png"
+    {{ end }}
+    fixed="{{ eq .Params.audio.p "fixed" }}"
+	server="{{ .Params.audio.server }}" 
+	type="{{ .Params.audio.type }}" 
+	id="{{ .Params.audio.id }}"
+	autoplay="true"
+	loop="all"
+	order="list"
+	preload="auto"
+	list-folded="true"
+    list-max-height="500px"
+    theme="#999999"
+	lrc-type="1">
+</meting-js>		
+</div>

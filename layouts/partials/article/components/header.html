@@ -32,4 +32,11 @@
     {{ end }}
 
     {{ partialCached "article/components/details" . .RelPermalink }}
+
+    {{ if .Params.audio }}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+        <!-- require MetingJS -->
+        <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+    {{ end }}
 </header>

@@ -1,7 +1,17 @@
 <article class="{{ if .Params.image }}has-image {{ end }}main-article">
     {{ partial "article/components/header" . }}
 
+    {{ if .Params.audio }}
+        {{ if or ( eq .Params.audio.p "before" ) ( not .Params.audio.p ) }}
+            {{ partial "article/components/audio" . }}
+        {{ end }}
+    {{ end }}
+
     {{ partial "article/components/content" . }}
+
+    {{ if or ( eq .Params.audio.p "after")  ( eq .Params.audio.p "fixed" )  }}
+        {{ partial "article/components/audio" . }}
+    {{ end }}
 
     {{ partial "article/components/footer" . }}
 
