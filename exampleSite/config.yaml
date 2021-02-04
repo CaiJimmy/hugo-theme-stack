@@ -6,6 +6,7 @@ title: Example Site
 
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
+googleAnalytics: "UI-you-google-analytics-tracking-id"
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn
