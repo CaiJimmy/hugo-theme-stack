@@ -7,6 +7,9 @@ title: Example Site
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 
+# GA Tracking ID
+googleAnalytics:
+
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn
 DefaultContentLanguage: en
