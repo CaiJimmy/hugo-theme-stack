@@ -50,7 +50,6 @@ params:
             repo:
             issueTerm: pathname
             label:
-            theme: preferred-color-scheme
 
     widgets:
         enabled:
