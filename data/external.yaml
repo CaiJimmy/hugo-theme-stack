@@ -1,0 +1,38 @@
+Vibrant:
+    - src: https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js
+      integrity: sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=
+      type: script
+
+PhotoSwipe:
+    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js
+      integrity: sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=
+      type: script
+      defer: true
+
+    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js
+      integrity: sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=
+      type: script
+      defer: true
+
+    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css
+      integrity: sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=
+      type: style
+
+    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css
+      integrity: sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=
+      type: style
+
+KaTeX:
+    - src: https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css
+      integrity: sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X
+      type: style
+
+    - src: https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js
+      integrity: sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4
+      type: script
+      defer: true
+
+    - src: https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js
+      integrity: sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa
+      type: script
+      defer: true

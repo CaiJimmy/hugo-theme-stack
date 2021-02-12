@@ -1,12 +1,12 @@
 <script src="https://utteranc.es/client.js" 
         repo="{{ .Site.Params.comments.utterances.repo }}"
         issue-term="{{ .Site.Params.comments.utterances.issueTerm }}"
-        theme="{{ .Site.Params.comments.utterances.theme }}" 
         {{ with .Site.Params.comments.utterances.label }}
         label="{{ . }}"
         {{ end }}
-        crossorigin="anonymous" 
-        async>
+        crossorigin="anonymous"
+        async
+        >
 </script>
 
 <style>
@@ -16,16 +16,25 @@
 </style>
 
 <script>
-    window.addEventListener('onColorSchemeChange', (e) => {
+    function setUtterancesTheme(theme) {
         let utterances = document.querySelector('.utterances iframe');
         if (utterances) {
             utterances.contentWindow.postMessage(
                 {
                     type: 'set-theme',
-                    theme: `github-${e.detail}`
+                    theme: `github-${theme}`
                 },
                 'https://utteranc.es'
             );
         }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.body.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
     })
 </script>
