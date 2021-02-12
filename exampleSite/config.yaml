@@ -53,6 +53,11 @@ params:
             repo:
             issueTerm: pathname
             label:
+            
+    arcio:
+        # Check https://arc.io
+        enabled: false
+        widgetId:
 
     widgets:
         enabled:
