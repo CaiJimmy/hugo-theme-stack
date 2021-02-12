@@ -21,5 +21,11 @@
     <link rel="shortcut icon" href="{{ . }}" />
 {{ end }}
 
+{{ if .Site.Params.arcio.enabled }}
+    {{ with .Site.Params.arcio.widgetId }}
+        <script async src="https://arc.io/widget.min.js#{{ . }}"></script>
+    {{ end }}
+{{ end }}
+
 {{- template "_internal/google_analytics_async.html" . -}}
 {{- partial "head/custom.html" . -}}
