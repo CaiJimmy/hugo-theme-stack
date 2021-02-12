@@ -21,9 +21,9 @@
                 crossorigin="anonymous"
             >
         {{- else -}}
-            {{- errorf "Unknown external resource type: %s" .type -}}
+            {{- errorf "Error: unknown external resource type: %s" .type -}}
         {{- end -}}
     {{- end -}}
 {{- else -}}
-    {{- errorf "Error: external resource '%s' is not found" . -}}
+    {{- errorf "Error: external resource '%s' is not found" .Namespace -}}
 {{- end -}}
