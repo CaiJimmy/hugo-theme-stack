@@ -1,5 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
-    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script>
+{{- partial "helper/external" (dict "Context" . "Namespace" "Vibrant") -}}
 
 {{- $opts := dict "minify" hugo.IsProduction -}}
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}
