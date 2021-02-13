@@ -1,0 +1,29 @@
+{{- with .Site.Params.comments.remark42 -}}
+<div id="remark42"></div>
+<script>
+    var remark_config = {
+        host: "{{ .host }}",
+        site_id: '{{ .site }}',
+        components: ['embed'],
+        url: "{{ $.Permalink }}",
+        max_shown_comments: {{ default 15 .max_shown_comments }},
+        theme: document.body.dataset.scheme,
+        page_title: '{{ $.Title }}',
+        locale: '{{ default "en" .locale }}',
+        show_email_subscription: {{ default true .show_email_subscription }}
+    };
+
+    (function (c) {
+        for (var i = 0; i < c.length; i++) {
+            var d = document, s = d.createElement('script');
+            s.src = remark_config.host + '/web/' + c[i] + '.js';
+            s.defer = true;
+            (d.head || d.body).appendChild(s);
+        }
+    })(remark_config.components || ['embed']);
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        window.REMARK42.changeTheme(e.detail);
+    })
+</script>
+{{- end -}}

@@ -49,10 +49,16 @@ params:
     comments:
         enabled: true
         provider: disqus
+
         utterances:
             repo:
             issueTerm: pathname
             label:
+
+        remark42:
+            host:
+            site:
+            locale:
 
     widgets:
         enabled:
