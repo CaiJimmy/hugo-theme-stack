@@ -1,5 +1,5 @@
 {{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
-{{- if $image -}}
+{{- if and $image (ne (path.Ext .Destination) ".svg") -}}
 	{{- $alt := .PlainText | safeHTML -}}
 	<figure style="flex-grow: {{ div (mul $image.Width 100) $image.Height }}; flex-basis: {{ div (mul $image.Width 240) $image.Height }}px">
 		<a href="{{ $image.RelPermalink }}" data-size="{{ $image.Width }}x{{ $image.Height }}">

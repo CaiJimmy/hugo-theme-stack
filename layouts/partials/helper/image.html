@@ -16,7 +16,11 @@
         {{ if $pageResourceImage }}
             <!-- If image is found under page bundle -->
             {{ $result = merge $result (dict "permalink" $pageResourceImage.RelPermalink) }}
-            {{ $result = merge $result (dict "resource" $pageResourceImage) }}
+
+            <!-- Disable SVG image processing, not supported by Hugo -->
+            {{ if ne (path.Ext $imageValue) ".svg" }}
+                {{ $result = merge $result (dict "resource" $pageResourceImage) }}
+            {{ end }}
         {{ else }}
             <!-- Can not find the image under page bundle. Could be a relative linked image -->
             {{ $result = merge $result (dict "permalink" $imageValue) }}
