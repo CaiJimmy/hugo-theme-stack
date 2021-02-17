@@ -39,4 +39,6 @@ jobs:
                   # Artifact name
                   name: resources
                   # A file, directory or wildcard pattern that describes what to upload
-                  path: exampleSite/resources
+                  path: |
+                    exampleSite/resources
+                    !exampleSite/resources/_gen/images
