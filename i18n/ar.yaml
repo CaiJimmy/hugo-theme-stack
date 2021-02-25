@@ -1,0 +1,53 @@
+toggleMenu:
+    other: اخفي القائمة
+
+darkMode:
+    other: الوضع الليلي
+
+list:
+    page:
+        one: "{{ .Count }} صفحه"
+        other: "{{ .Count }} صفحات"
+
+    section:
+        other: قسم
+
+    subsection:
+        one: قسم فرعي
+        other: اقسام فرعية
+
+article:
+    relatedContents:
+        other: محتوى مشابهه
+    lastUpdatedOn:
+        other: التعديل الاخير
+
+notFound:
+    title:
+        other: غير موجود
+    subtitle:
+        other: تعذر العثور على الصفحة المطلوبة.
+
+widget:
+    archives:
+        title:
+            other: الارشيفات
+        more:
+            other: اكثر
+    tagCloud:
+        title:
+            other: وسوم
+
+search:
+    title:
+        other: بحث
+    placeholder:
+        other: اكتب...
+    resultTitle:
+        other: "#PAGES_COUNT نتيجة (#TIME_SECONDS ثواني)"
+
+footer:
+    builtWith:
+        other: "{{ .Generator }} مبني مع"
+    designedBy:
+        other:  "{{ .DesignedBy }} مصمم من {{ .Theme }} قالب"
