@@ -1,0 +1,53 @@
+toggleMenu:
+    other: Toggle Menu
+
+darkMode:
+    other: Modo Obscuro
+
+list:
+    page:
+        one: "{{ .Count }} pagina"
+        other: "{{ .Count }} paginas"
+
+    section:
+        other: Sección
+
+    subsection:
+        one: Subsección
+        other: Subsecciónes
+
+article:
+    relatedContents:
+        other: Contenido Relacionado
+    lastUpdatedOn:
+        other: Ultima vez actualizado
+
+notFound:
+    title:
+        other: No Encontrado
+    subtitle:
+        other: "Ésta pagina no existe"
+
+widget:
+    archives:
+        title:
+            other: Archivo
+        more:
+            other: Más
+    tagCloud:
+        title:
+            other: Etiquetas
+
+search:
+    title:
+        other: Busqueda
+    placeholder:
+        other: Teclea algo...
+    resultTitle:
+        other: "#PAGES_COUNT paginas en (#TIME_SECONDS seconds)"
+
+footer:
+    builtWith:
+        other: Creado con {{ .Generator }}
+    designedBy:
+        other: Tema {{ .Theme }} diseñado por {{ .DesignedBy }}
