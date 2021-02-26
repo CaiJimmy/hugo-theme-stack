@@ -44,7 +44,7 @@ search:
     placeholder:
         other: Teclea algo...
     resultTitle:
-        other: "#PAGES_COUNT paginas en (#TIME_SECONDS seconds)"
+        other: "#PAGES_COUNT paginas en (#TIME_SECONDS segundos)"
 
 footer:
     builtWith:
