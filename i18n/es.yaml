@@ -2,31 +2,31 @@ toggleMenu:
     other: Toggle Menu
 
 darkMode:
-    other: Modo Obscuro
+    other: Modo oscuro
 
 list:
     page:
-        one: "{{ .Count }} pagina"
-        other: "{{ .Count }} paginas"
+        one: "{{ .Count }} página"
+        other: "{{ .Count }} páginas"
 
     section:
         other: Sección
 
     subsection:
         one: Subsección
-        other: Subsecciónes
+        other: Subsecciones
 
 article:
     relatedContents:
-        other: Contenido Relacionado
+        other: Contenidos relacionados
     lastUpdatedOn:
-        other: Ultima vez actualizado
+        other: Última vez actualizado
 
 notFound:
     title:
         other: No Encontrado
     subtitle:
-        other: "Ésta pagina no existe"
+        other: Esta página no existe
 
 widget:
     archives:
@@ -40,11 +40,11 @@ widget:
 
 search:
     title:
-        other: Busqueda
+        other: Búsqueda
     placeholder:
         other: Teclea algo...
     resultTitle:
-        other: "#PAGES_COUNT paginas en (#TIME_SECONDS segundos)"
+        other: "#PAGES_COUNT páginas en (#TIME_SECONDS segundos)"
 
 footer:
     builtWith:
