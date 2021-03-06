@@ -189,7 +189,8 @@
     font-size: var(--article-font-size);
     line-height: var(--article-line-height);
 
-    & > p {
+    & > p,
+    & > div {
         margin: 1.5em 0;
         padding: 0 var(--card-padding);
     }
