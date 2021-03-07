@@ -23,7 +23,7 @@
             {{ end }}
         {{ else }}
             <!-- Can not find the image under page bundle. Could be a relative linked image -->
-            {{ $result = merge $result (dict "permalink" $imageValue) }}
+            {{ $result = merge $result (dict "permalink" (relURL $imageValue)) }}
         {{ end }}
 
     {{ end }}
@@ -51,7 +51,7 @@
 
         {{ else }}
             <!-- External image -->
-            {{ $result = merge $result (dict "permalink" $defaultImageSetting.src) }}
+            {{ $result = merge $result (dict "permalink" (relURL $defaultImageSetting.src)) }}
         {{ end }}
         
     {{ end }}

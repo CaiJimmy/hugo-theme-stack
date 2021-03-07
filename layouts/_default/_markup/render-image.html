@@ -26,5 +26,5 @@
 		{{ end }}
 	</figure>
 {{- else -}}
-	<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}"{{ end }} />
+	<img src="{{ .Destination | relURL | safeURL }}" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}"{{ end }} />
 {{- end -}}
