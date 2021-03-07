@@ -99,6 +99,9 @@ params:
         content:
             enabled: true
 
+### Custom menu
+### See https://docs.stack.jimmycai.com/configuration/custom-menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
     main:
         - identifier: home
@@ -106,24 +109,6 @@ menu:
           url: /
           weight: -100
           pre: home
-
-        - identifier: about
-          name: About
-          url: about
-          weight: -90
-          pre: user
-
-        - identifier: archives
-          name: Archives
-          url: archives
-          weight: -70
-          pre: archives
-
-        - identifier: search
-          name: Search
-          url: search
-          weight: -60
-          pre: search
 
 related:
     includeNewer: true
