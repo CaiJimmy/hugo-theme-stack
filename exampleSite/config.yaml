@@ -98,6 +98,12 @@ params:
             enabled: true
         content:
             enabled: true
+    
+    ribbon:
+        enabled: false
+        size: 300
+        alpha: 0.6
+        zindex: -1
 
 ### Custom menu
 ### See https://docs.stack.jimmycai.com/configuration/custom-menu

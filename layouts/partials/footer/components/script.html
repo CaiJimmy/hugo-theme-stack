@@ -4,3 +4,8 @@
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}
 
 <script type="text/javascript" src="{{ $script.RelPermalink }}" defer></script>
+
+{{- if .Site.Params.ribbon.enabled -}}
+<script src="//cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="{{ .Site.Params.ribbon.size }}"
+    alpha="{{ .Site.Params.ribbon.alpha }}" zindex="{{ .Site.Params.ribbon.zindex }}" defer></script>
+{{- end -}}
