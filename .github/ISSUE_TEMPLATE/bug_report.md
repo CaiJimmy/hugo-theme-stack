@@ -7,32 +7,39 @@ assignees: ''
 
 ---
 
-**Describe the bug**
+<!-- 
+    Before creating this bug report, make sure you have read the theme documentation: https://docs.stack.jimmycai.com/
+-->
+
+## Describe the bug
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
+## Expected behavior
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## To Reproduce
+Indicate the steps to reproduce this bug, if applicable.
 
-**Desktop (please complete the following information):**
+## Screenshots
+Add screenshots to help explain your problem.
+
+## Environment
+
+- **Hugo version** [e.g: 0.80.0]: 
+- **Hugo extended?**: Yes / No
+
+## Additional context
+Add any other context about the problem here.
+
+If it's a UI issue, fill the following information:
+
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
  - Version [e.g. 22]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## Content of config.yaml
+```yaml
+### Paste the content of the config file here
+```
 
-**Additional context**
-Add any other context about the problem here.
+## Link to the demo site and/or source repository
