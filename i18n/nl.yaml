@@ -31,7 +31,7 @@ notFound:
 widget:
     archives:
         title:
-            other: Archieven
+            other: Archief
         more:
             other: Meer
     tagCloud:
