@@ -60,6 +60,13 @@ params:
             site:
             locale:
 
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+
     widgets:
         enabled:
             - search
