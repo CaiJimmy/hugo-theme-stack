@@ -7,21 +7,21 @@
 <script src="https://unpkg.com/vssue/dist/vssue.{{ .platform }}.min.js"></script>
 
 <script>
-  new Vue({
-    el: "#vssue",
-    render: (h) =>
-      h("Vssue", {
-        props: {
-          title: "{{ $.Title }}",
-          options: {
-            proxy: (url) => "https://cors-anywhere.azm.workers.dev/" + url,
-            owner: "{{ .owner }}",
-            repo: "{{ .repo }}",
-            clientId: "{{ .clientId }}",
-            clientSecret: "{{ .clientSecret }}",
-          },
-        },
-      }),
-  });
+    new Vue({
+        el: "#vssue",
+        render: (h) =>
+            h("Vssue", {
+                props: {
+                    title: "{{ $.Title }}",
+                    options: {
+                        proxy: (url) => "https://cors-anywhere.azm.workers.dev/" + url,
+                        owner: "{{ .owner }}",
+                        repo: "{{ .repo }}",
+                        clientId: "{{ .clientId }}",
+                        clientSecret: "{{ .clientSecret }}",
+                    },
+                },
+            }),
+    });
 </script>
 {{- end -}}
