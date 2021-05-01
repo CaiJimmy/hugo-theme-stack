@@ -1,0 +1,31 @@
+<script src='//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js'></script>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+{{- with .Site.Params.comments.waline -}}
+<script>
+	// 本页配置参见 https://waline.js.org/client/basic.html
+    // Waline client configuration see: https://waline.js.org/en/client/basic.html
+	new Waline({
+        el: '#waline',
+        serverURL: '{{ .serverURL }}',
+        placeholder: '{{ .placeholder }}',
+        wordLimit: '{{ .wordLimit }}',
+        avatar: '{{ .avatar }}',
+        avatarCDN: '{{ .avatarCDN }}',
+        emojiCDN: '{{ .emojiCDN }}',
+        guest_info: '{{ .guest_info }}',
+        requiredFields: '{{ .requiredFields }}',
+        langMode: {
+            admin: '{{ .admin }}'
+        },
+	});
+</script>
+{{- end -}}
