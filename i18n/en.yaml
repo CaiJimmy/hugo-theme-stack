@@ -17,6 +17,8 @@ list:
         other: Subsections
 
 article:
+    back:
+        other: Back
     relatedContents:
         other: Related contents
     lastUpdatedOn:

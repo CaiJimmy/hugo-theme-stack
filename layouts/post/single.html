@@ -3,7 +3,7 @@
     <div id="article-toolbar">
         <a href="{{ .Site.BaseURL }}" class="back-home">
             {{ (resources.Get "icons/back.svg").Content | safeHTML }}
-            <span>Back</span>
+            <span>{{ T "article.back" }}</span>
         </a>
     </div>
 
