@@ -1,0 +1,49 @@
+<!-- toc.html -->
+<!-- ignore empty links with + -->
+{{ $headers := findRE "<h[1-4].*?>(.|\n])+?</h[1-4]>" .Content }}
+<!-- at least one header to link to -->
+{{ if ge (len $headers) 1 }}
+{{ $h1_n := len (findRE "(.|\n])+?" .Content) }}
+{{ $re := (cond (eq $h1_n 0) "<h[2-4]" "<h[1-4]") }}
+{{ $renum := (cond (eq $h1_n 0) "[2-4]" "[1-4]") }}
+
+<!--Scrollspy-->
+<div class="toc">
+	<!-- Directory folding -->
+	<details>
+		<summary style="height: 49px;">
+			<div class="page-header"><strong style="font-size: 20px;">- Contents -</strong></div>
+		</summary>
+
+		<div id="page-scrollspy" class="toc-nav">
+
+			{{ range $headers }}
+			{{ $header := . }}
+			{{ range first 1 (findRE $re $header 1) }}
+			{{ range findRE $renum . 1 }}
+			{{ $next_heading := (cond (eq $h1_n 0) (sub (int .) 1 ) (int . ) ) }}
+			{{ range seq $next_heading }}
+			<ul class="nav">
+				{{end}}
+				{{ $anchorId := (replaceRE ".* id=\"(.*?)\".*" "$1" $header ) }}
+				<li class="nav-item">
+					<a class="nav-link text-left" href="#{{ $anchorId }}">
+						{{ $header | plainify | htmlUnescape }}
+					</a>
+				</li>
+				<!-- close list -->
+				{{ range seq $next_heading }}
+			</ul>
+			{{ end }}
+			{{ end }}
+			{{ end }}
+			{{ end }}
+
+		</div>
+	</details>
+
+</div>
+
+<!--Scrollspy-->
+
+{{ end }}

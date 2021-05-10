@@ -6,6 +6,11 @@
             <span>Back</span>
         </a>
     </div>
+	
+	<!-- contents -->
+	{{ if .Site.Params.toc | default true }}
+	{{ partial "toc" . }}
+	{{ end }}
 
     {{ partial "article/article.html" . }}
 
