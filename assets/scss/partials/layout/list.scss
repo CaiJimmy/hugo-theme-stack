@@ -52,20 +52,11 @@
     margin-bottom: var(--section-separation);
     overflow-x: auto;
 
-    /* scrollbar styles for Firefox */
+    /* Scrollbar styles for Firefox */
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 
-    /* scrollbar styles for Chromium */
-    &::-webkit-scrollbar {
-      height: 7px;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
-
+    /* Scrollbar styles for Chromium */
     &::-webkit-scrollbar-thumb {
       background-color: var(--scrollbar-thumb);
     }
