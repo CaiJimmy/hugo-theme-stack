@@ -67,18 +67,18 @@ params:
             clientId:
             clientSecret:
     
-        # Waline 前端配置参见 https://waline.js.org/client/basic.html
-        # Waline client configuration see: https://waline.js.org/en/client/basic.html
+        # Waline 前端配置参见 https://waline.js.org/reference/client.html
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
             serverURL:
-            placeholder: 
-            wordLimit:
+            lang:
+            visitor:
             avatar:
-            avatarCDN:
-            emojiCDN:
-            guest_info: "nick,mail,link"
-            requiredFields:
+            emoji:
+            dark: auto
             admin:
+            requiredMeta:
+            placeholder:
 
     widgets:
         enabled:
