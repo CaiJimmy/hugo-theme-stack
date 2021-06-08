@@ -11,21 +11,21 @@
 
 {{- with .Site.Params.comments.waline -}}
 <script>
-	// 本页配置参见 https://waline.js.org/client/basic.html
-    // Waline client configuration see: https://waline.js.org/en/client/basic.html
+    // 本页配置参见 https://waline.js.org/reference/client.html
+    // Waline client configuration see: https://waline.js.org/en/reference/client.html
 	new Waline({
         el: '#waline',
         serverURL: '{{ .serverURL }}',
-        placeholder: '{{ .placeholder }}',
-        wordLimit: '{{ .wordLimit }}',
+        lang: '{{ .lang }}',
+        visitor: '{{ .visitor }}',
         avatar: '{{ .avatar }}',
-        avatarCDN: '{{ .avatarCDN }}',
-        emojiCDN: '{{ .emojiCDN }}',
-        guest_info: '{{ .guest_info }}',
-        requiredFields: '{{ .requiredFields }}',
-        langMode: {
-            admin: '{{ .admin }}'
+        emoji: ['{{ .emoji }}'],
+        dark: 'body[data-scheme="dark"]',
+        requiredMeta: ['{{ .requiredMeta }}'],
+        locale: {
+            admin: '{{ .admin }}',
+            placeholder: '{{ .placeholder }}',
         },
-	});
+    });
 </script>
 {{- end -}}
