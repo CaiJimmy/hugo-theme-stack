@@ -52,6 +52,24 @@
     margin-bottom: var(--section-separation);
     overflow-x: auto;
 
+    /* scrollbar styles for Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+
+    /* scrollbar styles for Chromium */
+    &::-webkit-scrollbar {
+        height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-thumb);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-track);
+    }
+    /**/
+
     .article-list--tile {
         display: flex;
         padding-bottom: 15px;
