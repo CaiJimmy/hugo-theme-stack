@@ -28,7 +28,7 @@ widget:
 
 search:
     title:
-        other: サーチ
+        other: 検索
     placeholder:
         other: 入力...
     resultTitle:
