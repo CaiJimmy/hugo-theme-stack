@@ -8,7 +8,7 @@ title: Example Site
 disqusShortname: hugo-theme-stack
 
 # GA Tracking ID
-GoogleAnalytics:
+googleAnalytics:
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
