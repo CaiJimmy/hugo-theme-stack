@@ -7,25 +7,26 @@
         box-shadow: var(--shadow-l1);
         padding: var(--card-padding);
     }
+    .waline-container .vcount {
+        color: var(--card-text-color-main);
+    }
 </style>
 
 {{- with .Site.Params.comments.waline -}}
+{{- $config := dict "el" "#waline" "dark" "body[data-scheme=\"dark\"]" -}}
+{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "avatarcdn" "avatarCDN" "avatarforce" "avatarForce" -}}
+
+{{- range $key, $val := . -}}
+    {{- if $val -}}  
+        {{- $replaceKey := index $replaceKeys $key -}}
+        {{- $k := default $key $replaceKey -}}
+
+        {{- $config = merge $config (dict $k $val) -}}
+    {{- end -}}
+{{- end -}}
+
 <script>
-	// 本页配置参见 https://waline.js.org/reference/client.html
-    // Waline client configuration see: https://waline.js.org/en/reference/client.html
-	new Waline({
-        el: '#waline',
-        serverURL: '{{ .serverURL }}',
-		lang: '{{ .lang }}',
-		visitor: '{{ .visitor }}',
-        avatar: '{{ .avatar }}',
-        emoji: ['{{ .emoji }}'],
-		dark: '{{ .dark }}',
-        requiredMeta: ['{{ .requiredMeta }}'],
-        locale: {
-          admin: '{{ .admin }}',
-          placeholder: '{{ .placeholder }}',
-        },
-	});
+    /// Waline client configuration see: https://waline.js.org/en/reference/client.html
+    new Waline({{ $config | jsonify | safeJS }});
 </script>
 {{- end -}}
