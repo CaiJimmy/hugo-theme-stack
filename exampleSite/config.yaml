@@ -70,14 +70,20 @@ params:
         # Waline 前端配置参见 https://waline.js.org/reference/client.html
         # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
-            serverURL:
+            serverURL: 
             lang:
             visitor:
             avatar:
             emoji:
-            admin:
+                - emoji URL 1
+                - emoji URL 2
             requiredMeta:
+                - name
+                - email
+                - url
             placeholder:
+            locale:
+                admin: test
 
     widgets:
         enabled:
