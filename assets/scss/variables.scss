@@ -45,7 +45,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --accent-color-darker: #bdc3c7;
         --accent-color-text: #000;
         --body-text-color: rgba(255, 255, 255, 0.7);
-        --scrollbar-thumb: #424242;
+        --scrollbar-thumb: hsl(0, 0%, 30%);
         --scrollbar-track: var(--body-background);
     }
 }
