@@ -31,7 +31,7 @@
 
     addEventListener('message', event => {
         if (event.origin !== 'https://utteranc.es') return;
-        setUtterancesTheme(document.body.dataset.scheme)
+        setUtterancesTheme(document.documentElement.dataset.scheme)
     });
 
     window.addEventListener('onColorSchemeChange', (e) => {
