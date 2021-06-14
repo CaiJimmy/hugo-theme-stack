@@ -4,7 +4,7 @@ html {
 
     /* scrollbar styles for Firefox */
     scrollbar-width: auto;
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-color: var(--scrollbar-thumb) transparent;
     /**/
 
     /* scrollbar styles for Chromium */
@@ -17,7 +17,7 @@ html {
     }
 
     &::-webkit-scrollbar-track {
-        background-color: var(--scrollbar-track);
+        background-color: transparent;
     }
     /**/
 }
