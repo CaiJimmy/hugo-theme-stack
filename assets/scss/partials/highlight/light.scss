@@ -7,6 +7,25 @@
 .chroma {
     color: #272822;
     background-color: #fafafa;
+
+    /* scrollbar styles for Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: var(--scrollbar-thumb) #fafafa;
+    /**/
+
+    /* scrollbar styles for Chromium */
+    &::-webkit-scrollbar {
+        height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-thumb);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #fafafa;
+    }
+    /**/
 }
 
 /* Other */
