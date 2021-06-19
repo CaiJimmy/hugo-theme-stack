@@ -17,11 +17,11 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 *   Global style
 */
 :root {
-    @media (min-width: $on-phone + 1) {
+    @include respond(md) {
         --main-top-padding: 35px;
     }
 
-    @media (min-width: $on-desktop-large) {
+    @include respond(xl) {
         --main-top-padding: 50px;
     }
 
@@ -75,17 +75,20 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --card-border-radius: 10px;
 
-    --card-padding: 30px;
-    @media (max-width: $on-desktop-large) {
+    --card-padding: 20px;
+
+    @include respond(md) {
         --card-padding: 25px;
     }
-    @media (max-width: $on-tablet) {
-        --card-padding: 20px;
+
+    @include respond(xl) {
+        --card-padding: 30px;
     }
 
-    --small-card-padding: 25px;
-    @media (max-width: $on-tablet) {
-        --small-card-padding: 25px 20px;
+    --small-card-padding: 25px 20px;
+
+    @include respond(md) {
+        --small-card-padding: 25px;
     }
 
     [data-scheme="dark"] {
@@ -103,10 +106,12 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 */
 :root {
     --article-font-family: var(--base-font-family);
-    --article-font-size: 1.7rem;
-    @media (max-width: $on-tablet) {
-        --article-font-size: 1.6rem;
+    --article-font-size: 1.6rem;
+
+    @include respond(md) {
+        --article-font-size: 1.7rem;
     }
+
     --article-line-height: 1.85;
 }
 
