@@ -100,6 +100,7 @@ main.main {
 
 .main-container {
     min-height: 100vh;
+    align-items: flex-start;
 
     @include respond(md) {
         padding: 0 10px;
