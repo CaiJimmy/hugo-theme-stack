@@ -1,4 +1,32 @@
-$on-phone: 812px;
-$on-tablet: 1024px;
-$on-desktop: 1519px;
-$on-desktop-large: 1920px;
+$on-phone: 640px;
+$on-tablet: 768px;
+$on-desktop: 1024px;
+$on-desktop-large: 1280px;
+
+@mixin respond($breakpoint) {
+    @if ($breakpoint == sm) {
+        @media (min-width: 640px) {
+            @content;
+        }
+    }
+    @if ($breakpoint == md) {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+    @if ($breakpoint == lg) {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    }
+    @if ($breakpoint == xl) {
+        @media (min-width: 1280px) {
+            @content;
+        }
+    }
+    @if ($breakpoint == 2xl) {
+        @media (min-width: 1536px) {
+            @content;
+        }
+    }
+}
