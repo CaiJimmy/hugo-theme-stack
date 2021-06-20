@@ -1,32 +1,19 @@
-$on-phone: 640px;
-$on-tablet: 768px;
-$on-desktop: 1024px;
-$on-desktop-large: 1280px;
+$breakpoints: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    2xl: 1536px,
+);
 
 @mixin respond($breakpoint) {
-    @if ($breakpoint == sm) {
-        @media (min-width: 640px) {
-            @content;
-        }
-    }
-    @if ($breakpoint == md) {
-        @media (min-width: 768px) {
-            @content;
-        }
-    }
-    @if ($breakpoint == lg) {
-        @media (min-width: 1024px) {
-            @content;
-        }
-    }
-    @if ($breakpoint == xl) {
-        @media (min-width: 1280px) {
-            @content;
-        }
-    }
-    @if ($breakpoint == 2xl) {
-        @media (min-width: 1536px) {
-            @content;
+    @each $bp, $size in $breakpoints {
+        @if not map-has-key($breakpoints, $breakpoint) {
+            @warn "'#{$breakpoint}' is not a valid breakpoint";
+        } @else {
+            @media (min-width: $size) {
+                @content;
+            }
         }
     }
 }
