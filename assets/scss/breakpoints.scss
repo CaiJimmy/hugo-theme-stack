@@ -7,13 +7,12 @@ $breakpoints: (
 );
 
 @mixin respond($breakpoint) {
+    @if not map-has-key($breakpoints, $breakpoint) {
+        @warn "'#{$breakpoint}' is not a valid breakpoint";
+    }
     @each $bp, $size in $breakpoints {
-        @if not map-has-key($breakpoints, $breakpoint) {
-            @warn "'#{$breakpoint}' is not a valid breakpoint";
-        } @else {
-            @media (min-width: $size) {
-                @content;
-            }
+        @media (min-width: $size) {
+            @content;
         }
     }
 }
