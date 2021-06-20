@@ -114,6 +114,121 @@
     }
 }
 
+.article-page.has-toc {
+    scroll-behavior: smooth;
+
+    .left-sidebar {
+        display: none;
+    }
+
+    .right-sidebar {
+        width: 100%;
+        max-width: unset;
+        grid-column: span 3 / span 3;
+        padding: 0;
+        display: none;
+
+        @include respond(xl) {
+            display: block;
+            top: var(--main-top-padding);
+        }
+    }
+
+    #article-toolbar {
+        grid-column: span 12 / span 12;
+        display: block;
+
+        padding: 0 15px;
+
+        @include respond(md) {
+            padding: 0;
+        }
+
+        @include respond(xl) {
+            grid-column: span 1 / span 1;
+
+            margin-top: 0;
+            position: sticky;
+            top: var(--main-top-padding);
+
+            a {
+                background: transparent;
+                box-shadow: none;
+                border: 1px solid var(--body-text-color);
+                width: 100%;
+                margin-right: 0;
+                svg {
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: start;
+        column-gap: 20px;
+    }
+
+    .main {
+        grid-column: span 12 / span 12;
+        padding-top: 0;
+
+        @include respond(md) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @include respond(xl) {
+            grid-column: span 8 / span 8;
+            padding-top: var(--main-top-padding);
+        }
+    }
+}
+
+.widget--toc {
+    background-color: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+    display: flex;
+    flex-direction: column;
+
+    #TableOfContents {
+        ul {
+            list-style-type: none;
+            counter-reset: section;
+        }
+
+        & > ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 15px 20px;
+            padding: 5px;
+
+            &::before {
+                counter-increment: section;
+                content: counters(section, ".") ". ";
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            & > ul {
+                margin-top: 10px;
+                padding-left: 10px;
+                margin-bottom: -5px;
+
+                & > li:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
 .related-contents--wrapper {
     margin-bottom: var(--section-separation);
 }
