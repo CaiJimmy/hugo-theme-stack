@@ -9,9 +9,8 @@ $breakpoints: (
 @mixin respond($breakpoint) {
     @if not map-has-key($breakpoints, $breakpoint) {
         @warn "'#{$breakpoint}' is not a valid breakpoint";
-    }
-    @each $bp, $size in $breakpoints {
-        @media (min-width: $size) {
+    } @else {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
             @content;
         }
     }
