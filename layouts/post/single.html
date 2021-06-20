@@ -1,5 +1,7 @@
-{{ .Scratch.Set "hasTOC" (ge (len .TableOfContents) 100) }}
-{{ define "body-class" }}article-page keep-sidebar{{ if .Scratch.Get "hasTOC" }} has-toc{{ end }}{{ end }}
+{{ define "body-class" }}
+    {{- .Scratch.Set "hasTOC" (ge (len .TableOfContents) 100) -}}
+    article-page keep-sidebar{{ if (.Scratch.Get "hasTOC") }} has-toc{{ end }}
+{{ end }}
 {{ define "container-class" }}extended{{ end }}
 {{ define "main" }}
     {{ partial "article/article.html" . }}
@@ -16,7 +18,7 @@
 {{ end }}
 
 {{ define "left-sidebar" }}
-    {{ if .Scratch.Get "hasTOC" }}
+    {{ if (.Scratch.Get "hasTOC") }}
         <div id="article-toolbar">
             <a href="{{ .Site.BaseURL }}" class="back-home">
                 {{ (resources.Get "icons/back.svg").Content | safeHTML }}
@@ -29,7 +31,7 @@
 {{ end }}
 
 {{ define "right-sidebar" }}
-    {{ if .Scratch.Get "hasTOC" }}
+    {{ if (.Scratch.Get "hasTOC") }}
         <aside class="sidebar right-sidebar sticky">
             <section class="widget archives">
                 <div class="widget-icon">
