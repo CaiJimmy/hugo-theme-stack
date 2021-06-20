@@ -1,25 +1,6 @@
 html {
     font-size: 62.5%;
     overflow-y: scroll;
-
-    /* scrollbar styles for Firefox */
-    scrollbar-width: auto;
-    scrollbar-color: var(--scrollbar-thumb) transparent;
-    /**/
-
-    /* scrollbar styles for Chromium */
-    &::-webkit-scrollbar {
-        height: auto;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--scrollbar-thumb);
-    }
-
-    &::-webkit-scrollbar-track {
-        background-color: transparent;
-    }
-    /**/
 }
 
 * {
@@ -34,3 +15,24 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* scrollbar styles for Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+/**/
+
+/* scrollbar styles for Chromium */
+::-webkit-scrollbar {
+    height: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+/**/
