@@ -242,6 +242,7 @@
             flex-direction: column;
             justify-content: flex-end;
             z-index: 2;
+            padding: 15px;
 
             @include respond(sm) {
                 padding: 20px;
