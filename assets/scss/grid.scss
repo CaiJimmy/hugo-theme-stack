@@ -92,7 +92,6 @@
 
 main.main {
     min-width: 0;
-    padding: 0 15px;
     max-width: 100%;
     flex-grow: 1;
     padding-top: var(--main-top-padding);
@@ -101,12 +100,10 @@ main.main {
 .main-container {
     min-height: 100vh;
     align-items: flex-start;
+    padding: 0 15px;
+    column-gap: var(--section-separation);
 
     @include respond(md) {
-        padding: 0 10px;
-    }
-
-    @include respond(lg) {
         padding: 0 20px;
     }
 }
