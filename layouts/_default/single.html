@@ -1,7 +1,7 @@
 {{ define "body-class" }}
     {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
     {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
-    article-page keep-sidebar{{ if (.Scratch.Get "hasTOC") }} has-toc{{ end }}
+    article-page {{ if (.Scratch.Get "hasTOC") }}has-toc{{ end }}
 {{ end }}
 
 {{ define "container-class" }}
