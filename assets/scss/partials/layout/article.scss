@@ -196,12 +196,14 @@
     color: var(--card-text-color-main);
 
     #TableOfContents {
-        ul {
+        ol {
+            counter-reset: item;
             list-style-type: none;
-            counter-reset: section;
+            padding: 0;
+            margin: 0;
         }
 
-        & > ul {
+        & > li {
             padding: 0;
             margin: 0;
         }
@@ -211,13 +213,13 @@
             padding: 5px;
 
             &::before {
-                counter-increment: section;
-                content: counters(section, ".") ". ";
+                counter-increment: item;
+                content: counters(item, ".") ". ";
                 font-weight: bold;
                 margin-right: 5px;
             }
 
-            & > ul {
+            & > ol {
                 margin-top: 10px;
                 padding-left: 10px;
                 margin-bottom: -5px;
