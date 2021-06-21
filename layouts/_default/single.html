@@ -31,7 +31,7 @@
         <div id="article-toolbar">
             <a href="{{ .Site.BaseURL }}" class="back-home">
                 {{ (resources.Get "icons/back.svg").Content | safeHTML }}
-                <span>Back</span>
+                <span>{{ T "article.back" }}</span>
             </a>
         </div>
     {{ else }}
@@ -46,7 +46,7 @@
                 <div class="widget-icon">
                     {{ partial "helper/icon" "hash" }}
                 </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
+                <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
                 
                 <div class="widget--toc">
                     {{ .TableOfContents }}
