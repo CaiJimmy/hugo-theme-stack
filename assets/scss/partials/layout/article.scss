@@ -123,8 +123,6 @@
 
     .right-sidebar {
         width: 100%;
-        max-width: unset;
-        grid-column: span 3 / span 3;
         padding: 0;
         display: none;
 
@@ -135,21 +133,17 @@
     }
 
     #article-toolbar {
-        grid-column: span 12 / span 12;
         display: block;
-
-        padding: 0 15px;
 
         @include respond(md) {
             padding: 0;
         }
 
         @include respond(xl) {
-            grid-column: span 1 / span 1;
-
             margin-top: 0;
             position: sticky;
             top: var(--main-top-padding);
+            flex-shrink: 1;
 
             a {
                 background: transparent;
@@ -157,6 +151,7 @@
                 border: 1px solid var(--body-text-color);
                 width: 100%;
                 margin-right: 0;
+
                 svg {
                     flex-shrink: 0;
                 }
@@ -165,23 +160,18 @@
     }
 
     .main-container {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
         align-items: start;
-        column-gap: 20px;
+        flex-direction: column;
+
+        @include respond(xl) {
+            flex-direction: row;
+        }
     }
 
     .main {
-        grid-column: span 12 / span 12;
         padding-top: 0;
 
-        @include respond(md) {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
         @include respond(xl) {
-            grid-column: span 8 / span 8;
             padding-top: var(--main-top-padding);
         }
     }

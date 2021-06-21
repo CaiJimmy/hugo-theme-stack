@@ -8,7 +8,7 @@
     {{ if (.Scratch.Get "hasTOC") }}
         extended
     {{ else }}
-        {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}
+        on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}
     {{ end }}
 {{ end }}
 

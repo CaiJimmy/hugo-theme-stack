@@ -1,5 +1,4 @@
 .sidebar {
-    padding: 0 15px;
     &.sticky {
         @include respond(md) {
             position: sticky;
@@ -22,8 +21,8 @@
 
     @include respond(md) {
         width: auto;
-        margin-right: 1%;
-        padding: var(--main-top-padding) 15px;
+        padding-top: var(--main-top-padding);
+        padding-bottom: var(--main-top-padding);
         max-height: 100vh;
     }
 
@@ -46,7 +45,6 @@
     }
 
     @include respond(lg) {
-        margin-left: 1%;
         padding-top: var(--main-top-padding);
     }
 }
@@ -55,7 +53,7 @@
     z-index: 1;
     transition: box-shadow 0.5s ease;
 
-    padding: 15px 30px;
+    padding: 15px;
 
     @include respond(md) {
         padding: 0;
