@@ -5,8 +5,15 @@ darkMode:
     other: ダークモード
 
 article:
+    back:
+        other: 前のページ
+
+    tableOfContents:
+        other: 目次
+
     relatedContents:
         other: 関連するコンテンツ
+
     lastUpdatedOn:
         other: 最終更新
 
@@ -20,8 +27,10 @@ widget:
     archives:
         title:
             other: アーカイブ
+
         more:
             other: さらに見る
+
     tagCloud:
         title:
             other: タグ
@@ -29,7 +38,9 @@ widget:
 search:
     title:
         other: 検索
+
     placeholder:
         other: 入力...
+
     resultTitle:
         other: "#PAGES_COUNT 件 （#TIME_SECONDS 秒）"
