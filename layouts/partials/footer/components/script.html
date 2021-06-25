@@ -1,5 +1,13 @@
 {{- partial "helper/external" (dict "Context" . "Namespace" "Vibrant") -}}
 
+{{- partial "helper/external" (dict "Context" . "Namespace" "StickyScroller") -}}
+<script>
+    window.addEventListener("load", () => {
+        const rightSiderbar = document.querySelector(".right-sidebar");
+        if (rightSiderbar) new StickyScroller(rightSiderbar);
+    })
+</script>
+
 {{- $opts := dict "minify" hugo.IsProduction -}}
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}
 

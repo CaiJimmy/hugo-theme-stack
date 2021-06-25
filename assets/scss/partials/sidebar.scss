@@ -39,6 +39,7 @@
 .right-sidebar {
     flex-shrink: 0;
     display: none;
+    height: 100vh;
 
     &.sticky {
         top: 0;

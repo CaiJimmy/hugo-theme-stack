@@ -36,3 +36,9 @@ KaTeX:
       integrity: sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa
       type: script
       defer: true
+
+StickyScroller:
+    - src: https://cdn.jsdelivr.net/npm/sticky-scroller@0.4.0/dist/sticky-scroller.js
+      integrity: sha256-OrppYVDkQVJpB/pb96X+9JStPPGpgHWhheQbgKy5EPI=
+      type: script
+      defer: true
