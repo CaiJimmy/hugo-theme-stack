@@ -37,8 +37,8 @@ KaTeX:
       type: script
       defer: true
 
-StickyScroller:
-    - src: https://cdn.jsdelivr.net/npm/sticky-scroller@0.4.0/dist/sticky-scroller.js
-      integrity: sha256-OrppYVDkQVJpB/pb96X+9JStPPGpgHWhheQbgKy5EPI=
+HCSticky:
+    - src: https://cdn.jsdelivr.net/npm/hc-sticky@2.2.7/dist/hc-sticky.js
+      integrity: sha256-ZQb/nC8ArgZEjGauwabpmi57wvKmjsuXZbFcIKw4G/Y=
       type: script
       defer: true

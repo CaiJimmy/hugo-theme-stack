@@ -1,10 +1,15 @@
 {{- partial "helper/external" (dict "Context" . "Namespace" "Vibrant") -}}
 
-{{- partial "helper/external" (dict "Context" . "Namespace" "StickyScroller") -}}
+{{- partial "helper/external" (dict "Context" . "Namespace" "HCSticky") -}}
 <script>
     window.addEventListener("load", () => {
         const rightSiderbar = document.querySelector(".right-sidebar");
-        if (rightSiderbar) new StickyScroller(rightSiderbar);
+        if (rightSiderbar) {
+            new hcSticky(".right-sidebar", {
+                stickTo: '.main-container',
+                stickyClass: 'js-sticked'
+            });
+        }
     })
 </script>
 

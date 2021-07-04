@@ -39,7 +39,6 @@
 .right-sidebar {
     flex-shrink: 0;
     display: none;
-    height: 100vh;
 
     &.sticky {
         top: 0;
@@ -48,6 +47,11 @@
     @include respond(lg) {
         padding-top: var(--main-top-padding);
     }
+}
+
+/// For HC Sticky plugin, since it doesn't provide a option to customize class name
+.sticky-spacer {
+    max-width: var(--right-sidebar-max-width);
 }
 
 .site-info {
