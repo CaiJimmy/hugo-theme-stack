@@ -11,7 +11,7 @@
 
 ## Documentation & more information
 
-[Documentation](https://docs.stack.jimmycai.com/) | [中文文档](https://docs.stack.jimmycai.com/v/zh-cn/)
+[Documentation](https://docs.stack.jimmycai.com/) | [中文文档](https://docs.stack.jimmycai.com/zh/)
 
 ## Introduction
 
