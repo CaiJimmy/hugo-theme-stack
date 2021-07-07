@@ -14,7 +14,7 @@
                 props: {
                     title: "{{ $.Title }}",
                     options: {
-                        proxy: (url) => "https://cors-anywhere.azm.workers.dev/" + url,
+                        autoCreateIssue: {{ default false .autoCreateIssue }},
                         owner: "{{ .owner }}",
                         repo: "{{ .repo }}",
                         clientId: "{{ .clientId }}",
