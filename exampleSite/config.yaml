@@ -67,6 +67,7 @@ params:
             repo:
             clientId:
             clientSecret:
+            autoCreateIssue: false
 
         # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
