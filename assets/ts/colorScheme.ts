@@ -22,7 +22,7 @@ class StackColorScheme {
         localStorage.setItem(this.localStorageKey, this.currentScheme);
     }
 
-    private bindClick(toggleEl) {
+    private bindClick(toggleEl: HTMLElement) {
         toggleEl.addEventListener('click', (e) => {
             if (this.isDark()) {
                 /// Disable dark mode
