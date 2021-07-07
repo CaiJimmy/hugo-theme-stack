@@ -1,0 +1,31 @@
+{{- partial "helper/external" (dict "Context" . "Namespace" "FloatSidebar") -}}
+
+<script>
+    window.addEventListener("load", () => {
+        const rightSiderbar = document.querySelector(".right-sidebar");
+        const mainContainer = document.querySelector(".main-container");
+        const rightSidebarInner = rightSiderbar.querySelector(".sidebar__inner");
+        const padding = window.getComputedStyle(document.documentElement).getPropertyValue('--main-top-padding').replace('px', '');
+
+        if (rightSiderbar) {
+            const floatSidebar = FloatSidebar({
+                sidebar: rightSiderbar,
+                relative: mainContainer,
+                sidebarInner: rightSidebarInner,
+                topSpacing: padding,
+                bottomSpacing: padding
+            });
+
+            const updateMaxWidth = () => {
+                rightSidebarInner.style.maxWidth = `${rightSiderbar.offsetWidth}px`;
+            }
+            updateMaxWidth();
+
+            /**
+                Because the right sidebar does not have a fixed width,
+                we need to update the max-width of the sidebarInner when the window is resized.
+            */
+            window.addEventListener("resize", updateMaxWidth);
+        }
+    })
+</script>

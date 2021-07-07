@@ -1,17 +1,5 @@
 {{- partial "helper/external" (dict "Context" . "Namespace" "Vibrant") -}}
-
-{{- partial "helper/external" (dict "Context" . "Namespace" "HCSticky") -}}
-<script>
-    window.addEventListener("load", () => {
-        const rightSiderbar = document.querySelector(".right-sidebar");
-        if (rightSiderbar) {
-            new hcSticky(".right-sidebar", {
-                stickTo: '.main-container',
-                stickyClass: 'js-sticked'
-            });
-        }
-    })
-</script>
+{{- partial "footer/components/sticky-sidebar" . -}}}
 
 {{- $opts := dict "minify" hugo.IsProduction -}}
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}

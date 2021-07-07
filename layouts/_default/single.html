@@ -42,16 +42,18 @@
 {{ define "right-sidebar" }}
     {{ if (.Scratch.Get "hasTOC") }}
         <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    {{ partial "helper/icon" "hash" }}
-                </div>
-                <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
-                
-                <div class="widget--toc">
-                    {{ .TableOfContents }}
-                </div>
-            </section>
+            <div class="sidebar__inner">
+                <section class="widget">
+                    <div class="widget-icon">
+                        {{ partial "helper/icon" "hash" }}
+                    </div>
+                    <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+                    
+                    <div class="widget--toc">
+                        {{ .TableOfContents }}
+                    </div>
+                </section>
+            </div>
         </aside>
     {{ end }}
 {{ end }}

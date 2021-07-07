@@ -37,8 +37,8 @@ KaTeX:
       type: script
       defer: true
 
-HCSticky:
-    - src: https://cdn.jsdelivr.net/npm/hc-sticky@2.2.7/dist/hc-sticky.js
-      integrity: sha256-ZQb/nC8ArgZEjGauwabpmi57wvKmjsuXZbFcIKw4G/Y=
+FloatSidebar:
+    - src: https://cdn.jsdelivr.net/npm/float-sidebar@1.2.3/dist/float-sidebar.min.js
+      integrity: sha256-mOZMic3UnZLVOJXhVOhJ2zGsyrGHEQ3LVT5O98ya9kI=
       type: script
       defer: true
