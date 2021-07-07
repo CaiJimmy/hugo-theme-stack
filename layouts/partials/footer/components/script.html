@@ -1,4 +1,5 @@
 {{- partial "helper/external" (dict "Context" . "Namespace" "Vibrant") -}}
+{{- partial "footer/components/sticky-sidebar" . -}}}
 
 {{- $opts := dict "minify" hugo.IsProduction -}}
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}

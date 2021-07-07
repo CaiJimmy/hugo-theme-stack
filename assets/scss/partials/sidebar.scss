@@ -39,6 +39,10 @@
 .right-sidebar {
     flex-shrink: 0;
     display: none;
+    
+    /// Take full max-width, set in grid.scss
+    width: 100%;
+    position: relative;
 
     &.sticky {
         top: 0;

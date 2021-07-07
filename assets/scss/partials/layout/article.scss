@@ -129,7 +129,7 @@
 
         @include respond(xl) {
             display: block;
-            top: var(--main-top-padding);
+            padding-top: var(--main-top-padding);
         }
     }
 

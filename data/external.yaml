@@ -36,3 +36,9 @@ KaTeX:
       integrity: sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa
       type: script
       defer: true
+
+FloatSidebar:
+    - src: https://cdn.jsdelivr.net/npm/float-sidebar@1.2.3/dist/float-sidebar.min.js
+      integrity: sha256-mOZMic3UnZLVOJXhVOhJ2zGsyrGHEQ3LVT5O98ya9kI=
+      type: script
+      defer: true
