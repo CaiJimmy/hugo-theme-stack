@@ -1,5 +1,0 @@
-name: netlify-plugin-hugo-cache
-inputs:
-  - name: debug
-    description: Show more verbose logs
-    default: true
