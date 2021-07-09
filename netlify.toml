@@ -23,4 +23,4 @@
             # If it should show more verbose logs (optional, default = true)
             debug = true
             # Relative path to source directory in case you use Hugo's "--s" option
-            srcdir = "exampleSite/resources"
+            srcdir = "exampleSite"
