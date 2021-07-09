@@ -127,16 +127,16 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-bottom: 0;
     overflow-y: auto;
     flex-grow: 1;
     font-size: 1.4rem;
 
     background-color: var(--card-background);
-    margin-top: 0;
     padding: 15px 0;
     box-shadow: var(--shadow-l1);
     display: none;
+
+    margin: 0 -15px;
 
     &.show {
         display: block;
@@ -148,6 +148,7 @@
         background-color: transparent;
         padding: 0;
         box-shadow: none;
+        margin: 0;
         margin-top: var(--sidebar-element-separation);
     }
 
