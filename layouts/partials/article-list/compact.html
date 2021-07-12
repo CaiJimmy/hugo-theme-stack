@@ -6,34 +6,31 @@
             </h2>
             <footer class="article-time">
                 <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-                </time>
+                    {{- .Date.Format  (or .Site.Params.dateFormat.published "Jan 02, 2006 ") -}}&nbsp;
+                    {{ .ReadingTime }} min read</time>
             </footer>
         </div>
 
         {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
         {{ if $image.exists }}
-            <div class="article-image">
-                {{ if $image.resource }}
-                    {{- $Permalink := $image.resource.RelPermalink -}}
-                    {{- $Width := $image.resource.Width -}}
-                    {{- $Height := $image.resource.Height -}}
+        <div class="article-image">
+            {{ if $image.resource }}
+            {{- $Permalink := $image.resource.RelPermalink -}}
+            {{- $Width := $image.resource.Width -}}
+            {{- $Height := $image.resource.Height -}}
 
-                    {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
-                        {{- $thumbnail := $image.resource.Fill "120x120" -}}
-                        {{- $Permalink = $thumbnail.RelPermalink -}}
-                        {{- $Width = $thumbnail.Width -}}
-                        {{- $Height = $thumbnail.Height -}}
-                    {{- end -}}
-                    
-                    <img src="{{ $Permalink }}" 
-                        width="{{ $Width }}"
-                        height="{{ $Height }}" 
-                        loading="lazy">
-                {{ else }}
-                    <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
-                {{ end }}
-            </div>
+            {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+            {{- $thumbnail := $image.resource.Fill "120x120" -}}
+            {{- $Permalink = $thumbnail.RelPermalink -}}
+            {{- $Width = $thumbnail.Width -}}
+            {{- $Height = $thumbnail.Height -}}
+            {{- end -}}
+
+            <img src="{{ $Permalink }}" width="{{ $Width }}" height="{{ $Height }}" loading="lazy">
+            {{ else }}
+            <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+            {{ end }}
+        </div>
         {{ end }}
     </a>
 </article>
