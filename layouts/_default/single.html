@@ -1,7 +1,22 @@
-{{ define "body-class" }}article-page keep-sidebar{{ end }}
+{{ define "body-class" }}
+    {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
+    {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
+    article-page {{ if (.Scratch.Get "hasTOC") }}has-toc{{ end }}
+{{ end }}
+
+{{ define "container-class" }}
+    {{ if (.Scratch.Get "hasTOC") }}
+        extended
+    {{ else }}
+        on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
     {{ partial "article/article.html" . }}
 
+    {{ partial "article/components/related-contents" . }}
+     
     {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}} 
         {{ partial "comments/include" . }}
     {{ end }}
@@ -9,4 +24,34 @@
     {{ partialCached "footer/footer" . }}
 
     {{ partialCached "article/components/photoswipe" . }}
+{{ end }}
+
+{{ define "left-sidebar" }}
+    {{ if (.Scratch.Get "hasTOC") }}
+        <div id="article-toolbar">
+            <a href="{{ .Site.BaseURL }}" class="back-home">
+                {{ (resources.Get "icons/back.svg").Content | safeHTML }}
+                <span>{{ T "article.back" }}</span>
+            </a>
+        </div>
+    {{ else }}
+        {{ partial "sidebar/left.html" . }}
+    {{ end }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ if (.Scratch.Get "hasTOC") }}
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    {{ partial "helper/icon" "hash" }}
+                </div>
+                <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+                
+                <div class="widget--toc">
+                    {{ .TableOfContents }}
+                </div>
+            </section>
+        </aside>
+    {{ end }}
 {{ end }}

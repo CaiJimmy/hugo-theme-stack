@@ -2,67 +2,52 @@
     margin-left: auto;
     margin-right: auto;
 
+    .left-sidebar {
+        max-width: var(--left-sidebar-max-width);
+    }
+
+    .right-sidebar {
+        max-width: var(--right-sidebar-max-width);
+
+        /// Display right sidebar when min-width: lg
+        @include respond(lg) {
+            display: block;
+        }
+    }
+
     &.extended {
-        @media (min-width: $on-phone) {
-            max-width: 800px;
-
-            .left-sidebar {
-                width: 25%;
-            }
+        @include respond(md) {
+            max-width: 1024px;
+            --left-sidebar-max-width: 25%;
+            --right-sidebar-max-width: 30%;
         }
 
-        @media (min-width: $on-tablet) {
-            max-width: 972px;
-
-            .right-sidebar {
-                width: 25%;
-            }
+        @include respond(lg) {
+            max-width: 1280px;
+            --left-sidebar-max-width: 20%;
+            --right-sidebar-max-width: 30%;
         }
 
-        @media (min-width: $on-desktop) {
-            max-width: 1200px;
-
-            .left-sidebar {
-                width: 20%;
-            }
-
-            .right-sidebar {
-                width: 25%;
-            }
-        }
-
-        @media (min-width: $on-desktop-large) {
+        @include respond(xl) {
             max-width: 1536px;
-
-            .left-sidebar {
-                width: 15%;
-            }
+            --left-sidebar-max-width: 15%;
+            --right-sidebar-max-width: 25%;
         }
     }
 
     &.compact {
-        @media (min-width: $on-phone) {
-            max-width: 800px;
-
-            .left-sidebar {
-                width: 25%;
-            }
+        @include respond(md) {
+            --left-sidebar-max-width: 25%;
+            max-width: 768px;
         }
 
-        @media (min-width: $on-tablet) {
-            max-width: 972px;
+        @include respond(lg) {
+            max-width: 1024px;
+            --left-sidebar-max-width: 20%;
         }
 
-        @media (min-width: $on-desktop) {
-            max-width: 1050px;
-
-            .left-sidebar {
-                width: 20%;
-            }
-        }
-
-        @media (min-width: $on-desktop-large) {
-            max-width: 1300px;
+        @include respond(xl) {
+            max-width: 1280px;
         }
     }
 }
@@ -76,8 +61,9 @@
     }
 
     &.on-phone--column {
-        @media (max-width: $on-phone) {
-            flex-direction: column;
+        flex-direction: column;
+        @include respond(md) {
+            flex-direction: unset;
         }
     }
 
@@ -106,7 +92,6 @@
 
 main.main {
     min-width: 0;
-    padding: 0 15px;
     max-width: 100%;
     flex-grow: 1;
     padding-top: var(--main-top-padding);
@@ -114,4 +99,11 @@ main.main {
 
 .main-container {
     min-height: 100vh;
+    align-items: flex-start;
+    padding: 0 15px;
+    column-gap: var(--section-separation);
+
+    @include respond(md) {
+        padding: 0 20px;
+    }
 }

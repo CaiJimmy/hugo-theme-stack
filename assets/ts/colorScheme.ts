@@ -9,7 +9,7 @@ class StackColorScheme {
         this.bindMatchMedia();
         this.currentScheme = this.getSavedScheme();
 
-        this.dispatchEvent(document.body.dataset.scheme as colorScheme);
+        this.dispatchEvent(document.documentElement.dataset.scheme as colorScheme);
 
         if (toggleEl)
             this.bindClick(toggleEl);
@@ -22,7 +22,7 @@ class StackColorScheme {
         localStorage.setItem(this.localStorageKey, this.currentScheme);
     }
 
-    private bindClick(toggleEl) {
+    private bindClick(toggleEl: HTMLElement) {
         toggleEl.addEventListener('click', (e) => {
             if (this.isDark()) {
                 /// Disable dark mode
@@ -56,13 +56,13 @@ class StackColorScheme {
 
     private setBodyClass() {
         if (this.isDark()) {
-            document.body.dataset.scheme = 'dark';
+            document.documentElement.dataset.scheme = 'dark';
         }
         else {
-            document.body.dataset.scheme = 'light';
+            document.documentElement.dataset.scheme = 'light';
         }
 
-        this.dispatchEvent(document.body.dataset.scheme as colorScheme);
+        this.dispatchEvent(document.documentElement.dataset.scheme as colorScheme);
     }
 
     private getSavedScheme(): colorScheme {

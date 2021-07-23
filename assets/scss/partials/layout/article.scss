@@ -1,43 +1,9 @@
-.keep-sidebar {
-    @media (min-width: $on-phone) and (max-width: $on-tablet) {
-        --main-top-padding: 50px;
-    }
-}
-
 .article-page {
-    &.with-toolbar {
-        @media (max-width: $on-tablet) {
-            --main-top-padding: 0;
-        }
-    }
+    &.hide-sidebar-sm .left-sidebar {
+        display: none;
 
-    &:not(.keep-sidebar) .left-sidebar {
-        @media (max-width: $on-tablet) {
-            display: none;
-        }
-    }
-
-    .article-sidebar {
-        position: sticky;
-        top: 50px;
-        flex-shrink: 0;
-
-        @media (max-width: $on-tablet) {
-            display: none;
-        }
-
-        @media (min-width: $on-tablet) {
-            padding-left: 15px;
-            margin-left: 1%;
-        }
-
-        @media (min-width: $on-tablet) {
-            width: 25%;
-            margin-right: 1%;
-        }
-
-        @media (min-width: $on-desktop) {
-            width: 30%;
+        @include respond(md) {
+            display: inherit;
         }
     }
 
@@ -111,12 +77,9 @@
 #article-toolbar {
     display: flex;
     align-items: center;
+    margin: 20px 0;
 
-    @media (max-width: $on-tablet) {
-        margin: 20px 0;
-    }
-
-    @media (min-width: $on-tablet) {
+    @include respond(md) {
         display: none;
     }
 
@@ -147,6 +110,115 @@
 
         span {
             font-weight: 500;
+            white-space: nowrap;
+        }
+    }
+}
+
+.article-page.has-toc {
+    scroll-behavior: smooth;
+
+    .left-sidebar {
+        display: none;
+    }
+
+    .right-sidebar {
+        width: 100%;
+        padding: 0;
+        display: none;
+
+        @include respond(xl) {
+            display: block;
+            top: var(--main-top-padding);
+        }
+    }
+
+    #article-toolbar {
+        display: block;
+
+        @include respond(md) {
+            padding: 0;
+        }
+
+        @include respond(xl) {
+            margin-top: 0;
+            position: sticky;
+            top: var(--main-top-padding);
+            flex-shrink: 1;
+
+            a {
+                background: transparent;
+                box-shadow: none;
+                border: 1px solid var(--body-text-color);
+                width: 100%;
+                margin-right: 0;
+
+                svg {
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+
+    .main-container {
+        align-items: start;
+        flex-direction: column;
+
+        @include respond(xl) {
+            flex-direction: row;
+        }
+    }
+
+    .main {
+        padding-top: 0;
+
+        @include respond(xl) {
+            padding-top: var(--main-top-padding);
+        }
+    }
+}
+
+.widget--toc {
+    background-color: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+    display: flex;
+    flex-direction: column;
+    color: var(--card-text-color-main);
+
+    #TableOfContents {
+        ol {
+            counter-reset: item;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        & > li {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 15px 20px;
+            padding: 5px;
+
+            &::before {
+                counter-increment: item;
+                content: counters(item, ".") ". ";
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            & > ol {
+                margin-top: 10px;
+                padding-left: 10px;
+                margin-bottom: -5px;
+
+                & > li:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 }

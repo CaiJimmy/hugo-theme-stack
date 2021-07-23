@@ -1,0 +1,32 @@
+<script src='//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js'></script>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+    .waline-container .vcount {
+        color: var(--card-text-color-main);
+    }
+</style>
+
+{{- with .Site.Params.comments.waline -}}
+{{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` -}}
+{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "avatarcdn" "avatarCDN" "avatarforce" "avatarForce" -}}
+
+{{- range $key, $val := . -}}
+    {{- if $val -}}  
+        {{- $replaceKey := index $replaceKeys $key -}}
+        {{- $k := default $key $replaceKey -}}
+
+        {{- $config = merge $config (dict $k $val) -}}
+    {{- end -}}
+{{- end -}}
+
+<script>
+    /// Waline client configuration see: https://waline.js.org/en/reference/client.html
+    new Waline({{ $config | jsonify | safeJS }});
+</script>
+{{- end -}}

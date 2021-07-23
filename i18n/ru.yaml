@@ -21,10 +21,14 @@ list:
         other: Подразделы
 
 article:
+    back:
+        other: Назад
     relatedContents:
         other: Также рекомендуем
     lastUpdatedOn:
         other: Обновлено
+    tableOfContents: 
+        other: Содержание
 
 notFound:
     title:
