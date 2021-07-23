@@ -2,10 +2,9 @@
     {{ if .Params.categories }}
     <header class="article-category">
         {{ range (.GetTerms "categories") }}
-        <a href="{{ .RelPermalink }}"
-            {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};" {{ end }}>
-            {{ .LinkTitle }}
-        </a>
+            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                {{ .LinkTitle }}
+            </a>
         {{ end }}
     </header>
     {{ end }}
@@ -22,16 +21,23 @@
     </h3>
     {{ end }}
 
-    {{- if not .Date.IsZero -}}
     <footer class="article-time">
-        {{ partial "helper/icon" "date" }}
-        <time class="article-time--published">
-            {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}&emsp;
-        </time>
-        {{ partial "helper/icon" "clock" }}
-        <time class="article-time--published">
-            {{ .ReadingTime }} min read
-        </time>
+        {{ if not .Date.IsZero }}
+            <div>
+                {{ partial "helper/icon" "date" }}
+                <time class="article-time--published">
+                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                </time>
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.article.readingTime }}
+            <div>
+                {{ partial "helper/icon" "clock" }}
+                <time class="article-time--published">
+                    {{ .ReadingTime }} min read
+                </time>
+            </div>
+        {{ end }}
     </footer>
-    {{- end -}}
 </div>

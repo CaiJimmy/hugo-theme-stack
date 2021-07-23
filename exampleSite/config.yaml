@@ -44,6 +44,7 @@ params:
     article:
         math: false
         toc: true
+        readingTime: true 
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0
