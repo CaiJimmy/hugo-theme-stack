@@ -7,7 +7,7 @@
 
     <header class="site-info">
         {{ with .Site.Params.sidebar.avatar }}
-            {{ if .enabled }}
+            {{ if (default true .enabled) }}
             <figure class="site-avatar">
                 {{ if not .local }}
                     <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
