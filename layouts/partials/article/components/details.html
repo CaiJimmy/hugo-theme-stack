@@ -21,12 +21,25 @@
     </h3>
     {{ end }}
 
-    {{- if not .Date.IsZero -}}
+    {{ if or (not .Date.IsZero) (.Site.Params.article.readingTime) }}
     <footer class="article-time">
-        {{ partial "helper/icon" "clock" }}
-        <time class="article-time--published">
-            {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-        </time>
+        {{ if not .Date.IsZero }}
+            <div>
+                {{ partial "helper/icon" "date" }}
+                <time class="article-time--published">
+                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                </time>
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.article.readingTime }}
+            <div>
+                {{ partial "helper/icon" "clock" }}
+                <time class="article-time--reading">
+                    {{ T "article.readingTime" .ReadingTime }}
+                </time>
+            </div>
+        {{ end }}
     </footer>
-    {{- end -}}
+    {{ end }}
 </div>

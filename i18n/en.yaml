@@ -29,6 +29,11 @@ article:
     lastUpdatedOn:
         other: Last updated on
 
+    readingTime:
+        one: "{{ .Count }} min read"
+        ### Seems that there's no need to add 's' even if it's plural in English
+        other: "{{ .Count }} min read"
+
 notFound:
     title:
         other: Not Found
