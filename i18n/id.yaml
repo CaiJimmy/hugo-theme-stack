@@ -29,6 +29,10 @@ article:
     lastUpdatedOn:
         other: Terakhir diperbarui pada
 
+    readingTime:
+        one: "Waktu Membaca: {{ .Count }} menit"
+        other: "Waktu Membaca: {{ .Count }} menit"
+
 notFound:
     title:
         other: Tidak ditemukan
