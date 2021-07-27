@@ -70,6 +70,12 @@
                 flex-wrap: wrap;
                 text-transform: unset;
             }
+
+            .article-copyright {
+                a {
+                    color: var(--body-text-color);
+                }
+            }
         }
     }
 }
