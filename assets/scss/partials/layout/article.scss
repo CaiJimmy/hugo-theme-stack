@@ -385,7 +385,7 @@
         padding-bottom: 56.25%;
         overflow: hidden;
 
-        & > iframe {
+        & > iframe, & > video {
             position: absolute;
             width: 100%;
             height: 100%;
