@@ -31,7 +31,6 @@ article:
 
     readingTime:
         one: "{{ .Count }} min per leggere"
-        ### Seems that there's no need to add 's' even if it's plural in English
         other: "{{ .Count }} min per leggere"
 
 notFound:
