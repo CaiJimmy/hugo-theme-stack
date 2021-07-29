@@ -17,6 +17,9 @@ article:
     lastUpdatedOn:
         other: 最終更新
 
+    readingTime:
+        other: "リードタイム: {{ .Count }}分"
+
 notFound:
     title:
         other: 404 Not Found
