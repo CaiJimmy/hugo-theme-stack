@@ -18,7 +18,7 @@ article:
         other: 最終更新
 
     readingTime:
-        other: "リードタイム: {{ .Count }}分"
+        other: "読了時間: {{ .Count }}分"
 
 notFound:
     title:
