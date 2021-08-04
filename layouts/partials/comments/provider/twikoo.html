@@ -1,0 +1,42 @@
+<script src="//cdn.jsdelivr.net/npm/twikoo@1.4.3/dist/twikoo.all.min.js"></script>
+<div id="tcomment"></div>
+<style>
+    .twikoo {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+    .twikoo .el-input-group__prepend,
+    .twikoo .tk-action-icon,
+    .twikoo .tk-time,
+    .twikoo .tk-comments-count,
+    .twikoo .el-button {
+        color: var(--body-text-color);
+    }
+    .twikoo .el-input__inner,
+    .twikoo .el-textarea__inner,
+    .twikoo .tk-preview-container,
+    .twikoo .tk-content,
+    .twikoo .tk-nick {
+        color: var(--card-text-color-main);
+    }
+</style>
+
+{{- with .Site.Params.comments.twikoo -}}
+<script>
+    twikoo.init({
+        envId: '{{- .envId -}}',
+        el: '#tcomment',
+        {{- with .region -}}
+        region: '{{- . -}}',
+        {{- end -}}
+        {{- with .path -}}
+        path: '{{- . -}}',
+        {{- end -}}
+        {{- with .lang -}}
+        lang: '{{- . -}}',
+        {{- end -}}
+    })
+</script>
+{{- end -}}
