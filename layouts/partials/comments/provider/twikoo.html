@@ -1,4 +1,4 @@
-<script src="//cdn.jsdelivr.net/npm/twikoo@1.4.1/dist/twikoo.all.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/twikoo@1.4.3/dist/twikoo.all.min.js"></script>
 <div id="tcomment"></div>
 <style>
     .twikoo {
@@ -33,6 +33,9 @@
         {{- end -}}
         {{- with .path -}}
         path: '{{- . -}}',
+        {{- end -}}
+        {{- with .lang -}}
+        lang: '{{- . -}}',
         {{- end -}}
     })
 </script>
