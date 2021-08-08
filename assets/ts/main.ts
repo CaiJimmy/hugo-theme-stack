@@ -54,6 +54,38 @@ let Stack = {
             observer.observe(articleTile)
         }
 
+
+        /**
+         * Add copy button to code block
+        */
+        const codeBlocks = document.querySelectorAll('.article-content .highlight');
+        const copyText = `Copy`,
+            copiedText = `Copied!`;
+        codeBlocks.forEach(codeBlock => {
+            const copyButton = document.createElement('button');
+            copyButton.innerHTML = copyText;
+            copyButton.classList.add('copyCodeButton');
+            codeBlock.appendChild(copyButton);
+
+            const pre = codeBlock.getElementsByTagName('pre');
+            const code = pre[0].textContent;
+
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(code)
+                    .then(() => {
+                        copyButton.textContent = copiedText;
+
+                        setTimeout(() => {
+                            copyButton.textContent = copyText;
+                        }, 1000);
+                    })
+                    .catch(err => {
+                        alert(err)
+                        console.log('Something went wrong', err);
+                    });
+            });
+        });
+
         new StackColorScheme(document.getElementById('dark-mode-toggle'));
     }
 }

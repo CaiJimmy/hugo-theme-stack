@@ -415,4 +415,30 @@
         margin-right: calc((var(--card-padding)) * -1);
         width: calc(100% + var(--card-padding) * 2);
     }
+
+    .highlight {
+        position: relative;
+
+        &:hover {
+            .copyCodeButton {
+                opacity: 1;
+            }
+        }
+    }
+
+    .copyCodeButton {
+        position: absolute;
+        top: calc(var(--card-padding));
+        right: 0;
+        background: var(--card-background);
+        border: none;
+        box-shadow: var(--shadow-l2);
+        border-radius: var(--tag-border-radius);
+        padding: 8px 16px;
+        color: var(--card-text-color-main);
+        cursor: pointer;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 }
