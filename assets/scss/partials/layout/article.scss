@@ -193,30 +193,34 @@
     color: var(--card-text-color-main);
 
     #TableOfContents {
-        ol {
-            counter-reset: item;
-            list-style-type: none;
-            padding: 0;
+        ol,
+        ul {
             margin: 0;
+            padding: 0;
         }
 
-        & > li {
-            padding: 0;
-            margin: 0;
+        ol {
+            list-style-type: none;
+            counter-reset: item;
+
+            li:before {
+                counter-increment: item;
+                content: counters(item, ".") ". ";
+                font-weight: bold;
+                margin-right: 5px;
+            }
+        }
+
+        & > ul {
+            padding: 0 1em;
         }
 
         li {
             margin: 15px 20px;
             padding: 5px;
 
-            &::before {
-                counter-increment: item;
-                content: counters(item, ".") ". ";
-                font-weight: bold;
-                margin-right: 5px;
-            }
-
-            & > ol {
+            & > ol,
+            & > ul {
                 margin-top: 10px;
                 padding-left: 10px;
                 margin-bottom: -5px;
@@ -385,7 +389,8 @@
         padding-bottom: 56.25%;
         overflow: hidden;
 
-        & > iframe, & > video {
+        & > iframe,
+        & > video {
             position: absolute;
             width: 100%;
             height: 100%;
