@@ -160,7 +160,7 @@ related:
 markup:
     tableOfContents:
         endLevel: 4
-        ordered: false
+        ordered: true
         startLevel: 2
     highlight:
         noClasses: false
