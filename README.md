@@ -31,7 +31,7 @@ Stack is a simple card-style Hugo theme designed for bloggers, some of its featu
 
 ## Requirements
 
-It's necessary to use **Hugo Extended ≥ 0.78.0**.
+It's necessary to use **Hugo Extended ≥ 0.87.0**.
 
 ## Installation
 

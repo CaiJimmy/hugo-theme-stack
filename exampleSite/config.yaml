@@ -142,6 +142,9 @@ menu:
           url: /
           weight: -100
           pre: home
+          params:
+            ### For demonstration purpose, the home link will be open in a new tab
+            newTab: true
 
 related:
     includeNewer: true
