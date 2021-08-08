@@ -11,7 +11,7 @@ disqusShortname: hugo-theme-stack
 googleAnalytics:
 
 # Theme i18n support
-# Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it
 DefaultContentLanguage: en
 
 permalinks:
@@ -37,12 +37,14 @@ params:
         emoji: 🍥
         subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         avatar:
+            enabled: true
             local: true
             src: img/avatar.png
 
     article:
         math: false
         toc: true
+        readingTime: true
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0
@@ -84,6 +86,12 @@ params:
             placeholder:
             locale:
                 admin: Admin
+
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
 
     widgets:
         enabled:

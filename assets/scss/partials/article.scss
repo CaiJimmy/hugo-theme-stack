@@ -95,7 +95,9 @@
     display: flex;
     align-items: center;
     color: var(--card-text-color-tertiary);
+    gap: 15px;
     margin-top: 10px;
+    flex-wrap: wrap;
 
     svg {
         vertical-align: middle;
@@ -107,6 +109,11 @@
 
     time {
         font-size: 1.4rem;
+    }
+
+    & > div {
+        display: inline-flex;
+        align-items: center;
     }
 }
 
