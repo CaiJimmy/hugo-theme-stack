@@ -1,0 +1,13 @@
+{{- with .Site.Params.comments.cactus -}}
+<div id="comment-section"></div>
+
+<script>
+    initComments({
+        node: document.getElementById("comment-section"),
+        defaultHomeserverUrl: "{{ .defaultHomeserverUrl | safeHTML }}",
+        serverName: "{{ .serverName }}",
+        siteName: "{{ .siteName }}",
+        commentSectionId: "{{ $.File.UniqueID }}"
+    })
+</script>
+{{- end -}}
