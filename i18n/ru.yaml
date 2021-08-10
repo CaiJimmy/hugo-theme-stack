@@ -29,6 +29,8 @@ article:
         other: Обновлено
     tableOfContents: 
         other: Содержание
+    readingTime: 
+        other: "Время чтения: {{ .Count }} мин."
 
 notFound:
     title:
