@@ -1,0 +1,58 @@
+<div class="disqus-container">
+    {{- $pc := .Site.Config.Privacy.Disqus -}}
+    {{- $disqusjs := .Site.Params.Comments.Disqusjs -}}
+    {{- if not $pc.Disable -}}
+    {{ if and $disqusjs.Shortname $disqusjs.ApiKey }}<div id="disqus_thread"></div>
+    <script type="application/javascript">
+        var disqusjs;
+        function loadDisqusJS() {
+            disqusjs = new DisqusJS({
+                shortname: {{ $disqusjs.Shortname }},
+            siteName: {{ .Site.Title }},
+            apikey: {{ $disqusjs.ApiKey }},
+            {{ with $disqusjs.ApiUrl }}api: {{ . }},{{ end }}
+            {{ with $disqusjs.Admin }}admin: {{ . }},{{ end }}
+            {{ with $disqusjs.AdminLabel }}adminLabel: {{ . }}{{ end }}
+        });
+        }
+
+        function lazyLoadDisqusJS() {
+            if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+                return;
+            }
+
+            var d = document.createElement('script');
+            d.src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js';
+            d.async = false;
+            document.body.appendChild(d);
+            d.onload = () => {
+                loadDisqusJS();
+                window.addEventListener('onColorSchemeChange', (e) => {
+                    if (disqusjs) {
+                        loadDisqusJS();
+                    }
+                })
+            }
+        }
+
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+        if (!isBot && supportsIntersectionObserver) {
+            var disqus_observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    lazyLoadDisqusJS();
+                    disqus_observer.disconnect();
+                }
+            });
+            disqus_observer.observe(document.getElementById('disqus_thread'));
+        } else {
+            lazyLoadDisqusJS();
+        }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {{end}}
+    {{- end -}}
+</div>
