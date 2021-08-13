@@ -29,3 +29,5 @@ fields:
 - type: file
   name: image
   label: image
+pages:
+- exampleSite/content/post/Shell Commands for Life/shell-for-life.md
