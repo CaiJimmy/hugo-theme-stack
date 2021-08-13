@@ -2,8 +2,8 @@
 aliases = []
 author = "Bawali Coder"
 categories = []
-date = 2021-08-13T18:30:00Z
-description = ""
+date = 2021-08-13T18:31:00Z
+description = "Shells...ain't they beautiful"
 image = "/uploads/shell_for_life.jpg"
 series = []
 tags = ["bash", "linux", "shell"]
