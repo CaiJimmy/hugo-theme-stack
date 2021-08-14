@@ -21,23 +21,24 @@
                 { giscus: { setConfig: { theme: theme } } },
                 "https://giscus.app"
             );
-        }
-    }
+        };
+    };
 
     (function(){
         const head = document.getElementsByTagName("html")[0];
 
-        addEventListener('message', handler)
-        window.addEventListener('onColorSchemeChange', handler)
+        addEventListener('message', handler);
+        window.addEventListener('onColorSchemeChange', handler);
 
         function handler() {
             if (head.getAttribute("data-scheme") == "light") {
                 setGiscusTheme('{{- default "light" .lightTheme -}}');
             } else {
                 setGiscusTheme('{{- default "dark_dimmed" .darkTheme -}}');
-            }
-        }
+            };
+        };
     }());
 
 </script>
 {{- end -}}
+
