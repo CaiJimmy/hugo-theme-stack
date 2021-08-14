@@ -8,28 +8,38 @@
     data-mapping="{{- default "title" .mapping -}}"
     data-reactions-enabled="1"
     data-emit-metadata="0"
-    data-theme="{{- .lightTheme -}}"
+    data-theme="{{- default "light" .lightTheme -}}"
     crossorigin="anonymous"
     async
 ></script>
 <script>
-    const light = "{{- .lightTheme -}}";
-    const dark = "{{- .darkTheme -}}";
+    const light = '{{- default "light" .lightTheme -}}';
+    const dark = '{{- default "dark_dimmed" .darkTheme -}}';
     const head = document.getElementsByTagName("html")[0];
 
-    function changeTheme(theme) {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        iframe.contentWindow.postMessage(
-            { giscus: { setConfig: { theme: theme } } },
-            "https://giscus.app"
-        );
-    }
-
-    window.onload = function() {
-        if (head.getAttribute("data-scheme") == "dark") {
-            console.log("dark");
-            changeTheme(dark);
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector('iframe.giscus-frame');
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: theme } } },
+                "https://giscus.app"
+            );
         }
     }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://giscus.app') return;
+        if (head.getAttribute("data-scheme") == "dark") {
+            setGiscusTheme(dark);
+        }
+    })
+    window.addEventListener('onColorSchemeChange', event => {
+        if (head.getAttribute("data-scheme") == "light") {
+            setGiscusTheme(light);
+        } else {
+            setGiscusTheme(dark);
+        }
+    })
+
 </script>
 {{- end -}}
