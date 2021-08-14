@@ -51,7 +51,7 @@ params:
 
     comments:
         enabled: true
-        provider: giscus
+        provider: disqus
 
         utterances:
             repo:
