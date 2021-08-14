@@ -93,6 +93,15 @@ params:
             path:
             lang:
 
+        giscus:
+            repo: 
+            repoID: 
+            category: 
+            categoryID: 
+            mapping: 
+            lightTheme: 
+            darkTheme: 
+
     widgets:
         enabled:
             - search
@@ -159,7 +168,7 @@ related:
 
 markup:
     tableOfContents:
-        endLevel: 4
+        endLevel: 0
         ordered: true
         startLevel: 2
     highlight:
