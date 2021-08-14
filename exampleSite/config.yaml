@@ -51,7 +51,7 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: giscus
 
         utterances:
             repo:
@@ -94,11 +94,11 @@ params:
             lang:
 
         giscus:
-            repo: 
-            repoID: 
-            category: 
-            categoryID: 
-            mapping: 
+            repo: zhixuan666/giscus
+            repoID: MDEwOlJlcG9zaXRvcnkzOTU2MzQ4OTA
+            category: General
+            categoryID: DIC_kwDOF5Toys4B-qHr
+            mapping: title
             lightTheme: 
             darkTheme: 
 
@@ -168,7 +168,7 @@ related:
 
 markup:
     tableOfContents:
-        endLevel: 0
+        endLevel: 4
         ordered: true
         startLevel: 2
     highlight:
