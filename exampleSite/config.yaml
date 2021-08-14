@@ -94,11 +94,11 @@ params:
             lang:
 
         giscus:
-            repo: zhixuan666/giscus
-            repoID: MDEwOlJlcG9zaXRvcnkzOTU2MzQ4OTA
-            category: General
-            categoryID: DIC_kwDOF5Toys4B-qHr
-            mapping: title
+            repo: 
+            repoID: 
+            category: 
+            categoryID: 
+            mapping: 
             lightTheme: 
             darkTheme: 
 
