@@ -13,9 +13,6 @@
     async
 ></script>
 <script>
-    const light = '{{- default "light" .lightTheme -}}';
-    const dark = '{{- default "dark_dimmed" .darkTheme -}}';
-    const head = document.getElementsByTagName("html")[0];
 
     function setGiscusTheme(theme) {
         let giscus = document.querySelector('iframe.giscus-frame');
@@ -27,19 +24,20 @@
         }
     }
 
-    addEventListener('message', event => {
-        if (event.origin !== 'https://giscus.app') return;
-        if (head.getAttribute("data-scheme") == "dark") {
-            setGiscusTheme(dark);
+    (function(){
+        const head = document.getElementsByTagName("html")[0];
+
+        addEventListener('message', handler)
+        window.addEventListener('onColorSchemeChange', handler)
+
+        function handler() {
+            if (head.getAttribute("data-scheme") == "light") {
+                setGiscusTheme('{{- default "light" .lightTheme -}}');
+            } else {
+                setGiscusTheme('{{- default "dark_dimmed" .darkTheme -}}');
+            }
         }
-    })
-    window.addEventListener('onColorSchemeChange', event => {
-        if (head.getAttribute("data-scheme") == "light") {
-            setGiscusTheme(light);
-        } else {
-            setGiscusTheme(dark);
-        }
-    })
+    }());
 
 </script>
 {{- end -}}
