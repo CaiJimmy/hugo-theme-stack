@@ -53,6 +53,13 @@ params:
         enabled: true
         provider: disqus
 
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
+
         utterances:
             repo:
             issueTerm: pathname
