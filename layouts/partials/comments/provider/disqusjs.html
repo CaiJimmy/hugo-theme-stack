@@ -1,7 +1,11 @@
+{{- $pc := .Site.Config.Privacy.Disqus -}}
+{{- $disqusjs := .Site.Params.Comments.disqusjs -}}
+{{- if and (not $pc.Disable) (and $disqusjs.Shortname $disqusjs.ApiKey) -}}
+
+{{- $style := resources.Get "scss/partials/comments/disqusjs.scss" | resources.ToCSS | minify -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
 <div class="disqus-container">
-    {{- $pc := .Site.Config.Privacy.Disqus -}}
-    {{- $disqusjs := .Site.Params.Comments.Disqusjs -}}
-    {{- if and (not $pc.Disable) (and $disqusjs.Shortname $disqusjs.ApiKey) -}}
     <div id="disqus_thread"></div>
     <script type="application/javascript">
         var disqusjs;
@@ -53,5 +57,5 @@
         }
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    {{- end -}}
 </div>
+{{- end -}}
