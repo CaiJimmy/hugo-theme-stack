@@ -1,19 +1,19 @@
 <div class="disqus-container">
     {{- $pc := .Site.Config.Privacy.Disqus -}}
     {{- $disqusjs := .Site.Params.Comments.Disqusjs -}}
-    {{- if not $pc.Disable -}}
-    {{ if and $disqusjs.Shortname $disqusjs.ApiKey }}<div id="disqus_thread"></div>
+    {{- if and (not $pc.Disable) (and $disqusjs.Shortname $disqusjs.ApiKey) -}}
+    <div id="disqus_thread"></div>
     <script type="application/javascript">
         var disqusjs;
         function loadDisqusJS() {
             disqusjs = new DisqusJS({
                 shortname: {{ $disqusjs.Shortname }},
-            siteName: {{ .Site.Title }},
-            apikey: {{ $disqusjs.ApiKey }},
-            {{ with $disqusjs.ApiUrl }}api: {{ . }},{{ end }}
-            {{ with $disqusjs.Admin }}admin: {{ . }},{{ end }}
-            {{ with $disqusjs.AdminLabel }}adminLabel: {{ . }}{{ end }}
-        });
+                siteName: {{ .Site.Title }},
+                apikey: {{ $disqusjs.ApiKey }},
+                {{ with $disqusjs.ApiUrl }}api: {{ . }},{{ end }}
+                {{ with $disqusjs.Admin }}admin: {{ . }},{{ end }}
+                {{ with $disqusjs.AdminLabel }}adminLabel: {{ . }}{{ end }}
+            });
         }
 
         function lazyLoadDisqusJS() {
@@ -53,6 +53,5 @@
         }
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    {{end}}
     {{- end -}}
 </div>
