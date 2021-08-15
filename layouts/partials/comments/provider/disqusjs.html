@@ -8,7 +8,7 @@
 <div class="disqus-container">
     <div id="disqus_thread"></div>
     <script type="application/javascript">
-        var disqusjs;
+        let disqusjs;
         function loadDisqusJS() {
             disqusjs = new DisqusJS({
                 shortname: {{ $disqusjs.Shortname }},
@@ -26,7 +26,7 @@
                 return;
             }
 
-            var d = document.createElement('script');
+            let d = document.createElement('script');
             d.src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js';
             d.async = false;
             document.body.appendChild(d);
@@ -40,12 +40,12 @@
             }
         }
 
-        var runningOnBrowser = typeof window !== "undefined";
-        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
-        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+        let runningOnBrowser = typeof window !== "undefined";
+        let isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        let supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
 
         if (!isBot && supportsIntersectionObserver) {
-            var disqus_observer = new IntersectionObserver(function(entries) {
+            let disqus_observer = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting) {
                     lazyLoadDisqusJS();
                     disqus_observer.disconnect();
