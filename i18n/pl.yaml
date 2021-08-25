@@ -28,6 +28,10 @@ article:
 
     lastUpdatedOn:
         other: Ostatnio zaktualizowany
+    
+    readingTime:
+        one: "Przeczytasz w {{ .Count }} minutę"
+        other: "Przeczytasz w {{ .Count }} minut"
 
 notFound:
     title:
