@@ -34,7 +34,7 @@ class StackGallery {
     private loadItems(container: HTMLElement) {
         this.items = [];
 
-        const figures = container.querySelectorAll('figure');
+        const figures = container.querySelectorAll('figure.gallery-image');
 
         for (const el of figures) {
             const figcaption = el.querySelector('figcaption'),
@@ -57,7 +57,7 @@ class StackGallery {
     }
 
     public static createGallery(container: HTMLElement) {
-        const figuresEl = container.querySelectorAll('figure');
+        const figuresEl = container.querySelectorAll('figure.gallery-image');
 
         let currentGallery = [];
 
