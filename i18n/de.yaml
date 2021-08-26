@@ -17,23 +17,37 @@ list:
         other: Unterabschnitte
 
 article:
+    back:
+        other: Zurück
+
+    tableOfContents:
+        other: Inhaltsverzeichnis
+
     relatedContents:
         other: Verwandte Inhalte
+
     lastUpdatedOn:
         other: Zuletzt aktualisiert am
+
+    readingTime:
+        one: "{{ .Count }} Minute Lesezeit"
+        other: "{{ .Count }} Minuten Lesezeit"
 
 notFound:
     title:
         other: Seite nicht gefunden
+
     subtitle:
-        other: Diese Seite existiert nicht.
+        other: Diese Seite existiert nicht
 
 widget:
     archives:
         title:
             other: Archiv
+
         more:
             other: Weitere
+
     tagCloud:
         title:
             other: Schlagwörter
@@ -41,13 +55,16 @@ widget:
 search:
     title:
         other: Suche
+
     placeholder:
         other: Etwas tippen...
+
     resultTitle:
-        other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+        other: "#PAGES_COUNT Seiten (#TIME_SECONDS Sekunden)"
 
 footer:
     builtWith:
         other: Erstellt mit {{ .Generator }}
+
     designedBy:
         other: Theme {{ .Theme }} gestaltet von {{ .DesignedBy }}
