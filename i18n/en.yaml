@@ -30,15 +30,15 @@ article:
         other: Last updated on
 
     readingTime:
-        one: "{{ .Count }} min read"
-        ### Seems that there's no need to add 's' even if it's plural in English
-        other: "{{ .Count }} min read"
+        one: "{{ .Count }} minute read"
+        other: "{{ .Count }} minute read"
 
 notFound:
     title:
         other: Not Found
+
     subtitle:
-        other: This page does not exist.
+        other: This page does not exist
 
 widget:
     archives:
