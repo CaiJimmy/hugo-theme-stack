@@ -6,7 +6,7 @@ license = "GPL-3.0-only"
 licenselink = "https://github.com/CaiJimmy/hugo-theme-stack/blob/master/LICENSE"
 description = "Card-style Hugo theme designed for bloggers"
 homepage = "https://github.com/CaiJimmy/hugo-theme-stack"
-demosite = "https://theme-stack.jimmycai.com"
+demosite = "https://demo.stack.jimmycai.com"
 
 tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
 
