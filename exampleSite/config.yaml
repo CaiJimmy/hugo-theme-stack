@@ -41,6 +41,16 @@ params:
             local: true
             src: img/avatar.png
 
+    socialmenu:
+        enable: true
+        linkedin: "" # your linkedin username
+        instagram: "" # your instagram username
+        github: "" # your github name
+        twitter: "" # your twitter username
+        email: "" # your email
+        facebook: "" # your facebook username
+
+
     article:
         math: false
         toc: true

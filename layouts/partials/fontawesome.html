@@ -1,0 +1,4 @@
+{{- $fname:=print "themes/hugo-theme-stack/fontawesome/" . ".svg" -}}
+{{- $path:="<path" -}}
+{{- $fill:="<path fill=\"currentColor\"" -}}
+{{ replace (readFile $fname) $path $fill | safeHTML }}

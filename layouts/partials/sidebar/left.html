@@ -31,6 +31,39 @@
         {{ end }}
         <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
         <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
+
+        {{ if (.Site.Params.socialmenu.enable) }}
+            <div class="social-icons">
+                <table>
+                    <tr>
+                        {{ if (.Site.Params.socialmenu.email) }}
+                            <td><a href="mailto:{{.Site.Params.socialmenu.email}}"><span class="inline-svg" >{{ partial "fontawesome.html" "envelope" }}</span></a></td>
+                        {{ end }}
+
+                        {{ if (.Site.Params.socialmenu.github) }}
+                            <td><a href="https://github.com/{{.Site.Params.socialmenu.github}}"><span class="inline-svg" >{{ partial "fontawesome.html" "github" }}</span></a></td>
+                        {{ end }}
+                        
+                        {{ if (.Site.Params.socialmenu.instagram) }}
+                            <td><a href="https://instagram.com/{{.Site.Params.socialmenu.instagram}}"><span class="inline-svg" >{{ partial "fontawesome.html" "instagram" }}</span></a></td>
+                        {{ end }}
+                        
+                        {{ if (.Site.Params.socialmenu.facebook) }}
+                            <td><a href="https://facebook.com/{{.Site.Params.socialmenu.facebook}}"><span class="inline-svg" >{{ partial "fontawesome.html" "facebook-square" }}</span></a></td>
+                        {{ end }}
+
+                        {{ if (.Site.Params.socialmenu.linkedin) }}
+                            <td><a href="https://linkedin.com/in/{{.Site.Params.socialmenu.linkedin}}"><span class="inline-svg" >{{ partial "fontawesome.html" "linkedin" }}</span></a></td>
+                        {{ end }}
+                        
+                        {{ if (.Site.Params.socialmenu.twitter) }}
+                            <td><a href="https://twitter.com/{{.Site.Params.socialmenu.twitter}}"><span class="inline-svg" >{{ partial "fontawesome.html" "twitter" }}</span></a></td>
+                        {{ end }}
+                    </tr> 
+                </table>
+            </div>
+        {{ end }}
+
     </header>
 
     <ol class="menu" id="main-menu">
