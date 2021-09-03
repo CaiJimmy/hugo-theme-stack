@@ -184,6 +184,17 @@
     }
 }
 
+.widget-head {
+    display: flex;
+    align-items: center;
+
+    .widget-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: var(--body-text-color);
+    }
+}
+
 .widget--toc {
     background-color: var(--card-background);
     border-radius: var(--card-border-radius);
@@ -220,6 +231,7 @@
         }
 
         li {
+            list-style-type: none;
             margin: 15px 20px;
             padding: 5px;
 
