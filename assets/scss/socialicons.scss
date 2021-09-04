@@ -1,0 +1,27 @@
+.inline-svg {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    top: 0.15rem;
+    position: relative;
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row
+}
+
+@media screen {
+    .social-icons>* {
+        flex: 0 0 25%;
+        padding-left: 10px;
+    }
+}
+
+@media (max-width:960px) {
+    .social-icons>* {
+        flex: 0 0 5%;
+        padding-left: 10px;
+    }
+}
