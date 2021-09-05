@@ -1,24 +1,26 @@
+.inline-svg {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    top: 0.15rem;
+    position: relative;
+}
+  
+.inline-svg:hover {
+    opacity: 0.5;
+}
+
 .social-icons {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row
 }
-  
-@media screen {
-    .inline-svg {
-        display: inline-block;
-        height: 40px;
-        width: 40px;
-        top: 0.15rem;
-        position: relative;
-    }
 
-    .social-icons>* {
-        flex: 0 0 25%;
-        padding-right: 10px;
-    }
+.social-icons>* {
+    flex: 0 0 25%;
+    padding-right: 10px;
 }
-  
+
 @media (max-width:960px) {
     .inline-svg {
         display: inline-block;
@@ -32,3 +34,4 @@
         padding-right: 10px;
     }
 }
+  
