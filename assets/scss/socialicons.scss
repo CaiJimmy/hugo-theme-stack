@@ -1,27 +1,34 @@
-.inline-svg {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    top: 0.15rem;
-    position: relative;
-}
-
 .social-icons {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row
 }
-
+  
 @media screen {
+    .inline-svg {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        top: 0.15rem;
+        position: relative;
+    }
+
     .social-icons>* {
         flex: 0 0 25%;
-        padding-left: 10px;
+        padding-right: 10px;
     }
 }
-
+  
 @media (max-width:960px) {
+    .inline-svg {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        top: 0.15rem;
+    }
+
     .social-icons>* {
         flex: 0 0 5%;
-        padding-left: 10px;
+        padding-right: 10px;
     }
 }
