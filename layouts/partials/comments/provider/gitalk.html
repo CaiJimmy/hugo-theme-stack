@@ -3,6 +3,7 @@
 <div id="gitalk-container"></div>
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.js"></script>
 <script>
   const gitalk = new Gitalk({
     clientID: '{{- .clientID -}}',
@@ -11,7 +12,7 @@
     owner: '{{- .owner -}}',
     admin: ['{{- .admin -}}'],
     distractionFreeMode: false, // Facebook-like distraction free mode
-    labels: ['Gitalk']          // MaxLegth:75
+    id: md5(location.pathname)       // Max Location.pathname Legth:75
   });
   (function() {
     if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
