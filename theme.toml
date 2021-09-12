@@ -18,7 +18,6 @@ features = [
     "darkmode",
     "table of contents",
     "search",
-    "gitalk",
 ]
 
 min_version = "0.78.0"
