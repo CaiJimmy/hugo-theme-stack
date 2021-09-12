@@ -111,7 +111,7 @@ params:
             reactionsEnabled: 1
             emitMetadata: 0
 
-        gittalk:
+        gitalk:
             owner: 
             admin:  
             repo: 
