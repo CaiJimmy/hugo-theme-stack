@@ -7,10 +7,9 @@
   const gitalk = new Gitalk({
     clientID: '{{- .clientID -}}',
     clientSecret: '{{- .clientSecret -}}',
-    repo: '{{- .Gitalk.repo -}}',
+    repo: '{{- .repo -}}',
     owner: '{{- .owner -}}',
-    admin: ['{{- .owner -}}'],
-    id: location.pathname, // Ensure uniqueness and length less than 50
+    admin: ['{{- .admin -}}'],
     distractionFreeMode: false // Facebook-like distraction free mode
   });
   (function() {
