@@ -14,6 +14,11 @@ googleAnalytics:
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it
 DefaultContentLanguage: en
 
+# Please set hasCJKLanguage to true if DefaultContentLanguage in [zh-cn ja ko]
+# If true, auto-detect Chinese/Japanese/Korean Languages in the content. 
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: false
+
 permalinks:
     post: /p/:slug/
     page: /:slug/
