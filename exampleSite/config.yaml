@@ -14,6 +14,10 @@ googleAnalytics:
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it
 DefaultContentLanguage: en
 
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: false
+
 permalinks:
     post: /p/:slug/
     page: /:slug/
