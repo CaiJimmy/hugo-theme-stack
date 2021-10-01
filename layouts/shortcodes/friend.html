@@ -1,0 +1,12 @@
+<a target="_blank" href={{ .Get "url" }} title={{ .Get "name" }} class="friend-link">
+    <div class="friend-link-div">
+        <div class="friend-link-avatar">
+            <img class="friend-avatar" src={{ .Get "avatar" }} />
+        </div>
+        <div class="friend-link-info">
+            <i class="fa fa-link" aria-hidden="true"></i>
+            <i class="friend-name">{{ .Get "name" }}</i>
+            <p class="friend-bio">{{ .Get "bio" }}</p>
+        </div>
+    </div>
+</a>

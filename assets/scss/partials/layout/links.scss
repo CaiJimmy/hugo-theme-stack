@@ -1,0 +1,145 @@
+/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+
+// 头像边框颜色
+$avatar-border-color: #566a82;
+$avatar-border-color-dark: 	#C0C0C0;
+
+// style-card 背景色
+$friend-link-background-color: #51a8ca10;
+$friend-link-background-color-dark: #69697141;
+
+// 友链 name 原始色
+$friend-link-color: #11a1a2;
+$friend-link-color-dark: #ffffff;
+
+// 友链 name 气泡响应对比色
+$friend-link-hover-color: #ea4e2f;
+$friend-link-hover-color-dark:	rgb(241, 213, 159);
+
+// bio 简介上下文
+$context-color: #404040;
+$context-color-dark:	#c0c0c0;
+
+// 友链头像及头像边框的样式
+.friend-avatar {
+    width: 56px;
+    height: 56px;
+    padding: 2px;
+    margin-top: 14px;
+    margin-left: 14px;
+    border-radius: 15px;
+    border: 3.6px inset $avatar-border-color;
+    [data-scheme=dark] & {
+        border: 3.6px inset $avatar-border-color-dark;   
+    }
+}
+
+.friend-link-div {
+    // 实现卡片双栏排列效果
+    height: auto;
+    margin-top: auto;
+    margin-inline-start: 4.5%;
+    width: 43%;
+    display: inline-block !important;
+
+    // 控制上下连续排列的卡片之间的行距
+    margin-bottom: 11px;
+
+    // 卡片圆角
+    border-radius: 7px 7px 7px 7px;
+
+    // 卡片阴影
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(231, 224, 224, 0.15);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0.7px 1px 6px 0px rgba(0, 0, 0, 0.16);
+
+    // 卡片背景色
+    background: $friend-link-background-color;
+    [data-scheme=dark] & {
+        background: $friend-link-background-color-dark;
+    }
+
+    // 卡牌气泡响应动画
+    -webkit-transition: transform 0.4s ease;
+    -moz-transition: transform 0.4s ease;
+    -o-transition: transform 0.4s ease;
+    transition: transform 0.15s ease;
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+
+.friend-link-avatar {
+    width: 92px;
+    float: left;
+    margin-right: 2px;
+
+}
+
+// name 特效样式， hover 气泡效果,友链 name 变色
+.friend-link-info {
+    margin-top: 13px;
+    margin-right: 18px;
+    color: $friend-link-color;
+
+    [data-scheme=dark] & {
+        color: $friend-link-color-dark;
+    }
+    &:hover {
+        color: $friend-link-hover-color;
+        [data-scheme=dark] & {
+            color: $friend-link-hover-color-dark;
+        }
+    }
+}
+
+// name 文字样式
+.friend-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-style: normal;
+    font-family: 'Comic Sans MS',cursive;
+    font-size: 16px;
+
+}
+
+// bio 文字样式
+.friend-bio {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: auto;
+    
+    // font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+    font-size: 14px;
+
+    color: $context-color;
+    [data-scheme=dark] & {
+        color: $context-color-dark;
+    }
+}
+
+// 响应式页面，允许根据不同的尺寸调整样式
+@media screen and (max-width: 600px) {
+    .friend-bio {
+        display: none;
+
+    }
+    .friend-link-avatar {
+        width: 84px;
+        margin: auto;
+    }
+    .friend-link-info {
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .friend-name {
+        font-size: 14px;
+    }
+}
