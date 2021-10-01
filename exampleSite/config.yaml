@@ -121,6 +121,10 @@ params:
             repo: 
             clientID: 
             clientSecret: 
+        
+        cusdis:
+            host: 
+            id: 
 
     widgets:
         enabled:
