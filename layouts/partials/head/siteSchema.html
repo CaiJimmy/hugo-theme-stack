@@ -16,7 +16,7 @@
   {{ with .Site.Params.Sidebar.Avatar -}}
   "image": "{{ .src | absURL }}",
   {{- end }}
-  {{ with .Site.Params.Sidebar.Avatar -}}
+  {{ with .Site.Params.DefaultImage.Opengraph -}}
   "thumbnailUrl": "{{ .src | absURL }}",
   {{- end }}
   {{ with .Site.Params.Article.License.Default -}}
@@ -41,12 +41,12 @@
     "@type": "WebPage",
     "@id": "{{ .Permalink }}"
   },
-  {{ if ge (.Param "width") 696 -}}
+  {{ if ge (.Param "img.width") 696 -}}
   "image": {
     "@type": "ImageObject",
     "url": "{{ .Permalink }}{{ .Param "image" }}",
-    "width": {{ .Param "width" }},
-    "height": {{ .Param "height" }}
+    "width": {{ .Param "img.width" }},
+    "height": {{ .Param "img.height" }}
   },
   {{- else if ge .Site.Params.DefaultImage.Opengraph.width 696 -}}
    "image": {
