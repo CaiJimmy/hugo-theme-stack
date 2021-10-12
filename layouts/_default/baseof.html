@@ -2,6 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
     <head>
         {{- partial "head/head.html" . -}}
+        {{- partial "head/siteSchema.html" . -}}
         {{- block "head" . -}}{{ end }}
     </head>
     <body class="{{ block `body-class` . }}{{ end }}">

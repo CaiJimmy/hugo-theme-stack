@@ -41,9 +41,12 @@ params:
         emoji: 🍥
         subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         avatar:
+            name: Example Name
             enabled: true
             local: true
             src: img/avatar.png
+            width: 300
+            height: 300
 
     article:
         math: false
@@ -150,7 +153,9 @@ params:
         opengraph:
             enabled: false
             local: false
-            src:
+            src: cover.jpg
+            width: 1280
+            height: 720
 
     colorScheme:
         # Display toggle

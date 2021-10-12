@@ -1,0 +1,102 @@
+{{ if .IsHome -}}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "{{ .Site.BaseURL }}",
+  {{ if .Site.Params.Sidebar.Avatar.name -}}
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.Sidebar.Avatar.name }}"
+  },
+  {{- end }}
+  {{ if .Site.Params.Sidebar.Subtitle -}}
+  "description": "{{ .Site.Params.Sidebar.Subtitle }}",
+  {{- end }}
+  {{ with .Site.Params.Sidebar.Avatar -}}
+  "image": "{{ .src | absURL }}",
+  {{- end }}
+  {{ with .Site.Params.Sidebar.Avatar -}}
+  "thumbnailUrl": "{{ .src | absURL }}",
+  {{- end }}
+  {{ with .Site.Params.Article.License.Default -}}
+  "license": "{{ . }}",
+  {{- end }}
+  "name": "{{ .Site.Title }}"
+}
+</script>
+{{/*
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "http://example.com/search?&q={query}",
+    "query-input": "required"
+  } */}}
+{{- else if .IsPage -}}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  {{ if ge (.Param "width") 696 -}}
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ .Permalink }}{{ .Param "image" }}",
+    "width": {{ .Param "width" }},
+    "height": {{ .Param "height" }}
+  },
+  {{- else if ge .Site.Params.DefaultImage.Opengraph.width 696 -}}
+   "image": {
+    "@type": "ImageObject",
+    "url": "{{ .Site.Params.DefaultImage.Opengraph.src | absURL }}",
+    "width": {{ .Site.Params.DefaultImage.Opengraph.width }},
+    "height": {{ .Site.Params.DefaultImage.Opengraph.height }}
+  },
+  {{- end }}
+  "genre": "{{ .Type }}",
+  {{ with .Params.tags -}}
+  "keywords": "{{ delimit . ", " }}",
+  {{- end }}
+  "wordcount": {{ .WordCount }},
+  "url": "{{ .Permalink }}",
+  {{ if not .PublishDate.IsZero -}}
+  "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
+  {{- else if not .Date.IsZero -}}
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
+  {{- end }}
+  {{ with .Lastmod -}}
+  "dateModified": "{{ .Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
+  {{- end }}
+  {{ with .Site.Params.Article.License.Default -}}
+  "license": "{{ . }}",
+  {{- end }}
+  {{ with .Site.Params.Sidebar.Avatar -}}
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .name }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .src | absURL }}",
+      "width": {{ .width }},
+      "height": {{ .height }}
+    }
+  },
+  {{- end }}
+  {{ if .Params.author -}}
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Params.author }}"
+  },
+  {{- else if .Site.Author.name -}}
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Author.name }}"
+  },
+  {{- end }}
+  "description": "{{ .Description }}"
+}
+</script>
+{{- end }}
