@@ -14,6 +14,10 @@ googleAnalytics:
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it
 DefaultContentLanguage: en
 
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: false
+
 permalinks:
     post: /p/:slug/
     page: /:slug/
@@ -111,6 +115,17 @@ params:
             reactionsEnabled: 1
             emitMetadata: 0
 
+        gitalk:
+            owner: 
+            admin:  
+            repo: 
+            clientID: 
+            clientSecret: 
+        
+        cusdis:
+            host: 
+            id: 
+
     widgets:
         enabled:
             - search
@@ -176,6 +191,10 @@ related:
           weight: 200
 
 markup:
+    goldmark:
+        renderer:
+            ## Set to true if you have HTML content inside Markdown
+            unsafe: false
     tableOfContents:
         endLevel: 4
         ordered: true

@@ -1,0 +1,24 @@
+<div id="cusdis_thread"
+    {{ if .Site.Params.comments.cusdis.host }}
+    data-host="{{ .Site.Params.comments.cusdis.host }}"
+    {{ else }}
+    data-host="https://cusdis.com"
+    {{ end }}
+    data-app-id="{{ .Site.Params.comments.cusdis.id }}"
+    data-page-id="{{ .File.UniqueID }}"
+    data-page-url="{{ .Permalink }}"
+    data-page-title="{{ .Title }}"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>

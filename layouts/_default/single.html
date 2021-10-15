@@ -17,7 +17,7 @@
 
     {{ partial "article/components/related-contents" . }}
      
-    {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}} 
+    {{ if not (eq .Params.comments false) }}
         {{ partial "comments/include" . }}
     {{ end }}
 
