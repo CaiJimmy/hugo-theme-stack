@@ -29,7 +29,7 @@
             </figure>
             {{ end }}
         {{ end }}
-        <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+        <h1 class="site-name"><a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a></h1>
         <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
     </header>
 
@@ -39,7 +39,7 @@
         {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
 
         <li {{ if $active }} class='current' {{ end }}>
-            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+            <a href='{{ .URL | relLangURL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
                 {{ if .Pre }}
                     {{ partial "helper/icon" .Pre }}
                 {{ end }}
