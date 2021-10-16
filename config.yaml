@@ -11,7 +11,7 @@ params:
     favicon:
 
     footer:
-        since: 
+        since:
         customText:
 
     dateFormat:
@@ -19,8 +19,8 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 
-        subtitle: 
+        emoji:
+        subtitle:
         avatar:
             enabled: true
             local: true
@@ -97,15 +97,15 @@ params:
             emitMetadata: 0
 
         gitalk:
-            owner: 
-            admin:  
-            repo: 
-            clientID: 
-            clientSecret: 
-        
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+
         cusdis:
-            host: 
-            id: 
+            host:
+            id:
 
     widgets:
         enabled:
