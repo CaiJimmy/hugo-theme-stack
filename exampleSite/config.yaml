@@ -174,10 +174,10 @@ menu:
           name: Home
           url: /
           weight: -100
-          pre: home
           params:
               ### For demonstration purpose, the home link will be open in a new tab
               newTab: true
+              icon: home
 
 related:
     includeNewer: true
