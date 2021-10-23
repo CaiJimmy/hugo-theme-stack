@@ -40,8 +40,12 @@
 
         <li {{ if $active }} class='current' {{ end }}>
             <a href='{{ .URL | relLangURL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                {{ $icon := default .Pre .Params.Icon }}
                 {{ if .Pre }}
-                    {{ partial "helper/icon" .Pre }}
+                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://docs.stack.jimmycai.com/configuration/custom-menu.html" .URL }}
+                {{ end }}
+                {{ with $icon }}
+                    {{ partial "helper/icon" . }}
                 {{ end }}
                 <span>{{- .Name -}}</span>
             </a>
