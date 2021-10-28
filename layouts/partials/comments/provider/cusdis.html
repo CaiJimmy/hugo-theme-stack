@@ -8,7 +8,11 @@
     data-page-id="{{ .File.UniqueID }}"
     data-page-url="{{ .Permalink }}"
     data-page-title="{{ .Title }}"></div>
+{{ if .Site.Params.comments.cusdis.host }}
+<script async defer src="{{ .Site.Params.comments.cusdis.host }}/js/cusdis.es.js"></script>
+{{ else }}
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+{{ end }}
 
 <script>
     function setCusdisTheme(theme) {
