@@ -38,7 +38,7 @@
                 {{ range . }}
                     <li>
                         <a 
-                            href='{{ .URL | relLangURL }}'
+                            href='{{ .URL }}'
                             {{ if eq (default true .Params.newTab) true }}target="_blank"{{ end }}
                             {{ with .Name }}title="{{ . }}"{{ end }}
                         >
