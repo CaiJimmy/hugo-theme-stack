@@ -1,4 +1,4 @@
-oggleMenu:
+toggleMenu:
     other: 切換選單
 
 darkMode:
@@ -47,4 +47,3 @@ search:
 
     resultTitle:
         other: "#PAGES_COUNT 個結果 （用時 #TIME_SECONDS 秒）"
-        
