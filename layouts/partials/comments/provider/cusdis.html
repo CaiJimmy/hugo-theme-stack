@@ -1,14 +1,11 @@
+{{- $host := default "https://cusdis.com" .Site.Params.comments.cusdis.host -}}
 <div id="cusdis_thread"
-    {{ if .Site.Params.comments.cusdis.host }}
-    data-host="{{ .Site.Params.comments.cusdis.host }}"
-    {{ else }}
-    data-host="https://cusdis.com"
-    {{ end }}
+    data-host="{{ $host }}"
     data-app-id="{{ .Site.Params.comments.cusdis.id }}"
     data-page-id="{{ .File.UniqueID }}"
     data-page-url="{{ .Permalink }}"
     data-page-title="{{ .Title }}"></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script async defer src="{{ $host }}/js/cusdis.es.js"></script>
 
 <script>
     function setCusdisTheme(theme) {
