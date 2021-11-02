@@ -1,30 +1,46 @@
 {{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
-{{- if and $image (ne (path.Ext .Destination) ".svg") -}}
-	{{- $alt := .PlainText | safeHTML -}}
-	<figure style="flex-grow: {{ div (mul $image.Width 100) $image.Height }}; flex-basis: {{ div (mul $image.Width 240) $image.Height }}px">
-		<a href="{{ $image.RelPermalink }}" data-size="{{ $image.Width }}x{{ $image.Height }}">
-			{{- $Permalink := $image.RelPermalink -}}
-			{{- $Width := $image.Width -}}
-			{{- $Height := $image.Height -}}
-			{{- $Srcset := "" -}}
+{{- $Permalink := .Destination | relURL | safeURL -}}
+{{- $alt := .PlainText | safeHTML -}}
+{{- $Width := 0 -}}
+{{- $Height := 0 -}}
+{{- $Srcset := "" -}}
 
-			{{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
-				{{- $small := $image.Resize "480x" -}}
-				{{- $big := $image.Resize "1024x" -}}
-				{{- $Srcset = printf "%s 480w, %s 1024w" $small.RelPermalink $big.RelPermalink -}}
-			{{- end -}}
-			
-			<img src="{{ $Permalink }}"
-				{{ with $Srcset }}srcset="{{ . }}"{{ end }}
-				width="{{ $Width }}"
-				height="{{ $Height }}"
-				loading="lazy"
-				{{ with $alt }}alt="{{ . }}"{{ end }}>
-		</a>
-		{{ with $alt }}
-		<figcaption>{{ . | markdownify }}</figcaption>
-		{{ end }}
-	</figure>
-{{- else -}}
-	<img src="{{ .Destination | relURL | safeURL }}" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}"{{ end }} />
+{{/* SVG and external images won't work with gallery layout, because their width and height attributes are unknown */}}
+{{- $galleryImage := false -}}
+
+{{- if $image -}}
+	{{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
+	{{- $Permalink = $image.RelPermalink -}}
+
+	{{- if $notSVG -}}
+		{{- $Width = $image.Width -}}
+		{{- $Height = $image.Height -}}
+		{{- $galleryImage = true -}}
+
+		{{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
+			{{- $small := $image.Resize `480x` -}}
+			{{- $big := $image.Resize `1024x` -}}
+			{{- $Srcset = printf `%s 480w, %s 1024w` $small.RelPermalink $big.RelPermalink -}}
+		{{- end -}}
+	{{- end -}}
 {{- end -}}
+
+<figure 
+	{{ if $galleryImage }}
+		class="gallery-image" 
+		style="
+			flex-grow: {{ div (mul $image.Width 100) $image.Height }}; 
+			flex-basis: {{ div (mul $image.Width 240) $image.Height }}px"
+	{{ end }}>
+	<a href="{{ $Permalink }}" {{ if $galleryImage }}data-size="{{ $image.Width }}x{{ $image.Height }}"{{ end }}>
+		<img src="{{ $Permalink }}"
+			{{ with $Width }}width="{{ . }}"{{ end }}
+			{{ with $Height }}height="{{ . }}"{{ end }}
+			{{ with $Srcset }}srcset="{{ . }}"{{ end }}
+			loading="lazy"
+			{{ with $alt }}alt="{{ . }}"{{ end }}>
+	</a>
+	{{ with $alt }}
+	<figcaption>{{ . | markdownify }}</figcaption>
+	{{ end }}
+</figure>

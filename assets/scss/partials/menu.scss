@@ -201,3 +201,18 @@
         }
     }
 }
+
+.social-menu {
+    list-style: none;
+    padding: 0%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--body-text-color);
+        stroke-width: 1.33;
+    }
+}

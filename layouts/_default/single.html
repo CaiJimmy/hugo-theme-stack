@@ -17,7 +17,7 @@
 
     {{ partial "article/components/related-contents" . }}
      
-    {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}} 
+    {{ if not (eq .Params.comments false) }}
         {{ partial "comments/include" . }}
     {{ end }}
 
@@ -29,7 +29,7 @@
 {{ define "left-sidebar" }}
     {{ if (.Scratch.Get "hasTOC") }}
         <div id="article-toolbar">
-            <a href="{{ .Site.BaseURL }}" class="back-home">
+            <a href="{{ .Site.BaseURL | relLangURL }}" class="back-home">
                 {{ (resources.Get "icons/back.svg").Content | safeHTML }}
                 <span>{{ T "article.back" }}</span>
             </a>

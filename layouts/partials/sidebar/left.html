@@ -29,8 +29,28 @@
             </figure>
             {{ end }}
         {{ end }}
-        <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+        
+        <h1 class="site-name"><a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a></h1>
         <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
+
+        {{- with .Site.Menus.social -}}
+            <ol class="social-menu">
+                {{ range . }}
+                    <li>
+                        <a 
+                            href='{{ .URL }}'
+                            {{ if eq (default true .Params.newTab) true }}target="_blank"{{ end }}
+                            {{ with .Name }}title="{{ . }}"{{ end }}
+                        >
+                            {{ $icon := default "link" .Params.Icon }}
+                            {{ with $icon }}
+                                {{ partial "helper/icon" . }}
+                            {{ end }}
+                        </a>
+                    </li>
+                {{ end }}
+            </ol>
+        {{- end -}}
     </header>
 
     <ol class="menu" id="main-menu">
@@ -39,9 +59,13 @@
         {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
 
         <li {{ if $active }} class='current' {{ end }}>
-            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+            <a href='{{ .URL | relLangURL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                {{ $icon := default .Pre .Params.Icon }}
                 {{ if .Pre }}
-                    {{ partial "helper/icon" .Pre }}
+                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://docs.stack.jimmycai.com/configuration/custom-menu.html" .URL }}
+                {{ end }}
+                {{ with $icon }}
+                    {{ partial "helper/icon" . }}
                 {{ end }}
                 <span>{{- .Name -}}</span>
             </a>
