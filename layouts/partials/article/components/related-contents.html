@@ -5,7 +5,7 @@
     <div class="related-contents">
         <div class="flex article-list--tile">
             {{ range . }}
-                {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "articleList") }}
+                {{ partial "article-list/tile" (dict "context" . "size" (printf "250x150 %s" .Params.image_anchor) "Type" "articleList") }}
             {{ end }}
         </div>
     </div>
