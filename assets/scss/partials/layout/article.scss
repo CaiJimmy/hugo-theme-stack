@@ -122,7 +122,6 @@
 }
 
 .article-page.has-toc {
-    scroll-behavior: smooth;
 
     .left-sidebar {
         display: none;
@@ -193,6 +192,10 @@
     color: var(--card-text-color-main);
     overflow: hidden;
 
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--card-separator-color);
+    }
+
     #TableOfContents {
         overflow-x: auto;
         max-height: 75vh;
@@ -220,7 +223,7 @@
         }
 
         li {
-            margin: 15px 20px;
+            margin: 15px 0 15px 20px;
             padding: 5px;
 
             & > ol,
@@ -233,6 +236,25 @@
                     margin-bottom: 0;
                 }
             }
+        }
+        li.active-class > a {
+            border-left: var(--heading-border-size) solid var(--accent-color);
+            font-weight: bold;
+            display: block;
+        }
+        & > ul > li.active-class > a {
+            margin-left: calc(-25px - 1em);
+            padding-left: calc(25px + 1em - var(--heading-border-size));
+        }
+
+        & > ul > li > ul > li.active-class > a {
+            margin-left: calc(-60px - 1em);
+            padding-left: calc(60px + 1em - var(--heading-border-size));
+        }
+
+        & > ul > li > ul > li > ul > li.active-class > a {
+            margin-left: calc(-95px - 1em);
+            padding-left: calc(95px + 1em - var(--heading-border-size));
         }
     }
 }
