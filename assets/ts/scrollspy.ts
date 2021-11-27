@@ -1,21 +1,14 @@
 // Implements a scroll spy system for the ToC, displaying the current section with an indicator and scrolling to it when needed.
 
-// While solutions for debouncing like the ones in https://gomakethings.com/debouncing-your-javascript-events/ could work,
-// we do need an actual debouncing of scroll events in order to only capture the "end" of the scroll.
+// Inspired from https://gomakethings.com/debouncing-your-javascript-events/ could work
 function debounced(func: Function) {
     let timeout;
-    return (e: Event) => {
-        /*
-        if (timeout) {
-            clearTimeout(timeout);
-        }
-        timeout = window.requestAnimationFrame(func);
-        */
+    return () => {
         if (timeout) {
             window.cancelAnimationFrame(timeout);
         }
 
-        timeout = window.requestAnimationFrame(() => func(e));
+        timeout = window.requestAnimationFrame(() => func());
     }
 }
 
@@ -44,6 +37,13 @@ function findLinkForSectionId(sectionId: string, navigation: NodeListOf<Element>
     return undefined;
 }
 
+function computeOffsets(headers: NodeListOf<Element>) {
+    let sectionsOffsets = [];
+    headers.forEach((header: HTMLElement) => { sectionsOffsets.push({ id: header.id, offset: header.offsetTop }) });
+    sectionsOffsets.sort((a, b) => a.offset - b.offset);
+    return sectionsOffsets;
+}
+
 function setupScrollspy() {
     let headers = document.querySelectorAll(headersQuery);
     if (!headers) {
@@ -63,10 +63,7 @@ function setupScrollspy() {
         return;
     }
 
-    let sectionsOffsets = [];
-
-    headers.forEach((header: HTMLElement) => { sectionsOffsets.push({ id: header.id, offset: header.offsetTop }) });
-    sectionsOffsets.sort((a, b) => a.offset - b.offset);
+    let sectionsOffsets = computeOffsets(headers);
 
     // We need to avoid scrolling when the user is actively interacting with the ToC. Otherwise, if the user clicks on a link in the ToC,
     // we would scroll their view, which is not optimal usability-wise.
@@ -76,7 +73,8 @@ function setupScrollspy() {
 
     let activeSectionLink: Element;
 
-    function scrollHandler(e: Event) {
+    function scrollHandler() {
+        console.log("scroll!");
         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
         let newActiveSection: HTMLElement | undefined;
@@ -99,7 +97,7 @@ function setupScrollspy() {
 
         if (newActiveSection && !newActiveSectionLink) {
             // The active section does not have a link in the ToC, so we can't scroll to it.
-            console.warn("No link found for section", newActiveSection);
+            console.debug("No link found for section", newActiveSection);
         } else if (newActiveSectionLink !== activeSectionLink) {
             if (activeSectionLink)
                 activeSectionLink.classList.remove(activeClass);
@@ -115,6 +113,14 @@ function setupScrollspy() {
     }
 
     window.addEventListener("scroll", debounced(scrollHandler));
+    
+    // Resizing may cause the offset values to change: recompute them.
+    function resizeHandler() {
+        sectionsOffsets = computeOffsets(headers);
+        scrollHandler();
+    }
+
+    window.addEventListener("resize", debounced(resizeHandler));
 }
 
 export { setupScrollspy };
