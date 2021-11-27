@@ -210,7 +210,7 @@
             list-style-type: none;
             counter-reset: item;
 
-            li:before {
+            li a::before {
                 counter-increment: item;
                 content: counters(item, ".") ". ";
                 font-weight: bold;
@@ -240,21 +240,34 @@
         li.active-class > a {
             border-left: var(--heading-border-size) solid var(--accent-color);
             font-weight: bold;
+        }
+
+        ul li.active-class > a {
             display: block;
         }
-        & > ul > li.active-class > a {
-            margin-left: calc(-25px - 1em);
-            padding-left: calc(25px + 1em - var(--heading-border-size));
+
+        @function repeat($str, $n) {
+            $result: "";
+            @for $_ from 0 to $n {
+                $result: $result + $str;
+            }
+            @return $result;
         }
 
-        & > ul > li > ul > li.active-class > a {
-            margin-left: calc(-60px - 1em);
-            padding-left: calc(60px + 1em - var(--heading-border-size));
-        }
+        // Support up to 6 levels of indentation for lists in ToCs
+        @for $i from 0 to 5 {
+            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
+                $n: 25 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            }
 
-        & > ul > li > ul > li > ul > li.active-class > a {
-            margin-left: calc(-95px - 1em);
-            padding-left: calc(95px + 1em - var(--heading-border-size));
+            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
+                $n: 9 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+                display: block;
+            }
         }
     }
 }
