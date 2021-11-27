@@ -11,6 +11,7 @@ import menu from 'ts/menu';
 import createElement from 'ts/createElement';
 import StackColorScheme from 'ts/colorScheme';
 import { setupScrollspy } from 'ts/scrollspy';
+import { setupSmoothAnchors } from "ts/smoothAnchors";
 
 let Stack = {
     init: () => {
@@ -22,7 +23,8 @@ let Stack = {
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
             new StackGallery(articleContent);
-            setupScrollspy(".article-content h1[id], .article-content h2[id], .article-content h3[id], .article-content h4[id], .article-content h5[id], .article-content h6[id]", "#TableOfContents", "#TableOfContents li", "active-class")
+            setupSmoothAnchors();
+            setupScrollspy();
         }
 
         /**
