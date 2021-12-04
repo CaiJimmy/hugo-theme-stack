@@ -20,8 +20,9 @@
                     <img src="{{ $Permalink }}" 
                         width="{{ $Width }}" 
                         height="{{ $Height }}" 
-                        loading="lazy" 
-                        data-key="{{ .context.Slug }}" 
+                        loading="lazy"
+                        alt="Featured image of post {{ .context.Title }}"
+                        {{ with .context.Slug }}data-key="{{ . }}" {{ end }}
                         data-hash="{{ $imageRaw.Data.Integrity }}">
                 {{ else }}
                     <img src="{{ $image.permalink }}" loading="lazy" data-key="{{ .context.Slug }}" data-hash="{{ $image.permalink }}"/>
