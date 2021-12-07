@@ -1,15 +1,42 @@
 toggleMenu:
     other: 메뉴 여닫기
 
+darkMode:
+    other: 다크 모드
+
+list:
+    page:
+        one: "{{ .Count }} 페이지"
+        other: "{{ .Count }} 페이지"
+
+    section:
+        other: 섹션
+
+    subsection:
+        one: 서브섹션
+        other: 서브섹션
+
 article:
+    back:
+        other: 뒤로가기
+
+    tableOfContents:
+        other: 목차
+        
     relatedContents:
         other: 관련 글
+        
     lastUpdatedOn:
         other: "마지막 수정: "
+        
+    readingTime:
+        one: "{{ .Count }} 분 정도"
+        other: "{{ .Count }} 분 정도"
 
 notFound:
     title:
         other: 찾을 수 없음
+        
     subtitle:
         other: 페이지를 찾을 수 없습니다.
 
@@ -19,6 +46,7 @@ widget:
             other: 보관함
         more:
             other: 더보기
+            
     tagCloud:
         title:
             other: 태그
@@ -26,8 +54,10 @@ widget:
 search:
     title:
         other: 검색
+        
     placeholder:
         other: 검색어를 입력하세요...
+        
     resultTitle:
         other: "#PAGES_COUNT 페이지 (#TIME_SECONDS 초)"
 
