@@ -30,7 +30,8 @@ function replaceHTMLEnt(str) {
 }
 
 function escapeRegExp(string) {
-    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
+    //return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
+    return string.replace(/[.*+\-?^${}()[\]\\]/g, '\\$&');
 }
 
 class Search {
@@ -53,14 +54,50 @@ class Search {
         this.bindSearchForm();
     }
 
+    /// clean input keywords list
+    private reorganizeKeywords(keywords: string[]) {
+    let tmp: string[] = [];
+    /// do the search only on keywords length >= 2
+    for (let i=0; i < keywords.length; i++){
+      if (keywords[i].length === 1) keywords.splice(i,1);
+    }
+    /// Sort keywords from short to long
+    keywords.sort((a, b) => {
+        return b.length - a.length
+    });
+    /// remove the keywords contained in other keywords
+    for (let i = 0; i < keywords.length; i++) {
+      for (let j = 0; j < keywords.length; j++) {
+          if (i !== j) {
+            if (keywords[j].includes(keywords[i])) {
+              keywords.splice(i,1);
+              i=j=0;
+            }
+          }
+      }
+    }
+    return keywords;
+  }
+
+
     private async searchKeywords(keywords: string[]) {
         const rawData = await this.getData();
         let results: pageData[] = [];
 
-        /// Sort keywords by their length
-        keywords.sort((a, b) => {
-            return b.length - a.length
-        });
+        keywords = this.reorganizeKeywords(keywords);
+        if (keywords.length === 0) return;
+
+        /// from a b to a|b for regexp
+        let k = "";
+        for (let i = 0; i < keywords.length; i++) {
+          if (keywords[i] === "")
+            continue;
+          if (i == keywords.length - 1) {
+            k = k + keywords[i];
+          } else {
+            k = k + keywords[i] + "|";
+          }
+        }
 
         for (const item of rawData) {
             let result = {
@@ -71,42 +108,45 @@ class Search {
 
             let matched = false;
 
-            for (const keyword of keywords) {
-                if (keyword === '') continue;
+            if (k === '') continue;
 
-                const regex = new RegExp(escapeRegExp(replaceHTMLEnt(keyword)), 'gi');
+            const regex = new RegExp(escapeRegExp(replaceHTMLEnt(k)), 'gi');
 
-                const contentMatch = regex.exec(result.content);
-                regex.lastIndex = 0;            /// Reset regex
+            const contentMatch = regex.exec(result.content);
+            regex.lastIndex = 0;            /// Reset regex
 
-                const titleMatch = regex.exec(result.title);
-                regex.lastIndex = 0;            /// Reset regex
+            const titleMatch = regex.exec(result.title);
+            regex.lastIndex = 0;            /// Reset regex
 
-                if (titleMatch) {
-                    result.title = result.title.replace(regex, Search.marker);
+            if (titleMatch) {
+                result.title = result.title.replace(regex, Search.marker);
+                /// count the occurrencies in an indirect way
+                result.matchCount += result.title.split("<mark>").length -1;
+            }
+
+            if (titleMatch || contentMatch) {
+                matched = true;
+
+                let start = 0,
+                    end = 100;
+
+                if (contentMatch) {
+                    start = contentMatch.index - 20;
+                    end = contentMatch.index + 80
+
+                    if (start < 0) start = 0;
                 }
 
-                if (titleMatch || contentMatch) {
-                    matched = true;
-                    ++result.matchCount;
-
-                    let start = 0,
-                        end = 100;
-
-                    if (contentMatch) {
-                        start = contentMatch.index - 20;
-                        end = contentMatch.index + 80
-
-                        if (start < 0) start = 0;
-                    }
-
-                    if (result.preview.indexOf(keyword) !== -1) {
-                        result.preview = result.preview.replace(regex, Search.marker);
-                    }
-                    else {
-                        if (start !== 0) result.preview += `[...] `;
-                        result.preview += `${result.content.slice(start, end).replace(regex, Search.marker)} `;
-                    }
+                if (result.preview.indexOf(k) !== -1) {
+                    result.preview = result.preview.replace(regex, Search.marker);
+                    /// count the occurrencies in an indirect way
+                    result.matchCount += result.preview.split("<mark>").length -1;
+                }
+                else {
+                    if (start !== 0) result.preview += `[...] `;
+                    result.preview += `${result.content.slice(start, end).replace(regex, Search.marker)} `;
+                    /// count the occurrencies in an indirect way
+                    result.matchCount += result.preview.split("<mark>").length -1;
                 }
             }
 
@@ -225,7 +265,7 @@ class Search {
             <a href={item.permalink}>
                 <div class="article-details">
                     <h2 class="article-title" dangerouslySetInnerHTML={{ __html: item.title }}></h2>
-                    <secion class="article-preview" dangerouslySetInnerHTML={{ __html: item.preview }}></secion>
+                    <section class="article-preview" dangerouslySetInnerHTML={{ __html: item.preview }}></section>
                 </div>
                 {item.image &&
                     <div class="article-image">

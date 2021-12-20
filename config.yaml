@@ -119,10 +119,6 @@ params:
         tagCloud:
             limit: 10
 
-        # search modes: original, nohighlight, wholeword, highlight
-        search:
-            mode: nohighlight
-
     opengraph:
         twitter:
             # Your Twitter username
