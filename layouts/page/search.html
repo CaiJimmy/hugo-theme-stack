@@ -23,20 +23,8 @@
     window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
 </script>
 
-{{- $searchfunc := "" -}}
 {{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}
-{{- if eq .Site.Params.widgets.search.mode "original" -}}
-  {{- $searchfunc = "ts/search.tsx" -}}
-{{- else if eq .Site.Params.widgets.search.mode "nohighlight" -}}
-  {{- $searchfunc = "ts/search_nohl.tsx" -}}
-{{- else if eq .Site.Params.widgets.search.mode "wholeword" -}}
-  {{- $searchfunc = "ts/search_ww.tsx" -}}
-{{- else if eq .Site.Params.widgets.search.mode "highlight" -}}
-  {{- $searchfunc = "ts/search_hl.tsx" -}}
-{{- else -}}
-  {{ warnf "Searching function not defined" }}
-{{- end -}}
-{{- $searchScript := resources.Get $searchfunc | js.Build $opts -}}
+{{- $searchScript := resources.Get "ts/search.tsx" | js.Build $opts -}}
 <script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
 
 {{ partialCached "footer/footer" . }}
