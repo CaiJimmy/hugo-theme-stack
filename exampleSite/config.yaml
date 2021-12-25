@@ -4,6 +4,9 @@ theme: hugo-theme-stack
 paginate: 5
 title: Example Site
 
+# Debug
+ignoreErrors: "error-remote-getjson"
+
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 
