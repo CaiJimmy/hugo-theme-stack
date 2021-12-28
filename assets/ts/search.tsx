@@ -98,14 +98,9 @@ class Search {
         const rawData = await this.getData();
         let results: pageData[] = [];
 
-        /// Sort keywords by their length
-        keywords.sort((a, b) => {
-            return b.length - a.length
-        });
-
         for (const item of rawData) {
             let titleMatches: match[] = [],
-                bodyMatches: match[] = [];
+                contentMatches: match[] = [];
 
             let result = {
                 ...item,
@@ -132,7 +127,7 @@ class Search {
                 }
 
                 if (contentMatch) {
-                    bodyMatches.push({
+                    contentMatches.push({
                         start: contentMatch.index,
                         end: contentMatch.index + contentMatch[0].length
                     });
@@ -143,12 +138,11 @@ class Search {
                 result.title = Search.processMatches(result.title, titleMatches).join('');
             }
 
-            console.log(bodyMatches);
-            if (bodyMatches.length > 0) {
-                result.preview = Search.processMatches(result.content, bodyMatches).join('');
+            if (contentMatches.length > 0) {
+                result.preview = Search.processMatches(result.content, contentMatches).join('');
             }
 
-            if (titleMatches.length > 0 || bodyMatches.length > 0) {
+            if (titleMatches.length > 0 || contentMatches.length > 0) {
                 results.push(result);
             }
         }
