@@ -8,6 +8,11 @@ interface pageData {
     matchCount: number
 }
 
+interface match {
+    start: number,
+    end: number
+}
+
 /**
  * Escape HTML tags as HTML entities
  * Edited from:
@@ -53,6 +58,42 @@ class Search {
         this.bindSearchForm();
     }
 
+    private static processMatches(str: string, matches: match[]): string[] {
+        matches.sort((a, b) => {
+            return a.start - b.start;
+        });
+
+        let i = 0,
+            lastIndex = 0;
+
+        let resultArray: string[] = [];
+
+        while (i < matches.length) {
+            const item = matches[i];
+
+            if (item.start > lastIndex) {
+                resultArray.push(str.substring(lastIndex, item.start));
+            }
+
+            let j = i + 1,
+                end = item.end;
+
+            while (j < matches.length && matches[j].start <= end) {
+                end = matches[j].end;
+                j++;
+            }
+
+            resultArray.push(`<mark>${str.substring(item.start, end)}</mark>`);
+
+            i = j;
+            lastIndex = end;
+        }
+
+        resultArray.push(str.substring(lastIndex));
+
+        return resultArray;
+    }
+
     private async searchKeywords(keywords: string[]) {
         const rawData = await this.getData();
         let results: pageData[] = [];
@@ -63,13 +104,14 @@ class Search {
         });
 
         for (const item of rawData) {
+            let titleMatches: match[] = [],
+                bodyMatches: match[] = [];
+
             let result = {
                 ...item,
                 preview: '',
                 matchCount: 0
             }
-
-            let matched = false;
 
             for (const keyword of keywords) {
                 if (keyword === '') continue;
@@ -83,35 +125,30 @@ class Search {
                 regex.lastIndex = 0;            /// Reset regex
 
                 if (titleMatch) {
-                    result.title = result.title.replace(regex, Search.marker);
+                    titleMatches.push({
+                        start: titleMatch.index,
+                        end: titleMatch.index + titleMatch[0].length
+                    });
                 }
 
-                if (titleMatch || contentMatch) {
-                    matched = true;
-                    ++result.matchCount;
-
-                    let start = 0,
-                        end = 100;
-
-                    if (contentMatch) {
-                        start = contentMatch.index - 20;
-                        end = contentMatch.index + 80
-
-                        if (start < 0) start = 0;
-                    }
-
-                    if (result.preview.indexOf(keyword) !== -1) {
-                        result.preview = result.preview.replace(regex, Search.marker);
-                    }
-                    else {
-                        if (start !== 0) result.preview += `[...] `;
-                        result.preview += `${result.content.slice(start, end).replace(regex, Search.marker)} `;
-                    }
+                if (contentMatch) {
+                    bodyMatches.push({
+                        start: contentMatch.index,
+                        end: contentMatch.index + contentMatch[0].length
+                    });
                 }
             }
 
-            if (matched) {
-                result.preview += '[...]';
+            if (titleMatches.length > 0) {
+                result.title = Search.processMatches(result.title, titleMatches).join('');
+            }
+
+            console.log(bodyMatches);
+            if (bodyMatches.length > 0) {
+                result.preview = Search.processMatches(result.content, bodyMatches).join('');
+            }
+
+            if (titleMatches.length > 0 || bodyMatches.length > 0) {
                 results.push(result);
             }
         }
