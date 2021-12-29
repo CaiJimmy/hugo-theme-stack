@@ -72,24 +72,30 @@ class Search {
             const item = matches[i];
 
             if (item.start > lastIndex) {
-                resultArray.push(str.substring(lastIndex, item.start));
+                if (item.start - 20 > lastIndex) {
+                    resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + 20))}`);
+                    resultArray.push(` [...] ${replaceHTMLEnt(str.substring(item.start - 20, item.start))}`);
+                }
+                else {
+                    resultArray.push(replaceHTMLEnt(str.substring(lastIndex, item.start)));
+                }
             }
 
             let j = i + 1,
                 end = item.end;
 
             while (j < matches.length && matches[j].start <= end) {
-                end = matches[j].end;
-                j++;
+                end = Math.max(matches[j].end, end);
+                ++j;
             }
 
-            resultArray.push(`<mark>${str.substring(item.start, end)}</mark>`);
+            resultArray.push(`<mark>${replaceHTMLEnt(str.substring(item.start, end))}</mark>`);
 
             i = j;
             lastIndex = end;
         }
 
-        resultArray.push(str.substring(lastIndex));
+        resultArray.push(replaceHTMLEnt(str.substring(lastIndex)));
 
         return resultArray;
     }
@@ -111,40 +117,28 @@ class Search {
             for (const keyword of keywords) {
                 if (keyword === '') continue;
 
-                const regex = new RegExp(escapeRegExp(replaceHTMLEnt(keyword)), 'gi');
+                const regex = new RegExp(escapeRegExp(keyword), 'gi');
 
-                const contentMatch = regex.exec(result.content);
-                regex.lastIndex = 0;            /// Reset regex
-
-                const titleMatch = regex.exec(result.title);
-                regex.lastIndex = 0;            /// Reset regex
-
-                if (titleMatch) {
-                    titleMatches.push({
-                        start: titleMatch.index,
-                        end: titleMatch.index + titleMatch[0].length
-                    });
-                }
-
-                if (contentMatch) {
+                const contentMatchAll = item.content.matchAll(regex);
+                for (const match of Array.from(contentMatchAll)) {
                     contentMatches.push({
-                        start: contentMatch.index,
-                        end: contentMatch.index + contentMatch[0].length
+                        start: match.index,
+                        end: match.index + match[0].length
+                    });
+                }
+
+                const titleMatchAll = item.title.matchAll(regex);
+                for (const match of Array.from(titleMatchAll)) {
+                    titleMatches.push({
+                        start: match.index,
+                        end: match.index + match[0].length
                     });
                 }
             }
 
-            if (titleMatches.length > 0) {
-                result.title = Search.processMatches(result.title, titleMatches).join('');
-            }
-
-            if (contentMatches.length > 0) {
-                result.preview = Search.processMatches(result.content, contentMatches).join('');
-            }
-
-            if (titleMatches.length > 0 || contentMatches.length > 0) {
-                results.push(result);
-            }
+            if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches).join('');
+            if (contentMatches.length > 0) result.preview = Search.processMatches(result.content, contentMatches).join('');
+            if (titleMatches.length > 0 || contentMatches.length > 0) results.push(result);
         }
 
         /** Result with more matches appears first */
@@ -181,6 +175,11 @@ class Search {
             /// Not fetched yet
             const jsonURL = this.form.dataset.json;
             this.data = await fetch(jsonURL).then(res => res.json());
+
+            for (const item of this.data) {
+                const parser = new DOMParser();
+                item.content = parser.parseFromString(item.content, 'text/html').documentElement.textContent;
+            }
         }
 
         return this.data;
