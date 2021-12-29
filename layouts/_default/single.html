@@ -1,22 +1,39 @@
 {{ define "body-class" }}
-    {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
-    {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
-    article-page {{ if (.Scratch.Get "hasTOC") }}has-toc{{ end }}
+  {{ if isset .Params "series" }}
+      {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
+      {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
+      {{- .Scratch.Set "current_w" .Params.series_weight -}}
+      {{- .Scratch.Set "series_name" .Params.series -}}
+      article-page has-toc
+  {{ else }}
+      {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
+      {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
+      article-page {{ if (.Scratch.Get "hasTOC") }}has-toc{{ end }}
+      /* article-page */
+  {{ end }}
 {{ end }}
 
 {{ define "container-class" }}
+  {{ if isset .Params "series" }}
+      {{ if (.Scratch.Get "hasTOC") }}
+        extended
+      {{ else }}
+        on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}
+      {{ end }}
+  {{ else }}
     {{ if (.Scratch.Get "hasTOC") }}
         extended
     {{ else }}
         on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}
     {{ end }}
+  {{ end }}
 {{ end }}
 
 {{ define "main" }}
     {{ partial "article/article.html" . }}
 
     {{ partial "article/components/related-contents" . }}
-     
+
     {{ if not (eq .Params.comments false) }}
         {{ partial "comments/include" . }}
     {{ end }}
@@ -27,6 +44,33 @@
 {{ end }}
 
 {{ define "left-sidebar" }}
+  {{ if isset .Params "series" }}
+
+    {{ if eq (.Scratch.Get "current_w") 1 }}
+  			<div id="article-toolbar">
+              		<a href="{{ .Site.BaseURL }}" class="back-home">
+                  	{{ (resources.Get "icons/back.svg").Content | safeHTML }}
+                  	<span>{{ T "article.home" }}</span>
+              		</a>
+  	     </div>
+   	{{ else }}
+  			{{ range where (where .Site.Pages "Params.series_weight" (add (.Scratch.Get "current_w" | int) -1)) "Params.series" (.Scratch.Get "series_name") }}
+  				<div id="article-toolbar">
+  	            		<a href="{{ .Permalink }}" class="back-home">
+          	        	{{ (resources.Get "icons/back.svg").Content | safeHTML }}
+          	        	<span>{{ T "article.back" }}</span>
+          	    		</a>
+  				          <br></br>
+  				          <a href="{{ .Site.BaseURL }}" class="back-home">
+  		                {{ (resources.Get "icons/back.svg").Content | safeHTML }}
+                  		<span>{{ T "article.home" }}</span>
+              			</a>
+          			</div>
+  			{{ end }}
+  	{{ end }}
+
+  {{ else }}
+
     {{ if (.Scratch.Get "hasTOC") }}
         <div id="article-toolbar">
             <a href="{{ .Site.BaseURL | relLangURL }}" class="back-home">
@@ -37,9 +81,41 @@
     {{ else }}
         {{ partial "sidebar/left.html" . }}
     {{ end }}
+
+  {{ end }}
 {{ end }}
 
 {{ define "right-sidebar" }}
+  {{ if isset .Params "series" }}
+
+      <aside class="sidebar right-sidebar sticky">
+  		    {{ range where (where .Site.Pages "Params.series_weight" (add (.Scratch.Get "current_w" | int) 1)) "Params.series" (.Scratch.Get "series_name") }}
+  			     <div id="article-toolbar">
+  			     <a href="{{ .Permalink }}" class="forward-home">
+  			     <span>{{ T "article.forward" }}</span>
+  			     {{ (resources.Get "icons/forward.svg").Content | safeHTML }}
+  			      </a>
+  			      </div>
+  			        <br></br>
+  		    {{ end }}
+
+  		{{ if (.Scratch.Get "hasTOC") }}
+  			<section class="widget series">
+  	                <div class="widget-icon">
+  			{{ partial "helper/icon" "hash" }}
+  	        	</div>
+  	        	<h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+          	       	<div class="widget--toc">
+          		{{ .TableOfContents }}
+          	       	</div>
+          		</section>
+      {{ end }}
+      	{{/* partial "widget/series" . */}}
+    		{{/* partial "widget/tag-cloud" . */}}
+  		</aside>
+
+  {{ else }}
+
     {{ if (.Scratch.Get "hasTOC") }}
         <aside class="sidebar right-sidebar sticky">
             <section class="widget archives">
@@ -47,11 +123,13 @@
                     {{ partial "helper/icon" "hash" }}
                 </div>
                 <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
-                
+
                 <div class="widget--toc">
                     {{ .TableOfContents }}
                 </div>
             </section>
         </aside>
     {{ end }}
+
+  {{ end }}
 {{ end }}

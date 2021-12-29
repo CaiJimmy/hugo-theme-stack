@@ -64,3 +64,34 @@
         }
     }
 }
+
+/* Series widget */
+.widget.series {
+    .widget-series--list {
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        background-color: var(--card-background);
+    }
+
+    .series-stream {
+        &:not(:last-of-type) {
+            border-bottom: 1.5px solid var(--card-separator-color);
+        }
+
+        a {
+            font-size: 1.4rem;
+            padding: 18px 25px;
+            display: flex;
+
+            span.stream {
+                flex: 1;
+                color: var(--card-text-color-main);
+                font-weight: bold;
+            }
+
+            span.count {
+                color: var(--card-text-color-tertiary);
+            }
+        }
+    }
+}

@@ -119,19 +119,20 @@ params:
             emitMetadata: 0
 
         gitalk:
-            owner: 
-            admin:  
-            repo: 
-            clientID: 
-            clientSecret: 
-        
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+
         cusdis:
-            host: 
-            id: 
+            host:
+            id:
 
     widgets:
         enabled:
             - search
+#            - series
             - archives
             - tag-cloud
 
@@ -140,6 +141,9 @@ params:
 
         tagCloud:
             limit: 10
+
+        series:
+            limit: 5
 
     opengraph:
         twitter:
@@ -168,6 +172,12 @@ params:
         content:
             enabled: true
 
+taxonomies:
+   tag: "tags"
+   category: "categories"
+   series: "series"
+
+
 ### Custom menu
 ### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
@@ -181,14 +191,14 @@ menu:
               ### For demonstration purpose, the home link will be open in a new tab
               newTab: true
               icon: home
-    
+
     social:
         - identifier: github
           name: GitHub
           url: https://github.com/CaiJimmy/hugo-theme-stack
           params:
             icon: brand-github
-            
+
         - identifier: twitter
           name: Twitter
           url: https://twitter.com
@@ -205,6 +215,10 @@ related:
 
         - name: categories
           weight: 200
+
+        - name: series
+          weight: 300
+
 
 markup:
     goldmark:

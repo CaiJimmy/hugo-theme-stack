@@ -30,10 +30,10 @@
                         {{- $Width = $thumbnail.Width -}}
                         {{- $Height = $thumbnail.Height -}}
                     {{- end -}}
-                    
-                    <img src="{{ $Permalink }}" 
+
+                    <img src="{{ $Permalink }}"
                         width="{{ $Width }}"
-                        height="{{ $Height }}" 
+                        height="{{ $Height }}"
                         loading="lazy">
                 {{ else }}
                     <img src="{{ $image.permalink }}" loading="lazy" />
@@ -44,7 +44,7 @@
 
     {{- $subsections := .Sections -}}
     {{- $pages := .Pages | complement $subsections -}}
-    
+
     {{- if eq (len $pages) 0 -}}
         {{/* If there are no normal pages, display subsections in list style, with pagination */}}
         {{/* This happens with taxonomies like categories or tags */}}
@@ -62,9 +62,10 @@
             </div>
         </div>
     {{- end -}}
-    
+
     {{/* List only pages that are not a subsection */}}
-    {{ $paginator := .Paginate $pages }}
+    {{/* $paginator := .Paginate $pages */}}
+    {{ $paginator := .Paginate ($pages.ByParam "series_weight") }}
     <section class="article-list--compact">
         {{ range $paginator.Pages }}
             {{ partial "article-list/compact" . }}

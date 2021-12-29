@@ -20,6 +20,12 @@ article:
     back:
         other: Back
 
+    forward:
+        other: Forward
+
+    home:
+        other: Home
+
     tableOfContents:
         other: Table of contents
 
@@ -51,6 +57,13 @@ widget:
     tagCloud:
         title:
             other: Tags
+
+    series:
+        title:
+            other: Series
+
+        more:
+            other: More
 
 search:
     title:

@@ -1,0 +1,33 @@
+{{- $query := first 1 (where .Site.Pages "Layout" "==" "archives") -}}
+{{- if $query -}}
+    {{- $archivesPage := index $query 0 -}}
+    <section class="widget series">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "series" }}
+        </div>
+        <h2 class="widget-title section-title">{{ T "widget.series.title" }}</h2>
+
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $filtered := ($pages | intersect $notHidden) }}
+        {{ $archives := $filtered.GroupByParam "series" }}
+
+        <div class="widget-series--list">
+            {{ range $index, $item := first (add .Site.Params.widgets.series.limit 1) ($archives) }}
+                {{- $id := lower (replace $item.Key " " "-") -}}
+                <div class="series-stream">
+                    <a href="{{ $.Site.BaseURL}}series/{{ $id }}">
+                        {{ if eq $index $.Site.Params.widgets.series.limit }}
+                            <span class="stream">{{ T "widget.series.more" }}</span>
+                        {{ else }}
+                            <span class="stream">{{ .Key }}</span>
+                            <span class="count">{{ len $item.Pages }}</span>
+                        {{ end }}
+                    </a>
+                </div>
+            {{ end }}
+        </div>
+    </section>
+{{- else -}}
+    {{- warnf "Series page not found. Create a page with layout: series." -}}
+{{- end -}}

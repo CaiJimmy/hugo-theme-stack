@@ -20,6 +20,12 @@ article:
     back:
         other: Indietro
 
+    forward:
+        other: Successivo
+
+    home:
+        other: Casa
+
     tableOfContents:
         other: Indice
 
