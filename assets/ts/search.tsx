@@ -56,6 +56,10 @@ class Search {
 
     /// clean input keywords list
     private cleanKeywords(keywords: string[]) {
+      /// Sort keywords by their length
+      keywords.sort((a, b) => {
+        return b.length - a.length
+      });
       for (let i=0; i < keywords.length; i++){
         /// remove the white spaces
         keywords[i]=keywords[i].trim();
@@ -72,7 +76,6 @@ class Search {
     private async searchKeywords(keywords: string[]) {
         const rawData = await this.getData();
         let results: pageData[] = [];
-
 
         if (keywords.length === 0) return;
         keywords = this.cleanKeywords(keywords);
