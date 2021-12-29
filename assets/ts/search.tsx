@@ -104,6 +104,11 @@ class Search {
         const rawData = await this.getData();
         let results: pageData[] = [];
 
+        const regex = new RegExp(keywords.filter((v, index, arr) => {
+            arr[index] = escapeRegExp(v);
+            return v !== '';
+        }).join('|'), 'gi');
+
         for (const item of rawData) {
             let titleMatches: match[] = [],
                 contentMatches: match[] = [];
@@ -114,26 +119,20 @@ class Search {
                 matchCount: 0
             }
 
-            for (const keyword of keywords) {
-                if (keyword === '') continue;
+            const contentMatchAll = item.content.matchAll(regex);
+            for (const match of Array.from(contentMatchAll)) {
+                contentMatches.push({
+                    start: match.index,
+                    end: match.index + match[0].length
+                });
+            }
 
-                const regex = new RegExp(escapeRegExp(keyword), 'gi');
-
-                const contentMatchAll = item.content.matchAll(regex);
-                for (const match of Array.from(contentMatchAll)) {
-                    contentMatches.push({
-                        start: match.index,
-                        end: match.index + match[0].length
-                    });
-                }
-
-                const titleMatchAll = item.title.matchAll(regex);
-                for (const match of Array.from(titleMatchAll)) {
-                    titleMatches.push({
-                        start: match.index,
-                        end: match.index + match[0].length
-                    });
-                }
+            const titleMatchAll = item.title.matchAll(regex);
+            for (const match of Array.from(titleMatchAll)) {
+                titleMatches.push({
+                    start: match.index,
+                    end: match.index + match[0].length
+                });
             }
 
             if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches).join('');
