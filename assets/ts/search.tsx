@@ -55,37 +55,27 @@ class Search {
     }
 
     /// clean input keywords list
-    private reorganizeKeywords(keywords: string[]) {
-    let tmp: string[] = [];
-    /// do the search only on keywords length >= 2
-    for (let i=0; i < keywords.length; i++){
-      if (keywords[i].length === 1) keywords.splice(i,1);
-    }
-    /// Sort keywords from short to long
-    keywords.sort((a, b) => {
-        return b.length - a.length
-    });
-    /// remove the keywords contained in other keywords
-    for (let i = 0; i < keywords.length; i++) {
-      for (let j = 0; j < keywords.length; j++) {
-          if (i !== j) {
-            if (keywords[j].includes(keywords[i])) {
-              keywords.splice(i,1);
-              i=j=0;
-            }
-          }
+    private cleanKeywords(keywords: string[]) {
+      for (let i=0; i < keywords.length; i++){
+        /// remove the white spaces
+        keywords[i]=keywords[i].trim();
+        /// do the search only on keywords length >= 2
+        if (keywords[i].length <= 1) {
+            keywords.splice(i,1);
+            i--;
+        }
       }
+      return keywords;
     }
-    return keywords;
-  }
 
 
     private async searchKeywords(keywords: string[]) {
         const rawData = await this.getData();
         let results: pageData[] = [];
 
-        keywords = this.reorganizeKeywords(keywords);
+
         if (keywords.length === 0) return;
+        keywords = this.cleanKeywords(keywords);
 
         /// from a b to a|b for regexp
         let k = "";
