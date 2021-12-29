@@ -58,13 +58,14 @@ class Search {
         this.bindSearchForm();
     }
 
-    private static processMatches(str: string, matches: match[]): string[] {
+    private static processMatches(str: string, matches: match[], charLimit = 140): string[] {
         matches.sort((a, b) => {
             return a.start - b.start;
         });
 
         let i = 0,
-            lastIndex = 0;
+            lastIndex = 0,
+            charCount = 0;
 
         let resultArray: string[] = [];
 
@@ -75,6 +76,8 @@ class Search {
                 if (item.start - 20 > lastIndex) {
                     resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + 20))}`);
                     resultArray.push(` [...] ${replaceHTMLEnt(str.substring(item.start - 20, item.start))}`);
+
+                    charCount += item.start - lastIndex + 40;
                 }
                 else {
                     resultArray.push(replaceHTMLEnt(str.substring(lastIndex, item.start)));
@@ -90,12 +93,16 @@ class Search {
             }
 
             resultArray.push(`<mark>${replaceHTMLEnt(str.substring(item.start, end))}</mark>`);
+            charCount += end - item.start;
 
             i = j;
             lastIndex = end;
+
+            if (charCount > charLimit) break;
         }
 
-        resultArray.push(replaceHTMLEnt(str.substring(lastIndex)));
+        if (lastIndex < str.length)
+            resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, Math.min(lastIndex + 20, str.length)))} [...]`);
 
         return resultArray;
     }
@@ -136,7 +143,12 @@ class Search {
             }
 
             if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches).join('');
-            if (contentMatches.length > 0) result.preview = Search.processMatches(result.content, contentMatches).join('');
+            if (contentMatches.length > 0) {
+                result.preview = Search.processMatches(result.content, contentMatches).join('');
+            }
+            else {
+                result.preview = replaceHTMLEnt(result.content.substring(0, 140));
+            }
 
             result.matchCount = titleMatches.length + contentMatches.length;
             if (result.matchCount > 0) results.push(result);
