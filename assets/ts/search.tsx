@@ -137,7 +137,9 @@ class Search {
 
             if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches).join('');
             if (contentMatches.length > 0) result.preview = Search.processMatches(result.content, contentMatches).join('');
-            if (titleMatches.length > 0 || contentMatches.length > 0) results.push(result);
+
+            result.matchCount = titleMatches.length + contentMatches.length;
+            if (result.matchCount > 0) results.push(result);
         }
 
         /** Result with more matches appears first */
