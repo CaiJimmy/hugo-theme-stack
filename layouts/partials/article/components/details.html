@@ -21,7 +21,12 @@
     </h3>
     {{ end }}
 
-    {{ if or (not .Date.IsZero) (.Site.Params.article.readingTime) }}
+    {{ $showReadingTime := .Site.Params.article.readingtime }}
+    {{ if isset .Params "readingtime" }}
+        {{ $showReadingTime = .Params.readingtime }}
+    {{ end }}
+
+    {{ if or (not .Date.IsZero) ($showReadingTime) }}
     <footer class="article-time">
         {{ if not .Date.IsZero }}
             <div>
@@ -32,7 +37,7 @@
             </div>
         {{ end }}
 
-        {{ if .Site.Params.article.readingTime }}
+        {{ if $showReadingTime }}
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
