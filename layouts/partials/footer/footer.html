@@ -3,9 +3,11 @@
     <section class="copyright">
         &copy; 
         {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
-            {{ .Site.Params.footer.since }} - 
+            {{ .Site.Params.footer.since }}–{{ now.Format "06" }}
+        {{ else }}
+            {{ now.Format "2006" }}
         {{ end }}
-        {{ now.Format "2006" }} {{ .Site.Title }}
+        {{ .Site.Title }}
     </section>
     
     <section class="powerby">
