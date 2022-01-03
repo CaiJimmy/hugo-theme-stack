@@ -74,7 +74,6 @@ function setupScrollspy() {
     let activeSectionLink: Element;
 
     function scrollHandler() {
-        console.log("scroll!");
         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
         let newActiveSection: HTMLElement | undefined;
