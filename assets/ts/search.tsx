@@ -224,7 +224,7 @@ class Search {
         return <article>
             <a href={item.permalink}>
                 <div class="article-details">
-                    <h2 class="article-title" dangerouslySetInnerHTML={{ __html: item.title }}></h2>
+                    <h2 class="article-title" dangerouslySetInnerHTML={{ __html: this.displayTitle(item) }}></h2>
                     <secion class="article-preview" dangerouslySetInnerHTML={{ __html: item.preview }}></secion>
                 </div>
                 {item.image &&
@@ -234,6 +234,10 @@ class Search {
                 }
             </a>
         </article>;
+    }
+
+    private static displayTitle(item) {
+        return item.title.replace(/_/g, '');
     }
 }
 

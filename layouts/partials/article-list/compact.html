@@ -2,7 +2,7 @@
     <a href="{{ .RelPermalink }}">
         <div class="article-details">
             <h2 class="article-title">
-                {{- .Title -}}
+                {{- .Title | markdownify -}}
             </h2>
             <footer class="article-time">
                 <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
