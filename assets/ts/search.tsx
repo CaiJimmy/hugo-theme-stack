@@ -58,7 +58,16 @@ class Search {
         this.bindSearchForm();
     }
 
-    private static processMatches(str: string, matches: match[], ellipsis: boolean = true, charLimit = 140, offset = 20): string[] {
+    /**
+     * Processes search matches
+     * @param str original text
+     * @param matches array of matches
+     * @param ellipsis whether to add ellipsis to the end of each match
+     * @param charLimit max length of preview string
+     * @param offset how many characters before and after the match to include in preview
+     * @returns preview string
+     */
+    private static processMatches(str: string, matches: match[], ellipsis: boolean = true, charLimit = 140, offset = 20): string {
         matches.sort((a, b) => {
             return a.start - b.start;
         });
@@ -72,21 +81,25 @@ class Search {
         while (i < matches.length) {
             const item = matches[i];
 
-            if (item.start > lastIndex) {
-                if (ellipsis && item.start - offset > lastIndex) {
-                    resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + offset))}`);
-                    resultArray.push(` [...] ${replaceHTMLEnt(str.substring(item.start - offset, item.start))}`);
+            /// item.start >= lastIndex (equal only for the first iteration)
+            /// because of the while loop that comes after, iterating over variable j
 
-                    charCount += item.start - lastIndex + offset * 2;
-                }
-                else {
-                    resultArray.push(replaceHTMLEnt(str.substring(lastIndex, item.start)));
-                }
+            if (ellipsis && item.start - offset > lastIndex) {
+                resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + offset))} [...] `);
+                resultArray.push(`${replaceHTMLEnt(str.substring(item.start - offset, item.start))}`);
+                charCount += offset * 2;
+            }
+            else {
+                /// If the match is too close to the end of last match, don't add ellipsis
+                resultArray.push(replaceHTMLEnt(str.substring(lastIndex, item.start)));
+                charCount += item.start - lastIndex;
             }
 
             let j = i + 1,
                 end = item.end;
 
+            /// Include as many matches as possible
+            /// [item.start, end] is the range of the match
             while (j < matches.length && matches[j].start <= end) {
                 end = Math.max(matches[j].end, end);
                 ++j;
@@ -98,9 +111,10 @@ class Search {
             i = j;
             lastIndex = end;
 
-            if (charCount > charLimit) break;
+            if (ellipsis && charCount > charLimit) break;
         }
 
+        /// Add the rest of the string
         if (lastIndex < str.length) {
             let end = str.length;
             if (ellipsis) end = Math.min(end, lastIndex + offset);
@@ -112,7 +126,7 @@ class Search {
             }
         }
 
-        return resultArray;
+        return resultArray.join('');
     }
 
     private async searchKeywords(keywords: string[]) {
@@ -150,9 +164,9 @@ class Search {
                 });
             }
 
-            if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches, false).join('');
+            if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches, false);
             if (contentMatches.length > 0) {
-                result.preview = Search.processMatches(result.content, contentMatches).join('');
+                result.preview = Search.processMatches(result.content, contentMatches);
             }
             else {
                 result.preview = replaceHTMLEnt(result.content.substring(0, 140));
@@ -199,7 +213,7 @@ class Search {
 
             for (const item of this.data) {
                 const parser = new DOMParser();
-                item.content = parser.parseFromString(item.content, 'text/html').documentElement.textContent;
+                item.content = parser.parseFromString(item.content, 'text/html').body.innerText;
             }
         }
 
