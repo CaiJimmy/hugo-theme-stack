@@ -169,6 +169,7 @@ class Search {
                 result.preview = Search.processMatches(result.content, contentMatches);
             }
             else {
+                /// If there are no matches in the content, use the first 140 characters as preview
                 result.preview = replaceHTMLEnt(result.content.substring(0, 140));
             }
 
@@ -176,14 +177,10 @@ class Search {
             if (result.matchCount > 0) results.push(result);
         }
 
-        /** Result with more matches appears first */
+        /// Result with more matches appears first
         return results.sort((a, b) => {
             return b.matchCount - a.matchCount;
         });
-    }
-
-    public static marker(match) {
-        return '<mark>' + match + '</mark>';
     }
 
     private async doSearch(keywords: string[]) {
