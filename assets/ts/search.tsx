@@ -210,9 +210,9 @@ class Search {
             /// Not fetched yet
             const jsonURL = this.form.dataset.json;
             this.data = await fetch(jsonURL).then(res => res.json());
+            const parser = new DOMParser();
 
             for (const item of this.data) {
-                const parser = new DOMParser();
                 item.content = parser.parseFromString(item.content, 'text/html').body.innerText;
             }
         }
