@@ -58,7 +58,7 @@ class Search {
         this.bindSearchForm();
     }
 
-    private static processMatches(str: string, matches: match[], charLimit = 140): string[] {
+    private static processMatches(str: string, matches: match[], ellipsis: boolean = true, charLimit = 140, offset = 20): string[] {
         matches.sort((a, b) => {
             return a.start - b.start;
         });
@@ -73,11 +73,11 @@ class Search {
             const item = matches[i];
 
             if (item.start > lastIndex) {
-                if (item.start - 20 > lastIndex) {
-                    resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + 20))}`);
-                    resultArray.push(` [...] ${replaceHTMLEnt(str.substring(item.start - 20, item.start))}`);
+                if (ellipsis && item.start - offset > lastIndex) {
+                    resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + offset))}`);
+                    resultArray.push(` [...] ${replaceHTMLEnt(str.substring(item.start - offset, item.start))}`);
 
-                    charCount += item.start - lastIndex + 40;
+                    charCount += item.start - lastIndex + offset * 2;
                 }
                 else {
                     resultArray.push(replaceHTMLEnt(str.substring(lastIndex, item.start)));
@@ -101,8 +101,16 @@ class Search {
             if (charCount > charLimit) break;
         }
 
-        if (lastIndex < str.length)
-            resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, Math.min(lastIndex + 20, str.length)))} [...]`);
+        if (lastIndex < str.length) {
+            let end = str.length;
+            if (ellipsis) end = Math.min(end, lastIndex + offset);
+
+            resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, end))}`);
+
+            if (ellipsis && end != str.length) {
+                resultArray.push(` [...]`);
+            }
+        }
 
         return resultArray;
     }
@@ -142,7 +150,7 @@ class Search {
                 });
             }
 
-            if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches).join('');
+            if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches, false).join('');
             if (contentMatches.length > 0) {
                 result.preview = Search.processMatches(result.content, contentMatches).join('');
             }
