@@ -131,11 +131,11 @@ class Search {
 
     private async searchKeywords(keywords: string[]) {
         const rawData = await this.getData();
-        let results: pageData[] = [];
+        const results: pageData[] = [];
 
         const regex = new RegExp(keywords.filter((v, index, arr) => {
             arr[index] = escapeRegExp(v);
-            return v !== '';
+            return v.trim() !== '';
         }).join('|'), 'gi');
 
         for (const item of rawData) {
@@ -222,7 +222,7 @@ class Search {
 
         const eventHandler = (e) => {
             e.preventDefault();
-            const keywords = this.input.value;
+            const keywords = this.input.value.trim();
 
             Search.updateQueryString(keywords, true);
 
