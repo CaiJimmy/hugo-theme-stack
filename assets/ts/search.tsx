@@ -76,7 +76,7 @@ class Search {
             lastIndex = 0,
             charCount = 0;
 
-        let resultArray: string[] = [];
+        const resultArray: string[] = [];
 
         while (i < matches.length) {
             const item = matches[i];
@@ -139,7 +139,7 @@ class Search {
         }).join('|'), 'gi');
 
         for (const item of rawData) {
-            let titleMatches: match[] = [],
+            const titleMatches: match[] = [],
                 contentMatches: match[] = [];
 
             let result = {
