@@ -58,7 +58,7 @@ let Stack = {
         /**
          * Add copy button to code block
         */
-        const codeBlocks = document.querySelectorAll('.article-content .highlight');
+        const codeBlocks = document.querySelectorAll('.article-content > div.highlight');
         const copyText = `Copy`,
             copiedText = `Copied!`;
         codeBlocks.forEach(codeBlock => {
