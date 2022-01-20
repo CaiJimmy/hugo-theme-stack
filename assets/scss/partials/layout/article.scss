@@ -265,11 +265,7 @@
         &.has-image {
             .article-details {
                 padding: 20px;
-                background: linear-gradient(
-                    0deg,
-                    rgba(0, 0, 0, 0.25) 0%,
-                    rgba(0, 0, 0, 0.75) 100%
-                );
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
             }
         }
     }
@@ -308,8 +304,7 @@
     blockquote {
         position: relative;
         margin: 1.5em 0;
-        border-left: var(--blockquote-border-size) solid
-            var(--card-separator-color);
+        border-left: var(--blockquote-border-size) solid var(--card-separator-color);
         padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
     }
