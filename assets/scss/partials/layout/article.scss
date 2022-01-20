@@ -71,7 +71,8 @@
                 text-transform: unset;
             }
 
-            .article-copyright, .article-lastmod {
+            .article-copyright,
+            .article-lastmod {
                 a {
                     color: var(--body-text-color);
                 }
@@ -359,6 +360,12 @@
         }
     }
 
+    .table-wrapper {
+        padding: 0 var(--card-padding);
+        overflow-x: auto;
+        display: block;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -407,9 +414,10 @@
     /// Negative margins
     blockquote,
     figure,
-    .gallery,
     pre,
+    .gallery,
     .video-wrapper,
+    .table-wrapper,
     .s_video_simple {
         margin-left: calc((var(--card-padding)) * -1);
         margin-right: calc((var(--card-padding)) * -1);
