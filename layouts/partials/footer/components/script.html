@@ -4,3 +4,9 @@
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts -}}
 
 <script type="text/javascript" src="{{ $script.RelPermalink }}" defer></script>
+
+{{- with resources.Get "ts/custom.ts" -}}
+    {{/* Place your custom script in HUGO_SITE_FOLDER/assets/ts/custom.ts */}}
+    {{- $customScript := . | js.Build $opts -}}
+    <script type="text/javascript" src="{{ $customScript.RelPermalink }}" defer></script>
+{{- end -}}

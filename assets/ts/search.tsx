@@ -8,6 +8,11 @@ interface pageData {
     matchCount: number
 }
 
+interface match {
+    start: number,
+    end: number
+}
+
 /**
  * Escape HTML tags as HTML entities
  * Edited from:
@@ -53,77 +58,129 @@ class Search {
         this.bindSearchForm();
     }
 
-    private async searchKeywords(keywords: string[]) {
-        const rawData = await this.getData();
-        let results: pageData[] = [];
-
-        /// Sort keywords by their length
-        keywords.sort((a, b) => {
-            return b.length - a.length
+    /**
+     * Processes search matches
+     * @param str original text
+     * @param matches array of matches
+     * @param ellipsis whether to add ellipsis to the end of each match
+     * @param charLimit max length of preview string
+     * @param offset how many characters before and after the match to include in preview
+     * @returns preview string
+     */
+    private static processMatches(str: string, matches: match[], ellipsis: boolean = true, charLimit = 140, offset = 20): string {
+        matches.sort((a, b) => {
+            return a.start - b.start;
         });
 
+        let i = 0,
+            lastIndex = 0,
+            charCount = 0;
+
+        const resultArray: string[] = [];
+
+        while (i < matches.length) {
+            const item = matches[i];
+
+            /// item.start >= lastIndex (equal only for the first iteration)
+            /// because of the while loop that comes after, iterating over variable j
+
+            if (ellipsis && item.start - offset > lastIndex) {
+                resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, lastIndex + offset))} [...] `);
+                resultArray.push(`${replaceHTMLEnt(str.substring(item.start - offset, item.start))}`);
+                charCount += offset * 2;
+            }
+            else {
+                /// If the match is too close to the end of last match, don't add ellipsis
+                resultArray.push(replaceHTMLEnt(str.substring(lastIndex, item.start)));
+                charCount += item.start - lastIndex;
+            }
+
+            let j = i + 1,
+                end = item.end;
+
+            /// Include as many matches as possible
+            /// [item.start, end] is the range of the match
+            while (j < matches.length && matches[j].start <= end) {
+                end = Math.max(matches[j].end, end);
+                ++j;
+            }
+
+            resultArray.push(`<mark>${replaceHTMLEnt(str.substring(item.start, end))}</mark>`);
+            charCount += end - item.start;
+
+            i = j;
+            lastIndex = end;
+
+            if (ellipsis && charCount > charLimit) break;
+        }
+
+        /// Add the rest of the string
+        if (lastIndex < str.length) {
+            let end = str.length;
+            if (ellipsis) end = Math.min(end, lastIndex + offset);
+
+            resultArray.push(`${replaceHTMLEnt(str.substring(lastIndex, end))}`);
+
+            if (ellipsis && end != str.length) {
+                resultArray.push(` [...]`);
+            }
+        }
+
+        return resultArray.join('');
+    }
+
+    private async searchKeywords(keywords: string[]) {
+        const rawData = await this.getData();
+        const results: pageData[] = [];
+
+        const regex = new RegExp(keywords.filter((v, index, arr) => {
+            arr[index] = escapeRegExp(v);
+            return v.trim() !== '';
+        }).join('|'), 'gi');
+
         for (const item of rawData) {
+            const titleMatches: match[] = [],
+                contentMatches: match[] = [];
+
             let result = {
                 ...item,
                 preview: '',
                 matchCount: 0
             }
 
-            let matched = false;
-
-            for (const keyword of keywords) {
-                if (keyword === '') continue;
-
-                const regex = new RegExp(escapeRegExp(replaceHTMLEnt(keyword)), 'gi');
-
-                const contentMatch = regex.exec(result.content);
-                regex.lastIndex = 0;            /// Reset regex
-
-                const titleMatch = regex.exec(result.title);
-                regex.lastIndex = 0;            /// Reset regex
-
-                if (titleMatch) {
-                    result.title = result.title.replace(regex, Search.marker);
-                }
-
-                if (titleMatch || contentMatch) {
-                    matched = true;
-                    ++result.matchCount;
-
-                    let start = 0,
-                        end = 100;
-
-                    if (contentMatch) {
-                        start = contentMatch.index - 20;
-                        end = contentMatch.index + 80
-
-                        if (start < 0) start = 0;
-                    }
-
-                    if (result.preview.indexOf(keyword) !== -1) {
-                        result.preview = result.preview.replace(regex, Search.marker);
-                    }
-                    else {
-                        if (start !== 0) result.preview += `[...] `;
-                        result.preview += `${result.content.slice(start, end).replace(regex, Search.marker)} `;
-                    }
-                }
+            const contentMatchAll = item.content.matchAll(regex);
+            for (const match of Array.from(contentMatchAll)) {
+                contentMatches.push({
+                    start: match.index,
+                    end: match.index + match[0].length
+                });
             }
 
-            if (matched) {
-                result.preview += '[...]';
-                results.push(result);
+            const titleMatchAll = item.title.matchAll(regex);
+            for (const match of Array.from(titleMatchAll)) {
+                titleMatches.push({
+                    start: match.index,
+                    end: match.index + match[0].length
+                });
             }
+
+            if (titleMatches.length > 0) result.title = Search.processMatches(result.title, titleMatches, false);
+            if (contentMatches.length > 0) {
+                result.preview = Search.processMatches(result.content, contentMatches);
+            }
+            else {
+                /// If there are no matches in the content, use the first 140 characters as preview
+                result.preview = replaceHTMLEnt(result.content.substring(0, 140));
+            }
+
+            result.matchCount = titleMatches.length + contentMatches.length;
+            if (result.matchCount > 0) results.push(result);
         }
 
-        /** Result with more matches appears first */
+        /// Result with more matches appears first
         return results.sort((a, b) => {
             return b.matchCount - a.matchCount;
         });
-    }
-
-    public static marker(match) {
-        return '<mark>' + match + '</mark>';
     }
 
     private async doSearch(keywords: string[]) {
@@ -150,6 +207,11 @@ class Search {
             /// Not fetched yet
             const jsonURL = this.form.dataset.json;
             this.data = await fetch(jsonURL).then(res => res.json());
+            const parser = new DOMParser();
+
+            for (const item of this.data) {
+                item.content = parser.parseFromString(item.content, 'text/html').body.innerText;
+            }
         }
 
         return this.data;
@@ -160,7 +222,7 @@ class Search {
 
         const eventHandler = (e) => {
             e.preventDefault();
-            const keywords = this.input.value;
+            const keywords = this.input.value.trim();
 
             Search.updateQueryString(keywords, true);
 
@@ -225,7 +287,7 @@ class Search {
             <a href={item.permalink}>
                 <div class="article-details">
                     <h2 class="article-title" dangerouslySetInnerHTML={{ __html: item.title }}></h2>
-                    <secion class="article-preview" dangerouslySetInnerHTML={{ __html: item.preview }}></secion>
+                    <section class="article-preview" dangerouslySetInnerHTML={{ __html: item.preview }}></section>
                 </div>
                 {item.image &&
                     <div class="article-image">
