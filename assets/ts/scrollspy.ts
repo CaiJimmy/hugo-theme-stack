@@ -1,6 +1,6 @@
 // Implements a scroll spy system for the ToC, displaying the current section with an indicator and scrolling to it when needed.
 
-// Inspired from https://gomakethings.com/debouncing-your-javascript-events/ could work
+// Inspired from https://gomakethings.com/debouncing-your-javascript-events/
 function debounced(func: Function) {
     let timeout;
     return () => {
@@ -26,15 +26,19 @@ function scrollToTocElement(tocElement: HTMLElement, scrollableNavigation: HTMLE
     scrollableNavigation.scrollTo({ top: scrollTop, behavior: "smooth" });
 }
 
-function findLinkForSectionId(sectionId: string, navigation: NodeListOf<Element>): HTMLElement | undefined {
-    for (let i = 0; i < navigation.length; i++) {
-        let link = navigation[i].querySelector("a");
-        if (link.getAttribute("href") === "#" + sectionId) {
-            return navigation[i] as HTMLElement;
-        }
-    }
+type IdToElementMap = { [key: string]: HTMLElement };
 
-    return undefined;
+function buildIdToNavigationElementMap(navigation: NodeListOf<Element>): IdToElementMap {
+    const sectionLinkRef: IdToElementMap = {};
+    navigation.forEach((navigationElement: HTMLElement) => {
+        const link = navigationElement.querySelector("a");
+        const href = link.getAttribute("href");
+        if (href.startsWith("#")) {
+            sectionLinkRef[href.slice(1)] = navigationElement;
+        }
+    });
+
+    return sectionLinkRef;
 }
 
 function computeOffsets(headers: NodeListOf<Element>) {
@@ -73,6 +77,8 @@ function setupScrollspy() {
 
     let activeSectionLink: Element;
 
+    let idToNavigationElement: IdToElementMap = buildIdToNavigationElementMap(navigation);
+
     function scrollHandler() {
         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -89,9 +95,9 @@ function setupScrollspy() {
         // Find the link for the active section. Once again, there are a few edge cases:
         // - No active section = no link => undefined
         // - No active section but the link does not exist in toc (e.g. because it is outside of the applicable ToC levels) => undefined
-        let newActiveSectionLink: HTMLElement | undefined 
+        let newActiveSectionLink: HTMLElement | undefined
         if (newActiveSection) {
-            newActiveSectionLink = findLinkForSectionId(newActiveSection.id, navigation);
+            newActiveSectionLink = idToNavigationElement[newActiveSection.id];
         }
 
         if (newActiveSection && !newActiveSectionLink) {
