@@ -104,6 +104,12 @@ params:
             path:
             lang:
 
+        # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
+        cactus:
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
+            serverName: "cactus.chat"
+            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+            
         giscus:
             repo:
             repoID:
@@ -125,7 +131,6 @@ params:
         cusdis:
             host: 
             id: 
-
     widgets:
         enabled:
             - search
