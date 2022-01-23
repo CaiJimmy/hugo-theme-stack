@@ -69,6 +69,10 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
 | --------  | -------- | ------ |
 | *italics* | **bold** | `code` |
 
+| A                                                        | B                                                                                                             | C                                                                                                                                    | D                                                 | E                                                          | F                                                                    |
+|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|------------------------------------------------------------|----------------------------------------------------------------------|
+| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Phasellus ultricies, sapien non euismod aliquam, dui ligula tincidunt odio, at accumsan nulla sapien eget ex. | Proin eleifend dictum ipsum, non euismod ipsum pulvinar et. Vivamus sollicitudin, quam in pulvinar aliquam, metus elit pretium purus | Proin sit amet velit nec enim imperdiet vehicula. | Ut bibendum vestibulum quam, eu egestas turpis gravida nec | Sed scelerisque nec turpis vel viverra. Vivamus vitae pretium sapien |
+
 ## Code Blocks
 
 #### Code block with backticks
@@ -112,6 +116,16 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
 </body>
 </html>
 {{< /highlight >}}
+
+#### Diff code block
+
+```diff
+[dependencies.bevy]
+git = "https://github.com/bevyengine/bevy"
+rev = "11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13"
+- features = ["dynamic"]
++ features = ["jpeg", "dynamic"]
+```
 
 ## List Types
 

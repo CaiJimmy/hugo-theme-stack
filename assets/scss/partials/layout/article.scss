@@ -71,7 +71,8 @@
                 text-transform: unset;
             }
 
-            .article-copyright, .article-lastmod {
+            .article-copyright,
+            .article-lastmod {
                 a {
                     color: var(--body-text-color);
                 }
@@ -122,7 +123,6 @@
 }
 
 .article-page.has-toc {
-    scroll-behavior: smooth;
 
     .left-sidebar {
         display: none;
@@ -193,6 +193,10 @@
     color: var(--card-text-color-main);
     overflow: hidden;
 
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--card-separator-color);
+    }
+
     #TableOfContents {
         overflow-x: auto;
         max-height: 75vh;
@@ -207,7 +211,7 @@
             list-style-type: none;
             counter-reset: item;
 
-            li:before {
+            li a::before {
                 counter-increment: item;
                 content: counters(item, ".") ". ";
                 font-weight: bold;
@@ -220,7 +224,7 @@
         }
 
         li {
-            margin: 15px 20px;
+            margin: 15px 0 15px 20px;
             padding: 5px;
 
             & > ol,
@@ -232,6 +236,38 @@
                 & > li:last-child {
                     margin-bottom: 0;
                 }
+            }
+        }
+        li.active-class > a {
+            border-left: var(--heading-border-size) solid var(--accent-color);
+            font-weight: bold;
+        }
+
+        ul li.active-class > a {
+            display: block;
+        }
+
+        @function repeat($str, $n) {
+            $result: "";
+            @for $_ from 0 to $n {
+                $result: $result + $str;
+            }
+            @return $result;
+        }
+
+        // Support up to 6 levels of indentation for lists in ToCs
+        @for $i from 0 to 5 {
+            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
+                $n: 25 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            }
+
+            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
+                $n: 9 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+                display: block;
             }
         }
     }
@@ -359,6 +395,12 @@
         }
     }
 
+    .table-wrapper {
+        padding: 0 var(--card-padding);
+        overflow-x: auto;
+        display: block;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -407,9 +449,10 @@
     /// Negative margins
     blockquote,
     figure,
-    .gallery,
     pre,
+    .gallery,
     .video-wrapper,
+    .table-wrapper,
     .s_video_simple {
         margin-left: calc((var(--card-padding)) * -1);
         margin-right: calc((var(--card-padding)) * -1);
