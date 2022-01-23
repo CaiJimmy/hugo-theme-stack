@@ -41,7 +41,6 @@ Cactus:
     - src: https://latest.cactus.chat/cactus.js
       integrity:
       type: script
-      defer: false
     - src: https://latest.cactus.chat/style.css
       integrity:
       type: style

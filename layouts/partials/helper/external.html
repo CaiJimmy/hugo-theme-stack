@@ -8,7 +8,7 @@
                 integrity="{{ . }}"
                 {{- end -}}
                 crossorigin="anonymous"
-                defer="{{ default false .defer }}"
+                {{ if .defer }}defer{{ end }}
                 >
             </script>
         {{- else if eq .type "style" -}}

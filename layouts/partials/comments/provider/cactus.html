@@ -1,5 +1,5 @@
 {{- with .Site.Params.comments.cactus -}}
-{{- partial "helper/external" (dict "Context" . "Namespace" "Cactus") -}}
+{{- partial "helper/external" (dict "Context" $ "Namespace" "Cactus") -}}
 
 <style>
     .cactus-editor-textarea {
