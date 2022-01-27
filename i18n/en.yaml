@@ -63,6 +63,9 @@ search:
         other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
 
 footer:
+    GDPRsettings:
+      other: Manage GDPR settings
+
     builtWith:
         other: Built with {{ .Generator }}
 

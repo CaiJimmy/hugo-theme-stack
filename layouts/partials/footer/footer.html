@@ -1,13 +1,18 @@
 {{- $ThemeVersion := "3.7.0" -}}
 <footer class="site-footer">
+
+    {{ if .Site.Params.GDPRbanner.enabled }}
+      <a class="manage-consent" href="#manage-consent">{{ T "footer.GDPRsettings" }}</a>
+    {{ end }}
+
     <section class="copyright">
-        &copy; 
+        &copy;
         {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
-            {{ .Site.Params.footer.since }} - 
+            {{ .Site.Params.footer.since }} -
         {{ end }}
         {{ now.Format "2006" }} {{ .Site.Title }}
     </section>
-    
+
     <section class="powerby">
         {{ with .Site.Params.footer.customText }}
             {{ . | safeHTML }} <br/>
