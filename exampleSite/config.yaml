@@ -31,6 +31,7 @@ params:
 
     GDPRbanner:
         enabled: true
+        onlytechnical: false
 
     footer:
         since: 2020

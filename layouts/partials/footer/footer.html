@@ -2,7 +2,13 @@
 <footer class="site-footer">
 
     {{ if .Site.Params.GDPRbanner.enabled }}
-      <a class="manage-consent" href="#manage-consent">{{ T "footer.GDPRsettings" }}</a>
+      {{ if not .Site.Params.GDPRbanner.onlytechnical }}
+          <a class="manage-consent" href="#manage-consent">{{ T "footer.GDPRsettings.modify" }}</a>
+      {{ else }}
+          {{ T "footer.GDPRsettings.technical" }}
+      {{ end }}
+    {{ else }}
+          {{ T "footer.GDPRsettings.nocookie" }}
     {{ end }}
 
     <section class="copyright">
