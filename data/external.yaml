@@ -1,46 +1,46 @@
 Vibrant:
     - src: https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js
-      integrity: sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=
+      integrity: sha512-Y93BWSLwCWyagKvjDEmgOLgSdW7cTaajJaoKFHMKFw4AjGvJwM39ZqZmwmTBz2LHfOIcumdnm5bUHfcC4EPg4A==
       type: script
 
 PhotoSwipe:
     - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js
-      integrity: sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=
+      integrity: sha512-2R4VJGamBudpzC1NTaSkusXP7QkiUYvEKhpJAxeVCqLDsgW4OqtzorZGpulE3eEA7p++U0ZYmqBwO3m+R2hRjA==
       type: script
       defer: true
 
     - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js
-      integrity: sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=
+      integrity: sha512-SxO0cwfxj/QhgX1SgpmUr0U2l5304ezGVhc0AO2YwOQ/C8O67ynyTorMKGjVv1fJnPQgjdxRz6x70MY9r0sKtQ==
       type: script
       defer: true
 
     - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css
-      integrity: sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=
+      integrity: sha512-QwSfZXX2w9SDWSNBKpEos673LXajTJpYKwtG+zJNP9zHsgRrWtNSx1gKVyB6qWUP4wJ0Hfnk9KJzrB6IKrXmEQ==
       type: style
 
     - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css
-      integrity: sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=
+      integrity: sha512-/lf2y2d7SFJau+G4TGgXCWJOAUxyDmJD+Tb35CdqoMZAQ8eNX0sgDKISlcxCtGpEAuyb1Q5vGPfB1XMettf0FA==
       type: style
 
 KaTeX:
-    - src: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css
-      integrity: sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn
+    - src: https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css
+      integrity: sha512-g1pxMKWnqCJA5bTMwnw0Xwe0KQAfnj47+1pB0oISMqVFjm8Bg1vA3RENj+iGunE9j4zDLPWbau7jirWwJyshdQ==
       type: style
 
-    - src: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js
-      integrity: sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8
+    - src: https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js
+      integrity: sha512-iegr9Cbvw50rG0agCU/1HUJ0w5GflT+Lsk2SRI1jOjEC15RRgJW9vMLDFxIF3mBxoIDIS41fnENNuSZD+WhIOA==
       type: script
       defer: true
 
-    - src: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js
-      integrity: sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl
+    - src: https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js
+      integrity: sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==
       type: script
       defer: true
 
 Cactus:
     - src: https://latest.cactus.chat/cactus.js
-      integrity:
+      integrity: sha512-QTlI32aUHLa2A9dOyVkP8CPw8z7mbOytzQ6rUHtrmkzKXm8Bxw/Shf3UyH/LRy+daDLjQNuRbK7zwFltRPJ2RA==
       type: script
     - src: https://latest.cactus.chat/style.css
-      integrity:
+      integrity: sha512-lGPLm3MSUTIx7yNRtwLAQmHpK6tB9oheQ9/Mpkd+LMGyCLf1d49qgqROawvvd0D1Y+n5kiS6KL7oZHAPVkqEPg==
       type: style
