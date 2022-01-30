@@ -11,10 +11,10 @@
 
     <section class="GDPRbanner">
       {{ if .Site.Params.GDPRbanner.enabled }}
-        {{ if not .Site.Params.GDPRbanner.onlytechnical }}
+        {{ if not .Site.Params.GDPRbanner.onlyfunctional }}
             <a class="manage-consent" href="#manage-consent">{{ T "footer.GDPRsettings.modify" }}</a>
         {{ else }}
-            {{ T "footer.GDPRsettings.technical" }}
+            {{ T "footer.GDPRsettings.functional" }}
         {{ end }}
       {{ else }}
             {{ T "footer.GDPRsettings.nocookie" }}

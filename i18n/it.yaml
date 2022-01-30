@@ -64,7 +64,7 @@ search:
 footer:
     GDPRsettings:
         other: Gestisci il consenso GDPR
-        technical: Questo sito web utilizza solo cookie tecnici
+        functional: Questo sito web utilizza solo cookie funzionali
         nocookie: Questo sito web non usa cookie e non raccoglie dati personali
 
     builtWith:

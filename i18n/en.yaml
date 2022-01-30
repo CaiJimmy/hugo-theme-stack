@@ -65,7 +65,7 @@ search:
 footer:
     GDPRsettings:
         modify: Manage GDPR settings
-        technical: This website use only technical cookies
+        functional: This website use only functional cookies
         nocookie: This website doesn't use any cookie and doesn't collect any personal data
 
     builtWith:
