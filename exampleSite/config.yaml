@@ -29,6 +29,10 @@ params:
     rssFullContent: true
     favicon:
 
+    GDPRbanner:
+        enabled: true
+        onlytechnical: false
+
     footer:
         since: 2020
         customText:
@@ -109,7 +113,7 @@ params:
             defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
             serverName: "cactus.chat"
             siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
-            
+
         giscus:
             repo:
             repoID:
@@ -122,15 +126,15 @@ params:
             emitMetadata: 0
 
         gitalk:
-            owner: 
-            admin:  
-            repo: 
-            clientID: 
-            clientSecret: 
-        
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+
         cusdis:
-            host: 
-            id: 
+            host:
+            id:
     widgets:
         enabled:
             - search
@@ -183,14 +187,14 @@ menu:
               ### For demonstration purpose, the home link will be open in a new tab
               newTab: true
               icon: home
-    
+
     social:
         - identifier: github
           name: GitHub
           url: https://github.com/CaiJimmy/hugo-theme-stack
           params:
             icon: brand-github
-            
+
         - identifier: twitter
           name: Twitter
           url: https://twitter.com
