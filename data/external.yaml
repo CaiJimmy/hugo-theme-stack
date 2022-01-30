@@ -39,8 +39,7 @@ KaTeX:
 
 Cactus:
     - src: https://latest.cactus.chat/cactus.js
-      integrity: sha512-QTlI32aUHLa2A9dOyVkP8CPw8z7mbOytzQ6rUHtrmkzKXm8Bxw/Shf3UyH/LRy+daDLjQNuRbK7zwFltRPJ2RA==
-      type: script
+      integrity:
     - src: https://latest.cactus.chat/style.css
-      integrity: sha512-lGPLm3MSUTIx7yNRtwLAQmHpK6tB9oheQ9/Mpkd+LMGyCLf1d49qgqROawvvd0D1Y+n5kiS6KL7oZHAPVkqEPg==
+      integrity:
       type: style
