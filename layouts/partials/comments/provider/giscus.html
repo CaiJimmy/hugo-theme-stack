@@ -1,4 +1,4 @@
-{{- $replaceKeys := dict "zh-cn" "zh-CN" -}}
+{{- $replaceKeys := dict "zh-cn" "zh-CN" "zh-tw" "zh-TW" -}}
 {{- $lang := index $replaceKeys .Site.LanguageCode -}}
 {{- with .Site.Params.comments.giscus -}}
 <script
