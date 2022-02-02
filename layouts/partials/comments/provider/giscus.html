@@ -1,3 +1,5 @@
+{{- $replaceKeys := dict "zh-cn" "zh-CN" -}}
+{{- $lang := index $replaceKeys .Site.LanguageCode -}}
 {{- with .Site.Params.comments.giscus -}}
 <script
     src="https://giscus.app/client.js"
@@ -8,7 +10,9 @@
     data-mapping="{{- default `title` .mapping -}}"
     data-reactions-enabled="{{- default 1 .reactionsEnabled -}}"
     data-emit-metadata="{{- default 0 .emitMetadata -}}"
+    data-input-position="top"
     data-theme="{{- default `light` .lightTheme -}}"
+    data-lang="{{- $lang -}}"
     crossorigin="anonymous"
     async
 ></script>
