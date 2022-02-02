@@ -22,3 +22,17 @@ body {
     scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 /**/
+
+/* scrollbar styles for Chromium */
+::-webkit-scrollbar {
+    height: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+/**/
