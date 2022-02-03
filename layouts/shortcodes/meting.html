@@ -1,0 +1,23 @@
+{{ $server := (.Get "server") }}
+{{ $type := (.Get "type") }}
+{{ $id := (.Get "id") }}
+{{ $autoplay := or (.Get "autoplay") false }}
+{{ $theme := or (.Get "theme") "#2980b9" }}
+{{ $fixed := or (.Get "fixed") false }}
+{{ $mini := or (.Get "mini") false }}
+{{ $loop := or (.Get "loop") false }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+<meting-js 
+    server="{{ $server }}" 
+    type="{{ $type }}" 
+    id="{{ $id }}" 
+    autoplay="{{ $autoplay }}" 
+    theme="{{ $theme }}"  
+    fixed="{{ $fixed }}"
+    mini="{{ $mini }}"
+    loop="{{ $loop }}"
+>
+</meting-js>
