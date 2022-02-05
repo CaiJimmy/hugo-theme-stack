@@ -1,5 +1,5 @@
 baseurl: https://example.com
-languageCode: zh-cn
+languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
 title: Example Site
