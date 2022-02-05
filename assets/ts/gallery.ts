@@ -57,6 +57,45 @@ class StackGallery {
     }
 
     public static createGallery(container: HTMLElement) {
+        /// The process of wrapping image with figure tag is done using JavaScript instead of only Hugo markdown render hook
+        /// because it can not detect whether image is being wrapped by a link or not
+        /// and it lead to a invalid HTML construction (<a><figure><img></figure></a>)
+        const images = container.querySelectorAll('img');
+        for (const img of Array.from(images)) {
+            const hasLink = img.parentElement.tagName == 'A';
+
+            let el: HTMLElement = img;
+
+            /// Wrap image with figure tag, with flex-grow and flex-basis values extracted from img's data attributes
+            const figure = document.createElement('figure');
+            figure.style.setProperty('flex-grow', img.getAttribute('data-flex-grow') || '1');
+            figure.style.setProperty('flex-basis', img.getAttribute('data-flex-basis') || '0');
+            if (hasLink) {
+                /// Wrap <a> if it exists
+                el = img.parentElement;
+            }
+            el.parentElement.insertBefore(figure, el);
+            figure.appendChild(el);
+
+            /// Add figcaption if it exists
+            if (img.hasAttribute('alt')) {
+                const figcaption = document.createElement('figcaption');
+                figcaption.innerHTML = img.getAttribute('data-alt-html');
+                figure.appendChild(figcaption);
+            }
+
+            /// Wrap img tag with <a> tag if image was not wrapped by <a> tag
+            if (!hasLink) {
+                figure.className = 'gallery-image';
+
+                const a = document.createElement('a');
+                a.href = img.src;
+                a.setAttribute('target', '_blank');
+                img.parentNode.insertBefore(a, img);
+                a.appendChild(img);
+            }
+        }
+
         const figuresEl = container.querySelectorAll('figure.gallery-image');
 
         let currentGallery = [];
