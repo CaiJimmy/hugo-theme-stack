@@ -406,8 +406,10 @@
         }
 
         pre {
+            margin: initial;
             padding: 0;
             margin: 0;
+            width: auto;
         }
     }
 
@@ -482,7 +484,7 @@
     blockquote,
     figure,
     .highlight,
-    pre:not(.highlight pre),
+    pre,
     .gallery,
     .video-wrapper,
     .table-wrapper,
