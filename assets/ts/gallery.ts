@@ -77,10 +77,7 @@ class StackGallery {
             if (!isNewLineImage) continue;
 
             const hasLink = img.parentElement.tagName == 'A';
-            if (hasLink) {
-                isNewLineImage = img.parentElement.parentElement.tagName == 'P' && img.parentElement.parentElement.textContent.trim() == '';
-            }
-
+            
             let el: HTMLElement = img;
             /// Wrap image with figure tag, with flex-grow and flex-basis values extracted from img's data attributes
             const figure = document.createElement('figure');
