@@ -60,12 +60,28 @@ class StackGallery {
         /// The process of wrapping image with figure tag is done using JavaScript instead of only Hugo markdown render hook
         /// because it can not detect whether image is being wrapped by a link or not
         /// and it lead to a invalid HTML construction (<a><figure><img></figure></a>)
+
         const images = container.querySelectorAll('img');
         for (const img of Array.from(images)) {
+            /// Images are wrapped with figure tag if the paragraph has only images without texts
+            /// This is done to allow inline images within paragraphs
+            const paragraph = img.closest('p');
+
+            if (paragraph.textContent.trim() == '') {
+                /// Once we insert figcaption, this check no longer works
+                /// So we add a class to paragraph to mark it
+                paragraph.classList.add('no-text');
+            }
+
+            let isNewLineImage = paragraph.classList.contains('no-text');
+            if (!isNewLineImage) continue;
+
             const hasLink = img.parentElement.tagName == 'A';
+            if (hasLink) {
+                isNewLineImage = img.parentElement.parentElement.tagName == 'P' && img.parentElement.parentElement.textContent.trim() == '';
+            }
 
             let el: HTMLElement = img;
-
             /// Wrap image with figure tag, with flex-grow and flex-basis values extracted from img's data attributes
             const figure = document.createElement('figure');
             figure.style.setProperty('flex-grow', img.getAttribute('data-flex-grow') || '1');
