@@ -77,7 +77,7 @@ class StackGallery {
             if (!isNewLineImage) continue;
 
             const hasLink = img.parentElement.tagName == 'A';
-            
+
             let el: HTMLElement = img;
             /// Wrap image with figure tag, with flex-grow and flex-basis values extracted from img's data attributes
             const figure = document.createElement('figure');
@@ -93,7 +93,7 @@ class StackGallery {
             /// Add figcaption if it exists
             if (img.hasAttribute('alt')) {
                 const figcaption = document.createElement('figcaption');
-                figcaption.innerHTML = img.getAttribute('data-alt-html');
+                figcaption.innerText = img.getAttribute('alt');
                 figure.appendChild(figcaption);
             }
 

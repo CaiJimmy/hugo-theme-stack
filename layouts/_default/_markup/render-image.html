@@ -32,9 +32,7 @@
 	loading="lazy"
 	{{ with $alt }}
 		alt="{{ . }}"
-		data-alt-html="{{ . | markdownify }}"
 	{{ end }}
-
 	{{ if $galleryImage }}
 		class="gallery-image" 
 		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
