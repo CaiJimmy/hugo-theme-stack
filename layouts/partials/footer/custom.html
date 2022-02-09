@@ -1,5 +1,3 @@
-{{ if .Site.Params.GDPRbanner.enabled }}
-  {{ if not .Site.Params.GDPRbanner.onlyfunctional }}
-    {{ partial "gdpr/consent.html" . }}
-  {{ end }}
+{{ if and .Site.Params.GDPRbanner.enabled (not .Site.Params.GDPRbanner.onlyfunctional) }}
+  {{ partial "gdpr/banner.html" . }}
 {{ end }}

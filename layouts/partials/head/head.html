@@ -21,5 +21,7 @@
     <link rel="shortcut icon" href="{{ . }}" />
 {{ end }}
 
-{{- template "_internal/google_analytics.html" . -}}
+{{ if not .Site.Params.GDPRbanner.enabled }}
+  {{- template "_internal/google_analytics.html" . -}}
+{{ end }}
 {{- partial "head/custom.html" . -}}

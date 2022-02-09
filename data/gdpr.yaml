@@ -1,0 +1,8 @@
+plugins:
+  - name: gtag
+    enabled: true
+    functional: false
+    title: Google Analytics
+    description: This code gives us insight into the number of people that visit our website, where they are from and what they are clicking on. We follow the guidelines of the Italian Government.
+    html_src: gdpr/gtag.html
+    js_src: js/gtag.js

@@ -1,3 +1,4 @@
+<!-- GDPR banner visual style -->
 <style>
     #consent-notice {padding: 1rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
     #consent-notice span {margin-right: 1rem;}
@@ -26,28 +27,50 @@
         #consent-notice button.btn {position: relative; bottom: 4px;}
     }
 </style>
+
+<!-- import scripts: full if functional, partially if depends on user consent -->
+{{ range $index, $plugin := .Site.Data.gdpr.plugins }}
+  {{ if $plugin.enabled }}
+    {{ "<!-- " }} {{ $plugin.name }} {{ "start -->" }}
+    {{ partial $plugin.html_src }}
+    {{ if $plugin.functional }}
+      <script type="text/javascript" src="{{ $plugin.js_src }}"></script>
+    {{ end }}
+    {{ "<!-- " }} {{ $plugin.name }} {{ "end -->" }}
+  {{ end }}
+{{ end }}
+
+<!-- preferences dialog -->
 <div id="consent-notice"><span>We would like to use <a class="manage-consent" href="#manage-consent">third party code</a> to improve the functionality of this website.</span><button class="btn manage-consent">Manage preferences</button><button class="btn deny-consent">Deny</button><button class="btn approve-consent">Allow</button></div>
 <div id="consent-overlay">
     <div>
-        {{ range $index, $item := .Site.Data.consent.items }}
+
+        {{ range $index, $plugin := .Site.Data.gdpr.plugins }}
+          {{ if $plugin.enabled }}
             <div>
-                <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}" {{ if $item.is_functional }}checked disabled{{ end }} />
+                <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}" {{ if $plugin.functional }}checked disabled{{ end }} />
                 <label for="item{{ $index }}">
-                    <h3>{{ $item.title }}</h3>
-                    <p>{{ $item.description }}</p>
+                    <h3>{{ $plugin.title }}{{ if $plugin.functional}} (functional){{ end }}</h3>
+                    <p>{{ $plugin.description }}</p>
                 </label>
             </div>
+          {{ end }}
         {{ end }}
         <div>
-            <button id="save-consent" class="btn save-consent" data-consentvalue="{{ range $index, $item := .Site.Data.consent.items }}{{ if $item.is_functional}}{{ else }}0{{ end }}{{ end }}">Save preferences</button>
+            <button id="save-consent" class="btn save-consent" data-consentvalue="{{ range $index, $plugin := .Site.Data.gdpr.plugins }}{{ if and $plugin.functional $plugin.enabled }}{{ else }}0{{ end }}{{ end }}">Save preferences</button>
             <button class="btn approve-consent">Allow all</button>
         </div>
     </div>
 </div>
-<script>
 
-    const scripts = [];{{ range $index, $item := (where .Site.Data.consent.items "is_functional" false) }}
-    scripts[{{ $index }}] = "/js/{{ $item.script_file }}";{{ end }}
+<!-- execute user consent scripts -->
+<script>
+    const scripts = [];
+    {{ range $index, $plugin := .Site.Data.gdpr.plugins }}
+      {{ if and $plugin.enabled (not $plugin.functional) }}
+        scripts[{{ $index }}] = "{{ $plugin.js_src }}";
+      {{ end }}
+    {{ end }}
 
     function createCookie(name,value,days) {
         var expires = "";
@@ -161,9 +184,3 @@
         }
     });
 </script>
-
-{{ range $index, $item := .Site.Data.consent.items }}
-    {{ if $item.is_functional }}
-        <script type="text/javascript" src="/js/{{ $item.script_file }}"></script>
-    {{ end }}
-{{ end }}
