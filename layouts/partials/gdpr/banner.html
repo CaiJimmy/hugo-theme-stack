@@ -34,7 +34,7 @@
     {{ "<!-- " }} {{ $plugin.name }} {{ "start -->" }}
     {{ partial $plugin.html_src }}
     {{ if $plugin.functional }}
-      <script type="text/javascript" src="{{ $plugin.js_src }}"></script>
+      <script type="text/javascript" src="/js/{{ $plugin.js_src }}"></script>
     {{ end }}
     {{ "<!-- " }} {{ $plugin.name }} {{ "end -->" }}
   {{ end }}
@@ -68,7 +68,7 @@
     const scripts = [];
     {{ range $index, $plugin := .Site.Data.gdpr.plugins }}
       {{ if and $plugin.enabled (not $plugin.functional) }}
-        scripts[{{ $index }}] = "{{ $plugin.js_src }}";
+        scripts[{{ $index }}] = "/js/{{ $plugin.js_src }}";
       {{ end }}
     {{ end }}
 
