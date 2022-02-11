@@ -57,7 +57,7 @@
           {{ end }}
         {{ end }}
         <div>
-            <button id="save-consent" class="btn save-consent" data-consentvalue="{{ range $index, $plugin := .Site.Data.gdpr.plugins }}{{ if and $plugin.functional $plugin.enabled }}{{ else }}0{{ end }}{{ end }}">Save preferences</button>
+            <button id="save-consent" class="btn save-consent" data-consentvalue="{{ range $index, $plugin := .Site.Data.gdpr.plugins }}{{ if $plugin.enabled }}{{ else }}0{{ end }}{{ end }}">Save preferences</button>
             <button class="btn approve-consent">Allow all</button>
         </div>
     </div>
