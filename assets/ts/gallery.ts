@@ -67,6 +67,8 @@ class StackGallery {
             /// This is done to allow inline images within paragraphs
             const paragraph = img.closest('p');
 
+            if (!paragraph || !container.contains(paragraph)) continue;
+
             if (paragraph.textContent.trim() == '') {
                 /// Once we insert figcaption, this check no longer works
                 /// So we add a class to paragraph to mark it
