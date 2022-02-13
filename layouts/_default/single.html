@@ -1,7 +1,7 @@
 {{ define "body-class" }}
     {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
     {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
-    article-page {{ if (.Scratch.Get "hasTOC") }}has-toc{{ end }}
+    article-page
 {{ end }}
 
 {{ define "container-class" }}
@@ -30,18 +30,6 @@
     {{ partialCached "article/components/photoswipe" . }}
 {{ end }}
 
-{{ define "left-sidebar" }}
-    {{ if (.Scratch.Get "hasTOC") }}
-        <div id="article-toolbar">
-            <a href="{{ .Site.BaseURL | relLangURL }}" class="back-home">
-                {{ (resources.Get "icons/back.svg").Content | safeHTML }}
-                <span>{{ T "article.back" }}</span>
-            </a>
-        </div>
-    {{ else }}
-        {{ partial "sidebar/left.html" . }}
-    {{ end }}
-{{ end }}
 
 {{ define "right-sidebar" }}
     {{ if (.Scratch.Get "hasTOC") }}

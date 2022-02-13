@@ -37,6 +37,14 @@
 }
 
 .right-sidebar {
+    width: 100%;
+    padding: 0;
+    display: none;
+    
+    @include respond(xl) {
+        display: block;
+        top: var(--main-top-padding);
+    }
     flex-shrink: 0;
     display: none;
 
