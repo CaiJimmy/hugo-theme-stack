@@ -63,8 +63,8 @@ search:
         other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
 
 footer:
-    GDPRsettings:
-        modify: Manage GDPR settings
+    GDPR:
+        consent: Manage GDPR settings
         functional: This website use only functional cookies
         nocookie: This website doesn't use any cookie and doesn't collect any personal data
 

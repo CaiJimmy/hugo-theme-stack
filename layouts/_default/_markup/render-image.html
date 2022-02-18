@@ -25,22 +25,17 @@
 	{{- end -}}
 {{- end -}}
 
-<figure 
+<img src="{{ $Permalink }}"
+	{{ with $Width }}width="{{ . }}"{{ end }}
+	{{ with $Height }}height="{{ . }}"{{ end }}
+	{{ with $Srcset }}srcset="{{ . }}"{{ end }}
+	loading="lazy"
+	{{ with $alt }}
+		alt="{{ . }}"
+	{{ end }}
 	{{ if $galleryImage }}
 		class="gallery-image" 
-		style="
-			flex-grow: {{ div (mul $image.Width 100) $image.Height }}; 
-			flex-basis: {{ div (mul $image.Width 240) $image.Height }}px"
-	{{ end }}>
-	<a href="{{ $Permalink }}" {{ if $galleryImage }}data-size="{{ $image.Width }}x{{ $image.Height }}"{{ end }}>
-		<img src="{{ $Permalink }}"
-			{{ with $Width }}width="{{ . }}"{{ end }}
-			{{ with $Height }}height="{{ . }}"{{ end }}
-			{{ with $Srcset }}srcset="{{ . }}"{{ end }}
-			loading="lazy"
-			{{ with $alt }}alt="{{ . }}"{{ end }}>
-	</a>
-	{{ with $alt }}
-	<figcaption>{{ . | markdownify }}</figcaption>
+		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
+		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
 	{{ end }}
-</figure>
+>

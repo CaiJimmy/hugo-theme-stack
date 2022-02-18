@@ -1,3 +1,3 @@
-{{ if and .Site.Params.GDPRbanner.enabled (not .Site.Params.GDPRbanner.onlyfunctional) }}
+{{ if and .Site.Params.GDPR.enable (not (eq .Site.Params.GDPR.mode "nocookie")) }}
   {{ partial "gdpr/banner.html" . }}
 {{ end }}

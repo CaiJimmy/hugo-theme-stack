@@ -1,6 +1,5 @@
-{{- $ThemeVersion := "3.7.0" -}}
+{{- $ThemeVersion := "3.8.0" -}}
 <footer class="site-footer">
-
     <section class="copyright">
         &copy;
         {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
@@ -9,17 +8,19 @@
         {{ now.Format "2006" }} {{ .Site.Title }}
     </section>
 
+    {{ if .Site.Params.GDPR.enable }}
     <section class="GDPRbanner">
-      {{ if .Site.Params.GDPRbanner.enabled }}
-        {{ if not .Site.Params.GDPRbanner.onlyfunctional }}
-            <a class="manage-consent" href="#manage-consent">{{ T "footer.GDPRsettings.modify" }}</a>
+        {{ if (eq .Site.Params.GDPR.mode "consent") }}
+            <a class="manage-consent" href="#manage-consent">{{ T "footer.GDPR.consent" }}</a>
         {{ else }}
-            {{ T "footer.GDPRsettings.functional" }}
+            {{ if (eq .Site.Params.GDPR.mode "functional") }}
+              {{ T "footer.GDPR.functional" }}
+            {{ else }}
+              {{ T "footer.GDPR.nocookie" }}
+            {{ end }}
         {{ end }}
-      {{ else }}
-            {{ T "footer.GDPRsettings.nocookie" }}
-      {{ end }}
     </section>
+    {{ end }}
 
     <section class="powerby">
         {{ with .Site.Params.footer.customText }}

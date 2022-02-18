@@ -4,6 +4,8 @@ theme: hugo-theme-stack
 paginate: 5
 title: Example Site
 
+
+
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 
@@ -29,9 +31,10 @@ params:
     rssFullContent: true
     favicon:
 
-    GDPRbanner:
-        enabled: true
-        onlyfunctional: false
+    # mode: nocookie, functional, consent
+    GDPR:
+        enable: true
+        mode: consent
 
     footer:
         since: 2020
@@ -193,13 +196,13 @@ menu:
           name: GitHub
           url: https://github.com/CaiJimmy/hugo-theme-stack
           params:
-            icon: brand-github
+              icon: brand-github
 
         - identifier: twitter
           name: Twitter
           url: https://twitter.com
           params:
-            icon: brand-twitter
+              icon: brand-twitter
 
 related:
     includeNewer: true

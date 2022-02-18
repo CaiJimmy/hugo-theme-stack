@@ -62,8 +62,8 @@ search:
         other: "#PAGES_COUNT pagine (#TIME_SECONDS secondi)"
 
 footer:
-    GDPRsettings:
-        other: Gestisci il consenso GDPR
+    GDPR:
+        consent: Gestisci il consenso GDPR
         functional: Questo sito web utilizza solo cookie funzionali
         nocookie: Questo sito web non usa cookie e non raccoglie dati personali
 
