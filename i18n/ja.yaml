@@ -5,10 +5,20 @@ darkMode:
     other: ダークモード
 
 article:
+    back:
+        other: 前のページ
+
+    tableOfContents:
+        other: 目次
+
     relatedContents:
         other: 関連するコンテンツ
+
     lastUpdatedOn:
         other: 最終更新
+
+    readingTime:
+        other: "読了時間: {{ .Count }}分"
 
 notFound:
     title:
@@ -20,16 +30,20 @@ widget:
     archives:
         title:
             other: アーカイブ
+
         more:
             other: さらに見る
+
     tagCloud:
         title:
             other: タグ
 
 search:
     title:
-        other: サーチ
+        other: 検索
+
     placeholder:
         other: 入力...
+
     resultTitle:
         other: "#PAGES_COUNT 件 （#TIME_SECONDS 秒）"

@@ -24,14 +24,14 @@
         .article-image {
             img {
                 width: 100%;
-                height: 200px;
+                height: 150px;
                 object-fit: cover;
 
-                @media (max-width: $on-tablet) {
-                    height: 150px;
+                @include respond(md) {
+                    height: 200px;
                 }
 
-                @media (min-width: $on-desktop-large) {
+                @include respond(xl) {
                     height: 250px;
                 }
             }
@@ -62,7 +62,7 @@
     color: var(--card-text-color-main);
     font-size: 2.2rem;
 
-    @media (min-width: $on-desktop-large) {
+    @include respond(xl) {
         font-size: 2.4rem;
     }
 
@@ -86,7 +86,7 @@
     line-height: 1.5;
 
     font-size: 1.75rem;
-    @media (min-width: $on-desktop-large) {
+    @include respond(xl) {
         font-size: 2rem;
     }
 }
@@ -95,7 +95,9 @@
     display: flex;
     align-items: center;
     color: var(--card-text-color-tertiary);
+    gap: 15px;
     margin-top: 10px;
+    flex-wrap: wrap;
 
     svg {
         vertical-align: middle;
@@ -107,6 +109,11 @@
 
     time {
         font-size: 1.4rem;
+    }
+
+    & > div {
+        display: inline-flex;
+        align-items: center;
     }
 }
 
@@ -135,10 +142,10 @@
     border-radius: var(--card-border-radius);
     box-shadow: var(--shadow-l1);
     background-color: var(--card-background);
-    --image-size: 60px;
+    --image-size: 50px;
 
-    @media (max-width: $on-tablet) {
-        --image-size: 50px;
+    @include respond(md) {
+        --image-size: 60px;
     }
 
     & + .pagination {
@@ -165,10 +172,10 @@
 
         .article-title {
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
 
-            @media (max-width: $on-tablet) {
-                font-size: 1.6rem;
+            @include respond(md) {
+                font-size: 1.8rem;
             }
         }
 
@@ -242,20 +249,20 @@
             flex-direction: column;
             justify-content: flex-end;
             z-index: 2;
-            padding: 20px;
+            padding: 15px;
 
-            @media (max-width: $on-phone) {
-                padding: 15px;
+            @include respond(sm) {
+                padding: 20px;
             }
         }
 
         .article-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 500;
             color: var(--card-text-color-main);
 
-            @media (max-width: $on-phone) {
-                font-size: 2rem;
+            @include respond(sm) {
+                font-size: 2.2rem;
             }
         }
     }

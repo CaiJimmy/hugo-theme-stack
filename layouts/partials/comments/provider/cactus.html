@@ -1,0 +1,29 @@
+{{- with .Site.Params.comments.cactus -}}
+{{- partial "helper/external" (dict "Context" $ "Namespace" "Cactus") -}}
+
+<style>
+    .cactus-editor-textarea {
+        color: var(--body-text-color);
+    }
+
+    .cactus-comment-header {
+        color: var(--card-text-color-main);
+    }
+
+    .cactus-message-text > p {
+        color: var(--body-text-color);
+    }
+</style>
+
+<div id="comment-section"></div>
+
+<script>
+    initComments({
+        node: document.getElementById("comment-section"),
+        defaultHomeserverUrl: "{{ .defaultHomeserverUrl | safeJS }}",
+        serverName: "{{ .serverName }}",
+        siteName: "{{ .siteName }}",
+        commentSectionId: "{{ $.File.UniqueID }}"
+    })
+</script>
+{{- end -}}

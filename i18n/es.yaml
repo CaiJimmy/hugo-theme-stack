@@ -1,0 +1,70 @@
+toggleMenu:
+    other: Toggle Menu
+
+darkMode:
+    other: Modo oscuro
+
+list:
+    page:
+        one: "{{ .Count }} página"
+        other: "{{ .Count }} páginas"
+
+    section:
+        other: Sección
+
+    subsection:
+        one: Subsección
+        other: Subsecciones
+
+article:
+    back:
+        other: Volver
+
+    tableOfContents:
+        other: Tabla de contenido
+
+    relatedContents:
+        other: Contenidos relacionados
+
+    lastUpdatedOn:
+        other: Última vez actualizado
+
+    readingTime:
+        one: "{{ .Count }} minuto a leer"
+        other: "{{ .Count }} minutos a leer"
+
+notFound:
+    title:
+        other: No Encontrado
+
+    subtitle:
+        other: Esta página no existe
+
+widget:
+    archives:
+        title:
+            other: Archivo
+
+        more:
+            other: Más
+
+    tagCloud:
+        title:
+            other: Etiquetas
+
+search:
+    title:
+        other: Búsqueda
+
+    placeholder:
+        other: Teclea algo...
+
+    resultTitle:
+        other: "#PAGES_COUNT páginas en (#TIME_SECONDS segundos)"
+
+footer:
+    builtWith:
+        other: Creado con {{ .Generator }}
+
+    designedBy:
+        other: Tema {{ .Theme }} diseñado por {{ .DesignedBy }}

@@ -1,0 +1,49 @@
+{{- with .Site.Params.comments.giscus -}}
+<script
+    src="https://giscus.app/client.js"
+    data-repo="{{- .repo -}}"
+    data-repo-id="{{- .repoID -}}"
+    data-category="{{- .category -}}"
+    data-category-id="{{- .categoryID -}}"
+    data-mapping="{{- default `title` .mapping -}}"
+    data-reactions-enabled="{{- default 1 .reactionsEnabled -}}"
+    data-emit-metadata="{{- default 0 .emitMetadata -}}"
+    data-theme="{{- default `light` .lightTheme -}}"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector('iframe.giscus-frame');
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                { 
+                    giscus: {
+                        setConfig: { 
+                            theme: theme 
+                        }
+                    }
+                },
+                "https://giscus.app"
+            );
+        };
+    };
+
+    (function(){
+        addEventListener('message', (e) => {
+            if (event.origin !== 'https://giscus.app') return;
+            handler()
+        });
+        window.addEventListener('onColorSchemeChange', handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('{{- default "light" .lightTheme -}}');
+            } else {
+                setGiscusTheme('{{- default "dark_dimmed" .darkTheme -}}');
+            };
+        };
+    }());
+</script>
+{{- end -}}
+

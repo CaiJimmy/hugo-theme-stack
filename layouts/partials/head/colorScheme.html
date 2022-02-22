@@ -31,9 +31,9 @@
              * 1. If dark mode is set already (in local storage)
              * 2. Auto mode & prefere color scheme is dark
              */
-            document.body.dataset.scheme = 'dark';
+            document.documentElement.dataset.scheme = 'dark';
         } else {
-            document.body.dataset.scheme = 'light';
+            document.documentElement.dataset.scheme = 'light';
         }
     })();
 </script>

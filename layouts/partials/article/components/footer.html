@@ -4,14 +4,14 @@
     {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
     <section class="article-copyright">
         {{ partial "helper/icon" "copyright" }}
-        <span>{{ default .Site.Params.article.license.default .Params.license }}</span>
+        <span>{{ default .Site.Params.article.license.default .Params.license | markdownify }}</span>
     </section>
     {{ end }}
 
     {{- if ne .Lastmod .Date -}}
-    <section class="article-time">
+    <section class="article-lastmod">
         {{ partial "helper/icon" "clock" }}
-        <span class="article-time--modified">
+        <span>
             {{ T "article.lastUpdatedOn" }} {{ .Lastmod.Format ( or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 15:04 MST" ) }}
         </span>
     </section>

@@ -1,27 +1,15 @@
 $defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
 $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
-[data-scheme="light"] {
-    --pre-text-color: #272822;
-    --pre-background-color: #fafafa;
-    @import "partials/highlight/light.scss";
-}
-
-[data-scheme="dark"] {
-    --pre-text-color: #f8f8f2;
-    --pre-background-color: #272822;
-    @import "partials/highlight/dark.scss";
-}
-
 /*
 *   Global style
 */
 :root {
-    @media (min-width: $on-phone + 1) {
+    @include respond(md) {
         --main-top-padding: 35px;
     }
 
-    @media (min-width: $on-desktop-large) {
+    @include respond(xl) {
         --main-top-padding: 50px;
     }
 
@@ -36,12 +24,17 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --section-separation: 40px;
 
-    [data-scheme="dark"] {
+    --scrollbar-thumb: hsl(0, 0%, 85%);
+    --scrollbar-track: var(--body-background);
+
+    &[data-scheme="dark"] {
         --body-background: #303030;
         --accent-color: #ecf0f1;
         --accent-color-darker: #bdc3c7;
         --accent-color-text: #000;
         --body-text-color: rgba(255, 255, 255, 0.7);
+        --scrollbar-thumb: hsl(0, 0%, 40%);
+        --scrollbar-track: var(--body-background);
     }
 }
 
@@ -70,20 +63,23 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --card-border-radius: 10px;
 
-    --card-padding: 30px;
-    @media (max-width: $on-desktop-large) {
+    --card-padding: 20px;
+
+    @include respond(md) {
         --card-padding: 25px;
     }
-    @media (max-width: $on-tablet) {
-        --card-padding: 20px;
+
+    @include respond(xl) {
+        --card-padding: 30px;
     }
 
-    --small-card-padding: 25px;
-    @media (max-width: $on-tablet) {
-        --small-card-padding: 25px 20px;
+    --small-card-padding: 25px 20px;
+
+    @include respond(md) {
+        --small-card-padding: 25px;
     }
 
-    [data-scheme="dark"] {
+    &[data-scheme="dark"] {
         --card-background: #424242;
         --card-background-selected: rgba(255, 255, 255, 0.16);
         --card-text-color-main: rgba(255, 255, 255, 0.9);
@@ -98,10 +94,12 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 */
 :root {
     --article-font-family: var(--base-font-family);
-    --article-font-size: 1.7rem;
-    @media (max-width: $on-tablet) {
-        --article-font-size: 1.6rem;
+    --article-font-size: 1.6rem;
+
+    @include respond(md) {
+        --article-font-size: 1.7rem;
     }
+
     --article-line-height: 1.85;
 }
 
@@ -127,7 +125,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --table-border-color: #dadada;
     --tr-even-background-color: #efefee;
 
-    [data-scheme="dark"] {
+    &[data-scheme="dark"] {
         --code-background-color: #272822;
         --code-text-color: rgba(255, 255, 255, 0.9);
 
@@ -148,4 +146,16 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
         0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+[data-scheme="light"] {
+    --pre-text-color: #272822;
+    --pre-background-color: #fafafa;
+    @import "partials/highlight/light.scss";
+}
+
+[data-scheme="dark"] {
+    --pre-text-color: #f8f8f2;
+    --pre-background-color: #272822;
+    @import "partials/highlight/dark.scss";
 }

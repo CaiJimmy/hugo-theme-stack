@@ -1,5 +1,6 @@
 {{- with .Site.Params.opengraph.twitter.site -}}
-    <meta name="twitter:site" content="{{ . }}">
+    <meta name="twitter:site" content="@{{ . }}">
+    <meta name="twitter:creator" content="@{{ . }}">
 {{- end -}}
 
 {{- $title := partialCached "data/title" . .RelPermalink -}}

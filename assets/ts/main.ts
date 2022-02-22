@@ -10,6 +10,8 @@ import { getColor } from 'ts/color';
 import menu from 'ts/menu';
 import createElement from 'ts/createElement';
 import StackColorScheme from 'ts/colorScheme';
+import { setupScrollspy } from 'ts/scrollspy';
+import { setupSmoothAnchors } from "ts/smoothAnchors";
 
 let Stack = {
     init: () => {
@@ -21,6 +23,8 @@ let Stack = {
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
             new StackGallery(articleContent);
+            setupSmoothAnchors();
+            setupScrollspy();
         }
 
         /**
@@ -53,6 +57,39 @@ let Stack = {
 
             observer.observe(articleTile)
         }
+
+
+        /**
+         * Add copy button to code block
+        */
+        const highlights = document.querySelectorAll('.article-content div.highlight');
+        const copyText = `Copy`,
+            copiedText = `Copied!`;
+
+        highlights.forEach(highlight => {
+            const copyButton = document.createElement('button');
+            copyButton.innerHTML = copyText;
+            copyButton.classList.add('copyCodeButton');
+            highlight.appendChild(copyButton);
+
+            const codeBlock = highlight.querySelector('code[data-lang]');
+            if (!codeBlock) return;
+
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeBlock.textContent)
+                    .then(() => {
+                        copyButton.textContent = copiedText;
+
+                        setTimeout(() => {
+                            copyButton.textContent = copyText;
+                        }, 1000);
+                    })
+                    .catch(err => {
+                        alert(err)
+                        console.log('Something went wrong', err);
+                    });
+            });
+        });
 
         new StackColorScheme(document.getElementById('dark-mode-toggle'));
     }

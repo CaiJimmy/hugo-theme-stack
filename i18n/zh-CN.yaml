@@ -5,10 +5,20 @@ darkMode:
     other: 暗色模式
 
 article:
+    back:
+        other: 返回
+
+    tableOfContents:
+        other: 目录
+
     relatedContents:
         other: 相关文章
+
     lastUpdatedOn:
         other: 最后更新于
+
+    readingTime:
+        other: "阅读时长: {{ .Count }} 分钟"
 
 notFound:
     title:
@@ -20,8 +30,10 @@ widget:
     archives:
         title:
             other: 归档
+
         more:
             other: 更多
+
     tagCloud:
         title:
             other: 标签云
@@ -29,7 +41,9 @@ widget:
 search:
     title:
         other: 搜索
+
     placeholder:
         other: 输入关键词...
+
     resultTitle:
         other: "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"

@@ -1,7 +1,6 @@
 .sidebar {
-    padding: 0 15px;
     &.sticky {
-        @media (min-width: ($on-phone + 1)) {
+        @include respond(md) {
             position: sticky;
         }
     }
@@ -11,45 +10,41 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
+    align-self: stretch;
 
-    --sidebar-avatar-size: 150px;
-    --sidebar-element-separation: 25px;
+    width: 100%;
+    padding: 30px 0 15px 0;
+    max-width: none;
 
-    @media (max-width: $on-desktop-large) {
-        --sidebar-avatar-size: 120px;
-        --sidebar-element-separation: 20px;
+    --sidebar-avatar-size: 120px;
+    --sidebar-element-separation: 20px;
+
+    @include respond(md) {
+        width: auto;
+        padding-top: var(--main-top-padding);
+        padding-bottom: var(--main-top-padding);
+        max-height: 100vh;
     }
 
-    @media (max-width: $on-phone) {
-        width: 100%;
-        padding: 30px 0;
-        max-width: none;
+    @include respond(2xl) {
+        --sidebar-avatar-size: 140px;
+        --sidebar-element-separation: 25px;
     }
 
     &.sticky {
         top: 0;
-    }
-
-    @media (min-width: $on-phone + 1) {
-        margin-right: 1%;
-        padding: var(--main-top-padding) 15px;
-        max-height: 100vh;
     }
 }
 
 .right-sidebar {
     flex-shrink: 0;
+    display: none;
 
     &.sticky {
         top: 0;
     }
 
-    @media (max-width: $on-desktop - 1) {
-        display: none;
-    }
-
-    @media (min-width: $on-tablet) {
-        margin-left: 1%;
+    @include respond(lg) {
         padding-top: var(--main-top-padding);
     }
 }
@@ -58,8 +53,10 @@
     z-index: 1;
     transition: box-shadow 0.5s ease;
 
-    @media (max-width: $on-phone) {
-        padding: 15px 30px;
+    padding: 15px;
+
+    @include respond(md) {
+        padding: 0;
     }
 
     .site-avatar {
@@ -79,9 +76,9 @@
 
         .emoji {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
             border-radius: 100%;
             bottom: 0;
             right: 0;
@@ -90,20 +87,20 @@
             background-color: var(--card-background);
             box-shadow: var(--shadow-l2);
 
-            @media (max-width: $on-desktop-large) {
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
+            @include respond(2xl) {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
             }
         }
     }
 
     .site-name {
         color: var(--accent-color);
-        font-size: 2.4rem;
         margin: 0;
+        font-size: 1.8rem;
 
-        @media (max-width: $on-desktop-large) {
+        @include respond(2xl) {
             font-size: 2rem;
         }
     }
@@ -112,10 +109,10 @@
         color: var(--body-text-color);
         font-weight: normal;
         margin: 10px 0;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
 
-        @media (max-width: $on-desktop-large) {
-            font-size: 1.6rem;
+        @include respond(2xl) {
+            font-size: 1.8rem;
         }
     }
 }

@@ -1,43 +1,9 @@
-.keep-sidebar {
-    @media (min-width: $on-phone) and (max-width: $on-tablet) {
-        --main-top-padding: 50px;
-    }
-}
-
 .article-page {
-    &.with-toolbar {
-        @media (max-width: $on-tablet) {
-            --main-top-padding: 0;
-        }
-    }
+    &.hide-sidebar-sm .left-sidebar {
+        display: none;
 
-    &:not(.keep-sidebar) .left-sidebar {
-        @media (max-width: $on-tablet) {
-            display: none;
-        }
-    }
-
-    .article-sidebar {
-        position: sticky;
-        top: 50px;
-        flex-shrink: 0;
-
-        @media (max-width: $on-tablet) {
-            display: none;
-        }
-
-        @media (min-width: $on-tablet) {
-            padding-left: 15px;
-            margin-left: 1%;
-        }
-
-        @media (min-width: $on-tablet) {
-            width: 25%;
-            margin-right: 1%;
-        }
-
-        @media (min-width: $on-desktop) {
-            width: 30%;
+        @include respond(md) {
+            display: inherit;
         }
     }
 
@@ -104,6 +70,13 @@
                 flex-wrap: wrap;
                 text-transform: unset;
             }
+
+            .article-copyright,
+            .article-lastmod {
+                a {
+                    color: var(--body-text-color);
+                }
+            }
         }
     }
 }
@@ -111,12 +84,9 @@
 #article-toolbar {
     display: flex;
     align-items: center;
+    margin: 20px 0;
 
-    @media (max-width: $on-tablet) {
-        margin: 20px 0;
-    }
-
-    @media (min-width: $on-tablet) {
+    @include respond(md) {
         display: none;
     }
 
@@ -147,6 +117,157 @@
 
         span {
             font-weight: 500;
+            white-space: nowrap;
+        }
+    }
+}
+
+.article-page.has-toc {
+    .left-sidebar {
+        display: none;
+    }
+
+    .right-sidebar {
+        width: 100%;
+        padding: 0;
+        display: none;
+
+        @include respond(xl) {
+            display: block;
+            top: var(--main-top-padding);
+        }
+    }
+
+    #article-toolbar {
+        display: block;
+
+        @include respond(md) {
+            padding: 0;
+        }
+
+        @include respond(xl) {
+            margin-top: 0;
+            position: sticky;
+            top: var(--main-top-padding);
+            flex-shrink: 1;
+
+            a {
+                background: transparent;
+                box-shadow: none;
+                border: 1px solid var(--body-text-color);
+                width: 100%;
+                margin-right: 0;
+
+                svg {
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+
+    .main-container {
+        align-items: start;
+        flex-direction: column;
+
+        @include respond(xl) {
+            flex-direction: row;
+        }
+    }
+
+    .main {
+        padding-top: 0;
+
+        @include respond(xl) {
+            padding-top: var(--main-top-padding);
+        }
+    }
+}
+
+.widget--toc {
+    background-color: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+    display: flex;
+    flex-direction: column;
+    color: var(--card-text-color-main);
+    overflow: hidden;
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--card-separator-color);
+    }
+
+    #TableOfContents {
+        overflow-x: auto;
+        max-height: 75vh;
+
+        ol,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ol {
+            list-style-type: none;
+            counter-reset: item;
+
+            li a::before {
+                counter-increment: item;
+                content: counters(item, ".") ". ";
+                font-weight: bold;
+                margin-right: 5px;
+            }
+        }
+
+        & > ul {
+            padding: 0 1em;
+        }
+
+        li {
+            margin: 15px 0 15px 20px;
+            padding: 5px;
+
+            & > ol,
+            & > ul {
+                margin-top: 10px;
+                padding-left: 10px;
+                margin-bottom: -5px;
+
+                & > li:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        li.active-class > a {
+            border-left: var(--heading-border-size) solid var(--accent-color);
+            font-weight: bold;
+        }
+
+        ul li.active-class > a {
+            display: block;
+        }
+
+        @function repeat($str, $n) {
+            $result: "";
+            @for $_ from 0 to $n {
+                $result: $result + $str;
+            }
+            @return $result;
+        }
+
+        // Support up to 6 levels of indentation for lists in ToCs
+        @for $i from 0 to 5 {
+            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
+                $n: 25 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            }
+
+            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
+                $n: 9 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+                display: block;
+            }
         }
     }
 }
@@ -187,11 +308,11 @@
 .article-content {
     font-family: var(--article-font-family);
     font-size: var(--article-font-size);
+    padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
 
     & > p {
         margin: 1.5em 0;
-        padding: 0 var(--card-padding);
     }
 
     h1,
@@ -200,12 +321,12 @@
     h4,
     h5,
     h6 {
-        padding: 0 calc(var(--card-padding) - var(--heading-border-size));
+        margin-left: calc((var(--card-padding)) * -1);
+        padding-left: calc(var(--card-padding) - var(--heading-border-size));
         border-left: var(--heading-border-size) solid var(--accent-color);
     }
 
     figure {
-        margin: 0 auto;
         text-align: center;
 
         figcaption {
@@ -216,15 +337,10 @@
 
     blockquote {
         position: relative;
-        margin: 10px 0;
+        margin: 1.5em 0;
         border-left: var(--blockquote-border-size) solid var(--card-separator-color);
         padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
-    }
-
-    & > ul,
-    & > ol {
-        margin: 1em var(--card-padding);
     }
 
     hr {
@@ -249,7 +365,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        margin: 20px 0;
+        margin: 1.5em 0;
 
         figure {
             margin: 0;
@@ -278,10 +394,49 @@
         }
     }
 
+    .highlight {
+        background-color: var(--pre-background-color);
+        padding: var(--card-padding);
+        position: relative;
+
+        &:hover {
+            .copyCodeButton {
+                opacity: 1;
+            }
+        }
+
+        pre {
+            margin: initial;
+            padding: 0;
+            margin: 0;
+            width: auto;
+        }
+    }
+
+    .copyCodeButton {
+        position: absolute;
+        top: calc(var(--card-padding));
+        right: calc(var(--card-padding));
+        background: var(--card-background);
+        border: none;
+        box-shadow: var(--shadow-l2);
+        border-radius: var(--tag-border-radius);
+        padding: 8px 16px;
+        color: var(--card-text-color-main);
+        cursor: pointer;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .table-wrapper {
+        padding: 0 var(--card-padding);
+        overflow-x: auto;
+        display: block;
+    }
+
     table {
-        margin: 0 var(--card-padding);
         width: 100%;
-        max-width: calc(100% - var(--card-padding) * 2);
         border-collapse: collapse;
         border-spacing: 0;
         margin-bottom: 1.5em;
@@ -305,5 +460,37 @@
 
     .twitter-tweet {
         color: var(--card-text-color-main);
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        overflow: hidden;
+
+        & > iframe,
+        & > video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border: 0;
+        }
+    }
+
+    /// Negative margins
+    blockquote,
+    figure,
+    .highlight,
+    pre,
+    .gallery,
+    .video-wrapper,
+    .table-wrapper,
+    .s_video_simple {
+        margin-left: calc((var(--card-padding)) * -1);
+        margin-right: calc((var(--card-padding)) * -1);
+        width: calc(100% + var(--card-padding) * 2);
     }
 }

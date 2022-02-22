@@ -17,23 +17,37 @@ list:
         other: Subsections
 
 article:
+    back:
+        other: Back
+
+    tableOfContents:
+        other: Table of contents
+
     relatedContents:
         other: Related contents
+
     lastUpdatedOn:
         other: Last updated on
+
+    readingTime:
+        one: "{{ .Count }} minute read"
+        other: "{{ .Count }} minute read"
 
 notFound:
     title:
         other: Not Found
+
     subtitle:
-        other: This page does not exist.
+        other: This page does not exist
 
 widget:
     archives:
         title:
             other: Archives
+
         more:
             other: More
+
     tagCloud:
         title:
             other: Tags
@@ -41,13 +55,16 @@ widget:
 search:
     title:
         other: Search
+
     placeholder:
         other: Type something...
+
     resultTitle:
         other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
 
 footer:
     builtWith:
         other: Built with {{ .Generator }}
+
     designedBy:
         other: Theme {{ .Theme }} designed by {{ .DesignedBy }}

@@ -1,0 +1,53 @@
+toggleMenu:
+    other: Open Menu
+
+darkMode:
+    other: Donkere modus
+
+list:
+    page:
+        one: "{{ .Count }} pagina"
+        other: "{{ .Count }} pagina's"
+
+    section:
+        other: Sectie
+
+    subsection:
+        one: Subsectie
+        other: Subsecties
+
+article:
+    relatedContents:
+        other: Gerelateerde inhoud
+    lastUpdatedOn:
+        other: Laatst bijgewerkt op
+
+notFound:
+    title:
+        other: Niet gevonden
+    subtitle:
+        other: Deze pagina bestaat niet.
+
+widget:
+    archives:
+        title:
+            other: Archief
+        more:
+            other: Meer
+    tagCloud:
+        title:
+            other: Tags
+
+search:
+    title:
+        other: Zoeken
+    placeholder:
+        other: Typ iets
+    resultTitle:
+        other: "#PAGES_COUNT pagina's (#TIME_SECONDS seconden)"
+
+footer:
+    builtWith:
+        other: Gemaakt met {{ .Generator }}
+    designedBy:
+        other: Theme {{ .Theme }} ontworpen door {{ .DesignedBy }}
