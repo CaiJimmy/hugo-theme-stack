@@ -7,7 +7,7 @@
                 {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" .params) }}
             {{ else }}
                 {{ warnf "Widget %s not found" .type }}
-            {{ end}}
+            {{ end }}
         {{ end }}
     </aside>
 {{ end }}
