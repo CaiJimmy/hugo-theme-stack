@@ -1,15 +1,26 @@
 {{ define "body-class" }}
-    {{ $TOCEnabled := default (default false .Site.Params.article.toc) .Params.toc }}
-    {{- .Scratch.Set "hasTOC" (and (ge (len .TableOfContents) 100) $TOCEnabled) -}}
-    article-page {{ if (.Scratch.Get "hasTOC") }}has-toc{{ end }}
-{{ end }}
+    article-page
+    {{/* 
+        Enable the right sidebar if
+            - Widget different from 'TOC' is enabled
+            - TOC is enabled and not empty
+    */}}
+    {{- $HasWidgetNotTOC := false -}}
+    {{- $TOCWidgetEnabled := false -}}
+    {{- range .Site.Params.widgets.page -}}
+        {{- if ne .type "toc" -}}
+            {{ $HasWidgetNotTOC = true -}}
+        {{- else -}}
+            {{ $TOCWidgetEnabled = true -}}
+        {{- end -}}
+    {{- end -}}
 
-{{ define "container-class" }}
-    {{ if (.Scratch.Get "hasTOC") }}
-        extended
-    {{ else }}
-        on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}
-    {{ end }}
+    {{- $TOCManuallyDisabled := eq .Params.toc false -}}
+    {{- $TOCEnabled := and (not $TOCManuallyDisabled) $TOCWidgetEnabled -}}
+    {{- $hasTOC := ge (len .TableOfContents) 100 -}}
+    {{- .Scratch.Set "TOCEnabled" (and $TOCEnabled $hasTOC) -}}
+    
+    {{- .Scratch.Set "hasWidget" (or $HasWidgetNotTOC (and $TOCEnabled $hasTOC)) -}}
 {{ end }}
 
 {{ define "main" }}
@@ -30,32 +41,6 @@
     {{ partialCached "article/components/photoswipe" . }}
 {{ end }}
 
-{{ define "left-sidebar" }}
-    {{ if (.Scratch.Get "hasTOC") }}
-        <div id="article-toolbar">
-            <a href="{{ .Site.BaseURL | relLangURL }}" class="back-home">
-                {{ (resources.Get "icons/back.svg").Content | safeHTML }}
-                <span>{{ T "article.back" }}</span>
-            </a>
-        </div>
-    {{ else }}
-        {{ partial "sidebar/left.html" . }}
-    {{ end }}
-{{ end }}
-
 {{ define "right-sidebar" }}
-    {{ if (.Scratch.Get "hasTOC") }}
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    {{ partial "helper/icon" "hash" }}
-                </div>
-                <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
-                
-                <div class="widget--toc">
-                    {{ .TableOfContents }}
-                </div>
-            </section>
-        </aside>
-    {{ end }}
+    {{ if .Scratch.Get "hasWidget" }}{{ partial "sidebar/right.html" (dict "Context" . "Scope" "page") }}{{ end}}
 {{ end }}
