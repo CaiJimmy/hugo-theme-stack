@@ -181,7 +181,7 @@ menu:
           weight: -100
           params:
               ### For demonstration purpose, the home link will be open in a new tab
-              newTab: true
+              newTab: false
               icon: home
 
     social:
@@ -225,3 +225,13 @@ markup:
         lineNos: true
         lineNumbersInTable: true
         tabWidth: 4
+
+languages:
+    en:
+        languageName: English
+        weight: 1
+        languageCode: en
+    zh-cn:
+        languageName: 日本語
+        weight: 2
+        languageCode: zh-cn
