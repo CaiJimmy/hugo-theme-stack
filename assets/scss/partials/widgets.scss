@@ -64,3 +64,26 @@
         }
     }
 }
+
+/* i18n nav widget */
+.widget.i18n {
+    .i18n--list {
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        background-color: var(--card-background);
+    }
+
+    .i18n--node {
+        a {
+            font-size: 1.4rem;
+            padding: 18px 25px;
+            display: flex;
+
+            span {
+                flex: 1;
+                color: var(--card-text-color-main);
+                font-weight: bold;
+            }
+        }
+    }
+}

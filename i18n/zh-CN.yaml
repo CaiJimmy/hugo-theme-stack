@@ -38,6 +38,10 @@ widget:
         title:
             other: 标签云
 
+    i18n-nav:
+        title:
+            other: 多语言
+
 search:
     title:
         other: 搜索

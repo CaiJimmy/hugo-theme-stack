@@ -1,0 +1,22 @@
+{{- $context := .Context -}}
+
+{{ if ne (len $context.Translations) "0" }}
+    <section class="widget i18n">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "i18n" }}
+        </div>
+        <h2 class="widget-title section-title">{{ T "widget.i18n-nav.title" }}</h2>
+
+        <div class="i18n--list">
+            {{ range $context.Translations }}
+            <div class="i18n--node">
+                <a href="{{ .RelPermalink }}">
+                    <span class="year">{{ .Language.LanguageName }}</span>
+                </a> 
+            </div>
+            {{ end }}
+
+        </div>
+
+    </section>
+{{ end }}

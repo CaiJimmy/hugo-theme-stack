@@ -52,6 +52,10 @@ widget:
         title:
             other: Tags
 
+    i18n-nav:
+        title:
+            other: multi language
+
 search:
     title:
         other: Search
