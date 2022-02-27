@@ -158,3 +158,20 @@
         display: none;
     }
 }
+
+#i18n-switch {
+    color: var(--body-text-color);
+    display: inline-flex;
+    align-content: center;
+
+    select {
+        border: 0;
+        background-color: transparent;
+        color: var(--body-text-color);
+
+        option {
+            color: var(--card-text-color-main);
+            background-color: var(--card-background);
+        }
+    }
+}
