@@ -1,4 +1,6 @@
-{{- $query := first 1 (where .Site.Pages "Layout" "==" "archives") -}}
+{{- $query := first 1 (where .Context.Site.Pages "Layout" "==" "archives") -}}
+{{- $context := .Context -}}
+{{- $limit := default 5 .Params.limit -}}
 {{- if $query -}}
     {{- $archivesPage := index $query 0 -}}
     <section class="widget archives">
@@ -7,17 +9,17 @@
         </div>
         <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
 
-        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-        {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $pages := where $context.Site.RegularPages "Type" "in" $context.Site.Params.mainSections }}
+        {{ $notHidden := where $context.Site.RegularPages "Params.hidden" "!=" true }}
         {{ $filtered := ($pages | intersect $notHidden) }}
         {{ $archives := $filtered.GroupByDate "2006" }}
         
         <div class="widget-archive--list">
-            {{ range $index, $item := first (add .Site.Params.widgets.archives.limit 1) ($archives) }}
+            {{ range $index, $item := first (add $limit 1) ($archives) }}
                 {{- $id := lower (replace $item.Key " " "-") -}}
                 <div class="archives-year">
                     <a href="{{ $archivesPage.RelPermalink }}#{{ $id }}">
-                        {{ if eq $index $.Site.Params.widgets.archives.limit }}
+                        {{ if eq $index $limit }}
                             <span class="year">{{ T "widget.archives.more" }}</span>
                         {{ else }}
                             <span class="year">{{ .Key }}</span>
