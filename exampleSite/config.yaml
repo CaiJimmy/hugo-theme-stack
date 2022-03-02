@@ -4,6 +4,16 @@ theme: hugo-theme-stack
 paginate: 5
 title: Example Site
 
+languages:
+    en:
+        languageName: English
+        title: Example Site
+        weight: 1
+    cn:
+        languageName: 中文
+        title: 演示站点
+        weight: 2
+
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 

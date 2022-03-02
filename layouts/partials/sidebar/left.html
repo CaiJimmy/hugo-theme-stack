@@ -73,12 +73,26 @@
         </li>
         {{ end }}
 
-        {{ if (default false .Site.Params.colorScheme.toggle) }}
-            <li id="dark-mode-toggle">
-                {{ partial "helper/icon" "toggle-left" }}
-                {{ partial "helper/icon" "toggle-right" }}
-                <span>{{ T "darkMode" }}</span>
-            </li>
-        {{ end }}
+        <div class="menu-bottom-section">
+            {{- $currentLanguageCode := .Language.Lang -}}
+            {{ with .Site.Home.AllTranslations }}
+                <li id="i18n-switch">  
+                    {{ partial "helper/icon" "language" }}
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        {{ range . }}
+                            <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                        {{ end }}
+                    </select>
+                </li>
+            {{ end }}
+            
+            {{ if (default false .Site.Params.colorScheme.toggle) }}
+                <li id="dark-mode-toggle">
+                    {{ partial "helper/icon" "toggle-left" }}
+                    {{ partial "helper/icon" "toggle-right" }}
+                    <span>{{ T "darkMode" }}</span>
+                </li>
+            {{ end }}
+        </div>
     </ol>
 </aside>
