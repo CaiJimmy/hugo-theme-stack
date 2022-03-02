@@ -6,7 +6,8 @@
     </head>
     <body class="{{ block `body-class` . }}{{ end }}">
         {{- partial "head/colorScheme" . -}}
-        <div class="container main-container flex {{ block `container-class` . }}on-phone--column {{ if .Site.Params.widgets.enabled }}extended{{ else }}compact{{ end }}{{ end }}">
+        {{- $hasWidget := default (gt (len .Site.Params.widgets.homepage) 0) (.Scratch.Get "hasWidget") -}}
+        <div class="container main-container flex on-phone--column {{ if $hasWidget }}extended{{ else }}compact{{ end }}">
             {{- block "left-sidebar" . -}}
                 {{ partial "sidebar/left.html" . }}
             {{- end -}}

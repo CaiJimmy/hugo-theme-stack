@@ -77,5 +77,5 @@
 {{ end }}
 
 {{ define "right-sidebar" }}
-    {{ partialCached "sidebar/right.html" . }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
 {{ end }}

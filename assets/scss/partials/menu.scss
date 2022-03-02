@@ -125,7 +125,6 @@
 .menu {
     padding-left: 0;
     list-style: none;
-    display: flex;
     flex-direction: column;
     overflow-y: auto;
     flex-grow: 1;
@@ -138,8 +137,17 @@
 
     margin: 0 -15px;
 
+    &,
+    .menu-bottom-section {
+        gap: 15px;
+        @include respond(xl) {
+            margin-top: 30px;
+            gap: 20px;
+        }
+    }
+
     &.show {
-        display: block;
+        display: flex;
     }
 
     @include respond(md) {
@@ -160,14 +168,6 @@
         position: relative;
         vertical-align: middle;
         padding: 10px 30px;
-
-        &:not(:last-of-type) {
-            margin-bottom: 15px;
-
-            @include respond(xl) {
-                margin-bottom: 20px;
-            }
-        }
 
         @include respond(md) {
             width: 100%;
@@ -199,6 +199,13 @@
                 font-weight: bold;
             }
         }
+    }
+
+    .menu-bottom-section {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 }
 
