@@ -95,6 +95,7 @@ params:
             darkTheme:
             reactionsEnabled: 1
             emitMetadata: 0
+            lang:
 
         gitalk:
             owner:
