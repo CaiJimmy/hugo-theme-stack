@@ -1,4 +1,7 @@
 .widget {
+    display: flex;
+    flex-direction: column;
+
     .widget-icon {
         svg {
             width: 32px;

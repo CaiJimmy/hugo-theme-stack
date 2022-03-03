@@ -13,10 +13,6 @@
         box-shadow: var(--shadow-l1);
         overflow: hidden;
 
-        &.main-article {
-            margin-bottom: var(--section-separation);
-        }
-
         .article-header {
             .article-image {
                 img {
@@ -209,10 +205,6 @@
             }
         }
     }
-}
-
-.related-contents--wrapper {
-    margin-bottom: var(--section-separation);
 }
 
 .related-contents {

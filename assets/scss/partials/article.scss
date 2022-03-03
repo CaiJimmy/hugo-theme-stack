@@ -2,6 +2,7 @@
 .article-list {
     display: flex;
     flex-direction: column;
+    gap: var(--section-separation);
 
     article {
         display: flex;
@@ -15,10 +16,6 @@
 
         &:hover {
             box-shadow: var(--shadow-l2);
-        }
-
-        &:not(:last-of-type) {
-            margin-bottom: var(--section-separation);
         }
 
         .article-image {
@@ -149,10 +146,6 @@
 
     @include respond(md) {
         --image-size: 60px;
-    }
-
-    & + .pagination {
-        margin-top: var(--section-separation);
     }
 
     article {

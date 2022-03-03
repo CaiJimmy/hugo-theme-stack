@@ -39,6 +39,8 @@
 .right-sidebar {
     width: 100%;
     display: none;
+    flex-direction: column;
+    gap: var(--widget-separation);
 
     &.sticky {
         top: 0;
@@ -118,21 +120,6 @@
 
         @include respond(2xl) {
             font-size: 1.8rem;
-        }
-    }
-}
-
-.sidebar {
-    .widget {
-        margin-bottom: var(--section-separation);
-
-        &:not(:last-of-type):after {
-            content: "";
-            width: 100px;
-            height: 2px;
-            background-color: var(--body-text-color);
-            display: block;
-            margin-top: var(--section-separation);
         }
     }
 }
