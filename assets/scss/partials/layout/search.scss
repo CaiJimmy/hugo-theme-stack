@@ -25,7 +25,7 @@
     label {
         position: absolute;
         top: 15px;
-        left: 20px;
+        inset-inline-start: 20px;
         font-size: 1.4rem;
         color: var(--card-text-color-tertiary);
     }
@@ -52,7 +52,7 @@
 
     button {
         position: absolute;
-        right: 0;
+        inset-inline-end: 0;
         top: 0;
         height: 100%;
         width: var(--button-size);
@@ -79,4 +79,5 @@
             height: 20px;
         }
     }
+
 }
