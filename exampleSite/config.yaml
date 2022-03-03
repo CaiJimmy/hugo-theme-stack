@@ -13,6 +13,11 @@ languages:
         languageName: 中文
         title: 演示站点
         weight: 2
+    ar:
+        languageName: عربي
+        languagedirection: rtl
+        title: مثال على الموقع
+        weight: 3
 
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
