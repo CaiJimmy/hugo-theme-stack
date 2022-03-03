@@ -153,6 +153,7 @@
             display: flex;
             align-items: center;
             padding: var(--small-card-padding);
+            gap: 15px;
         }
 
         &:not(:last-of-type) {
@@ -162,7 +163,6 @@
         .article-details {
             flex-grow: 1;
             padding: 0;
-            padding-right: 15px;
             min-height: var(--image-size);
         }
 
