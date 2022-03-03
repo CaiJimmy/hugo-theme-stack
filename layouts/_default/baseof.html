@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.LanguageCode }}" class="direction-{{ .Language.LanguageDirection | default "ltr" }}"> 
+<!-- https://github.com/adityatelange/hugo-PaperMod/pull/47 -->
     <head>
         {{- partial "head/head.html" . -}}
         {{- block "head" . -}}{{ end }}
