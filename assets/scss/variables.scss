@@ -5,9 +5,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 *   Global style
 */
 :root {
-    @include respond(md) {
-        --main-top-padding: 35px;
-    }
+    --main-top-padding: 35px;
 
     @include respond(xl) {
         --main-top-padding: 50px;
@@ -158,4 +156,10 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --pre-text-color: #f8f8f2;
     --pre-background-color: #272822;
     @import "partials/highlight/dark.scss";
+}
+
+:root {
+    --menu-icon-separation: 40px;
+    --container-padding: 15px;
+    --widget-separation: var(--section-separation);
 }
