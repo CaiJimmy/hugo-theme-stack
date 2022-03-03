@@ -140,6 +140,29 @@
     }
 }
 
+// RTL article borders
+.direction-rtl{
+    .article-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    blockquote {
+        border-right: var(--heading-border-size) solid var(--accent-color);
+        padding-right: calc(var(--card-padding) - var(--heading-border-size));
+        margin-right: calc((var(--card-padding)) * -1);
+        border-left: 0 solid var(--accent-color);
+    }
+}
+}
+
+// keep Codeblocks LTR
+.direction-rtl .highlight {
+direction: ltr;
+}
+
 /* Compact style article list */
 .article-list--compact {
     border-radius: var(--card-border-radius);
