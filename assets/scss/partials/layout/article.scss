@@ -297,13 +297,10 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
+        gap: 10px;
 
         figure {
             margin: 0;
-
-            & + figure {
-                margin-left: 10px;
-            }
         }
     }
 
