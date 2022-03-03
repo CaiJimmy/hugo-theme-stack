@@ -119,6 +119,9 @@
 
 .article-category,
 .article-tags {
+    display: flex;
+    gap: 10px;
+
     a {
         color: var(--accent-color-text);
         background-color: var(--accent-color);
@@ -126,8 +129,6 @@
         border-radius: var(--tag-border-radius);
         display: inline-block;
         font-size: 1.4rem;
-        margin-right: 10px;
-        margin-bottom: 10px;
         transition: background-color 0.5s ease;
 
         &:hover {
