@@ -313,7 +313,10 @@
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
-
+        //  keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
         code {
             color: unset;
             border: none;
@@ -332,7 +335,10 @@
                 opacity: 1;
             }
         }
-
+        // keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
         pre {
             margin: initial;
             padding: 0;

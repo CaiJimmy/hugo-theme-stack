@@ -138,11 +138,6 @@
     }
 }
 
-// keep Codeblocks LTR
-.direction-rtl .highlight {
-    direction: ltr;
-}
-
 /* Compact style article list */
 .article-list--compact {
     border-radius: var(--card-border-radius);
