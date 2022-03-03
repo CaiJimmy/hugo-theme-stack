@@ -252,9 +252,9 @@
     h4,
     h5,
     h6 {
-        margin-left: calc((var(--card-padding)) * -1);
-        padding-left: calc(var(--card-padding) - var(--heading-border-size));
-        border-left: var(--heading-border-size) solid var(--accent-color);
+        margin-inline-start: calc((var(--card-padding)) * -1);
+        padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
+        border-inline-start: var(--heading-border-size) solid var(--accent-color);
     }
 
     figure {
@@ -269,7 +269,7 @@
     blockquote {
         position: relative;
         margin: 1.5em 0;
-        border-left: var(--blockquote-border-size) solid var(--card-separator-color);
+        border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
         padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
     }
@@ -313,7 +313,10 @@
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
-
+        //  keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
         code {
             color: unset;
             border: none;
@@ -332,7 +335,10 @@
                 opacity: 1;
             }
         }
-
+        // keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
         pre {
             margin: initial;
             padding: 0;
