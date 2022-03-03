@@ -2,7 +2,7 @@ toggleMenu:
     other: اخفي القائمة
 
 darkMode:
-    other: الوضع الليلي
+    other: الوضع الداكن
 
 list:
     page:
@@ -17,14 +17,26 @@ list:
         other: اقسام فرعية
 
 article:
+    back:
+        other: خلف
+
+    tableOfContents:
+        other: جدول المحتويات
+
     relatedContents:
         other: محتوى مشابهه
+        
     lastUpdatedOn:
         other: التعديل الاخير
+
+    readingTime:
+        one: "قرائة {{ .Count }} دقيقة"
+        other: "قرائة {{ .Count }} دقائق"
 
 notFound:
     title:
         other: غير موجود
+
     subtitle:
         other: تعذر العثور على الصفحة المطلوبة.
 
@@ -32,8 +44,10 @@ widget:
     archives:
         title:
             other: الارشيفات
+
         more:
             other: اكثر
+
     tagCloud:
         title:
             other: وسوم
@@ -41,13 +55,16 @@ widget:
 search:
     title:
         other: بحث
+
     placeholder:
         other: اكتب...
+
     resultTitle:
         other: "#PAGES_COUNT نتيجة (#TIME_SECONDS ثواني)"
 
 footer:
     builtWith:
-        other: "{{ .Generator }} مبني مع"
+        other: "مبني بستخدام {{ .Generator }}"
+        
     designedBy:
-        other:  "{{ .DesignedBy }} مصمم من {{ .Theme }} قالب"
+        other:  "قالب {{ .Theme }} مصمم من {{ .DesignedBy }}"
