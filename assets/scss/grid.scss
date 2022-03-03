@@ -67,24 +67,6 @@
         }
     }
 
-    &.align-items--flex-start {
-        align-items: flex-start;
-    }
-
-    .grow {
-        flex-grow: 1;
-    }
-
-    .do-not-shrink {
-        flex-shrink: 0;
-    }
-
-    .do-not-overflow {
-        min-width: 0;
-        flex-shrink: 1;
-        max-width: 100%;
-    }
-
     .full-width {
         width: 100%;
     }
@@ -101,7 +83,7 @@ main.main {
     min-height: 100vh;
     align-items: flex-start;
     padding: 0 15px;
-    column-gap: var(--section-separation);
+    gap: var(--section-separation);
 
     @include respond(md) {
         padding: 0 20px;
