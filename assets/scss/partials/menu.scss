@@ -101,10 +101,15 @@
     background: none;
     border: none;
     position: absolute;
-    right: 30px;
-    top: 30px;
+    right: 0;
+    top: 0;
     z-index: 2;
     cursor: pointer;
+
+    [dir="rtl"] & {
+        left: 0;
+        right: auto;
+    }
 
     @include respond(md) {
         display: none;
