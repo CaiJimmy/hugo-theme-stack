@@ -11,7 +11,7 @@
 
         /// Display right sidebar when min-width: lg
         @include respond(lg) {
-            display: block;
+            display: flex;
         }
     }
 
@@ -67,24 +67,6 @@
         }
     }
 
-    &.align-items--flex-start {
-        align-items: flex-start;
-    }
-
-    .grow {
-        flex-grow: 1;
-    }
-
-    .do-not-shrink {
-        flex-shrink: 0;
-    }
-
-    .do-not-overflow {
-        min-width: 0;
-        flex-shrink: 1;
-        max-width: 100%;
-    }
-
     .full-width {
         width: 100%;
     }
@@ -94,15 +76,22 @@ main.main {
     min-width: 0;
     max-width: 100%;
     flex-grow: 1;
-    padding-top: var(--main-top-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-separation);
+
+    @include respond(md) {
+        padding-top: var(--main-top-padding);
+    }
 }
 
 .main-container {
     min-height: 100vh;
     align-items: flex-start;
     padding: 0 15px;
-    column-gap: var(--section-separation);
-
+    gap: var(--section-separation);
+    padding-top: var(--main-top-padding);
+    
     @include respond(md) {
         padding: 0 20px;
     }

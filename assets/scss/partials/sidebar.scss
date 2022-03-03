@@ -11,10 +11,12 @@
     flex-direction: column;
     flex-shrink: 0;
     align-self: stretch;
+    gap: var(--sidebar-element-separation);
 
     width: 100%;
-    padding: 30px 0 15px 0;
     max-width: none;
+
+    position: relative;
 
     --sidebar-avatar-size: 120px;
     --sidebar-element-separation: 20px;
@@ -39,6 +41,8 @@
 .right-sidebar {
     width: 100%;
     display: none;
+    flex-direction: column;
+    gap: var(--widget-separation);
 
     &.sticky {
         top: 0;
@@ -49,11 +53,12 @@
     }
 }
 
-.site-info {
+.sidebar header {
     z-index: 1;
     transition: box-shadow 0.5s ease;
-
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sidebar-element-separation);
 
     @include respond(md) {
         padding: 0;
@@ -64,8 +69,6 @@
         margin: 0;
         width: var(--sidebar-avatar-size);
         height: var(--sidebar-avatar-size);
-
-        margin-bottom: var(--sidebar-element-separation);
 
         .site-logo {
             width: 100%;
@@ -95,6 +98,12 @@
         }
     }
 
+    .site-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
     .site-name {
         color: var(--accent-color);
         margin: 0;
@@ -108,26 +117,11 @@
     .site-description {
         color: var(--body-text-color);
         font-weight: normal;
-        margin: 10px 0;
+        margin: 0;
         font-size: 1.6rem;
 
         @include respond(2xl) {
             font-size: 1.8rem;
-        }
-    }
-}
-
-.sidebar {
-    .widget {
-        margin-bottom: var(--section-separation);
-
-        &:not(:last-of-type):after {
-            content: "";
-            width: 100px;
-            height: 2px;
-            background-color: var(--body-text-color);
-            display: block;
-            margin-top: var(--section-separation);
         }
     }
 }
@@ -153,6 +147,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    gap: var(--menu-icon-separation);
 
     .icon-tabler-toggle-right {
         display: none;
@@ -163,6 +158,7 @@
     color: var(--body-text-color);
     display: inline-flex;
     align-content: center;
+    gap: var(--menu-icon-separation);
 
     select {
         border: 0;

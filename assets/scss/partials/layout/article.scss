@@ -13,10 +13,6 @@
         box-shadow: var(--shadow-l1);
         overflow: hidden;
 
-        &.main-article {
-            margin-bottom: var(--section-separation);
-        }
-
         .article-header {
             .article-image {
                 img {
@@ -57,11 +53,11 @@
                 display: flex;
                 align-items: center;
                 font-size: 1.4rem;
+                gap: 15px;
 
                 svg {
                     width: 20px;
                     height: 20px;
-                    margin-right: 15px;
                     stroke-width: 1.33;
                 }
             }
@@ -211,10 +207,6 @@
     }
 }
 
-.related-contents--wrapper {
-    margin-bottom: var(--section-separation);
-}
-
 .related-contents {
     overflow-x: auto;
     padding-bottom: 15px;
@@ -305,13 +297,10 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
+        gap: 10px;
 
         figure {
             margin: 0;
-
-            & + figure {
-                margin-left: 10px;
-            }
         }
     }
 
