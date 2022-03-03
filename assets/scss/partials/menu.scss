@@ -6,7 +6,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
 
-.hamburger {
+ .hamburger {
     padding-top: 10px;
     display: inline-block;
     cursor: pointer;
@@ -101,7 +101,7 @@
     background: none;
     border: none;
     position: absolute;
-    right: 30px;
+    inset-inline-end: 30px;
     top: 30px;
     z-index: 2;
     cursor: pointer;
@@ -176,7 +176,7 @@
 
         svg {
             stroke-width: 1.33;
-            margin-right: 40px;
+            margin-inline-end: 40px;
 
             width: 20px;
             height: 20px;
