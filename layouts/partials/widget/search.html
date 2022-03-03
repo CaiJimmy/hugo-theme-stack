@@ -2,14 +2,13 @@
 {{- if $query -}}
     {{- $searchPage := index $query 0 -}}
     <form action="{{ $searchPage.RelPermalink }}" class="search-form widget" {{ with .OutputFormats.Get "json" -}}data-json="{{ .Permalink }}" {{- end }}>
-        <p>
+        <div class="input-wrapper">
             <label>{{ T "search.title" }}</label>
-            <input name="keyword" required placeholder="{{ T `search.placeholder` }}" />
-        
-            <button title="{{ T `search.title` }}">
-                {{ partial "helper/icon" "search" }}
-            </button>
-        </p>
+            <input name="keyword" required placeholder="{{ T `search.placeholder` }}" />    
+        </div>
+        <button title="{{ T `search.title` }}">
+            {{ partial "helper/icon" "search" }}
+        </button>
     </form>
 {{- else -}}
     {{- warnf "Search page not found. Create a page with layout: search." -}}

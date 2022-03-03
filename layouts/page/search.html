@@ -6,10 +6,10 @@
 {{ end }}
 {{ define "main" }}
 <form action="{{ .Permalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .Permalink }}"{{- end }}>
-    <p>
+    <div class="input-wrapper">
         <label>{{ T "search.title" }}</label>
         <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
-    </p>
+    </div>
 
     <button title="{{ T `search.title` }}">
         {{ partial "helper/icon" "search" }}
