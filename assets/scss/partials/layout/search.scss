@@ -1,3 +1,28 @@
+// move icon left and label right, to replicate theme look in RTL mode
+.direction-rtl {
+    .search-form {
+        label {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            left: unset;
+            font-size: 1.4rem;
+            color: var(--card-text-color-tertiary);
+        }
+        button {
+            position: absolute;
+            left: 0;
+            right: unset;
+            top: 0;
+            height: 100%;
+            width: var(--button-size);
+            cursor: pointer;
+            background-color: transparent;
+            border: 0;
+        }
+    }
+}
+
 .search-form {
     margin-bottom: var(--section-separation);
     position: relative;
