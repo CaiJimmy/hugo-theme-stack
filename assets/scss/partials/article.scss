@@ -2,6 +2,7 @@
 .article-list {
     display: flex;
     flex-direction: column;
+    gap: var(--section-separation);
 
     article {
         display: flex;
@@ -15,10 +16,6 @@
 
         &:hover {
             box-shadow: var(--shadow-l2);
-        }
-
-        &:not(:last-of-type) {
-            margin-bottom: var(--section-separation);
         }
 
         .article-image {
@@ -122,6 +119,9 @@
 
 .article-category,
 .article-tags {
+    display: flex;
+    gap: 10px;
+
     a {
         color: var(--accent-color-text);
         background-color: var(--accent-color);
@@ -129,8 +129,6 @@
         border-radius: var(--tag-border-radius);
         display: inline-block;
         font-size: 1.4rem;
-        margin-right: 10px;
-        margin-bottom: 10px;
         transition: background-color 0.5s ease;
 
         &:hover {
@@ -151,15 +149,12 @@
         --image-size: 60px;
     }
 
-    & + .pagination {
-        margin-top: var(--section-separation);
-    }
-
     article {
         & > a {
             display: flex;
             align-items: center;
             padding: var(--small-card-padding);
+            gap: 15px;
         }
 
         &:not(:last-of-type) {
@@ -169,7 +164,6 @@
         .article-details {
             flex-grow: 1;
             padding: 0;
-            padding-right: 15px;
             min-height: var(--image-size);
         }
 

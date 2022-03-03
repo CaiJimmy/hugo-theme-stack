@@ -5,7 +5,7 @@
         </span>
     </button>
 
-    <header class="site-info">
+    <header>
         {{ with .Site.Params.sidebar.avatar }}
             {{ if (default true .enabled) }}
             <figure class="site-avatar">
@@ -31,8 +31,10 @@
             {{ end }}
         {{ end }}
         
-        <h1 class="site-name"><a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a></h1>
-        <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
+        <div class="site-meta">
+            <h1 class="site-name"><a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a></h1>
+            <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
+        </div>
 
         {{- with .Site.Menus.social -}}
             <ol class="social-menu">
