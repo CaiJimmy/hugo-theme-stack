@@ -5,18 +5,14 @@
     box-shadow: var(--shadow-l1);
     display: flex;
     align-items: center;
+    gap: 20px;
 
     --separation: 15px;
 
     .section-term {
         font-size: 2.2rem;
         margin: 0;
-        margin-top: calc(var(--separation) / 2);
         color: var(--card-text-color-main);
-
-        & + .section-description {
-            margin-top: var(--separation);
-        }
     }
 
     .section-description {
@@ -28,7 +24,9 @@
 
     .section-details {
         flex-grow: 1;
-        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .section-image {
