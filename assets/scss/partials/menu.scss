@@ -6,7 +6,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
 
-.hamburger {
+ .hamburger {
     padding-top: 10px;
     display: inline-block;
     cursor: pointer;
@@ -97,6 +97,14 @@
     transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
+// change menu icon placement to follow the RTL Direction
+.direction-rtl{
+    #toggle-menu {
+        left: 30px;
+        right: unset;
+    }
+}
+
 #toggle-menu {
     background: none;
     border: none;
@@ -117,6 +125,18 @@
         .hamburger-inner::before,
         .hamburger-inner::after {
             background-color: var(--accent-color);
+        }
+    }
+}
+
+// fix icon padding in RTL menu
+.direction-rtl{
+    .menu {
+        li {
+            svg {
+                margin-left: 40px;
+                margin-right: unset;
+            }
         }
     }
 }
