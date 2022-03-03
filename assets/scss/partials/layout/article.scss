@@ -13,10 +13,6 @@
         box-shadow: var(--shadow-l1);
         overflow: hidden;
 
-        &.main-article {
-            margin-bottom: var(--section-separation);
-        }
-
         .article-header {
             .article-image {
                 img {
@@ -57,11 +53,11 @@
                 display: flex;
                 align-items: center;
                 font-size: 1.4rem;
+                gap: 15px;
 
                 svg {
                     width: 20px;
                     height: 20px;
-                    margin-right: 15px;
                     stroke-width: 1.33;
                 }
             }
@@ -118,67 +114,6 @@
         span {
             font-weight: 500;
             white-space: nowrap;
-        }
-    }
-}
-
-.article-page.has-toc {
-    .left-sidebar {
-        display: none;
-    }
-
-    .right-sidebar {
-        width: 100%;
-        padding: 0;
-        display: none;
-
-        @include respond(xl) {
-            display: block;
-            top: var(--main-top-padding);
-        }
-    }
-
-    #article-toolbar {
-        display: block;
-
-        @include respond(md) {
-            padding: 0;
-        }
-
-        @include respond(xl) {
-            margin-top: 0;
-            position: sticky;
-            top: var(--main-top-padding);
-            flex-shrink: 1;
-
-            a {
-                background: transparent;
-                box-shadow: none;
-                border: 1px solid var(--body-text-color);
-                width: 100%;
-                margin-right: 0;
-
-                svg {
-                    flex-shrink: 0;
-                }
-            }
-        }
-    }
-
-    .main-container {
-        align-items: start;
-        flex-direction: column;
-
-        @include respond(xl) {
-            flex-direction: row;
-        }
-    }
-
-    .main {
-        padding-top: 0;
-
-        @include respond(xl) {
-            padding-top: var(--main-top-padding);
         }
     }
 }
@@ -272,10 +207,6 @@
     }
 }
 
-.related-contents--wrapper {
-    margin-bottom: var(--section-separation);
-}
-
 .related-contents {
     overflow-x: auto;
     padding-bottom: 15px;
@@ -366,13 +297,10 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
+        gap: 10px;
 
         figure {
             margin: 0;
-
-            & + figure {
-                margin-left: 10px;
-            }
         }
     }
 

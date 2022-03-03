@@ -4,6 +4,16 @@ theme: hugo-theme-stack
 paginate: 5
 title: Example Site
 
+languages:
+    en:
+        languageName: English
+        title: Example Site
+        weight: 1
+    cn:
+        languageName: 中文
+        title: 演示站点
+        weight: 2
+
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 
@@ -132,16 +142,16 @@ params:
             host:
             id:
     widgets:
-        enabled:
-            - search
-            - archives
-            - tag-cloud
-
-        archives:
-            limit: 5
-
-        tagCloud:
-            limit: 10
+        homepage:
+            - type: search
+            - type: archives
+              params:
+                  limit: 5
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
 
     opengraph:
         twitter:
