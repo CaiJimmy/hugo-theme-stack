@@ -2,7 +2,7 @@
 author = "Hugo Authors"
 title = "مثال نص"
 date = "2019-03-09"
-description = "Lorem Ipsum Dolor Si Amet"
+description = "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
 categories = [
     "تجربة",
     "تجربة مع فراغات"
