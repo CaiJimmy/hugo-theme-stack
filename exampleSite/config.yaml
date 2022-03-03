@@ -16,7 +16,7 @@ languages:
     ar:
         languageName: عربي
         languagedirection: rtl
-        title: مثال على الموقع
+        title: موقع تجريبي
         weight: 3
 
 # Change it to your Disqus shortname before using
