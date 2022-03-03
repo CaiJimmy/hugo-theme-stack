@@ -49,13 +49,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     padding: var(--card-padding);
+    gap: 15px;
 }
 
 .article-title {
     font-weight: 600;
-    margin: 10px 0;
+    margin: 0;
     color: var(--card-text-color-main);
     font-size: 2.2rem;
 
@@ -70,22 +70,23 @@
             color: var(--card-text-color-main);
         }
     }
-
-    & + .article-subtitle {
-        margin-top: 0;
-    }
 }
 
 .article-subtitle {
     font-weight: normal;
     color: var(--card-text-color-secondary);
-    margin: 5px 0;
     line-height: 1.5;
-
+    margin: 0;
     font-size: 1.75rem;
     @include respond(xl) {
         font-size: 2rem;
     }
+}
+
+.article-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .article-time,
@@ -94,7 +95,6 @@
     align-items: center;
     color: var(--card-text-color-tertiary);
     gap: 15px;
-    margin-top: 10px;
     flex-wrap: wrap;
 
     svg {
