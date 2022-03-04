@@ -134,19 +134,22 @@
     overflow-y: auto;
     flex-grow: 1;
     font-size: 1.4rem;
-
     background-color: var(--card-background);
-    padding: 15px 0;
+
     box-shadow: var(--shadow-l1);
     display: none;
-
     margin: 0 calc(var(--container-padding) * -1);
+
+    padding: 30px 30px;
+    @include respond(xl) {
+        padding: 15px 0;
+    }
 
     &,
     .menu-bottom-section {
-        gap: 15px;
+        gap: 30px;
         @include respond(xl) {
-            gap: 20px;
+            gap: 25px;
         }
     }
 
@@ -166,11 +169,10 @@
     li {
         position: relative;
         vertical-align: middle;
-        padding: 10px 30px;
+        padding: 0;
 
         @include respond(md) {
             width: 100%;
-            padding: 10px 0;
         }
 
         svg {
