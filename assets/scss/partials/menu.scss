@@ -139,14 +139,13 @@
     padding: 15px 0;
     box-shadow: var(--shadow-l1);
     display: none;
-
     margin: 0 calc(var(--container-padding) * -1);
 
     &,
     .menu-bottom-section {
-        gap: 15px;
+        gap: 20px;
         @include respond(xl) {
-            gap: 20px;
+            gap: 25px;
         }
     }
 
@@ -166,11 +165,11 @@
     li {
         position: relative;
         vertical-align: middle;
-        padding: 10px 30px;
+        padding: 0 15px;
 
         @include respond(md) {
             width: 100%;
-            padding: 10px 0;
+            padding: 0;
         }
 
         svg {
