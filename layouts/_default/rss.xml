@@ -1,9 +1,15 @@
-{{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
-{{- $notHidden := where .Site.RegularPages "Params.hidden" "!=" true -}}
-{{- $filtered := ($pages | intersect $notHidden) -}}
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if or $.IsHome $.IsSection -}}
+{{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+{{- $pages = $pctx.Pages -}}
+{{- end -}}
+{{- $pages := where $pages "Params.hidden" "!=" true -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
-{{- $filtered = $filtered | first $limit -}}
+{{- $pages = $pages | first $limit -}}
 {{- end -}}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -20,7 +26,7 @@
         {{- with .OutputFormats.Get "RSS" -}}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
         {{- end -}}
-        {{ range $filtered }}
+        {{ range $pages }}
         {{- $content := safeHTML (.Summary | html) -}}
         {{- if .Site.Params.rssFullContent -}}
             {{- $content = safeHTML (.Content | html) -}}
