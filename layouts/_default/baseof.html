@@ -6,7 +6,14 @@
     </head>
     <body class="{{ block `body-class` . }}{{ end }}">
         {{- partial "head/colorScheme" . -}}
-        {{- $hasWidget := default (gt (len .Site.Params.widgets.homepage) 0) (.Scratch.Get "hasWidget") -}}
+
+        {{/* The container is wider when there's any activated widget */}}
+        {{- $hasWidget := false -}}
+        {{- range .Site.Params.widgets -}}
+            {{- if gt (len .) 0 -}}
+                {{- $hasWidget = true -}}
+            {{- end -}}
+        {{- end -}}
         <div class="container main-container flex on-phone--column {{ if $hasWidget }}extended{{ else }}compact{{ end }}">
             {{- block "left-sidebar" . -}}
                 {{ partial "sidebar/left.html" . }}
