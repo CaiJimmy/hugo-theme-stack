@@ -37,6 +37,7 @@ widget:
     tagCloud:
         title:
             other: タグ
+
     categoriesCloud:
         title:
             other: カテゴリ

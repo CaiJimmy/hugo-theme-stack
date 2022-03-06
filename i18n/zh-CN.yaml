@@ -37,9 +37,10 @@ widget:
     tagCloud:
         title:
             other: 标签云
+
     categoriesCloud:
         title:
-            other: 类别
+            other: 分类
 
 search:
     title:
