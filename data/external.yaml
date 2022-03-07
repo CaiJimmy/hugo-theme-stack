@@ -36,3 +36,11 @@ KaTeX:
       integrity: sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl
       type: script
       defer: true
+
+Cactus:
+    - src: https://latest.cactus.chat/cactus.js
+      integrity:
+      type: script
+    - src: https://latest.cactus.chat/style.css
+      integrity:
+      type: style

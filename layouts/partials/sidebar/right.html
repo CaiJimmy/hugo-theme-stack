@@ -1,8 +1,13 @@
-{{ if .Site.Params.widgets.enabled }}
-    {{ $context := . }}
+{{- $scope := default "homepage" .Scope -}}
+{{- $context := .Context -}}
+{{- with (index .Context.Site.Params.widgets $scope) -}}
     <aside class="sidebar right-sidebar sticky">
-        {{ range $widget := .Site.Params.widgets.enabled }}
-            {{ partial (printf "widget/%s" $widget) $context }}
+        {{ range $widget := . }}
+            {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
+                {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" .params) }}
+            {{ else }}
+                {{ warnf "Widget %s not found" .type }}
+            {{ end }}
         {{ end }}
     </aside>
 {{ end }}

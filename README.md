@@ -3,6 +3,10 @@
 
 > Card-style Hugo theme designed for bloggers.
 
+## Quickstart
+
+Use this template: [CaiJimmy/hugo-theme-stack-starter](https://github.com/CaiJimmy/hugo-theme-stack-starter)
+
 ## Demo
 
 [Example Site](https://demo.stack.jimmycai.com/)
@@ -28,6 +32,7 @@ Stack is a simple card-style Hugo theme designed for bloggers, some of its featu
 - Properly cropped thumbnails
 - Subsection support
 - Table of contents
+- Multilingual mode and RTL support
 
 ## Requirements
 
