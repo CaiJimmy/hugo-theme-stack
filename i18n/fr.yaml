@@ -29,6 +29,10 @@ article:
     lastUpdatedOn:
         other: Dernière mise à jour le
 
+    readingTime:
+        one: "{{ .Count }} minute de lecture"
+        other: "{{ .Count }} minutes de lecture"
+
 notFound:
     title:
         other: Page non trouvée

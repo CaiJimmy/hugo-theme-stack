@@ -1,4 +1,7 @@
 .widget {
+    display: flex;
+    flex-direction: column;
+
     .widget-icon {
         svg {
             width: 32px;
@@ -14,16 +17,14 @@
     .tagCloud-tags {
         display: flex;
         flex-wrap: wrap;
+        gap: 10px;
 
         a {
             background: var(--card-background);
             box-shadow: var(--shadow-l1);
             border-radius: var(--tag-border-radius);
             padding: 8px 20px;
-
             color: var(--card-text-color-main);
-            margin-bottom: 10px;
-            margin-right: 5px;
             font-size: 1.4rem;
             transition: box-shadow 0.3s ease;
 

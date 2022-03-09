@@ -29,6 +29,7 @@
                     <img src="{{ $Permalink }}" 
                         width="{{ $Width }}"
                         height="{{ $Height }}" 
+                        alt="{{ .Title }}"
                         loading="lazy">
                 {{ else }}
                     <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />

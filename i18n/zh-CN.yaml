@@ -38,6 +38,10 @@ widget:
         title:
             other: 标签云
 
+    categoriesCloud:
+        title:
+            other: 分类
+
 search:
     title:
         other: 搜索
@@ -47,3 +51,10 @@ search:
 
     resultTitle:
         other: "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
+
+footer:
+    builtWith:
+        other: Built with {{ .Generator }}
+
+    designedBy:
+        other: 主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计
