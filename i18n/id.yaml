@@ -1,69 +1,69 @@
 toggleMenu:
-    other: Tampilkan Menu
+  other: Tampilkan Menu
 
 darkMode:
-    other: Mode Gelap
+  other: Mode Gelap
 
 list:
-    page:
-        one: "{{ .Count }} halaman"
-        other: "{{ .Count }} halaman"
+  page:
+    one: "{{ .Count }} halaman"
+    other: "{{ .Count }} halaman"
 
-    section:
-        other: Bagian
+  section:
+    other: Bagian
 
-    subsection:
-        one: Subbagian
-        other: Subbagian
+  subsection:
+    one: Subbagian
+    other: Subbagian
 
 article:
-    back:
-        other: Kembali
+  back:
+    other: Kembali
 
-    tableOfContents:
-        other: Daftar Isi
+  tableOfContents:
+    other: Daftar Isi
 
-    relatedContents:
-        other: Konten terkait
+  relatedContent:
+    other: Konten terkait
 
-    lastUpdatedOn:
-        other: Terakhir diperbarui pada
+  lastUpdatedOn:
+    other: Terakhir diperbarui pada
 
-    readingTime:
-        one: "Waktu Membaca: {{ .Count }} menit"
-        other: "Waktu Membaca: {{ .Count }} menit"
+  readingTime:
+    one: "Waktu Membaca: {{ .Count }} menit"
+    other: "Waktu Membaca: {{ .Count }} menit"
 
 notFound:
-    title:
-        other: Tidak ditemukan
-    subtitle:
-        other: Halaman yang Anda akses tidak ditemukan.
+  title:
+    other: Tidak ditemukan
+  subtitle:
+    other: Halaman yang Anda akses tidak ditemukan.
 
 widget:
-    archives:
-        title:
-            other: Arsip
+  archives:
+    title:
+      other: Arsip
 
-        more:
-            other: Lebih
+    more:
+      other: Lebih
 
-    tagCloud:
-        title:
-            other: Tag
+  tagCloud:
+    title:
+      other: Tag
 
 search:
-    title:
-        other: Cari
+  title:
+    other: Cari
 
-    placeholder:
-        other: Ketik sesuatu...
+  placeholder:
+    other: Ketik sesuatu...
 
-    resultTitle:
-        other: "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
+  resultTitle:
+    other: "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
 
 footer:
-    builtWith:
-        other: Dibangun dengan {{ .Generator }}
+  builtWith:
+    other: Dibangun dengan {{ .Generator }}
 
-    designedBy:
-        other: Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}
+  designedBy:
+    other: Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}
