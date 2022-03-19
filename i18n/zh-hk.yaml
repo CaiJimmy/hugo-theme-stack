@@ -30,8 +30,8 @@ article:
         other: 上次改過於
 
     readingTime:
-        one: "需要{{ .Count }}  分鐘閱讀"
-        other: "需要{{ .Count }} 分鐘閱讀"
+        one: "需要 {{ .Count }} 分鐘閱讀"
+        other: "需要 {{ .Count }} 分鐘閱讀"
 
 notFound:
     title:
