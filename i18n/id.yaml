@@ -51,6 +51,10 @@ widget:
         title:
             other: Tag
 
+    categoriesCloud:
+        title:
+            other: Kategori
+
 search:
     title:
         other: Cari
