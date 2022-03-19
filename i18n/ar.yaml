@@ -30,7 +30,7 @@ article:
         other: التعديل الاخير
 
     readingTime:
-        one: " تُقرأ خلال دقيقة"
+        one: "تُقرأ خلال دقيقة"
         other: "تُقرأ خلال {{ .Count }} دقائق"
 
 notFound:
