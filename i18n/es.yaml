@@ -1,70 +1,74 @@
 toggleMenu:
-  other: Toggle Menu
+    other: Toggle Menu
 
 darkMode:
-  other: Modo oscuro
+    other: Modo oscuro
 
 list:
-  page:
-    one: "{{ .Count }} página"
-    other: "{{ .Count }} páginas"
+    page:
+        one: "{{ .Count }} página"
+        other: "{{ .Count }} páginas"
 
-  section:
-    other: Sección
+    section:
+        other: Sección
 
-  subsection:
-    one: Subsección
-    other: Subsecciones
+    subsection:
+        one: Subsección
+        other: Subsecciones
 
 article:
-  back:
-    other: Volver
+    back:
+        other: Volver
 
-  tableOfContents:
-    other: Tabla de contenido
+    tableOfContents:
+        other: Tabla de contenido
 
-  relatedContent:
-    other: Contenidos relacionados
+    relatedContent:
+        other: Contenidos relacionados
 
-  lastUpdatedOn:
-    other: Última vez actualizado
+    lastUpdatedOn:
+        other: Última vez actualizado
 
-  readingTime:
-    one: "{{ .Count }} minuto a leer"
-    other: "{{ .Count }} minutos a leer"
+    readingTime:
+        one: "{{ .Count }} minuto a leer"
+        other: "{{ .Count }} minutos a leer"
 
 notFound:
-  title:
-    other: No Encontrado
+    title:
+        other: No Encontrado
 
-  subtitle:
-    other: Esta página no existe
+    subtitle:
+        other: Esta página no existe
 
 widget:
-  archives:
-    title:
-      other: Archivo
+    archives:
+        title:
+            other: Archivo
 
-    more:
-      other: Más
+        more:
+            other: Más
 
-  tagCloud:
-    title:
-      other: Etiquetas
+    tagCloud:
+        title:
+            other: Etiquetas
+
+    categoriesCloud:
+        title:
+            other: Categorías
 
 search:
-  title:
-    other: Búsqueda
+    title:
+        other: Búsqueda
 
-  placeholder:
-    other: Teclea algo...
+    placeholder:
+        other: Teclea algo...
 
-  resultTitle:
-    other: "#PAGES_COUNT páginas en (#TIME_SECONDS segundos)"
+    resultTitle:
+        other: "#PAGES_COUNT páginas en (#TIME_SECONDS segundos)"
 
 footer:
-  builtWith:
-    other: Creado con {{ .Generator }}
+    builtWith:
+        other: Creado con {{ .Generator }}
 
-  designedBy:
-    other: Tema {{ .Theme }} diseñado por {{ .DesignedBy }}
+    designedBy:
+        other: Tema {{ .Theme }} diseñado por {{ .DesignedBy }}

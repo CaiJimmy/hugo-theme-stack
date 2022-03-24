@@ -1,69 +1,73 @@
 toggleMenu:
-  other: Przełącz Menu
+    other: Przełącz Menu
 
 darkMode:
-  other: Tryb ciemny
+    other: Tryb ciemny
 
 list:
-  page:
-    one: "{{ .Count }} strona"
-    other: "{{ .Count }} stron"
+    page:
+        one: "{{ .Count }} strona"
+        other: "{{ .Count }} stron"
 
-  section:
-    other: Sekcja
+    section:
+        other: Sekcja
 
-  subsection:
-    one: Podsekcja
-    other: Podsekcje
+    subsection:
+        one: Podsekcja
+        other: Podsekcje
 
 article:
-  back:
-    other: Wróć
+    back:
+        other: Wróć
 
-  tableOfContents:
-    other: Spis treści
+    tableOfContents:
+        other: Spis treści
 
-  relatedContent:
-    other: Powiązane artykuły
+    relatedContent:
+        other: Powiązane artykuły
 
-  lastUpdatedOn:
-    other: Ostatnio zaktualizowany
-
-  readingTime:
-    one: "Przeczytasz w {{ .Count }} minutę"
-    other: "Przeczytasz w {{ .Count }} minut"
+    lastUpdatedOn:
+        other: Ostatnio zaktualizowany
+    
+    readingTime:
+        one: "Przeczytasz w {{ .Count }} minutę"
+        other: "Przeczytasz w {{ .Count }} minut"
 
 notFound:
-  title:
-    other: Nie znaleziono
-  subtitle:
-    other: Ta strona nie istnieje
+    title:
+        other: Nie znaleziono
+    subtitle:
+        other: Ta strona nie istnieje
 
 widget:
-  archives:
-    title:
-      other: Archiwum
+    archives:
+        title:
+            other: Archiwum
 
-    more:
-      other: Więcej
+        more:
+            other: Więcej
 
-  tagCloud:
-    title:
-      other: Tagi
+    tagCloud:
+        title:
+            other: Tagi
+    
+    categoriesCloud:
+        title:
+            other: Kategorie
 
 search:
-  title:
-    other: Szukaj
+    title:
+        other: Szukaj
 
-  placeholder:
-    other: Wpisz coś...
+    placeholder:
+        other: Wpisz coś...
 
-  resultTitle:
-    other: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
+    resultTitle:
+        other: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
 
 footer:
-  builtWith:
-    other: Zbudowano z {{ .Generator }}
+    builtWith:
+        other: Zbudowano z {{ .Generator }}
 
-  designedBy:
-    other: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}
+    designedBy:
+        other: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}

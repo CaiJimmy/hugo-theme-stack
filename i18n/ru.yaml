@@ -1,63 +1,63 @@
 toggleMenu:
-  other: Показать/скрыть меню
+    other: Показать/скрыть меню
 
 darkMode:
-  other: Тёмный режим
+    other: Тёмный режим
 
 list:
-  page:
-    one: "{{ .Count }} страница"
-    few: "{{ .Count }} страницы"
-    many: "{{ .Count }} страниц"
-    other: "{{ .Count }} страниц"
+    page:
+        one: "{{ .Count }} страница"
+        few: "{{ .Count }} страницы"
+        many: "{{ .Count }} страниц"
+        other: "{{ .Count }} страниц"
 
-  section:
-    other: Раздел
+    section:
+        other: Раздел
 
-  subsection:
-    one: Подраздел
-    few: Подразделы
-    many: Подразделы
-    other: Подразделы
+    subsection:
+        one: Подраздел
+        few: Подразделы
+        many: Подразделы
+        other: Подразделы
 
 article:
-  back:
-    other: Назад
-  relatedContent:
-    other: Также рекомендуем
-  lastUpdatedOn:
-    other: Обновлено
-  tableOfContents:
-    other: Содержание
-  readingTime:
-    other: "Время чтения: {{ .Count }} мин."
+    back:
+        other: Назад
+    relatedContent:
+        other: Также рекомендуем
+    lastUpdatedOn:
+        other: Обновлено
+    tableOfContents: 
+        other: Содержание
+    readingTime: 
+        other: "Время чтения: {{ .Count }} мин."
 
 notFound:
-  title:
-    other: Не найдено
-  subtitle:
-    other: Запрашиваемая страница не существует
+    title:
+        other: Не найдено
+    subtitle:
+        other: Запрашиваемая страница не существует
 
 widget:
-  archives:
-    title:
-      other: Архивы
-    more:
-      other: Ещё
-  tagCloud:
-    title:
-      other: Теги
+    archives:
+        title:
+            other: Архивы
+        more:
+            other: Ещё
+    tagCloud:
+        title:
+            other: Теги
 
 search:
-  title:
-    other: Поиск
-  placeholder:
-    other: Введите что-нибудь...
-  resultTitle:
-    other: "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
+    title:
+        other: Поиск
+    placeholder:
+        other: Введите что-нибудь...
+    resultTitle:
+        other: "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
 
 footer:
-  builtWith:
-    other: Создано при помощи {{ .Generator }}
-  designedBy:
-    other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
+    builtWith:
+        other: Создано при помощи {{ .Generator }}
+    designedBy:
+        other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
