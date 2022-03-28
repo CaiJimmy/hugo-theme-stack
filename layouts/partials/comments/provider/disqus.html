@@ -13,8 +13,8 @@
 
 <script>
     window.addEventListener('onColorSchemeChange', (e) => {
-        if (DISQUS) {
-            DISQUS.reset({
+        if (window.DISQUS) {
+            window.DISQUS.reset({
                 reload: true
             });
         }
