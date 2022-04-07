@@ -1,0 +1,73 @@
+toggleMenu:
+    other: Toggle Menu
+
+darkMode:
+    other: دارک مد
+
+list:
+    page:
+        one: "{{ .Count }} صفحه"
+        other: "{{ .Count }} صفحه"
+
+    section:
+        other: سکشن
+
+    subsection:
+        one: Subsection
+        other: Subsections
+
+article:
+    back:
+        other: عقب
+
+    tableOfContents:
+        other: فهرست
+
+    relatedContents:
+        other: شاید اینام جالب باشه برات
+
+    lastUpdatedOn:
+        other: Last updated on
+
+    readingTime:
+        one: " خواندن در {{ .Count }} دقیقه"
+        other: " خواندن در {{ .Count }} دقیقه"
+
+notFound:
+    title:
+        other: پیدا نشد
+
+    subtitle:
+        other: این صفحه رو نداریم
+
+widget:
+    archives:
+        title:
+            other: آرشیو
+
+        more:
+            other: بیشتر
+
+    tagCloud:
+        title:
+            other: برچسب‌ها
+    categoriesCloud:
+        title:
+            other: دسته‌بندی‌ها
+
+search:
+    title:
+        other: جستجو
+
+    placeholder:
+        other: یچیزی بنویس
+
+    resultTitle:
+        other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+
+footer:
+    builtWith:
+        other: ساخته شده با {{ .Generator }}
+
+    designedBy:
+        other: تم {{ .Theme }} طراحی توسط  {{ .DesignedBy }}
