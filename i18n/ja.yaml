@@ -38,6 +38,10 @@ widget:
         title:
             other: タグ
 
+    categoriesCloud:
+        title:
+            other: カテゴリ
+
 search:
     title:
         other: 検索
@@ -47,3 +51,10 @@ search:
 
     resultTitle:
         other: "#PAGES_COUNT 件 （#TIME_SECONDS 秒）"
+
+footer:
+    builtWith:
+        other: Built with {{ .Generator }}
+
+    designedBy:
+        other: テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。

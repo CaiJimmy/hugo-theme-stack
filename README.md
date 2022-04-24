@@ -3,9 +3,13 @@
 
 > Card-style Hugo theme designed for bloggers.
 
+## Quickstart
+
+Use this template: [CaiJimmy/hugo-theme-stack-starter](https://github.com/CaiJimmy/hugo-theme-stack-starter)
+
 ## Demo
 
-[Example Site](https://theme-stack.jimmycai.com/)
+[Example Site](https://demo.stack.jimmycai.com/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a2d2807a-a905-4bcb-97da-8da8d847da3d/deploy-status)](https://app.netlify.com/sites/hugo-theme-stack/deploys)
 
@@ -28,6 +32,7 @@ Stack is a simple card-style Hugo theme designed for bloggers, some of its featu
 - Properly cropped thumbnails
 - Subsection support
 - Table of contents
+- Multilingual mode and RTL support
 
 ## Requirements
 
@@ -35,7 +40,10 @@ It's necessary to use **Hugo Extended ≥ 0.87.0**.
 
 ## Installation
 
-Clone / Download this repository to `theme` folder, and edit your site config following `exampleSite/config.yaml`.
+* Route 1: Clone / Download this repository to `themes` folder
+* Route 2: Turn your site into a hugo module and add this theme as a module dependency
+
+ Edit your site config following `exampleSite/config.yaml`.
 
 *Note: Remove `config.toml` if there is one in the site folder.*
 

@@ -10,6 +10,8 @@ import { getColor } from 'ts/color';
 import menu from 'ts/menu';
 import createElement from 'ts/createElement';
 import StackColorScheme from 'ts/colorScheme';
+import { setupScrollspy } from 'ts/scrollspy';
+import { setupSmoothAnchors } from "ts/smoothAnchors";
 
 let Stack = {
     init: () => {
@@ -21,6 +23,8 @@ let Stack = {
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
             new StackGallery(articleContent);
+            setupSmoothAnchors();
+            setupScrollspy();
         }
 
         /**
@@ -58,20 +62,21 @@ let Stack = {
         /**
          * Add copy button to code block
         */
-        const codeBlocks = document.querySelectorAll('.article-content .highlight');
+        const highlights = document.querySelectorAll('.article-content div.highlight');
         const copyText = `Copy`,
             copiedText = `Copied!`;
-        codeBlocks.forEach(codeBlock => {
+
+        highlights.forEach(highlight => {
             const copyButton = document.createElement('button');
             copyButton.innerHTML = copyText;
             copyButton.classList.add('copyCodeButton');
-            codeBlock.appendChild(copyButton);
+            highlight.appendChild(copyButton);
 
-            const pre = codeBlock.getElementsByTagName('pre');
-            const code = pre[0].textContent;
+            const codeBlock = highlight.querySelector('code[data-lang]');
+            if (!codeBlock) return;
 
             copyButton.addEventListener('click', () => {
-                navigator.clipboard.writeText(code)
+                navigator.clipboard.writeText(codeBlock.textContent)
                     .then(() => {
                         copyButton.textContent = copiedText;
 

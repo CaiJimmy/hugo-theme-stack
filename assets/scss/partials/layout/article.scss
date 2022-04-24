@@ -13,10 +13,6 @@
         box-shadow: var(--shadow-l1);
         overflow: hidden;
 
-        &.main-article {
-            margin-bottom: var(--section-separation);
-        }
-
         .article-header {
             .article-image {
                 img {
@@ -57,11 +53,11 @@
                 display: flex;
                 align-items: center;
                 font-size: 1.4rem;
+                gap: 15px;
 
                 svg {
                     width: 20px;
                     height: 20px;
-                    margin-right: 15px;
                     stroke-width: 1.33;
                 }
             }
@@ -71,115 +67,12 @@
                 text-transform: unset;
             }
 
-            .article-copyright, .article-lastmod {
+            .article-copyright,
+            .article-lastmod {
                 a {
                     color: var(--body-text-color);
                 }
             }
-        }
-    }
-}
-
-#article-toolbar {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-
-    @include respond(md) {
-        display: none;
-    }
-
-    .back-home {
-        background: var(--card-background);
-        border-radius: var(--tag-border-radius);
-        color: var(--card-text-color-tertiary);
-        margin-right: 30px;
-        display: inline-flex;
-        align-items: center;
-        font-size: 1.4rem;
-        text-transform: uppercase;
-        padding: 10px 20px 10px 15px;
-
-        transition: box-shadow 0.3s ease;
-
-        box-shadow: var(--shadow-l1);
-
-        &:hover {
-            box-shadow: var(--shadow-l2);
-        }
-
-        svg {
-            margin-right: 5px;
-            width: 20px;
-            height: 20px;
-        }
-
-        span {
-            font-weight: 500;
-            white-space: nowrap;
-        }
-    }
-}
-
-.article-page.has-toc {
-    scroll-behavior: smooth;
-
-    .left-sidebar {
-        display: none;
-    }
-
-    .right-sidebar {
-        width: 100%;
-        padding: 0;
-        display: none;
-
-        @include respond(xl) {
-            display: block;
-            top: var(--main-top-padding);
-        }
-    }
-
-    #article-toolbar {
-        display: block;
-
-        @include respond(md) {
-            padding: 0;
-        }
-
-        @include respond(xl) {
-            margin-top: 0;
-            position: sticky;
-            top: var(--main-top-padding);
-            flex-shrink: 1;
-
-            a {
-                background: transparent;
-                box-shadow: none;
-                border: 1px solid var(--body-text-color);
-                width: 100%;
-                margin-right: 0;
-
-                svg {
-                    flex-shrink: 0;
-                }
-            }
-        }
-    }
-
-    .main-container {
-        align-items: start;
-        flex-direction: column;
-
-        @include respond(xl) {
-            flex-direction: row;
-        }
-    }
-
-    .main {
-        padding-top: 0;
-
-        @include respond(xl) {
-            padding-top: var(--main-top-padding);
         }
     }
 }
@@ -192,6 +85,10 @@
     flex-direction: column;
     color: var(--card-text-color-main);
     overflow: hidden;
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--card-separator-color);
+    }
 
     #TableOfContents {
         overflow-x: auto;
@@ -207,7 +104,7 @@
             list-style-type: none;
             counter-reset: item;
 
-            li:before {
+            li a::before {
                 counter-increment: item;
                 content: counters(item, ".") ". ";
                 font-weight: bold;
@@ -220,7 +117,7 @@
         }
 
         li {
-            margin: 15px 20px;
+            margin: 15px 0 15px 20px;
             padding: 5px;
 
             & > ol,
@@ -234,11 +131,39 @@
                 }
             }
         }
-    }
-}
+        li.active-class > a {
+            border-left: var(--heading-border-size) solid var(--accent-color);
+            font-weight: bold;
+        }
 
-.related-contents--wrapper {
-    margin-bottom: var(--section-separation);
+        ul li.active-class > a {
+            display: block;
+        }
+
+        @function repeat($str, $n) {
+            $result: "";
+            @for $_ from 0 to $n {
+                $result: $result + $str;
+            }
+            @return $result;
+        }
+
+        // Support up to 6 levels of indentation for lists in ToCs
+        @for $i from 0 to 5 {
+            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
+                $n: 25 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            }
+
+            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
+                $n: 9 + $i * 35;
+                margin-left: calc(-#{$n}px - 1em);
+                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+                display: block;
+            }
+        }
+    }
 }
 
 .related-contents {
@@ -286,9 +211,9 @@
     h4,
     h5,
     h6 {
-        margin-left: calc((var(--card-padding)) * -1);
-        padding-left: calc(var(--card-padding) - var(--heading-border-size));
-        border-left: var(--heading-border-size) solid var(--accent-color);
+        margin-inline-start: calc((var(--card-padding)) * -1);
+        padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
+        border-inline-start: var(--heading-border-size) solid var(--accent-color);
     }
 
     figure {
@@ -303,7 +228,7 @@
     blockquote {
         position: relative;
         margin: 1.5em 0;
-        border-left: var(--blockquote-border-size) solid var(--card-separator-color);
+        border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
         padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
     }
@@ -331,13 +256,10 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
+        gap: 10px;
 
         figure {
             margin: 0;
-
-            & + figure {
-                margin-left: 10px;
-            }
         }
     }
 
@@ -350,13 +272,60 @@
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
-
+        //  keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
         code {
             color: unset;
             border: none;
             background: none;
             padding: 0;
         }
+    }
+
+    .highlight {
+        background-color: var(--pre-background-color);
+        padding: var(--card-padding);
+        position: relative;
+
+        &:hover {
+            .copyCodeButton {
+                opacity: 1;
+            }
+        }
+        // keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
+        pre {
+            margin: initial;
+            padding: 0;
+            margin: 0;
+            width: auto;
+        }
+    }
+
+    .copyCodeButton {
+        position: absolute;
+        top: calc(var(--card-padding));
+        right: calc(var(--card-padding));
+        background: var(--card-background);
+        border: none;
+        box-shadow: var(--shadow-l2);
+        border-radius: var(--tag-border-radius);
+        padding: 8px 16px;
+        color: var(--card-text-color-main);
+        cursor: pointer;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .table-wrapper {
+        padding: 0 var(--card-padding);
+        overflow-x: auto;
+        display: block;
     }
 
     table {
@@ -407,38 +376,14 @@
     /// Negative margins
     blockquote,
     figure,
-    .gallery,
+    .highlight,
     pre,
+    .gallery,
     .video-wrapper,
+    .table-wrapper,
     .s_video_simple {
         margin-left: calc((var(--card-padding)) * -1);
         margin-right: calc((var(--card-padding)) * -1);
         width: calc(100% + var(--card-padding) * 2);
-    }
-
-    .highlight {
-        position: relative;
-
-        &:hover {
-            .copyCodeButton {
-                opacity: 1;
-            }
-        }
-    }
-
-    .copyCodeButton {
-        position: absolute;
-        top: calc(var(--card-padding));
-        right: 0;
-        background: var(--card-background);
-        border: none;
-        box-shadow: var(--shadow-l2);
-        border-radius: var(--tag-border-radius);
-        padding: 8px 16px;
-        color: var(--card-text-color-main);
-        cursor: pointer;
-        font-size: 14px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
     }
 }

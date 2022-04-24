@@ -1,25 +1,11 @@
 $defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
 $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
-[data-scheme="light"] {
-    --pre-text-color: #272822;
-    --pre-background-color: #fafafa;
-    @import "partials/highlight/light.scss";
-}
-
-[data-scheme="dark"] {
-    --pre-text-color: #f8f8f2;
-    --pre-background-color: #272822;
-    @import "partials/highlight/dark.scss";
-}
-
 /*
 *   Global style
 */
 :root {
-    @include respond(md) {
-        --main-top-padding: 35px;
-    }
+    --main-top-padding: 35px;
 
     @include respond(xl) {
         --main-top-padding: 50px;
@@ -45,7 +31,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --accent-color-darker: #bdc3c7;
         --accent-color-text: #000;
         --body-text-color: rgba(255, 255, 255, 0.7);
-        --scrollbar-thumb: #424242;
+        --scrollbar-thumb: hsl(0, 0%, 40%);
         --scrollbar-track: var(--body-background);
     }
 }
@@ -158,4 +144,22 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
         0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+[data-scheme="light"] {
+    --pre-text-color: #272822;
+    --pre-background-color: #fafafa;
+    @import "partials/highlight/light.scss";
+}
+
+[data-scheme="dark"] {
+    --pre-text-color: #f8f8f2;
+    --pre-background-color: #272822;
+    @import "partials/highlight/dark.scss";
+}
+
+:root {
+    --menu-icon-separation: 40px;
+    --container-padding: 15px;
+    --widget-separation: var(--section-separation);
 }
