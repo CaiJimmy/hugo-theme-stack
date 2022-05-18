@@ -72,6 +72,10 @@
                 a {
                     color: var(--body-text-color);
                 }
+
+                a.link {
+                    box-shadow: unset;
+                }
             }
         }
     }
