@@ -373,6 +373,21 @@
         }
     }
 
+    .toc--inline {
+        background-color: rgb(241, 241, 241); 
+        margin-left: calc((var(--card-padding)) * -1); 
+        margin-right: calc((var(--card-padding)) * -1); 
+        padding-left: var(--card-padding);
+        padding-right: var(--card-padding);
+        
+        padding-top: var(--card-padding);
+        padding-bottom: var(--card-padding);
+
+        @include respond(xl) {
+            display: none;
+        }
+    }
+
     /// Negative margins
     blockquote,
     figure,

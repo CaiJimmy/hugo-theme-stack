@@ -10,7 +10,7 @@
         max-width: var(--right-sidebar-max-width);
 
         /// Display right sidebar when min-width: lg
-        @include respond(lg) {
+        @include respond(xl) {
             display: flex;
         }
     }
