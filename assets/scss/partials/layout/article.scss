@@ -374,7 +374,7 @@
     }
 
     .toc--inline {
-        background-color: rgb(241, 241, 241); 
+        background-color: var(--blockquote-background-color); 
         margin-left: calc((var(--card-padding)) * -1); 
         margin-right: calc((var(--card-padding)) * -1); 
         padding-left: var(--card-padding);
