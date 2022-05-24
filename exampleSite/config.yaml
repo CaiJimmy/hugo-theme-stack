@@ -110,6 +110,7 @@ params:
                 - url
             locale:
                 admin: Admin
+                placeholder: 
 
         twikoo:
             envId:
