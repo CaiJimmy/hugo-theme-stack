@@ -34,6 +34,19 @@ Stack is a simple card-style Hugo theme designed for bloggers, some of its featu
 - Table of contents
 - Multilingual mode and RTL support
 
+
+
+## [Add hugo contact form](https://fabform.io/a/hugo-contact-form)
+
+```
+<form action="https://fabform.io/f/{form-id}" method="post">
+ <label for="email">Your Email</label>
+ <input name="email" type="email">
+ <button type="submit">Submit</button> 
+</form>
+```
+
+
 ## Requirements
 
 It's necessary to use **Hugo Extended ≥ 0.87.0**.
