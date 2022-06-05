@@ -11,7 +11,7 @@ a {
         transition: all 0.3s ease;
 
         &:hover {
-            box-shadow: 0px calc(-1rem*var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+            box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
         }
     }
 }
