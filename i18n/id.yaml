@@ -23,7 +23,7 @@ article:
     tableOfContents:
         other: Daftar Isi
 
-    relatedContents:
+    relatedContent:
         other: Konten terkait
 
     lastUpdatedOn:
@@ -50,6 +50,10 @@ widget:
     tagCloud:
         title:
             other: Tag
+
+    categoriesCloud:
+        title:
+            other: Kategori
 
 search:
     title:

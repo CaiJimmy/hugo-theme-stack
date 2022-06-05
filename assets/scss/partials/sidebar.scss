@@ -11,13 +11,15 @@
     flex-direction: column;
     flex-shrink: 0;
     align-self: stretch;
-
-    width: 100%;
-    padding: 30px 0 15px 0;
+    gap: var(--sidebar-element-separation);
     max-width: none;
+    width: 100%;
+    position: relative;
 
-    --sidebar-avatar-size: 120px;
+    --sidebar-avatar-size: 100px;
     --sidebar-element-separation: 20px;
+    --emoji-size: 40px;
+    --emoji-font-size: 20px;
 
     @include respond(md) {
         width: auto;
@@ -27,18 +29,49 @@
     }
 
     @include respond(2xl) {
-        --sidebar-avatar-size: 140px;
+        --sidebar-avatar-size: 120px;
         --sidebar-element-separation: 25px;
+        --emoji-size: 40px;
     }
 
     &.sticky {
         top: 0;
     }
+
+    &.compact {
+        --sidebar-avatar-size: 80px;
+        --emoji-size: 30px;
+        --emoji-font-size: 15px;
+
+        header {
+            @include respond(lg) {
+                flex-direction: row;
+            }
+
+            .site-meta {
+                gap: 5px;
+            }
+
+            .site-name {
+                font-size: 1.4rem;
+
+                @include respond(2xl) {
+                    font-size: 1.75rem;
+                }
+            }
+
+            .site-description {
+                font-size: 1.4rem;
+            }
+        }
+    }
 }
 
 .right-sidebar {
-    flex-shrink: 0;
+    width: 100%;
     display: none;
+    flex-direction: column;
+    gap: var(--widget-separation);
 
     &.sticky {
         top: 0;
@@ -49,11 +82,12 @@
     }
 }
 
-.site-info {
+.sidebar header {
     z-index: 1;
     transition: box-shadow 0.5s ease;
-
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sidebar-element-separation);
 
     @include respond(md) {
         padding: 0;
@@ -64,8 +98,7 @@
         margin: 0;
         width: var(--sidebar-avatar-size);
         height: var(--sidebar-avatar-size);
-
-        margin-bottom: var(--sidebar-element-separation);
+        flex-shrink: 0;
 
         .site-logo {
             width: 100%;
@@ -76,58 +109,44 @@
 
         .emoji {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: var(--emoji-size);
+            height: var(--emoji-size);
+            line-height: var(--emoji-size);
             border-radius: 100%;
             bottom: 0;
             right: 0;
             text-align: center;
-            font-size: 20px;
+            font-size: var(--emoji-font-size);
             background-color: var(--card-background);
             box-shadow: var(--shadow-l2);
-
-            @include respond(2xl) {
-                width: 50px;
-                height: 50px;
-                line-height: 50px;
-            }
         }
+    }
+
+    .site-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
     }
 
     .site-name {
         color: var(--accent-color);
         margin: 0;
-        font-size: 1.8rem;
-
-        @include respond(2xl) {
-            font-size: 2rem;
-        }
-    }
-
-    .site-description {
-        color: var(--body-text-color);
-        font-weight: normal;
-        margin: 10px 0;
         font-size: 1.6rem;
 
         @include respond(2xl) {
             font-size: 1.8rem;
         }
     }
-}
 
-.sidebar {
-    .widget {
-        margin-bottom: var(--section-separation);
+    .site-description {
+        color: var(--body-text-color);
+        font-weight: normal;
+        margin: 0;
+        font-size: 1.4rem;
 
-        &:not(:last-of-type):after {
-            content: "";
-            width: 100px;
-            height: 2px;
-            background-color: var(--body-text-color);
-            display: block;
-            margin-top: var(--section-separation);
+        @include respond(2xl) {
+            font-size: 1.6rem;
         }
     }
 }
@@ -153,8 +172,27 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    gap: var(--menu-icon-separation);
 
     .icon-tabler-toggle-right {
         display: none;
+    }
+}
+
+#i18n-switch {
+    color: var(--body-text-color);
+    display: inline-flex;
+    align-content: center;
+    gap: var(--menu-icon-separation);
+
+    select {
+        border: 0;
+        background-color: transparent;
+        color: var(--body-text-color);
+
+        option {
+            color: var(--card-text-color-main);
+            background-color: var(--card-background);
+        }
     }
 }
