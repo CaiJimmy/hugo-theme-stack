@@ -17,7 +17,7 @@ list:
         other: Subsecties
 
 article:
-    relatedContents:
+    relatedContent:
         other: Gerelateerde inhoud
     lastUpdatedOn:
         other: Laatst bijgewerkt op
@@ -37,6 +37,10 @@ widget:
     tagCloud:
         title:
             other: Tags
+
+    categoriesCloud:
+        title:
+            other: Categorie
 
 search:
     title:
