@@ -97,21 +97,20 @@ params:
             clientSecret:
             autoCreateIssue: false
 
-        # Waline client configuration see: https://waline.js.org/en/reference/client.html
+        # Waline client configuration see: https://waline.js.org/en/reference/component.html
         waline:
             serverURL:
             lang:
-            visitor:
-            avatar:
+            pageview:
             emoji:
-                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+                - https://unpkg.com/@waline/emojis@1.0.1/weibo
             requiredMeta:
                 - name
                 - email
                 - url
-            placeholder:
             locale:
                 admin: Admin
+                placeholder: 
 
         twikoo:
             envId:
