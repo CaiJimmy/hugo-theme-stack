@@ -1,0 +1,73 @@
+toggleMenu:
+    other: Menü Kapcsolása
+
+darkMode:
+    other: Sötét Mód
+
+list:
+    page:
+        one: "{{ .Count }} oldal"
+        other: "{{ .Count }} oldalak"
+
+    section:
+        other: Szekció
+
+    subsection:
+        one: Alszekció
+        other: Alszekciók
+
+article:
+    back:
+        other: Vissza
+
+    tableOfContents:
+        other: Tartalomjegyzék
+
+    relatedContent:
+        other: Kapcsolódó tartalom
+
+    lastUpdatedOn:
+        other: Utolsó frissítés időpontja
+
+    readingTime:
+        one: "{{ .Count }} percnyi olvasmány"
+        other: "{{ .Count }} percnyi olvasmány"
+
+notFound:
+    title:
+        other: Nem található
+
+    subtitle:
+        other: Ez az oldal nem létezik
+
+widget:
+    archives:
+        title:
+            other: Archívum
+
+        more:
+            other: Több
+
+    tagCloud:
+        title:
+            other: Cimkék
+    categoriesCloud:
+        title:
+            other: Kategóriák
+
+search:
+    title:
+        other: Keresés
+
+    placeholder:
+        other: Írj valamit...
+
+    resultTitle:
+        other: "#PAGES_COUNT oldal (#TIME_SECONDS másodperc alatt)"
+
+footer:
+    builtWith:
+        other: "{{ .Generator }} használatával készült"
+
+    designedBy:
+        other: A {{ .Theme }} dizájnt {{ .DesignedBy }} tervezte
