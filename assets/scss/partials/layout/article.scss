@@ -231,6 +231,16 @@
         border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
         padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
+
+        .cite {
+            display: block;
+            text-align: right;
+            font-size: 0.75em;
+
+            a {
+                text-decoration: underline;
+            }
+        }
     }
 
     hr {
