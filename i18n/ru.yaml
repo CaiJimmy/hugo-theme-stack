@@ -23,7 +23,7 @@ list:
 article:
     back:
         other: Назад
-    relatedContents:
+    relatedContent:
         other: Также рекомендуем
     lastUpdatedOn:
         other: Обновлено

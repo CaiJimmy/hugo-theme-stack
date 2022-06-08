@@ -1,6 +1,6 @@
 Vibrant:
-    - src: https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js
-      integrity: sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=
+    - src: https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js
+      integrity: sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=
       type: script
 
 PhotoSwipe:
@@ -14,26 +14,24 @@ PhotoSwipe:
       type: script
       defer: true
 
-    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css
-      integrity: sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=
+    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css
       type: style
 
-    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css
-      integrity: sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=
+    - src: https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css
       type: style
 
 KaTeX:
-    - src: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css
-      integrity: sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn
+    - src: https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css
+      integrity: sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=
       type: style
 
-    - src: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js
-      integrity: sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8
+    - src: https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js
+      integrity: sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=
       type: script
       defer: true
 
-    - src: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js
-      integrity: sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl
+    - src: https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js
+      integrity: sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=
       type: script
       defer: true
 
