@@ -108,7 +108,7 @@
             list-style-type: none;
             counter-reset: item;
 
-            li a::before {
+            li a:first-of-type::before {
                 counter-increment: item;
                 content: counters(item, ".") ". ";
                 font-weight: bold;
