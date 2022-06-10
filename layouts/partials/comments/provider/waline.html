@@ -1,4 +1,5 @@
-<script src='//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js'></script>
+<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
 <div id="waline" class="waline-container"></div>
 <style>
     .waline-container {
@@ -6,15 +7,16 @@
         border-radius: var(--card-border-radius);
         box-shadow: var(--shadow-l1);
         padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
     }
-    .waline-container .vcount {
+    .waline-container .wl-count {
         color: var(--card-text-color-main);
     }
 </style>
 
 {{- with .Site.Params.comments.waline -}}
 {{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` -}}
-{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "avatarcdn" "avatarCDN" "avatarforce" "avatarForce" -}}
+{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" -}}
 
 {{- range $key, $val := . -}}
     {{- if $val -}}  
@@ -27,6 +29,6 @@
 
 <script>
     /// Waline client configuration see: https://waline.js.org/en/reference/client.html
-    new Waline({{ $config | jsonify | safeJS }});
+    Waline.init({{ $config | jsonify | safeJS }});
 </script>
 {{- end -}}
