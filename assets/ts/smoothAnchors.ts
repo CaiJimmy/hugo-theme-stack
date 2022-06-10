@@ -23,7 +23,7 @@ function setupSmoothAnchors() {
 
             let targetId = aElement.getAttribute("href").substring(1);
             // The replace done on ':' is here for footnotes, as this character would otherwise interfere when used as a CSS selector.
-            let target = document.querySelector(`#${targetId.replace(":", "\\:")}`) as HTMLElement;
+            let target = document.getElementById(targetId.replace(":", "\\:")) as HTMLElement;
 
             window.history.pushState({}, "", aElement.getAttribute("href"));
             scrollTo({ top: target.offsetTop, behavior: "smooth" });
