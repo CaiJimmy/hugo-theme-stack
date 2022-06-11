@@ -17,16 +17,18 @@ body:
       required: true
   - type: input
     id: hugo-version
-    label: Hugo version
-    description: "What is the version of Hugo you are using? (Note: this theme does not support non-extended version of Hugo)"
-    placeholder: ex. 0.100.0
+    attributes:
+      label: Hugo version
+      description: "What is the version of Hugo you are using? (Note: this theme does not support non-extended version of Hugo)"
+      placeholder: ex. 0.100.0
     validations:
       required: true
   - type: input
     id: theme-version
-    label: Theme version
-    description: "What is the version of Stack theme you are using?"
-    placeholder: ex. 3.12.0
+    attributes:
+      label: Theme version
+      description: "What is the version of Stack theme you are using?"
+      placeholder: ex. 3.12.0
     validations:
       required: true
   - type: dropdown
@@ -49,15 +51,17 @@ body:
     attributes:
       value: |
         If the issue is not present on the [demo site](https://demo.stack.jimmycai.com), in order to better understand the problem, please provide the link to the source code of your website (not the generated HTML). 
-        Or link to a minimal reproduction of the problem if there are sensible data. 
+        Or link to a minimal reproduction of the problem if there are sensible data.
   - type: input
     id: bug-url
-    label: Link to the page with bug  
-    placeholder: https://demo.stack.jimmycai.com
-    value: https://demo.stack.jimmycai.com
+    attributes:
+      label: Link to the page with bug
+      placeholder: https://demo.stack.jimmycai.com
+      value: https://demo.stack.jimmycai.com
     validations:
       required: true
   - type: input
     id: source-repo
-    label: Link to the source repository
-    placeholder: https://github.com/CaiJimmy/hugo-theme-stack
+    attributes:
+      label: Link to the source repository
+      placeholder: https://github.com/CaiJimmy/hugo-theme-stack
