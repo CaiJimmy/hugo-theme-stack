@@ -10,7 +10,7 @@
                     {{- $Width := $imageRaw.Width -}}
                     {{- $Height := $imageRaw.Height -}}
 
-                    {{- if .context.Site.Params.imageProcessing.cover.enabled -}}
+                    {{- if eq .context.Site.Params.imageProcessing.cover.enabled true -}}
                         {{- $thumbnail := $imageRaw.Fill .size -}}
                         {{- $Permalink = $thumbnail.RelPermalink -}}
                         {{- $Width = $thumbnail.Width -}}
