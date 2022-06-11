@@ -41,6 +41,14 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
+  - type: input
+    id: browser-info
+    attributes:
+      label: More information about the browser
+      description: "E.g: Browser version, OS version, etc."
+      placeholder: ex. Chrome 104, Windows 11
+    validations:
+      required: false
   - type: textarea
     id: logs
     attributes:
