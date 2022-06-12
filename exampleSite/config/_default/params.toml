@@ -1,6 +1,7 @@
 mainSections = ["post"]
 featuredImageField = "image"
 rssFullContent = true
+favicon = "img/favicon.png"
 
 [footer]
 since = 2020
@@ -16,7 +17,7 @@ subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 [sidebar.avatar]
 enabled = true
 local = true
-src = "img/avatar.png"
+src = "img/logo.jpg"
 
 [article]
 math = false
