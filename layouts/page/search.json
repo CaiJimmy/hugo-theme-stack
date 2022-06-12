@@ -7,7 +7,7 @@
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
     {{- if $image.exists -}}
         {{- $imagePermalink := "" -}}
-        {{- if and $image.resource (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+        {{- if and $image.resource .Page.Site.Params.imageProcessing.cover.enabled -}}
             {{- $thumbnail := $image.resource.Fill "120x120" -}}
             {{- $imagePermalink = (absURL $thumbnail.Permalink) -}}
         {{- else -}}
