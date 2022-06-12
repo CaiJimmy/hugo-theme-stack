@@ -19,6 +19,9 @@ article:
     readingTime:
         one: "{{ .Count }} minute read"
         other: "{{ .Count }} minute read"
+    codeblock:
+        copy: Copy
+        copied: Copied!
 
 notFound:
     title: Not Found

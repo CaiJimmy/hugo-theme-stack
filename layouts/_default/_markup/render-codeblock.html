@@ -6,9 +6,9 @@
         <button 
             class="codeblock-copy"
             data-id="codeblock-id-{{ .Ordinal }}"
-            data-copied-text="Copied!"
+            data-copied-text="{{ T `article.codeblock.copied` }}"
         >
-            Copy
+            {{ T `article.codeblock.copy` }}
         </button>
     </header>
     <code id="codeblock-id-{{ .Ordinal }}" style="display:none;">{{- .Inner -}}</code>
