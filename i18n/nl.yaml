@@ -1,57 +1,38 @@
-toggleMenu:
-    other: Open Menu
+toggleMenu: Open Menu
 
-darkMode:
-    other: Donkere modus
+darkMode: Donkere modus
 
 list:
     page:
         one: "{{ .Count }} pagina"
         other: "{{ .Count }} pagina's"
-
-    section:
-        other: Sectie
-
+    section: Sectie
     subsection:
         one: Subsectie
         other: Subsecties
 
 article:
-    relatedContent:
-        other: Gerelateerde inhoud
-    lastUpdatedOn:
-        other: Laatst bijgewerkt op
+    relatedContent: Gerelateerde inhoud
+    lastUpdatedOn: Laatst bijgewerkt op
 
 notFound:
-    title:
-        other: Niet gevonden
-    subtitle:
-        other: Deze pagina bestaat niet.
+    title: Niet gevonden
+    subtitle: Deze pagina bestaat niet.
 
 widget:
     archives:
-        title:
-            other: Archief
-        more:
-            other: Meer
+        title: Archief
+        more: Meer
     tagCloud:
-        title:
-            other: Tags
-
+        title: Tags
     categoriesCloud:
-        title:
-            other: Categorie
+        title: Categorie
 
 search:
-    title:
-        other: Zoeken
-    placeholder:
-        other: Typ iets
-    resultTitle:
-        other: "#PAGES_COUNT pagina's (#TIME_SECONDS seconden)"
+    title: Zoeken
+    placeholder: Typ iets
+    resultTitle: "#PAGES_COUNT pagina's (#TIME_SECONDS seconden)"
 
 footer:
-    builtWith:
-        other: Gemaakt met {{ .Generator }}
-    designedBy:
-        other: Theme {{ .Theme }} ontworpen door {{ .DesignedBy }}
+    builtWith: Gemaakt met {{ .Generator }}
+    designedBy: Theme {{ .Theme }} ontworpen door {{ .DesignedBy }}

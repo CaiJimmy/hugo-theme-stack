@@ -1,73 +1,43 @@
-toggleMenu:
-    other: Toggle Menu
+toggleMenu: Toggle Menu
 
-darkMode:
-    other: Dark Mode
+darkMode: Dark Mode
 
 list:
     page:
         one: "{{ .Count }} pagina"
         other: "{{ .Count }} pagine"
-
-    section:
-        other: Sezione
-
+    section: Sezione
     subsection:
         one: Sottosezione
         other: Sottosezioni
 
 article:
-    back:
-        other: Indietro
-
-    tableOfContents:
-        other: Indice
-
-    relatedContent:
-        other: Contenuti correlati
-
-    lastUpdatedOn:
-        other: Aggiornato il
-
+    back: Indietro
+    tableOfContents: Indice
+    relatedContent: Contenuti correlati
+    lastUpdatedOn: Aggiornato il
     readingTime:
         one: "{{ .Count }} min per leggere"
         other: "{{ .Count }} min per leggere"
 
 notFound:
-    title:
-        other: Non trovato
-    subtitle:
-        other: Questa pagina non esiste.
+    title: Non trovato
+    subtitle: Questa pagina non esiste.
 
 widget:
     archives:
-        title:
-            other: Archivi
-
-        more:
-            other: Di più
-
+        title: Archivi
+        more: Di più
     tagCloud:
-        title:
-            other: Tags
-
+        title: Tags
     categoriesCloud:
-        title:
-            other: Categorie
+        title: Categorie
 
 search:
-    title:
-        other: Cerca
-
-    placeholder:
-        other: Scrivi qualcosa...
-
-    resultTitle:
-        other: "#PAGES_COUNT pagine (#TIME_SECONDS secondi)"
+    title: Cerca
+    placeholder: Scrivi qualcosa...
+    resultTitle: "#PAGES_COUNT pagine (#TIME_SECONDS secondi)"
 
 footer:
-    builtWith:
-        other: Realizzato con {{ .Generator }}
-
-    designedBy:
-        other: Tema {{ .Theme }} realizzato da {{ .DesignedBy }}
+    builtWith: Realizzato con {{ .Generator }}
+    designedBy: Tema {{ .Theme }} realizzato da {{ .DesignedBy }}
