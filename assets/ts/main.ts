@@ -5,7 +5,6 @@
 *   @website: https://jimmycai.com
 *   @link: https://github.com/CaiJimmy/hugo-theme-stack
 */
-import StackGallery from "ts/gallery";
 import StackCodeBlock from "ts/codeblock";
 import menu from 'ts/menu';
 import createElement from 'ts/createElement';
@@ -22,7 +21,6 @@ let Stack = {
 
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
-            new StackGallery(articleContent);
             setupSmoothAnchors();
             setupScrollspy();
         }
