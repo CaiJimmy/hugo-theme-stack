@@ -112,6 +112,12 @@ rev = "11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13"
 + features = ["jpeg", "dynamic"]
 ```
 
+### One line code block
+
+```html
+<p>A paragraph</p>
+```
+
 ## List Types
 
 ### Ordered List
