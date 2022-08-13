@@ -4,6 +4,7 @@ author = "Bawali Coder"
 categories = []
 date = 2022-08-13T18:31:00Z
 description = "“Everybody makes mistakes. Everybody has those days.” -  MILEY CYRUS (Miley Stewart - HANNAH MONTANA)"
+draft = true
 image = "/uploads/hacker.png"
 series = []
 tags = ["Application", "Operating System", "Network", "Security", "Linux"]
