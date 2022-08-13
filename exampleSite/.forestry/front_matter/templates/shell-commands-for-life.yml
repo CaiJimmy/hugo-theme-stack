@@ -31,3 +31,4 @@ fields:
   label: image
 pages:
 - exampleSite/content/post/Shell Commands for Life/shell-for-life.md
+- exampleSite/content/post/some-mistakes.md
