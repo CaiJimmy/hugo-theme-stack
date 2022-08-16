@@ -230,10 +230,11 @@
     }
 
     blockquote {
+        color: #777777;
         position: relative;
         margin: 1.5em 0;
         border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
+        padding-left: calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
 
         .cite {
@@ -244,6 +245,10 @@
             a {
                 text-decoration: underline;
             }
+        }
+
+        .p {
+          padding-left: 5px;
         }
     }
 
