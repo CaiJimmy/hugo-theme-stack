@@ -1,0 +1,75 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure you have checked the [documentation](https://docs.stack.jimmycai.com/).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen? Please be as detailed as possible, include screenshots and any other information that might help us reproduce the problem.
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: input
+    id: hugo-version
+    attributes:
+      label: Hugo version
+      description: "What is the version of Hugo you are using? (Note: this theme does not support non-extended version of Hugo)"
+      placeholder: ex. 0.100.0
+    validations:
+      required: true
+  - type: input
+    id: theme-version
+    attributes:
+      label: Theme version
+      description: "What is the version of Stack theme you are using?"
+      placeholder: ex. 3.12.0
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: input
+    id: browser-info
+    attributes:
+      label: More information about the browser
+      description: "E.g: Browser version, OS version, etc."
+      placeholder: ex. Chrome 104, Windows 11
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: markdown
+    attributes:
+      value: |
+        If the issue is not present on the [demo site](https://demo.stack.jimmycai.com), in order to better understand the problem, please provide the link to the source code of your website (not the generated HTML). 
+        Or link to a minimal reproduction of the problem if there are sensible data.
+  - type: input
+    id: bug-url
+    attributes:
+      label: Link to the page with bug
+      placeholder: https://demo.stack.jimmycai.com
+      value: https://demo.stack.jimmycai.com
+    validations:
+      required: true
+  - type: input
+    id: source-repo
+    attributes:
+      label: Link to the source repository
+      placeholder: https://github.com/CaiJimmy/hugo-theme-stack

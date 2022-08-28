@@ -92,10 +92,12 @@ params:
             category:
             categoryID:
             mapping:
+            strict:
             lightTheme:
             darkTheme:
             reactionsEnabled: 1
             emitMetadata: 0
+            inputPosition:
             lang:
 
         gitalk:
