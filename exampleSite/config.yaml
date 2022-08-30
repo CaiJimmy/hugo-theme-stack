@@ -42,7 +42,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon:  # Update the notes about favicon in the configuration theme, "/" must be added before the image file path, otherwise pages other than the home page will not be displayed, such as `/img/favicon.png`
 
     footer:
         since: 2020
