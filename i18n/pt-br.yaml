@@ -48,6 +48,9 @@ widget:
     tagCloud:
         title:
             other: Tags
+    categoriesCloud:
+        title:
+            other: Categorias
 
 search:
     title:
