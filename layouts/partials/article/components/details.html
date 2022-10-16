@@ -34,7 +34,7 @@
             </div>
         {{ end }}
 
-        {{ if .Site.Params.article.readingTime }}
+    {{ if and (not (.Params.DisableReadTime | default false)) (.Site.Params.article.readingTime)}}
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
