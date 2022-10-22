@@ -6,19 +6,19 @@ darkMode:
 
 list:
     page:
-        one: "{{ .Count }} পৃষ্ঠা"
-        other: "{{ .Count }} পৃষ্ঠা"
+        one: "{{ .Count }} পাতা"
+        other: "{{ .Count }} পাতা"
 
     section:
         other: অনুচ্ছেদ
 
     subsection:
-        one: উপঅনুচ্ছেদ
-        other: উপঅনুচ্ছেদ
+        one: উপ-অনুচ্ছেদ
+        other: উপ-অনুচ্ছেদ
 
 article:
     back:
-        other: পেছনে যান
+        other: পেছনে
 
     tableOfContents:
         other: সূচিপত্র
@@ -27,7 +27,7 @@ article:
         other: সম্পর্কিত বিষয়বস্তু
 
     lastUpdatedOn:
-        other: শেষ হালনাগাদ করা হয়েছে
+        other: সর্বশেষ আপডেট করা হয়েছে
 
     readingTime:
         one: "{{ .Count }} মিনিটে পড়া যাবে"
@@ -38,7 +38,7 @@ notFound:
         other: পাওয়া যায়নি
 
     subtitle:
-        other: এই পৃষ্ঠাটি বিদ্যমান নেই
+        other: এই পাতাটি বিদ্যমান নেই
 
 widget:
     archives:
@@ -63,7 +63,7 @@ search:
         other: কিছু টাইপ করুন...
 
     resultTitle:
-        other: "#PAGES_COUNT পৃষ্ঠা (#TIME_SECONDS সেকেন্ড)"
+        other: "#PAGES_COUNT পাতা (#TIME_SECONDS সেকেন্ড)"
 
 footer:
     builtWith:

@@ -8,15 +8,18 @@ languages:
     en:
         languageName: English
         title: Example Site
+        description: Example description
         weight: 1
     zh-cn:
         languageName: 中文
         title: 演示站点
+        description: 演示说明
         weight: 2
     ar:
         languageName: عربي
         languagedirection: rtl
         title: موقع تجريبي
+        description: وصف تجريبي
         weight: 3
 
 # Change it to your Disqus shortname before using
@@ -42,7 +45,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon:  # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
         since: 2020
