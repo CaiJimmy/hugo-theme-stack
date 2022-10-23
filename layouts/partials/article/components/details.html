@@ -23,7 +23,7 @@
         {{ end }}
     </div>
 
-    {{ if or (not .Date.IsZero) (.Site.Params.article.readingTime) }}
+    {{ if or (not .Date.IsZero) (.Params.article.readingTime) }}
     <footer class="article-time">
         {{ if not .Date.IsZero }}
             <div>
