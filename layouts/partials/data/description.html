@@ -1,6 +1,11 @@
 <!-- Use site subtitle by default -->
 {{ $description := .Site.Params.sidebar.subtitle }}
 
+<!-- Seprate description exists -->
+{{ if .Site.Params.description }}
+    {{ $description = .Site.Params.description }}
+{{ end }}
+
 {{ if .Description }}
     <!-- Page description exists -->
     {{ $description = .Description }}

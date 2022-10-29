@@ -28,8 +28,12 @@ widget:
     archives:
         title: الارشيفات
         more: اكثر
+
     tagCloud:
         title: وسوم
+
+    categoriesCloud:
+        title: التصنيفات
 
 search:
     title: بحث
