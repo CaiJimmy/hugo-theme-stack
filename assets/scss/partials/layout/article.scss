@@ -286,12 +286,10 @@
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
-
         //  keep Codeblocks LTR
         [dir="rtl"] & {
             direction: ltr;
         }
-
         code {
             color: unset;
             border: none;
@@ -305,11 +303,15 @@
         padding: var(--card-padding);
         position: relative;
 
+        &:hover {
+            .copyCodeButton {
+                opacity: 1;
+            }
+        }
         // keep Codeblocks LTR
         [dir="rtl"] & {
             direction: ltr;
         }
-
         pre {
             margin: initial;
             padding: 0;
@@ -318,30 +320,20 @@
         }
     }
 
-    .codeblock {
-        header {
-            background-color: var(--card-background-selected);
-            padding: 5px var(--card-padding);
-            display: flex;
-            justify-content: space-between;
-            box-shadow: var(--shadow-l1);
-
-            span {
-                text-transform: uppercase;
-                font-weight: bold;
-                color: var(--card-text-color-secondary);
-            }
-        }
-
-        .codeblock-copy {
-            cursor: pointer;
-            background-color: transparent;
-            border: none;
-            padding: 8px 16px;
-            color: var(--card-text-color-secondary);
-            font-size: 14px;
-            font-weight: bold;
-        }
+    .copyCodeButton {
+        position: absolute;
+        top: calc(var(--card-padding));
+        right: calc(var(--card-padding));
+        background: var(--card-background);
+        border: none;
+        box-shadow: var(--shadow-l2);
+        border-radius: var(--tag-border-radius);
+        padding: 8px 16px;
+        color: var(--card-text-color-main);
+        cursor: pointer;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .table-wrapper {
@@ -410,7 +402,7 @@
     /// Negative margins
     blockquote,
     figure,
-    .codeblock,
+    .highlight,
     pre,
     .gallery,
     .video-wrapper,

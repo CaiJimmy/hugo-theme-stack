@@ -1,6 +1,8 @@
-toggleMenu: Показать/скрыть меню
+toggleMenu:
+    other: Показать/скрыть меню
 
-darkMode: Тёмный режим
+darkMode:
+    other: Тёмный режим
 
 list:
     page:
@@ -8,7 +10,10 @@ list:
         few: "{{ .Count }} страницы"
         many: "{{ .Count }} страниц"
         other: "{{ .Count }} страниц"
-    section: Раздел
+
+    section:
+        other: Раздел
+
     subsection:
         one: Подраздел
         few: Подразделы
@@ -16,28 +21,43 @@ list:
         other: Подразделы
 
 article:
-    back: Назад
-    relatedContent: Также рекомендуем
-    lastUpdatedOn: Обновлено
-    tableOfContents: Содержание
-    readingTime: "Время чтения: {{ .Count }} мин."
+    back:
+        other: Назад
+    relatedContent:
+        other: Также рекомендуем
+    lastUpdatedOn:
+        other: Обновлено
+    tableOfContents: 
+        other: Содержание
+    readingTime: 
+        other: "Время чтения: {{ .Count }} мин."
 
 notFound:
-    title: Не найдено
-    subtitle: Запрашиваемая страница не существует
+    title:
+        other: Не найдено
+    subtitle:
+        other: Запрашиваемая страница не существует
 
 widget:
     archives:
-        title: Архивы
-        more: Ещё
+        title:
+            other: Архивы
+        more:
+            other: Ещё
     tagCloud:
-        title: Теги
+        title:
+            other: Теги
 
 search:
-    title: Поиск
-    placeholder: Введите что-нибудь...
-    resultTitle: "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
+    title:
+        other: Поиск
+    placeholder:
+        other: Введите что-нибудь...
+    resultTitle:
+        other: "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
 
 footer:
-    builtWith: Создано при помощи {{ .Generator }}
-    designedBy: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
+    builtWith:
+        other: Создано при помощи {{ .Generator }}
+    designedBy:
+        other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}

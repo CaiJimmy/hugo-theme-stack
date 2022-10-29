@@ -1,43 +1,73 @@
-toggleMenu: Przełącz Menu
+toggleMenu:
+    other: Przełącz Menu
 
-darkMode: Tryb ciemny
+darkMode:
+    other: Tryb ciemny
 
 list:
     page:
         one: "{{ .Count }} strona"
         other: "{{ .Count }} stron"
-    section: Sekcja
+
+    section:
+        other: Sekcja
+
     subsection:
         one: Podsekcja
         other: Podsekcje
 
 article:
-    back: Wróć
-    tableOfContents: Spis treści
-    relatedContent: Powiązane artykuły
-    lastUpdatedOn: Ostatnio zaktualizowany
+    back:
+        other: Wróć
+
+    tableOfContents:
+        other: Spis treści
+
+    relatedContent:
+        other: Powiązane artykuły
+
+    lastUpdatedOn:
+        other: Ostatnio zaktualizowany
+    
     readingTime:
         one: "Przeczytasz w {{ .Count }} minutę"
         other: "Przeczytasz w {{ .Count }} minut"
 
 notFound:
-    title: Nie znaleziono
-    subtitle: Ta strona nie istnieje
+    title:
+        other: Nie znaleziono
+    subtitle:
+        other: Ta strona nie istnieje
 
 widget:
     archives:
-        title: Archiwum
-        more: Więcej
+        title:
+            other: Archiwum
+
+        more:
+            other: Więcej
+
     tagCloud:
-        title: Tagi
+        title:
+            other: Tagi
+    
     categoriesCloud:
-        title: Kategorie
+        title:
+            other: Kategorie
 
 search:
-    title: Szukaj
-    placeholder: Wpisz coś...
-    resultTitle: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
+    title:
+        other: Szukaj
+
+    placeholder:
+        other: Wpisz coś...
+
+    resultTitle:
+        other: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
 
 footer:
-    builtWith: Zbudowano z {{ .Generator }}
-    designedBy: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}
+    builtWith:
+        other: Zbudowano z {{ .Generator }}
+
+    designedBy:
+        other: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}

@@ -1,43 +1,73 @@
-toggleMenu: 切換選單
+toggleMenu:
+    other: 切換選單
 
-darkMode: 深色模式
+darkMode:
+    other: 深色模式
 
 list:
     page:
         one: "第 {{ .Count }} 頁"
         other: "第 {{ .Count }} 頁"
-    section: Section
+
+    section:
+        other: Section
+
     subsection:
         one: Subsection
         other: Subsections
 
 article:
-    back: 返回
-    tableOfContents: 目錄
-    relatedContent: 相關內容
-    lastUpdatedOn: 上次改過於
+    back:
+        other: 返回
+
+    tableOfContents:
+        other: 目錄
+
+    relatedContent:
+        other: 相關內容
+
+    lastUpdatedOn:
+        other: 上次改過於
+
     readingTime:
         one: "需要 {{ .Count }} 分鐘閱讀"
         other: "需要 {{ .Count }} 分鐘閱讀"
 
 notFound:
-    title: Not Found
-    subtitle: 頁面不存在
+    title:
+        other: Not Found
+
+    subtitle:
+        other: 頁面不存在
 
 widget:
     archives:
-        title: Archives
-        more: 更多
+        title:
+            other: Archives
+
+        more:
+            other: 更多
+
     tagCloud:
-        title: Tags
+        title:
+            other: Tags
     categoriesCloud:
-        title: Categories
+        title:
+            other: Categories
 
 search:
-    title: 搜尋
-    placeholder: Type 關鍵字...
-    resultTitle: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+    title:
+        other: 搜尋
+
+    placeholder:
+        other: Type 關鍵字...
+
+    resultTitle:
+        other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
 
 footer:
-    builtWith: Built with {{ .Generator }}
-    designedBy: 主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計
+    builtWith:
+        other: Built with {{ .Generator }}
+
+    designedBy:
+        other: 主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計

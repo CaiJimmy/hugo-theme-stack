@@ -1,45 +1,72 @@
-toggleMenu: 메뉴 여닫기
+toggleMenu:
+    other: 메뉴 여닫기
 
-darkMode: 다크 모드
+darkMode:
+    other: 다크 모드
 
 list:
     page:
         one: "{{ .Count }} 페이지"
         other: "{{ .Count }} 페이지"
-    section: 섹션
+
+    section:
+        other: 섹션
+
     subsection:
         one: 서브섹션
         other: 서브섹션
 
 article:
-    back: 뒤로가기
-    tableOfContents: 목차
-    relatedContent: 관련 글
-    lastUpdatedOn: "마지막 수정: "
+    back:
+        other: 뒤로가기
+
+    tableOfContents:
+        other: 목차
+        
+    relatedContent:
+        other: 관련 글
+        
+    lastUpdatedOn:
+        other: "마지막 수정: "
+        
     readingTime:
         one: "{{ .Count }} 분 정도"
         other: "{{ .Count }} 분 정도"
 
 notFound:
-    title: 찾을 수 없음
-    subtitle: 페이지를 찾을 수 없습니다.
+    title:
+        other: 찾을 수 없음
+        
+    subtitle:
+        other: 페이지를 찾을 수 없습니다.
 
 widget:
     archives:
-        title: 보관함
-        more: 더보기
+        title:
+            other: 보관함
+        more:
+            other: 더보기
             
     categoriesCloud:
-        title: 카테고리
+        title:
+            other: 카테고리
             
     tagCloud:
-        title: 태그
+        title:
+            other: 태그
 
 search:
-    title: 검색
-    placeholder: 검색어를 입력하세요...
-    resultTitle: "#PAGES_COUNT 페이지 (#TIME_SECONDS 초)"
+    title:
+        other: 검색
+        
+    placeholder:
+        other: 검색어를 입력하세요...
+        
+    resultTitle:
+        other: "#PAGES_COUNT 페이지 (#TIME_SECONDS 초)"
 
 footer:
-    builtWith: "{{ .Generator }}로 만듦"
-    designedBy: "{{ .DesignedBy }}의 {{ .Theme }} 테마 사용 중"
+    builtWith:
+        other: "{{ .Generator }}로 만듦"
+    designedBy:
+        other: "{{ .DesignedBy }}의 {{ .Theme }} 테마 사용 중"

@@ -1,36 +1,53 @@
-toggleMenu: Menüyü Gizle
+toggleMenu:
+    other: Menüyü Gizle
 
-darkMode: Koyu Mod
+darkMode:
+    other: Koyu Mod
 
 list:
     page:
         one: "{{ .Count }} makale"
         other: "{{ .Count }} makale"
-    section: Bölüm
+
+    section:
+        other: Bölüm
+
     subsection:
         one: Alt bölüm
         other: Alt bölümler
 
 article:
-    relatedContent: Alakalı içerikler
-    lastUpdatedOn: Son güncelleme
+    relatedContent:
+        other: Alakalı içerikler
+    lastUpdatedOn:
+        other: Son güncelleme
 
 notFound:
-    title: Bulunamadı
-    subtitle: Aradığınız sayfa mevcut değil.
+    title:
+        other: Bulunamadı
+    subtitle:
+        other: Aradığınız sayfa mevcut değil.
 
 widget:
     archives:
-        title: Arşiv
-        more: Daha fazla
+        title:
+            other: Arşiv
+        more:
+            other: Daha fazla
     tagCloud:
-        title: Etiketler
+        title:
+            other: Etiketler
 
 search:
-    title: Arama
-    placeholder: Birşeyler yazın...
-    resultTitle: "#PAGES_COUNT sayfa (#TIME_SECONDS saniye)"
+    title:
+        other: Arama
+    placeholder:
+        other: Birşeyler yazın...
+    resultTitle:
+        other: "#PAGES_COUNT sayfa (#TIME_SECONDS saniye)"
 
 footer:
-    builtWith: "{{ .Generator }} ile oluşturuldu."
-    designedBy: "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"
+    builtWith:
+        other: "{{ .Generator }} ile oluşturuldu."
+    designedBy:
+        other: "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"

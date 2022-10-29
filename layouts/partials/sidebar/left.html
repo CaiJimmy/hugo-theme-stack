@@ -7,7 +7,7 @@
 
     <header>
         {{ with .Site.Params.sidebar.avatar }}
-            {{ if .enabled }}
+            {{ if (default true .enabled) }}
             <figure class="site-avatar">
                 <a href="{{ .Site.BaseURL | relLangURL }}">
                 {{ if not .local }}
@@ -89,7 +89,7 @@
                 </li>
             {{ end }}
             
-            {{ if .Site.Params.colorScheme.toggle }}
+            {{ if (default false .Site.Params.colorScheme.toggle) }}
                 <li id="dark-mode-toggle">
                     {{ partial "helper/icon" "toggle-left" }}
                     {{ partial "helper/icon" "toggle-right" }}

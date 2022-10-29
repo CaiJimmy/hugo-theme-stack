@@ -19,12 +19,7 @@
 {{- end -}}
 
 {{ with .Site.Params.favicon }}
-    {{ $favicon := resources.Get . }}
-    {{ if $favicon }}
-        <link rel="shortcut icon" href="{{ $favicon.RelPermalink }}" />
-    {{ else }}
-        {{ errorf "Failed loading favicon from %q" . }}
-    {{ end }}
+    <link rel="shortcut icon" href="{{ . }}" />
 {{ end }}
 
 {{- template "_internal/google_analytics.html" . -}}
