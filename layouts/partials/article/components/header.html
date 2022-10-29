@@ -9,7 +9,7 @@
                     {{- $Height := $image.resource.Height -}}
                     {{- $Srcset := "" -}}
                     
-                    {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                    {{- if .Page.Site.Params.imageProcessing.cover.enabled -}}
                         {{- $thumbnail := $image.resource.Resize "800x" -}}
                         {{- $thumbnailRetina := $image.resource.Resize "1600x" -}}
                         {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
