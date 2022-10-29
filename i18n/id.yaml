@@ -1,43 +1,73 @@
-toggleMenu: Tampilkan Menu
+toggleMenu:
+    other: Tampilkan Menu
 
-darkMode: Mode Gelap
+darkMode:
+    other: Mode Gelap
 
 list:
     page:
         one: "{{ .Count }} halaman"
         other: "{{ .Count }} halaman"
-    section: Bagian
+
+    section:
+        other: Bagian
+
     subsection:
         one: Subbagian
         other: Subbagian
 
 article:
-    back: Kembali
-    tableOfContents: Daftar Isi
-    relatedContent: Konten terkait
-    lastUpdatedOn: Terakhir diperbarui pada
+    back:
+        other: Kembali
+
+    tableOfContents:
+        other: Daftar Isi
+
+    relatedContent:
+        other: Konten terkait
+
+    lastUpdatedOn:
+        other: Terakhir diperbarui pada
+
     readingTime:
         one: "Waktu Membaca: {{ .Count }} menit"
         other: "Waktu Membaca: {{ .Count }} menit"
 
 notFound:
-    title: Tidak ditemukan
-    subtitle: Halaman yang Anda akses tidak ditemukan.
+    title:
+        other: Tidak ditemukan
+    subtitle:
+        other: Halaman yang Anda akses tidak ditemukan.
 
 widget:
     archives:
-        title: Arsip
-        more: Lebih
+        title:
+            other: Arsip
+
+        more:
+            other: Lebih
+
     tagCloud:
-        title: Tag
+        title:
+            other: Tag
+
     categoriesCloud:
-        title: Kategori
+        title:
+            other: Kategori
 
 search:
-    title: Cari
-    placeholder: Ketik sesuatu...
-    resultTitle: "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
+    title:
+        other: Cari
+
+    placeholder:
+        other: Ketik sesuatu...
+
+    resultTitle:
+        other: "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
 
 footer:
-    builtWith: Dibangun dengan {{ .Generator }}
-    designedBy: Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}
+    builtWith:
+        other: Dibangun dengan {{ .Generator }}
+
+    designedBy:
+        other: Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}

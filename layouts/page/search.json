@@ -1,13 +1,16 @@
 {{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- $notHidden := where .Site.RegularPages "Params.hidden" "!=" true -}}
+{{- $filtered := ($pages | intersect $notHidden) -}}
+
 {{- $result := slice -}}
 
-{{- range $pages -}}
+{{- range $filtered -}}
     {{- $data := dict "title" .Title "date" .Date "permalink" .Permalink "content" (.Plain) -}}
 
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
     {{- if $image.exists -}}
         {{- $imagePermalink := "" -}}
-        {{- if and $image.resource .Page.Site.Params.imageProcessing.cover.enabled -}}
+        {{- if and $image.resource (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
             {{- $thumbnail := $image.resource.Fill "120x120" -}}
             {{- $imagePermalink = (absURL $thumbnail.Permalink) -}}
         {{- else -}}

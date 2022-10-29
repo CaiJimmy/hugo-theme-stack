@@ -1,52 +1,73 @@
-toggleMenu: টগল মেনু
+toggleMenu:
+    other: টগল মেনু
 
-darkMode: ডার্ক মোড
+darkMode:
+    other: ডার্ক মোড
 
 list:
     page:
         one: "{{ .Count }} পাতা"
         other: "{{ .Count }} পাতা"
 
-    section: অনুচ্ছেদ
+    section:
+        other: অনুচ্ছেদ
 
     subsection:
         one: উপ-অনুচ্ছেদ
         other: উপ-অনুচ্ছেদ
 
 article:
-    back: পেছনে
+    back:
+        other: পেছনে
 
-    tableOfContents: সূচিপত্র
+    tableOfContents:
+        other: সূচিপত্র
 
-    relatedContent: সম্পর্কিত বিষয়বস্তু
+    relatedContent:
+        other: সম্পর্কিত বিষয়বস্তু
 
-    lastUpdatedOn: সর্বশেষ আপডেট করা হয়েছে
+    lastUpdatedOn:
+        other: সর্বশেষ আপডেট করা হয়েছে
 
     readingTime:
         one: "{{ .Count }} মিনিটে পড়া যাবে"
         other: "{{ .Count }} মিনিটে পড়া যাবে"
 
 notFound:
-    title: পাওয়া যায়নি
+    title:
+        other: পাওয়া যায়নি
 
-    subtitle: এই পাতাটি বিদ্যমান নেই
+    subtitle:
+        other: এই পাতাটি বিদ্যমান নেই
 
 widget:
     archives:
-        title: আর্কাইভ
-        more: আরও
+        title:
+            other: আর্কাইভ
+
+        more:
+            other: আরও
+
     tagCloud:
-        title: ট্যাগ
+        title:
+            other: ট্যাগ
     categoriesCloud:
-        title: বিভাগ
+        title:
+            other: বিভাগ
 
 search:
-    title: অনুসন্ধান
+    title:
+        other: অনুসন্ধান
 
-    placeholder: কিছু টাইপ করুন...
+    placeholder:
+        other: কিছু টাইপ করুন...
 
-    resultTitle: "#PAGES_COUNT পাতা (#TIME_SECONDS সেকেন্ড)"
+    resultTitle:
+        other: "#PAGES_COUNT পাতা (#TIME_SECONDS সেকেন্ড)"
 
 footer:
-    builtWith: "{{ .Generator }} দিয়ে নির্মিত"
-    designedBy: "থিম {{ .Theme }} ডিজাইন করেছেন {{ .DesignedBy }}"
+    builtWith:
+        other: "{{ .Generator }} দিয়ে নির্মিত"
+
+    designedBy:
+        other: "থিম {{ .Theme }} ডিজাইন করেছেন {{ .DesignedBy }}"

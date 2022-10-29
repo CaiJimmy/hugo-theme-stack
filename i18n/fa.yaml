@@ -1,43 +1,73 @@
-toggleMenu: منو
+toggleMenu:
+    other: منو
 
-darkMode: حالت شب
+darkMode:
+    other: حالت شب
 
 list:
     page:
         one: "{{ .Count }} صفحه"
         other: "{{ .Count }} صفحه"
-    section: بخش
+
+    section:
+        other: بخش
+
     subsection:
         one: زیربخش
         other: زیربخش
 
 article:
-    back: قبلی
-    tableOfContents: فهرست
-    relatedContent: مطالب مرتبط
-    lastUpdatedOn: آخرین بروزرسانی در
+    back:
+        other: قبلی
+
+    tableOfContents:
+        other: فهرست
+
+    relatedContent:
+        other: مطالب مرتبط
+
+    lastUpdatedOn:
+        other: آخرین بروزرسانی در
+
     readingTime:
         one: "مطالعه در {{ .Count }} دقیقه"
         other: "مطالعه در {{ .Count }} دقیقه"
 
 notFound:
-    title: یافت نشد
-    subtitle: این صحه وجود ندارد
+    title:
+        other: یافت نشد
+
+    subtitle:
+        other: این صحه وجود ندارد
 
 widget:
     archives:
-        title: آرشیو
-        more: بیشتر
+        title:
+            other: آرشیو
+
+        more:
+            other: بیشتر
+
     tagCloud:
-        title: تگ ها
+        title:
+            other: تگ ها
     categoriesCloud:
-        title: دسته بندی
+        title:
+            other: دسته بندی
 
 search:
-    title: جستجو
-    placeholder: تایپ کنید ...
-    resultTitle: "#PAGES_COUNT صفحه (#TIME_SECONDS ثانیه)"
+    title:
+        other: جستجو
+
+    placeholder:
+        other: تایپ کنید ...
+
+    resultTitle:
+        other: "#PAGES_COUNT صفحه (#TIME_SECONDS ثانیه)"
 
 footer:
-    builtWith: قدرت گرفته از {{ .Generator }}
-    designedBy: قالب {{ .Theme }} ساخته شده توسط {{ .DesignedBy }}
+    builtWith:
+        other: قدرت گرفته از {{ .Generator }}
+
+    designedBy:
+        other: قالب {{ .Theme }} ساخته شده توسط {{ .DesignedBy }}

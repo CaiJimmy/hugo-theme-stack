@@ -1,26 +1,49 @@
-toggleMenu: 切換選單
+toggleMenu:
+    other: 切換選單
 
-darkMode: 夜晚模式
+darkMode:
+    other: 夜晚模式
 
 article:
-    back: 返回
-    tableOfContents: 目錄
-    relatedContent: 相關文章
-    lastUpdatedOn: 最後更新
-    readingTime: "閱讀時間: {{ .Count }} 分鐘"
+    back:
+        other: 返回
+
+    tableOfContents:
+        other: 目錄
+
+    relatedContent:
+        other: 相關文章
+
+    lastUpdatedOn:
+        other: 最後更新
+
+    readingTime:
+        other: "閱讀時間: {{ .Count }} 分鐘"
 
 notFound:
-    title: 404 錯誤
-    subtitle: 頁面不存在
+    title:
+        other: 404 錯誤
+    subtitle:
+        other: 頁面不存在
 
 widget:
     archives:
-        title: 紀錄
-        more: 更多
+        title:
+            other: 紀錄
+
+        more:
+            other: 更多
+
     tagCloud:
-        title: 標籤雲
+        title:
+            other: 標籤雲
 
 search:
-    title: 搜尋
-    placeholder: 輸入關鍵字...
-    resultTitle: "#PAGES_COUNT 個結果 （用時 #TIME_SECONDS 秒）"
+    title:
+        other: 搜尋
+
+    placeholder:
+        other: 輸入關鍵字...
+
+    resultTitle:
+        other: "#PAGES_COUNT 個結果 （用時 #TIME_SECONDS 秒）"

@@ -1,42 +1,71 @@
-toggleMenu: Показати меню
+toggleMenu:
+    other: Показати меню
 
-darkMode: Темна тема
+darkMode:
+    other: Темна тема
 
 list:
     page:
         one: "{{ .Count }} сторінка"
         few: "{{ .Count }} сторінки"
         other: "{{ .Count }} сторінок"
-    section: Секція
+
+    section:
+        other: Секція
+
     subsection:
         one: Підсекція
         other: Підсекції
 
 article:
-    back: Назад
-    tableOfContents: Зміст
-    relatedContent: Схожі матеріали
-    lastUpdatedOn: Востаннє оновлено
+    back:
+        other: Назад
+
+    tableOfContents:
+        other: Зміст
+
+    relatedContent:
+        other: Схожі матеріали
+
+    lastUpdatedOn:
+        other: Востаннє оновлено
+
     readingTime:
         one: "Час читання: {{ .Count }} хв"
         other: "Час читання: {{ .Count }} хв"
 
 notFound:
-    title: Не знайдено
-    subtitle: Ця сторінка не існує
+    title:
+        other: Не знайдено
+
+    subtitle:
+        other: Ця сторінка не існує
 
 widget:
     archives:
-        title: Архіви
-        more: Більше
+        title:
+            other: Архіви
+
+        more:
+            other: Більше
+
     tagCloud:
-        title: Теґи
+        title:
+            other: Теґи
 
 search:
-    title: Пошук
-    placeholder: Напишіть що-небудь...
-    resultTitle: "#PAGES_COUNT сторінок (#TIME_SECONDS секунд)"
+    title:
+        other: Пошук
+
+    placeholder:
+        other: Напишіть що-небудь...
+
+    resultTitle:
+        other: "#PAGES_COUNT сторінок (#TIME_SECONDS секунд)"
 
 footer:
-    builtWith: Створено з {{ .Generator }}
-    designedBy: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
+    builtWith:
+        other: Створено з {{ .Generator }}
+
+    designedBy:
+        other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}

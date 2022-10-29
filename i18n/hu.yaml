@@ -1,43 +1,73 @@
-toggleMenu: Menü Kapcsolása
+toggleMenu:
+    other: Menü Kapcsolása
 
-darkMode: Sötét Mód
+darkMode:
+    other: Sötét Mód
 
 list:
     page:
         one: "{{ .Count }} oldal"
         other: "{{ .Count }} oldalak"
-    section: Szekció
+
+    section:
+        other: Szekció
+
     subsection:
         one: Alszekció
         other: Alszekciók
 
 article:
-    back: Vissza
-    tableOfContents: Tartalomjegyzék
-    relatedContent: Kapcsolódó tartalom
-    lastUpdatedOn: Utolsó frissítés időpontja
+    back:
+        other: Vissza
+
+    tableOfContents:
+        other: Tartalomjegyzék
+
+    relatedContent:
+        other: Kapcsolódó tartalom
+
+    lastUpdatedOn:
+        other: Utolsó frissítés időpontja
+
     readingTime:
         one: "{{ .Count }} percnyi olvasmány"
         other: "{{ .Count }} percnyi olvasmány"
 
 notFound:
-    title: Nem található
-    subtitle: Ez az oldal nem létezik
+    title:
+        other: Nem található
+
+    subtitle:
+        other: Ez az oldal nem létezik
 
 widget:
     archives:
-        title: Archívum
-        more: Több
+        title:
+            other: Archívum
+
+        more:
+            other: Több
+
     tagCloud:
-        title: Cimkék
+        title:
+            other: Cimkék
     categoriesCloud:
-        title: Kategóriák
+        title:
+            other: Kategóriák
 
 search:
-    title: Keresés
-    placeholder: Írj valamit...
-    resultTitle: "#PAGES_COUNT oldal (#TIME_SECONDS másodperc alatt)"
+    title:
+        other: Keresés
+
+    placeholder:
+        other: Írj valamit...
+
+    resultTitle:
+        other: "#PAGES_COUNT oldal (#TIME_SECONDS másodperc alatt)"
 
 footer:
-    builtWith: "{{ .Generator }} használatával készült"
-    designedBy: A {{ .Theme }} dizájnt {{ .DesignedBy }} tervezte
+    builtWith:
+        other: "{{ .Generator }} használatával készült"
+
+    designedBy:
+        other: A {{ .Theme }} dizájnt {{ .DesignedBy }} tervezte
