@@ -21,8 +21,8 @@ function setupSmoothAnchors() {
         aElement.addEventListener("click", clickEvent => {
             clickEvent.preventDefault();
 
-            const targetId = aElement.getAttribute("href").substring(1),
-                target = document.getElementById(targetId) as HTMLElement, 
+            const targetId = decodeURI(aElement.getAttribute("href").substring(1)),
+                target = document.getElementById(targetId) as HTMLElement,
                 offset = target.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top;
 
             window.history.pushState({}, "", aElement.getAttribute("href"));
