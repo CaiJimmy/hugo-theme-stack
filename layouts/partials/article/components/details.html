@@ -48,6 +48,19 @@
     </footer>
     {{ end }}
 
+    {{ if (isset .Params "author") }}
+    {{ $filename := .Params.author }}
+    <div class="article-author">
+        {{ partial "helper/icon" "user" }}
+        {{ with (index $.Site.Data.authors $filename) }}
+            {{ $author := index $.Site.Data.authors $filename }}
+            {{ with (index $author "name") }}
+                <a href="/author/{{index $author "id"}}">{{ index $author "name" }}</a>
+            {{ end }}
+        {{ end }}
+    </div>
+    {{ end }}
+
     {{ if .IsTranslated }}
         <footer class="article-translations">
             {{ partial "helper/icon" "language" }}
