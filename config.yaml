@@ -1,4 +1,4 @@
-module:
+odule:
     hugoVersion:
         extended: true
         min: "0.87.0"
