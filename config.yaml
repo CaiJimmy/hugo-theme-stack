@@ -1,3 +1,9 @@
+baseurl: https://example.com
+languageCode: en-us
+theme: hugo-theme-stack
+paginate: 5
+title: GIE Joel
+
 module:
     hugoVersion:
         extended: true
@@ -21,7 +27,7 @@ params:
     sidebar:
         compact: false
         emoji:
-        subtitle:
+        subtitle: Artiste, peintre
         avatar:
             enabled: true
             local: true
@@ -152,3 +158,23 @@ params:
             enabled: true
         content:
             enabled: true
+
+### Custom menu
+### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+menu:
+    main: []
+
+    social:
+        - identifier: github
+          name: GitHub
+          url: https://github.com/CaiJimmy/hugo-theme-stack
+          params:
+              icon: brand-github
+
+        - identifier: twitter
+          name: Twitter
+          url: https://twitter.com
+          params:
+              icon: brand-twitter
+
