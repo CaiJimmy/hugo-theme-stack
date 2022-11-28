@@ -15,7 +15,7 @@
 
         {{- $Generator := `<a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>` -}}
         {{- $Theme := printf `<b><a href="https://github.com/crowd4u/hugo-theme-stack" target="_blank" rel="noopener" data-version="%s">Stack</a></b>` $ThemeVersion -}}
-        {{- $DesignedBy := `<p><a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> and crowd4u team</p>` -}}
+        {{- $DesignedBy := `<span><a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> and crowd4u team</span>` -}}
 
         {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} <br />
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
