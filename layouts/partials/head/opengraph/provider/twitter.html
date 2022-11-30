@@ -9,8 +9,10 @@
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
 
-{{- $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" -}}
+<!-- {{- $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" -}}
 {{- if $image.exists -}}
     <meta name="twitter:card" content="{{ default `summary_large_image` .Site.Params.opengraph.twitter.card }}">
     <meta name="twitter:image" content='{{ absURL $image.permalink }}' />
-{{- end -}}
+{{- end -}} -->
+<meta name="twitter:card" content="{{ default `summary_large_image` .Site.Params.opengraph.twitter.card }}">
+<meta property="og:image" content="https://fusioncomplab.org/images/slideshow/01.jpg" />

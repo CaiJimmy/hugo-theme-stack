@@ -5,6 +5,8 @@
 <meta property='og:description' content='{{ $description }}'>
 <meta property='og:url' content='{{ .Permalink }}'>
 <meta property='og:site_name' content='{{ .Site.Title }}'>
+<meta name="twitter:card" content="summary" />
+
 <meta property='og:type' content='
     {{- if .IsPage -}}
         article
@@ -36,8 +38,9 @@
         <meta property='og:updated_time' content='{{ .Site.LastChange.Format " 2006-01-02T15:04:05-07:00 " | safeHTML }}'/>
     {{- end -}}
 {{- end -}}
-
+<!-- 
 {{ $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" }}
 {{- if $image.exists -}}
     <meta property='og:image' content='{{ absURL $image.permalink }}' />
-{{- end -}}
+{{- end -}} -->
+<meta property="og:image" content="https://fusioncomplab.org/images/slideshow/01.jpg" />
