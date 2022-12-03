@@ -13,7 +13,7 @@
     </header>
     <code id="codeblock-id-{{ .Ordinal }}" style="display:none;">{{- .Inner -}}</code>
     {{- if transform.CanHighlight $lang -}}
-    <div class="{{ $class }}">{{- highlight .Inner $lang -}}</div>
+    <div class="{{ $class }}">{{- highlight .Inner $lang .Options -}}</div>
     {{- else -}}
     <pre><code class="{{ $class }}">{{- .Inner -}}</code></pre>
     {{- end -}}
