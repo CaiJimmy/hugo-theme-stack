@@ -50,7 +50,7 @@ search:
 
 footer:
     builtWith:
-        other: Built with {{ .Generator }}
+        other: 使用 {{ .Generator }} 建立
 
     designedBy:
         other: 主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計
