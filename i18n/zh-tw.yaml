@@ -47,3 +47,10 @@ search:
 
     resultTitle:
         other: "#PAGES_COUNT 個結果 （用時 #TIME_SECONDS 秒）"
+
+footer:
+    builtWith:
+        other: 使用 {{ .Generator }} 建立
+
+    designedBy:
+        other: 主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計
