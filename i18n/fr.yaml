@@ -47,10 +47,6 @@ widget:
         more:
             other: Autres
 
-    tagCloud:
-        title:
-            other: Mots clés
-
 search:
     title:
         other: Rechercher

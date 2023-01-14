@@ -48,13 +48,6 @@ widget:
         more:
             other: আরও
 
-    tagCloud:
-        title:
-            other: ট্যাগ
-    categoriesCloud:
-        title:
-            other: বিভাগ
-
 search:
     title:
         other: অনুসন্ধান

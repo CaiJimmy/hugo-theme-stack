@@ -44,9 +44,6 @@ widget:
             other: Архивы
         more:
             other: Ещё
-    tagCloud:
-        title:
-            other: Теги
 
 search:
     title:

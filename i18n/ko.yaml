@@ -46,14 +46,6 @@ widget:
             other: 보관함
         more:
             other: 더보기
-            
-    categoriesCloud:
-        title:
-            other: 카테고리
-            
-    tagCloud:
-        title:
-            other: 태그
 
 search:
     title:

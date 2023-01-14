@@ -48,13 +48,6 @@ widget:
         more:
             other: بیشتر
 
-    tagCloud:
-        title:
-            other: تگ ها
-    categoriesCloud:
-        title:
-            other: دسته بندی
-
 search:
     title:
         other: جستجو

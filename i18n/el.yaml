@@ -48,10 +48,6 @@ widget:
         more:
             other: Περισσότερα
 
-    tagCloud:
-        title:
-            other: Tags
-
 search:
     title:
         other: Αναζήτηση

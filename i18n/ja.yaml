@@ -34,14 +34,6 @@ widget:
         more:
             other: さらに見る
 
-    tagCloud:
-        title:
-            other: タグ
-
-    categoriesCloud:
-        title:
-            other: カテゴリ
-
 search:
     title:
         other: 検索

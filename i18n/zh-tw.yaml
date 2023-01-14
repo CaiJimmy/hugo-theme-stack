@@ -34,10 +34,6 @@ widget:
         more:
             other: 更多
 
-    tagCloud:
-        title:
-            other: 標籤雲
-
 search:
     title:
         other: 搜尋

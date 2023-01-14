@@ -48,14 +48,6 @@ widget:
         more:
             other: Weitere
 
-    tagCloud:
-        title:
-            other: Schlagwörter
-
-    categoriesCloud:
-        title:
-            other: Kategorien
-
 search:
     title:
         other: Suche

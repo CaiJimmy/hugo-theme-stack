@@ -48,13 +48,6 @@ widget:
         more:
             other: Több
 
-    tagCloud:
-        title:
-            other: Cimkék
-    categoriesCloud:
-        title:
-            other: Kategóriák
-
 search:
     title:
         other: Keresés

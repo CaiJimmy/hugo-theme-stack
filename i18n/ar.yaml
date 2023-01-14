@@ -48,14 +48,6 @@ widget:
         more:
             other: اكثر
 
-    tagCloud:
-        title:
-            other: وسوم
-            
-    categoriesCloud:
-        title:
-            other: التصنيفات
-
 search:
     title:
         other: بحث

@@ -34,9 +34,6 @@ widget:
             other: Arşiv
         more:
             other: Daha fazla
-    tagCloud:
-        title:
-            other: Etiketler
 
 search:
     title:

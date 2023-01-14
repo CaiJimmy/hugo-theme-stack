@@ -49,10 +49,6 @@ widget:
         more:
             other: Більше
 
-    tagCloud:
-        title:
-            other: Теґи
-
 search:
     title:
         other: Пошук

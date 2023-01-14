@@ -34,14 +34,6 @@ widget:
         more:
             other: 更多
 
-    tagCloud:
-        title:
-            other: 标签云
-
-    categoriesCloud:
-        title:
-            other: 分类
-
 search:
     title:
         other: 搜索

@@ -47,14 +47,6 @@ widget:
         more:
             other: Di più
 
-    tagCloud:
-        title:
-            other: Tags
-
-    categoriesCloud:
-        title:
-            other: Categorie
-
 search:
     title:
         other: Cerca

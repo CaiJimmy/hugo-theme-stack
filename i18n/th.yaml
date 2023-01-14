@@ -48,10 +48,6 @@ widget:
         more:
             other: อื่นๆ นอกจากนี้
 
-    tagCloud:
-        title:
-            other: แท็ก
-
 search:
     title:
         other: ค้นหา

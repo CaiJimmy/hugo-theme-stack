@@ -34,13 +34,6 @@ widget:
             other: Archief
         more:
             other: Meer
-    tagCloud:
-        title:
-            other: Tags
-
-    categoriesCloud:
-        title:
-            other: Categorie
 
 search:
     title:

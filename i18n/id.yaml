@@ -47,14 +47,6 @@ widget:
         more:
             other: Lebih
 
-    tagCloud:
-        title:
-            other: Tag
-
-    categoriesCloud:
-        title:
-            other: Kategori
-
 search:
     title:
         other: Cari

@@ -48,13 +48,6 @@ widget:
         more:
             other: 更多
 
-    tagCloud:
-        title:
-            other: Tags
-    categoriesCloud:
-        title:
-            other: Categories
-
 search:
     title:
         other: 搜尋
