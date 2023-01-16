@@ -8,6 +8,8 @@
 {{/* SVG and external images won't work with gallery layout, because their width and height attributes are unknown */}}
 {{- $galleryImage := false -}}
 
+<picture
+
 {{- if $image -}}
 	{{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
 	{{- $Permalink = $image.RelPermalink -}}
@@ -16,8 +18,33 @@
 		{{- $Width = $image.Width -}}
 		{{- $Height = $image.Height -}}
 		{{- $galleryImage = true -}}
+	{{- end -}}
 
+	{{ if $galleryImage }}
+		class="gallery-image" 
+		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
+		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
+		{{ with $alt }}
+			alt="{{ . }}"
+		{{ end }}
+	{{ end }}
+{{- end -}}
+
+>
+
+{{- if $image -}}
+	{{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
+	{{- $Permalink = $image.RelPermalink -}}
+	{{- if $notSVG -}}
 		{{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
+			{{- $small := $image.Resize `webp 480x` -}}
+			{{- $big := $image.Resize `webp 1024x` -}}
+			{{- $Srcset = printf `%s 480w, %s 1024w` $small.RelPermalink $big.RelPermalink -}}
+
+			<source type="image/webp"
+				srcset="{{ $Srcset }}"
+			>
+
 			{{- $small := $image.Resize `480x` -}}
 			{{- $big := $image.Resize `1024x` -}}
 			{{- $Srcset = printf `%s 480w, %s 1024w` $small.RelPermalink $big.RelPermalink -}}
@@ -25,17 +52,13 @@
 	{{- end -}}
 {{- end -}}
 
+
 <img src="{{ $Permalink }}"
 	{{ with $Width }}width="{{ . }}"{{ end }}
 	{{ with $Height }}height="{{ . }}"{{ end }}
 	{{ with $Srcset }}srcset="{{ . }}"{{ end }}
 	loading="lazy"
-	{{ with $alt }}
-		alt="{{ . }}"
-	{{ end }}
-	{{ if $galleryImage }}
-		class="gallery-image" 
-		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
-		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
-	{{ end }}
+	decoding="async"
 >
+
+</picture>
