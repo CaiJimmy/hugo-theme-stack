@@ -219,6 +219,17 @@
         padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
         border-inline-start: var(--heading-border-size) solid var(--accent-color);
     }
+    
+    h1,
+    h2 {
+        border-inline-start: var(--heading-border-size) solid var(--accent-color);
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+        border-inline-start: var(--heading-border-size) solid var(--accent-color-darker);
+    }
 
     figure {
         text-align: center;
