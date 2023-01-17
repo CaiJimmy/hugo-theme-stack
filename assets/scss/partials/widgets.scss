@@ -65,3 +65,11 @@
         }
     }
 }
+
+/* Color for widget titles */
+.widget-title a.widget-link {
+    color: var(--accent-color);
+    &:hover {
+        color: var(--accent-color-darker);
+    }
+}

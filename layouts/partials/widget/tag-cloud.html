@@ -7,7 +7,9 @@
         <div class="widget-icon">
             {{ partial "helper/icon" "tag" }}
         </div>
-        <h2 class="widget-title section-title"><a href="{{ $tagsPage.RelPermalink }}">{{ default "Tags" $tagsPage.Title }}</a></h2>
+        <h2 class="widget-title section-title">
+            <a class="widget-link" href="{{ $tagsPage.RelPermalink }}">{{ default "Tags" $tagsPage.Title }}</a>
+        </h2>
 
         <div class="tagCloud-tags">
             {{ range first $limit $context.Site.Taxonomies.tags.ByCount }}
