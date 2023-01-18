@@ -24,9 +24,6 @@
 		class="gallery-image" 
 		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
 		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
-		{{ with $alt }}
-			alt="{{ . }}"
-		{{ end }}
 	{{ end }}
 {{- end -}}
 
@@ -59,6 +56,9 @@
 	{{ with $Srcset }}srcset="{{ . }}"{{ end }}
 	loading="lazy"
 	decoding="async"
+	{{ with $alt }}
+		alt="{{ . }}"
+	{{ end }}
 >
 
 </picture>

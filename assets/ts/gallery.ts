@@ -93,9 +93,10 @@ class StackGallery {
             figure.appendChild(el);
 
             /// Add figcaption if it exists
-            if (img.hasAttribute('alt')) {
+            const childImg = img.querySelector('img')
+            if (childImg.hasAttribute('alt')) {
                 const figcaption = document.createElement('figcaption');
-                figcaption.innerText = img.getAttribute('alt');
+                figcaption.innerText = childImg.getAttribute('alt');
                 figure.appendChild(figcaption);
             }
 
