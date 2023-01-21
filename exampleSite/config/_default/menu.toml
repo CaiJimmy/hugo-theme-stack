@@ -1,0 +1,39 @@
+# Configure main menu and social menu
+[[main]]
+identifier = "home"
+name = "Home"
+url = "/"
+[main.params]
+icon = "home"
+newtab = true
+
+[[main]]
+    identifier = "others"
+    name = "Others"
+    # parent menu uses icon arrow-down
+
+# submenu
+[[main]]
+    parent = "others"
+    identifier = "rss"
+    name = "rss"
+    url = "index.xml"
+    [main.params]
+        icon = "rss"
+        newtab = true
+
+[[social]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/CaiJimmy/hugo-theme-stack"
+
+[social.params]
+icon = "brand-github"
+
+[[social]]
+identifier = "twitter"
+name = "Twitter"
+url = "https://twitter.com"
+
+[social.params]
+icon = "brand-twitter"

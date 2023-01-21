@@ -1,0 +1,16 @@
+# Change baseurl before deploy
+baseurl = "https://demo.stack.jimmycai.com"
+languageCode = "en-us"
+paginate = 5
+title = "Hugo Theme Stack Starter"
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
+DefaultContentLanguage = "en"
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage = false
+
+# Change it to your Disqus shortname before using
+disqusShortname = "hugo-theme-stack"
