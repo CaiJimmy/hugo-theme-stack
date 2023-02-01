@@ -1,4 +1,8 @@
-{{ $related := (where (.Site.RegularPages.Related .) "Params.hidden" "!=" true) | first 5 }}
+{{ $related_posts := slice -}}
+{{ range .Params.related_posts -}}
+{{ $related_posts = $related_posts | append ($.Site.GetPage (printf "/post/%s" .)) -}}
+{{ end -}}
+{{ $related := $related_posts | append (where (.Site.RegularPages.Related .) "Params.hidden" "!=" true) | uniq | first 5 }}
 {{ with $related }}
 <aside class="related-content--wrapper">
     <h2 class="section-title">{{ T "article.relatedContent" }}</h2>
