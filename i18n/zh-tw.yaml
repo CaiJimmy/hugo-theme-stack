@@ -6,15 +6,15 @@ darkMode:
 
 list:
     page:
-        one: "{{ .Count }} page"
-        other: "{{ .Count }} pages"
+        one: "第 {{ .Count }} 頁"
+        other: "第 {{ .Count }} 頁"
 
     section:
-        other: Section
+        other: 段落
 
     subsection:
-        one: Subsection
-        other: Subsections
+        one: 小節
+        other: 小節
 
 article:
     back:
@@ -30,7 +30,7 @@ article:
         other: 最後更新
 
     readingTime:
-        one: "{{ .Count }} minute read"
+        one: "閱讀時間: {{ .Count }} 分鐘"
         other: "閱讀時間: {{ .Count }} 分鐘"
 
 notFound:
@@ -53,7 +53,7 @@ widget:
             other: 標籤雲
     categoriesCloud:
         title:
-            other: Categories
+            other: 分類
 
 search:
     title:
