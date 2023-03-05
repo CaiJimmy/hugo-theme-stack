@@ -30,7 +30,7 @@ article:
         other: Naposledy aktualizováno
 
     readingTime:
-        one: "{{ .Count }} minut"
+        one: "{{ .Count }} minuta"
         other: "{{ .Count }} minut"
 
 notFound:
