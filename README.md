@@ -19,6 +19,12 @@ Use this template: [CaiJimmy/hugo-theme-stack-starter](https://github.com/CaiJim
 
 Visit [stack.jimmycai.com](https://stack.jimmycai.com)
 
+## Forms
+
+
+[Add Github pages contact form](https://fabform.io/a/create-a-static-website-with-contact-form-on-github-pages)
+
+
 ## Copyright
 
 **Licensed under the GNU General Public License v3.0**
