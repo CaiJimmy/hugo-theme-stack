@@ -19,7 +19,7 @@
 {{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" -}}
 
 {{- range $key, $val := . -}}
-    {{- if $val -}}  
+    {{- if or $val (eq $val false) -}}  
         {{- $replaceKey := index $replaceKeys $key -}}
         {{- $k := default $key $replaceKey -}}
 
