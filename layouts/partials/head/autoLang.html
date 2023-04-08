@@ -1,27 +1,25 @@
 {{ if .Site.IsMultiLingual }}
 <script>
     (function () {
-        const BASE_URL = '{{ .Site.BaseURL }}';
-        const DEFAULT_LANG = '{{ .Site.Language.Lang }}';
-
-        if (!window.location.href.endsWith(BASE_URL)) return;
-
+        if (window.location.pathname !== '/') return;        
+        
+        const CURRENT_LANG = '{{ .Site.Language.Lang }}';
+        
         let userLangList = [...navigator.languages];
         if (localStorage.userLang)
             userLangList.unshift(localStorage.userLang);
-        else
-            localStorage.userLang = userLangList[0].toLowerCase();
-
+        
         let supportLangs = new Set();
         {{ range .Site.Languages }}
         supportLangs.add('{{ .Lang }}');
         {{ end }}
         for (let userLang of userLangList) {
             userLang = userLang.toLowerCase();
-            if (DEFAULT_LANG == userLang) {
+            if (CURRENT_LANG == userLang) {
                 return;
             }
             if (supportLangs.has(userLang)) {
+                localStorage.userLang = userLang;
                 window.location.href = window.location.href + userLang;
                 return;
             }
