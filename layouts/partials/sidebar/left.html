@@ -80,9 +80,9 @@
             {{ with .Site.Home.AllTranslations }}
                 <li id="i18n-switch">  
                     {{ partial "helper/icon" "language" }}
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                    <select name="language" onchange="localStorage.userLang = this.selectedOptions[0].dataset.lang; window.location.href = this.selectedOptions[0].value">
                         {{ range . }}
-                            <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                            <option data-lang="{{ .Language.Lang }}" value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
                         {{ end }}
                     </select>
                 </li>
