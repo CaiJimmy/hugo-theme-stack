@@ -8,7 +8,11 @@
 {{- $title := partial "data/title" . -}}
 <title>{{ $title }}</title>
 
-<link rel='canonical' href='{{ .Permalink }}'>
+{{ if .Params.canonicalurl }}
+<link rel="canonical" href="{{ .Params.canonicalurl }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
 
 {{- partial "head/custom-font.html" . -}}
 {{- partial "head/style.html" . -}}
