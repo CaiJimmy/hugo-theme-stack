@@ -8,7 +8,11 @@
 {{- $title := partialCached "data/title" . .RelPermalink -}}
 <title>{{ $title }}</title>
 
-<link rel='canonical' href='{{ .Permalink }}'>
+{{ if .Params.canonicalurl }}
+<link rel="canonical" href="{{ .Params.canonicalurl }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
 
 {{- partial "head/style.html" . -}}
 {{- partial "head/script.html" . -}}
