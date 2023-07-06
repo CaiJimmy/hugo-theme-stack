@@ -23,18 +23,23 @@ list:
 article:
     back:
         other: Назад
+
     relatedContent:
         other: Также рекомендуем
+
     lastUpdatedOn:
         other: Обновлено
+
     tableOfContents: 
         other: Содержание
+
     readingTime: 
         other: "Время чтения: {{ .Count }} мин."
 
 notFound:
     title:
         other: Не найдено
+
     subtitle:
         other: Запрашиваемая страница не существует
 
@@ -42,11 +47,14 @@ widget:
     archives:
         title:
             other: Архивы
+
         more:
             other: Ещё
+
     tagCloud:
         title:
             other: Теги
+
     categoriesCloud:
         title:
             other: Категории
@@ -54,13 +62,16 @@ widget:
 search:
     title:
         other: Поиск
+
     placeholder:
         other: Введите что-нибудь...
+
     resultTitle:
         other: "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
 
 footer:
     builtWith:
         other: Создано при помощи {{ .Generator }}
+
     designedBy:
         other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}

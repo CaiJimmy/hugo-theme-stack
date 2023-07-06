@@ -19,12 +19,14 @@ list:
 article:
     relatedContent:
         other: Alakalı içerikler
+
     lastUpdatedOn:
         other: Son güncelleme
 
 notFound:
     title:
         other: Bulunamadı
+
     subtitle:
         other: Aradığınız sayfa mevcut değil.
 
@@ -34,20 +36,28 @@ widget:
             other: Arşiv
         more:
             other: Daha fazla
+
     tagCloud:
         title:
             other: Etiketler
 
+    categoriesCloud:
+        title:
+            other: Kategoriler
+
 search:
     title:
         other: Arama
+
     placeholder:
         other: Birşeyler yazın...
+
     resultTitle:
         other: "#PAGES_COUNT sayfa (#TIME_SECONDS saniye)"
 
 footer:
     builtWith:
         other: "{{ .Generator }} ile oluşturuldu."
+
     designedBy:
         other: "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"
