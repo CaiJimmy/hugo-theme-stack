@@ -53,6 +53,10 @@ widget:
         title:
             other: Теґи
 
+    categoriesCloud:
+        title:
+            other: Категорії
+
 search:
     title:
         other: Пошук

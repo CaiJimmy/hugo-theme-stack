@@ -37,6 +37,7 @@ article:
 notFound:
     title:
         other: Δε βρέθηκε
+
     subtitle:
         other: Η σελίδα δε βρέθηκε.
 
@@ -51,6 +52,10 @@ widget:
     tagCloud:
         title:
             other: Tags
+
+    categoriesCloud:
+        title:
+            other: Κατηγορίες
 
 search:
     title:

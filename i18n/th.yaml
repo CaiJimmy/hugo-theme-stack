@@ -52,6 +52,10 @@ widget:
         title:
             other: แท็ก
 
+    categoriesCloud:
+        title:
+            other: หมวดหมู่
+
 search:
     title:
         other: ค้นหา
