@@ -227,6 +227,7 @@ class Search {
             Search.updateQueryString(keywords, true);
 
             if (keywords === '') {
+                lastSearch = '';
                 return this.clear();
             }
 
