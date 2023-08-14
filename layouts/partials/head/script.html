@@ -1,0 +1,21 @@
+<!-- Baidu -->
+
+{{- if .Site.Params.baidu.enabled -}}
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?{{- .Site.Params.baidu.id -}}";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+{{- end -}}
+
+<!-- busuanzi -->
+{{- if .Site.Params.busuanzi.enabled -}}
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+{{- end -}}
+
+

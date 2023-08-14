@@ -1,3 +1,25 @@
+# Features
+- 添加busuanzi页面计数功能
+    ```
+    [params.busuanzi]
+    enabled = true
+    ```
+- 添加百度统计
+    ```
+    [params.baidu]
+    enabled = true
+    id = "******"
+    ```
+- 底部悬挂ICP备案号
+    ```
+    [params.footer]
+    icp = "ICP备202308111103"
+    ```
+
+
+Original `README.md` 
+---
+
 ![image](https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png)
 
 # Hugo Theme Stack

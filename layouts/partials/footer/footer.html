@@ -8,6 +8,10 @@
         {{ now.Format "2006" }} {{ .Site.Title }}
     </section>
     
+    {{if (.Site.Params.footer.icp)}}
+        <a href="http://beian.miit.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noopener noreferrer nofollow">{{ (.Site.Params.footer.icp)}}</a>
+    {{ end }}
+
     <section class="powerby">
         {{ with .Site.Params.footer.customText }}
             {{ . | safeHTML }} <br/>
