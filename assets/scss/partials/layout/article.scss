@@ -423,4 +423,14 @@
         overflow-x: auto;
         overflow-y: hidden;
     }
+
+    kbd {
+        border: 1px solid var(--kbd-border-color);
+        font-weight: bold;
+        font-size: 0.9em;
+        line-height: 1;
+        padding: 2px 4px;
+        border-radius: 4px;
+        display: inline-block;
+    }
 }
