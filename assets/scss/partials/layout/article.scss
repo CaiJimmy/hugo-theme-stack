@@ -264,6 +264,11 @@
         font-family: var(--code-font-family);
     }
 
+    a,
+    code {
+        word-break: break-word;
+    }
+
     .gallery {
         position: relative;
         display: flex;
