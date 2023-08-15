@@ -423,4 +423,14 @@
         overflow-x: auto;
         overflow-y: hidden;
     }
+
+    kbd {
+        background-color: var(--card-background);
+        font-weight: bold;
+        font-size: 0.9em;
+        box-shadow: var(--shadow-l1);
+        padding: 2px 4px;
+        border-radius: 4px;
+        display: inline-block;
+    }
 }
