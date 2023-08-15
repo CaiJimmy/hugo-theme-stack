@@ -425,10 +425,10 @@
     }
 
     kbd {
-        background-color: var(--card-background);
+        border: 1px solid var(--kbd-border-color);
         font-weight: bold;
         font-size: 0.9em;
-        box-shadow: var(--shadow-l1);
+        line-height: 1;
         padding: 2px 4px;
         border-radius: 4px;
         display: inline-block;
