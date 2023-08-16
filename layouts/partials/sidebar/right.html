@@ -1,17 +1,8 @@
 {{- $scope := default "homepage" .Scope -}}
 {{- $context := .Context -}}
-{{- $isCategoriesPage := and (eq $context.Kind "taxonomy") (eq $context.Type "categories") }}
-{{- $isTagsPage := and (eq $context.Kind "taxonomy") (eq $context.Type "tags") }}
 {{- with (index .Context.Site.Params.widgets $scope) -}}
     <aside class="sidebar right-sidebar sticky">
         {{ range $widget := . }}
-            {{ if and $isCategoriesPage (eq .type "categories") }}
-                {{ continue }}
-            {{ end }}
-            {{ if and $isTagsPage (eq .type "tag-cloud") }}
-                {{ continue }}
-            {{ end }}
-
             {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
                 {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" .params) }}
             {{ else }}

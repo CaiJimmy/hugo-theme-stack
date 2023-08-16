@@ -158,11 +158,15 @@ params:
             - type: archives
               params:
                   limit: 5
-            - type: categories
+            - type: taxonomy
               params:
+                  type: categories
+                  icon: categories
                   limit: 10
-            - type: tag-cloud
+            - type: taxonomy
               params:
+                  type: tags
+                  icon: tag
                   limit: 10
         page:
             - type: toc
