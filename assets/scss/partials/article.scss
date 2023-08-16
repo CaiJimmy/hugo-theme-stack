@@ -92,16 +92,15 @@
 .article-time,
 .article-translations {
     display: flex;
-    align-items: center;
     color: var(--card-text-color-tertiary);
     gap: 15px;
-    flex-wrap: wrap;
 
     svg {
         vertical-align: middle;
         width: 20px;
         height: 20px;
         stroke-width: 1.33;
+        flex-shrink: 0;
     }
 
     time,
@@ -114,6 +113,16 @@
         display: inline-flex;
         align-items: center;
         gap: 15px;
+    }
+}
+
+.article-time {
+    flex-wrap: wrap;
+}
+
+.article-translations {
+    & > div {
+        flex-wrap: wrap;
     }
 }
 

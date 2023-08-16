@@ -4,6 +4,18 @@ toggleMenu:
 darkMode:
     other: 夜晚模式
 
+list:
+    page:
+        one: "第 {{ .Count }} 頁"
+        other: "第 {{ .Count }} 頁"
+
+    section:
+        other: 段落
+
+    subsection:
+        one: 小節
+        other: 小節
+
 article:
     back:
         other: 返回
@@ -18,11 +30,13 @@ article:
         other: 最後更新
 
     readingTime:
+        one: "閱讀時間: {{ .Count }} 分鐘"
         other: "閱讀時間: {{ .Count }} 分鐘"
 
 notFound:
     title:
         other: 404 錯誤
+
     subtitle:
         other: 頁面不存在
 
@@ -37,6 +51,9 @@ widget:
     tagCloud:
         title:
             other: 標籤雲
+    categoriesCloud:
+        title:
+            other: 分類
 
 search:
     title:
