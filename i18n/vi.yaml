@@ -1,0 +1,74 @@
+toggleMenu:
+  other: Hiển thị Menu
+
+darkMode:
+  other: Chế độ nền tối
+
+list:
+  page:
+    one: "{{ .Count }} trang"
+    other: "{{ .Count }} trang"
+
+  section:
+    other: Section
+
+  subsection:
+    one: Subsection
+    other: Subsections
+
+article:
+  back:
+    other: Trở lại
+
+  tableOfContents:
+    other: Mục lục
+
+  relatedContent:
+    other: Bài viết liên quan
+
+  lastUpdatedOn:
+    other: Cập nhật lần cuối
+
+  readingTime:
+    one: "{{ .Count }} phút đọc"
+    other: "{{ .Count }} phút đọc"
+
+notFound:
+  title:
+    other: Không tìm thấy
+
+  subtitle:
+    other: Trang này không tồn tại
+
+widget:
+  archives:
+    title:
+      other: Lưu trữ
+
+    more:
+      other: Còn nữa
+
+  tagCloud:
+    title:
+      other: Nhãn dán
+
+  categoriesCloud:
+    title:
+      other: Chuỗi bài
+
+search:
+  title:
+    other: Tìm kiếm
+
+  placeholder:
+    other: Nhập từ khoá ...
+
+  resultTitle:
+    other: "#PAGES_COUNT trang (#TIME_SECONDS giây)"
+
+footer:
+  builtWith:
+    other: Built with {{ .Generator }}
+
+  designedBy:
+    other: Theme {{ .Theme }} thiết kế bởi {{ .DesignedBy }}

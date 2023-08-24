@@ -5,7 +5,7 @@
         {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
             {{ .Site.Params.footer.since }} - 
         {{ end }}
-        {{ now.Format "2006" }} {{ .Site.Title }}
+        {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
     </section>
     
     <section class="powerby">

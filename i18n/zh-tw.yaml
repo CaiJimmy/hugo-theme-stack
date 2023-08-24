@@ -2,6 +2,18 @@ toggleMenu: 切換選單
 
 darkMode: 夜晚模式
 
+list:
+    page:
+        one: "第 {{ .Count }} 頁"
+        other: "第 {{ .Count }} 頁"
+
+    section:
+        other: 段落
+
+    subsection:
+        one: 小節
+        other: 小節
+
 article:
     back: 返回
     tableOfContents: 目錄
@@ -19,8 +31,14 @@ widget:
         more: 更多
     tagCloud:
         title: 標籤雲
+    categoriesCloud:
+        title: 分類
 
 search:
     title: 搜尋
     placeholder: 輸入關鍵字...
     resultTitle: "#PAGES_COUNT 個結果 （用時 #TIME_SECONDS 秒）"
+
+footer:
+    builtWith: 使用 {{ .Generator }} 建立
+    designedBy: 主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計

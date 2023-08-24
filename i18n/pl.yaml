@@ -5,11 +5,15 @@ darkMode: Tryb ciemny
 list:
     page:
         one: "{{ .Count }} strona"
+        few: "{{ .Count }} strony"
+        many: "{{ .Count }} stron"
         other: "{{ .Count }} stron"
     section: Sekcja
     subsection:
         one: Podsekcja
-        other: Podsekcje
+        few: Podsekcje
+        many: Podsekcji
+        other: Podsekcji
 
 article:
     back: Wróć
@@ -18,6 +22,8 @@ article:
     lastUpdatedOn: Ostatnio zaktualizowany
     readingTime:
         one: "Przeczytasz w {{ .Count }} minutę"
+        few: "Przeczytasz w {{ .Count }} minuty"
+        many: "Przeczytasz w {{ .Count }} minut"
         other: "Przeczytasz w {{ .Count }} minut"
 
 notFound:
@@ -30,13 +36,20 @@ widget:
         more: Więcej
     tagCloud:
         title: Tagi
+
     categoriesCloud:
         title: Kategorie
 
 search:
     title: Szukaj
+
     placeholder: Wpisz coś...
-    resultTitle: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
+
+    resultTitle:
+        one: "#PAGES_COUNT strona (#TIME_SECONDS sekund)"
+        few: "#PAGES_COUNT strony (#TIME_SECONDS sekund)"
+        many: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
+        other: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
 
 footer:
     builtWith: Zbudowano z {{ .Generator }}
