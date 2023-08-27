@@ -1,0 +1,32 @@
+{{- $query := first 1 (where (where .Context.Site.Pages "Kind" "taxonomy") "Type" .Params.type) -}}
+{{- $context := .Context -}}
+{{- $limit := default 10 .Params.limit -}}
+{{- $hideInTaxonomyPage := default true .Params.hideInTaxonomyPage -}}
+{{- if $query -}}
+    {{- $taxonomyPage := index $query 0 -}}
+    {{- $isTaxonomyPage := eq .Context $taxonomyPage -}}
+    {{- if not (and $isTaxonomyPage $hideInTaxonomyPage) -}}
+        <section class="widget tagCloud">
+            <div class="widget-icon">
+                {{- partial "helper/icon" (default "tag" .Params.icon) -}}
+            </div>
+            <h2 class="widget-title section-title">
+                <a class="widget-link" href="{{ $taxonomyPage.RelPermalink }}">
+                    {{- default $taxonomyPage.Title .Params.title -}}
+                </a>
+            </h2>
+
+            <div class="tagCloud-tags">
+                {{- $pages := index $context.Site.Taxonomies .Params.type -}}
+                {{- $pagesSorted := $pages.ByCount -}}
+                {{- range first $limit $pagesSorted -}}
+                    <a href="{{ .Page.RelPermalink }}">
+                        {{- .Page.Title -}}
+                    </a>
+                {{- end -}}
+            </div>
+        </section>
+    {{- end -}}
+{{- else -}}
+    {{- warnf "Taxonomy [%s] not found." .Params.type -}}
+{{- end -}}

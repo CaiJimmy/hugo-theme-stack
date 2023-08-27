@@ -28,8 +28,6 @@ widget:
     archives:
         title: เนื้อหาที่เก็บถาวรแล้ว
         more: อื่นๆ นอกจากนี้
-    tagCloud:
-        title: แท็ก
 
 search:
     title: ค้นหา

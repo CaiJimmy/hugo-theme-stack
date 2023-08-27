@@ -28,12 +28,6 @@ widget:
     archives:
         title: 보관함
         more: 더보기
-            
-    categoriesCloud:
-        title: 카테고리
-            
-    tagCloud:
-        title: 태그
 
 search:
     title: 검색

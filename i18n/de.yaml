@@ -28,10 +28,6 @@ widget:
     archives:
         title: Archiv
         more: Weitere
-    tagCloud:
-        title: Schlagwörter
-    categoriesCloud:
-        title: Kategorien
 
 search:
     title: Suche

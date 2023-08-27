@@ -28,8 +28,6 @@ widget:
     archives:
         title: Archives
         more: Autres
-    tagCloud:
-        title: Mots clés
 
 search:
     title: Rechercher

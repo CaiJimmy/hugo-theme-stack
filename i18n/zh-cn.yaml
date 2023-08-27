@@ -17,10 +17,6 @@ widget:
     archives:
         title: 归档
         more: 更多
-    tagCloud:
-        title: 标签云
-    categoriesCloud:
-        title: 分类
 
 search:
     title: 搜索

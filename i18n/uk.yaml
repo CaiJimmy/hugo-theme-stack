@@ -29,8 +29,6 @@ widget:
     archives:
         title: Архіви
         more: Більше
-    tagCloud:
-        title: Теґи
 
 search:
     title: Пошук

@@ -28,10 +28,6 @@ widget:
     archives:
         title: Archives
         more: 更多
-    tagCloud:
-        title: Tags
-    categoriesCloud:
-        title: Categories
 
 search:
     title: 搜尋

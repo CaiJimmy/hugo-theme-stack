@@ -28,8 +28,6 @@ widget:
     archives:
         title: Αρχειο
         more: Περισσότερα
-    tagCloud:
-        title: Tags
 
 search:
     title: Αναζήτηση

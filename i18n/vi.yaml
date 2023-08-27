@@ -48,14 +48,6 @@ widget:
     more:
       other: Còn nữa
 
-  tagCloud:
-    title:
-      other: Nhãn dán
-
-  categoriesCloud:
-    title:
-      other: Chuỗi bài
-
 search:
   title:
     other: Tìm kiếm

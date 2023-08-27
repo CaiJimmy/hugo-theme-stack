@@ -23,8 +23,6 @@ widget:
     archives:
         title: Arşiv
         more: Daha fazla
-    tagCloud:
-        title: Etiketler
 
 search:
     title: Arama

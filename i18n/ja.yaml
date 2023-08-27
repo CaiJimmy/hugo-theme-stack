@@ -17,10 +17,6 @@ widget:
     archives:
         title: アーカイブ
         more: さらに見る
-    tagCloud:
-        title: タグ
-    categoriesCloud:
-        title: カテゴリ
 
 search:
     title: 検索

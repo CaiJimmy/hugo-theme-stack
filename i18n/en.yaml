@@ -31,10 +31,6 @@ widget:
     archives:
         title: Archives
         more: More
-    tagCloud:
-        title: Tags
-    categoriesCloud:
-        title: Categories
 
 search:
     title: Search

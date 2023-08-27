@@ -28,10 +28,6 @@ widget:
     archives:
         title: آرشیو
         more: بیشتر
-    tagCloud:
-        title: تگ ها
-    categoriesCloud:
-        title: دسته بندی
 
 search:
     title: جستجو

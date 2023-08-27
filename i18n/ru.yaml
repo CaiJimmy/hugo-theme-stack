@@ -30,8 +30,6 @@ widget:
     archives:
         title: Архивы
         more: Ещё
-    tagCloud:
-        title: Теги
 
 search:
     title: Поиск

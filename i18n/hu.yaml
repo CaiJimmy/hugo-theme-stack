@@ -28,10 +28,6 @@ widget:
     archives:
         title: Archívum
         more: Több
-    tagCloud:
-        title: Cimkék
-    categoriesCloud:
-        title: Kategóriák
 
 search:
     title: Keresés

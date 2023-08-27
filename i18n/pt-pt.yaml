@@ -45,12 +45,6 @@ widget:
             other: Arquivos
         more:
             other: Mais
-    tagCloud:
-        title:
-            other: Tags
-    categoriesCloud:
-        title:
-            other: Categorias
 
 search:
     title:

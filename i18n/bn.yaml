@@ -35,10 +35,6 @@ widget:
     archives:
         title: আর্কাইভ
         more: আরও
-    tagCloud:
-        title: ট্যাগ
-    categoriesCloud:
-        title: বিভাগ
 
 search:
     title: অনুসন্ধান

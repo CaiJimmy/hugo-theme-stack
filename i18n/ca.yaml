@@ -28,10 +28,6 @@ widget:
     archives:
         title: Arxiu
         more: Més
-    tagCloud:
-        title: Etiquetes
-    categoriesCloud:
-        title: Categories
 
 search:
     title: Cerca

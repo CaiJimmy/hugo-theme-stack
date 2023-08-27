@@ -29,10 +29,6 @@ widget:
     archives:
         title: 紀錄
         more: 更多
-    tagCloud:
-        title: 標籤雲
-    categoriesCloud:
-        title: 分類
 
 search:
     title: 搜尋

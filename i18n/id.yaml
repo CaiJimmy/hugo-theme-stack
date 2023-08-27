@@ -28,10 +28,6 @@ widget:
     archives:
         title: Arsip
         more: Lebih
-    tagCloud:
-        title: Tag
-    categoriesCloud:
-        title: Kategori
 
 search:
     title: Cari
