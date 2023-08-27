@@ -1,66 +1,39 @@
-toggleMenu:
-    other: Menü umschalten
+toggleMenu: Menü umschalten
 
-darkMode:
-    other: Dunkler Modus
+darkMode: Dunkler Modus
 
 list:
     page:
         one: "{{ .Count }} Seite"
         other: "{{ .Count }} Seiten"
-
-    section:
-        other: Abschnitt
-
+    section: Abschnitt
     subsection:
         one: Unterabschnitt
         other: Unterabschnitte
 
 article:
-    back:
-        other: Zurück
-
-    tableOfContents:
-        other: Inhaltsverzeichnis
-
-    relatedContent:
-        other: Verwandte Inhalte
-
-    lastUpdatedOn:
-        other: Zuletzt aktualisiert am
-
+    back: Zurück
+    tableOfContents: Inhaltsverzeichnis
+    relatedContent: Verwandte Inhalte
+    lastUpdatedOn: Zuletzt aktualisiert am
     readingTime:
         one: "{{ .Count }} Minute Lesezeit"
         other: "{{ .Count }} Minuten Lesezeit"
 
 notFound:
-    title:
-        other: Seite nicht gefunden
-
-    subtitle:
-        other: Diese Seite existiert nicht
+    title: Seite nicht gefunden
+    subtitle: Diese Seite existiert nicht
 
 widget:
     archives:
-        title:
-            other: Archiv
-
-        more:
-            other: Weitere
+        title: Archiv
+        more: Weitere
 
 search:
-    title:
-        other: Suche
-
-    placeholder:
-        other: Etwas tippen...
-
-    resultTitle:
-        other: "#PAGES_COUNT Seiten (#TIME_SECONDS Sekunden)"
+    title: Suche
+    placeholder: Etwas tippen...
+    resultTitle: "#PAGES_COUNT Seiten (#TIME_SECONDS Sekunden)"
 
 footer:
-    builtWith:
-        other: Erstellt mit {{ .Generator }}
-
-    designedBy:
-        other: Theme {{ .Theme }} gestaltet von {{ .DesignedBy }}
+    builtWith: Erstellt mit {{ .Generator }}
+    designedBy: Theme {{ .Theme }} gestaltet von {{ .DesignedBy }}

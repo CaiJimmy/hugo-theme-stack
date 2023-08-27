@@ -31,6 +31,7 @@
 
     input {
         padding: 40px 20px 20px;
+        padding-inline-end: var(--button-size);
         border-radius: var(--card-border-radius);
         background-color: var(--card-background);
         box-shadow: var(--shadow-l1);
@@ -78,5 +79,4 @@
             height: 20px;
         }
     }
-
 }

@@ -11,7 +11,6 @@
     flex-direction: column;
     flex-shrink: 0;
     align-self: stretch;
-    gap: var(--sidebar-element-separation);
     max-width: none;
     width: 100%;
     position: relative;
@@ -64,6 +63,11 @@
                 font-size: 1.4rem;
             }
         }
+    }
+
+    .social-menu,
+    .menu {
+        margin-top: var(--sidebar-element-separation);
     }
 }
 

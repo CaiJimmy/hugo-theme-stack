@@ -1,8 +1,6 @@
-toggleMenu:
-    other: Przełącz Menu
+toggleMenu: Przełącz Menu
 
-darkMode:
-    other: Tryb ciemny
+darkMode: Tryb ciemny
 
 list:
     page:
@@ -10,10 +8,7 @@ list:
         few: "{{ .Count }} strony"
         many: "{{ .Count }} stron"
         other: "{{ .Count }} stron"
-
-    section:
-        other: Sekcja
-
+    section: Sekcja
     subsection:
         one: Podsekcja
         few: Podsekcje
@@ -21,18 +16,10 @@ list:
         other: Podsekcji
 
 article:
-    back:
-        other: Wróć
-
-    tableOfContents:
-        other: Spis treści
-
-    relatedContent:
-        other: Powiązane artykuły
-
-    lastUpdatedOn:
-        other: Ostatnio zaktualizowany
-
+    back: Wróć
+    tableOfContents: Spis treści
+    relatedContent: Powiązane artykuły
+    lastUpdatedOn: Ostatnio zaktualizowany
     readingTime:
         one: "Przeczytasz w {{ .Count }} minutę"
         few: "Przeczytasz w {{ .Count }} minuty"
@@ -40,25 +27,18 @@ article:
         other: "Przeczytasz w {{ .Count }} minut"
 
 notFound:
-    title:
-        other: Nie znaleziono
-    subtitle:
-        other: Ta strona nie istnieje
+    title: Nie znaleziono
+    subtitle: Ta strona nie istnieje
 
 widget:
     archives:
-        title:
-            other: Archiwum
-
-        more:
-            other: Więcej
+        title: Archiwum
+        more: Więcej
 
 search:
-    title:
-        other: Szukaj
+    title: Szukaj
 
-    placeholder:
-        other: Wpisz coś...
+    placeholder: Wpisz coś...
 
     resultTitle:
         one: "#PAGES_COUNT strona (#TIME_SECONDS sekund)"
@@ -67,8 +47,5 @@ search:
         other: "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
 
 footer:
-    builtWith:
-        other: Zbudowano z {{ .Generator }}
-
-    designedBy:
-        other: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}
+    builtWith: Zbudowano z {{ .Generator }}
+    designedBy: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}

@@ -1,0 +1,20 @@
+{{- $class := .Attributes.class | default ""    -}}
+{{- $lang  := .Attributes.lang  | default .Type -}}
+<div class="codeblock">
+    <header>
+        <span class="codeblock-lang">{{ $lang }}</span>
+        <button 
+            class="codeblock-copy"
+            data-id="codeblock-id-{{ .Ordinal }}"
+            data-copied-text="{{ T `article.codeblock.copied` }}"
+        >
+            {{ T `article.codeblock.copy` }}
+        </button>
+    </header>
+    <code id="codeblock-id-{{ .Ordinal }}" style="display:none;">{{- .Inner -}}</code>
+    {{- if transform.CanHighlight $lang -}}
+    <div class="{{ $class }}">{{- highlight .Inner $lang .Options -}}</div>
+    {{- else -}}
+    <pre><code class="{{ $class }}">{{- .Inner -}}</code></pre>
+    {{- end -}}
+</div>

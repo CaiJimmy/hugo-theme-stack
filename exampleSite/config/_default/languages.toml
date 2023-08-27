@@ -1,0 +1,16 @@
+# Enable multilanguage site support
+[en]
+languageName = "English"
+title = "Hugo Theme Stack Example Site"
+weight = 1
+
+[zh-cn]
+languageName = "中文"
+title = "Hugo 主题 Stack 演示站点"
+weight = 2
+
+[ar]
+languageName = "عربي"
+languagedirection = "rtl"
+title = "موقع تجريبي"
+weight = 3
