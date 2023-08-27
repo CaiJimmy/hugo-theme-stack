@@ -79,6 +79,7 @@
 
     @include respond(lg) {
         padding-top: var(--main-top-padding);
+        padding-bottom: var(--main-top-padding);
     }
 }
 
