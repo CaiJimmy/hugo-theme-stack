@@ -1,17 +1,15 @@
 name: Bug Report
 description: File a bug report
-title: "[Bug]: "
-labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure you have checked the [documentation](https://docs.stack.jimmycai.com/).
+        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure you have checked the [documentation](https://stack.jimmycai.com/).
   - type: textarea
     id: what-happened
     attributes:
       label: What happened?
-      description: Also tell us, what did you expect to happen? Please be as detailed as possible, include screenshots and any other information that might help us reproduce the problem.
+      description: Also tell us, what did you expect to happen? Please be as detailed as possible, including screenshots and any other information that might help us reproduce the problem.
       placeholder: Tell us what you see!
     validations:
       required: true
@@ -55,21 +53,13 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
-  - type: markdown
-    attributes:
-      value: |
-        If the issue is not present on the [demo site](https://demo.stack.jimmycai.com), in order to better understand the problem, please provide the link to the source code of your website (not the generated HTML). 
-        Or link to a minimal reproduction of the problem if there are sensible data.
   - type: input
-    id: bug-url
+    id: minimal-reproduction-url
     attributes:
-      label: Link to the page with bug
-      placeholder: https://demo.stack.jimmycai.com
-      value: https://demo.stack.jimmycai.com
+      label: Link to Minimal Reproducible Example
+      description: | 
+        Use [CaiJimmy/hugo-theme-stack-starter](https://github.com/CaiJimmy/hugo-theme-stack-starter) to create a minimal reproduction of the problem. 
+        A minimal reproduction is required so that others can help debug your issue. If a report is vague (e.g. just a generic error message) and has no reproduction, it may be auto-closed. 
+      placeholder: https://github.com/username/your-repository
     validations:
       required: true
-  - type: input
-    id: source-repo
-    attributes:
-      label: Link to the source repository
-      placeholder: https://github.com/CaiJimmy/hugo-theme-stack
