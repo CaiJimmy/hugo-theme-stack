@@ -73,9 +73,8 @@ params:
             emoji:
                 - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
             requiredMeta:
-                - name
-                - email
-                - url
+                - nick
+                - mail
             placeholder:
             locale:
                 admin: Admin
