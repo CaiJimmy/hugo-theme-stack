@@ -14,6 +14,7 @@ list:
 article:
     relatedContent: Gerelateerde inhoud
     lastUpdatedOn: Laatst bijgewerkt op
+    readingTime: "{{ .Count }} leestijd"
 
 notFound:
     title: Niet gevonden

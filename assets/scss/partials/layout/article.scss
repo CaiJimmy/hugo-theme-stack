@@ -33,6 +33,10 @@
             margin: var(--card-padding) 0;
             color: var(--card-text-color-main);
 
+            .footnotes {
+                font-family: var(--base-font-family);
+            }
+
             img {
                 max-width: 100%;
                 height: auto;
