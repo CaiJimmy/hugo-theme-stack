@@ -1,34 +1,36 @@
-<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
-<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
-<div id="waline" class="waline-container"></div>
-<style>
-    .waline-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-        --waline-font-size: var(--article-font-size);
-    }
-    .waline-container .wl-count {
-        color: var(--card-text-color-main);
-    }
-</style>
+{{ if not .Site.IsServer }}
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+    <div id="waline" class="waline-container"></div>
+    <style>
+        .waline-container {
+            background-color: var(--card-background);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-l1);
+            padding: var(--card-padding);
+            --waline-font-size: var(--article-font-size);
+        }
+        .waline-container .wl-count {
+            color: var(--card-text-color-main);
+        }
+    </style>
 
-{{- with .Site.Params.comments.waline -}}
-{{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` -}}
-{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" -}}
+    {{- with .Site.Params.comments.waline -}}
+    {{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` -}}
+    {{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" -}}
 
-{{- range $key, $val := . -}}
-    {{- if ne $val nil -}}  
-        {{- $replaceKey := index $replaceKeys $key -}}
-        {{- $k := default $key $replaceKey -}}
+    {{- range $key, $val := . -}}
+        {{- if ne $val nil -}}  
+            {{- $replaceKey := index $replaceKeys $key -}}
+            {{- $k := default $key $replaceKey -}}
 
-        {{- $config = merge $config (dict $k $val) -}}
+            {{- $config = merge $config (dict $k $val) -}}
+        {{- end -}}
     {{- end -}}
-{{- end -}}
 
-<script>
-    /// Waline client configuration see: https://waline.js.org/en/reference/client.html
-    Waline.init({{ $config | jsonify | safeJS }});
-</script>
+    <script>
+        /// Waline client configuration see: https://waline.js.org/en/reference/client.html
+        Waline.init({{ $config | jsonify | safeJS }});
+    </script>
+    {{- end -}}
 {{- end -}}
