@@ -1,0 +1,16 @@
+baseurl: https://demo.stack.jimmycai.com
+languageCode: en-us
+paginate: 5
+title: Hugo Theme Stack Starter
+theme: hugo-theme-stack
+
+DefaultContentLanguage: en
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: false
+
+disqusShortname: hugo-theme-stack
+
+# GA Tracking ID
+googleAnalytics: ""
