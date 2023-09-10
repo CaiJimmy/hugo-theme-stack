@@ -1,7 +1,10 @@
 baseurl: https://demo.stack.jimmycai.com
 languageCode: en-us
 paginate: 5
+
+# Note: This title is overridden by the title in i18n config file
 title: Hugo Theme Stack Starter
+
 theme: hugo-theme-stack
 
 DefaultContentLanguage: en
