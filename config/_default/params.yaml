@@ -1,0 +1,150 @@
+# Theme's default configuration, can be overridden by user configuration
+
+# Pages in the following sections will appear on the homepage and in RSS
+mainSections:
+  - post
+
+# Front matter field for cover image
+featuredImageField: image
+
+# Output full content to RSS feed
+rssFullContent: true
+
+footer:
+  # Year when site was first published
+  since:
+  # Custom text in footer, supports HTML
+  customText:
+
+dateFormat:
+  # Date format for published date
+  published: "Jan 02, 2006"
+  # Date format for last updated date
+  lastUpdated: "Jan 02, 2006 15:04 MST"
+
+sidebar:
+  compact: false
+  avatar:
+    enabled: true
+    local: true
+    src: img/avatar.png
+
+article:
+  # Enable LaTeX math syntax for all pages by default
+  math: false
+  readingTime: true
+  license:
+    enabled: false
+    default: Licensed under CC BY-NC-SA 4.0
+
+comments:
+  enabled: false
+
+  # Available providers: cactus, cusdis, disqus, disqusjs, giscus, gitalk, remark42, twikoo, utterances, vssue, waline
+  provider: disqus
+
+  # Note: for Disqus, set disqusShortname at top level
+
+  disqusjs:
+    shortname:
+    apiUrl:
+    apiKey:
+    admin:
+    adminLabel:
+
+  utterances:
+    repo:
+    issueTerm: pathname
+    label:
+
+  remark42:
+    host:
+    site:
+    locale:
+
+  vssue:
+    platform:
+    owner:
+    repo:
+    clientId:
+    clientSecret:
+    autoCreateIssue: false
+
+  # Waline client configuration see: https://waline.js.org/en/reference/component.html
+  waline:
+    serverURL:
+    lang:
+    pageview:
+    emoji:
+      - https://unpkg.com/@waline/emojis@1.0.1/weibo
+    requiredMeta:
+      - name
+      - email
+      - url
+    locale:
+      admin: Admin
+      placeholder:
+
+  twikoo:
+    envId:
+    region:
+    path:
+    lang:
+
+  # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
+  cactus:
+    defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
+    serverName: "cactus.chat"
+    siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+
+  giscus:
+    repo:
+    repoID:
+    category:
+    categoryID:
+    mapping:
+    lightTheme:
+    darkTheme:
+    reactionsEnabled: 1
+    emitMetadata: 0
+
+  gitalk:
+    owner:
+    admin:
+    repo:
+    clientID:
+    clientSecret:
+
+  cusdis:
+    host:
+    id:
+
+widgets:
+  homepage: []
+  page: []
+
+opengraph:
+  twitter:
+    # Your Twitter username
+    site:
+    # Available values: summary, summary_large_image
+    card: summary_large_image
+
+defaultImage:
+  opengraph:
+    enabled: false
+    local: false
+    src:
+
+colorScheme:
+  # Display toggle
+  toggle: true
+
+  # Available values: auto, light, dark
+  default: auto
+
+imageProcessing:
+  cover:
+    enabled: true
+  content:
+    enabled: true
