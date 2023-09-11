@@ -16,7 +16,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View Demo
-      link: /demo
+      link: https://demo.stack.jimmycai.com
     - theme: alt
       text: View on GitHub
       link: https://github.com/CaiJimmy/hugo-theme-stack
