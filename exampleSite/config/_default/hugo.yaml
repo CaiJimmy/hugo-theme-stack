@@ -1,4 +1,4 @@
-baseurl: https://demo.stack.jimmycai.com
+baseurl: https://stack.jimmycai.com/demo/
 languageCode: en-us
 paginate: 5
 
@@ -17,3 +17,5 @@ disqusShortname: hugo-theme-stack
 
 # GA Tracking ID
 googleAnalytics: ""
+
+publishDir: ../public/demo

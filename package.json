@@ -1,0 +1,27 @@
+{
+    "name": "hugo-theme-stack",
+    "version": "1.0.0",
+    "description": "Card-style Hugo theme designed for bloggers",
+    "scripts": {
+        "hugo:dev": "cd exampleSite && hugo server --gc --themesDir=../..",
+        "hugo:build": "cd exampleSite && hugo --gc --themesDir=../..",
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:serve": "vitepress serve docs"
+    },
+    "type": "module",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "vitepress": "1.0.0-rc.12",
+        "vue": "^3.3.4"
+    },
+    "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "@algolia/client-search"
+            ]
+        }
+    }
+}
