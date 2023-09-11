@@ -8,10 +8,7 @@ footer:
 sidebar:
   emoji: 🍥
   subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  avatar:
-    enabled: true
-    local: true
-    src: img/logo.jpg
+  avatar: img/logo.jpg
 
 comments:
   enabled: true

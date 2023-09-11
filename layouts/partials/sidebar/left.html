@@ -7,28 +7,17 @@
 
     <header>
         {{ with .Site.Params.sidebar.avatar }}
-            {{ if .enabled }}
+            {{- $avatar := resources.Get . -}}
+            {{- $avatarResized := $avatar.Resize "300x" -}}
+            {{- $src := $avatarResized.RelPermalink -}}
             <figure class="site-avatar">
-                <a href="{{ .Site.BaseURL | relLangURL }}">
-                {{ if not .local }}
-                    <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
-                {{ else }}
-                    {{ $avatar := resources.Get (.src) }}
-                    
-                    {{ if $avatar }}
-                        {{ $avatarResized := $avatar.Resize "300x" }}
-                        <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-                            height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
-                    {{ else }}
-                        {{ errorf "Failed loading avatar from %q" . }}
-                    {{ end }}
-                {{ end }}
+                <a href="{{ $.Site.BaseURL | relLangURL }}">
+                    <img src="{{ $src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 </a>
                 {{ with $.Site.Params.sidebar.emoji }}
                     <span class="emoji">{{ . }}</span>
                 {{ end }}
             </figure>
-            {{ end }}
         {{ end }}
         
         <div class="site-meta">

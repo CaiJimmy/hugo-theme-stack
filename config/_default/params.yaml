@@ -29,10 +29,7 @@ sidebar:
   emoji:
   subtitle:
   compact: false
-  avatar:
-    enabled: true
-    local: true
-    src: img/avatar.png
+  avatar: img/avatar.png
 
 article:
   # Enable LaTeX math syntax for all pages by default
