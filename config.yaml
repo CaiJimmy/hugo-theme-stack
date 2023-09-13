@@ -115,6 +115,9 @@ params:
         page: []
 
     opengraph:
+        # If true,'og:title' will set 'Title - SiteName' else will be just 'Title'.
+        # If this params not set, default will be 'false'.
+        title_include_site_name: false
         twitter:
             # Your Twitter username
             site:
