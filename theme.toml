@@ -2,6 +2,7 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Stack"
+version = "1.0.0"  # Adjust with the actual version
 license = "GPL-3.0-only"
 licenselink = "https://github.com/CaiJimmy/hugo-theme-stack/blob/master/LICENSE"
 description = "Card-style Hugo theme designed for bloggers"
@@ -21,6 +22,8 @@ features = [
 ]
 
 min_version = "0.87.0"
+
+githubtheme = "https://github.com/CaiJimmy/hugo-theme-stack"  # Add GitHub repo link
 
 [author]
 name = "Jimmy Cai"
