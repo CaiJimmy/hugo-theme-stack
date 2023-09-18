@@ -1,5 +1,5 @@
 toggleMenu:
-    other: Esconder Menu
+    other: Ocultar menú
 
 darkMode:
     other: Modo oscuro
@@ -60,7 +60,7 @@ search:
         other: Búsqueda
 
     placeholder:
-        other: Escibe algo...
+        other: Escribe algo...
 
     resultTitle:
         other: "#PAGES_COUNT páginas en (#TIME_SECONDS segundos)"
