@@ -4,3 +4,4 @@ assets/jsconfig.json
 .hugo_build.lock
 node_modules
 docs/.vitepress/dist
+docs/.vitepress/cache
