@@ -16,7 +16,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View Demo
-      link: https://demo.stack.jimmycai.com
+      link: https://stack.jimmycai.com/demo/  # Absolute URL because it is not part of VitePress. If we use /demo/, VitePress will try to resolve it as an internal page and return 404.
     - theme: alt
       text: View on GitHub
       link: https://github.com/CaiJimmy/hugo-theme-stack
