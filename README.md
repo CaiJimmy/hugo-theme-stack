@@ -15,6 +15,19 @@
     [params.footer]
     icp = "ICP备202308111103"
     ```
+- 自定义用户名
+    ```
+    [params]
+    username = "FUTURE"
+    ```
+- 远程加载的资源改为本地存储
+    ```
+    因为GFW的存在,所以所有远程加载的资源改为本地加载,在/static 目录下存放需要的 js 和 css文件。
+    ```
+    
+
+
+     
 
 
 Original `README.md` 
