@@ -1,4 +1,4 @@
-toggleMenu: Toggle Menu
+toggleMenu: Ocultar menú
 
 darkMode: Modo oscuro
 
@@ -15,10 +15,10 @@ article:
     back: Volver
     tableOfContents: Tabla de contenido
     relatedContent: Contenidos relacionados
-    lastUpdatedOn: Última vez actualizado
+    lastUpdatedOn: Última actualización
     readingTime:
-        one: "{{ .Count }} minuto a leer"
-        other: "{{ .Count }} minutos a leer"
+        one: "Tiempo de lectura {{ .Count }} minuto"
+        other: "Tiempo de lectura {{ .Count }} minutos"
 
 notFound:
     title: No Encontrado
@@ -31,7 +31,7 @@ widget:
 
 search:
     title: Búsqueda
-    placeholder: Teclea algo...
+    placeholder: Escribe algo...
     resultTitle: "#PAGES_COUNT páginas en (#TIME_SECONDS segundos)"
 
 footer:
