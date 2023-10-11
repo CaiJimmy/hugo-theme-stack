@@ -11,7 +11,7 @@ featuredImageField: image
 rssFullContent: true
 
 # Path to favicon, relative to assets folder
-favicon: 
+favicon:
 
 footer:
   # Year when site was first published
@@ -146,6 +146,15 @@ colorScheme:
   default: auto
 
 imageProcessing:
+  allowedTypes:
+    - jpeg
+    - png
+    - gif
+    - webp
+  resizableTypes:
+    - jpeg
+    - png
+    - webp
   cover:
     enabled: true
   content:
