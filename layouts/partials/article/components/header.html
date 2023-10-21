@@ -7,19 +7,23 @@
                     {{- $Permalink := $image.resource.RelPermalink -}}
                     {{- $Width := $image.resource.Width -}}
                     {{- $Height := $image.resource.Height -}}
-                    {{- $Srcset := "" -}}
+                    {{- $Srcset := slice -}}
                     
-                    {{- if .Page.Site.Params.imageProcessing.cover.enabled -}}
-                        {{- $thumbnail := $image.resource.Resize "800x" -}}
-                        {{- $thumbnailRetina := $image.resource.Resize "1600x" -}}
-                        {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
-                        {{- $Permalink = $thumbnail.RelPermalink -}}
-                        {{- $Width = $thumbnail.Width -}}
-                        {{- $Height = $thumbnail.Height -}}
+                    {{- if .Page.Site.Params.ImageProcessing.Cover.Enabled -}}
+                        {{- $keys := slice "small" "big" -}}
+                        {{- range $keys -}}
+                            {{- with (index $.Page.Site.Params.ImageProcessing.Cover .) -}}
+                                {{- if gt $Width .Threshold -}}
+                                    {{- $resized := $image.resource.Resize (printf "%dx" .Width) -}}
+                                    {{- $Srcset = $Srcset | append (printf `%s %dw` $resized.RelPermalink .Width) -}}
+                                {{- end -}}
+                            {{- end -}}
+                        {{- end -}}
+                        {{- $Srcset = $Srcset | append (printf `%s %dw` $Permalink $Width) -}}
                     {{- end -}}
 
                     <img src="{{ $Permalink }}"
-                        {{ with $Srcset }}srcset="{{ . }}"{{ end }}
+                        {{ with $Srcset }}srcset="{{ delimit . `, ` }}"{{ end }}
                         width="{{ $Width }}" 
                         height="{{ $Height }}" 
                         loading="lazy"

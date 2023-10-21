@@ -3,7 +3,7 @@
 {{- $alt := .PlainText | safeHTML -}}
 {{- $Width := 0 -}}
 {{- $Height := 0 -}}
-{{- $Srcset := "" -}}
+{{- $Srcset := slice -}}
 {{- $imageProcessing := .Page.Site.Params.imageProcessing.content.enabled -}}
 {{- $allowedTypes := .Page.Site.Params.ImageProcessing.AllowedTypes -}}
 {{- $resizableTypes := .Page.Site.Params.ImageProcessing.ResizableTypes -}}
@@ -22,9 +22,16 @@
 		{{- $galleryImage = true -}}
 
 		{{- if $imageProcessing -}}
-			{{- $small := $image.Resize `480x` -}}
-			{{- $big := $image.Resize `1024x` -}}
-			{{- $Srcset = printf `%s 480w, %s 1024w` $small.RelPermalink $big.RelPermalink -}}
+			{{- $keys := slice "small" "big" -}}
+			{{- range $keys -}}
+				{{- with (index $.Page.Site.Params.ImageProcessing.Content .) -}}
+					{{- if gt $Width .Threshold -}}
+						{{- $resized := $image.Resize (printf "%dx" .Width) -}}
+						{{- $Srcset = $Srcset | append (printf `%s %dw` $resized.RelPermalink .Width) -}}
+					{{- end -}}
+				{{- end -}}
+			{{- end -}}
+			{{- $Srcset = $Srcset | append (printf `%s %dw` $Permalink $Width) -}}
 		{{- end -}}
 	{{- end -}}
 {{- end -}}
@@ -32,7 +39,7 @@
 <img src="{{ $Permalink }}"
 	{{ with $Width }}width="{{ . }}"{{ end }}
 	{{ with $Height }}height="{{ . }}"{{ end }}
-	{{ with $Srcset }}srcset="{{ . }}"{{ end }}
+	{{ with $Srcset }}srcset="{{ delimit . `, ` }}"{{ end }}
 	loading="lazy"
 	{{ with $alt }}
 		alt="{{ . }}"

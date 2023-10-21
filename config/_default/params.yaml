@@ -157,5 +157,17 @@ imageProcessing:
     - webp
   cover:
     enabled: true
+    small:
+      width: 800
+      threshold: 1000 # Only process images above this width
+    big:
+      width: 1600
+      threshold: 2000
   content:
     enabled: true
+    small:
+      width: 480
+      threshold: 600
+    big:
+      width: 1024
+      threshold: 1200
