@@ -1,73 +1,93 @@
-toggleMenu:
-    other: Menü Kapcsolása
+﻿toggleMenu:
+    other: მენიუს ჩართვა
+
 
 darkMode:
-    other: Sötét Mód
+    other: წინააღმდეგ რეჟიმი
+
 
 list:
     page:
-        one: "{{ .Count }} oldal"
-        other: "{{ .Count }} oldalak"
+        one: "{{ .Count }} გვერდი"
+        other: "{{ .Count }} გვერდი"
+
 
     section:
-        other: Szekció
+        other: სექცია
+
 
     subsection:
-        one: Alszekció
-        other: Alszekciók
+        one: ქვესექცია
+        other: ქვესექციები
+
 
 article:
     back:
-        other: Vissza
+        other: უკავშირდება
+
 
     tableOfContents:
-        other: Tartalomjegyzék
+        other: შიგთავსის საკავშირება
+
 
     relatedContent:
-        other: Kapcsolódó tartalom
+        other: მსგავსი კონტენტი
+
 
     lastUpdatedOn:
-        other: Utolsó frissítés időpontja
+        other: ბოლო განახლება
+
 
     readingTime:
-        one: "{{ .Count }} percnyi olvasmány"
-        other: "{{ .Count }} percnyi olvasmány"
+        one: "{{ .Count }} წუთი წაკითხვა"
+        other: "{{ .Count }} წუთი წაკითხვა"
+
 
 notFound:
     title:
-        other: Nem található
+        other: ვერ მოიძებნა
+
 
     subtitle:
-        other: Ez az oldal nem létezik
+        other: ეს გვერდი არ არსებობს
+
 
 widget:
     archives:
         title:
-            other: Archívum
+            other: არქივები
+
 
         more:
-            other: Több
+            other: სხვა
+
 
     tagCloud:
         title:
-            other: Cimkék
+            other: თეგებ
+
+
     categoriesCloud:
         title:
-            other: Kategóriák
+            other: კატეგორიები
+
 
 search:
     title:
-        other: Keresés
+        other: ძიება
+
 
     placeholder:
-        other: Írj valamit...
+        other: რწმენაინება...
+
 
     resultTitle:
-        other: "#PAGES_COUNT oldal (#TIME_SECONDS másodperc alatt)"
-
+        other: "#PAGES_COUNT გვერდი (#TIME_SECONDS წამი)"
+    
 footer:
     builtWith:
-        other: "{{ .Generator }} használatával készült"
+        other: შექმნილია {{ .Generator }}-ით
+
 
     designedBy:
-        other: A {{ .Theme }} dizájnt {{ .DesignedBy }} tervezte
+        other: თემა {{ .Theme }} დიზაინის შექმნილია {{ .DesignedBy }}-ის მიერ
