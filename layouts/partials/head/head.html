@@ -9,7 +9,10 @@
 <title>{{ $title }}</title>
 
 <link rel='canonical' href='{{ .Permalink }}'>
-
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://jsd.onmicrosoft.cn">
 {{- partial "head/style.html" . -}}
 {{- partial "head/script.html" . -}}
 {{- partial "head/opengraph/include.html" . -}}
