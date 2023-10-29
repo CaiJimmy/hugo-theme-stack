@@ -1,0 +1,73 @@
+toggleMenu:
+  other: मेनू टॉगल करें
+
+darkMode:
+  other: डार्क मोड
+
+list:
+  page:
+    one: "{{ .Count }} पेज"
+    other: "{{ .Count }} पेज"
+
+  section:
+    other: अनुभाग
+
+  subsection:
+    one: उपधारा
+    other: उपखंड
+
+article:
+  back:
+    other: पीछे
+
+  tableOfContents:
+    other: विषयसूची
+
+  relatedContent:
+    other: संबंधित सामग्री
+
+  lastUpdatedOn:
+    other: अंतिम बार अपडेट किया गया
+
+  readingTime:
+    one: "{{ .Count }} मिनट पढ़ें"
+    other: "{{ .Count }} मिनट पढ़ें"
+
+notFound:
+  title:
+    other: 404 नहीं मिला।
+
+  subtitle:
+    other: यह पृष्ठ मौजूद नहीं है।
+
+widget:
+  archives:
+    title:
+      other: अभिलेखागार
+
+    more:
+      other: अधिक
+
+  tagCloud:
+    title:
+      other: टैग
+  categoriesCloud:
+    title:
+      other: श्रेणियाँ
+
+search:
+  title:
+    other: खोज
+
+  placeholder:
+    other: कुछ लिखें...
+
+  resultTitle:
+    other: "#PAGES_COUNT पेज (#TIME_SECONDS सेकंड)"
+
+footer:
+  builtWith:
+    other: निर्मित {{ .Generator }} के साथ
+
+  designedBy:
+    other: थीम {{ .Theme }} द्वारा डिज़ाइन किया गया {{ .DesignedBy }}
