@@ -1,0 +1,74 @@
+toggleMenu:
+    other: მენიუს ჩართვა
+
+darkMode:
+    other: წინააღმდეგ რეჟიმი
+
+list:
+    page:
+        one: "{{ .Count }} გვერდი"
+        other: "{{ .Count }} გვერდი"
+
+    section:
+        other: სექცია
+
+    subsection:
+        one: ქვესექცია
+        other: ქვესექციები
+
+article:
+    back:
+        other: უკავშირდება
+
+    tableOfContents:
+        other: შიგთავსის საკავშირება
+
+    relatedContent:
+        other: მსგავსი კონტენტი
+
+    lastUpdatedOn:
+        other: ბოლო განახლება
+
+    readingTime:
+        one: "{{ .Count }} წუთი წაკითხვა"
+        other: "{{ .Count }} წუთი წაკითხვა"
+
+notFound:
+    title:
+        other: ვერ მოიძებნა
+
+    subtitle:
+        other: ეს გვერდი არ არსებობს
+
+widget:
+    archives:
+        title:
+            other: არქივები
+
+        more:
+            other: სხვა
+
+    tagCloud:
+        title:
+            other: თეგებ
+
+    categoriesCloud:
+        title:
+            other: კატეგორიები
+
+search:
+    title:
+        other: ძიება
+
+    placeholder:
+        other: რწმენაინება...
+
+    resultTitle:
+        other: "#PAGES_COUNT გვერდი (#TIME_SECONDS წამი)"
+    
+footer:
+    builtWith:
+        other: შექმნილია {{ .Generator }}-ით
+
+    designedBy:
+        other: თემა {{ .Theme }} დიზაინის შექმნილია {{ .DesignedBy }}-ის მიერ
