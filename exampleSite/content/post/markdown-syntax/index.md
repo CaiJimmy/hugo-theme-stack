@@ -4,14 +4,16 @@ title = "my First"
 date = "2023-11-01"
 description = "Sample description about article."
 tags = [
-    "markdown",
-    "css",
-    "html",
-    "themes",
+	"文章标签(一般写用到了哪些技术)"，
+	"底部标签1",
+    "底部标签2",
+    "底部标签3",
+    "底部标签4",
 ]
 categories = [
-    "themes",
-    "syntax",
+	"分类专栏(一般写自己划分的专栏)",
+    "文章分类1",
+    "文章分类2",
 ]
 series = ["Themes Guide"]
 aliases = ["migrate-from-jekyl"]
