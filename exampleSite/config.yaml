@@ -2,7 +2,7 @@ baseurl: https://example.com
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
-title: Wxn's bolg
+title: Example Site
 copyright: Example Person
 
 languages:
