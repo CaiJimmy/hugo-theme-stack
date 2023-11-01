@@ -1,6 +1,6 @@
 +++
 author = "Wxn"
-title = "英语测试"
+title = "中文测试"
 date = "2023-11-01"
 description = "Guide to emoji usage in Hugo"
 categories = [
