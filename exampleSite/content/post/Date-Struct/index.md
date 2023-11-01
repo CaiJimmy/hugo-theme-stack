@@ -1,42 +1,50 @@
 +++
-author = "Wxn"
-title = "英文测试"
-date = "2023-11-02"
-description = "Sample description about article."
-tags = [
-	"底部标签1",
-    "底部标签2",
-    "底部标签3",
-    "底部标签4",
-]
+author = "Hugo Authors"
+title = "英语测试"
+date = "2019-03-05"
+description = "Guide to emoji usage in Hugo"
 categories = [
-    "文章分类1",
-    "文章分类2",
+    "Test"
 ]
-series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
-image = "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
-
+tags = [
+    "emoji",
+]
+image = "the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
 +++
 
-This article offers a sample of basic Markdown.
+Emoji can be enabled in a Hugo project in a number of ways. 
 <!--more-->
+The [`emojify`](https://gohugo.io/functions/emojify/) function can be called directly in templates or [Inline Shortcodes](https://gohugo.io/templates/shortcode-templates/#inline-shortcodes). 
 
-# hello world
+To enable emoji globally, set `enableEmoji` to `true` in your site's [configuration](https://gohugo.io/getting-started/configuration/) and then you can type emoji shorthand codes directly in content files; e.g.
 
-Hello World！
+<p><span class="nowrap"><span class="emojify">🙈</span> <code>:see_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙉</span> <code>:hear_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙊</span> <code>:speak_no_evil:</code></span></p>
+<br>
 
-```
-tags = [
-	"文章标签(一般写用到了哪些技术)"，
-	"底部标签1",
-    "底部标签2",
-    "底部标签3",
-    "底部标签4",
-]
-categories = [
-	"分类专栏(一般写自己划分的专栏)",
-    "文章分类1",
-    "文章分类2",
-]
-```
+The [Emoji cheat sheet](http://www.emoji-cheat-sheet.com/) is a useful reference for emoji shorthand codes.
+
+***
+
+**N.B.** The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.
+
+{{< highlight html >}}
+.emoji {
+  font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+}
+{{< /highlight >}}
+
+{{< css.inline >}}
+<style>
+.emojify {
+	font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+	font-size: 2rem;
+	vertical-align: middle;
+}
+@media screen and (max-width:650px) {
+  .nowrap {
+    display: block;
+    margin: 25px 0;
+  }
+}
+</style>
+{{< /css.inline >}}
