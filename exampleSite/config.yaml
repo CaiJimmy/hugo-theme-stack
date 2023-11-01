@@ -61,7 +61,7 @@ params:
 
     sidebar:
         emoji: 🍥
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        subtitle: This is wxn's blog.
         avatar:
             enabled: true
             local: true
