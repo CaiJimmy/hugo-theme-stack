@@ -14,7 +14,7 @@ languages:
             description: Example description
     zh-cn:
         languageName: 中文
-        title: 演示站点
+        title: Wxn的博客
         weight: 2
         params:
             description: 演示说明
