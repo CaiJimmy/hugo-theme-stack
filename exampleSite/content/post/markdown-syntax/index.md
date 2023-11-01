@@ -26,6 +26,7 @@ This article offers a sample of basic Markdown.
 
 Hello World！
 
+```
 tags = [
 	"文章标签(一般写用到了哪些技术)"，
 	"底部标签1",
@@ -38,3 +39,4 @@ categories = [
     "文章分类1",
     "文章分类2",
 ]
+```
