@@ -11,13 +11,13 @@ languages:
         title: Wxn's Blog
         weight: 1
         params:
-            description: Example description
+            description: 演示说明
     zh-cn:
         languageName: 中文
         title: Wxn的博客
         weight: 2
         params:
-            description: 演示说明
+            description: Example description
     ar:
         languageName: عربي
         languagedirection: rtl
