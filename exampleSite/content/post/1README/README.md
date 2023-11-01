@@ -26,8 +26,6 @@ tags = [
 categories = [
     "文章分类",
 ]
-image = "文章宣传图片"
-
 +++
 
 This article offers a sample of basic Markdown.
