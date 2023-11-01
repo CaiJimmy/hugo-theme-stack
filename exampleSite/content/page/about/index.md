@@ -1,13 +1,13 @@
 ---
-title: About
-description: Hugo, the world's fastest framework for building websites
-date: '2019-02-28'
+title: Personal Introduction
+description: This is My personal introduction.
+date: '2023-11-01'
 aliases:
   - about-us
   - about-hugo
   - contact
 license: CC BY-NC-ND
-lastmod: '2020-10-09'
+lastmod: '2023-11-01'
 menu:
     main: 
         weight: -90
@@ -15,20 +15,30 @@ menu:
             icon: user
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+# General
 
-Hugo makes use of a variety of open source projects including:
+I am a cheerful personality, eager to learn, good at communication, hardworking, daring to explore, and dedicated to professional ethics. Interested in technology, willing to specialize in research, strong ability to withstand pressure, enjoys researching code to make it more robust.
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+# Interest
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+LOL，CF，Genshin Impact
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+# Programming Language
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+ETC-4（465）
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+# Foreign language
+
+CPP、C
+
+# Foreign framework
+
+Qt
+
+# Favourite system
+
+Linux
+
+# Favourite database
+
+MySql8.0、SQLite
