@@ -8,7 +8,7 @@ copyright: Example Person
 languages:
     en:
         languageName: English
-        title: My Blog
+        title: Wxn's Blog
         weight: 1
         params:
             description: Example description
