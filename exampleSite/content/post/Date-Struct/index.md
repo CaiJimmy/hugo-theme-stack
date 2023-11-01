@@ -1,7 +1,7 @@
 +++
-author = "Hugo Authors"
+author = "Wxn"
 title = "英语测试"
-date = "2023-11-02"
+date = "2023-11-01"
 description = "Guide to emoji usage in Hugo"
 categories = [
     "Test"
