@@ -1,3 +1,22 @@
++++
+author = "Wxn"
+title = "README"
+date = "2023-11-02"
+description = "Please read me first."
+tags = [
+	"底部标签",
+]
+categories = [
+    "文章分类",
+]
+
++++
+
+This article offers a sample of basic Markdown.
+<!--more-->
+
+# 正文开始
+
 这个文件加中放文章，每篇文章都要放入到一个文件加中。
 
 下面我们来一个例子：
