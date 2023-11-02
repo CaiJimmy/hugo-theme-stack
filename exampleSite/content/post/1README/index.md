@@ -67,12 +67,8 @@ This article offers a sample of basic Markdown.
 
 ## bilibilibi Shortcode
 
-{{< bilibili av498363026 >}}
-
-<br>
-
-{{< bilibili avBV1ew411q7gm >}}
-
 <br>
 
 {{< bilibili BV1ew411q7gm >}}
+
+![1698890999744](Picture/1698890999744.png)
