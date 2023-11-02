@@ -29,7 +29,7 @@ This article offers a sample of basic Markdown.
 
 然后，我们进入Date-Struct文件加创建两个文件index.md与index.zh-cn.md
 
-![Photo by Florian Klauer on Unsplash](1698855011986.png)
+![picture2](1698855011986.png)
 
 下面我来写一个示例：
 
@@ -54,3 +54,13 @@ This article offers a sample of basic Markdown.
 
 # 正文开始
 ```
+
+![picture2](1698855011986.png)
+
+![Photo by Florian Klauer on Unsplash](florian-klauer-nptLmg6jqDo-unsplash.jpg) 
+
+![Photo by Luca Bravo on Unsplash](luca-bravo-alS7ewQ41M8-unsplash.jpg) 
+
+![Photo by Helena Hertz on Unsplash](helena-hertz-wWZzXlDpMog-unsplash.jpg)  
+
+![Photo by Hudai Gayiran on Unsplash](hudai-gayiran-3Od_VKcDEAA-unsplash.jpg)
