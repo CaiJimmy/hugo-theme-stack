@@ -17,6 +17,8 @@ This article offers a sample of basic Markdown.
 
 # 正文开始
 
+![1698889516379](图片/1698889516379.png)
+
 这个文件加中放文章，每篇文章都要放入到一个文件加中。
 
 下面我们来一个例子：
@@ -25,7 +27,7 @@ This article offers a sample of basic Markdown.
 
 我可以创建一个文件夹：Date-Struct（这个名字随便起，只要是英文的就好，然后没有固定格式，中间那个-可以加也可以不加）
 
-![1698854881951](1698854881951.png)
+![picture1](1698854881951.png)
 
 然后，我们进入Date-Struct文件加创建两个文件index.md与index.zh-cn.md
 
@@ -57,10 +59,3 @@ This article offers a sample of basic Markdown.
 
 ![picture2](1698855011986.png)
 
-![Photo by Florian Klauer on Unsplash](florian-klauer-nptLmg6jqDo-unsplash.jpg) 
-
-![Photo by Luca Bravo on Unsplash](luca-bravo-alS7ewQ41M8-unsplash.jpg) 
-
-![Photo by Helena Hertz on Unsplash](helena-hertz-wWZzXlDpMog-unsplash.jpg)  
-
-![Photo by Hudai Gayiran on Unsplash](hudai-gayiran-3Od_VKcDEAA-unsplash.jpg)
