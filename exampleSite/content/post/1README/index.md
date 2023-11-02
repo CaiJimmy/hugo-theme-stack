@@ -77,4 +77,14 @@ This article offers a sample of basic Markdown.
 
 {{< bilibili BV1ew411q7gm >}}
 
+<br>
+
+cheems,你被生活打倒了吗?
+
+{{< bilibili BV1Rv4y1w7hA >}}
+
+<br>
+
+{{< bilibili BV12C4y1o7gi >}}
+
 ![1698890999744](Picture/1698890999744.png)
