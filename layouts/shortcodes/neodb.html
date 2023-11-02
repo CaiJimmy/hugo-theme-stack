@@ -1,0 +1,29 @@
+{{ $dbUrl := .Get 0 }}
+{{ $dbApiUrl := "https://neodb.social/api/" }}
+{{ $dbType := "" }}
+
+{{ if ( findRE `^.*neodb\.social\/.*` $dbUrl ) }}
+    {{ $dbType = replaceRE `.*neodb.social\/(.*\/.*)` "$1" $dbUrl }}
+{{ else }}
+    {{ $dbType = $dbUrl }}
+    {{ $dbApiUrl = "https://neodb.social/api/catalog/fetch?url=" }}
+{{ end }}
+
+{{ $dbFetch := getJSON $dbApiUrl $dbType }}
+
+{{ if $dbFetch }}
+    {{ $itemRating := 0 }}{{ with $dbFetch.rating }}{{ $itemRating = . }}{{ end }}
+    <div class="db-card">
+        <div class="db-card-subject">
+            <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="{{ $dbFetch.cover_image_url }}"></div>
+            <div class="db-card-content">
+                <div class="db-card-title"><a href="{{ $dbUrl }}" class="cute" target="_blank" rel="noreferrer">{{ $dbFetch.title }}</a></div>
+                <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:{{mul 10 $itemRating }}%"></span></span><span class="rating_nums">{{ $itemRating }}</span></div>
+                <div class="db-card-abstract">{{ $dbFetch.brief }}</div>
+            </div>
+            <div class="db-card-cate">{{ $dbFetch.category }}</div>
+        </div>
+    </div>
+{{else}}
+    <p style="text-align: center;"><small>远程获取内容失败，请检查 API 有效性。</small></p>
+{{end}}
