@@ -27,11 +27,11 @@ This article offers a sample of basic Markdown.
 
 我可以创建一个文件夹：Date-Struct（这个名字随便起，只要是英文的就好，然后没有固定格式，中间那个-可以加也可以不加）
 
-![picture1](1698854881951.png)
+![picture1](Picture/1698854881951.png)
 
 然后，我们进入Date-Struct文件加创建两个文件index.md与index.zh-cn.md
 
-![picture2](1698855011986.png)
+![picture2](Picture/1698855011986.png)
 
 下面我来写一个示例：
 
@@ -57,5 +57,5 @@ This article offers a sample of basic Markdown.
 # 正文开始
 ```
 
-![picture2](1698855011986.png)
+
 
