@@ -1,6 +1,6 @@
 +++
 author = "Wxn"
-title = "README"
+title = "实习-2023-11-02"
 date = "2023-11-02"
 description = "Please read me first."
 tags = [
