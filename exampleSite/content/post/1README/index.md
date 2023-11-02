@@ -61,9 +61,15 @@ This article offers a sample of basic Markdown.
 
 ## YouTube Privacy Enhanced Shortcode
 
+很有意思的一个可以360旋转的视频
+
 {{< youtube ZJthWmvUzzc >}}
 
 <br>
+
+考研/工作累了,来听首歌放松一下吧!
+
+{{< youtube BpQwi0zHopU >}}
 
 ## bilibilibi Shortcode
 
