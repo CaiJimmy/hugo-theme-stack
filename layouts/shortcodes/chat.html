@@ -1,0 +1,116 @@
+{{ if eq (.Get "position") "left" }}
+<div class="chat --other">
+    <div class="chat__inner">
+        <div class="chat__meta">{{ .Get "name" }}&nbsp;&nbsp;&nbsp;{{ .Get "timestamp" }}</div>
+        <div class="chat__text">
+            {{ .Inner }}
+        </div>
+    </div>
+</div>
+{{ else if eq (.Get "position") "right" }}
+<div class="chat --self">
+    <div class="chat__inner">
+        <div class="chat__meta" style="text-align: right;">{{ .Get "timestamp" }}&nbsp;&nbsp;&nbsp;{{ .Get "name" }}</div>
+        <div class="chat__text">
+            {{ .Inner }}
+        </div>
+    </div>
+</div>
+{{ end }}
+
+<style>
+    .chat {
+        margin: 10px;
+        padding: 10px;
+        position: relative;
+        /* 添加相对定位，以便定位尖角箭头 */
+        transition: transform 0.2s;
+        /* 添加过渡效果，使放大平滑 */
+        max-width: 80%;
+        min-width: 15%;
+    }
+    
+    .chat:hover {
+        transform: scale(1.05);
+    }
+    
+    .chat.--self {
+        text-align: left;
+        background-color: #ecf5ff;
+        color: #000000;
+        border-radius: 15px;
+        width: fit-content;
+        margin-left: auto;
+    }
+    /* 尖角箭头 */
+    
+    .chat.--self::before {
+        content: "";
+        position: absolute;
+        right: -18px;
+        /* 调整箭头位置 */
+        bottom: 5px;
+        transform: translateY(-50%);
+        border-width: 15px 0 0 20px;
+        border-style: solid;
+        border-color: transparent transparent transparent #ecf5ff;
+        /* 箭头颜色与对话框背景颜色一致 */
+    }
+    /* 左边对话框样式 */
+    
+    .chat.--other {
+        text-align: left;
+        background-color: #ffecec;
+        color: #333;
+        border-radius: 15px;
+        position: relative;
+        width: fit-content;
+    }
+    /* 左边对话框的尖角箭头 */
+    
+    .chat.--other::before {
+        content: "";
+        position: absolute;
+        left: -18px;
+        bottom: 5px;
+        transform: translateY(-50%);
+        border-width: 15px 20px 0 0;
+        border-style: solid;
+        border-color: transparent #ffecec transparent transparent;
+    }
+    /* 消息元数据样式（名称和时间戳） */
+    
+    .chat__meta {
+        font-weight: bold;
+        font-size: 0.67em;
+        color: #707070;
+        margin-bottom: 5px;
+    }
+    /* 消息文本样式 */
+    
+    .chat__text {
+        font-size: 0.9em;
+        margin-left: 10px;
+        word-break: break-all;
+    }
+    
+    [data-scheme="dark"] {
+        .chat.--self {
+            color: #fefefe;
+            background-color: #253958;
+        }
+        .chat.--self::before {
+            border-color: transparent transparent transparent #253958;
+        }
+        .chat.--other {
+            color: #fefefe;
+            background-color: #1a1a1a;
+        }
+        .chat.--other::before {
+            border-color: transparent #1a1a1a transparent transparent;
+        }
+        .chat__meta {
+            color: #b1b1b1;
+        }
+    }
+</style>
