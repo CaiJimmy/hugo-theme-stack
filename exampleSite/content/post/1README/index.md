@@ -17,7 +17,7 @@ This article offers a sample of basic Markdown.
 
 # 正文开始
 
-![1698889516379](图片/1698889516379.png)
+![1698889516379](Picture/1698889516379.png)
 
 这个文件加中放文章，每篇文章都要放入到一个文件加中。
 
