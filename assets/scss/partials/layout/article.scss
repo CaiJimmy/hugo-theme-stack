@@ -208,6 +208,7 @@
     font-size: var(--article-font-size);
     padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
+    font-weight: 500;
 
     & > p {
         margin: 1.5em 0;
@@ -222,6 +223,7 @@
         margin-inline-start: calc((var(--card-padding)) * -1);
         padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
         border-inline-start: var(--heading-border-size) solid var(--accent-color);
+        font-weight: 600;
     }
 
     figure {

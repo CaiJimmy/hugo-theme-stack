@@ -1,10 +1,10 @@
 <style>
   :root {
-    --sys-font-family: "LXGW WenKai Screen R";
-    --zh-font-family: "LXGW WenKai Screen R";
-    --base-font-family: "LXGW WenKai Screen R";
-    --code-font-family: "LXGW WenKai Screen R";
-    --article-font-family: "Noto Serif SC";
+    --sys-font-family: "EB Garamond", "LXGW WenKai Screen R";
+    --zh-font-family: "EB Garamond", "LXGW WenKai Screen R";
+    --base-font-family: "EB Garamond", "LXGW WenKai Screen R";
+    --code-font-family: "EB Garamond", "LXGW WenKai Screen R";
+    --article-font-family: "EB Garamond", "Noto Serif SC";
   }
 </style>
 
@@ -22,7 +22,17 @@
   (function () {
     const customFont = document.createElement("link");
     customFont.href =
-      "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap";
+      "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Source+Code+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Cinzel+Decorative:wght@700&display=swap";
+
+    customFont.type = "text/css";
+    customFont.rel = "stylesheet";
+
+    document.head.appendChild(customFont);
+  })();
+  (function () {
+    const customFont = document.createElement("link");
+    customFont.href =
+      "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap";
 
     customFont.type = "text/css";
     customFont.rel = "stylesheet";
