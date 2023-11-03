@@ -15,7 +15,7 @@
         transition: box-shadow 0.3s ease;
 
         &:hover {
-            box-shadow: var(--shadow-l2);
+            box-shadow: var(--shadow-l1);
         }
 
         .article-image {
@@ -54,7 +54,7 @@
 }
 
 .article-title {
-    font-family: var(--article-font-family);
+    font-family: var(--zh-font-family);
     font-weight: 600;
     margin: 0;
     color: var(--card-text-color-main);

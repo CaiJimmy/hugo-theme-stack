@@ -133,7 +133,7 @@
     .site-name {
         color: var(--accent-color);
         margin: 0;
-        font-size: 1.6rem;
+                font-size: 1.6rem;
 
         @include respond(2xl) {
             font-size: 1.8rem;
@@ -144,7 +144,7 @@
         color: var(--body-text-color);
         font-weight: normal;
         margin: 0;
-        font-size: 1.4rem;
+                font-size: 1.4rem;
 
         @include respond(2xl) {
             font-size: 1.6rem;

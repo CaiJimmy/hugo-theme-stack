@@ -1,14 +1,4 @@
 <div class="article-details">
-    {{ if .Params.categories }}
-    <header class="article-category">
-        {{ range (.GetTerms "categories") }}
-            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
-                {{ .LinkTitle }}
-            </a>
-        {{ end }}
-    </header>
-    {{ end }}
-
     <div class="article-title-wrapper">
         <h2 class="article-title">
             <a href="{{ .RelPermalink }}">
@@ -38,14 +28,16 @@
             </div>
         {{ end }}
 
-        {{ if $showWordCount }}
         <div>
-            {{ partial "helper/icon" "pen" }}
-            <time class="article-time--reading">
-                {{ .WordCount }} Words
+            <time class="article-time--published">
+            {{ if .Params.categories }}
+                {{ partial "helper/icon" "tag" }}
+                {{ range (.GetTerms "categories") }}
+                    {{ .LinkTitle }}
+                {{ end }}
+            {{ end }}
             </time>
-        </div>
-        {{ end }}
+        </div> 
 
         {{ if $showReadingTime }}
             <div>
