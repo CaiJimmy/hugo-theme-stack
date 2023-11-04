@@ -15,10 +15,6 @@ categories = [
 This article offers a sample of basic Markdown.
 <!--more-->
 
-[TOC]
-
-
-
 # 正文开始
 
 # 个人介绍
@@ -32,3 +28,12 @@ This article offers a sample of basic Markdown.
 # 项目架构
 
 ![1699105738245](图片/1699105738245.png)
+
+# 项目开工
+
+## ARM端
+
+## 服务器端
+
+## 客户端
+
