@@ -53,18 +53,16 @@
         padding-bottom: 15px;
 
         article {
-            width: 250px;
-            height: 150px;
+            width: 120px;
+            height: 60px;
             margin-right: 20px;
             flex-shrink: 0;
+            text-align: center;
 
             .article-title {
                 margin: 0;
                 font-size: 1.8rem;
-            }
-
-            .article-details {
-                padding: 20px;
+                font-weight: 600;
             }
         }
     }

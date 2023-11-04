@@ -186,11 +186,14 @@
         margin-right: 15px;
         flex-shrink: 0;
         overflow: hidden;
-        width: 250px;
-        height: 150px;
+        width: 240px;
+        height: 80px;
 
         .article-title {
+            width: 220px;
+            height: 80px;
             font-size: 1.8rem;
+            font-weight: 500;
             margin: 0;
         }
 

@@ -29,14 +29,12 @@
         {{ end }}
 
         <div>
-            <time class="article-time--published">
             {{ if .Params.categories }}
-                {{ partial "helper/icon" "tag" }}
+            {{ partial "helper/icon" "categories" }}
                 {{ range (.GetTerms "categories") }}
-                    {{ .LinkTitle }}
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
                 {{ end }}
             {{ end }}
-            </time>
         </div> 
 
         {{ if $showReadingTime }}
