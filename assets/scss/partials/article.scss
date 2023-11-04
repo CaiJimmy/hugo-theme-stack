@@ -54,7 +54,7 @@
 }
 
 .article-title {
-    font-family: var(--article-font-family);
+    font-family: "EB Garamond", "Noto Serif SC";
     font-weight: 600;
     margin: 0;
     color: var(--card-text-color-main);
@@ -257,7 +257,6 @@
             flex-direction: column;
             justify-content: flex-end;
             z-index: 2;
-            padding: 15px;
 
             @include respond(sm) {
                 padding: 20px;

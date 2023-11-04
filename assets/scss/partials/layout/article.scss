@@ -190,10 +190,11 @@
         height: 80px;
 
         .article-title {
+            font-family: "EB Garamond", "Noto Serif SC";
             width: 220px;
             height: 80px;
             font-size: 1.8rem;
-            font-weight: 500;
+            font-weight: 600;
             margin: 0;
         }
 
@@ -211,7 +212,7 @@
     font-size: var(--article-font-size);
     padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
-    font-weight: 500;
+    font-weight: 400;
 
     & > p {
         margin: 1.5em 0;
@@ -223,6 +224,7 @@
     h4,
     h5,
     h6 {
+        font-family: "EB Garamond", "Noto Serif SC";
         margin-inline-start: calc((var(--card-padding)) * -1);
         padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
         border-inline-start: var(--heading-border-size) solid var(--accent-color);
