@@ -21,3 +21,10 @@ This article offers a sample of basic Markdown.
 https://zhuanlan.zhihu.com/p/603201577)
 
 今天又是学习当架构师的一天，暂时没什么好说的，先这样，后续慢慢补充。
+
+软考网站:
+
+https://www.ruankao.org.cn/index/zgsz
+
+![1699104100831](图片/1699104100831.png)
+
