@@ -15,6 +15,8 @@ categories = [
 This article offers a sample of basic Markdown.
 <!--more-->
 
+@[TOC]
+
 # 正文开始
 
 # 个人介绍
