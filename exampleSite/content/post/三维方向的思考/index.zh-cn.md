@@ -42,3 +42,9 @@ This article offers a sample of basic Markdown.
 <font color=red>下面来讲一下叉乘</font>:这个很重要:<font color=orange>右手定则,叉乘结果的方向,叉乘a与b的先后顺序</font>
 
 ![1699198980225](图片/1699198980225.png)
+
+
+
+
+
+![1699199213786](图片/1699199213786.png)
