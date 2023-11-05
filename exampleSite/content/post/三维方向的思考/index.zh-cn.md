@@ -39,4 +39,4 @@ This article offers a sample of basic Markdown.
 
 视频:[教学视频](https://www.bilibili.com/video/BV1FD4y1i7Dy/?share_source=copy_web&vd_source=9a022d27a757e495adc6e15743c4ec1d)
 
-==下面来讲一下叉乘==
+<font color=red>下面来讲一下叉乘</font>
