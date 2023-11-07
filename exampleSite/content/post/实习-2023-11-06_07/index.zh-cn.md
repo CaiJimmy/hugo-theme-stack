@@ -19,6 +19,8 @@ This article offers a sample of basic Markdown.
 
 6号和7号都在找facc_cpp这个小项目的bug,
 
+bug是下面三个原因:
+
 第一,路径加载不对(文件中写死了,需要修改)
 
 第二,项目写的是读取ctm文件,而不是读取stl文件,
