@@ -4,9 +4,9 @@
     
     .db-card {
         margin: 2rem 3rem;
-        background: #33669930;
+        background: var(--body-background);
         border-radius: 8px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.25);
+        box-shadow: var(--shadow-l1);
     }
     
     .db-card-subject {
@@ -16,9 +16,6 @@
         padding: 12px;
         position: relative
     }   
-    .dark-mode .db-card {
-        background: #252627
-    }
     
     .db-card-content {
         flex: 1 1 auto
@@ -44,7 +41,7 @@
     .db-card-comment {
         font-size: 14px;
         overflow: hidden;
-        max-height: 4rem
+        max-height: 7rem
     }
     
     .db-card-cate {
@@ -61,7 +58,7 @@
     
     .db-card-post img {
         width: 96px!important;
-        height: 96px!important;
+        height: 128px!important;
         border-radius: 4px;
         -o-object-fit: cover;
         object-fit: cover
