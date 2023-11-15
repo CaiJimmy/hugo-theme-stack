@@ -1,0 +1,149 @@
+{{- $date := .Get "date" -}} {{- $title := .Get "title" -}} {{- $description := .Get "description" -}} {{- $tags := .Get "tags" -}}{{- $url := .Get "url" -}}
+
+<div class="timeline__row">
+    <div class="timeline__time">
+        <div class="timeline__time">{{ $date }}</div>
+        <div class="timeline__split-line"></div>
+    </div>
+    <div class="timeline__content">
+
+        <a href="{{ $url }}">
+            <div class="timeline__title">{{ $title }}</div>
+        </a>
+        <!-- title 可点击，默认就是跳转时间轴所在页 -->
+        <div class="timeline__description">
+            {{ $description }}
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .timeline {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .timeline__row {
+        display: flex;
+        padding-left: 4%;
+    }
+    
+    .timeline__time {
+
+        color: var(--accent-color-darker);
+        font-size: 14px;
+        text-transform: uppercase;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+    
+    .timeline__time-text {
+        margin: 0;
+    }
+    
+    .timeline__split-line {
+        position: absolute;
+        top: 0.5rem;
+        right: -20px;
+        height: 100%;
+        width: 2px;
+        background-color: var(--body-background);
+        z-index: 0;
+    }
+    
+    .timeline__split-line:before {
+        content: "";
+        position: absolute;
+        top: 24%;
+        right: -4px;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        background-color: var(--body-background);
+        box-shadow: 0 0 0 4px var(--theme);
+        border-radius: 50%;
+        border: 0px solid var(--body-background);
+        z-index: -1;
+    }
+    
+    .timeline__content {
+        flex: 1;
+        margin-left: 4.5rem;
+        padding: 0.5rem 0 1.2rem 0;
+    }
+    
+    .timeline__title {
+        margin: 0;
+        margin-bottom: 2px;
+        padding-top: 3px;
+        margin-left: 0.5rem;
+        color: var(--content);
+        font-family: var(--font-family-teshu);
+        font-size: 19px;
+        font-weight: 600;
+        width: fit-content;
+        display: inline-block;
+        vertical-align: middle;
+        /* 垂直居中对齐 */
+    }
+
+    
+    .timeline__description {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--accent-color-darker);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0.5rem 0 0.4rem 1.5rem;
+        /* 添加 1.5rem 的左侧内边距 */
+    }
+    /* 为类名为 "timeline__tag-style" 的标签定义颜色 */
+    
+    .timeline__tag-style {
+        background-color: #c581da;
+        /* 替换为你希望的颜色 */
+        border-color: #c581da;
+        /* 与背景色相同或不同，根据需要自定义 */
+        color: #FFFFFF;
+        /* 根据需要选择文本颜色 */
+    }
+    /* 为类名为 "timeline__tag-article" 的标签定义颜色 */
+    
+    .timeline__tag-article {
+        background-color: #92d392;
+        /* 替换为你希望的颜色 */
+        border-color: #92d392;
+        /* 与背景色相同或不同，根据需要自定义 */
+        color: #000000;
+        /* 根据需要选择文本颜色 */
+    }
+    /* 为类名为 "timeline__tag-page" 的标签定义颜色 */
+    
+    .timeline__tag-page {
+        background-color: #707070;
+        /* 替换为你希望的颜色 */
+        border-color: #707070;
+        /* 与背景色相同或不同，根据需要自定义 */
+        color: #FFFFFF;
+        /* 根据需要选择文本颜色 */
+    }
+    
+    @media screen and (max-width: 768px) {
+        .timeline__time {
+            font-size: 14px;
+            /* 在小屏幕上使用较小的字体大小 */
+        }
+        .timeline__title {
+            font-size: 16px;
+            /* 在小屏幕上使用较小的字体大小 */
+        }
+        .timeline__description {
+            font-size: 14px;
+            /* 在小屏幕上使用较小的字体大小 */
+        }
+    }
+</style>
