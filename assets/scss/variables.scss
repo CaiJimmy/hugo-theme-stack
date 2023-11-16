@@ -117,8 +117,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --pre-background-color: #272822;
     --pre-text-color: #f8f8f2;
 
-    --code-background-color: rgba(0, 0, 0, 0.12);
-    --code-text-color: #808080;
+    --code-background-color: var(--body-background);
+    --code-text-color: var(--accent-color-darker);
 
     --table-border-color: #dadada;
     --tr-even-background-color: #efefee;
