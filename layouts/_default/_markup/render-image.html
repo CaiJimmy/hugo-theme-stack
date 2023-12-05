@@ -1,5 +1,23 @@
-{{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
 {{- $Permalink := .Destination | relURL | safeURL -}}
+{{- $image := "" -}}
+
+{{- if hasPrefix $Permalink "http" -}}
+	{{- with resources.GetRemote $Permalink -}}
+		{{- with .Err -}}
+			{{- $warnMsg := printf "%s" $Permalink -}}
+			{{- warnf "%s.\nPlease check the link: %s\n" . $warnMsg -}}
+		{{- else -}}
+			{{- $image = resources.GetRemote $Permalink -}}
+		{{- end -}}
+	{{- else -}}
+	  {{- errorf "Unable to get remote resource %q" $Permalink -}}
+	{{- end -}}
+{{- else -}}
+	{{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
+	{{- if $image -}}
+		{{- $Permalink = $image.RelPermalink -}}
+	{{- end -}}
+{{- end -}}
 {{- $alt := .PlainText | safeHTML -}}
 {{- $Width := 0 -}}
 {{- $Height := 0 -}}
@@ -10,7 +28,6 @@
 
 {{- if $image -}}
 	{{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
-	{{- $Permalink = $image.RelPermalink -}}
 
 	{{- if $notSVG -}}
 		{{- $Width = $image.Width -}}
