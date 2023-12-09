@@ -21,6 +21,7 @@
 {{ with .Site.Params.favicon }}
     <link rel="shortcut icon" href="{{ . }}" />
 {{ end }}
-
-{{- template "_internal/google_analytics.html" . -}}
+{{- if not .Site.IsServer -}}
+    {{- template "_internal/google_analytics.html" . -}}
+{{- end -}}
 {{- partial "head/custom.html" . -}}
