@@ -1,0 +1,19 @@
+<blockquote>
+    <p style="text-align:center">{{ .Inner }}</p>
+    {{- if or (.Get "author") (.Get "source") -}}
+        <footer style="text-align:right">
+            ——
+            {{- if .Get "author" -}}
+            <span>
+                <strong>
+                   {{- .Get "author" -}}
+                </strong>
+            </span>
+            {{- end -}}
+            {{- with .Get "url" -}}<a href="{{ . }}">{{- end -}}
+                <cite>{{ .Get "source" }}</cite>
+            {{- if .Get "url" -}}</a>{{- end -}}
+        </span>
+        </footer>
+    {{- end -}}
+</blockquote>

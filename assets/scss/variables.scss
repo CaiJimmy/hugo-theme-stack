@@ -105,10 +105,10 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 *   Article content style
 */
 :root {
-    --blockquote-border-size: 4px;
-    --blockquote-background-color: rgb(248 248 248);
+    --blockquote-border-size: 3px;
+    --blockquote-background-color: #f2f2f2;
 
-    --heading-border-size: 4px;
+    --heading-border-size: 3px;
 
     --link-background-color: 189, 195, 199;
     --link-background-opacity: 0.5;
@@ -120,7 +120,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --code-background-color: var(--body-background);
     --code-text-color: var(--accent-color-darker);
 
-    --table-border-color: #dadada;
+    --table-border-color: #dadada;  
     --tr-even-background-color: #efefee;
 
     --kbd-border-color: #dadada;
@@ -132,7 +132,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --table-border-color: #717171;
         --tr-even-background-color: #545454;
 
-        --blockquote-background-color: rgb(75 75 75);
+        --blockquote-background-color: rgb(65, 65, 65);
     }
 }
 

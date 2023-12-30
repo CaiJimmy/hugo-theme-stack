@@ -227,7 +227,7 @@
         font-family: "EB Garamond", "Noto Serif SC";
         margin-inline-start: calc((var(--card-padding)) * -1);
         padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
-        border-inline-start: var(--heading-border-size) solid var(--accent-color);
+        border-inline-start: var(--heading-border-size) solid var(--accent-color-darker);
         font-weight: 600;
     }
 
