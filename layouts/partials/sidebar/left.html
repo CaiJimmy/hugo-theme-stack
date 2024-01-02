@@ -82,7 +82,7 @@
                 {{ with .Site.Home.AllTranslations }}
                     <li id="i18n-switch">  
                         {{ partial "helper/icon" "language" }}
-                        <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                             {{ range . }}
                                 <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
                             {{ end }}
