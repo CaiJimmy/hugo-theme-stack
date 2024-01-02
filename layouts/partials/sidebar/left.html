@@ -74,8 +74,9 @@
             </a>
         </li>
         {{ end }}
-
-        <div class="menu-bottom-section">
+    </ol>
+    <div class="menu-bottom-section">
+        <ol class="menu">
             {{- $currentLanguageCode := .Language.Lang -}}
             {{ if ( compare.Gt .Site.Home.AllTranslations 1 ) }}
                 {{ with .Site.Home.AllTranslations }}
@@ -97,6 +98,6 @@
                     <span>{{ T "darkMode" }}</span>
                 </li>
             {{ end }}
-        </div>
-    </ol>
+        </ol>
+    </div>
 </aside>
