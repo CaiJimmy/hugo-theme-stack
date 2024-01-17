@@ -1,0 +1,16 @@
+<script src="https://beaudar.lipk.org/client.js" 
+        repo="{{ .Site.Params.comments.beaudar.repo }}"
+        issue-term="{{ .Site.Params.comments.beaudar.issueTerm }}"
+        {{ with .Site.Params.comments.beaudar.label }}
+        label="{{ . }}"
+        {{ end }}
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .beaudar {
+        max-width: unset;
+    }
+</style>
