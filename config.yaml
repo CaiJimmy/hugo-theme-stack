@@ -51,6 +51,12 @@ params:
             issueTerm: pathname
             label:
 
+        beaudar:
+            repo:
+            issueTerm: pathname
+            label:
+            theme:        
+
         remark42:
             host:
             site:
