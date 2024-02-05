@@ -61,8 +61,8 @@ export default (container: HTMLElement) => {
             const a = document.createElement('a');
             a.href = img.src;
             a.setAttribute('target', '_blank');
-            a.setAttribute('data-pswp-width', img.width.toString());
-            a.setAttribute('data-pswp-height', img.height.toString());
+            a.setAttribute('data-pswp-width', img.getAttribute('width'));
+            a.setAttribute('data-pswp-height', img.getAttribute('height'));
             img.parentNode.insertBefore(a, img);
             a.appendChild(img);
         }
