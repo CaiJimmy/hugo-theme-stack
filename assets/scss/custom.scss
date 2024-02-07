@@ -102,3 +102,23 @@
             display: none
         }
     }
+
+    @media (min-width: 1024px) {
+        .article-list--compact.links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: none;
+            box-shadow: none;
+            
+            article {
+                background: var(--card-background);
+                border: none;
+                box-shadow: var(--shadow-l1);
+                margin-bottom: 8px;
+                border-radius: 5px;
+                &:nth-child(odd) {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
