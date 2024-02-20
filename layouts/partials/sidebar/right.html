@@ -4,8 +4,8 @@
     <aside class="sidebar right-sidebar sticky">
         {{ range $widget := . }}
             {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
-                <!-- Ensure that the params always exist -->
-                {{- $params := .params | default (dict) -}}
+                <!-- Ensure that the `params` is not nil -->
+                {{- $params := default dict .params -}}
 
                 {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
             {{ else }}
