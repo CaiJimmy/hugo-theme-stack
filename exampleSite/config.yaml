@@ -1,7 +1,7 @@
 baseurl: https://example.com
 languageCode: en-us
 theme: hugo-theme-stack
-paginate: 5
+paginate: 3
 title: Example Site
 copyright: Example Person
 
