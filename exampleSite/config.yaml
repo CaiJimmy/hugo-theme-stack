@@ -5,6 +5,14 @@ paginate: 3
 title: Example Site
 copyright: Example Person
 
+# Theme i18n support
+# Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
+DefaultContentLanguage: en
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: false
+
 languages:
     en:
         languageName: English
@@ -26,19 +34,13 @@ languages:
         params:
             description: وصف تجريبي
 
-# Change it to your Disqus shortname before using
-disqusShortname: hugo-theme-stack
-
-# GA Tracking ID
-googleAnalytics:
-
-# Theme i18n support
-# Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
-DefaultContentLanguage: en
-
-# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
-# This will make .Summary and .WordCount behave correctly for CJK languages.
-hasCJKLanguage: false
+services:
+    # Change it to your Disqus shortname before using
+    disqus:
+        shortname: "hugo-theme-stack"
+    # GA Tracking ID
+    googleAnalytics:
+        id:
 
 permalinks:
     post: /p/:slug/
@@ -49,7 +51,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:  # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+    favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
         since: 2020
