@@ -35,13 +35,13 @@ languages:
             description: وصف تجريبي
 
 services:
-  # Change it to your Disqus shortname before using
-  disqus:
-    shortname: "hugo-theme-stack"
- # GA Tracking ID
-  googleAnalytics:
-    id: ""
-    
+    # Change it to your Disqus shortname before using
+    disqus:
+        shortname: "hugo-theme-stack"
+    # GA Tracking ID
+    googleAnalytics:
+        id:
+
 permalinks:
     post: /p/:slug/
     page: /:slug/
@@ -51,7 +51,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:  # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+    favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
         since: 2020
