@@ -40,7 +40,7 @@ services:
         shortname: "hugo-theme-stack"
     # GA Tracking ID
     googleAnalytics:
-        id:
+        id: ""
 
 permalinks:
     post: /p/:slug/
