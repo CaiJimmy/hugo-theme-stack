@@ -77,17 +77,19 @@
 
         <div class="menu-bottom-section">
             {{- $currentLanguageCode := .Language.Lang -}}
-            {{ with .Site.Home.AllTranslations }}
-                <li id="i18n-switch">  
-                    {{ partial "helper/icon" "language" }}
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        {{ range . }}
-                            <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
-                        {{ end }}
-                    </select>
-                </li>
+            {{ if ( compare.Gt .Site.Home.AllTranslations 1 ) }}
+                {{ with .Site.Home.AllTranslations }}
+                    <li id="i18n-switch">  
+                        {{ partial "helper/icon" "language" }}
+                        <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            {{ range . }}
+                                <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                            {{ end }}
+                        </select>
+                    </li>
+                {{ end }}
             {{ end }}
-            
+
             {{ if (default false .Site.Params.colorScheme.toggle) }}
                 <li id="dark-mode-toggle">
                     {{ partial "helper/icon" "toggle-left" }}
