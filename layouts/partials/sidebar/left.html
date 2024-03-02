@@ -77,7 +77,7 @@
 
         <div class="menu-bottom-section">
             {{- $currentLanguageCode := .Language.Lang -}}
-            {{ if ( compare.Gt .Site.Home.AllTranslations 1 ) }}
+            {{ if ( compare.Gt .Site.Home.AllTranslations.Len 1 ) }}
                 {{ with .Site.Home.AllTranslations }}
                     <li id="i18n-switch">  
                         {{ partial "helper/icon" "language" }}
