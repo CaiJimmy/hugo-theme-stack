@@ -74,14 +74,15 @@
             </a>
         </li>
         {{ end }}
-
-        <div class="menu-bottom-section">
+    </ol>
+    <div class="menu-bottom-section">
+        <ol class="menu">
             {{- $currentLanguageCode := .Language.Lang -}}
             {{ if ( compare.Gt .Site.Home.AllTranslations.Len 1 ) }}
                 {{ with .Site.Home.AllTranslations }}
                     <li id="i18n-switch">  
                         {{ partial "helper/icon" "language" }}
-                        <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                             {{ range . }}
                                 <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
                             {{ end }}
@@ -97,6 +98,6 @@
                     <span>{{ T "darkMode" }}</span>
                 </li>
             {{ end }}
-        </div>
-    </ol>
+        </ol>
+    </div>
 </aside>
