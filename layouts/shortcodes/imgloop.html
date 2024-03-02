@@ -1,0 +1,37 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+<!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        {{$itItems := split (.Get 0) ","}}
+        {{range $itItems }}
+        <div class="swiper-slide">
+            <img src="{{.}}" alt="">
+        </div>
+        {{end}}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+    //自动调节高度
+    autoHeight: true,
+    //键盘左右方向键控制
+    keyboardControl : true,
+    //鼠标滑轮控制
+    mousewheelControl : true,
+    //自动切换
+    autoplay : 5000,
+    //懒加载
+    lazyLoading : true,
+    lazyLoadingInPrevNext : true,
+    //无限循环
+    loop : true,
+    });
+    </script>
