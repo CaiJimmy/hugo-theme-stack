@@ -7,7 +7,13 @@
         {{ end }}
         {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
     </section>
-    
+
+    <section class="beian">
+        {{ with .Site.Params.footer.beian }}
+            {{ print `<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">` . `</a>` | safeHTML }}
+        {{ end }}
+    </section>
+
     <section class="powerby">
         {{ with .Site.Params.footer.customText }}
             {{ . | safeHTML }} <br/>

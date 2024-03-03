@@ -13,6 +13,7 @@ params:
     footer:
         since:
         customText:
+        beian:
 
     dateFormat:
         published: Jan 02, 2006

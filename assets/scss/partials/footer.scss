@@ -18,6 +18,16 @@ footer.site-footer {
         margin-bottom: 5px;
     }
 
+    .beian {
+        color: var(--body-text-color);
+        font-weight: normal;
+        font-size: 1.2rem;
+
+        a {
+            color: var(--body-text-color);
+        }
+    }
+    
     .powerby {
         color: var(--body-text-color);
         font-weight: normal;
