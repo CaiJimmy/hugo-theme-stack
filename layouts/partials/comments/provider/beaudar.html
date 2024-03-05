@@ -1,0 +1,46 @@
+<script
+  src="https://beaudar.lipk.org/client.js"
+  repo="{{ .Site.Params.comments.beaudar.repo }}"
+  issue-term="{{ .Site.Params.comments.beaudar.issueTerm }}"
+  {{ with .Site.Params.comments.beaudar.label }}
+  label="{{ . }}"
+  {{ end }}
+  theme="{{ .Site.Params.comments.beaudar.theme }}"
+  crossorigin="anonymous"
+  async
+></script>
+
+<style>
+  .beaudar {
+    max-width: unset;
+  }
+</style>
+
+<script>
+  let beaudarLoaded = false;
+
+  function setBeaudarTheme(theme) {
+    let beaudar = document.querySelector(".beaudar iframe");
+    if (beaudar) {
+      beaudar.contentWindow.postMessage(
+        {
+          type: "set-theme",
+          theme: `github-${theme}`,
+        },
+        "https://beaudar.lipk.org"
+      );
+    }
+  }
+
+  addEventListener("message", (event) => {
+    if (event.origin !== "https://beaudar.lipk.org") return;
+    /// Called when Beaudar is ready
+    beaudarLoaded = true;
+    setBeaudarTheme(document.documentElement.dataset.scheme);
+  });
+
+  window.addEventListener("onColorSchemeChange", (e) => {
+    if (!beaudarLoaded) return;
+    setBeaudarTheme(e.detail);
+  });
+</script>
