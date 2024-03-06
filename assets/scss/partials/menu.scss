@@ -127,7 +127,7 @@
 }
 
 /* Menu style */
-.menu {
+#main-menu {
     padding-left: 0;
     list-style: none;
     flex-direction: column;
@@ -200,13 +200,17 @@
                 font-weight: bold;
             }
         }
-    }
 
-    .menu-bottom-section {
-        margin-top: auto;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+        .menu-bottom-section {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            ol {
+                padding-left: 0;
+            }
+        }
     }
 }
 
