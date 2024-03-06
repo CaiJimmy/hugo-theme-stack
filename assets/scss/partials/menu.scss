@@ -145,8 +145,7 @@
         padding: 15px 0;
     }
 
-    &,
-    .menu-bottom-section {
+    & {
         gap: 30px;
         @include respond(xl) {
             gap: 25px;
@@ -206,13 +205,17 @@
         }
 
         .menu-bottom-section {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-
             ol {
+                margin-top: auto;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
                 padding-left: 0;
+                gap: 30px;
+
+                @include respond(xl) {
+                    gap: 25px;
+                }
             }
         }
     }
