@@ -166,6 +166,10 @@
         margin: 0;
     }
 
+    li:last-of-type {
+        margin-top: auto;
+    }
+
     li {
         position: relative;
         vertical-align: middle;
