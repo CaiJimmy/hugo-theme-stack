@@ -21,17 +21,17 @@ PhotoSwipe:
       type: style
 
 KaTeX:
-    - src: https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css
-      integrity: sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=
+    - src: https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+      integrity: sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV
       type: style
 
-    - src: https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js
-      integrity: sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=
+    - src: https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+      integrity: sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8
       type: script
       defer: true
 
-    - src: https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js
-      integrity: sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=
+    - src: https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+      integrity: sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05
       type: script
       defer: true
 
