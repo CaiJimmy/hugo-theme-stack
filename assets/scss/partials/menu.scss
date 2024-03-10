@@ -129,7 +129,6 @@
 /* Menu style */
 #main-menu {
     list-style: none;
-    flex-direction: column;
     overflow-y: auto;
     flex-grow: 1;
     font-size: 1.4rem;
@@ -146,6 +145,7 @@
     }
 
     &, .menu-bottom-section ol {
+        flex-direction: column;
         gap: 30px;
 
         @include respond(xl) {
@@ -206,7 +206,6 @@
 
             ol {
                 display: flex;
-                flex-direction: column;
                 width: 100%;
                 padding-left: 0;
             }
