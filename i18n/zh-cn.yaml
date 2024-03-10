@@ -4,6 +4,13 @@ toggleMenu:
 darkMode:
     other: 暗色模式
 
+list:
+    page: "{{ .Count }} 个页面"
+
+    section: 章节
+
+    subsection: 子章节
+
 article:
     back:
         other: 返回
@@ -54,7 +61,7 @@ search:
 
 footer:
     builtWith:
-        other: Built with {{ .Generator }}
+        other: 使用 {{ .Generator }} 构建
 
     designedBy:
         other: 主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计
