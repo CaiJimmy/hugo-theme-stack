@@ -59,6 +59,12 @@ comments:
     issueTerm: pathname
     label:
 
+  beaudar:
+    repo:
+    issueTerm: pathname
+    label:
+    theme:
+
   remark42:
     host:
     site:
@@ -72,7 +78,7 @@ comments:
     clientSecret:
     autoCreateIssue: false
 
-  # Waline client configuration see: https://waline.js.org/en/reference/component.html
+  # Waline client configuration see: https://waline.js.org/en/reference/client.html
   waline:
     serverURL:
     lang:

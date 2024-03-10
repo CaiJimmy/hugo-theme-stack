@@ -4,7 +4,10 @@
     <aside class="sidebar right-sidebar sticky">
         {{ range $widget := . }}
             {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
-                {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" .params) }}
+                <!-- Ensure that the `params` is not nil -->
+                {{- $params := default dict .params -}}
+
+                {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
             {{ else }}
                 {{ warnf "Widget %s not found" .type }}
             {{ end }}

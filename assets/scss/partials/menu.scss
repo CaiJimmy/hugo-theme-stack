@@ -127,10 +127,8 @@
 }
 
 /* Menu style */
-.menu {
-    padding-left: 0;
+#main-menu {
     list-style: none;
-    flex-direction: column;
     overflow-y: auto;
     flex-grow: 1;
     font-size: 1.4rem;
@@ -141,13 +139,15 @@
     margin: 0 calc(var(--container-padding) * -1);
 
     padding: 30px 30px;
+
     @include respond(xl) {
         padding: 15px 0;
     }
 
-    &,
-    .menu-bottom-section {
+    &, .menu-bottom-section ol {
+        flex-direction: column;
         gap: 30px;
+
         @include respond(xl) {
             gap: 25px;
         }
@@ -200,13 +200,15 @@
                 font-weight: bold;
             }
         }
-    }
 
-    .menu-bottom-section {
-        margin-top: auto;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+        &.menu-bottom-section {
+            margin-top: auto;
+
+            ol {
+                display: flex;
+                padding-left: 0;
+            }
+        }
     }
 }
 
