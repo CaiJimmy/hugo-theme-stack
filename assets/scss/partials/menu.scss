@@ -141,12 +141,14 @@
     margin: 0 calc(var(--container-padding) * -1);
 
     padding: 30px 30px;
+
     @include respond(xl) {
         padding: 15px 0;
     }
 
-    & {
+    &, .menu-bottom-section ol {
         gap: 30px;
+
         @include respond(xl) {
             gap: 25px;
         }
@@ -163,10 +165,6 @@
         padding: 0;
         box-shadow: none;
         margin: 0;
-    }
-
-    li:last-of-type {
-        margin-top: auto;
     }
 
     li {
@@ -204,18 +202,15 @@
             }
         }
 
-        .menu-bottom-section {
+        &.menu-bottom-section {
+            margin-top: auto;
+
             ol {
                 margin-top: auto;
                 display: flex;
                 flex-direction: column;
                 width: 100%;
                 padding-left: 0;
-                gap: 30px;
-
-                @include respond(xl) {
-                    gap: 25px;
-                }
             }
         }
     }
