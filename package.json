@@ -14,8 +14,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "vitepress": "1.0.0-rc.14",
-        "vue": "^3.3.4"
+        "vitepress": "1.0.0-rc.45",
+        "vue": "^3.4.21"
     },
     "pnpm": {
         "peerDependencyRules": {
