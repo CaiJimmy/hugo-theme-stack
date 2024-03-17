@@ -14,4 +14,4 @@
     {{ $description = .Summary }}
 {{ end }}
 
-{{ return ($description | plainify)}}
+{{ return (replaceRE "\n" " " $description | plainify) }}
