@@ -5,19 +5,6 @@
     {{- end -}}
 {{ end }}
 {{ define "main" }}
-    <form id="search-form" action="{{ .RelPermalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
-        <p>
-            <label>{{ T "search.title" }}</label>
-            <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
-        </p>
-
-        <button title="{{ T `search.title` }}">
-            {{ partial "helper/icon" "search" }}
-        </button>
-    </form>
-
-    <h3 class="search-result--title section-title"></h3>
-
     {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
     {{- $terms := $taxonomy.Pages -}}
     {{ if $terms }}
@@ -33,6 +20,19 @@
     </header>
     {{ end }}
 
+    <form id="search-form" action="{{ .RelPermalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
+        <p>
+            <label>{{ T "search.title" }}</label>
+            <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
+        </p>
+
+        <button title="{{ T `search.title` }}">
+            {{ partial "helper/icon" "search" }}
+        </button>
+    </form>
+
+    <h3 class="search-result--title section-title"></h3>
+    
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     
     {{ range $pages.GroupByDate "2006" }}
