@@ -1,0 +1,13 @@
+{{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- $result := slice -}}
+
+{{- range $pages -}}
+    {{- $data := dict 
+        "title" .Title
+        "content" (.Plain)
+        "id" .File.UniqueID
+    -}}
+    {{- $result = $result | append $data -}}
+{{- end -}}
+
+{{ jsonify $result }}

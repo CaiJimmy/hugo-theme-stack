@@ -1,9 +1,14 @@
-{{ define "body-class" }}template-archives{{ end }}
+{{ define "body-class" }}template-archives template-search{{ end }}
+{{ define "head" }}
+    {{- with .OutputFormats.Get "json" -}} 
+        <link rel="preload" href="{{ .RelPermalink }}" as="fetch" crossorigin="anonymous">
+    {{- end -}}
+{{ end }}
 {{ define "main" }}
+    {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
+    {{- $terms := $taxonomy.Pages -}}
+    {{ if $terms }}
     <header>
-        {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
-        {{- $terms := $taxonomy.Pages -}}
-        {{ if $terms }}
         <h2 class="section-title">{{ $taxonomy.Title }}</h2>
         <div class="subsection-list">
             <div class="article-list--tile">
@@ -12,9 +17,22 @@
                 {{ end }}
             </div>
         </div>
-        {{ end }}
     </header>
+    {{ end }}
 
+    <form id="search-form" action="{{ .RelPermalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
+        <p>
+            <label>{{ T "search.title" }}</label>
+            <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
+        </p>
+
+        <button title="{{ T `search.title` }}">
+            {{ partial "helper/icon" "search" }}
+        </button>
+    </form>
+
+    <h3 class="search-result--title section-title"></h3>
+    
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     
     {{ range $pages.GroupByDate "2006" }}
@@ -30,4 +48,16 @@
     {{ end }}
 
     {{ partialCached "footer/footer" . }}
+
+    <script>
+        window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
+    </script>
+    
+    {{- $opts := dict "minify" hugo.IsProduction -}}
+    {{- $archivesScript := resources.Get "ts/archives.ts" | js.Build $opts -}}
+    <script type="text/javascript" src="{{ $archivesScript.RelPermalink }}" defer></script>
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
 {{ end }}

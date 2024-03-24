@@ -1,4 +1,4 @@
-<article>
+<article id="{{ with .File }}{{ .UniqueID }}{{ end }}">
     <a href="{{ .RelPermalink }}">
         <div class="article-details">
             <h2 class="article-title">
