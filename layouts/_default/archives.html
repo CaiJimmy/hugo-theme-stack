@@ -16,7 +16,7 @@
         </button>
     </form>
 
-    <h3 class="search-result--title section-title">dawdwa</h3>
+    <h3 class="search-result--title section-title"></h3>
 
     {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
     {{- $terms := $taxonomy.Pages -}}
@@ -54,8 +54,8 @@
     </script>
     
     {{- $opts := dict "minify" hugo.IsProduction -}}
-    {{- $searchScript := resources.Get "ts/search.ts" | js.Build $opts -}}
-    <script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
+    {{- $archivesScript := resources.Get "ts/archives.ts" | js.Build $opts -}}
+    <script type="text/javascript" src="{{ $archivesScript.RelPermalink }}" defer></script>
 {{ end }}
 
 {{ define "right-sidebar" }}
