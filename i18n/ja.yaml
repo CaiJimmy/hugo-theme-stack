@@ -6,14 +6,12 @@ darkMode:
 
 list:
     page:
-        one: "{{ .Count }} ページ目"
         other: "{{ .Count }} ページ目"
 
     section:
         other: セクション
 
     subsection:
-        one: サブセクション
         other: サブセクション
 
 article:
