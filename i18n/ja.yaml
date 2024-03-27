@@ -64,7 +64,7 @@ search:
 
 footer:
     builtWith:
-        other: {{ .Generator }} で構築されています。
+        other: "{{ .Generator }} で構築されています。"
 
     designedBy:
         other: テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。
