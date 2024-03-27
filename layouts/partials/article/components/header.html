@@ -9,7 +9,12 @@
                     {{- $Height := $image.resource.Height -}}
                     {{- $Srcset := "" -}}
                     
+                    <picture>
                     {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                        {{- $thumbnail := $image.resource.Resize "webp 800x" -}}
+                        {{- $thumbnailRetina := $image.resource.Resize "webp 1600x" -}}
+                        {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
+                        <source type="image/webp" srcset="{{ $Srcset }}" />
                         {{- $thumbnail := $image.resource.Resize "800x" -}}
                         {{- $thumbnailRetina := $image.resource.Resize "1600x" -}}
                         {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
@@ -22,8 +27,9 @@
                         {{ with $Srcset }}srcset="{{ . }}"{{ end }}
                         width="{{ $Width }}" 
                         height="{{ $Height }}" 
-                        loading="lazy"
+                        decoding="async"
                         alt="Featured image of post {{ .Title }}" />
+                    </picture>
                 {{ else }}
                     <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
                 {{ end }}
