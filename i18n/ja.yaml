@@ -4,6 +4,16 @@ toggleMenu:
 darkMode:
     other: ダークモード
 
+list:
+    page:
+        other: "{{ .Count }} ページ目"
+
+    section:
+        other: セクション
+
+    subsection:
+        other: サブセクション
+
 article:
     back:
         other: 前のページ
@@ -54,7 +64,7 @@ search:
 
 footer:
     builtWith:
-        other: Built with {{ .Generator }}
+        other: {{ .Generator }} で構築されています。
 
     designedBy:
         other: テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。
