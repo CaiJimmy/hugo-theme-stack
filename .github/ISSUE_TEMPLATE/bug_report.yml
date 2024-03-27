@@ -4,7 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure you have checked the [documentation](https://stack.jimmycai.com/).
+        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure you have checked the [documentation](https://stack.jimmycai.com/guide/).
   - type: textarea
     id: what-happened
     attributes:

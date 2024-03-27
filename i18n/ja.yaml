@@ -2,6 +2,11 @@ toggleMenu: メニューを開く・閉じる
 
 darkMode: ダークモード
 
+list:
+    page: "{{ .Count }} ページ目"
+    section: セクション
+    subsection: サブセクション
+
 article:
     back: 前のページ
     tableOfContents: 目次
@@ -24,5 +29,5 @@ search:
     resultTitle: "#PAGES_COUNT 件 （#TIME_SECONDS 秒）"
 
 footer:
-    builtWith: Built with {{ .Generator }}
+    builtWith: "{{ .Generator }} で構築されています。"
     designedBy: テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。
