@@ -30,6 +30,10 @@ widget:
     archives:
         title: Архивы
         more: Ещё
+    tagCloud:
+        title: Теги
+    categoriesCloud:
+        title: Категории
 
 search:
     title: Поиск
