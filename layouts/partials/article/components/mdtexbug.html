@@ -8,5 +8,7 @@
 <!-- this fixes issues with _ preceding a { or a \ -->
 {{ $content = $content | replaceRE "\\_\\{" "\\_{" }}
 {{ $content = $content | replaceRE "\\_\\\\" "\\_\\" }}
+<!-- this fixes issues with \, -->
+{{ $content = $content | replaceRE "\\\\," "\\\\,"}}
 
 {{ $content | .Page.RenderString | safeHTML }}
