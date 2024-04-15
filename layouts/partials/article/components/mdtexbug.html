@@ -10,5 +10,3 @@
 {{ $content = $content | replaceRE "\\_\\\\" "\\_\\" }}
 <!-- this fixes issues with \, -->
 {{ $content = $content | replaceRE "\\\\," "\\\\,"}}
-
-{{ $content | .Page.RenderString | safeHTML }}
