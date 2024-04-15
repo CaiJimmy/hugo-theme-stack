@@ -1,8 +1,27 @@
 <section class="article-content">
+    
+    {{ $content := .RawContent }}
+
+    <!-- Refer to https://discourse.gohugo.io/t/braces-in-latex-get-escaped/39742/5 https://discourse.gohugo.io/t/use-goldmark-mathjax-extension/25721/8 https://discourse.gohugo.io/t/mathjax-rendering-problems-due-to-backslashes-interpretation-by-markdown-processor/30482 -->
+    {{ if or .Params.math .Site.Params.article.math }}
+        <!-- this fixes issues with new line \\ -->
+        {{ $content = $content | replaceRE "\\\\\\\\" "\\\\\\\\" }}
+        <!-- this fixes issues with braces {}  -->
+        {{ $content = $content | replaceRE "\\\\{" "\\\\{" }}
+        {{ $content = $content | replaceRE "\\\\}" "\\\\}" }}
+        <!-- this fixes issues with _ preceding a {} or a \ -->
+        {{ $content = $content | replaceRE "\\_\\{" "\\_{" }}
+        {{ $content = $content | replaceRE "\\_\\}" "\\_}" }}
+        {{ $content = $content | replaceRE "\\_\\\\" "\\_\\" }}
+        <!-- this fixes issues with \, -->
+        {{ $content = $content | replaceRE "\\\\," "\\\\,"}}
+    {{ end }}
+
+    <!-- render raw content to compiled content-->
+    {{ $content = $content | .Page.RenderString | safeHTML }}
+
     <!-- Refer to https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/5 -->
     {{ $wrappedTable := printf "<div class=\"table-wrapper\">${1}</div>" }}
-    {{ if or .Params.math .Site.Params.article.math }}
-        {{ partial "article/components/mdtexbug" . }}
-    {{ end }}
-    {{ .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+    {{ $content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+
 </section>
