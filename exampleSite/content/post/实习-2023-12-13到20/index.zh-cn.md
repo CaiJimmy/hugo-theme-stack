@@ -39,4 +39,8 @@ oatpp、drogon、cpp-httplib、cmake、Nginx、three.js
 
 
 
+nginx配置:https://gitee.com/nzjyb/configuration-of-nginx
+
+
+
 今天:我要学习一个window下dll文件的制作与使用!
