@@ -114,3 +114,205 @@ auto_ptr是C++98中引入的第一个智能指针，但是由于他的不安全�
 13.死锁
 
 14.多线程中多个信号与主线程
+
+
+
+
+
+# 补充:
+
+## 1)C语言链表
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node{
+    int data;
+    struct Node * prior;
+    struct Node * next;
+} Node;
+
+
+int main ()
+{
+    /***
+     * c语言像数组的链表
+    */
+   /*
+    Node* list = (Node *)malloc(sizeof(Node) *5);
+
+
+    if (list == NULL) {
+        // 内存分配失败的处理
+        fprintf(stderr, "Memory allocation failed.\n");
+        return 1;
+    }
+    
+    // 初始化链表节点
+    for (int i = 0; i < 5; ++i) {
+        list[i].data = i; // 数据域初始化为索引值或其他你选择的值
+        
+        if (i == 0) {
+            // 第一个节点的前驱指向 NULL
+            list[i].prior = NULL;
+        } else {
+            // 其他节点的前驱指向前一个节点
+            list[i].prior = &list[i - 1];
+        }
+        
+        if (i == 4) {
+            // 最后一个节点的后继指向 NULL
+            list[i].next = NULL;
+        } else {
+            // 其他节点的后继指向下一个节点
+            list[i].next = &list[i + 1];
+        }
+    }
+    
+    // ... 使用链表
+    for(int i = 0; i< 5;i++)
+    {
+        int num = list[i].data;
+        printf("%d\n",num);
+    }
+    // 释放分配的内存
+    free(list);
+    */
+
+   /******c语言链表********/
+    Node *n1 = (Node *)malloc(sizeof(Node));
+    Node *n2 = (Node *)malloc(sizeof(Node));
+    Node *n3 = (Node *)malloc(sizeof(Node));
+    n1->data = 1;
+    n1->prior = NULL;
+    n1->next = n2;
+
+    n2->data = 2;
+    n2->prior = n1;
+    n2->next = n3;
+
+    n3->data = 3;
+    n3->prior = n2;
+    n3->next = NULL;
+
+    for(Node * node = n1; node != NULL;node = node->next)
+    {
+        int num = node->data;
+        printf("[%d]\n",num);
+    }
+    
+    return 0;
+}
+
+输出:
+[1]
+[2]
+[3]
+```
+
+## 2)链表-智能指针版
+
+```cpp
+
+
+#include <iostream>
+#include <memory>//智能指针
+
+using namespace std;
+
+struct Node{
+    int data;
+    weak_ptr<Node> prior;
+    weak_ptr<Node> next;
+};
+
+
+int main()
+{
+    shared_ptr<Node> n1 = make_shared<Node>();
+    shared_ptr<Node> n2 = make_shared<Node>();
+    shared_ptr<Node> n3 = make_shared<Node>();
+    n1->data = 1;
+    n1->prior.reset();//智能指针设置为空应该用reset函数,而不是n1->prior = nullptr;
+    n1->next = n2;
+
+    n2->data = 2;
+    n2->prior = n1;
+    n2->next = n3;
+
+    n3->data = 3;
+    n3->prior = n2;
+    n3->next.reset();//n3->next = nullptr;
+
+    for(shared_ptr<Node> node = n1 ; node != nullptr ; node = node -> next.lock()){//你需要先用lock将weak_ptr提升为shared_ptr才能够进行赋值
+        int num = node ->data;
+        printf("[%d]\n",num);
+    }
+
+
+    //销毁智能指针(你也可以不销毁,因为智能指针自己非常懂事)
+    n1.reset();
+    n2.reset();
+    n3.reset();
+
+    return 0;
+}
+输出:
+[1]
+[2]
+[3]
+```
+
+## 3)链表-普通cpp版
+
+```cpp
+
+
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node* prior;
+    Node* next;
+};
+
+
+int main()
+{
+    Node * n1 = new Node;
+    Node * n2 = new Node;
+    Node * n3 = new Node;
+    n1->data = 1;
+    n1->prior = nullptr;
+    n1->next = n2;
+
+    n2->data = 2;
+    n2->prior = n1;
+    n2->next = n3;
+
+    n3->data = 3;
+    n3->prior = n2;
+    n3->next = nullptr;
+
+    for(Node * node = n1 ; node != nullptr ; node = node->next){
+        int num = node ->data;
+        printf("[%d]\n",num);
+    }
+
+
+    //销毁智能指针
+    delete n1;
+    delete n2;
+    delete n3;
+
+    return 0;
+}
+输出:
+[1]
+[2]
+[3]
+```
+
