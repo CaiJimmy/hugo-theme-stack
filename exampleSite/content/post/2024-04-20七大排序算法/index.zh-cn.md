@@ -263,7 +263,30 @@ vector<int> MySort(vector<int>& arr) {
 [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
 
 ```cpp
-
+class Solution {
+public:
+    // ListNode* reverseList(ListNode* head) {
+    //     if(!head)return NULL;
+    //     auto a = head,b = head->next;
+    //     while(b)
+    //     {
+    //         auto c = b->next;
+    //         b->next= a;
+    //         a = b;
+    //         b = c;
+    //     }
+    //     head->next = NULL;
+    //     return a;
+    // }
+    ListNode * reverseList(ListNode * head)
+    {
+        if(!head || !head->next)return head;
+        auto tail = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return tail;
+    }
+};
 ```
 
 
