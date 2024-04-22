@@ -255,3 +255,49 @@ vector<int> MySort(vector<int>& arr) {
 
 
 这个我也只是了解过基本的原理,并没有实际使用过.
+
+---
+
+## 反转链表
+
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+
+```cpp
+
+```
+
+
+
+## 层序遍历
+
+[102. 二叉树的层序遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>>res;
+        if(!root)return res;
+        queue<TreeNode*>q;//中间变量
+        q.push(root);
+        while(!q.empty())
+        {
+            vector<int> level;//每一层的结点(要放到答案res里面的)
+            int len = q.size();//这一层的节点个数
+            while(len --)
+            {
+                auto t = q.front();
+                q.pop();
+                level.push_back(t->val);
+
+                //未下一层做准备
+                if(t->left)q.push(t->left);
+                if(t->right)q.push(t->right);
+            }
+            res.push_back(level);
+        }
+        return res;
+    }
+};
+```
+
