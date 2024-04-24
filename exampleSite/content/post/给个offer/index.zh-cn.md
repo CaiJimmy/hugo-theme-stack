@@ -175,7 +175,23 @@ public:
 [151. 反转字符串中的单词](https://leetcode.cn/problems/reverse-words-in-a-string/)
 
 ```cpp
+//先翻转整个句子
+//再翻转单独的一个单词
+//难点:在找到一段时,不要忘记边界
+```
 
+![1713974457798](图片/1713974457798.png)
+
+```cpp
+void Reverse(int l ,int r,string& s)
+{
+    for(int i = l , j = r ;i < j ;i++,j--)swap(s[i],s[j]);
+}
+Reverse(0,s.size()-1,s);
+等价于
+reverse(s.begin()+0,s.begin()+s.size());//范围:[)
+
+反转不是空格的那一段
 ```
 
 
@@ -185,6 +201,42 @@ public:
 https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof/description/
 
 ```cpp
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+  //前:根左右
+ //中:左根右
+ //1.使用哈希表,快速的找到"一个元素在中序遍历的位置"
+ //2.递归dfs(主函数直接返回)
+ //1)递归参数:左右子树节点个数
+ //2)递归内部:
+ /*
+ - 前序遍历:左>右 -> null
+ - 根节点的值为前序遍历的第1个点 preorder[a]
+ - 找到根节点在哈希表中的位置
+ - 左右子树递归创建 范围画图
+ */
+class Solution {
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        
+    }
+};
 ```
+
+![1713980258916](图片/1713980258916.png)
+
+
+
+![1713978783747](图片/1713978783747.png)
+
+
+
+
 
