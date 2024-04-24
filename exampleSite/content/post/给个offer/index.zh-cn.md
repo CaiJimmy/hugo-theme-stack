@@ -60,3 +60,37 @@ public:
  */
 ```
 
+
+
+
+
+# 2.35. 反转链表
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ //https://leetcode.cn/problems/reverse-linked-list/
+//难点：单链表要建立一个前驱节点
+//关键点：画图
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        
+    }
+};
+```
+
+![1713948511743](图片/1713948511743.png)
+
+# 3.19. 二叉树的下一个节点
+
+```cpp
+
+```
+
