@@ -91,6 +91,100 @@ public:
 # 3.19. 二叉树的下一个节点
 
 ```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode *father;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL), father(NULL) {}
+ * };
+ */
+ //这个是vip题目
+//285. 二叉搜索树中的中序后继
+//分类讨论:有右子树和没有右子树
+//中序遍历
+//情况1:这个点有右子树,那后继就是"右子树"最左边的那个
+//情况2:这个点的右子树为空(且有父节点),当p有父节点且p等于p父节点的右儿子,那么p就赋值为p的父节点,最后返回p的父节点
+class Solution {
+public:
+    TreeNode* inorderSuccessor(TreeNode* p) {
+        
+    }
+};
+```
+
+# 4.34. 链表中环的入口结点
+
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
+[LCR 022. 环形链表 II](https://leetcode.cn/problems/c32eOV/)
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *entryNodeOfLoop(ListNode *head) {
+        
+    }
+};
+```
+
+画图:数学证明:(b+c)表示n圈
+
+![1713973663082](图片/1713973663082.png)
+
+```cpp
+备份
+class Solution {
+public:
+    ListNode *entryNodeOfLoop(ListNode *head) {
+        auto first = head,slow = head;
+        while(first && first->next && first->next->next)
+        {
+            first = first->next->next;
+            slow = slow->next;
+            if(first == slow)
+            {
+                first = head;
+                while(first != slow)
+                {
+                    first = first->next;
+                    slow = slow->next;
+                }
+                return first;
+            }
+        }
+        return nullptr;
+    }
+};
+```
+
+
+
+# 5.77.翻转单词顺序
+
+[151. 反转字符串中的单词](https://leetcode.cn/problems/reverse-words-in-a-string/)
+
+```cpp
+
+```
+
+
+
+# 6.18.重建二叉树
+
+https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof/description/
+
+```cpp
 
 ```
 
