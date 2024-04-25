@@ -681,7 +681,7 @@ public:
 //难点:右上角
 //(i,j)=>(0,array[0].size()-1)
 //在范围内:(i<array.size() && j>=0)
-//x = array[i][j]
+//x = array[i][j],直接返回true
 //x > target j--;
 //else i++;
 class Solution {
