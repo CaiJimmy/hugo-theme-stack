@@ -416,6 +416,21 @@ public:
 };
 ```
 
+## 补充：13. 找出数组中重复的数字
+
+```cpp
+//哈希表秒了
+//方二：不要了
+class Solution {
+public:
+    int duplicateInArray(vector<int>& nums) {
+        
+    }
+};
+```
+
+
+
 # 16.75. 和为S的两个数字
 
 ```cpp
