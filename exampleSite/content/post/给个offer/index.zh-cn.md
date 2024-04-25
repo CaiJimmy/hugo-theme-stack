@@ -272,11 +272,134 @@ public:
 //过滤掉行首空格
 //long long
 //判断这个数是不是负数
+//如果在累加的过程中(还没加完),就已经越界了,那就直接跳出来
 class Solution {
 public:
     int strToInt(string str) {
-
+        
     }
 };
 ```
+
+# 10.28. 在O(1)时间删除链表结点
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+  //1.用下一个节点覆盖掉当前节点
+ //2.删除掉当前节点
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        
+    }
+};
+```
+
+# 11.66. 两个链表的第一个公共结点
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+  //双指针,
+ //指针1走完a再走b,指针2走完b再走a,返回最后相遇的位置,如果最后都指向空也算相遇了
+ //注意:对于指针1与指针2,要么是"回头",要么是"下一个"
+class Solution {
+public:
+    ListNode *findFirstCommonNode(ListNode *headA, ListNode *headB) {
+        
+    }
+};
+```
+
+
+
+
+
+![1714028450744](图片/1714028450744.png)
+
+
+
+# 12.84. 求1+2+…+n
+
+```cpp
+//语法题:(false && 条件); = false 可以起到if的效果
+class Solution {
+public:
+    int getSum(int n) {
+        
+    }
+};
+```
+
+# 13.36. 合并两个排序的链表
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+  //归并排序
+  //虚拟节点(比如说初始化为-1)+当前节点
+ //1)两个指针
+ //2)比较两个指针的值哪个小,哪个小就给哪个(如果l1)
+ //3)链到虚拟链表,当前节点后移,l1也后移
+ //4)处理残局:l1与l2哪个不同,就一直链到空为止
+class Solution {
+public:
+    ListNode* merge(ListNode* l1, ListNode* l2) {
+        
+    }
+};
+```
+
+# 14.14. 不修改数组找出重复的数字
+
+```cpp
+//简单方法:哈希表
+//方二:抽屉原理
+//二分法:
+//一个萝卜一个坑,假如说数的个数>坑的个数,那么这个区间一定存在重复的数
+//注意:给定一个长度为 n+1的数组nums，数组中所有的数均在 1∼n的范围内，其中 n≥1,表示下标有效的范围是[1,nums.size()-1]
+class Solution {
+public:
+    int duplicateInArray(vector<int>& nums) {
+        // l 和 r 分别代表的是 数字 1  和 数字n 这里并不是下标.
+        int l = 1, r = nums.size() - 1;
+        while (l < r){
+            // 二分 找到中间的那个数
+            int mid = l + r >> 1;
+            int s = 0;
+            // 下面这句话的意思 从 nums里面 循环去先去 判断 这个数 x 的值看他是否在 [l, mid]中间, 在的话 判断条件执行完为true
+            //  true 的话代表 数字 1 flase 代表 数字 0. 然后再进行累加 s += x 统计符合条件的个数.
+            // 最终的效果就是 统计了 整个数组中 数的值 在 [l,mid] 之间的个数.
+            for (auto x : nums) s += x >= l && x <= mid; // left : [l, mid] , right : [mid + 1, r]
+            // 理解: 一个坑存一个数, 正常情况下 一定是坑的个数 和 数的个数相等. 如果一坑里面有两个数. 那么就会出现
+            // 数的个数 大于 坑的个数 说明 这个区间段一定存在重复的个数.
+            if (s > mid - l + 1) r = mid;
+            else l = mid + 1;
+        }
+
+        return r;//l和r都可以
+    }
+};
+```
+
+# 15.68. 0到n-1中缺失的数字
 
