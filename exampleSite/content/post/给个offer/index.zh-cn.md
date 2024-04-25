@@ -240,3 +240,43 @@ public:
 
 
 
+# 7.21. 斐波那契数列
+
+```cpp
+//f[i] = f[i-1]+f[i-2]
+class Solution {
+public:
+    int Fibonacci(int n) {
+        
+    }
+};
+```
+
+# 8.78. 左旋转字符串
+
+```cpp
+//先把整个进行翻转
+//再把前(总-个数),后两部分进行翻转
+class Solution {
+public:
+    string leftRotateString(string str, int n) {
+        
+    }
+};
+```
+
+# 9.87. 把字符串转换成整数
+
+```cpp
+//分步
+//过滤掉行首空格
+//long long
+//判断这个数是不是负数
+class Solution {
+public:
+    int strToInt(string str) {
+
+    }
+};
+```
+
