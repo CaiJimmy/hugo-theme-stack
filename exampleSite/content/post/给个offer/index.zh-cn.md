@@ -707,6 +707,32 @@ public:
 };
 ```
 
+## 27.59. 把数字翻译成字符串
+
+```cpp
+//dp的问题:直接记下来就行了
+class Solution {
+public:
+    int getTranslationCount(string s) {
+        int n = s.size();
+        vector<int> f(n + 1);//因为dp从1开始
+        f[0] = 1;
+        for (int i = 1; i <= n; i ++ ) {
+            f[i] = f[i - 1];//f[i]包含了f[i - 1]的所有情况
+            if (i > 1) {
+                int t = s[i - 1] - '0' + (s[i - 2] - '0') * 10;//状态转移的条件:只有[10,25]才可以状态转移
+                if (t >= 10 && t <= 25) f[i] += f[i - 2];//条件all满足:f[i] = f[i - 1]+f[i - 2];
+            }
+        }
+        return f[n];
+    }
+};
+```
+
+
+
+
+
 ------
 
 |      | #    | 标题                                                         | 来源            | 显示算法 | 通过率 | 难度     |
@@ -764,7 +790,5 @@ public:
 |      | 57   | [数字序列中某一位的数字](https://www.acwing.com/problem/content/52/) | 剑指Offer       |          | 34.88% | **简单** |
 |      | 48   | [复杂链表的复刻](https://www.acwing.com/problem/content/89/) | 剑指Offer       |          | 61.44% | **中等** |
 |      | 70   | [二叉搜索树的第k个结点](https://www.acwing.com/problem/content/66/) | 剑指Offer       |          | 67.42% | **简单** |
-|      | 42   | [栈的压入、弹出序列](https://www.acwing.com/problem/content/40/) | 剑指Offer       |          | 45.57% | **简单** |
-|      | 59   | [把数字翻译成字符串](https://www.acwing.com/problem/content/55/) | 剑指Offer       |          | 52.18% | **中等** |
-|      | 15   | [二维数组中的查找](https://www.acwing.com/problem/content/16/) | 剑指Offer       |          | 44.10% | **中等** |
-|      | 72   | [平衡二叉树](https://www.acwing.com/problem/content/68/)     | 剑指Offer       |          | 61.81% | **简单** |
+
+
