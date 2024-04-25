@@ -403,3 +403,106 @@ public:
 
 # 15.68. 0到n-1中缺失的数字
 
+```cpp
+//二分
+//通过下标直接查找,
+//因为是连续的,如果不少的话,则有nums[mid] == mid,如果是左边少了,就是不等
+//最后还要判断nums[r] == r,要是等于的话,那就是少最后一个
+class Solution {
+public:
+    int getMissingNumber(vector<int>& nums) {
+        
+    }
+};
+```
+
+# 16.75. 和为S的两个数字
+
+```cpp
+//时间复杂度最重要
+//用法哈希表,count看是否存在
+class Solution {
+public:
+    vector<int> findNumbersWithSum(vector<int>& nums, int target) {
+        
+    }
+};
+```
+
+# 17.23. 矩阵中的路径
+
+```cpp
+//dfs
+//枚举起点，枚举方向
+//起点怎么枚举:两个for循环
+//方向怎么枚举?上右下左:画图
+
+//dfs中:
+//1)刚好遍历到的字符个数u == 字符串的长度,就OK
+//2)如果u下标字符 != 遍历到的字符,就不ok
+//3)遍历四个方向,为了避免回头遍历,比如你刚遍历完一个字符'a',下一个字符还是'a',就会回头遍历,
+//我们要避免这个,就需要先修改为一个其他的,等遍历完再返还
+class Solution {
+public:
+    bool dfs(vector<vector<char>>& matrix, string &str,int u ,int x,int y)
+    {
+        if(str[u] != matrix[x][y])return false;//当前字符与之不符
+        if(u == str.size()-1)return true;//刚好是最后一个,而且能来到这,说明相符
+        int dx[4]={-1,0,1,0},dy[4]={0,1,0,-1};
+        char t = matrix[x][y];
+        matrix[x][y] = '*';
+        for(int i = 0 ; i < 4 ;i++)
+        {
+            int a= x+dx[i],b = y +dy[i];
+            if(a>=0 && a<matrix.size() &&b>=0 && b<matrix[a].size())
+                if(dfs(matrix,str,u+1,a,b))return true;
+        }
+        matrix[x][y] = t;
+        return false;
+    }
+    bool hasPath(vector<vector<char>>& matrix, string &str) {
+        for(int i = 0 ;  i < matrix.size() ; i++)
+        {
+            for(int j = 0 ; j < matrix[i].size() ; j++)
+            {
+                if(dfs(matrix,str,0,i,j))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
+```
+
+
+
+# 18.55. 连续子数组的最大和
+
+```cpp
+s表示收益
+res表示最终结果
+```
+
+![1714048646860](图片/1714048646860.png)
+
+# 19.42. 栈的压入、弹出序列
+
+```cpp
+关键:不是所有的数都入栈,他才开始进行弹出操作.
+    完全可以实现这么一种情况:你还进去,人家就已经出来了
+
+
+```
+
+
+
+# 20.
+
+# 21.
+
+# 22.
+
+# 23.
+
