@@ -281,6 +281,8 @@ public:
 };
 ```
 
+![1714113198652](图片/1714113198652.png)
+
 ## 10.28. 在O(1)时间删除链表结点
 
 ```cpp
@@ -315,7 +317,7 @@ public:
  */
   //双指针,
  //指针1走完a再走b,指针2走完b再走a,返回最后相遇的位置,如果最后都指向空也算相遇了
- //注意:对于指针1与指针2,要么是"回头",要么是"下一个"
+ //这个也是有难点的: 注意:对于指针1与指针2,要么是"回头",要么是"下一个"
 class Solution {
 public:
     ListNode *findFirstCommonNode(ListNode *headA, ListNode *headB) {
@@ -355,7 +357,7 @@ public:
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-  //归并排序
+  //归并排序(一个函数足够)
   //虚拟节点(比如说初始化为-1)+当前节点
  //1)两个指针
  //2)比较两个指针的值哪个小,哪个小就给哪个(如果l1)
@@ -414,7 +416,31 @@ public:
         
     }
 };
+
+
+eg:
+//[0,1,2,4] n=4
+//[0,1,2,3] n=4   
+class Solution {
+public:
+    int getMissingNumber(vector<int>& nums) {
+        if(nums.empty())return 0;
+        int n = nums.size();
+        if(nums.back() == n-1)return n;//缺少最后面一个数
+        
+        int l = 0 ,r = n-1;
+        while(l < r)
+        {
+            int mid = l + r >> 1;
+            if(nums[mid] == mid)l = mid +1;//这部分不缺
+            else r = mid;
+        }
+        return r;
+    }
+};
 ```
+
+![1714117806036](图片/1714117806036.png)
 
 ### 补充：13. 找出数组中重复的数字
 
@@ -689,6 +715,48 @@ public:
 };
 ```
 
+```cpp
+ //错误的做法:只能保证根节点的左右子树,相差不超过1,不能拿保证"任意结点的左右子树的深度相差不超过 1"
+//  //树的深度
+// class Solution {
+// public:
+//     int dfs(TreeNode* root)
+//     {
+//         if(!root)return 0;
+//         return max(dfs(root->left),dfs(root->right))+1;
+//     }
+//     bool isBalanced(TreeNode* root) {
+//         if(!root)return true;
+//         int l = dfs(root->left);
+//         int r = dfs(root->right);
+//         //cout<< l<<' '<<r<<' ';
+//         if(abs(l-r)>1)return false;
+//         return true;
+//     }
+// };
+
+
+
+//正确的:他计算了任意一个节点的左右子树的高度不超过1
+class Solution {
+public:
+    bool res = true;
+    int dfs(TreeNode* root)
+    {
+        if(!root)return 0;
+        int left = dfs(root->left) ,right = dfs(root->right);
+        if(abs(left-right)>1)res = false; 
+        return max(left,right)+1;
+    }
+    bool isBalanced(TreeNode* root) {
+        dfs(root);
+        return res;
+    }
+};
+```
+
+
+
 ## 26.15. 二维数组中的查找
 
 ```cpp
@@ -731,8 +799,44 @@ public:
 
 
 
+## 28.67.数字在排序数组中出现的次数
+
+## 29.37. 树的子结构
+
+## 30.46. 二叉搜索树的后序遍历序列
+
+## 31.26. 二进制中1的个数
+
+## 32. 49. 二叉搜索树与双向链表
+## 33.62. 丑数
+## 34.32. 调整数组顺序使奇数位于偶数前面
+## 35.60. 礼物的最大价值
+
+## 36.63. 字符串中第一个只出现一次的字符
+
+## 37.85. 不用加减乘除做加法
+## 38.47. 二叉树中和为某一值的路径
+## 39.82. 圆圈中最后剩下的数字
+## 40.39. 对称的二叉树
+## 41.58. 把数组排成最小的数
+## 42.38. 二叉树的镜像
+## 43.81. 扑克牌的顺子
 
 
+## 44.43. 不分行从上往下打印二叉树
+## 45.45. 之字形打印二叉树
+## 46.69. 数组中数值和下标相等的元素
+## 47.24. 机器人的运动范围
+## 48.25. 剪绳子
+## 49.88. 树中两个结点的最低公共祖先
+## 50.17. 从尾到头打印链表
+## 51.61. 最长不含重复字符的子字符串
+## 52.80. 骰子的点数
+## 53.20. 用两个栈实现队列
+## 54.83. 股票的最大利润
+## 40. 顺时针打印矩阵
+## 44. 分行从上往下打印二叉树
+## 51. 数字排列
 ------
 
 |      | #    | 标题                                                         | 来源            | 显示算法 | 通过率 | 难度     |
