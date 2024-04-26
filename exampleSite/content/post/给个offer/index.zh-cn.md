@@ -17,6 +17,8 @@ This article offers a sample of basic Markdown.
 
 # 正文开始
 
+如果考到数论的题,会做你就做,不会做你就说你对数论这块不太熟悉,数论这个面算法工程师考的比较多,做开发的话链表比较多
+
 ## 1.41. 包含min函数的栈
 
 ```cpp
@@ -799,24 +801,146 @@ public:
 
 
 
-## 28.67.数字在排序数组中出现的次数
+## 
 
 ## 29.37. 树的子结构
 
+```cpp
+以根为开始,开始进行p1与p2的匹配:
+需要另写一个函数进行匹配,函数的参数是以p1,p2为根节点的一段小树
+函数内部实现:
+1.p2为空.说明之前的匹配好了,直接return true;
+2.p1为空 或者 p1和p2的值不匹配,直接return false;
+3.没有被条件1和2直接return,说明当前的节点是匹配的,我们接着
+匹配左左和右右,是且的关系
+class Solution {
+public:
+    bool dfs(TreeNode* p1, TreeNode* p2)
+    {
+        if(!p2)return true;
+        if(!p1 || p1->val != p2->val)return false;
+        //此时,当前节点是匹配的
+        return dfs(p1->left,p2->left) && dfs(p1->right,p2->right);//左边匹配且右边匹配
+    }
+    bool hasSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
+        if(!pRoot1 || !pRoot2)return false;
+        if(dfs(pRoot1,pRoot2))return true;//遍历当前节点
+        return hasSubtree(pRoot1->left,pRoot2) || hasSubtree(pRoot1->right,pRoot2);//下一个节点
+    }
+};
+```
+
+
+
 ## 30.46. 二叉搜索树的后序遍历序列
+
+```cpp
+//和那个重建二叉树思路有一点点类似
+//画图确定范围
+class Solution {
+public:
+//1.搞一个全局变量
+    vector<int> seq;
+
+    bool verifySequenceOfBST(vector<int> sequence) {
+        seq = sequence;
+        return dfs(0, seq.size() - 1);//dfs的是范围
+    }
+    
+    //dfs的是范围
+    bool dfs(int l, int r) {
+        if (l >= r) return true; // 1.如果子序列为空或只有一个节点，它必然是BST的后序遍历结果
+        int root = seq[r]; // 2.根节点 子序列的最后一个节点是当前子树的根节点
+        int k = l;//左右子树的分界线(找到右子树的第一个元素)
+        while (k < r && seq[k] < root) k++; // 找到左子树和右子树的分界点
+        for (int i = k; i < r; i++)//遍历右子树,如果右子树中,有元素小于根节点就不满足二叉搜索树
+            if (seq[i] < root)
+                return false; // 如果在右子树中找到比根节点小的值，则不是合法的BST后序遍历
+        return dfs(l, k - 1) && dfs(k, r - 1); // 递归检查左子树和右子树
+    }
+};
+
+```
+
+![1714141505536](图片/1714141505536.png)
 
 ## 31.26. 二进制中1的个数
 
+```cpp
+//记住就好, x与-x的与
+int lowbit(int x){
+    return x&(-x);
+}//可以得到最后一个1
+```
+
+
+
 ## 32. 49. 二叉搜索树与双向链表
-## 33.62. 丑数
+
+
+
+
+
 ## 34.32. 调整数组顺序使奇数位于偶数前面
+
+```cpp
+维护两个指针,一个从头一个从尾
+使得:前指针前面都是奇数,后指针都是偶数
+
+前指针遇到偶数就停下来,遇到奇数就前进
+后指针遇到奇数就停下来,遇到偶数就前进
+
+如何前指针的下标和后指针的下标不同,就交换两个数
+while(i < j)
+{
+    while()
+    while()
+}
+class Solution {
+public:
+    void reOrderArray(vector<int> &array) {
+         int i = 0 ,j =array.size()-1;
+         while(i < j)
+         {
+             while(i<j && array[i] % 2 == 1)i++;
+             while(i<j && array[j] % 2 == 0)j--;
+             if(i<j)swap(array[i],array[j]);
+         }
+    }
+};
+```
+
+
+
 ## 35.60. 礼物的最大价值
+
+
 
 ## 36.63. 字符串中第一个只出现一次的字符
 
+
+
 ## 37.85. 不用加减乘除做加法
+
+
+
 ## 38.47. 二叉树中和为某一值的路径
 ## 39.82. 圆圈中最后剩下的数字
+
+```cpp
+编号: 旧 = (新+m)%n
+f(n,m) = (f(n-1,m)+m)%n;
+class Solution {
+public:
+    int lastRemaining(int n, int m){
+        if(n == 1)return 0;
+        return (lastRemaining(n-1,m)+m)%n;
+    }
+};
+```
+
+
+
 ## 40.39. 对称的二叉树
 ## 41.58. 把数组排成最小的数
 ## 42.38. 二叉树的镜像
@@ -839,60 +963,8 @@ public:
 ## 51. 数字排列
 ------
 
-|      | #    | 标题                                                         | 来源            | 显示算法 | 通过率 | 难度     |
-| :--- | :--- | :----------------------------------------------------------- | :-------------- | :------- | :----- | :------- |
-|      | 51   | [数字排列](https://www.acwing.com/problem/content/47/)       | 剑指Offer       |          | 59.28% | **中等** |
-|      | 80   | [骰子的点数](https://www.acwing.com/problem/content/76/)     | 剑指Offer       |          | 58.04% | **简单** |
-|      | 69   | [数组中数值和下标相等的元素](https://www.acwing.com/problem/content/65/) | 剑指Offer       |          | 61.16% | **简单** |
-|      | 83   | [股票的最大利润](https://www.acwing.com/problem/content/79/) | 剑指Offer       |          | 53.68% | **简单** |
-|      | 40   | [顺时针打印矩阵](https://www.acwing.com/problem/content/39/) | 剑指Offer       |          | 44.71% | **中等** |
-|      | 88   | [树中两个结点的最低公共祖先](https://www.acwing.com/problem/content/84/) | 剑指Offer       |          | 70.16% | **中等** |
-|      | 20   | [用两个栈实现队列](https://www.acwing.com/problem/content/36/) | 剑指Offer       |          | 62.31% | **简单** |
-|      | 25   | [剪绳子](https://www.acwing.com/problem/content/24/)         | 剑指Offer       |          | 47.73% | **简单** |
-|      | 73   | [数组中只出现一次的两个数字](https://www.acwing.com/problem/content/69/) | 剑指Offer       |          | 70.44% | **中等** |
-|      | 24   | [机器人的运动范围](https://www.acwing.com/problem/content/22/) | 剑指Offer       |          | 36.96% | **简单** |
-|      | 61   | [最长不含重复字符的子字符串](https://www.acwing.com/problem/content/57/) | 剑指Offer       |          | 44.64% | **简单** |
-|      | 17   | [从尾到头打印链表](https://www.acwing.com/problem/content/18/) | 剑指Offer       |          | 67.50% | **简单** |
-|      | 44   | [分行从上往下打印二叉树](https://www.acwing.com/problem/content/42/) | 剑指Offer       |          | 70.24% | **中等** |
-|      | 43   | [不分行从上往下打印二叉树](https://www.acwing.com/problem/content/41/) | 剑指Offer       |          | 66.09% | **简单** |
-|      | 45   | [之字形打印二叉树](https://www.acwing.com/problem/content/43/) | 剑指Offer       |          | 58.99% | **中等** |
-|      | 81   | [扑克牌的顺子](https://www.acwing.com/problem/content/77/)   | 剑指Offer       |          | 35.89% | **简单** |
-|      | 38   | [二叉树的镜像](https://www.acwing.com/problem/content/37/)   | 剑指Offer       |          | 75.86% | **简单** |
-|      | 63   | [字符串中第一个只出现一次的字符](https://www.acwing.com/problem/content/59/) | 剑指Offer       |          | 50.63% | **简单** |
-|      |      |                                                              |                 |          |        |          |
-|      |      |                                                              |                 |          |        |          |
-|      | 49   | [二叉搜索树与双向链表](https://www.acwing.com/problem/content/87/) | 剑指Offer       |          | 64.51% | **中等** |
-|      |      |                                                              |                 |          |        |          |
-|      | 60   | [礼物的最大价值](https://www.acwing.com/problem/content/56/) | 剑指Offer       |          | 65.53% | **中等** |
-|      |      |                                                              |                 |          |        |          |
-|      | 22   | [旋转数组的最小数字](https://www.acwing.com/problem/content/20/) | 剑指Offer       |          | 42.79% | **中等** |
-|      | 76   | [和为S的连续正数序列](https://www.acwing.com/problem/content/72/) | 剑指Offer       |          | 72.69% | 中等     |
-|      |      |                                                              |                 |          |        |          |
 
 
-
-
-
-26号任务：
-
-|      | 39   | [对称的二叉树](https://www.acwing.com/problem/content/38/)   | 剑指Offer       |          | 57.04% | **简单** |
-|      | 82   | [圆圈中最后剩下的数字](https://www.acwing.com/problem/content/78/) | 剑指Offer       |          | 71.01% | **简单** |
-|      | 52   | [数组中出现次数超过一半的数字](https://www.acwing.com/problem/content/48/) | 剑指Offer       |          | 70.20% | **中等** |
-|      | 32   | [调整数组顺序使奇数位于偶数前面](https://www.acwing.com/problem/content/30/) | 剑指Offer       |          | 65.33% | **简单** |
-|      | 47   | [二叉树中和为某一值的路径](https://www.acwing.com/problem/content/45/) | 剑指Offer       |          | 58.08% | **中等** |
-|      | 26   | [二进制中1的个数](https://www.acwing.com/problem/content/25/) | 剑指Offer       |          | 62.66% | **简单** |
-|      | 56   | [从1到n整数中1出现的次数](https://www.acwing.com/problem/content/51/) | 剑指Offer       |          | 44.62% | **困难** |
-|      | 58   | [把数组排成最小的数](https://www.acwing.com/problem/content/54/) | 剑指Offer       |          | 60.41% | **中等** |
-|      | 62   | [丑数](https://www.acwing.com/problem/content/58/)           | 剑指Offer       |          | 61.20% | **中等** |
-|      | 27   | [数值的整数次方](https://www.acwing.com/problem/content/26/) | 剑指Offer       |          | 33.62% | **中等** |
-|      | 29   | [删除链表中重复的节点](https://www.acwing.com/problem/content/27/) | 剑指Offer语法题 |          | 48.48% | **中等** |
-|      | 16   | [替换空格](https://www.acwing.com/problem/content/17/)       | 剑指Offer语法题 |          | 61.84% | **简单** |
-|      | 37   | [树的子结构](https://www.acwing.com/problem/content/35/)     | 剑指Offer       |          | 49.06% | **简单** |
-|      | 46   | [二叉搜索树的后序遍历序列](https://www.acwing.com/problem/content/44/) | 剑指Offer       |          | 46.18% | **简单** |
-|      | 68   | [0到n-1中缺失的数字](https://www.acwing.com/problem/content/64/) | 剑指Offer       |          | 41.01% | **简单** |
-|      | 86   | [构建乘积数组](https://www.acwing.com/problem/content/82/)   | 剑指Offer       |          | 64.71% | **中等** |
-|      | 57   | [数字序列中某一位的数字](https://www.acwing.com/problem/content/52/) | 剑指Offer       |          | 34.88% | **简单** |
-|      | 48   | [复杂链表的复刻](https://www.acwing.com/problem/content/89/) | 剑指Offer       |          | 61.44% | **中等** |
-|      | 70   | [二叉搜索树的第k个结点](https://www.acwing.com/problem/content/66/) | 剑指Offer       |          | 67.42% | **简单** |
+ 
 
 
