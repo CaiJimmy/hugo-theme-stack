@@ -1497,8 +1497,36 @@ public:
 
 
 
+补充:判断一颗树是不是完全二叉树:
 
+LeetCode 958. 二叉树的完全性检验
+
+可以根据编号找规律:
+
+如果是完全二叉树的话:
+
+- (节点的总个数) 一定 是 等于 (最大的节点编号 )
+
+![1714230817991](图片/1714230817991.png)
 
  
 
+```cpp
+class Solution{
+  public:
+    int n = 0 , p = 0;
+    bool dfs(TreeNode * root, int k)
+    {
+        if(!root)return true;
+        if(k>100)return false;//溢出
+        n++ , p = max(p,k);
+        return dfs(root->left,2*k) && dfs(root->right,2*k+1);
+    }
+    bool isCompleteTree(TreeNode * root)
+    {
+        if(!dfs(root,1))return false;//1表示传进去的是根节点,return false表示节点个数溢出
+        return n == p;
+    }
+};
+```
 
