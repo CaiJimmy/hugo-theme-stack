@@ -801,8 +801,6 @@ public:
 
 
 
-## 
-
 ## 29.37. 树的子结构
 
 ```cpp
@@ -877,6 +875,48 @@ int lowbit(int x){
 
 ## 32. 49. 二叉搜索树与双向链表
 
+```cpp
+//最后要改成中序遍历的结果
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode *pre = nullptr , * head = nullptr;
+    TreeNode* convert(TreeNode* root) {
+        if(!root)return nullptr;
+        dfs(root);
+        //力扣专著
+        // leetcode 是 循环链表,  要加上 这里
+        // 循环链表 首尾相连, pre 最后在 链表尾结点
+        //head->left = pre, pre->right = head;
+        return head;
+    }
+    void dfs(TreeNode * cur)
+    {
+        if(!cur)return ;
+        dfs(cur->left);
+        if(!pre)head = cur;//这个头结点是我们要的答案
+        else
+        {
+            //画图
+            pre->right = cur;
+            cur->left = pre;
+        }
+        //更新前驱节点
+        pre = cur;
+        dfs(cur->right);
+    }
+};
+```
+
 
 
 
@@ -914,9 +954,31 @@ public:
 
 ## 35.60. 礼物的最大价值
 
+```cpp
+非常经典的dp问题,太难了,直接pass
+```
+
 
 
 ## 36.63. 字符串中第一个只出现一次的字符
+
+```cpp
+class Solution {
+public:
+    char firstNotRepeatingChar(string s) {
+        unordered_map<char , int>hash;
+        for(auto ch : s)hash[ch]++;
+        
+        
+        //要求返回第一个只出现一次的字符,我们只能再变量一次字符串,而不是哈希表
+        for(auto ch : s)
+        {
+            if(hash[ch] == 1)return ch;
+        }
+        return '#';
+    }
+};
+```
 
 
 
@@ -940,6 +1002,42 @@ public:
 
 
 ## 38.47. 二叉树中和为某一值的路径
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+//dfs中的条件是难点:没有左右子树,且遍历到这里刚好sum减到了0,才可以把这条路径放进去
+class Solution {
+public:
+    //res是最中的答案,path是其中的一条路
+    vector<vector<int>>res;
+    vector<int> path;
+    vector<vector<int>> findPath(TreeNode* root, int sum) {
+        if(!root)return {};//标准
+        dfs(root,sum);
+        return res;
+    }
+    void dfs(TreeNode * node , int sum)
+    {
+        if(!node)return;//标准
+        path.push_back(node->val);
+        if(!node->left && !node->right && sum - node->val == 0)res.push_back(path);//这个是难点
+        dfs(node->left,sum-node->val);
+        dfs(node->right,sum-node->val);
+        path.pop_back();
+    }
+};
+```
+
+
+
 ## 39.82. 圆圈中最后剩下的数字
 
 ```cpp
@@ -957,26 +1055,447 @@ public:
 
 
 ## 40.39. 对称的二叉树
-## 41.58. 把数组排成最小的数
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool res = true;
+    bool isSymmetric(TreeNode* root) {
+        if(!root)return true;
+        
+        return dfs(root->left,root->right);//难点是看出来要把左右节点作为参数传给dfs
+    }
+    bool dfs(TreeNode * p, TreeNode* q)
+    {
+        if(!p || !q)return !p && !q;//这句话也是难点
+        //上一步p为空或者q为空,都直接返回了,到了这里,p和q肯定都不为空
+        if(p->val != q->val)return false;
+        return dfs(p->left,q->right) && dfs(p->right,q->left);
+    }
+};
+```
+
+
+
+
+
 ## 42.38. 二叉树的镜像
-## 
+
+```cpp
+class Solution {
+public:
+
+    void mirror(TreeNode* root) {
+        if(!root)return ;
+        swap(root->left,root->right);//swap能直接换节点!,这个有点吊
+        mirror(root->left);
+        mirror(root->right);
+        
+    }
+};
+```
+
 
 
 ## 44.43. 不分行从上往下打印二叉树
-## 45.45. 之字形打印二叉树
-## 46.69. 数组中数值和下标相等的元素
-## 
+
+```cpp
+//层序遍历
+class Solution {
+public:
+    vector<int> printFromTopToBottom(TreeNode* root) {
+        if(!root)return {};
+        queue<TreeNode*> q;
+        vector<int> res;
+        q.push(root);
+        while(!q.empty())
+        {
+            //res.push_back(q.);//这里我当时卡住了,不知道怎么把队列的值放进去
+            auto t = q.front();//1.先拿队列头
+            q.pop();//2.弹出队头
+            res.push_back(t->val);
+            
+            //注意:这里不用for循环,直接就把t的左右子树加进去就行了
+                if(t->left)q.push(t->left);
+                if(t->right)q.push(t->right);
+        }
+        return res;
+    }
+};
+```
+
+## 45.44. 分行从上往下打印二叉树
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ //相比较43题,你需要在while循环中嵌套一个while循环
+class Solution {
+public:
+    vector<vector<int>>res;
+    
+    vector<vector<int>> printFromTopToBottom(TreeNode* root) {
+        if(!root)return {};
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty())
+        {
+            //分层
+            int len = q.size();
+            vector<int> path;//每一层
+            while(len--)
+            {
+                auto t = q.front();
+                q.pop();
+                path.push_back(t->val);
+                if(t->left)q.push(t->left);
+                if(t->right)q.push(t->right);
+            }
+            res.push_back(path);
+        }
+        return res;
+    }
+};
+```
+
+
+
+### 补充45. 之字形打印二叉树
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ //相比较43题,你需要在while循环中嵌套一个while循环
+class Solution {
+public:
+    vector<vector<int>>res;
+    
+    vector<vector<int>> printFromTopToBottom(TreeNode* root) {
+        if(!root)return {};
+        queue<TreeNode*>q;
+        q.push(root);
+        
+        bool flag = false;//表示不用翻转
+        while(!q.empty())
+        {
+            //分层
+            int len = q.size();
+            vector<int> path;//每一层
+            
+            while(len--)
+            {
+                auto t = q.front();
+                q.pop();
+                path.push_back(t->val);
+                if(t->left)q.push(t->left);
+                if(t->right)q.push(t->right);
+            }
+            
+            if(flag) reverse(path.begin(),path.end());
+            flag = !flag;
+            
+            res.push_back(path);
+        }
+        return res;
+    }
+};
+```
+
+
+
+
+
+
 ## 48.25. 剪绳子
+
+```cpp
+//直接上结论:
+//0.如果小于3,就直接返回1*(n-1)
+//1.如果这个数%3余1,就先拆分出一个4
+//2.如果这个数%3余2,就先拆分出一个2
+//3.将这个数拆分成尽可能多的3,最后还剩下多少就再乘多少
+class Solution {
+public:
+    int maxProductAfterCutting(int length) {
+        if(length<=3)return 1*(length-1);//n>=2,m>=2表示绳长大于等于2,且分的段数大于等于2
+        int n = length;
+        int sum =  1;
+        if(n%3 == 1) sum *= 4,n -= 4;
+        if(n%3 == 2) sum *= 2,n-= 2;
+        while(n) sum*=3 , n -= 3;
+        return sum;
+    }
+};
+```
+
+
+
 ## 49.88. 树中两个结点的最低公共祖先
+
+```cpp
+//代码很简单,只有一函数即可
+//以下情况是一句代码:
+//1.如果p和q都属于这颗树,就返回这颗树
+//2.如果q属于这颗树,p不属于,就返回q
+//3.如果p属于这颗树,q不属于,就返回p
+//不管怎么说,都是一句话,if(q==root || q==root)return root;
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root)return nullptr;
+        if(p==root || q == root)return root;
+        
+        TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        TreeNode* right = lowestCommonAncestor(root->right,p,q);
+        if(left && right)return root;//一个在左,一个在右,就返回根节点
+        if(left)return left;//只有左面,就返回左面
+        else return right;//只有右面,就返回右面
+    }
+};
+```
+
+
+
 ## 50.17. 从尾到头打印链表
+
+````cpp
+//小小翻转列表,直接拿些
+class Solution {
+public:
+    vector<int> printListReversingly(ListNode* head) {
+        if(!head)return {};
+        if(!head->next)return{head->val};
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
+        while(cur)
+        {
+            auto next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
+        }
+        vector<int> res;
+        //头节点是pre
+        while(pre)
+        {
+            res.push_back(pre->val);
+            pre = pre->next;
+        }
+        return res;
+    }
+};
+````
+
+
+
 ## 51.61. 最长不含重复字符的子字符串
-## 52.80. 骰子的点数
+
+```cpp
+//双指针
+//哈希表
+//维护一个i，j区间：
+//当我们把一个新的字符加到哈希表中，大于了1时，
+//我们就要删掉i，j区间内所有出现1的字符，直到遍历到那个大于1的字符为止，
+//此时，我们再计算当前的答案
+class Solution {
+public:
+    int longestSubstringWithoutDuplication(string s) {
+        if(s.empty())return 0;
+        int res = 0;
+        unordered_map<char ,int> hash;
+        for(int i = 0 , j = 0 ; j < s.size() ; j ++)// i,j 区间
+        {
+            if((++hash[s[j]]) > 1)//开始维护
+            {
+                while(hash[s[i]] == 1)
+                {
+                    hash[s[i]]--;
+                    i++;//过
+                }
+                //此时，我们就遍历到那个重复字符
+                hash[s[i]]--,i++;
+            }
+             res = max(res , j-i+1);
+        }
+        return res;
+    }
+};
+```
+
+
+
 ## 53.20. 用两个栈实现队列
+
+```cpp
+//思路要搞定:
+//其中一个栈,有元素进就先进,
+//当要弹出元素时,先从一个栈中将元素放到另一个栈中,再弹出
+//考查队头,原理同上
+//判空:两个队列同时为空才是空
+class MyQueue {
+public:
+    stack<int> stk1 ,stk2;
+    /** Initialize your data structure here. */
+    MyQueue() {
+        
+    }
+    
+    /** Push element x to the back of queue. */
+    void push(int x) {
+        stk1.push(x);
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    int pop() {
+        if(!stk2.empty()){
+            int t = stk2.top();
+            stk2.pop();
+            return t;
+        }
+        else
+        {
+            while(!stk1.empty()){
+                stk2.push(stk1.top());
+                stk1.pop();
+            }
+            int t = stk2.top();
+            stk2.pop();
+            return t;
+        }
+    }
+    
+    /** Get the front element. */
+    int peek() {
+        if(!stk2.empty())return stk2.top();
+        else
+        {
+            while(!stk1.empty()){
+                stk2.push(stk1.top());
+                stk1.pop();
+            }
+            return stk2.top();
+        }
+    }
+    
+    /** Returns whether the queue is empty. */
+    bool empty() {
+        if(stk1.empty() && stk2.empty())return true;
+        else return false; 
+    }
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * bool param_4 = obj.empty();
+ */
+```
+
+
+
 ## 54.83. 股票的最大利润
+
+```cpp
+//贪心
+//先买再卖
+//如何枚举
+//枚举在某天卖
+
+//开一变量,计算前i天的最小值minV
+//如果前天的股票价格>minV,比较一下max(res,当天股票价格-minV)
+class Solution {
+public:
+    int maxDiff(vector<int>& nums) {
+        if(nums.empty())return 0;
+        int minV = nums[0];
+        int res = 0;
+        for(int i = 1 ; i < nums.size() ;i++)
+        {
+
+            minV = min(minV,nums[i]);//得到前几天股票的最低价
+            res = max(res , nums[i]-minV);//res与（当前股票价格-前几天股票的最低价）进行比较
+        }
+        return res;
+    }
+};
+```
+
 ## 40. 顺时针打印矩阵
-## 44. 分行从上往下打印二叉树
-## 51. 数字排列
-------
+```cpp
+//蛇形数组
+//走到不能走为止:
+//1.越界了不能走
+//2.已经走过了不能走(加一个数组标记是否走过)
+
+//每都先计算一下:下一步能不能走,不能走,就换下一个方向
+class Solution {
+public:
+    vector<int> printMatrix(vector<vector<int> > matrix) {
+        if(matrix.empty())return {};
+        int n = matrix.size() , m = matrix[0].size();
+        
+        vector<int> res;
+        vector<vector<bool>>st(n,vector<bool>(m,false));
+        
+        int dx[4] = {0,1,0,-1} , dy[4] = {1,0,-1,0};//四个方向的向量:右下左上
+        int x = 0,y = 0 ,step = 0;//起始点,方向
+        for(int i= 0 ; i < n*m ;i++)
+        {
+            res.push_back(matrix[x][y]);
+            st[x][y] =  true;
+            int a = x + dx[step] , b = y +dy[step];//先计算一下,下一个位置能不能走,不能走就换下一个方向
+            if(a < 0 || a > n-1 || b <0 || b > m-1 || st[a][b])
+            {
+                step = (step + 1)%4;
+                a = x + dx[step] , b = y +dy[step];
+            }
+            x = a ,y =b;
+        }
+        
+        return res;
+    }
+};
+```
+
+
+
+
 
 
 
