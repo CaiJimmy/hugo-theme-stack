@@ -324,3 +324,168 @@ public:
 };
 ```
 
+
+
+
+
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 提问1:指针怎么调用函数?
+// 你可以使用using根据函数签名来创建一个函数指针类型
+void func(int t)
+{
+    cout << t << endl;
+}
+
+using FuncPtr = void (*)(int);
+
+using SortPtr = void (*)(vector<int> &);
+// 提问2:冒泡排序的原理是什么? 他的时间复杂度是多少?O(n^2)
+void sort_1(vector<int> &arr)
+{
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
+    }
+}
+// 提问3:选择排序的原理是什么? 他的时间复杂度是多少?O(n^2)
+// 也是遍历n-1轮,他是从i为0的元素开始,直到我们将他放到合适的位置
+// 选择排序的难点:最小元素的下标
+// 选第1小的元素的下标,选第2小的元素的下标,选第3小的元素的下标...
+void sort_2(vector<int> &arr)
+{
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min_idx = i;
+        int j = min_idx + 1;
+        while (j < n)
+        {
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+            j++;
+        }
+        swap(arr[i], arr[min_idx]);
+    }
+}
+// 提问4:插入排序的原理是什么? 他的时间复杂度是多少?O(n^2)
+// 两部分:一部分已经排好了,另一部分没排列好,我们就不断把没排好的元素插入到排好的一部分中
+// 我们先把要插入元素提起来,也就是说这个元素的位置就空了,然后不断的将前面的元素往后移
+void sort_3(vector<int> &arr)
+{
+    int n = arr.size();
+    // 这是没排好的部分
+    for (int i = 1; i < n; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) // 前一数比这个数大了,我们就要把他后移
+        {
+            arr[j + 1] = arr[j]; // j+1这个位置被空出来了
+            j--;
+        }
+        swap(key, arr[j + 1]);
+    }
+}
+
+// 提问5:归并排序的原理是什么? 他的时间复杂度是多少?O(n log n)
+// 合并两个子数组的复杂度为 O(n)），而分割的层数是对数级别的（每分割一次，数组的大小减半，
+// 所以需要 log n 层分割才能到达单个元素）。
+// 线性的合并复杂度乘以对数级别的层数，最终时间复杂度就是 O(n log n)
+vector<int> tmp;
+void merge_sort(vector<int> &q, int l, int r)
+{
+    if (l >= r)
+        return;
+    int mid = l + r >> 1;
+    merge_sort(q, l, mid);
+    merge_sort(q, mid + 1, r);
+
+    int k = 0;
+    int i = l, j = mid + 1;
+    while (i <= mid && j <= r) // 想一下:i有没有可能等于mid,j有没有可能等于r
+    {
+        if (q[i] <= q[j])
+            tmp[k++] = q[i++];
+        else
+            tmp[k++] = q[j++];
+    }
+    while (i <= mid)
+        tmp[k++] = q[i++];
+    while (j <= r)
+        tmp[k++] = q[j++];
+    for (i = l, j = 0; i <= r; i++, j++) //
+        q[i] = tmp[j];
+}
+void sort_4(vector<int> &arr)
+{
+    int n = arr.size();
+    tmp.resize(n, 0);
+    merge_sort(arr, 0, n - 1);
+}
+
+// 提问6:快速排序的原理是什么? 他的时间复杂度是多少?平均情况下为O(n log n)，最坏情况下为O(n^2)
+void sort_5(vector<int> &q, int l, int r)
+{
+    if (l >= r)
+        return; // 左和右是一个数,就没必要继续了(这里加等号,表示两个数相等了,那就是没必要继续了)
+    int x = q[l + r >> 1], i = l - 1, j = r + 1;
+    while (i < j) // 这里不加等号是因为:这个是只要在i不等j的情况下,就继续遍历
+    {
+        do
+            i++;
+        while (q[i] < x); // 我们要的是一个从小到到的排列顺序,所以,正常情况下是q[i]<x<q[j],直到不满足的时候,我们就把两个数进行交换
+        do
+            j--;
+        while (q[j] > x);
+        if (i < j) // 这个表示,如果i不等于j
+            swap(q[i], q[j]);
+    }
+    // 此刻,q[l,j]都是<=x,q[j,r]都是>=x
+    sort_5(q, l, j);
+    sort_5(q, j + 1, r);
+}
+// 提问7:希尔排序   插入排序Ultra
+
+// 提问8:堆排序  O(nlogn)
+
+int main()
+{
+    FuncPtr ptr = func;
+    ptr(2);
+    func(1);
+
+    printf("你好\n");
+    vector<int> array{11, 412, 41, 454, 1, 2, 4545, 24, 4574};
+    cout << "排序前:";
+    for (auto x : array)
+    {
+        cout << x << ' ';
+    };
+    // SortPtr ptr1 = sort_3;
+    // ptr1(array);
+
+    // using SortPtrUltr = void (*)(vector<int> &, int, int);
+    // SortPtrUltr ptr2 = sort_5;
+    // ptr2(array, 0, array.size() - 1);
+    using Sort_merge = void (*)(vector<int> &);
+    Sort_merge ptr3 = sort_4;
+    ptr3(array);
+
+    cout << endl
+         << "排序后:";
+    for (auto x : array)
+    {
+        cout << x << ' ';
+    };
+    return 0;
+}
+```
+
