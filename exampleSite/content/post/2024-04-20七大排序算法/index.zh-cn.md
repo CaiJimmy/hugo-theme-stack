@@ -391,7 +391,7 @@ void sort_3(vector<int> &arr)
             arr[j + 1] = arr[j]; // j+1这个位置被空出来了
             j--;
         }
-        swap(key, arr[j + 1]);
+        swap(key, arr[j + 1]);//或者这arr[j+1]=key;也行
     }
 }
 
