@@ -140,3 +140,21 @@
             margin: 0 !important;
         }
     }
+
+    .work-list {
+        position:relative;
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+      }
+       
+      .work-list-item {
+        padding: 0px;
+        border-radius: var(--card-border-radius);
+      }
+       
+      .work-list-item img {
+        width:100%;
+        height: 100%;
+        object-fit: cover;
+      }

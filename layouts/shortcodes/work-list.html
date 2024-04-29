@@ -1,0 +1,15 @@
+{{ $file := .Get 0 }}
+{{ $num := 4 }}
+{{ if .Get 1 }} 
+    {{ $num = .Get 1 }}
+{{ end }}
+{{ $width := div 90 $num }}
+{{$items := getJSON $file }}
+
+<div class="work-list">
+    {{range $item := $items}}
+        <a href="{{ $item.url }}">
+            <img class="work-list-item" src="{{ $item.image }}" loading="lazy" title="{{ $item.title }}" width="{{ $width }}%">
+        </a>
+    {{end}}
+</div>

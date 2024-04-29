@@ -11,12 +11,12 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --main-top-padding: 50px;
     }
 
-    --body-background: #EAE0DA;
+    --body-background: #F1F1F1;
 
     --accent-color: #352F44;
     --accent-color-darker: #5C5470;
     --accent-color-text: #fff;
-    --body-text-color: #5C5470;
+    --body-text-color: #737373;
 
     --tag-border-radius: 4px;
 
@@ -26,9 +26,9 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --scrollbar-track: var(--body-background);
 
     &[data-scheme="dark"] {
-        --body-background: #393646;
-        --accent-color: #F4EEE0;
-        --accent-color-darker: #F4EEE0;
+        --body-background: #303030;
+        --accent-color: #ecf0f1;
+        --accent-color-darker: #bdc3c7;
         --accent-color-text: #000;
         --body-text-color: rgba(255, 255, 255, 0.7);
         --scrollbar-thumb: hsl(0, 0%, 40%);
@@ -51,11 +51,11 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 *   Card style
 */
 :root {
-    --card-background: #f7f5eb;
+--card-background: #F7F8F8;
     --card-background-selected: #eaeaea;
 
-    --card-text-color-main: #352F44;
-    --card-text-color-secondary: #5C5470;
+    --card-text-color-main: #2c3e50;
+    --card-text-color-secondary: #737373;
     --card-text-color-tertiary: #5C5470;
     --card-separator-color: rgba(218, 218, 218, 0.5);
 
@@ -78,9 +78,9 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     }
 
     &[data-scheme="dark"] {
-        --card-background: #4F4557;
-        --card-background-selected: #9DB2BF;
-        --card-text-color-main: #F4EEE0;
+        --card-background: #424242;
+        --card-background-selected: rgba(255, 255, 255, 0.16);
+        --card-text-color-main: rgba(255, 255, 255, 0.9);
         --card-text-color-secondary: rgba(255, 255, 255, 0.7);
         --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
         --card-separator-color: #6D5D6E;
@@ -110,7 +110,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --heading-border-size: 3px;
 
-    --link-background-color: 189, 195, 199;
+    --link-background-color: 170,170,170;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
 
@@ -126,7 +126,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --kbd-border-color: #dadada;
 
     &[data-scheme="dark"] {
-        --code-background-color: #272822;
+        --code-background-color: #5A5A5A;
         --code-text-color: rgba(255, 255, 255, 0.9);
 
         --table-border-color: #717171;

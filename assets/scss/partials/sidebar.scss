@@ -23,7 +23,7 @@
 
     @include respond(md) {
         width: auto;
-        padding-top: var(--main-top-padding);
+        padding-top: calc(var(--main-top-padding)*1.5);
         padding-bottom: var(--main-top-padding);
         max-height: 100vh;
     }
