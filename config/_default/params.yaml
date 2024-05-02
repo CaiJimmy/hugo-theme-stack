@@ -32,6 +32,7 @@ sidebar:
   avatar: img/avatar.png
 
 article:
+  headingAnchor: false
   # Enable LaTeX math syntax for all pages by default
   math: false
   readingTime: true
