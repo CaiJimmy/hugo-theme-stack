@@ -28,6 +28,7 @@ params:
             src: img/avatar.png
 
     article:
+        headingAnchor: true
         math: false
         toc: true
         readingTime: true
