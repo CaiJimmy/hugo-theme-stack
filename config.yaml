@@ -28,7 +28,7 @@ params:
             src: img/avatar.png
 
     article:
-        headingAnchor: true
+        headingAnchor: false
         math: false
         toc: true
         readingTime: true
