@@ -4,7 +4,9 @@
     <div class="widget-icon">
         {{ partial "helper/icon" "categories" }}
     </div>
-    <h2 class="widget-title section-title">{{ T "widget.categoriesCloud.title" }}</h2>
+    <h2 class="widget-title section-title">
+	<a href="{{ "categories" | relLangURL }}">{{ T "widget.categoriesCloud.title" }}</a>
+    </h2>
 
     <div class="tagCloud-tags">
         {{ range first $limit $context.Site.Taxonomies.categories.ByCount }}
