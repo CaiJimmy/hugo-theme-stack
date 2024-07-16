@@ -33,11 +33,15 @@
     {{- end -}}
 {{- else -}}
     {{- if not .Site.Lastmod.IsZero -}}
-        <meta property='og:updated_time' content='{{ .Site.Lastmod.Format " 2006-01-02T15:04:05-07:00 " | safeHTML }}'/>
+        <meta property='og:updated_time' content='{{ .Site.Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}'/>
     {{- end -}}
 {{- end -}}
 
 {{ $image := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" }}
 {{- if $image.exists -}}
     <meta property='og:image' content='{{ absURL $image.permalink }}' />
+{{- end -}}
+
+{{- range .Param "authors" -}}
+<meta property='article:author' content='{{ . }}' />
 {{- end -}}
