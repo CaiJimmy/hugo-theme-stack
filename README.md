@@ -26,3 +26,6 @@ Visit [stack.jimmycai.com](https://stack.jimmycai.com)
 Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
 
 If you want to port this theme to another blogging platform, please let me know🙏.
+
+sandalu umayanga
+hello this is my changes
