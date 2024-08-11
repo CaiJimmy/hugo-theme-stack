@@ -148,6 +148,11 @@
     }
 }
 
+.article-category {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 /* Compact style article list */
 .article-list--compact {
     border-radius: var(--card-border-radius);
