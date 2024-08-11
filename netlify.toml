@@ -24,3 +24,8 @@
             debug = true
             # Relative path to source directory in case you use Hugo's "--s" option
             srcdir = "exampleSite"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
