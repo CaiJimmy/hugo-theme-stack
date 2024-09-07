@@ -1,0 +1,73 @@
+toggleMenu:
+    other: Покажи Меню
+
+darkMode:
+    other: Тъмен Режим
+
+list:
+    page:
+        one: "{{ .Count }} страница"
+        other: "{{ .Count }} страници"
+
+    section:
+        other: Секция
+
+    subsection:
+        one: Подсекция
+        other: Подсекции
+
+article:
+    back:
+        other: Назад
+
+    tableOfContents:
+        other: Съдържание
+
+    relatedContent:
+        other: Свързано Съдържание
+
+    lastUpdatedOn:
+        other: Последна промяна на
+
+    readingTime:
+        one: "{{ .Count }} minute read"
+        other: "{{ .Count }} minute read"
+
+notFound:
+    title:
+        other: Не е намерено
+
+    subtitle:
+        other: Страницата която търсите не е открита
+
+widget:
+    archives:
+        title:
+            other: Архиви
+
+        more:
+            other: Повече
+
+    tagCloud:
+        title:
+            other: Тагове
+    categoriesCloud:
+        title:
+            other: Категории
+
+search:
+    title:
+        other: Търсене
+
+    placeholder:
+        other: Напишете нещо...
+
+    resultTitle:
+        other: "#PAGES_COUNT страници (#TIME_SECONDS секунди)"
+
+footer:
+    builtWith:
+        other: Създадено с {{ .Generator }}
+
+    designedBy:
+        other: Тема {{ .Theme }} създадена от {{ .DesignedBy }}
