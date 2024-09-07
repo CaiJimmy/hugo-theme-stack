@@ -1,4 +1,4 @@
-baseurl: https://example.com
+baseurl: https://example.com/
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 3
@@ -156,6 +156,7 @@ params:
             repo:
             clientID:
             clientSecret:
+            proxy:
 
         cusdis:
             host:
