@@ -1,7 +1,6 @@
 baseurl: https://example.com/
 languageCode: en-us
 theme: hugo-theme-stack
-paginate: 3
 title: Example Site
 copyright: Example Person
 
@@ -41,6 +40,9 @@ services:
     # GA Tracking ID
     googleAnalytics:
         id:
+
+pagination:
+    pagerSize: 3
 
 permalinks:
     post: /p/:slug/
