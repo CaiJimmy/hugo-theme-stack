@@ -156,6 +156,7 @@ params:
             repo:
             clientID:
             clientSecret:
+            proxy:
 
         cusdis:
             host:
