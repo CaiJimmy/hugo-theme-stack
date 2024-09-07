@@ -97,7 +97,7 @@ params:
             repo:
             issueTerm: pathname
             label:
-            theme:        
+            theme:
 
         remark42:
             host:
@@ -235,6 +235,18 @@ related:
 
 markup:
     goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
         renderer:
             ## Set to true if you have HTML content inside Markdown
             unsafe: true
