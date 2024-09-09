@@ -15,6 +15,7 @@
         admin: ["{{- .admin -}}"],
         distractionFreeMode: false, // Facebook-like distraction free mode
         id: md5(location.pathname), // Max Location.pathname Legth:75  https://github.com/gitalk/gitalk/issues/102
+        proxy: {{- .proxy -}},
     });
     (function () {
         if (

@@ -1,4 +1,16 @@
 goldmark:
+  extensions:
+    passthrough:
+      enable: true
+      delimiters:
+        block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+        inline:
+          - - \(
+            - \)
   renderer:
     unsafe: false # Allow HTML in markdown
 tableOfContents:

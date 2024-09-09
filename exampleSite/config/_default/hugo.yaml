@@ -1,6 +1,5 @@
 baseurl: https://stack.jimmycai.com/demo/
 languageCode: en-us
-paginate: 3
 
 # Note: This title is overridden by the title in i18n config file
 title: Hugo Theme Stack Starter
@@ -21,3 +20,6 @@ services:
     id:
 
 publishDir: ../public/demo
+
+pagination:
+    pagerSize: 3

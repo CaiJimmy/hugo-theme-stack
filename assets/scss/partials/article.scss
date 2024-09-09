@@ -131,6 +131,7 @@
 .article-tags {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 
     a {
         color: var(--accent-color-text);
