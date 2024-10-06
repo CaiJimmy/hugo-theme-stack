@@ -60,19 +60,41 @@
     <ol class="menu" id="main-menu">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
-        {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
-        <li {{ if $active }} class='current' {{ end }}>
-            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
-                {{ $icon := default .Pre .Params.Icon }}
-                {{ if .Pre }}
-                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://stack.jimmycai.com/config/menu" .URL }}
-                {{ end }}
-                {{ with $icon }}
-                    {{ partial "helper/icon" . }}
-                {{ end }}
-                <span>{{- .Name -}}</span>
-            </a>
-        </li>
+            {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+            {{ if .HasChildren }}
+                <li class="dropdown">
+                    <a class="dropdown-header">
+                        {{ partial "helper/icon" "arrow-down" }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                    <ul class="dropdown-content">
+                        {{ range .Children }}
+                            <li class="dropdown-item {{ if eq $currentPage.RelPermalink .URL }} current {{ end }}">
+                                <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                                    {{ $icon := default .Pre .Params.Icon }}
+                                    {{ with $icon }}
+                                        {{ partial "helper/icon" . }}
+                                    {{ end }}
+                                    <span>{{- .Name -}}</span>
+                                </a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ else }}
+                <li {{ if $active }} class='current' {{ end }}>
+                    <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                        {{ $icon := default .Pre .Params.Icon }}
+                        {{ if .Pre }}
+                            {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://docs.stack.jimmycai.com/configuration/custom-menu.html" .URL }}
+                        {{ end }}
+                        {{ with $icon }}
+                            {{ partial "helper/icon" . }}
+                        {{ end }}
+                        <span>{{- .Name -}}</span>
+                    </a>
+                </li>
+            {{ end }}
         {{ end }}
         <li class="menu-bottom-section">
             <ol class="menu">
