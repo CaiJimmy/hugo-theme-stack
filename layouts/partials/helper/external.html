@@ -13,12 +13,14 @@
             </script>
         {{- else if eq .type "style" -}}
             <link 
-                rel="stylesheet" 
+                rel="preload" 
                 href="{{ .src }}"
+                as="style"
                 {{- with .integrity -}}
                 integrity="{{ . }}"
                 {{- end -}}
                 crossorigin="anonymous"
+                onload="this.onload=null;this.rel='stylesheet'"
             >
         {{- else -}}
             {{- errorf "Error: unknown external resource type: %s" .type -}}
