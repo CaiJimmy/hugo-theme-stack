@@ -30,8 +30,8 @@ article:
         other: Last updated on
 
     readingTime:
-        one: "{{ .Count }} minute read"
-        other: "{{ .Count }} minute read"
+        one: "{{ .Count }} minute reading time "
+        other: "{{ .Count }} minutes reading time"
 
 notFound:
     title:

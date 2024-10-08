@@ -4,12 +4,17 @@ toggleMenu:
 darkMode:
     other: 暗色模式
 
+
 list:
-    page: "{{ .Count }} 个页面"
+    page:
+        other: "{{ .Count }} 页"
 
-    section: 章节
+    section:
+        other: 章节
 
-    subsection: 子章节
+    subsection:
+        one: 子章节
+        other: 子章节
 
 article:
     back:

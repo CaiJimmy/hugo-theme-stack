@@ -1,1 +1,1 @@
-cd exampleSite && hugo server --gc --themesDir=../..
+cd exampleSite && hugo server --gc --themesDir=../../..
