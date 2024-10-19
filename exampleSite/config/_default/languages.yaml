@@ -3,12 +3,20 @@ en:
   languageName: English
   title: Hugo Theme Stack Example Site
   weight: 1
+  params:
+    sidebar:
+      subtitle: Example description
 zh-cn:
   languageName: 中文
   title: Hugo 主题 Stack 演示站点
   weight: 2
+  params:
+    sidebar:
+      subtitle: 演示说明
 ar:
   languageName: عربي
   languagedirection: rtl
   title: موقع تجريبي
   weight: 3
+  sidebar:
+    subtitle: وصف تجريبي

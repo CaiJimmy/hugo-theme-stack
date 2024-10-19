@@ -29,6 +29,12 @@ widget:
         title: Archives
         more: Autres
 
+    tagCloud:
+        title: Mots clés
+
+    categoriesCloud:
+        title: Catégories
+
 search:
     title: Rechercher
     placeholder: Cherchez un article, une publication, etc.
