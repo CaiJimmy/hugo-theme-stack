@@ -3,5 +3,43 @@
         <h1 class="article-title">{{ T "notFound.title" }}</h1>
         <h2 class="article-subtitle">{{ T "notFound.subtitle" }}</h2>
     </div>
+
+    {{- $query := first 1 (where .Site.Pages "Layout" "==" "search") -}}
+    {{- $searchPage := index $query 0 -}}
+
+    {{- with $searchPage -}}
+        <form action="{{ $searchPage.RelPermalink }}" class="search-form widget" {{ with .OutputFormats.Get "json" -}}data-json="{{ .Permalink }}" {{- end }}>
+            <p>
+                <label>{{ T "search.title" }}</label>
+                <input id="searchInput" name="keyword" required placeholder="{{ T `search.placeholder` }}" />
+            
+                <button title="{{ T `search.title` }}">
+                    {{ partial "helper/icon" "search" }}
+                </button>
+            </p>
+        </form>
+
+        <div class="search-result">
+            <h3 class="search-result--title section-title"></h3>
+            <div class="search-result--list article-list--compact"></div>
+        </div>
+        
+        <script>
+            window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
+        </script>
+
+        {{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}
+        {{- $searchScript := resources.Get "ts/search.tsx" | js.Build $opts -}}
+        <script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
+
+        <script>
+            const wrongUrl = new URL(window.location.href);
+
+            /// Get the search keyword from the wrong URL by removing all slashes and dashes
+            const searchKeyword = wrongUrl.pathname.split(/[/|-]/).join(' ').trim();
+
+            document.getElementById('searchInput').setAttribute('value', searchKeyword);
+        </script>
+    {{- end -}}
     {{ partialCached "footer/footer" . }}
 {{ end }}
