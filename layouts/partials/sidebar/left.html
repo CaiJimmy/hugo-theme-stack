@@ -16,9 +16,20 @@
                     {{ $avatar := resources.Get (.src) }}
                     
                     {{ if $avatar }}
-                        {{ $avatarResized := $avatar.Resize "300x" }}
-                        <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-                            height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                        {{ $avatarResized := $avatar.Resize "120x" }}
+                        {{ $avatar1_5 := $avatar.Resize "180x" }}
+                        {{ $avatar2 := $avatar.Resize "240x" }}
+                        <img
+                            src="{{ $avatarResized.RelPermalink }}"
+                            srcset="{{$avatarResized.RelPermalink}},
+                                    {{$avatar1_5.RelPermalink}} 1.5x,
+                                    {{$avatar2.RelPermalink}} 2x"
+                            width="{{ $avatarResized.Width }}"
+                            height="{{ $avatarResized.Height }}"
+                            class="site-logo"
+                            loading="lazy"
+                            alt="Avatar"
+                        />
                     {{ else }}
                         {{ errorf "Failed loading avatar from %q" . }}
                     {{ end }}
