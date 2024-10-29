@@ -166,6 +166,19 @@ params:
         cusdis:
             host:
             id:
+
+        # Comentario client configuration see: https://docs.comentario.app/en/configuration/embedding/comments-tag/
+        comentario:
+            url:
+            autoInit:
+            autoNonInteractiveSso:
+            cssOverride:
+            lang:
+            liveUpdate:
+            maxLevel:
+            noFonts:
+            theme:
+
     widgets:
         homepage:
             - type: search
