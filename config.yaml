@@ -25,7 +25,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: img/selfie_6th-floor-kitchen_square-150x150.jpg
 
     article:
         headingAnchor: false
@@ -119,6 +119,9 @@ params:
 
     widgets:
         homepage: []
+            # - type: categories
+            #   params:
+            #       limit: 10
         page: []
 
     opengraph:
