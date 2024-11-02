@@ -26,3 +26,7 @@ Visit [stack.jimmycai.com](https://stack.jimmycai.com)
 Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
 
 If you want to port this theme to another blogging platform, please let me know🙏.
+
+
+# Notes for my fork
+The goal of forking this is to try and implement pinned posts - initially in category pages but potentially on the home page
