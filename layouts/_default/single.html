@@ -25,6 +25,12 @@
 
 {{ define "main" }}
     {{ partial "article/article.html" . }}
+    
+    {{ with .Params.bsky_post }}
+        {{ if . }}
+            {{ partial "bsky-comments.html" . }}
+        {{ end }}
+    {{ end }}
 
     {{ if .Params.links }}
         {{ partial "article/components/links" . }}

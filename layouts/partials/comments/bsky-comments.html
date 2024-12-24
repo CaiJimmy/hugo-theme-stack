@@ -1,0 +1,29 @@
+<script type="module" src="https://cdn.jsdelivr.net/gh/Siya-33/static@1.2.7/js/bsky-comments.js"></script>
+<bsky-comments post="{{ . }}" ></bsky-comments>
+<style>
+    bsky-comments {
+        --background-color: var(--card-background);
+        --text-color: var(--card-text-color-main);
+        --link-color: var(--code-text-color);
+        --comment-meta-color: #5E9595;
+        --error-color: red;
+        --reply-border-color: transparent;
+        --button-background-color: var(--code-background-color);
+        --author-avatar-border-radius: 100%;
+    }
+</style>
+<!-- custom style -->
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const bskyComments = document.querySelector('bsky-comments');
+    if (bskyComments) {
+      const style = document.createElement('style');
+      style.textContent = `
+        comments {
+          border-radius: var(--card-border-radius);
+        }
+      `;
+      bskyComments.shadowRoot.appendChild(style);
+    }
+  });
+</script> -->
