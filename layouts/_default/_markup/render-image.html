@@ -1,6 +1,7 @@
 {{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
 {{- $Permalink := .Destination | relURL | safeURL -}}
 {{- $alt := .PlainText | safeHTML -}}
+{{- $title := .Title | safeHTML -}}
 {{- $Width := 0 -}}
 {{- $Height := 0 -}}
 {{- $Srcset := "" -}}
@@ -39,3 +40,6 @@
 		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
 	{{ end }}
 >
+{{- if $title }}
+<figcaption>{{ .Title }}</figcaption>
+{{- end }}
