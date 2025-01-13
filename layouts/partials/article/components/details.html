@@ -39,9 +39,15 @@
 
         {{ if $showReadingTime }}
             <div>
+                {{ $readingTime := .ReadingTime }}
+                {{ if eq .Site.Language.LanguageCode "zh-cn"}}
+                    {{ $wordsPerMinute := 500 }}
+                    {{ $charCount := .Content | replaceRE "[\\pP]" "" | countrunes}}
+                    {{ $readingTime = div (float $charCount) $wordsPerMinute | math.Ceil | int }}
+                {{ end }}
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
-                    {{ T "article.readingTime" .ReadingTime }}
+                    {{ T "article.readingTime" $readingTime }}
                 </time>
             </div>
         {{ end }}
