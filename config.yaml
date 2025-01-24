@@ -8,11 +8,11 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: # Define your favicon file path, e.g., /img/favicon.ico
 
     footer:
-        since:
-        customText:
+        since: # Add the year when your site started
+        customText: # Add any custom text for the footer
 
     dateFormat:
         published: Jan 02, 2006
@@ -20,8 +20,8 @@ params:
 
     sidebar:
         compact: false
-        emoji:
-        subtitle:
+        emoji: # Add emoji set if needed (e.g., GitHub, Twitter, etc.)
+        subtitle: # Optional subtitle for sidebar
         avatar:
             enabled: true
             local: true
@@ -38,31 +38,36 @@ params:
 
     comments:
         enabled: false
-        provider: disqus
+        provider: disqus # Enable a comment provider if needed (e.g., disqus, utterances, etc.)
 
+        # Disqus configuration
         disqusjs:
-            shortname:
-            apiUrl:
-            apiKey:
+            shortname: # Add your Disqus shortname
+            apiUrl: # Optional API URL for Disqus
+            apiKey: # Add API key if required
             admin:
             adminLabel:
 
+        # Utterances configuration
         utterances:
-            repo:
+            repo: # Add your GitHub repo for comments
             issueTerm: pathname
             label:
 
+        # Beaudar configuration
         beaudar:
             repo:
             issueTerm: pathname
             label:
-            theme:        
+            theme: # Define your preferred theme (e.g., light, dark)
 
+        # Remark42 configuration
         remark42:
-            host:
-            site:
+            host: # Define Remark42 host URL
+            site: # Add your site domain
             locale:
 
+        # Vssue configuration
         vssue:
             platform:
             owner:
@@ -71,12 +76,12 @@ params:
             clientSecret:
             autoCreateIssue: false
 
-        # Waline client configuration see: https://waline.js.org/en/reference/client/props.html
+        # Waline client configuration
         waline:
-            serverURL:
+            serverURL: # Add Waline server URL
             lang:
-            visitor:
-            avatar:
+            visitor: true
+            avatar: true
             emoji:
                 - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
             requiredMeta:
@@ -84,14 +89,16 @@ params:
                 - mail
             locale:
                 admin: Admin
-                placeholder:
+                placeholder: Add your comment...
 
+        # Twikoo configuration
         twikoo:
-            envId:
-            region:
+            envId: # Add Twikoo environment ID
+            region: # Define Twikoo region (e.g., cn, us)
             path:
             lang:
 
+        # Giscus configuration
         giscus:
             repo:
             repoID:
@@ -99,13 +106,14 @@ params:
             categoryID:
             mapping:
             strict:
-            lightTheme:
-            darkTheme:
+            lightTheme: # Define light theme (optional)
+            darkTheme: # Define dark theme (optional)
             reactionsEnabled: 1
             emitMetadata: 0
             inputPosition:
             lang:
 
+        # Gitalk configuration
         gitalk:
             owner:
             admin:
@@ -113,37 +121,32 @@ params:
             clientID:
             clientSecret:
 
+        # Cusdis configuration
         cusdis:
             host:
             id:
 
     widgets:
-        homepage: []
-        page: []
+        homepage: [] # Add widget components for homepage
+        page: [] # Add widget components for inner pages
 
     opengraph:
         twitter:
-            # Your Twitter username
-            site:
-
-            # Available values: summary, summary_large_image
+            site: # Your Twitter username (e.g., @yourhandle)
             card: summary_large_image
 
     defaultImage:
         opengraph:
             enabled: false
             local: false
-            src:
+            src: # Define a default image URL for OpenGraph
 
     colorScheme:
-        # Display toggle
-        toggle: true
-
-        # Available values: auto, light, dark
-        default: auto
+        toggle: true # Display a light/dark mode toggle
+        default: auto # Set default mode (auto, light, dark)
 
     imageProcessing:
         cover:
-            enabled: true
+            enabled: true # Enable cover image processing
         content:
-            enabled: true
+            enabled: true # Enable content image processing
