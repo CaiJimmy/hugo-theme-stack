@@ -1,7 +1,11 @@
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
     <section class="widget archives">
         <div class="widget-icon">
-            {{ partial "helper/icon" "hash" }}
+            {{ $icon := default "hash" .Params.icon }}
+            {{ $iconVisible := default true .Params.iconVisible }}
+            {{ if $iconVisible }}
+                {{ partial "helper/icon" $icon }}
+            {{ end }}
         </div>
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
         

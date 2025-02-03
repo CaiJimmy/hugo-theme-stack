@@ -5,7 +5,11 @@
     {{- $archivesPage := index $query 0 -}}
     <section class="widget archives">
         <div class="widget-icon">
-            {{ partial "helper/icon" "infinity" }}
+            {{ $icon := default "infinity" .Params.icon }}
+            {{ $iconVisible := default true .Params.iconVisible }}
+            {{ if $iconVisible }}
+                {{ partial "helper/icon" $icon }}
+            {{ end }}
         </div>
         <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
 

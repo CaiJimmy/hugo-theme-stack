@@ -2,7 +2,11 @@
 {{- $limit := default 10 .Params.limit -}}
 <section class="widget tagCloud">
     <div class="widget-icon">
-        {{ partial "helper/icon" "categories" }}
+        {{ $icon := default "categories" .Params.icon }}
+        {{ $iconVisible := default true .Params.iconVisible }}
+        {{ if $iconVisible }}
+            {{ partial "helper/icon" $icon }}
+        {{ end }}
     </div>
     <h2 class="widget-title section-title">{{ T "widget.categoriesCloud.title" }}</h2>
 
