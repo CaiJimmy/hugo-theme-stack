@@ -307,6 +307,10 @@
         }
     }
 
+    .gallery-image {
+        border-radius: 8px;
+    }
+
     pre {
         overflow-x: auto;
         display: block;
@@ -434,7 +438,7 @@
     figure,
     .highlight,
     pre,
-    .gallery,
+    // .gallery,
     .video-wrapper,
     .table-wrapper,
     .s_video_simple {
