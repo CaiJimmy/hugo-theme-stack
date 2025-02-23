@@ -56,7 +56,7 @@ params:
             repo:
             issueTerm: pathname
             label:
-            theme:        
+            theme:
 
         remark42:
             host:
