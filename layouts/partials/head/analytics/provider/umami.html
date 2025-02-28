@@ -1,0 +1,37 @@
+{{- $umami := .Site.Params.Analytics.Umami -}}
+{{- if $umami -}}
+    {{- $host := default "https://cloud.umami.is" $umami.Host -}}
+    {{- if and (not $umami.Disabled) ($umami.SiteId) -}}
+        <script defer src="{{ $host }}/script.js" data-website-id="{{ $umami.SiteId }}"></script>
+
+        {{- if not .IsHome -}}
+            <script>
+                window.addEventListener("DOMContentLoaded", () => {
+                    const wrapper = document.getElementsByClassName("article-time--count-wrapper")[0];
+                    const e = wrapper && wrapper.getElementsByClassName("article-time--count")[0];
+                    if (e == null)
+                        return;
+                    const path = window.location.pathname;
+                    let options;
+                    {{- if $umami.Token -}}
+                    const token = {{ $umami.Token }};
+                    options = {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    };
+                    {{- end -}}
+                    let st = new Date({{ $umami.StartAt }}).getTime();
+                    if (isNaN(st))
+                        st = 0; // fallback to 1970-01-01T00:00:00Z
+                    const now = new Date().getTime();
+                    const url = `{{ $host }}/api/websites/{{ $umami.SiteId }}/stats?startAt=${st}&endAt=${now}&url=${encodeURIComponent(path)}`;
+                    fetch(url, options).then(r => r.json()).then(data => {
+                        wrapper.style.display = '';
+                        e.textContent = String(data.visits ? data.visits.value : 0);
+                    });
+                });
+            </script>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
