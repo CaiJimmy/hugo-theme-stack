@@ -32,9 +32,11 @@ function buildIdToNavigationElementMap(navigation: NodeListOf<Element>): IdToEle
     const sectionLinkRef: IdToElementMap = {};
     navigation.forEach((navigationElement: HTMLElement) => {
         const link = navigationElement.querySelector("a");
-        const href = link.getAttribute("href");
-        if (href.startsWith("#")) {
-            sectionLinkRef[href.slice(1)] = navigationElement;
+        if (link) {
+            const href = link.getAttribute("href");
+            if (href.startsWith("#")) {
+                sectionLinkRef[href.slice(1)] = navigationElement;
+            }
         }
     });
 
