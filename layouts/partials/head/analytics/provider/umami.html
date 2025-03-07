@@ -1,7 +1,7 @@
 {{- $umami := .Site.Params.Analytics.Umami -}}
 {{- if $umami -}}
     {{- $host := default "https://cloud.umami.is" $umami.Host -}}
-    {{- if and (not $umami.Disabled) ($umami.SiteId) -}}
+    {{- if and ($umami.Enabled) ($umami.SiteId) -}}
         <script defer src="{{ $host }}/script.js" data-website-id="{{ $umami.SiteId }}"></script>
 
         {{- if not .IsHome -}}
