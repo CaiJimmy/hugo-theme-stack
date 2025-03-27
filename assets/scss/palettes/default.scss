@@ -57,8 +57,8 @@
 
     --link-background-color: 189, 195, 199;
 
-    --pre-background-color: #272822;
-    --pre-text-color: #f8f8f2;
+    --pre-background-color: #fafafa;
+    --pre-text-color: #272822;
 
     --code-background-color: rgba(0, 0, 0, 0.12);
     --code-text-color: #808080;
@@ -69,6 +69,8 @@
     --kbd-border-color: #dadada;
 
     &[data-scheme="dark"] {
+        --pre-background-color: #272822;
+        --pre-text-color: #fafafa;
         --code-background-color: #272822;
         --code-text-color: rgba(255, 255, 255, 0.9);
 
