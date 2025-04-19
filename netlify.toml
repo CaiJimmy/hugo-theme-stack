@@ -1,6 +1,25 @@
 [build]
 publish = "public"
-command = "hugo"
+command = "hugo --gc --minify"
 
 [build.environment]
 HUGO_VERSION = "0.142.0"
+
+[context.production]
+command = "hugo --gc --minify -b https://blog.gearlama.com"
+[context.production.environment]
+HUGO_ENV = "production"
+
+[context.deploy-preview]
+command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[[plugins]]
+package = "netlify-plugin-hugo-cache-resources"
+
+  [plugins.inputs]
+  debug = true
+  srcdir = "."
+
