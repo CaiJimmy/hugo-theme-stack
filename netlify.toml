@@ -3,16 +3,3 @@ publish = "public"
 
 [build.environment]
 HUGO_VERSION = "0.124.0"
-HUGO_THEME = "stack"  # or whatever your actual theme name is, if needed
-
-[context.production]
-command = "hugo --gc --minify -b https://gearlama-blog.netlify.app"
-[context.production.environment]
-HUGO_ENV = "production"
-
-[[plugins]]
-package = "netlify-plugin-hugo-cache-resources"
-
-  [plugins.inputs]
-  debug = true
-  srcdir = "."  # current directory, assuming your Hugo site lives at root
