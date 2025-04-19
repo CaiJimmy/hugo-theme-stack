@@ -1,20 +1,18 @@
 [build]
-    publish = "public"
+publish = "public"
 
 [build.environment]
-    HUGO_VERSION = "0.124.0"
-#   HUGO_THEME = "repo"
+HUGO_VERSION = "0.124.0"
+HUGO_THEME = "stack"  # or whatever your actual theme name is, if needed
 
 [context.production]
-    command = "hugo --gc --minify -b ${URL}"
-    [context.production.environment]
-        HUGO_ENV = "production"
+command = "hugo --gc --minify -b ${URL}"
+[context.production.environment]
+HUGO_ENV = "production"
 
 [[plugins]]
-    package = "netlify-plugin-hugo-cache-resources"
+package = "netlify-plugin-hugo-cache-resources"
 
-        [plugins.inputs]
-            # If it should show more verbose logs (optional, default = true)
-            debug = true
-            # Relative path to source directory in case you use Hugo's "--s" option
-            srcdir = "."
+  [plugins.inputs]
+  debug = true
+  srcdir = "."  # current directory, assuming your Hugo site lives at root
