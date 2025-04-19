@@ -2,7 +2,7 @@ baseurl: https://example.com/
 languageCode: en-in
 # theme: hugo-theme-stack
 title: Gearlama Blog
-copyright: Gearlama. Content licensed under CC BY-NC 4.0
+copyright: Gearlama · CC BY-NC 4.0
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
@@ -48,7 +48,7 @@ pagination:
     pagerSize: 5
 
 permalinks:
-    post: /p/:slug/
+    post: /:slug/
     page: /:slug/
 
 params:
@@ -220,8 +220,8 @@ menu:
           params:
               icon: brand-instagram
 
-        - identifier: twitter
-          name: Twitter
+        - identifier: youtube
+          name: Youtube
           url: https://youtube.com/gearlama
           params:
               icon: brand-youtube

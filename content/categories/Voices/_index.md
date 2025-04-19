@@ -2,8 +2,8 @@
 title: "Voices"
 description: "Interviews, opinion pieces, and quiet thoughts from across the Indian cycling community."
 slug: "voices"
-image: "voice-category.webp"
+image: "voices-category.webp"
 style:
     background: "#efeae6"
-    color: "#fff"
+    color: "#000000"
 ---
