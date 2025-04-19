@@ -10,11 +10,11 @@
     [context.production.environment]
         HUGO_ENV = "production"
 
-[context.branch-deploy]
-    command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}"
+#[context.branch-deploy]
+#    command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}"
 
-[context.deploy-preview]
-    command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}"
+#[context.deploy-preview]
+#    command = "cd exampleSite && hugo --gc --themesDir ../.. -b ${DEPLOY_PRIME_URL}"
 
 [[plugins]]
     package = "netlify-plugin-hugo-cache-resources"
