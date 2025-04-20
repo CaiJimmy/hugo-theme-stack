@@ -47,7 +47,7 @@ services:
 enableRobotsTXT: true
 
 pagination:
-    pagerSize: 5
+    pagerSize: 6
 
 permalinks:
     post: /:slug/
