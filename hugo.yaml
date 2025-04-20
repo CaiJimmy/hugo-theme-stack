@@ -44,6 +44,8 @@ services:
     googleAnalytics:
         id: G-8304H2K5NB
 
+enableRobotsTXT: true
+
 pagination:
     pagerSize: 5
 
