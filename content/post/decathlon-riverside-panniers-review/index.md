@@ -111,5 +111,3 @@ And honestly? That’s more than I can say for most of the gear I’ve tried.
 >Siddharth Subramanian is a documentary filmmaker who sees the world best from a bike saddle. When not riding or shooting, he’s usually tweaking setups or dreaming up the next adventure.  
 >Follow him on Instagram — [@catchsidsub](https://www.instagram.com/catchsidsub/)  
 >*Images/Videos by @catchsidsub in Delhi NCR. All rights reserved.*
-
-
