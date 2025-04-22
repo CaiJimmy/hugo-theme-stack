@@ -94,9 +94,8 @@ And honestly? That’s more than I can say for most of the gear I’ve tried.
   </a>
 </div>
 
-
-
 ---
+
 ## TL;DR
 
 - 24L per bag, roll-top, IPX6 waterproof
@@ -108,9 +107,8 @@ And honestly? That’s more than I can say for most of the gear I’ve tried.
 
 ---
 
-### About the Author  
-Siddharth Subramanian is a documentary filmmaker who sees the world best from a bike saddle. When not riding or shooting, he’s usually tweaking setups or dreaming up the next adventure.
+> ### About the Author  
+>Siddharth Subramanian is a documentary filmmaker who sees the world best from a >bike saddle. When not riding or shooting, he’s usually tweaking setups or dreaming >up the next adventure.  
+>Follow him on Instagram — [@catchsidsub](https://www.instagram.com/catchsidsub/)  
+> *Images/Videos by @catchsidsub in Delhi NCR. All rights reserved.*
 
-Follow him on Instagram — [@catchsidsub](https://www.instagram.com/catchsidsub/)
-
-*Images/Videos by @catchsidsub in Delhi NCR. All rights reserved.*

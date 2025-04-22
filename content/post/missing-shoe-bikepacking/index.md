@@ -24,7 +24,8 @@ Dinner was spectacular. Butter-drenched, belly-filling, and deeply earned. I ret
 
 I slept like the dead.
 
-Well — almost. 
+Well — almost.
+
 
 At some point in the night, thunder rolled but the skies held. I rolled over. Later, laughter pierced the quiet. A man — probably the one I'd been warned about — was muttering and pacing. He stared at me. I stared back. My best stern face. My best evil eye. It worked. He wandered off. I checked my bike from my bivvy — still locked. All good.
 

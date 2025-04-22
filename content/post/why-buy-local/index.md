@@ -73,7 +73,7 @@ I came across that quote years ago. I underlined it in a notebook and forgot abo
 
 ---
 
-## No Sermon. Just a Suggestion.
+## No Sermon. Just a Suggestion
 
 I’m not here to tell you where to buy your gear. But the next time you’re looking for something — a bag, a light, a bottle cage — pause.
 

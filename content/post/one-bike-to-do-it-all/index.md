@@ -98,4 +98,3 @@ Then — and only then — start reading spec sheets.
 > Begin with what you do. Then find the machine that listens.
 
 And if you’re lucky — it might just come in olive green.
-

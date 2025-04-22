@@ -40,7 +40,8 @@ There’s nothing ornamental here. Everything exists because it has a job to do.
 
 At first glance, the BC26R looks like a flashlight reimagined for the handlebar. And that’s no accident. Fenix, known for their tactical and EDC lights, has brought that DNA into this design.
 
-The bronze-accented power button is tactile and satisfying. The fins on the sides help with grip and heat dissipation. The slide-rail mount system is built into the flat underside, offering stability. The USB-C port is tucked under a thick rubber flap. It charges fast, and more importantly, it means **one cable for all devices** on a bikepacking trip. 
+The bronze-accented power button is tactile and satisfying. The fins on the sides help with grip and heat dissipation. The slide-rail mount system is built into the flat underside, offering stability. The USB-C port is tucked under a thick rubber flap. It charges fast, and more importantly, it means **one cable for all devices** on a bikepacking trip.
+
 
 And of course, it's built to last. IP68 waterproof. Shockproof. Dustproof. Monsoon-tested. Mountain-washed. Ladakh-hardened.
 
@@ -61,14 +62,19 @@ And in case you're wondering: yes, your old 18650s will work with a small adapte
 I’ve ridden with the BC26R in snow, in slush, through three months of uninterrupted monsoon. It’s seen more rough days than most lights will in a lifetime.
 
 ### It's Tough
+
 I've pressure-washed it after rides. Dropped it. Left it charging in the tent vestibule while it rained outside. It's shrugged it all off.
 
 ### It's Reliable
+
+I've pressure-washed it after rides. Dropped it. Left it charging in the tent vestibule while it rained outside. It's shrugged it all off.
+
 On two separate overnighters, I used the 600-lumen mode continuously for over seven hours. On one ride, I used the turbo mode briefly for a descent — runtime was still a remarkable 7h:10m.
 
 > I carry a spare cell. But I’ve rarely needed it.
 
 ### It's Smart
+
 Double-press the switch, and you’re in flash mode — 600 lumens, daytime visible. No need to cycle through. It’s instant. It’s intuitive.
 
 ---
@@ -94,18 +100,23 @@ My local ride to Nathatop is 15km with 900m of climbing. I like to watch the sun
 ## Designed for the Bike, Not Just the Rider
 
 ### Wide Beam
+
 A 100° reflector throws light not just ahead but to the sides. On narrow mountain roads with unmarked drops, this matters more than lumen count.
 
 ### Side Slits
+
 Two small windows on the side illuminate faintly—perfect for being seen from the flank on unlit roads.
 
 ### Recessed LED
+
 It’s tucked behind a lip. You don’t see the emitter. That’s good—it protects your night vision. Especially when climbing out of the saddle.
 
 ### Adjustable Mount
+
 The mount allows about 30° side-to-side rotation. It clicks into position. You can fine-tune where your beam lands, even with a handlebar bag in the way.
 
 ### Symmetrical Beam
+
 You can mount the BC26R upside down, sideways, or however you need. The light doesn’t care. It just works.
 
 ---
@@ -115,12 +126,15 @@ You can mount the BC26R upside down, sideways, or however you need. The light do
 Nothing is perfect. And the BC26R isn’t pretending to be.
 
 ### Proprietary Mount
+
 Out of the box, there’s no GoPro or Garmin compatibility. You can buy an adapter, but it costs extra.
 
 ### No Cut-Off Beam
+
 There’s no facula line. On highways, I point it down to avoid dazzling drivers — but I miss the sharp line from older Fenix models.
 
 ### Not Featherweight
+
 At 154 grams, it’s not light. But then again, it lasts long and doesn’t die mid-ride. That’s a trade I’ll take.
 
 ---

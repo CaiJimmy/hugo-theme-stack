@@ -8,7 +8,7 @@ image = "comprehensive-guide-to-smanie-saddles.webp"
 description = "A detailed guide to choosing the right Smanie saddle in India — from the plush EX Explorer to the aggressive DRS Sport."
 +++
 
-There’s a quiet, persistent discomfort that every cyclist knows — that nagging unease between rider and saddle that grows over hours, kilometres, and climbs. It begins as a minor ache. Then it settles. Then it lingers. 
+There’s a quiet, persistent discomfort that every cyclist knows — that nagging unease between rider and saddle that grows over hours, kilometres, and climbs. It begins as a minor ache. Then it settles. Then it lingers.
 
 And then, one day, you find the right saddle. And the ride becomes… silent. Smooth. Whole.
 
@@ -57,12 +57,14 @@ I’ve used the EX Explorer on overnighters, through city commutes and gravel am
 > It’s not a race saddle. But it’s a survivor.
 
 ### Pros
+
 - Maximum comfort
 - Great price (₹1900)
 - No-fuss build: PU cover, PP base, CrMo rails
 - Ideal for rough terrain and variable posture
 
 ### Cons
+
 - Slightly heavy
 - PU surface isn’t the most premium looking
 - Padding might raise ride height
