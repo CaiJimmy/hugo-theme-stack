@@ -17,7 +17,7 @@ keywords = [
 ]
 slug = "decathlon-riverside-panniers-review"
 image = "riverside-panniers.webp"
-description = "Tested with 24kg over 80km near Delhi NCR, the Decathlon Riverside ADV 900 panniers quietly earned their place on my touring bike. A story of subtle design, Indian realities, and why sometimes less is more."
+description = "Tested with 24kg over 80km near NCR, the Riverside ADV 900 panniers earned a quiet place on my touring bike. Subtle design meets Indian realities."
 +++
 
 Some gear works so well you stop noticing it.
@@ -25,7 +25,7 @@ A few months ago, on a short tour through the hills, I was reminded of the oppos
 Behind me rode a pair of panniers. Silent. Secure. Invisible. They did their job and stayed out of the way. By the end of the trip, I knew what mattered most wasn’t clever design or marketing — it was ease. The kind that quietly earns your trust.
 When my new touring bike — a deep green Scolarian Kettlexpress — arrived, the decision was clear. No front bags. No experimentation. Just panniers. Ones that would vanish into the rhythm of the ride.
 
-![A loaded bicycle at sunrise on a gravel path](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-bike-side-view.jpg?updatedAt=1745316397656)
+![A loaded bicycle at sunrise on a gravel path](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-bike-side-view.jpg?updatedAt=1745316397656)  
 *A sunrise start with both panniers mounted – the beginning of a quiet road.*
 
 ## A Familiar Search in an Unfamiliar Market
@@ -41,7 +41,7 @@ When they arrived, I braced for disappointment. Instead, I found competence.
 The fabric was tough and matte — not flashy, but quietly water-sealed. The mounting hardware felt familiar: spring-loaded hooks that clicked into place with a simple lift-and-lock motion. The base was thick, thermo-compressed, and — to my delight — firm enough to let the bag stand upright when off the bike. Like a well-trained dog, it waited patiently.
 They weren’t trying to impress. They were just ready to work.
 
-![Close-up of a single pannier bag in sunlight](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-clip-closeup.jpg?updatedAt=1745316397966)
+![Close-up of a single pannier bag in sunlight](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-clip-closeup.jpg?updatedAt=1745316397966)  
 *Minimal branding. Matte black with reflective strips that catch the early light.*
 
 ## Out on the Road: 80 Kilometres of Real Testing
@@ -51,7 +51,7 @@ The bags didn’t shift. Didn’t rattle. Didn’t need attention.
 They mounted with ease. The quick-release system let me detach them in seconds, no fiddling. The bottom U-hook — the only potential weak point — held up fine, though it’s worth noting it’s plastic. I tried tightening it with a tool once. That was a mistake. It deformed slightly. Tighten it by hand, and you’ll be fine.
 Inside, the bags are cavernous — a single roll-top compartment with a zippered sleeve for essentials. Tucked away is a simple shoulder strap for when you're off the bike. Thoughtful, not fancy. Just enough.
 
-![Side view of the bike with both panniers](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-fully-packed-12kg.jpg?updatedAt=1745316398551)
+![Side view of the bike with both panniers](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-fully-packed-12kg.jpg?updatedAt=1745316398551)  
 *Fully packed, but never bulky. The panniers sit close and clean.*
 
 ## Design Touches That Make a Difference
@@ -65,14 +65,11 @@ These aren’t premium bags pretending to be minimal. They’re functional bags 
 
 They feel like they were made by someone who actually rides. And maybe they were — Riverside is Decathlon’s long-distance-focused cycling team, and their fingerprints are all over this.
 
-![Top-down view of the panniers](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-mounted-topdown-view.jpg?updatedAt=1745316399058)
+![Top-down view of the panniers](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-mounted-topdown-view.jpg?updatedAt=1745316399058)  
 *The rack view: symmetrical, solid, and secure.*
 
-![Close-up of the clip and stitching](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-clip-closeup.jpg?updatedAt=1745316397966)
-*The ‘VIDOC’ clip for lights. Daisy chain on the sides - Durable, intuitive, and cleanly stitched.*
-
-![Roll-top strap mechanism detail](IMG_2986.webp)
-*Strap system, up close. Easy to operate, even with gloves.*
+![Close-up of the clip and stitching](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-clip-closeup.jpg?updatedAt=1745316397966)  
+*The ‘VIOO’ clip for lights. Daisy chain on the sides - Durable, intuitive, and cleanly stitched.*
 
 ## Final Words: A Bag That Knows Its Place
 
@@ -80,11 +77,26 @@ Not all gear has to dazzle. Sometimes, what you need is something that works —
 These panniers don’t boast. They don’t trend on Instagram. But they earned my trust quietly, over 80 kilometres of loaded riding, in the dry heat and the morning dust.
 And honestly? That’s more than I can say for most of the gear I’ve tried.
 
-![The long road home – panniers silhouetted against the setting sun](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-bikepacking-evening.jpg?updatedAt=1745316396582)
+![The long road home – panniers silhouetted against the setting sun](https://ik.imagekit.io/gearlama/blog/decathlon-riverside-panniers-review/decathlon-pannier-bikepacking-evening.jpg?updatedAt=1745316396582)  
 *As the sun dips low, the bags stay unbothered by terrain or time. Reliable companions for longer miles.*
 
 ---
 
+<div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+  <a href="https://youtube.com/shorts/MTujBF4a20w" target="_blank" rel="noopener" style="position: relative; display: inline-block;">
+    <img src="https://img.youtube.com/vi/MTujBF4a20w/hqdefault.jpg" alt="Video 1" style="width: 360px; border-radius: 12px;" />
+    <img src="play.svg" alt="Play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; opacity: 0.85;" />
+  </a>
+
+  <a href="https://youtube.com/shorts/I_kz2kuUiaM?feature=share" target="_blank" rel="noopener" style="position: relative; display: inline-block;">
+    <img src="https://img.youtube.com/vi/I_kz2kuUiaM/hqdefault.jpg" alt="Video 2" style="width: 360px; border-radius: 12px;" />
+    <img src="play.svg" alt="Play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; opacity: 0.85;" />
+  </a>
+</div>
+
+
+
+---
 ## TL;DR
 
 - 24L per bag, roll-top, IPX6 waterproof
@@ -101,5 +113,4 @@ Siddharth Subramanian is a documentary filmmaker who sees the world best from a 
 
 Follow him on Instagram — [@catchsidsub](https://www.instagram.com/catchsidsub/)
 
-*Images shot by @catchsidsub in Delhi NCR. All rights reserved.*
-
+*Images/Videos by @catchsidsub in Delhi NCR. All rights reserved.*
