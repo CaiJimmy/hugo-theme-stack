@@ -74,7 +74,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/gearlama-logo-monochrome.webp
+            src: img/gearlama_blog_logo.webp
 
     article:
         math: false
@@ -195,7 +195,7 @@ params:
         opengraph:
             enabled: true
             local: true
-            src: img/gearlama-blog-og-image-2025.webp
+            src: img/gearlama_blog_og_1200x630.webp
 
     colorScheme:
         # Display toggle
