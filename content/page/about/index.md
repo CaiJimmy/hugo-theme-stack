@@ -1,5 +1,6 @@
 ---
 title: About
+image: "shunya-campfire-hero.webp"
 description: A space for stories, gear, and voices from the Indian cycling frontier.
 date: '2025-04-19'
 aliases:
@@ -22,6 +23,7 @@ There’s a certain silence on a solo ride — the kind that fills you. A descen
 The Gearlama Blog isn’t just a list of products or a content calendar. It’s a shared campfire for those who ride to disappear, to discover, or to dig deeper — into gear, terrain, or themselves.
 
 ## Why This Blog Exists
+
 Gearlama began as a gear discovery platform for Indian cyclists. But cycling isn’t just gear — it’s people, places, stories. This blog is where all of that lives:
 
 - Real stories from real riders
@@ -41,12 +43,14 @@ Whether you're bikepacking through Spiti, circling your local trails, or daydrea
 If you’ve ever paused not because you were tired — but because the light caught the dust just right — this blog is for you.
 
 ## Contribute Your Story
+
 We’d love to feature your ride, your thoughts, or that one moment that stayed with you.
 
 📌 [Submit your story](https://docs.google.com/document/d/1TqPZX6nmfTptNIvgh3oKeMDuzYBCrgopBYDJHC875c0/edit?usp=sharing)  
 📧 Or just drop us a line at [gear.lama@gmail.com](mailto:gear.lama@gmail.com)
 
 ## Built with Intention
+
 This blog runs on [Hugo](https://gohugo.io/), styled simply using the [Stack theme](https://github.com/CaiJimmy/hugo-theme-stack) designed by Jimmy. Because minimalism isn’t just in our saddlebags, it’s in our code too.
 
 ---
