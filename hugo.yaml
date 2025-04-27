@@ -74,7 +74,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/gearlama_blog_logo_transparent.webp
+            src: img/gearlama_blog_logo.webp
 
     article:
         math: false
