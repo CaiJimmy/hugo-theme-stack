@@ -9,23 +9,21 @@ description = "An epic, soul-stirring deep dive into the Scolarian Mudfest: a gr
 keywords = ["Scolarian Mudfest review", "Scolarian bikes India", "best gravel bikes India", "steel gravel bike India", "bikepacking bikes India"]
 +++
 
-# Forged for the Ride: Meeting the [Scolarian](https://www.scolarian.com)
-
 It began, as most good things do, with a quiet longing.
 
 In a world drowning in carbon, blinding colors, and brochure promises, I found myself wondering if somewhere, somehow, a bike still existed that wasn't just another fast-fashion frame. A bike that was built, not specced; that was *forged*, not manufactured.
 
-That longing simmered for months, years maybe, until one evening, scrolling past another endless parade of neon plastic and three-letter acronyms, I stumbled onto something different. A name: **Scolarian**. A bike: [**Mudfest**](https://www.scolarian.com/gravelcycles).
+That longing simmered for months, years maybe, until one evening, scrolling past another endless parade of neon plastic and three-letter acronyms, I stumbled onto something different. A name: [**Scolarian**](https://www.scolarian.com). A bike: [**Mudfest**](https://www.scolarian.com/gravelcycles).
 
 Steel. Simplicity. Soul.
 
 It was an old South Indian rider, weathered and wiry, who had ridden his way up into the high Himalayas, carrying the soul of distant coasts with him. We met at a small dhaba tucked between misty switchbacks, where he first whispered the name to me, half between sips of chai and tales of roads long swallowed by the forest. He tapped his ceramic cup lightly against the table for emphasis, the way old hands do when they believe in what they're saying, then leaned back with a contented sigh as if releasing the weight of a thousand unseen miles. Behind us, the clatter of utensils and the low hiss of a sputtering stove filled the chilly air, grounding the moment in the humble, timeless rhythm of mountain life.
 
-"If you're looking for a proper bike, one you can trust anywhere," he said with a small smile, "find yourself a Scolarian."
+> "If you're looking for a proper bike, one you can trust anywhere," he said with a small smile, "find yourself a Scolarian."
 
 I didn't know it then, but I had just met a new companion.
 
-![First Encounter with the Mudfest](scolarian-mudfest-dhaba-first-sighting.webp)
+![First glimpse: the Mudfest leans quietly against a dhaba wall, waiting to be noticed](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-mudfest-at-the-dhaba-first-look.jpeg?updatedAt=1745733052224)  
 *First glimpse: the Mudfest leans quietly against a dhaba wall, waiting to be noticed.*
 
 ---
@@ -40,7 +38,7 @@ Just clean, confident lines. A kind of quiet rebellion in a world that had forgo
 
 The frame, made entirely from chromoly steel — *every tube, every dropout* — sat with a weight of purpose. You could feel the thought behind it, like a handmade knife resting easy in the palm.
 
-![Mudfest Frame Details](scolarian-mudfest-chromoly-frame-details.webp)
+![Chromoly steel tubing close-up of Scolarian Mudfest frame](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-mudfest-chromoly-frame-details.jpeg?updatedAt=1745734421386)  
 *Close-up of the chromoly steel frame — clean welds, muted finish, strength in simplicity.*
 
 In that first meeting, the Mudfest didn't try to impress. It simply *was*.
@@ -60,7 +58,7 @@ Not the Mudfest.
 **Every piece** of this frame — top tube, down tube, seat tube, stays, dropouts, head tube, bottom bracket — is chromoly.  
 **Every tube** is seamless, drawn not welded.
 
-![Seamless Steel Tubing](scolarian-mudfest-seamless-steel-tubing.webp)
+![Seamless chromoly steel tubes used in Scolarian Mudfest construction](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-seamless-steel-tubing.png?updatedAt=1745735921532)  
 *Seamless steel: the hidden strength that defines the Mudfest.*
 
 This matters more than most realize. A seamed tube is weaker at its welded line. Seamless tubes offer unbroken strength — the same kind of integrity demanded in racecars and serious engineering.
@@ -72,9 +70,9 @@ Here, Scolarian chose to walk the harder path.
 
 ## A Builder's Philosophy
 
-Founded in 2015 in Coimbatore, [Scolarian](https://www.scolarian.com) started with the simplest form of cycling — single speeds and fixies — bikes free from expectation and full of soul.
+Founded in 2015 in Coimbatore, [Scolarian](https://www.scolarian.com) started with the simplest form of cycling — [single speeds and fixies](https://www.scolarian.com/fixedgear-singlespeed) — bikes free from expectation and full of soul.
 
-Over the years, they evolved into builders of [gravel bikes](#) and touring frames, but their spirit stayed the same: engineering over marketing, rider-first philosophy over trends.
+Over the years, they evolved into builders of [gravel bikes](https://www.scolarian.com/gravelcycles) and [touring frames](https://www.scolarian.com/touringbikes), but their spirit stayed the same: engineering over marketing, rider-first philosophy over trends.
 
 They could have simply ordered Columbus, Reynolds, or Dedacciai branded tubes, picked a size and grade off the catalog, and entered the world of boutique small-batch builders — building frames with price tags far beyond the reach of most riders.
 
@@ -86,7 +84,7 @@ Because their dream wasn’t just to build great bikes.
 
 It was to build great bikes **for riders who needed them**, not just those who could afford them.
 
-![Scolarian Workshop Spirit](scolarian-workshop-craftsmanship.webp)
+![	Inside Scolarian Coimbatore workshop - bicycle framebuilding](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-workshop-craftsmanship.png?updatedAt=1745735761617)  
 *Inside the forge: where ideas, steel, and stubborn dreams are shaped.*
 
 ---
@@ -99,7 +97,7 @@ The half-built ones. The ones where tar melts into gravel. Where a dhaba and a h
 
 Mudfest is built for *that* world.
 
-![Mudfest on Broken Roads](scolarian-mudfest-on-broken-road.webp)
+![	Scolarian Mudfest bicycle on broken Himalayan gravel road](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-mudfest-on-broken-road.jpg?updatedAt=1745736231315)  
 *The kind of road the Mudfest calls home — where the adventure begins.*
 
 Slim front triangle tubes, just enough compliance.  
@@ -112,9 +110,9 @@ A bike that doesn’t survive roughness — it dances with it.
 
 It wasn’t a sunny ride that baptized the Mudfest.
 
-It was a grim, grey morning outside Shimla, with clouds hanging low and the roads treacherous with half-fallen boulders and slick corners.
+It was a grim, grey morning near Jalori Pass, with clouds hanging low and the roads treacherous with half-fallen boulders and slick corners.
 
-![First Ride Struggles](scolarian-mudfest-first-ride.webp)
+![	First ride of Scolarian Mudfest near Jalori Pass in misty conditions](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-mudfest-first-ride.jpeg?updatedAt=1745736370109)
 *Mist, mud, and faith: where trust was forged between rider and frame.*
 
 At first, every loose patch felt like a gamble.  
@@ -141,9 +139,9 @@ Up front, the wide [SCW Mud Alloy Adventure Handlebar](https://www.scolarian.com
 Could I upgrade? Maybe.  
 But honestly, I haven't felt the need.
 
-From the very first ride, [Ketchup](#) — my red, delicious Mudfest — felt like it was made for my roads, my mistakes, my dreams.
+From the very first ride, *Ketchup* — my red, delicious Mudfest — felt like it was made for my roads, my mistakes, my dreams.
 
-![Ketchup, My Red Mudfest](scolarian-mudfest-ketchup-custom-build.webp)
+![Custom Scolarian Mudfest build nicknamed Ketchup, red paint with gold leaf detailing](https://ik.imagekit.io/gearlama/blog/forged-for-the-ride-scolarian-mudfest/scolarian-mudfest-ketchup-custom-build.jpg?updatedAt=1745736494624)  
 *Ketchup in its natural habitat — red, ready, and built for the long road ahead.*
 
 Custom steel doesn't just fit your body.  
@@ -167,9 +165,9 @@ Entirely seamless chromoly steel — including the rear triangle and dropouts.
 
 Coimbatore, India — engineering, prototyping, and building everything in-house.
 
-### How does the Mudfest compare to the [Kettlexpress](https://www.scolarian.com/gravelcycles)?
+### How does the Mudfest compare to the Kettlexpress?
 
-Mudfest is lighter and quicker for exploration; Kettlexpress is stiffer for heavy loaded touring.
+[Mudfest](https://www.scolarian.com/gravelcycles) is lighter and quicker for exploration; [Kettlexpress](https://www.scolarian.com/touringbikes) is stiffer for heavy loaded touring.
 
 ---
 
@@ -182,8 +180,8 @@ Scolarian is waiting.
 
 ## Image Credits
 
-All images of the Scolarian Mudfest, Ketchup custom build, and workshop details were photographed by Gearlama.  
-© 2025 Gearlama. All rights reserved.
+All images of the Scolarian Mudfest, Ketchup custom build, and workshop details were photographed by Scolarain bikes / Gearlama.  
+© 2025 Scolarian / Gearlama. All rights reserved.
 
 For permission to reuse or feature images, please contact [gear.lama@gmail.com](mailto:gear.lama@gmail.com).
 
