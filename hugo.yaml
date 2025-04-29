@@ -195,7 +195,7 @@ params:
         opengraph:
             enabled: true
             local: true
-            src: img/gearlama_blog_og_1200x630.webp
+            src: img/gearlama-blog-og.webp
 
     colorScheme:
         # Display toggle
