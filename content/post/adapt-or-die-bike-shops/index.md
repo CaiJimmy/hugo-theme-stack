@@ -44,11 +44,9 @@ Physical shops need to double down on *service as product*. That means:
 - Component upgrades and tuning
 - Personalized builds for touring, commuting, or racing
 
-> Example: **Cyclofit (Noida)** built a reputation through their fit and tuning studio, attracting riders from across NCR. Their service bay is as central as their sales floor.
-
-> Example: **Decathlon** stores across India offer free first service and discounted tune-ups within six months of purchase — a simple but effective model for return visits.
-
-> Example: **Crankmeister (Bangalore)** is known for custom builds and high-spec touring setups. Their workbench has helped set up bikes that have gone across Spiti, Leh, and even the European Alps.
+> Example: **Cyclofit (Noida)** built a reputation through their fit and tuning studio, attracting riders from across NCR. Their service bay is as central as their sales floor.  
+> Example: **Decathlon** stores across India offer free first service and discounted tune-ups within six months of purchase — a simple but effective model for return visits.  
+> Example: **Crankmeister (Bangalore)** is known for custom builds and high-spec touring setups. Their workbench has helped set up bikes that have gone across Spiti, Leh, and even the European Alps.  
 
 ## 4. Reward Loyalty in Unexpected Ways
 
@@ -92,15 +90,15 @@ Likewise, collaborate with other cycling-adjacent businesses:
 - Fitness centres
 - Local tour companies
 
-> Example: **Track & Trail (Chennai)** partnered with a nearby café to host Sunday 'coffee rides' — bike demo + latte + social hangout. Win-win for both.
-> Example: **Firefox Bikes** sponsors club rides and community bike festivals where their dealers run on-ground support stations.
+> Example: **Track & Trail (Chennai)** partnered with a nearby café to host Sunday 'coffee rides' — bike demo + latte + social hangout. Win-win for both.  
+> Example: **Firefox Bikes** sponsors club rides and community bike festivals where their dealers run on-ground support stations.  
 
 ## 7. Specialize — Don’t Generalize
 
 Too many Indian bike shops try to do everything: kids' bikes, fixies, MTB, road, e-bikes, service, and parts. In reality, most of them do none of it well.
 
-> Example: **Pedal Compass (Shillong)** is known for nurturing grassroots MTB talent in the Northeast. From supporting local racers to helping build trail-ready bikes, they've turned their store into a mountain biking nerve centre.
-> Example: **Velo Studio (Bangalore)** backs its retail reputation with a dedicated race team. By supporting athletes and showing up at the start line, they signal credibility — not just as a seller, but as a part of the sport.
+> Example: **Pedal Compass (Shillong)** is known for nurturing grassroots MTB talent in the Northeast. From supporting local racers to helping build trail-ready bikes, they've turned their store into a mountain biking nerve centre.  
+> Example: **Velo Studio (Bangalore)** backs its retail reputation with a dedicated race team. By supporting athletes and showing up at the start line, they signal credibility — not just as a seller, but as a part of the sport.  
 
 Pick a direction. Become *known* for something:
 
@@ -108,11 +106,9 @@ Pick a direction. Become *known* for something:
 - “The bikepacking outfitter”
 - “The commuter tuning garage”
 
-> Example: **Vitti Trading (Bangalore)** is quietly known among serious riders for its curated range of high-quality Japanese cycling gear — from Sugino cranksets to Nitto stems. It’s the place mechanics go when they want parts that last decades.
-
-> Example: **Crankmeister (Bangalore)** has carved out a niche with fully custom long-distance rigs. If you’re riding to Nepal or through Bhutan, chances are someone will say: "Take it to Crank."
-
-> Counterpoint: A well-meaning shop in north India once tried to cater to all segments — from low-end kids' cycles to high-end carbon builds. Without clarity or depth, they struggled to win any particular crowd. A few years later, the shop shut down, unable to compete with specialists and online giants alike. Trying to be everything to everyone is a sure way to be remembered by no one.
+> Example: **Vitti Trading (Bangalore)** is quietly known among serious riders for its curated range of high-quality Japanese cycling gear — from Sugino cranksets to Nitto stems. It’s the place mechanics go when they want parts that last decades.  
+> Example: **Crankmeister (Bangalore)** has carved out a niche with fully custom long-distance rigs. If you’re riding to Nepal or through Bhutan, chances are someone will say: "Take it to Crank."  
+> Counterpoint: A well-meaning shop in north India once tried to cater to all segments — from low-end kids' cycles to high-end carbon builds. Without clarity or depth, they struggled to win any particular crowd. A few years later, the shop shut down, unable to compete with specialists and online giants alike. Trying to be everything to everyone is a sure way to be remembered by no one.  
 
 ## Final Word
 
