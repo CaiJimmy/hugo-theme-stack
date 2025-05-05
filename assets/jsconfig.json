@@ -1,10 +1,12 @@
 {
- "compilerOptions": {
-  "baseUrl": ".",
-  "paths": {
-   "*": [
-    "*"
-   ]
-  }
- }
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "*"
+            ]
+        },
+        "lib": ["es2020", "dom"],
+        "jsx": "preserve"
+    }
 }
