@@ -2,9 +2,9 @@
     {{ if .Params.categories }}
     <header class="article-category">
         {{ range (.GetTerms "categories") }}
-            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
-                {{ .LinkTitle }}
-            </a>
+        <a href="{{ .RelPermalink }}">
+            {{ .LinkTitle }}
+        </a>
         {{ end }}
     </header>
     {{ end }}
@@ -15,7 +15,7 @@
                 {{- .Title -}}
             </a>
         </h2>
-    
+
         {{ with .Params.description }}
         <h3 class="article-subtitle">
             {{ . }}
@@ -29,33 +29,43 @@
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
-            <div>
-                {{ partial "helper/icon" "date" }}
-                <time class="article-time--published">
-                    {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-                </time>
-            </div>
+        <div>
+            {{ partial "helper/icon" "date" }}
+            <time class="article-time--published">
+                {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+            </time>
+        </div>
         {{ end }}
 
         {{ if $showReadingTime }}
-            <div>
-                {{ partial "helper/icon" "clock" }}
-                <time class="article-time--reading">
-                    {{ T "article.readingTime" .ReadingTime }}
-                </time>
-            </div>
+        <div>
+            {{ partial "helper/icon" "clock" }}
+            <time class="article-time--reading">
+                {{ T "article.readingTime" .ReadingTime }}
+            </time>
+        </div>
         {{ end }}
+        {{ if .Site.Params.article.readingTime }}
+        <div>
+            {{ partial "helper/icon" "file-description" }}
+            <time class="article-words">
+                {{ T "article.wordCount" .WordCount }}
+            </time>
+        </div>
+        {{ end }}
+
     </footer>
     {{ end }}
 
     {{ if .IsTranslated }}
-        <footer class="article-translations">
-            {{ partial "helper/icon" "language" }}
-            <div>
-                {{ range .Translations }}
-                    <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
-                {{ end }}
-            </div>
-        </footer>
+    <footer class="article-translations">
+        {{ partial "helper/icon" "language" }}
+        <div>
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
+            {{ end }}
+        </div>
+    </footer>
     {{ end }}
+
 </div>

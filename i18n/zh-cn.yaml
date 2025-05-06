@@ -26,6 +26,10 @@ article:
 
     readingTime:
         other: "阅读时长: {{ .Count }} 分钟"
+    wordCount:
+        other: "{{.Count}} 字"
+    totalword:
+        other: "发表了 {{ .PostCount }} 篇文章 · 总计 {{ .TotalWords }} 字"
 
 notFound:
     title:
@@ -65,3 +69,10 @@ footer:
 
     designedBy:
         other: 主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计
+    copy:
+        other: 版权说明
+    donate:
+        other: 支持我
+    feedback:
+        other: 反馈
+

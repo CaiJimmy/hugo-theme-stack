@@ -10,6 +10,8 @@
         {{ range first $limit $context.Site.Taxonomies.tags.ByCount }}
             <a href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
                 {{ .Page.Title }}
+                {{/* 添加计数显示 */}}
+                <span class="tagCloud-count">{{ .Count }}</span>
             </a>
         {{ end }}
     </div>

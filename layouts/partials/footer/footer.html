@@ -1,23 +1,59 @@
 {{- $ThemeVersion := "3.30.0" -}}
 <footer class="site-footer">
+    <!---
     <section class="copyright">
-        &copy; 
+        &copy;
         {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
-            {{ .Site.Params.footer.since }} - 
+        {{ .Site.Params.footer.since }} -
         {{ end }}
         {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
     </section>
-    
+    -->
+    <!-- Add total page and word count time -->
+
+    <div>
+        <p id="footer-sponsor"><a href="https://www.rainyun.com/?ref=MjEwOTk=" target="_blank" alt="Server Sponsor" rel="nofollow"><img src="https://blog.sakurasen.cn/src/rainyun.svg" alt="Server Sponsor" style="height: 2em;">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" alt="Theme Sponsor" rel="nofollow"><img src="https://blog.sakurasen.cn/src/Stack.svg" alt="Theme Sponsor" style="height: 2em;"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://gohugo.io/" target="_blank" alt="Theme Sponsor" rel="nofollow"><img src="https://blog.sakurasen.cn/src/hugo.svg" alt="Blog SyStem Sponsor" style="height: 2em;"></a></p>
+    </div>
+    <!---
     <section class="powerby">
         {{ with .Site.Params.footer.customText }}
-            {{ . | safeHTML }} <br/>
+        {{ . | safeHTML }} <br />
         {{ end }}
 
         {{- $Generator := `<a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>` -}}
-        {{- $Theme := printf `<b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="%s">Stack</a></b>` $ThemeVersion -}}
+        {{- $Theme := printf `<b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="%s">Stack</a></b>` $ThemeVersion -}}
         {{- $DesignedBy := `<a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>` -}}
 
         {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} <br />
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
     </section>
+    -->
+    <section class="totalcount">
+        {{ $scratch := newScratch }}
+        {{ range where .Site.Pages "Kind" "page" }}
+        {{ $scratch.Add "total" .WordCount }}
+        {{ end }}
+
+        {{ $postCount := len (where .Site.RegularPages "Section" "post") }}
+        {{ $totalWords := div ($scratch.Get "total") 1 }}
+
+        {{ $params := dict
+        "PostCount" $postCount
+        "TotalWords" $totalWords
+        }}
+
+        {{ T "article.totalword" $params | safeHTML }}
+        
+    </section>
+    <div>
+        <a href="/copyright">{{T "footer.copy"}}</a>&nbsp|&nbsp<a href="/donate">{{T "footer.donate"}}</a>&nbsp|&nbsp<a href="/feedback">{{T "footer.feedback"}}</a>
+    </div>
+    
+
+    <div style="display: inline-flex; justify-items: center;">
+        <a target="_blank" href="https://beian.miit.gov.cn/" id="beian">豫ICP备2024071946号</a><a>&nbsp;|&nbsp;</a>
+        <a target="_blank" id="ga" href="https://beian.mps.gov.cn/#/query/webSearch?code=41040302000150"
+            style="display:inline-block;text-decoration:none;">豫公网安备41040302000150号</a>
+    </div>
 </footer>

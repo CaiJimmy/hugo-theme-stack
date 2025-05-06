@@ -32,6 +32,10 @@ article:
     readingTime:
         one: "{{ .Count }} minute read"
         other: "{{ .Count }} minute read"
+    wordCount:
+        other: "{{.Count}} words"
+    totalword:
+        other: "{{ .PostCount }} Posts and {{ .TotalWords }} Words"
 
 notFound:
     title:
@@ -71,3 +75,9 @@ footer:
 
     designedBy:
         other: Theme {{ .Theme }} designed by {{ .DesignedBy }}
+    copy:
+        other: Copyright
+    donate:
+        other: Donate
+    feedback:
+        other: Feedback

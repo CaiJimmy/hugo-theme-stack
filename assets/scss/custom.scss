@@ -1,1 +1,82 @@
-/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+.archives-group {
+  margin-top: 2em;
+}
+
+.article-list--compact {
+  align-items: center;
+  --image-size: 75px;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.article-list--compact img {
+  margin-left: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 0.3em;
+}
+.article-list--compact article>a {
+  gap: 0;
+  padding: 2em;
+}
+
+.article-list--compact article:not(:last-of-type) {
+  border-bottom: none;
+  justify-content: space-between;
+}
+
+.article-description {
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (min-width: 1024px) {
+  
+  .article-list--compact.links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: none;
+    box-shadow: none;
+
+    article {
+      background: var(--card-background);
+      border: none;
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      border-radius: 10px;
+
+      &:nth-child(odd) {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.article-time>div,
+.article-translations>div {
+  gap: 5px;
+}
+
+.totalcount {
+  color: var(--card-text-color-secondary);
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+.article-content .highlight {
+  background-color: #282c34;
+}
+// 文章页字体
+body, .article-content {
+  font-family: 'Noto Serif SC', serif;
+}
+
+// 标题字体
+body, .article-title {
+  font-family: 'Noto Serif SC', serif;
+}
+
+
+// 首页字体
+body, .article-page {
+  font-family: 'Noto Serif SC', serif;
+}

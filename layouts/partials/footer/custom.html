@@ -1,0 +1,19 @@
+<!-- layouts/partials/footer/custom.html -->
+<script
+    src="https://sakurasen.cn/cdn/npo/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://sakurasen.cn/cdn/npo/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
