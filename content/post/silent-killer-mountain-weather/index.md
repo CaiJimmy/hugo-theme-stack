@@ -7,8 +7,8 @@ slug = "silent-killer-mountain-weather"
 image = "silent-killer-header.webp"
 description = "In the high mountains, it's not the wild animals that kill — it's the cold, the weather, and your own unpreparedness. Here's how to survive with smart layering, lightweight gear, and better decisions."
 keywords = ["bike touring checklist India", "hypothermia in Himalayas", "altitude sickness Leh", "camping water crossing danger", "how to layer for mountains"]
+drafts = false
 +++
----
 
 We worry about the wrong things.
 
@@ -117,7 +117,7 @@ Camp higher. Always.
 Every extra kilo makes you slower.  
 And on the mountain, slow is dangerous.
 
-A [lightweight setup]({{< ref "lightweight-tips.md" >}}) lets you react.  
+A [lightweight setup]({{< ref "lightweight-tips/index.md" >}}) lets you react.  
 Outrun that dark cloud.  
 Push over that pass before the storm hits.  
 Reach shelter before the cold bites.
