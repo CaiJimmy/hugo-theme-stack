@@ -41,8 +41,8 @@ services:
     disqus:
         shortname: "hugo-theme-stack"
     # GA Tracking ID
-    googleAnalytics:
-        id: G-8304H2K5NB
+    # googleAnalytics:
+    #     id: G-8304H2K5NB
 
 enableRobotsTXT: true
 
