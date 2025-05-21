@@ -29,6 +29,6 @@
 
 <script>
     /// Waline client configuration see: https://waline.js.org/en/reference/client.html
-    Waline.init({{ $config | jsonify | safeJS }}); 
+    Waline.init({{ $config | jsonify | safeJS }});
 </script>
 {{- end -}}
