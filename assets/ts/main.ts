@@ -75,8 +75,18 @@ let Stack = {
             const codeBlock = highlight.querySelector('code[data-lang]');
             if (!codeBlock) return;
 
+            const removeLineNumbers = (text: string): string => {
+                return text.split('\n')
+                    .map(line => {
+                        const lineNumberMatch = line.match(/^\s*\d+[\s.:]?(.*)/);
+                        return lineNumberMatch ? lineNumberMatch[1] : line;
+                    })
+                    .join('\n');
+            };
+
             copyButton.addEventListener('click', () => {
-                navigator.clipboard.writeText(codeBlock.textContent)
+                const processedCode = removeLineNumbers(codeBlock.textContent);
+                navigator.clipboard.writeText(processedCode)
                     .then(() => {
                         copyButton.textContent = copiedText;
 
@@ -86,7 +96,6 @@ let Stack = {
                     })
                     .catch(err => {
                         alert(err)
-                        console.log('Something went wrong', err);
                     });
             });
         });
