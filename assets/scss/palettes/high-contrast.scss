@@ -1,0 +1,82 @@
+/*
+* High Contrast palette
+*/
+
+@import "common.scss";
+
+/*
+*   Global style
+*/
+:root {
+    --body-background: #ffffff;
+
+    --accent-color: #000000;
+    --accent-color-darker: #222222;
+    --accent-color-text: #ffffff;
+    --body-text-color: #000000;
+
+    --scrollbar-thumb: #333333;
+
+    &[data-scheme="dark"] {
+        --body-background: #000000;
+        --accent-color: #ffffff;
+        --accent-color-darker: #cccccc;
+        --accent-color-text: #000000;
+        --body-text-color: #ffffff;
+        --scrollbar-thumb: #cccccc;
+    }
+}
+
+/*
+*   Card style
+*/
+:root {
+    --card-background: #e5e5e5;
+    --card-background-selected: #bfbfbf;
+
+    --card-text-color-main: #000000;
+    --card-text-color-secondary: #333333;
+    --card-text-color-tertiary: #666666;
+    --card-separator-color: rgba(0,0,0,0.5);
+
+    &[data-scheme="dark"] {
+        --card-background: #1a1a1a;
+        --card-background-selected: #333333;
+        --card-text-color-main: #ffffff;
+        --card-text-color-secondary: #cccccc;
+        --card-text-color-tertiary: #999999;
+        --card-separator-color: rgba(255,255,255,0.5);
+    }
+}
+
+/*
+*   Article content style
+*/
+:root {
+    --blockquote-background-color: #f0f0f0;
+
+    --link-background-color: 0, 0, 0;
+
+    --pre-background-color: #ffffff;
+    --pre-text-color: #000000;
+
+    --code-background-color: #f0f0f0;
+    --code-text-color: #000000;
+
+    --table-border-color: #000000;
+    --tr-even-background-color: #e5e5e5;
+
+    --kbd-border-color: #000000;
+
+    &[data-scheme="dark"] {
+        --pre-background-color: #272822;
+        --pre-text-color: #ffffff;
+        --code-background-color: #272822;
+        --code-text-color: #ffffff;
+
+        --table-border-color: #ffffff;
+        --tr-even-background-color: #1a1a1a;
+
+        --blockquote-background-color: #1a1a1a;
+    }
+}
