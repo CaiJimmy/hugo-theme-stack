@@ -276,3 +276,87 @@
         }
     }
 }
+
+/* Inline Footnotes */
+.inline-footnote {
+    position: relative;
+    display: inline;
+    cursor: pointer;
+
+    .footnote-number {
+        color: var(--accent-color);
+        font-size: 1em;
+        font-weight: 600;
+        line-height: 1;
+        user-select: none;
+        cursor: pointer;
+        vertical-align: super;
+        margin-left: 2px;
+        margin-right: 2px;
+        background: none;
+        border: none;
+        padding: 0;
+        transition: color 0.3s ease;
+        &:hover {
+            color: var(--accent-color-darker);
+        }
+    }
+
+    
+}
+
+.inline-footnote .footnote-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    max-width: 300px;
+    background: var(--card-background);
+    border: 1px solid var(--card-separator-color);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l2);
+    padding: 12px 16px 12px 16px;
+    z-index: 1000;
+    display: none;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 8px;
+        border-style: solid;
+        border-color: var(--card-background) transparent transparent transparent;
+    }
+}
+.inline-footnote .footnote-popup.active {
+    display: block !important;
+}
+.inline-footnote .footnote-content {
+    margin-bottom: 8px;
+}
+.inline-footnote .footnote-close {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--card-text-color-tertiary);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s;
+    &:hover {
+        background: var(--card-separator-color);
+        color: var(--card-text-color-main);
+    }
+}

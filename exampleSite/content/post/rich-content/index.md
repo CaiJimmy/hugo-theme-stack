@@ -65,3 +65,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 {{< /quote >}}
 
+---
+
+## Inline Footnote Shortcode
+
+Stack adds an `footnote` shortcode for inline footnotes that display as popups. For example:
+
+This is a sentence with an inline footnote{{< footnote >}}This is the footnote content that will appear in a popup when you click on the footnote number. You can include **markdown formatting** and [links](https://example.com) in the footnote content.{{< /footnote >}} that demonstrates the functionality.
+
+You can also have multiple footnotes in the same paragraph{{< footnote >}}This is another footnote with different content. Footnotes are automatically numbered and can contain any markdown content.{{< /footnote >}} to show how they work together.
+
+The footnotes appear as small numbered circles that you can click to reveal the content in a popup. The popup can be closed by clicking the × button, clicking outside the popup, or pressing the Escape key.

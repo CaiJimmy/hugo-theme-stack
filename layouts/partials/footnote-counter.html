@@ -1,0 +1,8 @@
+{{- $currentCounter := .Page.Scratch.Get "footnoteCounter" -}}
+{{- if not $currentCounter -}}
+    {{- .Page.Scratch.Set "footnoteCounter" 0 -}}
+    {{- $currentCounter = 0 -}}
+{{- end -}}
+{{- $counter := add 1 $currentCounter -}}
+{{- .Page.Scratch.Set "footnoteCounter" $counter -}}
+{{- printf "%d" $counter -}} 

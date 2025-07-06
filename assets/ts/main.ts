@@ -12,6 +12,7 @@ import createElement from 'ts/createElement';
 import StackColorScheme from 'ts/colorScheme';
 import { setupScrollspy } from 'ts/scrollspy';
 import { setupSmoothAnchors } from "ts/smoothAnchors";
+import { setupFootnotes } from 'ts/footnotes';
 
 let Stack = {
     init: () => {
@@ -25,6 +26,7 @@ let Stack = {
             new StackGallery(articleContent);
             setupSmoothAnchors();
             setupScrollspy();
+            setupFootnotes();
         }
 
         /**
