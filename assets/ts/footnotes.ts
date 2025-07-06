@@ -1,3 +1,5 @@
+import { createPopper, Instance as PopperInstance } from '@popperjs/core';
+
 export function setupFootnotes() {
     // Delay slightly to ensure DOM is fully rendered
     setTimeout(() => {
@@ -39,24 +41,17 @@ function togglePopup(footnote: HTMLElement) {
     }
 }
 
-function openPopup(footnote: HTMLElement) {
-    // Close all other popups first
-    closeAllPopups();
+let currentPopper: PopperInstance | null = null;
 
-    // Get footnote content
+function openPopup(footnote: HTMLElement) {
+    closeAllPopups();
     const content = footnote.getAttribute('data-footnote-content');
     if (!content) return;
-
-    // Create popup element
     const popup = document.createElement('div');
     popup.className = 'footnote-popup active';
-    
-    // Create content
     const contentDiv = document.createElement('div');
     contentDiv.className = 'footnote-content';
     contentDiv.innerHTML = content;
-    
-    // Create close button
     const closeBtn = document.createElement('div');
     closeBtn.className = 'footnote-close';
     closeBtn.textContent = '×';
@@ -64,23 +59,21 @@ function openPopup(footnote: HTMLElement) {
         e.stopPropagation();
         closeAllPopups();
     });
-
-    // Assemble popup
     popup.appendChild(contentDiv);
     popup.appendChild(closeBtn);
-    
-    // Position popup relative to the footnote
-    const rect = footnote.getBoundingClientRect();
-    popup.style.position = 'fixed';
-    popup.style.top = (rect.top - 10) + 'px';
-    popup.style.left = (rect.left + rect.width / 2) + 'px';
-    popup.style.transform = 'translateX(-50%)';
-    popup.style.zIndex = '1000';
-    
-    // Add to document
     document.body.appendChild(popup);
-    
-    // Prevent popup from closing when clicking inside it
+    // Use Popper.js for positioning
+    const sup = footnote.querySelector('.footnote-number') as HTMLElement;
+    if (sup) {
+        currentPopper = createPopper(sup, popup, {
+            placement: 'top',
+            modifiers: [
+                { name: 'offset', options: { offset: [0, 8] } },
+                { name: 'preventOverflow', options: { boundary: 'viewport' } },
+                { name: 'flip', options: { fallbackPlacements: ['bottom', 'right', 'left'] } },
+            ],
+        });
+    }
     popup.addEventListener('click', (e) => {
         e.stopPropagation();
     });
@@ -90,4 +83,8 @@ function closeAllPopups() {
     document.querySelectorAll('.footnote-popup').forEach(popup => {
         popup.remove();
     });
+    if (currentPopper) {
+        currentPopper.destroy();
+        currentPopper = null;
+    }
 } 
