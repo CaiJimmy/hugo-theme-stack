@@ -50,3 +50,23 @@
   opacity: 1;
   background: #eee;
 }
+
+/* Footnote widget item styles */
+.widget--footnotes .footnotes-list .footnote-item {
+  background: var(--card-background-selected);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-l1);
+  color: var(--card-text-color-main);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+[data-scheme="dark"] .widget--footnotes .footnotes-list .footnote-item {
+  background: rgba(255,255,255,0.06);
+  color: var(--card-text-color-main);
+}
+
+.widget--footnotes .footnotes-list .footnote-item:last-child {
+  margin-bottom: 0;
+}
