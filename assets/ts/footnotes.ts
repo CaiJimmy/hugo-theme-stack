@@ -1,5 +1,12 @@
 import { createPopper, Instance as PopperInstance } from '@popperjs/core';
 
+// Function to decode HTML entities
+function decodeHTMLEntities(text: string): string {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+}
+
 export function setupFootnotes() {
     // Delay slightly to ensure DOM is fully rendered
     setTimeout(() => {
