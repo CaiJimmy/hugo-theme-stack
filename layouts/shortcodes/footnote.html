@@ -1,7 +1,4 @@
-{{- $n := .Page.Scratch.Get "footnote-counter" | default 0 -}}
-{{- $n = add $n 1 -}}
-{{- .Page.Scratch.Set "footnote-counter" $n -}}
-{{- $id := printf "footnote-%d" $n -}}
+{{- $id := .Get "id" -}}
 <span class="inline-footnote" data-footnote-id="{{ $id }}" data-footnote-content="{{ .Inner | markdownify | htmlEscape }}">
-    <sup class="footnote-number">{{ $n }}</sup>
+    <sup class="footnote-number">{{ $id }}</sup>
 </span> 

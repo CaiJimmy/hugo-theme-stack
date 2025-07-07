@@ -71,8 +71,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Stack adds an `footnote` shortcode for inline footnotes that display as popups. For example:
 
-This is a sentence with an inline footnote{{< footnote >}}This is the footnote content that will appear in a popup when you click on the footnote number. You can include **markdown formatting** and [links](https://example.com) in the footnote content.{{< /footnote >}} that demonstrates the functionality.
+This is a sentence with an inline footnote{{< footnote id="1" >}}This is the footnote content that will appear in a popup when you click on the footnote number. You can include **markdown formatting** and [links](https://example.com) in the footnote content.{{< /footnote >}} that demonstrates the functionality.
 
-You can also have multiple footnotes in the same paragraph{{< footnote >}}This is another footnote with different content. Footnotes are automatically numbered and can contain any markdown content.{{< /footnote >}} to show how they work together.
+You can also have multiple footnotes in the same paragraph{{< footnote id="2" >}}This is another footnote with different content. Footnotes are automatically numbered and can contain any markdown content.{{< /footnote >}} to show how they work together.
 
 The footnotes appear as small numbered circles that you can click to reveal the content in a popup. The popup can be closed by clicking the × button, clicking outside the popup, or pressing the Escape key.
