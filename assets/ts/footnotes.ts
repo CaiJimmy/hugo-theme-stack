@@ -43,6 +43,7 @@ function togglePopup(footnote: HTMLElement) {
     const existingPopup = document.querySelector('.footnote-popup');
     if (existingPopup) {
         closeAllPopups();
+        openPopup(footnote);
     } else {
         openPopup(footnote);
     }
@@ -58,7 +59,8 @@ function openPopup(footnote: HTMLElement) {
     popup.className = 'footnote-popup active';
     const contentDiv = document.createElement('div');
     contentDiv.className = 'footnote-content';
-    contentDiv.innerHTML = content;
+    const decodedContent = decodeHTMLEntities(content);
+    contentDiv.innerHTML = decodedContent;
     const closeBtn = document.createElement('div');
     closeBtn.className = 'footnote-close';
     closeBtn.textContent = '×';

@@ -3,7 +3,7 @@
 /* Footnote popup styles */
 .footnote-popup {
   position: fixed;
-  background: none !important;
+  background: #fff !important;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 12px 16px;
@@ -13,6 +13,11 @@
   font-size: 0.9em;
   line-height: 1.4;
   color: #222;
+}
+
+[data-scheme="dark"] .footnote-popup {
+  background: #222 !important;
+  color: #fff;
 }
 
 .footnote-popup.active {
