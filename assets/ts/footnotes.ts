@@ -96,4 +96,33 @@ function closeAllPopups() {
         currentPopper.destroy();
         currentPopper = null;
     }
+}
+
+function populateFootnotesWidget() {
+    const widgetList = document.querySelector('.widget--footnotes .footnotes-list');
+    if (!widgetList) return;
+    // Clear any existing content
+    widgetList.innerHTML = '';
+    const footnotes = document.querySelectorAll('.inline-footnote');
+    footnotes.forEach((footnote) => {
+        const id = footnote.getAttribute('data-footnote-id');
+        const content = footnote.getAttribute('data-footnote-content');
+        if (!id || !content) return;
+        const li = document.createElement('li');
+        li.id = id;
+        li.className = 'footnote-item';
+        li.innerHTML = decodeHTMLEntities(content);
+        widgetList.appendChild(li);
+    });
+}
+
+// Call both setupFootnotes and populateFootnotesWidget on DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setupFootnotes();
+        populateFootnotesWidget();
+    });
+} else {
+    setupFootnotes();
+    populateFootnotesWidget();
 } 
