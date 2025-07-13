@@ -1,26 +1,86 @@
-{{ if gt .Paginator.TotalPages 1 }}
-    <nav class='pagination'>
-        {{ $.Scratch.Set "hasPrevDots" false }}
-        {{ $.Scratch.Set "hasNextDots" false }}
+{{- $pag := $.Paginator -}}
+{{- if gt $pag.TotalPages 1 -}}
+{{- /* 
+    Compatibility note: This template supports both old (.pagination-link) and new (.page-link) class names
+    for theme compatibility. The hugo-theme-stack v3 uses .page-link while older versions use .pagination-link.
+*/ -}}
+<nav class="pagination" role="navigation" aria-label="pagination">
+  {{- /* Previous page button */ -}}
+  {{- if $pag.Prev -}}
+    <a class="page-link pagination-link" href="{{ $pag.Prev.URL }}" aria-label="Previous page">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <polyline points="15 6 9 12 15 18"/>
+      </svg>
+    </a>
+  {{- else -}}
+    <span class="page-link pagination-link disabled" aria-label="Previous page" aria-disabled="true">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <polyline points="15 6 9 12 15 18"/>
+      </svg>
+    </span>
+  {{- end -}}
 
-        {{ range .Paginator.Pagers }}
-            {{ if eq . $.Paginator }}
-                <span class='page-link current'>
-                    {{- .PageNumber -}}
-                </span>
-                {{ else if or (or (eq . $.Paginator.First) (eq . $.Paginator.Prev)) (or  (eq . $.Paginator.Next) (eq . $.Paginator.Last )) }}
-                    <a class='page-link' href='{{ .URL }}'>
-                        {{- .PageNumber -}}
-                    </a>
-                {{ else }}
-                    {{ if and (not ($.Scratch.Get "hasPrevDots")) (lt .PageNumber $.Paginator.PageNumber)  }}
-                        {{ $.Scratch.Set "hasPrevDots" true }}
-                        <span class='page-link dots'>&hellip;</span>
-                    {{ else if and (not ($.Scratch.Get "hasNextDots")) (gt .PageNumber $.Paginator.PageNumber) }}
-                        {{ $.Scratch.Set "hasNextDots" true }}
-                        <span class='page-link dots'>&hellip;</span>
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-    </nav>
-{{ end }}
+  {{- /* Page numbers logic */ -}}
+  {{- $window := 1 -}}
+  {{- $showFirst := true -}}
+  {{- $showLast := true -}}
+  
+  {{- /* First page */ -}}
+  {{- if eq $pag.PageNumber 1 -}}
+    <span class="page-link pagination-link current" aria-label="Page 1" aria-current="page">1</span>
+  {{- else -}}
+    <a class="page-link pagination-link" href="{{ $pag.First.URL }}" aria-label="Page 1">1</a>
+  {{- end -}}
+  
+  {{- /* Left ellipsis - show if current page is > 3 */ -}}
+  {{- if gt $pag.PageNumber 3 -}}
+    <span class="page-link pagination-link pagination-ellipsis">…</span>
+  {{- end -}}
+  
+  {{- /* Middle pages - show current and neighbors */ -}}
+  {{- range $pag.Pagers -}}
+    {{- if and (gt .PageNumber 1) (lt .PageNumber $pag.TotalPages) -}}
+      {{- if and (ge .PageNumber (sub $pag.PageNumber $window)) (le .PageNumber (add $pag.PageNumber $window)) -}}
+        {{- if eq .PageNumber $pag.PageNumber -}}
+          <span class="page-link pagination-link current" aria-label="Page {{ .PageNumber }}" aria-current="page">{{ .PageNumber }}</span>
+        {{- else -}}
+          <a class="page-link pagination-link" href="{{ .URL }}" aria-label="Page {{ .PageNumber }}">{{ .PageNumber }}</a>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  
+  {{- /* Right ellipsis - show if current page is < last-2 */ -}}
+  {{- if lt $pag.PageNumber (sub $pag.TotalPages 2) -}}
+    <span class="page-link pagination-link pagination-ellipsis">…</span>
+  {{- end -}}
+  
+  {{- /* Last page (if more than 1 page total) */ -}}
+  {{- if gt $pag.TotalPages 1 -}}
+    {{- if eq $pag.PageNumber $pag.TotalPages -}}
+      <span class="page-link pagination-link current" aria-label="Page {{ $pag.TotalPages }}" aria-current="page">{{ $pag.TotalPages }}</span>
+    {{- else -}}
+      <a class="page-link pagination-link" href="{{ $pag.Last.URL }}" aria-label="Page {{ $pag.TotalPages }}">{{ $pag.TotalPages }}</a>
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Next page button */ -}}
+  {{- if $pag.Next -}}
+    <a class="page-link pagination-link" href="{{ $pag.Next.URL }}" aria-label="Next page">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <polyline points="9 6 15 12 9 18"/>
+      </svg>
+    </a>
+  {{- else -}}
+    <span class="page-link pagination-link disabled" aria-label="Next page" aria-disabled="true">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <polyline points="9 6 15 12 9 18"/>
+      </svg>
+    </span>
+  {{- end -}}
+</nav>
+{{- end -}}
