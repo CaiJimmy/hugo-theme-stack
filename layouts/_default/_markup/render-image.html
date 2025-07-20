@@ -17,7 +17,9 @@
 		{{- $Height = $image.Height -}}
 		{{- $galleryImage = true -}}
 
-		{{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
+		{{- $siteEnabled := default true .Page.Site.Params.imageProcessing.content.enabled -}}
+		{{- $pageEnabled := default false .Page.Params.imageProcessing.content.enabled -}}
+		{{- if or $siteEnabled $pageEnabled -}}
 			{{- $small := $image.Resize `480x` -}}
 			{{- $big := $image.Resize `1024x` -}}
 			{{- $Srcset = printf `%s 480w, %s 1024w` $small.RelPermalink $big.RelPermalink -}}
