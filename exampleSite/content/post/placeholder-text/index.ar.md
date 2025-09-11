@@ -12,7 +12,8 @@ tags = [
     "نص",
     "وسم مع فراغات"
 ]
-image = "matt-le-SJSpo9hQf7s-unsplash.jpg"
+[params]
+  image = "matt-le-SJSpo9hQf7s-unsplash.jpg"
 +++
 ## فقرة 1
 

@@ -6,7 +6,8 @@ aliases:
   - about-us
   - about-hugo
   - contact
-license: CC BY-NC-ND
+params:
+  license: CC BY-NC-ND
 lastmod: '2020-10-09'
 menu:
     main: 
