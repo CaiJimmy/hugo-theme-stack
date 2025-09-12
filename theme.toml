@@ -18,6 +18,7 @@ features = [
     "darkmode",
     "table of contents",
     "search",
+    "multiple color palettes",
 ]
 
 min_version = "0.123.0"

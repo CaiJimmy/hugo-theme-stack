@@ -1,0 +1,82 @@
+/*
+* Purple palette
+*/
+
+@import "common.scss";
+
+/*
+*   Global style
+*/
+:root {
+    --body-background: #f3e5f5;
+
+    --accent-color: #9c27b0;
+    --accent-color-darker: #6a1b9a;
+    --accent-color-text: #ffffff;
+    --body-text-color: #4a148c;
+
+    --scrollbar-thumb: #ce93d8;
+
+    &[data-scheme="dark"] {
+        --body-background: #2a0d2e;
+        --accent-color: #ba68c8;
+        --accent-color-darker: #8e24aa;
+        --accent-color-text: #ffffff;
+        --body-text-color: rgba(255,255,255,0.8);
+        --scrollbar-thumb: #6a1b9a;
+    }
+}
+
+/*
+*   Card style
+*/
+:root {
+    --card-background: #f8eafc;
+    --card-background-selected: #e1bee7;
+
+    --card-text-color-main: #000000;
+    --card-text-color-secondary: #7b1fa2;
+    --card-text-color-tertiary: #6a1b9a;
+    --card-separator-color: rgba(156,39,176,0.5);
+
+    &[data-scheme="dark"] {
+        --card-background: #3d2c3e;
+        --card-background-selected: rgba(186,104,200,0.16);
+        --card-text-color-main: rgba(255,255,255,0.9);
+        --card-text-color-secondary: rgba(172, 82, 157,0.7);
+        --card-text-color-tertiary: rgba(172, 82, 157,0.5);
+        --card-separator-color: rgba(172, 82, 157,0.12);
+    }
+}
+
+/*
+*   Article content style
+*/
+:root {
+    --blockquote-background-color: #f1e7f4;
+
+    --link-background-color: 156, 39, 176;
+
+    --pre-background-color: #fafafa;
+    --pre-text-color: #272822;
+
+    --code-background-color: rgba(0, 0, 0, 0.12);
+    --code-text-color: #808080;
+
+    --table-border-color: #9c27b0;
+    --tr-even-background-color: #f1e7f4;
+
+    --kbd-border-color: #9c27b0;
+
+    &[data-scheme="dark"] {
+        --pre-background-color: #272822;
+        --pre-text-color: #fafafa;
+        --code-background-color: #272822;
+        --code-text-color: rgba(255,255,255,0.9);
+
+        --table-border-color: #6a1b9a;
+        --tr-even-background-color: #2a0d2e;
+
+        --blockquote-background-color: #2a0d2e;
+    }
+}

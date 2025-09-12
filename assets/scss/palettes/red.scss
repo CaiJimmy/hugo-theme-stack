@@ -1,0 +1,82 @@
+/*
+* Red palette
+*/
+
+@import "common.scss";
+
+/*
+*   Global style
+*/
+:root {
+    --body-background: #ffe7e7;
+
+    --accent-color: #e53935;
+    --accent-color-darker: #b71c1c;
+    --accent-color-text: #ffffff;
+    --body-text-color: #c62828;
+
+    --scrollbar-thumb: #ef9a9a;
+
+    &[data-scheme="dark"] {
+        --body-background: #330000;
+        --accent-color: #ff5252;
+        --accent-color-darker: #e53935;
+        --accent-color-text: #ffffff;
+        --body-text-color: rgba(255,255,255,0.8);
+        --scrollbar-thumb: #b71c1c;
+    }
+}
+
+/*
+*   Card style
+*/
+:root {
+    --card-background: #ffebee;
+    --card-background-selected: #ffcdd2;
+
+    --card-text-color-main: #000000;
+    --card-text-color-secondary: #d32f2f;
+    --card-text-color-tertiary: #c62828;
+    --card-separator-color: rgba(229,115,115,0.5);
+
+    &[data-scheme="dark"] {
+        --card-background: #4e0e0e;
+        --card-background-selected: rgba(255,82,82,0.16);
+        --card-text-color-main: rgba(255,255,255,0.9);
+        --card-text-color-secondary: rgba(255,205,210,0.7);
+        --card-text-color-tertiary: rgba(255,205,210,0.5);
+        --card-separator-color: rgba(255,205,210,0.12);
+    }
+}
+
+/*
+*   Article content style
+*/
+:root {
+    --blockquote-background-color: #ffe0e0;
+
+    --link-background-color: 229, 115, 115;
+
+    --pre-background-color: #fafafa;
+    --pre-text-color: #272822;
+
+    --code-background-color: rgba(0, 0, 0, 0.12);
+    --code-text-color: #808080;
+
+    --table-border-color: #e53935;
+    --tr-even-background-color: #ffe0e0;
+
+    --kbd-border-color: #e53935;
+
+    &[data-scheme="dark"] {
+        --pre-background-color: #272822;
+        --pre-text-color: #fafafa;
+        --code-background-color: #272822;
+        --code-text-color: rgba(255,255,255,0.9);
+
+        --table-border-color: #b71c1c;
+        --tr-even-background-color: #330000;
+
+        --blockquote-background-color: #330000;
+    }
+}

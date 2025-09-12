@@ -7,7 +7,7 @@
 */
 
 @import "breakpoints.scss";
-@import "variables.scss";
+@import "palettes/{{ .Site.Params.colorPalette | default "default" }}.scss";
 @import "grid.scss";
 
 @import "external/normalize.scss";
