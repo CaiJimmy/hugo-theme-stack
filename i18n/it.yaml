@@ -2,7 +2,7 @@ toggleMenu:
     other: Toggle Menu
 
 darkMode:
-    other: Dark Mode
+    other: Modalità scura
 
 list:
     page:
@@ -49,7 +49,7 @@ widget:
 
     tagCloud:
         title:
-            other: Tags
+            other: Tag
 
     categoriesCloud:
         title:
