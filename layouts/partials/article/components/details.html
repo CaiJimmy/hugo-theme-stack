@@ -45,6 +45,13 @@
                 </time>
             </div>
         {{ end }}
+
+        {{ if .Site.Params.Analytics }}
+            <div class="article-time--count-wrapper" style="display: none">
+                {{ partial "helper/icon" "eye" }}
+                <time class="article-time--count"></time>
+            </div>
+        {{ end }}
     </footer>
     {{ end }}
 
