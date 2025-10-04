@@ -37,3 +37,7 @@ categories:
 ```
 
 相册语法来自 [Typlog](https://typlog.com/)
+
+## 字体
+
+返扇花週認契適違込遷雇述請曜藤突扉直角
