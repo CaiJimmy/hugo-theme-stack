@@ -12,6 +12,9 @@ body {
     margin: 0;
     font-family: var(--base-font-family);
     font-size: 1.6rem;
+    -ms-text-autospace: ideograph-alpha ideograph-numeric;
+    text-autospace: ideograph-alpha ideograph-numeric;
+    text-spacing-trim: trim-start;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
