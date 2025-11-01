@@ -127,6 +127,13 @@ function setupScrollspy() {
         scrollHandler();
     }
 
+    // Use ResizeObserver to detect changes in the size of .article-content
+    const articleContent = document.querySelector(".article-content");
+    if (articleContent) {
+        const resizeObserver = new ResizeObserver(debounced(resizeHandler));
+        resizeObserver.observe(articleContent);
+    }
+
     window.addEventListener("resize", debounced(resizeHandler));
 }
 
