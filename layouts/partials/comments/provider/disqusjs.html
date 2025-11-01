@@ -21,8 +21,12 @@
         }
 
         function lazyLoadDisqusJS() {
-            if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-                document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            const excludedHosts = ["localhost", "127.0.0.1"];
+            const hostname = window.location.hostname;
+
+            if (excludedHosts.includes(hostname)) {
+                document.getElementById('disqus_thread').innerHTML =
+                    'Disqus comments not available by default when the website is previewed locally.';
                 return;
             }
 
