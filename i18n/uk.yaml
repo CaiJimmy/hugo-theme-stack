@@ -52,6 +52,9 @@ widget:
     tagCloud:
         title:
             other: Теґи
+    categoriesCloud:
+        title:
+            other: Категорії
 
 search:
     title:
