@@ -1,0 +1,8 @@
+{{ define "main" }}
+    {{ $draftPages := where .Site.RegularPages "Draft" true }}
+    <section class="article-list">
+        {{ range $index, $element := $draftPages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+{{ end }}
