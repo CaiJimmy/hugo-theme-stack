@@ -76,6 +76,8 @@
         {{ end }}
         <li class="menu-bottom-section">
             <ol class="menu">
+                {{ partial "sidebar/components/custom-bottom.html" . }}
+                
                 {{- $currentLanguageCode := .Language.Lang -}}
                 {{ if ( compare.Gt .Site.Home.AllTranslations.Len 1 ) }}
                     {{ with .Site.Home.AllTranslations }}
