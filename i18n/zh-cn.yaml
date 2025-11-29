@@ -64,4 +64,4 @@ footer:
         other: 使用 {{ .Generator }} 构建
 
     designedBy:
-        other: 主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计
+        other: 主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计, 由 {{ .ModedBy }} 修改
