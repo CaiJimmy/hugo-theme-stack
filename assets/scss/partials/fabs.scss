@@ -1,0 +1,96 @@
+:root {
+  --_viewport-margin: 2.5vmin;
+  --_viewport-margin-x: 5vmin;
+  --_viewport-margin-y: 5vmin;
+  --_size: 2rem;
+  
+  --shadow-4: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-2: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --radius-round: 999px;
+  --layer-1: 2600;
+
+  --ease-2: ease;
+  --ease-3: ease;
+  --ease-squish-3: cubic-bezier(.25, 1.5, .5, 1);
+}
+
+.fab-group {
+  --_viewport-margin: 2.5vmin;
+  --layer-1: 2600;
+  position: fixed;
+  z-index: var(--layer-1);
+  display: flex;
+  flex-direction: column-reverse;
+  place-items: center;
+  gap: var(--_viewport-margin);
+  inset-block: auto var(--_viewport-margin-y);
+  inset-inline: auto var(--_viewport-margin-x);
+
+  @include respond(md) {
+    display: none;
+  }
+}
+
+.fab {
+  --_size: 2rem;
+
+  --_bg: var(--accent-color);
+  --_fg: var(--accent-color-text);
+  
+  padding: calc(var(--_size) / 2);
+
+  border-radius: var(--radius-round);
+  border: none;
+  aspect-ratio: 1;
+
+  background: var(--_bg);
+  color: var(--_fg);
+  box-shadow: var(--shadow-4);
+
+  -webkit-tap-highlight-color: transparent;
+
+  --_motion-reduced: 
+    box-shadow .2s var(--ease-3),
+    background-color .3s var(--ease-3);
+  --_motion-ok: 
+    var(--_motion-reduced),
+    transform .2s var(--ease-3),
+    outline-offset 145ms var(--ease-2);
+  --_transition: var(--_motion-reduced);
+  transition: var(--_transition);
+
+  @media (--motionOK) {
+    --_transition: var(--_motion-ok);
+  }
+
+  &.mini {
+    --_size: 1.25rem;
+  }
+
+  & > svg {
+    inline-size: var(--_size);
+    block-size: var(--_size);
+    stroke-width: 3px;
+    
+    @media (--motionOK) {
+      will-change: transform;
+      transition: transform .5s var(--ease-squish-3);
+    }
+  }
+
+  &:active {
+    box-shadow: var(--shadow-2);
+    
+    @media (--motionOK) {
+      transform: translateY(2%);
+    }
+  }
+
+  &:is(:active, :hover, :focus-visible) {
+    --_bg: var(--accent-color-darker);
+  }
+
+  &:not(:first-of-type) {
+    z-index: -1;
+  }
+}

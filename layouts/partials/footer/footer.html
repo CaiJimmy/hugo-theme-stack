@@ -20,4 +20,18 @@
         {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} <br />
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
     </section>
+
+    <div class="fab-group" role="group">
+      {{ partial "fabs/custom.html" }}
+      <button id="toc-button" class="fab" title="Open Table of Contents" aria-label="Open Table of Contents">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+          <circle fill="currentColor" cx="5" cy="8" r="2"></circle>
+          <line stroke="currentColor" stroke-width="3" stroke-linecap="round" x1="10" y1="8" x2="19" y2="8"></line>
+          <circle fill="currentColor" cx="5" cy="14" r="2"></circle>
+          <line stroke="currentColor" stroke-width="3" stroke-linecap="round" x1="10" y1="14" x2="19" y2="14"></line>
+          <circle fill="currentColor" cx="5" cy="20" r="2"></circle>
+          <line stroke="currentColor" stroke-width="3" stroke-linecap="round" x1="10" y1="20" x2="19" y2="20"></line>
+        </svg>
+      </button>
+    </div>
 </footer>

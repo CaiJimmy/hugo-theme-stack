@@ -60,6 +60,26 @@ let Stack = {
 
 
         /**
+         * Bind FABs event
+         */
+        const sidebar = document.querySelector('.right-sidebar');
+        const fabGroup = document.querySelector('.fab-group');
+
+        if (fabGroup) {
+            fabGroup.addEventListener('click', (event) => {
+                let fab = (event.target as HTMLElement).closest('.fab');
+                if (!fab) return;
+                switch (fab.id) {
+                    case "toc-button": {
+                        if (sidebar) {
+                            sidebar.classList.toggle('open');
+                        }
+                    } break;
+                }
+            });
+        }
+
+        /**
          * Add copy button to code block
         */
         const highlights = document.querySelectorAll('.article-content div.highlight');
