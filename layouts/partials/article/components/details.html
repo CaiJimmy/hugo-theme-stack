@@ -32,7 +32,7 @@
             <div>
                 {{ partial "helper/icon" "date" }}
                 <time class="article-time--published" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                    {{- .Date | time.Format ":date_medium" -}}
                 </time>
             </div>
         {{ end }}
