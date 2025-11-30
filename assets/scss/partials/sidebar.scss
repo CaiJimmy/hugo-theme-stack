@@ -115,6 +115,8 @@
     }
 
     @include respond(md) {
+        visibility: unset;
+        opacity: unset;
         padding: unset;
         position: static;
         height: auto;
