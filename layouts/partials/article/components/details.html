@@ -58,4 +58,8 @@
             </div>
         </footer>
     {{ end }}
+
+    {{ if .Page.Params.Draft }}
+        {{ partial "article/components/draft-tips" . }}
+    {{ end }}
 </div>

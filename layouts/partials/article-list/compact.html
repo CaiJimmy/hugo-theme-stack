@@ -9,6 +9,9 @@
                     {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
                 </time>
             </footer>
+            {{ if .Page.Params.Draft }}
+                {{ partial "article/components/draft-tips" . }}
+            {{ end }}
         </div>
 
         {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}

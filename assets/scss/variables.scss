@@ -17,6 +17,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --accent-color-darker: #2c3e50;
     --accent-color-text: #fff;
     --body-text-color: #707070;
+    --warning-color: oklab(97% 0.003 0.013);
+    --warning-color-text: oklch(68% .162 75.834);
 
     --tag-border-radius: 4px;
 

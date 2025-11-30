@@ -5,4 +5,9 @@
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "drafts") }}
 {{ end }}

@@ -90,6 +90,22 @@
     gap: 8px;
 }
 
+.article-draft-tips {
+    width: fit-content;
+    svg {
+        flex-shrink: 0;
+        vertical-align: -0.3em;
+    }
+    .alert {
+        background-color: var(--warning-color);
+        color: var(--warning-color-text);
+        padding-block: .75rem;
+        gap: 1rem;
+        padding-inline: 1rem;
+        border-radius: .5rem;
+    }
+}
+
 .article-time,
 .article-translations {
     display: flex;

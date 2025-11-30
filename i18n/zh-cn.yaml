@@ -27,6 +27,9 @@ article:
     readingTime:
         other: "阅读时长: {{ .Count }} 分钟"
 
+    draftTips:
+        other: 此页面正在施工，内容可能不完整或有误
+
 notFound:
     title:
         other: 404 错误

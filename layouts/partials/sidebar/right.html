@@ -7,7 +7,7 @@
                 <!-- Ensure that the `params` is not nil -->
                 {{- $params := default dict .params -}}
 
-                {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
+                {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params "Scope" $scope) }}
             {{ else }}
                 {{ warnf "Widget %s not found" .type }}
             {{ end }}
