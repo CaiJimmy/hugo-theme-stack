@@ -43,6 +43,13 @@
             }
         }
     }
+    .pinned article .article-title::before {
+        content: "📌";
+        position: relative;
+        top: 0px;
+        right: 0px;
+        font-size: 2rem;
+    }
 }
 
 .article-details {

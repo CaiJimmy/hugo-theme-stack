@@ -6,7 +6,12 @@
     {{ $pag := .Paginate (slice $filtered) }}
     
     <section class="article-list">
-        {{ range $index, $element := $pag.Pages }}
+        <span class="pinned">
+            {{ range where $pag.Pages "Params.pinned" true }}
+                {{ partial "article-list/default" . }}
+            {{ end }}
+        </span>
+        {{ range where $pag.Pages "Params.pinned" "!=" true }}
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
