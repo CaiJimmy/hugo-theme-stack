@@ -25,7 +25,7 @@ article:
         other: 最后更新于
 
     readingTime:
-        other: "阅读时长: {{ .Count }} 分钟"
+        other: "约 {{ .Count }} 分钟（共 {{ .Words }} 字）"
 
     draftTips:
         other: 此页面正在施工，内容可能不完整或有误

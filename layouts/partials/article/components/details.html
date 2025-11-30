@@ -41,7 +41,7 @@
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
-                    {{ T "article.readingTime" .ReadingTime }}
+                    {{ T "article.readingTime" (dict "Words" .WordCount "Count" .ReadingTime) }}
                 </time>
             </div>
         {{ end }}
