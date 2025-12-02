@@ -13,6 +13,18 @@ a {
         &:hover {
             box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
         }
+
+        &::after {
+            content: "";
+            mask: url('/icons/link.svg') no-repeat center;
+            mask-size: contain;
+            background-color: currentColor;
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            position: relative;
+            top: 0.4rem;
+        }
     }
 }
 
