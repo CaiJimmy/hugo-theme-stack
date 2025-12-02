@@ -6,9 +6,12 @@
 
     <!-- Build paginator -->
     {{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+    {{ $disapprovalTags := .Site.Params.disapproval.tags }}
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
     {{ $notDraft := where .Site.RegularPages "Draft" "!=" true }}
-    {{ $filtered := (($pages | intersect $notHidden) | intersect $notDraft) }}
+    {{ $disapproval := where .Site.RegularPages "Params.categories" "intersect" $disapprovalTags }}
+    {{ $notDisapproval := $disapproval | symdiff .Site.RegularPages }}
+    {{ $filtered := ((($pages | intersect $notHidden) | intersect $notDraft) | intersect $notDisapproval) }}
     {{ $pag := .Paginate ($filtered) }}
 
     {{ if .Paginator.HasPrev }}

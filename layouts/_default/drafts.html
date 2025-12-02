@@ -1,7 +1,9 @@
 {{ define "main" }}
     {{ $draftPages := where .Site.RegularPages "Draft" true }}
-    <section class="article-list">
-        {{ range $index, $element := $draftPages }}
+    {{ $disapproval := where $draftPages "Params.categories" "intersect" .Site.Params.disapproval.tags }}
+    {{ $filtered := $disapproval | symdiff $draftPages }}
+    <section class="article-list no-draft-tips">
+        {{ range $index, $element := $filtered }}
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>

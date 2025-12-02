@@ -14,7 +14,8 @@
             {{ if eq $scope "drafts" }}
                 {{ $pages = where .Pages "Draft" "==" true }}
             {{ end }}
-            {{ if gt (len $pages) 0 }}
+            {{ $notDisapproval := not (in $context.Site.Params.disapproval.tags $term) }}
+            {{ if and $notDisapproval (gt (len $pages) 0) }}
                 <a href="{{ .Page.RelPermalink }}">{{ $term }}</a>
             {{ end }}
         {{ end }}

@@ -111,6 +111,9 @@
         padding-inline: 1rem;
         border-radius: .5rem;
     }
+    .no-draft-tips & {
+        display: none;
+    }
 }
 
 .article-time,

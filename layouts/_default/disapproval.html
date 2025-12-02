@@ -1,0 +1,13 @@
+{{ define "main" }}
+    {{ $disapproval := where .Site.RegularPages "Params.categories" "intersect" .Site.Params.disapproval.tags }}
+    <section class="article-list">
+        {{ range $index, $element := $disapproval }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "disapproval") }}
+{{ end }}

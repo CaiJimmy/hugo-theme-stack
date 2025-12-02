@@ -60,6 +60,9 @@
     {{ end }}
 
     {{ if .Page.Params.Draft }}
-        {{ partial "article/components/draft-tips" . }}
+        {{ if ne .RelPermalink "drafts" }}
+            {{ partial "article/components/draft-tips" . }}
+        {{ end }}
     {{ end }}
+    
 </div>
