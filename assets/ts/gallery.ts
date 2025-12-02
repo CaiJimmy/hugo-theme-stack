@@ -149,9 +149,14 @@ class StackGallery {
 
         parentNode.insertBefore(galleryContainer, first)
 
+        const len = figures.length;
         for (const figure of figures) {
+            if (figures.length < 2) {
+                figure.classList.add('single-image');
+            }
             galleryContainer.appendChild(figure);
         }
+        
     }
 
     public open(index: number) {

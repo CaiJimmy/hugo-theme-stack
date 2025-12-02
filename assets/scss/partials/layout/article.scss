@@ -38,8 +38,11 @@
             }
 
             img {
+                display: block;
+                max-height: 800px;
                 max-width: 100%;
                 height: auto;
+                width: auto;
             }
         }
 
@@ -441,6 +444,12 @@
         margin-left: calc((var(--card-padding)) * -1);
         margin-right: calc((var(--card-padding)) * -1);
         width: calc(100% + var(--card-padding) * 2);
+    }
+
+    .gallery:has(.single-image) {
+        margin-left: 0;
+        margin-right: 0;
+        width: fit-content;
     }
 
     /// Make long KaTeX equations scrollable in the x-axis
