@@ -89,7 +89,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease, visibility 0.2s ease;
-    z-index: 2500;
+    z-index: 1600;
     
     
     .widget {
@@ -129,6 +129,7 @@
         --_card-radius: unset;
         --_outer-shadow: none;
         --_inner-shadow: var(--shadow-l1);
+        z-index: 3;
     }
 }
 
