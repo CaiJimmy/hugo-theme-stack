@@ -39,4 +39,4 @@
     {{ $title = delimit $title "" }}
 {{- end -}}
 
-{{ return $title }}
+{{ return default $siteTitle $title }}
