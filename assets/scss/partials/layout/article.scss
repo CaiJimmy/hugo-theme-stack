@@ -37,12 +37,17 @@
                 font-family: var(--base-font-family);
             }
 
-            img {
+            img:not(.inline-image) {
                 display: block;
                 max-height: 1000px;
                 max-width: 100%;
                 height: auto;
                 width: auto;
+            }
+            img.inline-image {
+                min-height: 1.5em;
+                width: auto;
+                vertical-align: text-bottom;
             }
         }
 

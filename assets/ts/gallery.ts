@@ -67,7 +67,10 @@ class StackGallery {
             /// This is done to allow inline images within paragraphs
             const paragraph = img.closest('p');
 
-            if (!paragraph || !container.contains(paragraph)) continue;
+            if (!paragraph || !container.contains(paragraph)) {
+                img.classList.add('inline-image');
+                continue;
+            }
 
             if (paragraph.textContent.trim() == '') {
                 /// Once we insert figcaption, this check no longer works
@@ -76,7 +79,10 @@ class StackGallery {
             }
 
             let isNewLineImage = paragraph.classList.contains('no-text');
-            if (!isNewLineImage) continue;
+            if (!isNewLineImage) {
+                img.classList.add('inline-image');
+                continue;
+            }
 
             const hasLink = img.parentElement.tagName == 'A';
 
