@@ -35,7 +35,7 @@
             popper.className = 'highlight chroma';
             popper.style.paddingTop = '5px';
             popper.style.paddingBottom = '5px';
-            
+            popper.style.overflowX = 'auto';
             for (const lineNumber of lineNumbers) {
                 const line = code.children[lineNumber - 1];
                 if (!line) {
