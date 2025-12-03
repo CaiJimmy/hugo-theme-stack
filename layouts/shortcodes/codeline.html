@@ -1,4 +1,19 @@
 {{ $codeBlock := (index .Params 1) }}
-{{ $lineNumber := (index .Params 2) }}
-{{ $href := printf "#code-%d-%d"  $codeBlock $lineNumber }}
-<a class="codeline" href={{ $href | safeURL }} data-block={{ $codeBlock }} data-line={{ $lineNumber }}>{{ (index .Params 0) }}</a>
+{{ $lineNumbers := (index .Params 2) }}
+{{ $parsed := $lineNumbers }}
+{{ $lineNumber := 0 }}
+
+{{ if strings.Contains $lineNumbers "," }}
+  {{ $parsed = split $lineNumbers "," }}
+  {{ $lineNumber = (index $parsed 0) | int }}
+  {{ $arrInt := slice }}
+  {{ range $parsed }}
+    {{ $arrInt = $arrInt | append (int .) }}
+  {{ end }}
+  {{ $lineNumbers = jsonify $arrInt }}
+{{ else }}
+  {{ $lineNumber = $parsed }}
+{{ end }}
+
+{{ $href := printf "#code-%d-%d" $codeBlock $lineNumber }}
+<a class="codeline" href={{ $href | safeURL }} data-block={{ $codeBlock }} data-line={{ $lineNumbers }}>{{ (index .Params 0) }}</a>

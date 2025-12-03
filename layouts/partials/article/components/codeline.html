@@ -4,16 +4,21 @@
     window.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".codeline").forEach(function (clElem) {
             const blockId = clElem.dataset.block;
-            const lineNumber = clElem.dataset.line;
+            let lineNumbers = JSON.parse(clElem.dataset.line);
+            if (Number.isInteger(lineNumbers)) {
+                lineNumbers = [lineNumbers];
+            } else if (!Array.isArray(lineNumbers)) {
+                return;
+            }
             const href = clElem.getAttribute("href");
-            const lineNumberElem = document.getElementById(href.substring(1));
-            if (!lineNumberElem) {
+            const firstLineNumberElem = document.getElementById(href.substring(1));
+            if (!firstLineNumberElem) {
                 return;
             }
             clElem.removeAttribute("href");
             clElem.addEventListener("pointerup", (e) => {
                 if (e.pointerType !== "mouse") return;
-                lineNumberElem.scrollIntoView({behavior: "smooth", block: "start"});
+                firstLineNumberElem.scrollIntoView({behavior: "smooth", block: "start"});
                 history.replaceState(null, "", href);
             });
             const codeBlock = document.getElementById(`chroma-${blockId}`);
@@ -25,30 +30,35 @@
             if (!code) {
                 return;
             }
-            const line = code.children[lineNumber - 1];
-            if (!line) {
-                return;
-            }
             
-            const clonedLineNumberElem = lineNumberElem.cloneNode(true);
-            const clonedCode = line.cloneNode(true);
-
             const popper = document.createElement('span');
             popper.className = 'highlight chroma';
-            popper.style.display = 'flex';
             popper.style.paddingTop = '5px';
             popper.style.paddingBottom = '5px';
-            popper.appendChild(clonedLineNumberElem);
-            popper.appendChild(clonedCode);
+            
+            for (const lineNumber of lineNumbers) {
+                const line = code.children[lineNumber - 1];
+                if (!line) {
+                    return;
+                }
+                const clonedLineNumberElem = document.getElementById(`code-${blockId}-${lineNumber}`).cloneNode(true);
+                const clonedCode = line.cloneNode(true);
+                const newLine = document.createElement('span');
+                newLine.style.display = 'flex';
+                newLine.appendChild(clonedLineNumberElem);
+                newLine.appendChild(clonedCode);
+                popper.appendChild(newLine);
+            }
+
             popper.addEventListener("pointerup", (e) => {
                 if (e.pointerType !== "touch") return;
-                lineNumberElem.scrollIntoView({behavior: "smooth", block: "start"});
+                firstLineNumberElem.scrollIntoView({behavior: "smooth", block: "start"});
                 history.replaceState(null, "", href);
             });
 
             tippy(clElem, {
                 offset: "-5, 0",
-                appendTo: line.parentElement,
+                appendTo: code,
                 animation: true,
                 interactive: true,
                 render(instance) {
