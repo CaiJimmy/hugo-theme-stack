@@ -356,6 +356,9 @@
             margin: 0;
             width: auto;
         }
+        .lntable .lnt {
+            user-select: none;
+        }
     }
 
     .copyCodeButton {
