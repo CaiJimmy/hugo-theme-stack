@@ -42,3 +42,14 @@ Cactus:
     - src: https://latest.cactus.chat/style.css
       integrity:
       type: style
+
+Tippy:
+    - src: https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js
+      integrity: sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=
+      type: script
+    - src: https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy.umd.min.js
+      integrity: sha256-qx7gQMlSzXvTJCl8PBcHyzDQLGvX7NaFbiFY44WpsW4=
+      type: script
+    - src: https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy.min.css
+      integrity: sha256-26cwXEtwTIHaYs5Q0VKnFiwKuuU8crhSyYrryPIqDPM=
+      type: style

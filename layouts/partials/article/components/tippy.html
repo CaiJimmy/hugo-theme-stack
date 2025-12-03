@@ -1,0 +1,9 @@
+{{ if not (.Scratch.Get "TippyIncluded") }}
+
+    {{/* this for hugo server */}}
+    {{ if not (eq hugo.Environment "development")}}
+        {{ .Scratch.Set "TippyIncluded" true }}
+    {{ end}}
+
+    {{- partial "helper/external" (dict "Context" . "Namespace" "Tippy") -}}
+{{ end }}
