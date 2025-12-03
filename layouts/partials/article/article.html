@@ -12,4 +12,8 @@
     {{ if .HasShortcode "hint" }}
         {{ partial "article/components/hint.html" . }}
     {{ end }}
+
+    {{ if .HasShortcode "codeline"}}
+        {{ partial "article/components/codeline.html" . }}
+    {{ end }}
 </article>

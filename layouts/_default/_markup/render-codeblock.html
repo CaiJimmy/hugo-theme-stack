@@ -1,0 +1,7 @@
+{{ $result := transform.HighlightCodeBlock . }}
+{{ $html := $result.Wrapped }}
+{{ $pattern := `<span class="lnt">(\s*)([0-9]+)(\s*)</span>` }}
+{{ $replace := printf `<span class="lnt" id="code-%d-$2">$1$2$3</span>` .Ordinal }}
+{{ $replaced := replaceRE $pattern $replace $html }}
+{{ $chromaId := printf "chroma-%d" .Ordinal }}
+{{ replaceRE `<div class="chroma">` (printf `<div class="chroma" id="%s">` $chromaId) $replaced | safeHTML }}

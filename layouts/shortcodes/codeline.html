@@ -1,0 +1,4 @@
+{{ $codeBlock := (index .Params 1) }}
+{{ $lineNumber := (index .Params 2) }}
+{{ $href := printf "#code-%d-%d"  $codeBlock $lineNumber }}
+<a class="codeline" href={{ $href | safeURL }} data-block={{ $codeBlock }} data-line={{ $lineNumber }}>{{ (index .Params 0) }}</a>

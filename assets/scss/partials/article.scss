@@ -303,7 +303,7 @@
     }
 }
 
-.hint {
+.hint, .codeline {
     text-decoration: none;
 	box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
     transition: all 0.3s ease;
@@ -311,4 +311,9 @@
         color: var(--accent-color-darker);
 		box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
     }
+}
+
+.codeline {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
