@@ -13,6 +13,7 @@
 	{{- $Permalink = $image.RelPermalink -}}
 
 	{{- if $notSVG -}}
+		{{ .Page.Scratch.Add "imageCount" 1 }}
 		{{- $Width = $image.Width -}}
 		{{- $Height = $image.Height -}}
 		{{- $galleryImage = true -}}
