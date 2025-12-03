@@ -8,4 +8,8 @@
     {{ if or .Params.math .Site.Params.article.math }}
         {{ partialCached "article/components/math.html" . }}
     {{ end }}
+
+    {{ if .HasShortcode "hint" }}
+        {{ partial "article/components/hint.html" . }}
+    {{ end }}
 </article>

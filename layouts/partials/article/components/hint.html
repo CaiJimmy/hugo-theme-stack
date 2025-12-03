@@ -1,0 +1,19 @@
+{{ partial "article/components/tippy.html" . }}
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".hint").forEach(function (hintElem) {
+            const hintContent = hintElem.getAttribute("data-hint");
+            if (hintContent) {
+                tippy(hintElem, {
+                    content: hintContent,
+                    placement: "top",
+                    interactive: true,
+                    allowHTML: true,
+                    maxWidth: 300,
+                    performance: true,
+                });
+            }
+        });
+    });
+</script>
