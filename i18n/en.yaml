@@ -33,6 +33,15 @@ article:
         one: "{{ .Count }} minute read"
         other: "{{ .Count }} minute read"
 
+    imageCount:
+        one: "{{ .Count }} image"
+        other: "{{ .Count }} images"
+
+    draftTips:
+        other: This page is a draft and may be incomplete or inaccurate
+
+    disapprovalTips:
+        other: This page may contain content that you find objectionable
 notFound:
     title:
         other: Not Found

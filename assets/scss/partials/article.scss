@@ -116,6 +116,25 @@
     }
 }
 
+.article-disapproval-tips {
+    width: fit-content;
+    svg {
+        flex-shrink: 0;
+        vertical-align: -0.32em;
+    }
+    .alert {
+        background-color: var(--error-color);
+        color: var(--error-color-text);
+        padding-block: .75rem;
+        gap: 1rem;
+        padding-inline: 1rem;
+        border-radius: .5rem;
+    }
+    .no-disapproval-tips & {
+        display: none;
+    }
+}
+
 .article-time,
 .article-translations {
     display: flex;

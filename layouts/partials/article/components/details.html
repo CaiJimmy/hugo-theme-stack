@@ -70,9 +70,10 @@
     {{ end }}
 
     {{ if .Page.Params.Draft }}
-        {{ if ne .RelPermalink "drafts" }}
-            {{ partial "article/components/draft-tips" . }}
-        {{ end }}
+        {{ partial "article/components/draft-tips" . }}
     {{ end }}
     
+    {{ if intersect .Page.Params.categories .Site.Params.disapproval.tags }}
+        {{ partial "article/components/disapproval-tips" . }}
+    {{ end }}
 </div>

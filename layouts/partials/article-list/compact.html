@@ -12,6 +12,9 @@
             {{ if .Page.Params.Draft }}
                 {{ partial "article/components/draft-tips" . }}
             {{ end }}
+            {{ if intersect .Page.Params.categories .Site.Params.disapproval.tags }}
+                {{ partial "article/components/disapproval-tips" . }}
+            {{ end }}
         </div>
 
         {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}

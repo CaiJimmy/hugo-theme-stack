@@ -27,8 +27,14 @@ article:
     readingTime:
         other: "约 {{ .Count }} 分钟（共 {{ .Words }} 字）"
 
+    imageCount:
+        other: "共 {{ .Count }} 张图片"
+
     draftTips:
         other: 此页面正在施工，内容可能不完整或有误
+
+    disapprovalTips:
+        other: 此页面可能让您感到不适
 
 notFound:
     title:
