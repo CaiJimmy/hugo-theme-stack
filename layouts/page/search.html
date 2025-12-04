@@ -22,7 +22,8 @@
 </div>
 
 <script>
-    window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
+    window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}";
+    window.draftTip = '{{ partial "article/components/draft-tips" . }}';
 </script>
 
 {{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}

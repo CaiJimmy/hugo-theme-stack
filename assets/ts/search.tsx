@@ -4,6 +4,7 @@ interface pageData {
     permalink: string,
     content: string,
     image?: string,
+    draft?: boolean,
     preview: string,
     matchCount: number
 }
@@ -295,6 +296,7 @@ class Search {
             <a href={item.permalink}>
                 <div class="article-details">
                     <h2 class="article-title" dangerouslySetInnerHTML={{ __html: item.title }}></h2>
+                    { item.draft && <span class="article-draft" dangerouslySetInnerHTML={{ __html: window.draftTip }}></span> }
                     <section class="article-preview" dangerouslySetInnerHTML={{ __html: item.preview }}></section>
                 </div>
                 {item.image &&
@@ -310,6 +312,7 @@ class Search {
 declare global {
     interface Window {
         searchResultTitleTemplate: string;
+        draftTip: string;
     }
 }
 
