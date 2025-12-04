@@ -24,7 +24,6 @@
     </div>
 
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
-    {{ $imageCount := .Page.Scratch.Get "imageCount" | default 0 }} 
     {{ $showDate := not .Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
@@ -47,6 +46,7 @@
             </div>
         {{ end }}
 
+        {{ $imageCount := .Page.Scratch.Get "imageCount" | default 0 }}
         {{ if gt $imageCount 0 }}
             <div>
                 {{ partial "helper/icon" "image" }}
