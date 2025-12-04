@@ -1,6 +1,10 @@
 {{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
 {{- $notHidden := where .Site.RegularPages "Params.hidden" "!=" true -}}
-{{- $filtered := ($pages | intersect $notHidden) -}}
+{{ $disapprovalTags := .Site.Params.disapproval.tags }}
+{{ $disapproval := where .Site.RegularPages "Params.categories" "intersect" $disapprovalTags }}
+{{ $notDisapproval := $disapproval | symdiff .Site.RegularPages }}
+
+{{- $filtered := ($pages | intersect $notHidden) | intersect $notDisapproval -}}
 
 {{- $result := slice -}}
 
