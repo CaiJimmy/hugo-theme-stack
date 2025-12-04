@@ -42,6 +42,12 @@ article:
 
     disapprovalTips:
         other: This page may contain content that you find objectionable
+
+    copyText:
+        other: Copy
+
+    copiedText:
+        other: Copied!
 notFound:
     title:
         other: Not Found

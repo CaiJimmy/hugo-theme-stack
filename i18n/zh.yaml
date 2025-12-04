@@ -36,6 +36,12 @@ article:
     disapprovalTips:
         other: 此页面可能让您感到不适
 
+    copyText:
+        other: 复制
+
+    copiedText:
+        other: 已复制
+
 notFound:
     title:
         other: 404 错误

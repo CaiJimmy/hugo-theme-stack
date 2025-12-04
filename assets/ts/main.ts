@@ -83,8 +83,8 @@ let Stack = {
          * Add copy button to code block
         */
         const highlights = document.querySelectorAll('.article-content div.highlight');
-        const copyText = `Copy`,
-            copiedText = `Copied!`;
+        const copyText = window.copyCode?.copyText || 'Copy';
+        const copiedText = window.copyCode?.copiedText || 'Copied';
 
         highlights.forEach(highlight => {
             const copyButton = document.createElement('button');
@@ -124,7 +124,11 @@ window.addEventListener('load', () => {
 declare global {
     interface Window {
         createElement: any;
-        Stack: any
+        Stack: any;
+        copyCode: {
+            copyText: string;
+            copiedText: string;
+        };
     }
 }
 

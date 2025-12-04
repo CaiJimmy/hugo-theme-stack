@@ -2,7 +2,12 @@
 
 {{- $opts := dict "minify" hugo.IsProduction -}}
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts | fingerprint -}}
-
+<script>
+    window.copyCode = {
+        copyText: {{ (T "article.copyText") }},
+        copiedText: {{ (T "article.copiedText") }}
+    };
+</script>
 <script type="text/javascript" src="{{ $script.RelPermalink }}" defer></script>
 
 {{- with resources.Get "ts/custom.ts" -}}
