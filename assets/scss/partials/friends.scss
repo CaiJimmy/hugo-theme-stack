@@ -18,6 +18,7 @@
         overflow: hidden;
         --emoji-size: 30px;
         --tag-background: #f0f0f0;
+
         .card-main {
             display: grid;
             align-self: start;
@@ -40,17 +41,22 @@
                 justify-self: end;
             }
         }
-        
+
         &.expanded {
             grid-template-rows: auto 1fr;
-            
+
             .card-content {
                 opacity: 1;
             }
 
             .card-action {
-                .open { display: none; }
-                .close { display: inline; }
+                .open {
+                    display: none;
+                }
+
+                .close {
+                    display: inline;
+                }
             }
         }
 
@@ -114,11 +120,18 @@
 
         .card-action {
             color: var(--link-background-color);
+
             .action-more {
                 cursor: pointer;
             }
-            .open { display: inline; }
-            .close { display: none; }
+
+            .open {
+                display: inline;
+            }
+
+            .close {
+                display: none;
+            }
         }
 
         .card-tags {

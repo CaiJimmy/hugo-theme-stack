@@ -1,34 +1,34 @@
 <div class="card">
     <div class="card-main">
-            <div class="card-image card-left">
-                <a href="{{ .Params.href }}">
+        <div class="card-image card-left">
+            <a href="{{ .Params.href }}">
                 <img src="{{ .Params.avatar }}" alt="{{ .Params.name }}" loading="lazy" />
-                </a>
-                {{ if .Params.emoji }}
-                <div class="emoji">{{ .Params.emoji }}</div>
-                {{ end }}
-            </div>
-            <h3 class="card-title card-left">
-                <a href="{{ .Params.href }}">{{ .Params.name }}</a>
-            </h3>
-            {{ if .Params.tags }}
-            <div class="card-tags card-left">
-                {{ range .Params.tags }}
-                <span>{{ . }}</span>
-                {{ end }}
-            </div>
+            </a>
+            {{ if .Params.emoji }}
+            <div class="emoji">{{ .Params.emoji }}</div>
             {{ end }}
-            {{ if .Params.info }}
-            <p class="card-description card-right">{{ .Params.info }}</p>
+        </div>
+        <h3 class="card-title card-left">
+            <a href="{{ .Params.href }}">{{ .Params.name }}</a>
+        </h3>
+        {{ if .Params.tags }}
+        <div class="card-tags card-left">
+            {{ range .Params.tags }}
+            <span>{{ . }}</span>
             {{ end }}
-            <div class="card-action card-right last-row align-end">
-                {{ if .Content }}
-                <a class="action-more" onclick="this.closest('.card').classList.toggle('expanded')">
+        </div>
+        {{ end }}
+        {{ if .Params.info }}
+        <p class="card-description card-right">{{ .Params.info }}</p>
+        {{ end }}
+        <div class="card-action card-right last-row align-end">
+            {{ if .Content }}
+            <a class="action-more" onclick="this.closest('.card').classList.toggle('expanded')">
                 <span class="open">展开</span>
                 <span class="close">收起</span>
-                </a>
-                {{ end }}
-            </div>
+            </a>
+            {{ end }}
+        </div>
     </div>
     <div class="card-content">
         {{ .Content }}
