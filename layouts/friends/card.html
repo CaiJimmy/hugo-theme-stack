@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-main">
+        <div class="card-left">
+            <div class="card-image">
+                <img src="{{ .Params.avatar }}" alt="{{ .Params.name }}">
+                {{ if .Params.emoji }}
+                <div class="emoji">{{ .Params.emoji }}</div>
+                {{ end }}
+            </div>
+            <h3 class="card-title">
+                {{ .Params.name }}
+            </h3>
+            {{ if .Params.tags }}
+            <div class="card-tags">
+                {{ range .Params.tags }}
+                <span class="card-tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+        <div class="card-right">
+            {{ if .Params.info }}
+            <p class="card-description">{{ .Params.info }}</p>
+            {{ end }}
+            <div class="card-more">
+                {{ if not .Content }}
+                <a href="{{ .Params.href }}">
+                前往
+                </a>
+                {{ else }}
+                <a onclick="this.closest('.card').classList.toggle('expanded')">
+                了解更多
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    <div class="card-content">
+        {{ .Content }}
+    </div>
+</div>

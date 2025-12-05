@@ -175,7 +175,7 @@
             width: 100%;
         }
 
-        svg {
+        svg:not(.no-default) {
             stroke: currentColor;
             stroke-width: 1.33;
             width: 20px;

@@ -53,3 +53,8 @@ Tippy:
     - src: https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy.min.css
       integrity: sha256-26cwXEtwTIHaYs5Q0VKnFiwKuuU8crhSyYrryPIqDPM=
       type: style
+
+MaterColors:
+    - src: https://cdn.jsdelivr.net/npm/matercolors@2.3.0/dist/index.min.js
+      integrity: sha256-4QFBLCe//C7Km8+jS/kFatXigdAv0lpFh+lK+/UnjCU=
+      type: script

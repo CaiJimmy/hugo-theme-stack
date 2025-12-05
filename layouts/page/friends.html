@@ -1,0 +1,23 @@
+{{ define "body-class" }}template-friends{{ end }}
+{{ define "main" }}
+<script>
+    
+</script>
+{{ $friends := site.GetPage "friends" }}
+{{ $pages := $friends.Resources.ByType "page" }}
+{{ if $pages }}
+    <div class="card-wrapper--friends">
+        {{ range $pages }}
+            {{ .Render "card" }}
+        {{ end }}
+    </div>
+{{ else }}
+    <!-- <p>{{ T "friends.noFriends" }}</p> -->
+    <p>No friends found.</p>
+{{ end }}
+
+{{ if not (eq .Params.comments false) }}
+    {{ partial "comments/include" . }}
+{{ end }}
+{{ partialCached "footer/footer" . }}
+{{ end }}

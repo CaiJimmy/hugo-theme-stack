@@ -1,0 +1,128 @@
+.card-wrapper--friends {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+
+    .card {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: 20px;
+        display: grid;
+        align-self: start;
+        grid-template-rows: auto 0fr;
+        transition:
+            grid-template-rows 0.3s ease,
+            transform 0.18s ease,
+            box-shadow 0.18s ease;
+        overflow: hidden;
+        --emoji-size: 30px;
+
+        .card-main {
+            display: grid;
+            align-self: start;
+            grid-template-columns: max-content 1fr;
+            gap: 16px;
+        }
+        
+        &.expanded {
+            grid-template-rows: auto 1fr;
+            
+            .card-content {
+                opacity: 1;
+            }
+        }
+
+        .card-content {
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-left {
+            .card-title {
+                width: fit-content;
+                display: inline-block;
+            }
+            .card-tags {
+                max-width: fit-content;
+            }
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .card-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-l2);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-image {
+            position: relative;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+                box-shadow: var(--shadow-l2);
+            }
+
+            .emoji {
+                position: absolute;
+                width: var(--emoji-size);
+                height: var(--emoji-size);
+                line-height: var(--emoji-size);
+                border-radius: 100%;
+                bottom: 0;
+                right: 0;
+                text-align: center;
+                font-size: var(--emoji-font-size);
+                background-color: var(--card-background);
+                box-shadow: var(--shadow-l3);
+            }
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .card-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 0;
+        }
+
+        .card-description {
+            font-size: 1.4rem;
+            color: var(--body-text-color);
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .card-more {
+            align-self: flex-end;
+        }
+    }
+}
