@@ -1,39 +1,34 @@
 <div class="card">
     <div class="card-main">
-        <div class="card-left">
-            <div class="card-image">
-                <img src="{{ .Params.avatar }}" alt="{{ .Params.name }}">
+            <div class="card-image card-left">
+                <a href="{{ .Params.href }}">
+                <img src="{{ .Params.avatar }}" alt="{{ .Params.name }}" loading="lazy" />
+                </a>
                 {{ if .Params.emoji }}
                 <div class="emoji">{{ .Params.emoji }}</div>
                 {{ end }}
             </div>
-            <h3 class="card-title">
-                {{ .Params.name }}
+            <h3 class="card-title card-left">
+                <a href="{{ .Params.href }}">{{ .Params.name }}</a>
             </h3>
             {{ if .Params.tags }}
-            <div class="card-tags">
+            <div class="card-tags card-left">
                 {{ range .Params.tags }}
-                <span class="card-tag">{{ . }}</span>
+                <span>{{ . }}</span>
                 {{ end }}
             </div>
             {{ end }}
-        </div>
-        <div class="card-right">
             {{ if .Params.info }}
-            <p class="card-description">{{ .Params.info }}</p>
+            <p class="card-description card-right">{{ .Params.info }}</p>
             {{ end }}
-            <div class="card-more">
-                {{ if not .Content }}
-                <a href="{{ .Params.href }}">
-                前往
-                </a>
-                {{ else }}
-                <a onclick="this.closest('.card').classList.toggle('expanded')">
-                了解更多
+            <div class="card-action card-right last-row align-end">
+                {{ if .Content }}
+                <a class="action-more" onclick="this.closest('.card').classList.toggle('expanded')">
+                <span class="open">展开</span>
+                <span class="close">收起</span>
                 </a>
                 {{ end }}
             </div>
-        </div>
     </div>
     <div class="card-content">
         {{ .Content }}
