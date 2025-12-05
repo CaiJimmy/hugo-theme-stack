@@ -35,7 +35,15 @@
             popper.className = 'highlight chroma';
             popper.style.paddingTop = '5px';
             popper.style.paddingBottom = '5px';
-            popper.style.overflowX = 'auto';
+            popper.style.display = 'flex';
+            const lineNumbersEl = document.createElement('div');
+            lineNumbersEl.style.position = 'sticky'
+            lineNumbersEl.style.display = 'inline-block';
+            popper.appendChild(lineNumbersEl);
+            const codesEl = document.createElement('div');
+            codesEl.style.display = 'inline-block';
+            codesEl.style.overflowX = 'auto';
+            popper.appendChild(codesEl);
             for (const lineNumber of lineNumbers) {
                 const line = code.children[lineNumber - 1];
                 if (!line) {
@@ -43,11 +51,8 @@
                 }
                 const clonedLineNumberElem = document.getElementById(`code-${blockId}-${lineNumber}`).cloneNode(true);
                 const clonedCode = line.cloneNode(true);
-                const newLine = document.createElement('span');
-                newLine.style.display = 'flex';
-                newLine.appendChild(clonedLineNumberElem);
-                newLine.appendChild(clonedCode);
-                popper.appendChild(newLine);
+                lineNumbersEl.appendChild(clonedLineNumberElem);
+                codesEl.appendChild(clonedCode);
             }
 
             popper.addEventListener("pointerup", (e) => {
