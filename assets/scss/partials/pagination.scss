@@ -1,21 +1,90 @@
+/* Pagination Component
+ * Enhanced pagination styles with improved UI/UX
+ * Full-width layout with flexible page numbers and fixed-width arrows
+ */
+
 .pagination {
+    // Full width container with flex
     display: flex;
-    background-color: var(--card-background);
-    box-shadow: var(--shadow-l1);
-    border-radius: var(--card-border-radius);
-    overflow: hidden;
-    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+
+    // Explicitly override vendor defaults
+    flex-wrap: nowrap; // Override vendor's flex-wrap: wrap
+    background-color: var(--card-background); // Keep vendor's background
+    box-shadow: var(--shadow-l1); // Keep vendor's shadow
+    border-radius: var(--card-border-radius); // Keep vendor's border-radius
+    overflow: hidden; // Keep vendor's overflow
 
     .page-link {
-        padding: 16px 32px;
-        display: inline-flex;
+        // Base styling for all pagination items
+        padding: 16px 0; // Override vendor's 16px 32px
+        margin: 0;
+        border-radius: 0; // Remove border-radius on individual items
+        display: flex; // Override vendor's inline-flex
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 auto; // Allow items to grow (vendor doesn't have this)
+        min-width: 48px;
 
-        &.current {
-            font-weight: bold;
-            background-color: var(--card-background-selected);
-            color: var(--card-text-color-main);
+        // Color and text styles
+        color: var(--card-text-color-secondary);
+        text-decoration: none;
+
+        // Arrow buttons - fixed width
+        &:first-child,
+        &:last-child {
+            flex: 0 0 48px; // Fixed width for arrows
+            padding: 16px;
         }
 
-        color: var(--card-text-color-secondary);
+        // First item border radius
+        &:first-child {
+            border-top-left-radius: var(--card-border-radius);
+            border-bottom-left-radius: var(--card-border-radius);
+        }
+
+        // Last item border radius
+        &:last-child {
+            border-top-right-radius: var(--card-border-radius);
+            border-bottom-right-radius: var(--card-border-radius);
+        }
+
+        // Hover state
+        &:hover:not(.current):not(.pagination-ellipsis):not(.disabled) {
+            background-color: var(--card-background-selected);
+            opacity: 0.8;
+        }
+
+        // Current page highlighting
+        &.current {
+            background-color: var(--card-background-selected);
+            color: var(--card-text-color-main);
+            font-weight: bold;
+            cursor: default;
+        }
+
+        // Ellipsis styling - minimal width
+        &.pagination-ellipsis {
+            cursor: default;
+            opacity: 0.5;
+            flex: 0 1 auto; // Don't grow much
+            min-width: 32px;
+        }
+
+        // Disabled state
+        &.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+            color: var(--card-text-color-secondary);
+        }
+
+        // SVG icon sizing
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 }
