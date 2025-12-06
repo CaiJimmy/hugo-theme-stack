@@ -32,7 +32,7 @@
     </div>
     <div class="card-content">
         {{ if .Page.Content }}
-        <template shadowrootmode="open">
+        <template class="card-template" shadowrootmode="open" shadowroot="open">
             {{ .Page.Content | safeHTML }}
         </template>
         {{ end }}

@@ -16,11 +16,17 @@
     <p>No friends found.</p>
 {{ end }}
 <script>
-    const templates = document.querySelectorAll('script.card-template');
-    templates.forEach(template => {
-        const shadow = template.parentElement.attachShadow({ mode: 'open' });
-        shadow.innerHTML = template.innerHTML;
-    });
+    (function attachShadowRoots(root) { 
+        const supportsDeclarativeShadowDOM = HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode') || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot');
+        if (!supportsDeclarativeShadowDOM) {
+            console.log('Polyfilling Shadow DOM for friends cards');
+            const templates = root.querySelectorAll('template.card-template');
+            templates.forEach(template => {
+                const shadow = template.parentElement.attachShadow({ mode: 'open' });
+                shadow.innerHTML = template.innerHTML;
+            });
+        }
+    })(document);
 </script>
 {{ if not (eq .Params.comments false) }}
     {{ partial "comments/include" . }}
