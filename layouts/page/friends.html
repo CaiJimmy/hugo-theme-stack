@@ -24,6 +24,17 @@
             templates.forEach(template => {
                 const shadow = template.parentElement.attachShadow({ mode: 'open' });
                 shadow.innerHTML = template.innerHTML;
+                const onloadElements = shadow.querySelectorAll("script.onload");
+                if (!onloadElements) {
+                    return;
+                }
+                
+                // To execute scripts inside non-declarative shadow DOM, we need to move them to light DOM
+                onloadElements.forEach(onloadElement => {
+                    const script = document.createElement("script");
+                    script.textContent = onloadElement.textContent;
+                    template.parentElement.appendChild(script);
+                });
             });
         }
     })(document);
