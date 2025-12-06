@@ -1,21 +1,27 @@
 {{ define "body-class" }}template-friends{{ end }}
 {{ define "main" }}
-<script>
-    
-</script>
+{{ partial "friends/custom" . }}
 {{ $friends := site.GetPage "friends" }}
 {{ $pages := $friends.Resources.ByType "page" }}
 {{ if $pages }}
     <div class="card-wrapper--friends">
         {{ range $pages }}
+            {{ if not .Params.ignore}}
             {{ .Render "card" }}
+            {{ end }}
         {{ end }}
     </div>
 {{ else }}
     <!-- <p>{{ T "friends.noFriends" }}</p> -->
     <p>No friends found.</p>
 {{ end }}
-
+<script>
+    const templates = document.querySelectorAll('script.card-template');
+    templates.forEach(template => {
+        const shadow = template.parentElement.attachShadow({ mode: 'open' });
+        shadow.innerHTML = template.innerHTML;
+    });
+</script>
 {{ if not (eq .Params.comments false) }}
     {{ partial "comments/include" . }}
 {{ end }}

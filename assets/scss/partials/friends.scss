@@ -46,6 +46,7 @@
             grid-template-rows: auto 1fr;
 
             .card-content {
+                padding-top: 1em;
                 opacity: 1;
             }
 
@@ -63,7 +64,7 @@
         .card-content {
             opacity: 0;
             overflow: hidden;
-            transition: opacity 0.3s ease;
+            transition: padding-top 0.3s ease, opacity 0.3s ease;
         }
 
         &:hover {
@@ -73,11 +74,9 @@
 
         .card-image {
             position: relative;
-            width: fit-content;
             display: flex;
             justify-content: center;
             align-items: center;
-
             img {
                 width: 80px;
                 height: 80px;

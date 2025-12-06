@@ -31,6 +31,10 @@
         </div>
     </div>
     <div class="card-content">
-        {{ .Content }}
+        {{ if .Page.Content }}
+        <script class="card-template" type="text/template">
+        {{ .Page.Content | safeHTML }}
+        </script>
+        {{ end }}
     </div>
 </div>
