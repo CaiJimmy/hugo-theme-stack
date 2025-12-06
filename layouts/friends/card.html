@@ -24,8 +24,8 @@
         <div class="card-action card-right last-row align-end">
             {{ if .Content }}
             <a class="action-more" onclick="this.closest('.card').classList.toggle('expanded')">
-                <span class="open">展开</span>
-                <span class="close">收起</span>
+                <span class="open">{{ T "friends.open" }}</span>
+                <span class="close">{{ T "friends.close" }}</span>
             </a>
             {{ end }}
         </div>

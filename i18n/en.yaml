@@ -86,3 +86,11 @@ footer:
 
     designedBy:
         other: Theme {{ .Theme }} designed by {{ .DesignedBy }} and modified by {{ .ModedBy }}
+
+friends:
+    noFriends:
+        other: No friends yet
+    open:
+        other: Open
+    close:
+        other: Close

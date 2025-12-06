@@ -80,3 +80,11 @@ footer:
 
     designedBy:
         other: 主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计, 由 {{ .ModedBy }} 修改
+
+friends:
+    noFriends:
+        other: 暂无友链
+    open:
+        other: 展开
+    close:
+        other: 收起
