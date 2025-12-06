@@ -32,9 +32,9 @@
     </div>
     <div class="card-content">
         {{ if .Page.Content }}
-        <script class="card-template" type="text/template">
-        {{ .Page.Content | safeHTML }}
-        </script>
+        <template shadowrootmode="open">
+            {{ .Page.Content | safeHTML }}
+        </template>
         {{ end }}
     </div>
 </div>
