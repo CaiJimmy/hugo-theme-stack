@@ -7,9 +7,8 @@
     function setCusdisTheme(theme) {
         let cusdis = document.querySelector('#cusdis_thread iframe');
         if (cusdis) {
-            window.CUSDIS.setTheme(theme)
-            let color = theme === 'dark' ? '#303030' : '#f5f5fa'
-            cusdis.contentWindow.document.body.style.backgroundColor = color
+            window.CUSDIS.setTheme(theme);
+            cusdis.contentWindow.document.body.style.backgroundColor = window.getComputedStyle(document.body).backgroundColor;
         }
     }
     window.addEventListener('load', function () {
