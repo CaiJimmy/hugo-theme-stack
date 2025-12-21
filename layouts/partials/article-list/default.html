@@ -25,12 +25,19 @@
         {{/* Article details */}}
         <div class="article-details">
             {{/* Category pill - v0 style */}}
-            {{ with .Params.categories }}
+            {{ $categories := .Params.categories }}
+            {{ if $categories }}
+                {{ if reflect.IsSlice $categories }}
             <div class="article-category">
-                {{ range first 1 . }}
+                    {{ range first 1 $categories }}
                 <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
-                {{ end }}
+                    {{ end }}
             </div>
+                {{ else }}
+            <div class="article-category">
+                <a href="{{ "categories/" | relLangURL }}{{ $categories | urlize }}/">{{ $categories }}</a>
+            </div>
+                {{ end }}
             {{ end }}
 
             {{/* Title */}}
@@ -60,12 +67,19 @@
             </div>
 
             {{/* Tags - v0 style subtle tags with # */}}
-            {{ with .Params.tags }}
+            {{ $tags := .Params.tags }}
+            {{ if $tags }}
+                {{ if reflect.IsSlice $tags }}
             <div class="article-tags">
-                {{ range first 3 . }}
+                    {{ range first 3 $tags }}
                 <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
-                {{ end }}
+                    {{ end }}
             </div>
+                {{ else }}
+            <div class="article-tags">
+                <a href="{{ "tags/" | relLangURL }}{{ $tags | urlize }}/">{{ $tags }}</a>
+            </div>
+                {{ end }}
             {{ end }}
         </div>
     </a>

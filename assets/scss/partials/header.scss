@@ -156,17 +156,17 @@
                 stroke-width: 1.5;
             }
 
-            /* Hide sun icon by default */
-            .icon-sun {
+            /* Hide toggle-right (light mode icon) by default */
+            .icon-toggle-right {
                 display: none;
             }
 
-            /* Show sun icon in dark mode */
+            /* Show toggle-right in dark mode, hide toggle-left */
             [data-scheme="dark"] & {
-                .icon-sun {
+                .icon-toggle-right {
                     display: block;
                 }
-                .icon-moon {
+                .icon-toggle-left {
                     display: none;
                 }
             }
