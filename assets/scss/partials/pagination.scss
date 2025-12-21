@@ -64,15 +64,7 @@
             font-weight: bold;
             cursor: default;
         }
-
-        // Ellipsis styling - minimal width
-        &.pagination-ellipsis {
-            cursor: default;
-            opacity: 0.5;
-            flex: 0 1 auto; // Don't grow much
-            min-width: 32px;
-        }
-
+        
         // Disabled state
         &.disabled {
             opacity: 0.3;
