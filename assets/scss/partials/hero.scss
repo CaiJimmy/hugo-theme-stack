@@ -1,0 +1,95 @@
+/*
+*   Hero Section - v0 inspired homepage hero
+*/
+
+.hero-section {
+    padding: 80px 0 60px;
+    text-align: center;
+
+    @include respond(md) {
+        padding: 120px 0 80px;
+    }
+
+    .hero-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 0 0 24px;
+        color: var(--card-text-color-main);
+        letter-spacing: -0.02em;
+
+        @include respond(md) {
+            font-size: 6rem;
+        }
+
+        @include respond(lg) {
+            font-size: 7rem;
+        }
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: var(--card-text-color-secondary);
+        margin: 0 0 20px;
+        letter-spacing: 0.01em;
+
+        @include respond(md) {
+            font-size: 2rem;
+        }
+    }
+
+    .hero-description {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        color: var(--card-text-color-secondary);
+        margin: 0 0 32px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include respond(md) {
+            font-size: 1.7rem;
+            margin-bottom: 40px;
+        }
+    }
+
+    .hero-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-topic-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #E8DCC8;  /* Light beige like goal.png */
+        color: var(--accent-color);
+        border: 1.5px solid var(--accent-color);
+        border-radius: 9999px;  /* rounded-full */
+        font-size: 1.4rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: default;
+
+        &:hover {
+            background-color: #DDD0BA;
+            border-color: var(--accent-color-darker);
+            transform: translateY(-2px);
+        }
+
+        @include respond(md) {
+            padding: 12px 24px;
+            font-size: 1.5rem;
+        }
+    }
+}

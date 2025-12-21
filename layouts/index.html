@@ -1,8 +1,26 @@
 {{ define "main" }}
+    {{/* Hero section - only on first page */}}
+    {{ if eq .Paginator.PageNumber 1 }}
+        {{ partial "hero/hero.html" . }}
+    {{ end }}
+
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $pag := .Paginate ($filtered) }}
+
+    {{/* Tag filter bar - only on first page */}}
+    {{ if eq .Paginator.PageNumber 1 }}
+        {{ partial "tag-filter/tag-filter.html" . }}
+    {{ end }}
+
+    {{/* Article list section header */}}
+    <div class="article-list-header">
+        <h2 class="section-title">最新文章</h2>
+        <a href="{{ "archives" | relLangURL }}" class="view-all-link">
+            查看全部 →
+        </a>
+    </div>
 
     <section class="article-list">
         {{ range $index, $element := $pag.Pages }}
@@ -11,9 +29,4 @@
     </section>
 
     {{- partial "pagination.html" . -}}
-    {{- partial "footer/footer" . -}}
-{{ end }}
-
-{{ define "right-sidebar" }}
-    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
 {{ end }}

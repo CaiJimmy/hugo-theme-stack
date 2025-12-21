@@ -11,15 +11,16 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --main-top-padding: 100px;
     }
 
-    /* v0-inspired color system - Light Mode */
-    --body-background: hsl(85, 40%, 96%);  /* Beige background from v0 */
-    --body-background-rgb: 242, 244, 236;  /* RGB for opacity usage */
+    /* v0 goal.png color system - Warm earth tones */
+    --body-background: #F5EFE6;  /* Warm beige background */
+    --body-background-rgb: 245, 239, 230;
 
-    --accent-color: hsl(85, 30%, 30%);  /* Neutral brownish from v0 */
-    --accent-color-rgb: 97, 102, 82;
-    --accent-color-darker: hsl(85, 30%, 25%);
-    --accent-color-text: hsl(85, 20%, 98%);
-    --body-text-color: hsl(85, 10%, 25%);
+    --accent-color: #3E3830;  /* Deep warm brown - for buttons/active states */
+    --accent-color-rgb: 62, 56, 48;
+    --accent-color-darker: #2D2520;  /* Darker brown */
+    --accent-color-lighter: #6B625A;  /* Medium brown */
+    --accent-color-text: #FEFCF9;  /* Off-white for text on dark bg */
+    --body-text-color: #3E3830;  /* Deep brown for main text */
 
     /* Pill-style tags (rounded-full) */
     --tag-border-radius: 9999px;
@@ -57,18 +58,18 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 }
 
 /*
-*   Card style - v0 inspired with Stack's excellent shadows
+*   Card style - v0 goal.png warm earth tones
 */
 :root {
-    --card-background: hsl(85, 30%, 98%);  /* Slightly off-white with warm tone */
-    --card-background-rgb: 250, 251, 247;
-    --card-background-selected: hsl(85, 25%, 92%);
+    --card-background: #FEFCF9;  /* Very light warm beige for cards */
+    --card-background-rgb: 254, 252, 249;
+    --card-background-selected: #F0E8DC;  /* Light tan */
 
-    --card-text-color-main: hsl(85, 10%, 25%);
-    --card-text-color-secondary: hsl(85, 15%, 45%);
-    --card-text-color-tertiary: hsl(85, 10%, 60%);
-    --card-separator-color: hsl(85, 15%, 82%);
-    --card-separator-color-rgb: 209, 214, 203;
+    --card-text-color-main: #3E3830;  /* Deep warm brown */
+    --card-text-color-secondary: #6B625A;  /* Medium brown */
+    --card-text-color-tertiary: #8B8179;  /* Light brown */
+    --card-separator-color: #E8DCC8;  /* Soft beige border */
+    --card-separator-color-rgb: 232, 220, 200;
 
     --card-border-radius: 12px;  /* More rounded than original 10px */
 

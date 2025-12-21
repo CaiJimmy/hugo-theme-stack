@@ -2,19 +2,8 @@
 <header class="site-header">
     <nav class="site-nav">
         <div class="nav-container">
-            {{/* Site branding with avatar and name */}}
+            {{/* Site branding - simplified, no avatar */}}
             <a href="{{ .Site.BaseURL | relLangURL }}" class="site-brand">
-                {{- with .Site.Params.sidebar.avatar -}}
-                    {{- if (default true .enabled) -}}
-                        {{- $avatar := . -}}
-                        {{- if $avatar.local -}}
-                            {{ $avatarURL := print "img/" $avatar.src }}
-                            <img src="{{ $avatarURL | relURL }}" class="brand-avatar" alt="{{ .Site.Title }}" />
-                        {{- else -}}
-                            <img src="{{ $avatar.src | relURL }}" class="brand-avatar" alt="{{ .Site.Title }}" />
-                        {{- end -}}
-                    {{- end -}}
-                {{- end -}}
                 <span class="brand-name">{{ .Site.Title }}</span>
             </a>
 

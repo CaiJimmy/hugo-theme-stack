@@ -60,6 +60,42 @@ let Stack = {
             });
         }
 
+        /**
+         * Tag filter functionality
+         */
+        const tagFilterPills = document.querySelectorAll('.tag-filter-pill');
+        const articles = document.querySelectorAll('.article-list article');
+
+        if (tagFilterPills.length > 0 && articles.length > 0) {
+            tagFilterPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    const selectedTag = pill.getAttribute('data-tag');
+
+                    // Update active state
+                    tagFilterPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+
+                    // Filter articles
+                    articles.forEach(article => {
+                        const articleTags = (article as HTMLElement).getAttribute('data-tags') || '';
+
+                        if (selectedTag === 'all') {
+                            // Show all articles
+                            (article as HTMLElement).style.display = '';
+                        } else {
+                            // Show only articles with matching tag
+                            const tagsArray = articleTags.split(',');
+                            if (tagsArray.includes(selectedTag)) {
+                                (article as HTMLElement).style.display = '';
+                            } else {
+                                (article as HTMLElement).style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        }
+
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
             new StackGallery(articleContent);

@@ -1,30 +1,31 @@
+/* v0-style footer */
 footer.site-footer {
-    padding: 20px 0 var(--section-separation) 0;
-    font-size: 1.4rem;
-    line-height: 1.75;
-
-    &:before {
-        content: "";
-        display: block;
-        height: 3px;
-        width: 50px;
-        background: var(--body-text-color);
-        margin-bottom: 20px;
-    }
+    margin-top: 80px;
+    padding: 48px var(--container-padding);
+    border-top: 1px solid var(--card-separator-color);
+    background-color: var(--body-background);
+    text-align: center;
 
     .copyright {
-        color: var(--accent-color);
-        font-weight: bold;
-        margin-bottom: 5px;
+        color: var(--card-text-color-secondary);
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 8px;
     }
 
     .powerby {
-        color: var(--body-text-color);
-        font-weight: normal;
-        font-size: 1.2rem;
+        color: var(--card-text-color-tertiary);
+        font-size: 1.3rem;
+        line-height: 1.6;
 
         a {
-            color: var(--body-text-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--accent-color-darker);
+            }
         }
     }
 }

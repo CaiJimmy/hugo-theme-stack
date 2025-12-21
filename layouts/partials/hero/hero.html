@@ -1,0 +1,39 @@
+{{/* Hero section for homepage - v0 inspired */}}
+<section class="hero-section">
+    <div class="hero-container">
+        {{/* Main heading - extra large */}}
+        <h1 class="hero-title">{{ .Site.Title | lower }}</h1>
+
+        {{/* Subtitle */}}
+        {{ with .Site.Params.hero.subtitle }}
+        <p class="hero-subtitle">{{ . }}</p>
+        {{ else }}
+        <p class="hero-subtitle">软件工程师 / 技术写作者</p>
+        {{ end }}
+
+        {{/* Description */}}
+        {{ with .Site.Params.hero.description }}
+        <p class="hero-description">{{ . }}</p>
+        {{ else }}
+        <p class="hero-description">
+            专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。从代码实现到工程实践，在这里与你分享我的思考与发现。
+        </p>
+        {{ end }}
+
+        {{/* Topic tags/pills */}}
+        {{ with .Site.Params.hero.topics }}
+        <div class="hero-topics">
+            {{ range . }}
+            <span class="hero-topic-pill">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="hero-topics">
+            <span class="hero-topic-pill">编程</span>
+            <span class="hero-topic-pill">机器学习</span>
+            <span class="hero-topic-pill">开发工具</span>
+            <span class="hero-topic-pill">技术写作</span>
+        </div>
+        {{ end }}
+    </div>
+</section>

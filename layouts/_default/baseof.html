@@ -10,14 +10,14 @@
         {{/* v0-style fixed top header navigation */}}
         {{- partial "header/header.html" . -}}
 
-        {{/* Simplified main container - no left sidebar */}}
+        {{/* Simplified main container - v0 style single column */}}
         <div class="main-container">
             <main class="main-content">
                 {{- block "main" . }}{{- end }}
             </main>
-            {{/* Optional: Keep right sidebar for widgets if needed */}}
-            {{- block "right-sidebar" . -}}{{ end }}
         </div>
+
+        {{/* Footer at the bottom */}}
         {{ partial "footer/include.html" . }}
     </body>
 </html>

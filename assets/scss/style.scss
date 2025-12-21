@@ -22,6 +22,8 @@
 
 /* 4. v0-style components */
 @import "partials/header.scss";  /* NEW: Fixed top navigation */
+@import "partials/hero.scss";  /* NEW: Homepage hero section */
+@import "partials/tag-filter.scss";  /* NEW: Tag filter bar */
 @import "partials/components/button.scss";  /* NEW: v0 buttons */
 @import "partials/components/forms.scss";  /* NEW: v0 form elements */
 

@@ -1,3 +1,38 @@
+/* Article list section header */
+.article-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 48px 0 32px;
+    padding: 0 var(--container-padding);
+
+    .section-title {
+        font-size: 2.4rem;
+        font-weight: 600;
+        color: var(--card-text-color-main);
+        margin: 0;
+
+        @include respond(md) {
+            font-size: 2.8rem;
+        }
+    }
+
+    .view-all-link {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &:hover {
+            color: var(--accent-color-darker);
+        }
+    }
+}
+
 /* Default article style - v0 inspired 2-column grid */
 .article-list {
     display: grid;
@@ -17,6 +52,11 @@
         border-radius: var(--card-border-radius);
         overflow: hidden;
         box-shadow: var(--shadow-l1);
+
+        /* Set consistent height for grid alignment */
+        height: 100%;
+        min-height: 400px;
+        max-height: 550px;
 
         /* v0-style smooth transitions */
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

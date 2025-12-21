@@ -1,0 +1,61 @@
+/*
+*   Tag Filter Bar - v0 inspired
+*/
+
+.tag-filter-bar {
+    margin: 32px 0 40px;
+    padding: 0 var(--container-padding);
+
+    .tag-filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+
+        @include respond(md) {
+            justify-content: flex-start;
+        }
+    }
+
+    .tag-filter-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 20px;
+        background-color: #E8DCC8;  /* Light beige like goal.png */
+        color: var(--accent-color);
+        border: 1.5px solid var(--accent-color);
+        border-radius: var(--tag-border-radius);
+        font-size: 1.4rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        /* Remove default button styling */
+        font-family: inherit;
+        outline: none;
+
+        &:hover {
+            background-color: #DDD0BA;
+            border-color: var(--accent-color-darker);
+            transform: translateY(-2px);
+        }
+
+        /* Active state - dark brown bg with white text */
+        &.active {
+            background-color: var(--accent-color);
+            color: var(--accent-color-text);
+            border-color: var(--accent-color);
+
+            &:hover {
+                background-color: var(--accent-color-darker);
+                border-color: var(--accent-color-darker);
+                transform: translateY(-2px);
+            }
+        }
+
+        @include respond(md) {
+            padding: 10px 24px;
+            font-size: 1.5rem;
+        }
+    }
+}

@@ -1,6 +1,15 @@
 {{/* v0-style article card for 2-column grid */}}
 {{ $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" }}
-<article class="{{ if $image.exists }}has-image{{ end }}">
+{{ $tags := .Params.tags }}
+{{ $tagStr := "" }}
+{{ if $tags }}
+    {{ if reflect.IsSlice $tags }}
+        {{ $tagStr = delimit (apply $tags "urlize" ".") "," }}
+    {{ else }}
+        {{ $tagStr = $tags | urlize }}
+    {{ end }}
+{{ end }}
+<article class="{{ if $image.exists }}has-image{{ end }}" data-tags="{{ $tagStr }}">
     <a href="{{ .RelPermalink }}">
         {{/* Featured image */}}
         {{ if $image.exists }}
@@ -47,9 +56,9 @@
 
             {{/* Excerpt/Description - with line clamp */}}
             {{ with .Params.description }}
-            <p class="article-preview">{{ . }}</p>
+            <p class="article-preview">{{ . | plainify | truncate 150 }}</p>
             {{ else }}
-            <p class="article-preview">{{ .Summary }}</p>
+            <p class="article-preview">{{ .Summary | plainify | truncate 150 }}</p>
             {{ end }}
 
             {{/* Date and reading time */}}

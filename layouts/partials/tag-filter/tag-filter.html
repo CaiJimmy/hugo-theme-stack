@@ -1,0 +1,14 @@
+{{/* Tag filter bar - v0 style */}}
+{{ $allTags := .Site.Taxonomies.tags }}
+{{ if $allTags }}
+<div class="tag-filter-bar">
+    <div class="tag-filter-container">
+        <button class="tag-filter-pill active" data-tag="all">全部</button>
+        {{ range $name, $taxonomy := $allTags }}
+            {{ if ge (len $taxonomy.Pages) 3 }}
+                <button class="tag-filter-pill" data-tag="{{ $name | urlize }}">{{ $name }}</button>
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
