@@ -1,12 +1,8 @@
 {{- $pag := $.Paginator -}}
 {{- if gt $pag.TotalPages 1 -}}
-{{- /* 
-    Compatibility note: This template supports both old (.pagination-link) and new (.page-link) class names
-    for theme compatibility. The hugo-theme-stack v3 uses .page-link while older versions use .pagination-link.
-*/ -}}
 <nav class="pagination" role="navigation" aria-label="pagination">
     {{- /* Previous page button */ -}}
-    <a class="page-link pagination-link {{ if not $pag.Prev }}disabled{{ end }}"
+    <a class="page-link {{ if not $pag.Prev }}disabled{{ end }}"
         {{- if $pag.Prev -}}href="{{ $pag.Prev.URL }}" {{- end -}}
         aria-label="Previous page" 
         {{- if not $pag.Prev -}}aria-disabled="true"{{- end -}}>
@@ -19,7 +15,7 @@
     {{- $showLast := true -}}
 
     {{- /* First page */ -}}
-    <a class="page-link pagination-link {{ if eq $pag.PageNumber 1 }}current{{ end }}" aria-label="Page 1"
+    <a class="page-link {{ if eq $pag.PageNumber 1 }}current{{ end }}" aria-label="Page 1"
         {{- if eq $pag.PageNumber 1 -}}aria-current="page" {{- end -}}
         {{- if ne $pag.PageNumber 1 -}}href="{{ $pag.First.URL }}"{{- end -}}>
         1
@@ -36,7 +32,7 @@
     {{- range $pag.Pagers -}}
         {{- if and (gt .PageNumber 1) (lt .PageNumber $pag.TotalPages) -}}
             {{- if and (ge .PageNumber (sub $pag.PageNumber $window)) (le .PageNumber (add $pag.PageNumber $window)) -}}
-            <a class="page-link pagination-link {{ if eq .PageNumber $pag.PageNumber }}current{{ end }}"
+            <a class="page-link {{ if eq .PageNumber $pag.PageNumber }}current{{ end }}"
                 {{- if eq .PageNumber $pag.PageNumber -}}aria-current="page" {{- end -}} href="{{ .URL }}"
                 aria-label="Page {{ .PageNumber }}">
                 {{ .PageNumber }}
@@ -55,7 +51,7 @@
     {{- /* Last page (if more than 1 page total) */ -}}
 
     {{- if gt $pag.TotalPages 1 -}}
-    <a class="page-link pagination-link {{ if eq $pag.PageNumber $pag.TotalPages }}current{{ end }}"
+    <a class="page-link {{ if eq $pag.PageNumber $pag.TotalPages }}current{{ end }}"
         {{- if ne $pag.PageNumber $pag.TotalPages -}}href="{{ $pag.Last.URL }}" {{- end -}}
         aria-label="Page {{ $pag.TotalPages }}" 
         {{- if eq $pag.PageNumber $pag.TotalPages -}}aria-current="page"{{- end -}}>
@@ -64,7 +60,7 @@
     {{- end -}}
 
     {{- /* Next page button */ -}}
-    <a class="page-link pagination-link {{ if not $pag.Next }}disabled{{ end }}"
+    <a class="page-link {{ if not $pag.Next }}disabled{{ end }}"
         {{- if $pag.Next -}}href="{{ $pag.Next.URL }}" {{- end -}} 
         aria-label="Next page"
         {{- if not $pag.Next -}}aria-disabled="true"{{- end -}}>
