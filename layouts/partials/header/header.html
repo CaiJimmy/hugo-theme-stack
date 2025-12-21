@@ -1,0 +1,100 @@
+{{/* Fixed Top Navigation Header - v0 inspired */}}
+<header class="site-header">
+    <nav class="site-nav">
+        <div class="nav-container">
+            {{/* Site branding with avatar and name */}}
+            <a href="{{ .Site.BaseURL | relLangURL }}" class="site-brand">
+                {{- with .Site.Params.sidebar.avatar -}}
+                    {{- if (default true .enabled) -}}
+                        {{- $avatar := . -}}
+                        {{- if $avatar.local -}}
+                            {{ $avatarURL := print "img/" $avatar.src }}
+                            <img src="{{ $avatarURL | relURL }}" class="brand-avatar" alt="{{ .Site.Title }}" />
+                        {{- else -}}
+                            <img src="{{ $avatar.src | relURL }}" class="brand-avatar" alt="{{ .Site.Title }}" />
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+                <span class="brand-name">{{ .Site.Title }}</span>
+            </a>
+
+            {{/* Desktop Navigation Links */}}
+            <div class="nav-links">
+                {{- range .Site.Menus.main -}}
+                    {{- $url := .URL | relLangURL -}}
+                    <a href="{{ $url }}"
+                       class="nav-link {{ if $.IsMenuCurrent `main` . }}active{{ end }}"
+                       {{ if .Params.newTab }}target="_blank" rel="noopener"{{ end }}>
+                        {{ .Name }}
+                    </a>
+                {{- end -}}
+            </div>
+
+            {{/* Right section: Social links + Theme toggle + Mobile menu */}}
+            <div class="nav-actions">
+                {{/* Social links - desktop only */}}
+                {{- with .Site.Menus.social -}}
+                    <div class="nav-social">
+                        {{- range . -}}
+                            <a href="{{ .URL | safeURL }}"
+                               target="_blank"
+                               rel="me noopener"
+                               title="{{ .Name }}"
+                               class="social-link">
+                                {{ partial "helper/icon" (default "link" .Params.Icon) }}
+                            </a>
+                        {{- end -}}
+                    </div>
+                {{- end -}}
+
+                {{/* Theme toggle button */}}
+                {{- if (default false .Site.Params.colorScheme.toggle) -}}
+                    <button id="dark-mode-toggle"
+                            class="theme-toggle"
+                            aria-label="Toggle dark mode"
+                            title="{{ T `darkMode` }}">
+                        {{ partial "helper/icon" "moon" }}
+                        {{ partial "helper/icon" "sun" }}
+                    </button>
+                {{- end -}}
+
+                {{/* Mobile hamburger menu toggle */}}
+                <button class="mobile-menu-toggle"
+                        id="toggle-menu"
+                        aria-label="Toggle Menu"
+                        aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        {{/* Mobile menu dropdown */}}
+        <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+            {{- range .Site.Menus.main -}}
+                {{- $url := .URL | relLangURL -}}
+                <a href="{{ $url }}"
+                   class="mobile-nav-link {{ if $.IsMenuCurrent `main` . }}active{{ end }}">
+                    {{ .Name }}
+                </a>
+            {{- end -}}
+
+            {{/* Social links in mobile menu */}}
+            {{- with .Site.Menus.social -}}
+                <div class="mobile-social">
+                    {{- range . -}}
+                        <a href="{{ .URL | safeURL }}"
+                           target="_blank"
+                           rel="me noopener"
+                           title="{{ .Name }}"
+                           class="mobile-social-link">
+                            {{ partial "helper/icon" (default "link" .Params.Icon) }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                    {{- end -}}
+                </div>
+            {{- end -}}
+        </div>
+    </nav>
+</header>

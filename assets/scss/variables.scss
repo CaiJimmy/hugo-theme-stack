@@ -5,70 +5,81 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 *   Global style
 */
 :root {
-    --main-top-padding: 35px;
+    --main-top-padding: 80px;  /* Increased for fixed header */
 
     @include respond(xl) {
-        --main-top-padding: 50px;
+        --main-top-padding: 100px;
     }
 
-    --body-background: #f5f5fa;
+    /* v0-inspired color system - Light Mode */
+    --body-background: hsl(85, 40%, 96%);  /* Beige background from v0 */
+    --body-background-rgb: 242, 244, 236;  /* RGB for opacity usage */
 
-    --accent-color: #34495e;
-    --accent-color-darker: #2c3e50;
-    --accent-color-text: #fff;
-    --body-text-color: #707070;
+    --accent-color: hsl(85, 30%, 30%);  /* Neutral brownish from v0 */
+    --accent-color-rgb: 97, 102, 82;
+    --accent-color-darker: hsl(85, 30%, 25%);
+    --accent-color-text: hsl(85, 20%, 98%);
+    --body-text-color: hsl(85, 10%, 25%);
 
-    --tag-border-radius: 4px;
+    /* Pill-style tags (rounded-full) */
+    --tag-border-radius: 9999px;
 
-    --section-separation: 40px;
+    --section-separation: 48px;  /* More generous spacing like v0 */
 
     --scrollbar-thumb: hsl(0, 0%, 85%);
     --scrollbar-track: var(--body-background);
 
     &[data-scheme="dark"] {
-        --body-background: #303030;
-        --accent-color: #ecf0f1;
-        --accent-color-darker: #bdc3c7;
-        --accent-color-text: #000;
-        --body-text-color: rgba(255, 255, 255, 0.7);
+        /* v0-inspired color system - Dark Mode */
+        --body-background: hsl(265, 15%, 12%);  /* Deep blue-ish dark from v0 */
+        --body-background-rgb: 25, 23, 35;
+
+        --accent-color: hsl(240, 70%, 65%);  /* Bright blue from v0 */
+        --accent-color-rgb: 87, 122, 244;
+        --accent-color-darker: hsl(240, 70%, 70%);
+        --accent-color-text: hsl(0, 0%, 98%);
+        --body-text-color: hsl(265, 10%, 92%);
+
         --scrollbar-thumb: hsl(0, 0%, 40%);
         --scrollbar-track: var(--body-background);
     }
 }
 
 /**
-*   Global font family
+*   Global font family - v0 inspired
 */
 :root {
     --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
     --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
 
-    --base-font-family: "Lato", var(--sys-font-family), var(--zh-font-family), sans-serif;
-    --code-font-family: Menlo, Monaco, Consolas, "Courier New", var(--zh-font-family), monospace;
+    --base-font-family: "Inter", "Geist", var(--sys-font-family), var(--zh-font-family), sans-serif;
+    --code-font-family: "JetBrains Mono", "Geist Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /*
-*   Card style
+*   Card style - v0 inspired with Stack's excellent shadows
 */
 :root {
-    --card-background: #fff;
-    --card-background-selected: #eaeaea;
+    --card-background: hsl(85, 30%, 98%);  /* Slightly off-white with warm tone */
+    --card-background-rgb: 250, 251, 247;
+    --card-background-selected: hsl(85, 25%, 92%);
 
-    --card-text-color-main: #000;
-    --card-text-color-secondary: #747474;
-    --card-text-color-tertiary: #767676;
-    --card-separator-color: rgba(218, 218, 218, 0.5);
+    --card-text-color-main: hsl(85, 10%, 25%);
+    --card-text-color-secondary: hsl(85, 15%, 45%);
+    --card-text-color-tertiary: hsl(85, 10%, 60%);
+    --card-separator-color: hsl(85, 15%, 82%);
+    --card-separator-color-rgb: 209, 214, 203;
 
-    --card-border-radius: 10px;
+    --card-border-radius: 12px;  /* More rounded than original 10px */
 
     --card-padding: 20px;
 
     @include respond(md) {
-        --card-padding: 25px;
+        --card-padding: 24px;  /* v0 uses p-6 (24px) */
     }
 
     @include respond(xl) {
-        --card-padding: 30px;
+        --card-padding: 28px;
     }
 
     --small-card-padding: 25px 20px;
@@ -78,17 +89,20 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     }
 
     &[data-scheme="dark"] {
-        --card-background: #424242;
-        --card-background-selected: rgba(255, 255, 255, 0.16);
-        --card-text-color-main: rgba(255, 255, 255, 0.9);
-        --card-text-color-secondary: rgba(255, 255, 255, 0.7);
-        --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
-        --card-separator-color: rgba(255, 255, 255, 0.12);
+        --card-background: hsl(265, 10%, 15%);  /* Deep dark from v0 */
+        --card-background-rgb: 35, 34, 42;
+        --card-background-selected: hsl(265, 10%, 20%);
+
+        --card-text-color-main: hsl(265, 5%, 92%);
+        --card-text-color-secondary: hsl(265, 5%, 60%);
+        --card-text-color-tertiary: hsl(265, 5%, 45%);
+        --card-separator-color: hsl(265, 5%, 25%);
+        --card-separator-color-rgb: 61, 60, 68;
     }
 }
 
 /**
-*   Article content font settings
+*   Article content font settings - v0 inspired typography scale
 */
 :root {
     --article-font-family: var(--base-font-family);
@@ -99,6 +113,21 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     }
 
     --article-line-height: 1.85;
+
+    /* v0-style larger headings */
+    --heading-font-size-h1: 4.5rem;  /* text-5xl */
+    --heading-font-size-h2: 3.5rem;  /* text-4xl */
+    --heading-font-size-h3: 2.5rem;  /* text-3xl */
+    --heading-font-size-h4: 2rem;
+
+    @include respond(lg) {
+        --heading-font-size-h1: 5.5rem;  /* text-6xl */
+    }
+
+    @include respond(xl) {
+        --heading-font-size-h1: 6rem;  /* text-7xl on large screens */
+        --heading-font-size-h2: 3.75rem;
+    }
 }
 
 /*

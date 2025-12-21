@@ -1,72 +1,50 @@
-.container {
-    margin-left: auto;
-    margin-right: auto;
+/*
+*   Grid Layout - v0 inspired simplified layout
+*   No left sidebar, optional right sidebar for widgets
+*/
 
-    .left-sidebar {
-        order: -3;
-        max-width: var(--left-sidebar-max-width);
-    }
+.main-container {
+    max-width: 1280px;  /* v0-style max-width */
+    margin: 0 auto;
+    padding: var(--main-top-padding) var(--container-padding);
+    min-height: calc(100vh - 64px);  /* Account for fixed header */
 
-    .right-sidebar {
-        order: -1;
-        max-width: var(--right-sidebar-max-width);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--section-separation);
 
-        /// Display right sidebar when min-width: lg
+    /* With optional right sidebar for widgets */
+    &.has-sidebar {
         @include respond(lg) {
-            display: flex;
-        }
-    }
-
-    &.extended {
-        @include respond(md) {
-            max-width: 1024px;
-            --left-sidebar-max-width: 25%;
-            --right-sidebar-max-width: 30%;
-        }
-
-        @include respond(lg) {
-            max-width: 1280px;
-            --left-sidebar-max-width: 20%;
-            --right-sidebar-max-width: 30%;
-        }
-
-        @include respond(xl) {
-            max-width: 1536px;
-            --left-sidebar-max-width: 15%;
-            --right-sidebar-max-width: 25%;
-        }
-    }
-
-    &.compact {
-        @include respond(md) {
-            --left-sidebar-max-width: 25%;
-            max-width: 768px;
-        }
-
-        @include respond(lg) {
-            max-width: 1024px;
-            --left-sidebar-max-width: 20%;
-        }
-
-        @include respond(xl) {
-            max-width: 1280px;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
         }
     }
 }
 
+main.main-content,
+main.main {
+    min-width: 0;  /* Prevent grid blowout */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-separation);
+}
+
+.right-sidebar {
+    display: none;
+
+    @include respond(lg) {
+        display: block;
+    }
+}
+
+/* Utility classes */
 .flex {
     display: flex;
-    flex-direction: row;
 
     &.column {
         flex-direction: column;
-    }
-
-    &.on-phone--column {
-        flex-direction: column;
-        @include respond(md) {
-            flex-direction: unset;
-        }
     }
 
     .full-width {
@@ -74,28 +52,15 @@
     }
 }
 
-main.main {
-    order: -2;
-    min-width: 0;
-    max-width: 100%;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--section-separation);
+/* Container padding variable */
+:root {
+    --container-padding: 16px;
 
     @include respond(md) {
-        padding-top: var(--main-top-padding);
+        --container-padding: 24px;
     }
-}
 
-.main-container {
-    min-height: 100vh;
-    align-items: flex-start;
-    padding: 0 15px;
-    gap: var(--section-separation);
-    padding-top: var(--main-top-padding);
-    
-    @include respond(md) {
-        padding: 0 20px;
+    @include respond(lg) {
+        --container-padding: 32px;
     }
 }

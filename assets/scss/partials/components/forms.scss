@@ -1,0 +1,172 @@
+/*
+*   Form Elements - v0 inspired
+*/
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    appearance: none;
+    background-color: var(--card-background);
+    border: 1px solid rgba(var(--card-separator-color-rgb), 0.6);
+    border-radius: var(--card-border-radius);
+    padding: 12px 16px;
+    font-size: 1.4rem;
+    font-family: var(--base-font-family);
+    color: var(--card-text-color-main);
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        border-color: rgba(var(--card-separator-color-rgb), 0.8);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.1);
+    }
+
+    &::placeholder {
+        color: var(--card-text-color-tertiary);
+        opacity: 1;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: var(--card-background-selected);
+    }
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+select {
+    cursor: pointer;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--card-text-color-main);
+    }
+
+    .form-help {
+        margin-top: 6px;
+        font-size: 1.2rem;
+        color: var(--card-text-color-tertiary);
+    }
+}
+
+/* Checkbox and Radio */
+input[type="checkbox"],
+input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--card-separator-color);
+    background-color: var(--card-background);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &:checked {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+        }
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.1);
+    }
+}
+
+input[type="checkbox"] {
+    border-radius: 4px;
+
+    &:checked::after {
+        left: 5px;
+        top: 2px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+
+    &:checked::after {
+        left: 4px;
+        top: 4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: white;
+    }
+}
+
+/* Form validation states */
+.form-error,
+.form-success {
+    margin-top: 6px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-error {
+    color: hsl(0, 70%, 50%);
+}
+
+.form-success {
+    color: hsl(120, 50%, 40%);
+}
+
+input.error,
+textarea.error,
+select.error {
+    border-color: hsl(0, 70%, 50%);
+
+    &:focus {
+        box-shadow: 0 0 0 3px hsla(0, 70%, 50%, 0.1);
+    }
+}
+
+input.success,
+textarea.success,
+select.success {
+    border-color: hsl(120, 50%, 40%);
+
+    &:focus {
+        box-shadow: 0 0 0 3px hsla(120, 50%, 40%, 0.1);
+    }
+}

@@ -20,6 +20,46 @@ let Stack = {
          */
         menu();
 
+        /**
+         * v0-style mobile menu toggle
+         */
+        const menuToggle = document.getElementById('toggle-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('show');
+
+                menuToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+                mobileMenu.setAttribute('aria-hidden', isExpanded.toString());
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const target = e.target as HTMLElement;
+                if (!menuToggle.contains(target) && !mobileMenu.contains(target)) {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                });
+            });
+        }
+
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
             new StackGallery(articleContent);

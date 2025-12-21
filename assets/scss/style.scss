@@ -1,28 +1,45 @@
 /*!
-*   Hugo Theme Stack
+*   Hugo Theme Stack - v0 Redesign
 *
-*   @author: Jimmy Cai
+*   @author: Jimmy Cai (Original Stack Theme)
 *   @website: https://jimmycai.com
 *   @link: https://github.com/CaiJimmy/hugo-theme-stack
+*
+*   v0 redesign: Modern layout with fixed header navigation
 */
 
+/* 1. Core foundation */
 @import "breakpoints.scss";
-@import "variables.scss";
-@import "grid.scss";
+@import "variables.scss";  /* Updated with v0 colors */
+@import "grid.scss";  /* Simplified layout */
 
+/* 2. External dependencies */
 @import "external/normalize.scss";
 
-@import "partials/menu.scss";
-@import "partials/article.scss";
-@import "partials/widgets.scss";
-@import "partials/footer.scss";
-@import "partials/pagination.scss";
-@import "partials/sidebar.scss";
+/* 3. Base styles */
 @import "partials/base.scss";
+@import "general.scss";
+
+/* 4. v0-style components */
+@import "partials/header.scss";  /* NEW: Fixed top navigation */
+@import "partials/components/button.scss";  /* NEW: v0 buttons */
+@import "partials/components/forms.scss";  /* NEW: v0 form elements */
+
+/* 5. Layout components */
+@import "partials/article.scss";  /* Updated: 2-column grid */
+@import "partials/pagination.scss";  /* Updated: v0 style */
+@import "partials/footer.scss";
+@import "partials/widgets.scss";
+@import "partials/menu.scss";  /* Keep for mobile menu fallback */
+
+/* 6. Page-specific layouts */
 @import "partials/layout/article.scss";
 @import "partials/layout/list.scss";
 @import "partials/layout/404.scss";
 @import "partials/layout/search.scss";
 
-@import "general.scss";
+/* 7. Legacy sidebar - kept for backwards compatibility */
+/* @import "partials/sidebar.scss"; */  /* Disabled: using header now */
+
+/* 8. Custom user overrides */
 @import "custom.scss";

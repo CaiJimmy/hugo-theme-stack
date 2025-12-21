@@ -1,0 +1,292 @@
+/*
+*   Site Header - v0 inspired fixed top navigation
+*/
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    /* v0-style backdrop blur effect */
+    background-color: rgba(var(--body-background-rgb), 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(var(--card-separator-color-rgb), 0.4);
+
+    /* Fallback for browsers without backdrop-filter support */
+    @supports not (backdrop-filter: blur(12px)) {
+        background-color: var(--body-background);
+    }
+
+    .site-nav {
+        height: 64px;
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+    }
+
+    /* Site branding */
+    .site-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--accent-color);
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        flex-shrink: 0;
+
+        .brand-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            @include respond(md) {
+                display: inline;
+            }
+        }
+
+        &:hover {
+            color: var(--accent-color-darker);
+        }
+    }
+
+    /* Desktop navigation links */
+    .nav-links {
+        display: none;
+        gap: 2rem;
+        flex-grow: 1;
+        justify-content: center;
+
+        @include respond(md) {
+            display: flex;
+        }
+
+        .nav-link {
+            color: var(--card-text-color-secondary);
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 4px 0;
+
+            &:hover,
+            &.active {
+                color: var(--card-text-color-main);
+            }
+
+            /* Underline effect for active link */
+            &.active::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: var(--accent-color);
+                border-radius: 2px;
+            }
+        }
+    }
+
+    /* Right actions section */
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-shrink: 0;
+
+        .nav-social {
+            display: none;
+            gap: 1rem;
+
+            @include respond(md) {
+                display: flex;
+            }
+
+            .social-link {
+                color: var(--card-text-color-secondary);
+                transition: color 0.3s ease;
+                display: flex;
+                align-items: center;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    stroke-width: 1.5;
+                }
+
+                &:hover {
+                    color: var(--card-text-color-main);
+                }
+            }
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--card-text-color-secondary);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke-width: 1.5;
+            }
+
+            /* Hide sun icon by default */
+            .icon-sun {
+                display: none;
+            }
+
+            /* Show sun icon in dark mode */
+            [data-scheme="dark"] & {
+                .icon-sun {
+                    display: block;
+                }
+                .icon-moon {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                background-color: var(--card-background-selected);
+                color: var(--card-text-color-main);
+            }
+        }
+    }
+
+    /* Mobile menu toggle (hamburger) */
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+
+        @include respond(md) {
+            display: none;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 2px;
+            background-color: var(--card-text-color-main);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        &:hover {
+            background-color: var(--card-background-selected);
+        }
+
+        /* Hamburger animation when active */
+        &.active {
+            .hamburger-line:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+            }
+            .hamburger-line:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger-line:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+            }
+        }
+    }
+
+    /* Mobile menu dropdown */
+    .mobile-menu {
+        display: none;
+        background-color: var(--card-background);
+        border-bottom: 1px solid rgba(var(--card-separator-color-rgb), 0.4);
+        padding: 1rem var(--container-padding);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        &.show {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 500px;
+            padding: 1rem var(--container-padding);
+        }
+
+        @include respond(md) {
+            display: none !important;
+        }
+
+        .mobile-nav-link {
+            padding: 12px 16px;
+            color: var(--card-text-color-main);
+            font-size: 1.6rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+
+            &:hover,
+            &.active {
+                background-color: var(--card-background-selected);
+                color: var(--accent-color);
+            }
+        }
+
+        /* Mobile social links */
+        .mobile-social {
+            display: flex;
+            gap: 1rem;
+            padding: 12px 16px;
+            margin-top: 8px;
+            border-top: 1px solid rgba(var(--card-separator-color-rgb), 0.4);
+
+            .mobile-social-link {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: var(--card-text-color-secondary);
+                font-size: 1.4rem;
+                text-decoration: none;
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                &:hover {
+                    color: var(--card-text-color-main);
+                }
+            }
+        }
+    }
+}
+
+/* Add top padding to body to account for fixed header */
+body {
+    padding-top: 64px;
+}

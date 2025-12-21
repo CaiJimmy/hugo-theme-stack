@@ -1,50 +1,68 @@
+/*
+*   Pagination - v0 inspired style
+*/
 .pagination {
     display: flex;
-    background-color: var(--card-background);
-    box-shadow: var(--shadow-l1);
-    border-radius: var(--card-border-radius);
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 48px;  /* v0-style generous spacing */
+    flex-wrap: wrap;
 
-    .page-link {
-        padding: 16px 0;
-        margin: 0;
-        border-radius: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1 1 auto;
-        min-width: 48px;
-        color: var(--card-text-color-secondary);
-        text-decoration: none;
+    .page-item {
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--card-text-color-secondary);
+            background-color: transparent;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
 
-        &:first-child,
-        &:last-child {
-            flex: 0 0 48px;
-            padding: 16px;
+            &:hover {
+                color: var(--accent-color);
+                background-color: rgba(var(--accent-color-rgb), 0.1);
+                border-color: rgba(var(--accent-color-rgb), 0.2);
+            }
         }
 
-        &:hover:not(.current):not(.disabled) {
-            background-color: var(--card-background-selected);
-            opacity: 0.8;
+        /* Current/active page */
+        &.active .page-link,
+        .page-link.current {
+            background-color: var(--accent-color);
+            color: var(--accent-color-text);
+            font-weight: 600;
+            border-color: var(--accent-color);
+
+            &:hover {
+                background-color: var(--accent-color-darker);
+                border-color: var(--accent-color-darker);
+            }
         }
 
-        &.current {
-            background-color: var(--card-background-selected);
-            color: var(--card-text-color-main);
-            font-weight: bold;
-            cursor: default;
-        }
-
-        &.disabled {
-            opacity: 0.3;
+        /* Disabled state */
+        &.disabled .page-link {
+            opacity: 0.5;
             cursor: not-allowed;
             pointer-events: none;
-            color: var(--card-text-color-secondary);
         }
 
-        svg {
-            width: 20px;
-            height: 20px;
+        /* Previous/Next arrows */
+        &.page-item-prev,
+        &.page-item-next {
+            .page-link {
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
         }
     }
 }
