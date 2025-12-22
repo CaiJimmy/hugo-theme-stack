@@ -38,6 +38,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        letter-spacing: -0.02em;  /* Tighter spacing for better Chinese character rendering */
     }
 }
 
