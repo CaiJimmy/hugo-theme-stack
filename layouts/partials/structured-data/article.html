@@ -11,6 +11,26 @@
 
 {{- $authorName := .Site.Author.name | default .Site.Title -}}
 {{- $authorURL := .Site.Author.homepage | default .Site.BaseURL -}}
+{{- $authorImage := "" -}}
+{{- with .Site.Author.image }}
+    {{- $authorImage = . | absURL -}}
+{{- end }}
+
+{{- $keywords := slice -}}
+{{- with .Params.tags }}{{ $keywords = $keywords | append . }}{{ end -}}
+{{- with .Params.categories }}{{ $keywords = $keywords | append . }}{{ end -}}
+
+{{- $articleSection := "" -}}
+{{- with .Params.categories }}
+    {{- $articleSection = index . 0 -}}
+{{- end }}
+
+{{- $timeRequired := "" -}}
+{{- with .ReadingTime }}
+    {{- $timeRequired = printf "PT%dM" . -}}
+{{- end }}
+
+{{- $inLanguage := .Site.LanguageCode | default .Site.Language.Lang -}}
 
 {{- $publisherLogo := "" -}}
 {{- with .Site.Params.logo -}}
@@ -28,16 +48,32 @@
         "@id": {{ .Permalink | jsonify }}
     },
     "headline": {{ .Title | jsonify }},
+    {{- with $inLanguage }}
+    "inLanguage": {{ . | jsonify }},
+    {{- end }}
     "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
     {{- with $image }}
     "image": {{ . | jsonify }},
+    {{- end }}
+    {{- with $keywords }}
+    "keywords": {{ . | jsonify }},
+    {{- end }}
+    {{- with $articleSection }}
+    "articleSection": {{ . | jsonify }},
+    {{- end }}
+    "wordCount": {{ .WordCount }},
+    {{- with $timeRequired }}
+    "timeRequired": {{ . | jsonify }},
     {{- end }}
     "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
     "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
     "author": {
         "@type": "Person",
         "name": {{ $authorName | jsonify }},
-        "url": {{ $authorURL | jsonify }}
+        "url": {{ $authorURL | jsonify }}{{- if $authorImage }},{{- end }}
+        {{- with $authorImage }}
+        "image": {{ . | jsonify }}
+        {{- end }}
     },
     "publisher": {
         "@type": "Organization",

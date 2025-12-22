@@ -3,7 +3,7 @@
     {{/* If toggle is disabled, force default scheme */}}
     <script>
         (function() {
-            const colorSchemeKey = 'StackColorScheme';
+            const colorSchemeKey = 'FriedRiceColorScheme';
             localStorage.setItem(colorSchemeKey, "{{ $defaultColorScheme }}");
         })();
     </script>
@@ -11,7 +11,7 @@
     {{/* Otherwise set to default scheme only if no preference is set by user */}}
     <script>
         (function() {
-            const colorSchemeKey = 'StackColorScheme';
+            const colorSchemeKey = 'FriedRiceColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
                 localStorage.setItem(colorSchemeKey, "{{ $defaultColorScheme }}");
             }
@@ -21,7 +21,7 @@
 
 <script>
     (function() {
-        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeKey = 'FriedRiceColorScheme';
         const colorSchemeItem = localStorage.getItem(colorSchemeKey);
         const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
