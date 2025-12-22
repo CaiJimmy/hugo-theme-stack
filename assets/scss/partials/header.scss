@@ -142,10 +142,11 @@
 
             /* RSS link specific styling */
             .rss-link {
-                padding: 0;
+                padding: 0 !important;
+                background-color: transparent !important;
 
                 &:hover {
-                    background-color: transparent;
+                    background-color: transparent !important;
                     transform: translateY(-2px);
                 }
             }
