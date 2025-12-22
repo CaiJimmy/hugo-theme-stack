@@ -1,9 +1,10 @@
 /*!
-*   Hugo Theme Stack
+*   Fried Rice Theme (based on Hugo Theme Stack)
 *
-*   @author: Jimmy Cai
-*   @website: https://jimmycai.com
-*   @link: https://github.com/CaiJimmy/hugo-theme-stack
+*   @original-author: Jimmy Cai
+*   @author: svtter
+*   @website: https://svtter.cn
+*   @link: https://github.com/Svtter/Fried-Rice
 */
 import StackGallery from "ts/gallery";
 import { getColor } from 'ts/color';

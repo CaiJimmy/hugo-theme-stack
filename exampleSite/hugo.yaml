@@ -1,6 +1,6 @@
 baseurl: https://example.com/
 languageCode: en-us
-theme: hugo-theme-stack
+theme: fried-rice
 title: Example Site
 copyright: Example Person
 
@@ -42,7 +42,7 @@ services:
         shortname: "hugo-theme-stack"
     # GA Tracking ID
     googleAnalytics:
-        id:
+        id: ""
 
 pagination:
     pagerSize: 3
@@ -73,6 +73,11 @@ params:
             enabled: true
             local: true
             src: img/avatar.png
+
+    author:
+        name: Example Author
+        homepage: https://example.com
+        image: img/author.jpg
 
     article:
         math: false
@@ -165,7 +170,7 @@ params:
 
         cusdis:
             host:
-            id:
+        id: ""
     widgets:
         homepage:
             - type: search
@@ -217,7 +222,7 @@ menu:
     social:
         - identifier: github
           name: GitHub
-          url: https://github.com/CaiJimmy/hugo-theme-stack
+          url: https://github.com/Svtter/Fried-Rice
           params:
               icon: brand-github
 
