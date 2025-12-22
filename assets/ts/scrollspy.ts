@@ -32,9 +32,11 @@ function buildIdToNavigationElementMap(navigation: NodeListOf<Element>): IdToEle
     const sectionLinkRef: IdToElementMap = {};
     navigation.forEach((navigationElement: HTMLElement) => {
         const link = navigationElement.querySelector("a");
-        const href = link.getAttribute("href");
-        if (href.startsWith("#")) {
-            sectionLinkRef[href.slice(1)] = navigationElement;
+        if (link) {
+            const href = link.getAttribute("href");
+            if (href.startsWith("#")) {
+                sectionLinkRef[href.slice(1)] = navigationElement;
+            }
         }
     });
 
@@ -123,6 +125,13 @@ function setupScrollspy() {
     function resizeHandler() {
         sectionsOffsets = computeOffsets(headers);
         scrollHandler();
+    }
+
+    // Use ResizeObserver to detect changes in the size of .article-content
+    const articleContent = document.querySelector(".article-content");
+    if (articleContent) {
+        const resizeObserver = new ResizeObserver(debounced(resizeHandler));
+        resizeObserver.observe(articleContent);
     }
 
     window.addEventListener("resize", debounced(resizeHandler));
