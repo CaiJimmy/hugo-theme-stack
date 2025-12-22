@@ -111,6 +111,28 @@
         gap: 1.5rem;
         flex-shrink: 0;
 
+        /* Social link styles - applies to all social links */
+        .social-link {
+            color: var(--card-text-color-secondary);
+            background: transparent;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke-width: 1.5;
+            }
+
+            &:hover {
+                color: var(--card-text-color-main);
+                background-color: var(--card-background-selected);
+            }
+        }
+
         .nav-social {
             display: none;
             gap: 1rem;
@@ -118,28 +140,6 @@
             @include respond(md) {
                 display: flex;
             }
-
-            .social-link {
-                color: var(--card-text-color-secondary);
-                background: transparent;
-                transition: color 0.3s ease;
-                display: flex;
-                align-items: center;
-                padding: 8px;
-                border-radius: 8px;
-
-                svg {
-                    width: 20px;
-                    height: 20px;
-                    stroke-width: 1.5;
-                }
-
-                &:hover {
-                    color: var(--card-text-color-main);
-                    background-color: var(--card-background-selected);
-                }
-            }
-
         }
 
         /* Theme toggle button */
