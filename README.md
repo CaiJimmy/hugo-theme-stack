@@ -21,6 +21,13 @@ A warm, modern Hugo theme with earth-tone colors and flat design philosophy. Bas
 ### 🔍 SEO & Performance
 - Complete Open Graph support (Facebook, Twitter Cards)
 - Canonical URLs and proper meta tags
+- Enhanced Article/BlogPosting schema.org structured data with:
+  - **keywords**: Merged from tags and categories
+  - **articleSection**: Uses first category
+  - **wordCount**: Built-in Hugo word count
+  - **timeRequired**: Reading time in ISO 8601 format
+  - **inLanguage**: Site language code
+  - **author image**: Configurable author avatar
 - RSS/Atom feeds
 - Google Analytics integration
 - Sitemap generation
@@ -101,6 +108,7 @@ To enable newsletter subscription in the hero section, edit `layouts/partials/he
 | TOC | In-content | Sticky sidebar |
 | Header Icons | Toggle icons | Sun/moon + RSS |
 | Articles per Page | 5 | 6 |
+| Article Schema | Basic implementation | Enhanced with keywords, word count, reading time, and language support |
 
 ## 🛠️ Development
 
@@ -133,6 +141,12 @@ hugo --minify --gc
 Visit [svtter.cn](https://svtter.cn) to see Fried Rice in action.
 
 ## 📝 Version History
+
+- **v0.1.2** (2025-12-22)
+  - Enhanced Article/BlogPosting schema.org SEO with missing fields (keywords, articleSection, wordCount, timeRequired, inLanguage)
+  - Added author image support for schema.org
+  - Updated theme branding from Stack to Fried Rice
+  - Fixed exampleSite configuration and YAML syntax
 
 - **v0.1.1** (2025-12-22)
   - Initial release based on Stack theme
