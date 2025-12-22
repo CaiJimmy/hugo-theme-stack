@@ -1,3 +1,29 @@
-{{ if .Site.Services.googleAnalytics }}
-{{ template "_internal/google_analytics.html" . }}
+{{ $gaID := "" }}
+{{ with .Site.Config.Services.GoogleAnalytics.ID }}
+  {{ $gaID = . }}
+{{ else }}
+  {{ with .Site.Config.GoogleAnalytics }}
+    {{ $gaID = . }}
+  {{ end }}
 {{ end }}
+
+{{ if and $gaID (not .Site.Config.Privacy.GoogleAnalytics.Disable) }}
+  {{- if strings.HasPrefix (lower $gaID) "ua-" }}
+    {{- warnf "Google Analytics 4 (GA4) replaced Google Universal Analytics (UA) effective 1 July 2023. See https://support.google.com/analytics/answer/11583528. Create a GA4 property and data stream, then replace the Google Analytics ID in your site configuration with the new value." }}
+  {{- else }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $gaID }}"></script>
+    <script>
+      var doNotTrack = false;
+      if ({{ .Site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack | default false }}) {
+        var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+        var doNotTrack = (dnt == "1" || dnt == "yes");
+      }
+      if (!doNotTrack) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ $gaID }}');
+      }
+    </script>
+  {{- end }}
+{{- end -}}
