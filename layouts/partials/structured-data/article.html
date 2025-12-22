@@ -1,0 +1,52 @@
+{{- if .IsPage -}}
+{{- $image := "" -}}
+{{- with .Params.image -}}
+    {{- $image = . | absURL -}}
+{{- else -}}
+    {{- $imageData := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" -}}
+    {{- if $imageData.exists -}}
+        {{- $image = $imageData.permalink | absURL -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $authorName := .Site.Author.name | default .Site.Title -}}
+{{- $authorURL := .Site.Author.homepage | default .Site.BaseURL -}}
+
+{{- $publisherLogo := "" -}}
+{{- with .Site.Params.logo -}}
+    {{- $publisherLogo = . | absURL -}}
+{{- else -}}
+    {{- $publisherLogo = "/img/avatar.png" | absURL -}}
+{{- end -}}
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ .Permalink | jsonify }}
+    },
+    "headline": {{ .Title | jsonify }},
+    "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+    {{- with $image }}
+    "image": {{ . | jsonify }},
+    {{- end }}
+    "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+    "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+    "author": {
+        "@type": "Person",
+        "name": {{ $authorName | jsonify }},
+        "url": {{ $authorURL | jsonify }}
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": {{ .Site.Title | jsonify }},
+        "logo": {
+            "@type": "ImageObject",
+            "url": {{ $publisherLogo | jsonify }}
+        }
+    }
+}
+</script>
+{{- end -}}
