@@ -1,3 +1,3 @@
-module github.com/CaiJimmy/hugo-theme-stack/v3
+module github.com/Svtter/Fried-Rice
 
 go 1.17
