@@ -48,10 +48,12 @@
 
 .subsection-list {
     overflow-x: auto;
+    margin-left: -24px;
 
     .article-list--tile {
         display: flex;
-        padding-bottom: 15px;
+        padding: 8px 0 34px 24px;
+        width: max-content;
 
         article {
             width: 250px;
