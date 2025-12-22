@@ -36,7 +36,7 @@
             const wrongUrl = new URL(window.location.href);
 
             /// Get the search keyword from the wrong URL by removing all slashes and dashes
-            const searchKeyword = wrongUrl.pathname.split(/[/|-]/).join(' ').trim();
+            const searchKeyword = decodeURIComponent(wrongUrl.pathname).split(/[/|-]/).join(' ').trim();
 
             document.getElementById('searchInput').setAttribute('value', searchKeyword);
         </script>

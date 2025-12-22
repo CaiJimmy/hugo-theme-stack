@@ -1,20 +1,26 @@
 {{- $host := default "https://cusdis.com" .Site.Params.comments.cusdis.host -}}
-<div id="cusdis_thread"
-    data-host="{{ $host }}"
-    data-app-id="{{ .Site.Params.comments.cusdis.id }}"
-    data-page-id="{{ .File.UniqueID }}"
-    data-page-url="{{ .Permalink }}"
-    data-page-title="{{ .Title }}"></div>
+<div id="cusdis_thread" data-host="{{ $host }}" data-app-id="{{ .Site.Params.comments.cusdis.id }}"
+    data-page-id="{{ .File.UniqueID }}" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}"></div>
 <script async defer src="{{ $host }}/js/cusdis.es.js"></script>
 
 <script>
     function setCusdisTheme(theme) {
         let cusdis = document.querySelector('#cusdis_thread iframe');
         if (cusdis) {
-            window.CUSDIS.setTheme(theme)
+            window.CUSDIS.setTheme(theme);
+            cusdis.contentWindow.document.body.style.backgroundColor = window.getComputedStyle(document.body).backgroundColor;
         }
     }
-
+    window.addEventListener('load', function () {
+        let iframe = document.querySelector("#cusdis_thread iframe");
+        if (iframe) {
+            let observer = new MutationObserver(() => {
+                let scrollHeight = iframe.contentWindow.document.body.scrollHeight;
+                iframe.style.height = scrollHeight + "px";
+            });
+            observer.observe(iframe.contentWindow.document.body, { childList: true, subtree: true });
+        }
+    });
     window.addEventListener('onColorSchemeChange', (e) => {
         setCusdisTheme(e.detail)
     })
