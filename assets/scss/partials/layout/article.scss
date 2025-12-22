@@ -83,13 +83,9 @@
 }
 
 .widget--toc {
-    background-color: var(--card-background);
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--shadow-l1);
-    display: flex;
-    flex-direction: column;
-    color: var(--card-text-color-main);
+    /* Styles inherited from .widget */
     overflow: hidden;
+    padding: 0;  /* TOC has its own padding */
 
     ::-webkit-scrollbar-thumb {
         background-color: var(--card-separator-color);
@@ -97,7 +93,8 @@
 
     #TableOfContents {
         overflow-x: auto;
-        max-height: 75vh;
+        max-height: 70vh;
+        padding: var(--card-padding);
 
         ol,
         ul {
@@ -122,27 +119,43 @@
         }
 
         li {
-            margin: 15px 0 15px 20px;
-            padding: 5px;
+            margin: 8px 0;
+            padding: 0;
+            line-height: 1.6;
+
+            a {
+                color: var(--card-text-color-secondary);
+                text-decoration: none;
+                transition: color 0.3s ease;
+                display: block;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 1.4rem;
+
+                &:hover {
+                    color: var(--accent-color);
+                    background-color: rgba(var(--accent-color-rgb), 0.05);
+                }
+            }
 
             & > ol,
             & > ul {
-                margin-top: 10px;
-                padding-left: 10px;
-                margin-bottom: -5px;
+                margin-top: 8px;
+                padding-left: 16px;
+                margin-bottom: 0;
 
                 & > li:last-child {
                     margin-bottom: 0;
                 }
             }
         }
-        li.active-class > a {
-            border-left: var(--heading-border-size) solid var(--accent-color);
-            font-weight: bold;
-        }
 
-        ul li.active-class > a {
-            display: block;
+        li.active-class > a {
+            color: var(--accent-color);
+            background-color: rgba(var(--accent-color-rgb), 0.1);
+            font-weight: 600;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 12px;
         }
 
         @function repeat($str, $n) {

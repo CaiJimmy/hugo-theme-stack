@@ -1,14 +1,43 @@
+/* Sidebar container */
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--widget-separation);
+
+    &.sticky {
+        position: sticky;
+        top: calc(64px + var(--main-top-padding));  /* Fixed header height + padding */
+        align-self: flex-start;
+        max-height: calc(100vh - 64px - var(--main-top-padding) - 40px);
+        overflow-y: auto;
+    }
+}
+
 .widget {
     display: flex;
     flex-direction: column;
+    background-color: var(--card-background);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-l1);
 
     .widget-icon {
         svg {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             stroke-width: 1.6;
-            color: var(--body-text-color);
+            color: var(--accent-color);
         }
+    }
+
+    .widget-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--card-text-color-main);
+        margin: 0 0 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 }
 

@@ -10,11 +10,14 @@
         {{/* v0-style fixed top header navigation */}}
         {{- partial "header/header.html" . -}}
 
-        {{/* Simplified main container - v0 style single column */}}
-        <div class="main-container">
+        {{/* Main container - supports optional sidebar */}}
+        <div class="main-container {{ block `container-class` . }}{{ end }}">
             <main class="main-content">
                 {{- block "main" . }}{{- end }}
             </main>
+
+            {{/* Right sidebar - for article pages with TOC */}}
+            {{- block "right-sidebar" . }}{{- end }}
         </div>
 
         {{/* Footer at the bottom */}}
