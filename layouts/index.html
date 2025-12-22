@@ -9,11 +9,6 @@
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $pag := .Paginate ($filtered) }}
 
-    {{/* Tag filter bar - only on first page */}}
-    {{ if eq .Paginator.PageNumber 1 }}
-        {{ partial "tag-filter/tag-filter.html" . }}
-    {{ end }}
-
     {{/* Article list section header */}}
     <div class="article-list-header">
         <h2 class="section-title">最新文章</h2>
