@@ -1,0 +1,39 @@
+{{- if .Site.Params.seo.performanceHints | default true -}}
+    {{- $domains := slice -}}
+    
+    {{- /* CDN domains from external.yaml */ -}}
+    {{- $domains = $domains | append "https://cdn.jsdelivr.net" -}}
+    {{- $domains = $domains | append "https://latest.cactus.chat" -}}
+    
+    {{- /* Google Fonts */ -}}
+    {{- $domains = $domains | append "https://fonts.googleapis.com" -}}
+    {{- $domains = $domains | append "https://fonts.gstatic.com" -}}
+    
+    {{- /* Comment providers - add domains based on configured provider */ -}}
+    {{- with .Site.Params.comments.provider -}}
+        {{- if eq . "disqus" -}}
+            {{- $domains = $domains | append "https://c.disquscdn.com" -}}
+        {{- else if eq . "waline" -}}
+            {{- /* Waline uses custom serverURL, can't preconnect generically */ -}}
+        {{- else if eq . "twikoo" -}}
+            {{- /* Twikoo uses various cloudbase domains */ -}}
+            {{- $domains = $domains | append "https://twnic.twikoo.cc" -}}
+        {{- else if eq . "giscus" -}}
+            {{- $domains = $domains | append "https://giscus.app" -}}
+        {{- else if eq . "utterances" -}}
+            {{- $domains = $domains | append "https://utteranc.es" -}}
+        {{- end -}}
+    {{- end -}}
+    
+    {{- /* Additional domains from custom configuration */ -}}
+    {{- with .Site.Params.seo.preconnectDomains -}}
+        {{- range . -}}
+            {{- $domains = $domains | append . -}}
+        {{- end -}}
+    {{- end -}}
+    
+    {{- range $domains | uniq -}}
+        <link rel="preconnect" href="{{ . }}" crossorigin>
+        <link rel="dns-prefetch" href="{{ . }}">
+    {{- end -}}
+{{- end -}}

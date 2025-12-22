@@ -1,0 +1,25 @@
+{{- $breadcrumbs := slice -}}
+{{- $position := 1 -}}
+
+{{- /* Add homepage */ -}}
+{{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" .Site.Title "item" .Site.Home.Permalink) -}}
+{{- $position = add $position 1 -}}
+
+{{- /* Add ancestors */ -}}
+{{- range .Ancestors.Reverse -}}
+    {{- if not .IsHome -}}
+        {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" .Title "item" .Permalink) -}}
+        {{- $position = add $position 1 -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Add current page */ -}}
+{{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" .Title "item" .Permalink) -}}
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": {{ $breadcrumbs | jsonify }}
+}
+</script>

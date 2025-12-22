@@ -142,6 +142,16 @@ params:
         # Available values: auto, light, dark
         default: auto
 
+    seo:
+        # Enable JSON-LD structured data (Article, BreadcrumbList)
+        structuredData: true
+        
+        # Enable performance hints (preconnect, dns-prefetch)
+        performanceHints: true
+        
+        # Additional domains for preconnect/dns-prefetch
+        preconnectDomains: []
+
     imageProcessing:
         cover:
             enabled: true

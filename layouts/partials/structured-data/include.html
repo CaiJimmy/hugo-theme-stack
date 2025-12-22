@@ -1,0 +1,6 @@
+{{- if .Site.Params.seo.structuredData | default true -}}
+    {{- if .IsPage -}}
+        {{- partial "structured-data/article" . -}}
+    {{- end -}}
+    {{- partial "structured-data/breadcrumb" . -}}
+{{- end -}}
