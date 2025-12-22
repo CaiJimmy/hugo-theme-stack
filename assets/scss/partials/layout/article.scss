@@ -83,13 +83,8 @@
 }
 
 .widget--toc {
-    /* Styles inherited from .widget */
+    /* Styles inherited from .widget (including padding) */
     overflow: hidden;
-    padding: var(--card-padding);  /* Keep widget padding */
-
-    .widget-title {
-        margin-top: 0;  /* Remove extra top margin */
-    }
 
     ::-webkit-scrollbar-thumb {
         background-color: var(--card-separator-color);
@@ -98,6 +93,7 @@
     #TableOfContents {
         overflow-x: auto;
         max-height: 70vh;
+        padding: 0 4px;  /* Small horizontal padding to prevent text clipping */
 
         ol,
         ul {
@@ -125,6 +121,9 @@
                 border-radius: 6px;
                 font-size: 1.5rem;
                 font-weight: 500;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
 
                 &:hover {
                     color: var(--accent-color);
@@ -167,31 +166,7 @@
             background-color: rgba(var(--accent-color-rgb), 0.1);
             font-weight: 600;
             border-left: 3px solid var(--accent-color);
-            padding-left: 12px;
-        }
-
-        @function repeat($str, $n) {
-            $result: "";
-            @for $_ from 0 to $n {
-                $result: $result + $str;
-            }
-            @return $result;
-        }
-
-        // Support up to 6 levels of indentation for lists in ToCs
-        @for $i from 0 to 5 {
-            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
-                $n: 25 + $i * 35;
-                margin-left: calc(-#{$n}px - 1em);
-                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
-            }
-
-            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
-                $n: 9 + $i * 35;
-                margin-left: calc(-#{$n}px - 1em);
-                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
-                display: block;
-            }
+            padding-left: 9px;  /* 12px - 3px border */
         }
     }
 }
