@@ -36,6 +36,16 @@
                     </div>
                 {{- end -}}
 
+                {{/* RSS link */}}
+                <a href="{{ "index.xml" | relLangURL }}"
+                   target="_blank"
+                   rel="alternate"
+                   type="application/rss+xml"
+                   title="RSS"
+                   class="social-link rss-link">
+                    {{ partial "helper/icon" "rss" }}
+                </a>
+
                 {{/* Theme toggle button */}}
                 {{- if (default false .Site.Params.colorScheme.toggle) -}}
                     <button id="dark-mode-toggle"

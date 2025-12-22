@@ -92,4 +92,79 @@
             font-size: 1.5rem;
         }
     }
+
+    /* Newsletter subscription in hero */
+    .hero-newsletter {
+        margin-top: 48px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .newsletter-description {
+            font-size: 1.6rem;
+            color: var(--card-text-color-secondary);
+            margin: 0 0 20px;
+            font-weight: 500;
+
+            @include respond(md) {
+                font-size: 1.7rem;
+            }
+        }
+
+        .hero-newsletter-form {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+
+            @include respond(md) {
+                flex-direction: row;
+            }
+
+            .newsletter-email {
+                flex: 1;
+                padding: 14px 18px;
+                border: 2px solid var(--card-separator-color);
+                border-radius: var(--card-border-radius);
+                background: var(--card-background);
+                color: var(--card-text-color-main);
+                font-size: 1.5rem;
+                font-family: var(--base-font-family);
+                transition: all 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--accent-color);
+                    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.1);
+                }
+
+                &::placeholder {
+                    color: var(--card-text-color-tertiary);
+                }
+            }
+
+            .newsletter-submit {
+                padding: 14px 32px;
+                background: var(--accent-color);
+                color: var(--accent-color-text);
+                border: none;
+                border-radius: var(--card-border-radius);
+                cursor: pointer;
+                white-space: nowrap;
+                font-size: 1.5rem;
+                font-weight: 600;
+                font-family: var(--base-font-family);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background: var(--accent-color-darker);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.3);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
 }

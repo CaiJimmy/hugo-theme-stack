@@ -35,5 +35,16 @@
             <span class="hero-topic-pill">技术写作</span>
         </div>
         {{ end }}
+
+        {{/* Newsletter subscription */}}
+        <div class="hero-newsletter">
+            <p class="newsletter-description">📧 订阅获取最新文章推送</p>
+            <form action="https://listmonk.sun-praise.com/subscription/form" method="post" target="_blank" class="hero-newsletter-form">
+                <input type="email" name="email" placeholder="输入您的邮箱地址" required class="newsletter-email">
+                <input type="hidden" name="name" value="博客订阅者">
+                <input type="hidden" name="l" value="2a31a56c-7fc2-47a5-a6f7-4e6556946ed3">
+                <button type="submit" class="newsletter-submit">订阅</button>
+            </form>
+        </div>
     </div>
 </section>

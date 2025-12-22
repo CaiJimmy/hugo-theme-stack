@@ -139,6 +139,16 @@
                     background-color: var(--card-background-selected);
                 }
             }
+
+            /* RSS link specific styling */
+            .rss-link {
+                padding: 0;
+
+                &:hover {
+                    background-color: transparent;
+                    transform: translateY(-2px);
+                }
+            }
         }
 
         /* Theme toggle button */
@@ -167,16 +177,16 @@
             }
 
             /* Hide moon icon in light mode by default */
-            .icon-moon {
+            .icon-tabler-moon {
                 display: none;
             }
 
             /* Show moon in dark mode, hide sun */
             [data-scheme="dark"] & {
-                .icon-moon {
+                .icon-tabler-moon {
                     display: block;
                 }
-                .icon-sun {
+                .icon-tabler-sun {
                     display: none;
                 }
             }

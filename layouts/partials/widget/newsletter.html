@@ -1,0 +1,98 @@
+<div class="widget newsletter">
+    <div class="widget-header">
+        <h3 class="widget-title">
+            📧 订阅博客更新
+        </h3>
+    </div>
+    <div class="widget-body">
+        <p>获取最新文章推送</p>
+        <form action="https://listmonk.sun-praise.com/subscription/form" method="post" target="_blank" class="newsletter-form">
+            <input type="email" name="email" placeholder="输入您的邮箱地址" required class="newsletter-email">
+            <input type="hidden" name="name" value="博客订阅者">
+            <input type="hidden" name="l" value="2a31a56c-7fc2-47a5-a6f7-4e6556946ed3">
+            <button type="submit" class="newsletter-submit">订阅</button>
+        </form>
+    </div>
+</div>
+
+<style>
+.newsletter .newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.newsletter .newsletter-email {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-background);
+    color: var(--body-text-color);
+    font-size: 14px;
+}
+
+.newsletter .newsletter-email:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color-25);
+}
+
+.newsletter .newsletter-submit {
+    padding: 10px 20px;
+    background: var(--accent-color);
+    color: var(--accent-color-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.newsletter .newsletter-submit:hover {
+    background: var(--accent-color-darker);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter .newsletter-submit:active {
+    transform: translateY(0);
+}
+
+/* Dark mode specific styles */
+[data-scheme="dark"] .newsletter .widget-title {
+    color: var(--body-text-color);
+}
+
+[data-scheme="dark"] .newsletter .widget-body p {
+    color: var(--body-text-color);
+}
+
+[data-scheme="dark"] .newsletter .newsletter-email {
+    background: var(--card-background);
+    border-color: var(--border-color);
+    color: var(--body-text-color);
+}
+
+[data-scheme="dark"] .newsletter .newsletter-email::placeholder {
+    color: var(--body-text-color-50);
+}
+
+[data-scheme="dark"] .newsletter .newsletter-submit {
+    background: var(--accent-color);
+    color: var(--accent-color-text);
+}
+
+[data-scheme="dark"] .newsletter .newsletter-submit:hover {
+    background: var(--accent-color-darker);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 640px) {
+    .newsletter .newsletter-form {
+        flex-direction: column;
+    }
+}
+</style>
