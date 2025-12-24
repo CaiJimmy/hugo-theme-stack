@@ -1,0 +1,47 @@
+{{- with .Site.Config.Services.GoogleAnalytics.ID -}}
+{{- if $.Site.Params.cookies.enabled -}}
+{{/* Consent-gated Google Analytics - only loads after analytics consent */}}
+<script>
+(function() {
+    var gaId = {{ . }};
+    var loaded = false;
+
+    function loadGA() {
+        if (loaded) return;
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+    }
+
+    // Listen for consent changes
+    window.addEventListener('onCookieConsentChange', function(e) {
+        if (e.detail && e.detail.analytics) {
+            loadGA();
+        }
+    });
+
+    // Check if already consented (page reload case)
+    if (window.cookieConsent && window.cookieConsent.hasConsent('analytics')) {
+        loadGA();
+    }
+})();
+</script>
+{{- else -}}
+{{/* No consent banner - load GA normally */}}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', {{ . }});
+</script>
+{{- end -}}
+{{- end -}}

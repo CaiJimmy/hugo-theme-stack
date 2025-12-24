@@ -45,3 +45,27 @@ darkMode   = "Tmavý režim"
 [footer]
     builtWith  = "Vytvořeno pomocí {{ .Generator }}"
     designedBy = "Šablona {{ .Theme }} od {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Souhlas s cookies"
+    description       = "Používáme cookies ke zlepšení vašeho prohlížení a analýze návštěvnosti webu."
+    acceptAll         = "Přijmout vše"
+    deny              = "Odmítnout"
+    managePreferences = "Spravovat předvolby"
+    settingsTitle     = "Předvolby cookies"
+    savePreferences   = "Uložit předvolby"
+    cancel            = "Zrušit"
+    footerLink        = "Nastavení cookies"
+    commentsDisabled  = "Komentáře jsou zakázány, dokud nepřijmete funkční cookies."
+
+    [cookies.necessary]
+        title       = "Nutné"
+        description = "Tyto cookies jsou nutné pro fungování webu a nelze je zakázat."
+
+    [cookies.analytics]
+        title       = "Analytické"
+        description = "Tyto cookies nám pomáhají pochopit, jak návštěvníci interagují s naším webem."
+
+    [cookies.functional]
+        title       = "Funkční"
+        description = "Tyto cookies umožňují funkce jako komentáře a vložený obsah."

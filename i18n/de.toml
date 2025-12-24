@@ -45,3 +45,27 @@ darkMode   = "Dunkler Modus"
 [footer]
     builtWith  = "Erstellt mit {{ .Generator }}"
     designedBy = "Theme {{ .Theme }} gestaltet von {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Cookie-Einwilligung"
+    description       = "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern und den Website-Traffic zu analysieren."
+    acceptAll         = "Alle akzeptieren"
+    deny              = "Ablehnen"
+    managePreferences = "Einstellungen verwalten"
+    settingsTitle     = "Cookie-Einstellungen"
+    savePreferences   = "Einstellungen speichern"
+    cancel            = "Abbrechen"
+    footerLink        = "Cookie-Einstellungen"
+    commentsDisabled  = "Kommentare sind deaktiviert, bis Sie funktionale Cookies akzeptieren."
+
+    [cookies.necessary]
+        title       = "Notwendig"
+        description = "Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden."
+
+    [cookies.analytics]
+        title       = "Analyse"
+        description = "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
+
+    [cookies.functional]
+        title       = "Funktional"
+        description = "Diese Cookies ermöglichen Funktionen wie Kommentare und eingebettete Inhalte."

@@ -45,3 +45,27 @@ darkMode   = "Mode Gelap"
 [footer]
     builtWith  = "Dibangun dengan {{ .Generator }}"
     designedBy = "Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Persetujuan Cookie"
+    description       = "Kami menggunakan cookie untuk meningkatkan pengalaman browsing Anda dan menganalisis lalu lintas situs."
+    acceptAll         = "Terima Semua"
+    deny              = "Tolak"
+    managePreferences = "Kelola preferensi"
+    settingsTitle     = "Preferensi Cookie"
+    savePreferences   = "Simpan preferensi"
+    cancel            = "Batal"
+    footerLink        = "Pengaturan cookie"
+    commentsDisabled  = "Komentar dinonaktifkan sampai Anda menerima cookie fungsional."
+
+    [cookies.necessary]
+        title       = "Diperlukan"
+        description = "Cookie ini diperlukan agar situs web berfungsi dan tidak dapat dinonaktifkan."
+
+    [cookies.analytics]
+        title       = "Analitik"
+        description = "Cookie ini membantu kami memahami bagaimana pengunjung berinteraksi dengan situs web kami."
+
+    [cookies.functional]
+        title       = "Fungsional"
+        description = "Cookie ini mengaktifkan fitur seperti komentar dan konten yang disematkan."

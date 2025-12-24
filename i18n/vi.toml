@@ -45,3 +45,27 @@ darkMode   = "Chế độ nền tối"
 [footer]
     builtWith  = "Built with {{ .Generator }}"
     designedBy = "Theme {{ .Theme }} thiết kế bởi {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Đồng ý cookie"
+    description       = "Chúng tôi sử dụng cookie để nâng cao trải nghiệm duyệt web của bạn và phân tích lưu lượng truy cập trang web."
+    acceptAll         = "Chấp nhận tất cả"
+    deny              = "Từ chối"
+    managePreferences = "Quản lý tùy chọn"
+    settingsTitle     = "Tùy chọn cookie"
+    savePreferences   = "Lưu tùy chọn"
+    cancel            = "Hủy"
+    footerLink        = "Cài đặt cookie"
+    commentsDisabled  = "Bình luận bị vô hiệu hóa cho đến khi bạn chấp nhận cookie chức năng."
+
+    [cookies.necessary]
+        title       = "Cần thiết"
+        description = "Những cookie này là cần thiết để trang web hoạt động và không thể vô hiệu hóa."
+
+    [cookies.analytics]
+        title       = "Phân tích"
+        description = "Những cookie này giúp chúng tôi hiểu cách khách truy cập tương tác với trang web của chúng tôi."
+
+    [cookies.functional]
+        title       = "Chức năng"
+        description = "Những cookie này cho phép các tính năng như bình luận và nội dung nhúng."

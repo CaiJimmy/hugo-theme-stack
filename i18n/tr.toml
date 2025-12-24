@@ -45,3 +45,27 @@ darkMode   = "Koyu Mod"
 [footer]
     builtWith  = "{{ .Generator }} ile oluşturuldu."
     designedBy = "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"
+
+[cookies]
+    title             = "Çerez Onayı"
+    description       = "Tarayıcı deneyiminizi iyileştirmek ve site trafiğini analiz etmek için çerezler kullanıyoruz."
+    acceptAll         = "Tümünü Kabul Et"
+    deny              = "Reddet"
+    managePreferences = "Tercihleri yönet"
+    settingsTitle     = "Çerez Tercihleri"
+    savePreferences   = "Tercihleri kaydet"
+    cancel            = "İptal"
+    footerLink        = "Çerez ayarları"
+    commentsDisabled  = "İşlevsel çerezleri kabul edene kadar yorumlar devre dışıdır."
+
+    [cookies.necessary]
+        title       = "Gerekli"
+        description = "Bu çerezler web sitesinin çalışması için gereklidir ve devre dışı bırakılamaz."
+
+    [cookies.analytics]
+        title       = "Analitik"
+        description = "Bu çerezler, ziyaretçilerin web sitemizle nasıl etkileşimde bulunduğunu anlamamıza yardımcı olur."
+
+    [cookies.functional]
+        title       = "İşlevsel"
+        description = "Bu çerezler, yorumlar ve gömülü içerik gibi özellikleri etkinleştirir."
