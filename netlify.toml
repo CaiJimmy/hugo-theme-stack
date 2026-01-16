@@ -2,7 +2,7 @@
     publish = "exampleSite/public"
 
 [build.environment]
-    HUGO_VERSION = "0.124.0"
+    HUGO_VERSION = "0.152.2"
     HUGO_THEME = "repo"
 
 [context.production]

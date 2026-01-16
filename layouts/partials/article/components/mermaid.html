@@ -1,0 +1,9 @@
+{{ if .Store.Get "hasMermaid" }}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.12.2/+esm';
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'neutral',
+    });
+</script>
+{{ end }}

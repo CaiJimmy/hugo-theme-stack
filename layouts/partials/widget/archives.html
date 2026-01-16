@@ -10,8 +10,7 @@
         <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
 
         {{ $pages := where $context.Site.RegularPages "Type" "in" $context.Site.Params.mainSections }}
-        {{ $notHidden := where $context.Site.RegularPages "Params.hidden" "!=" true }}
-        {{ $filtered := ($pages | intersect $notHidden) }}
+        {{ $filtered := where $pages "Params.hidden" "!=" true }}
         {{ $archives := $filtered.GroupByDate "2006" }}
         
         <div class="widget-archive--list">

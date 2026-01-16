@@ -4,7 +4,7 @@
         {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
         {{- $terms := $taxonomy.Pages -}}
         {{ if $terms }}
-        <h2 class="section-title">{{ $taxonomy.Title }}</h2>
+        <h2 class="section-title">{{ T "widget.categoriesCloud.title" }}</h2>
         <div class="subsection-list">
             <div class="article-list--tile">
                 {{ range $terms }}
@@ -16,8 +16,7 @@
     </header>
 
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
-    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $filtered := where $pages "Params.hidden" "!=" true }}
 
     {{ range $filtered.GroupByDate "2006" }}
     {{ $id := lower (replace .Key " " "-") }}

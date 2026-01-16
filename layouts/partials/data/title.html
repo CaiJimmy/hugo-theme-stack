@@ -6,8 +6,7 @@
 
     <!-- Build paginator -->
     {{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
-    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
-    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $filtered := where $pages "Params.hidden" "!=" true }}
     {{ $pag := .Paginate ($filtered) }}
 
     {{ if .Paginator.HasPrev }}

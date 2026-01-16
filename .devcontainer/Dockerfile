@@ -1,31 +1,56 @@
-# Update the NODE_VERSION arg in docker-compose.yml to pick a Node version: 10, 12, 14
-ARG NODE_VERSION=14
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${NODE_VERSION}
+# syntax=docker/dockerfile:1
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+
+ARG USER=vscode
+ARG DEBIAN_FRONTEND=noninteractive
+RUN usermod -s /usr/bin/zsh ${USER}
 
 # VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
-ARG VARIANT=hugo
+ARG VARIANT=hugo_extended
 # VERSION can be either 'latest' or a specific version number
 ARG VERSION=latest
 
 # Download Hugo
-RUN apt-get update && apt-get install -y ca-certificates openssl git curl && \
-    rm -rf /var/lib/apt/lists/* && \
-    case ${VERSION} in \
+RUN case ${VERSION} in \
     latest) \
     export VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep "tag_name" | awk '{print substr($2, 3, length($2)-4)}') ;;\
     esac && \
     echo ${VERSION} && \
-    wget -O ${VERSION}.tar.gz https://github.com/gohugoio/hugo/releases/download/v${VERSION}/${VARIANT}_${VERSION}_Linux-64bit.tar.gz && \
+    case $(uname -m) in \
+    aarch64) \
+    export ARCH=ARM64 ;; \
+    *) \
+    export ARCH=64bit ;; \
+    esac && \
+    echo ${ARCH} && \
+    wget -O ${VERSION}.tar.gz https://github.com/gohugoio/hugo/releases/download/v${VERSION}/${VARIANT}_${VERSION}_Linux-${ARCH}.tar.gz && \
     tar xf ${VERSION}.tar.gz && \
     mv hugo /usr/bin/hugo
 
 # Hugo dev server port
 EXPOSE 1313
 
-# [Optional] Uncomment this section to install additional OS packages you may want.
-#
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-# [Optional] Uncomment if you want to install more global node packages
-# RUN sudo -u node npm install -g <your-package-list-here>
+USER ${USER}
+ARG HOME=/home/${USER}
+WORKDIR ${HOME}
+
+ARG PNPM_HOME=${HOME}/.local/share/pnpm
+ENV PATH="${PNPM_HOME}:$PATH"
+RUN <<EOT
+    wget -qO- https://get.pnpm.io/install.sh | ENV="${HOME}/.zshrc" SHELL=/bin/zsh sh -
+    pnpm env use -g lts
+EOT
+
+ARG OHMYZSH_HOME=${HOME}/.oh-my-zsh
+
+# ARG OHMYZSH_THEME=${OHMYZSH_HOME}/custom/themes
+# RUN <<EOT
+#     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${OHMYZSH_THEME}/powerlevel10k
+#     sed -i 's|ZSH_THEME="devcontainers"|ZSH_THEME="powerlevel10k/powerlevel10k"|g' .zshrc
+#     echo 'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' >> .zshrc
+# EOT
+
+RUN <<EOT
+    hugo completion zsh > ${OHMYZSH_HOME}/plugins/git/_hugo
+EOT

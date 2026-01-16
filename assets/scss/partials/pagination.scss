@@ -4,18 +4,47 @@
     box-shadow: var(--shadow-l1);
     border-radius: var(--card-border-radius);
     overflow: hidden;
-    flex-wrap: wrap;
 
     .page-link {
-        padding: 16px 32px;
-        display: inline-flex;
+        padding: 16px 0;
+        margin: 0;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 auto;
+        min-width: 48px;
+        color: var(--card-text-color-secondary);
+        text-decoration: none;
 
-        &.current {
-            font-weight: bold;
-            background-color: var(--card-background-selected);
-            color: var(--card-text-color-main);
+        &:first-child,
+        &:last-child {
+            flex: 0 0 48px;
+            padding: 16px;
         }
 
-        color: var(--card-text-color-secondary);
+        &:hover:not(.current):not(.disabled) {
+            background-color: var(--card-background-selected);
+            opacity: 0.8;
+        }
+
+        &.current {
+            background-color: var(--card-background-selected);
+            color: var(--card-text-color-main);
+            font-weight: bold;
+            cursor: default;
+        }
+
+        &.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+            color: var(--card-text-color-secondary);
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 }

@@ -47,6 +47,9 @@ widget:
     tagCloud:
         title:
             other: Теги
+    categoriesCloud:
+        title:
+            other: Категории
 
 search:
     title:
