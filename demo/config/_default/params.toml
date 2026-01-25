@@ -12,6 +12,10 @@ favicon        = ""
 [sidebar]
     emoji    = "🍥"
     subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    [sidebar.avatar]
+        enabled = true
+        local   = true
+        src     = "img/avatar.png"
 
 [article]
     [article.license]
