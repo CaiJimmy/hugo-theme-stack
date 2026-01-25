@@ -1,37 +1,24 @@
-{{- $title := .Title -}}
+{{- $pageTitle := .Title -}}
 {{- $siteTitle := .Site.Title -}}
+{{- $paginator := partial "helper/paginator.html" . -}}
 
-{{- if .IsHome -}}
-    <!-- Homepage, and it's pagination -->
+{{- $title := slice -}}
 
-    <!-- Build paginator -->
-    {{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
-    {{ $filtered := where $pages "Params.hidden" "!=" true }}
-    {{ $pag := .Paginate ($filtered) }}
-
-    {{ if .Paginator.HasPrev }}
-        <!-- Paginated. Append page number to title -->
-        {{ $title = printf "%s - %s" .Paginator $siteTitle }}
-    {{ else }}
-        {{ $title = $siteTitle}}
-    {{ end }}
-{{- else if eq .Kind "term" -}}
-    <!-- Taxonomy page -->
-
-    <!-- Build paginator -->
-    {{ $notHidden := where .Pages "Params.hidden" "!=" true }}
-    {{ $pag := .Paginate ($notHidden) }}
-
-    <!-- {TAXONOMY_TYPE}: {TAXONOMY_TERM} -->
-    {{ $title = slice (title .Data.Singular) ": " $title }}
-
-    {{ if .Paginator.HasPrev }}
-        <!-- Add page number-->
-        {{ $title = $title | append " - " .Paginator }}
-    {{ end }} 
-
-    {{ $title = $title | append " - " $siteTitle }}
-    {{ $title = delimit $title "" }}
+{{- if $pageTitle }}
+    {{- $title = slice $pageTitle -}}
 {{- end -}}
 
-{{ return $title }}
+{{- if eq .Kind "term" -}}
+    {{ $title = $title | append (printf "%s: %s" (title .Data.Singular) .Title) }}
+{{- end -}}
+
+{{- if and $paginator $paginator.HasPrev -}}
+    <!-- Add page number-->
+    {{ $title = $title | append (printf "Page %d" $paginator.PageNumber) }}
+{{- end -}} 
+
+{{- if or (eq .Kind "term") (.IsHome) -}}
+    {{ $title = $title | append $siteTitle }}
+{{- end -}}
+
+{{ return delimit $title " - " }}

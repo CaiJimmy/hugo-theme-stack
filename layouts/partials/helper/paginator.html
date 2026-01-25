@@ -1,0 +1,14 @@
+{{- $pages := "" -}}
+
+{{- if .IsHome -}}
+    {{ $pages = where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+    {{ $pages = where $pages "Params.hidden" "!=" true }}
+{{- else if eq .Kind "term" -}}
+    {{ $pages = where .Pages "Params.hidden" "!=" true }}
+{{- end -}}
+
+{{- if $pages -}}
+    {{ $pages = .Paginate $pages }}
+{{- end -}}
+
+{{ return $pages }}
