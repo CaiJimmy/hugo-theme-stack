@@ -190,6 +190,17 @@
         border: 0;
         background-color: transparent;
         color: var(--body-text-color);
+        padding: 0;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::-ms-expand {
+            display: none;
+        }
 
         option {
             color: var(--card-text-color-main);
