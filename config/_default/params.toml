@@ -14,7 +14,7 @@ rssFullContent     = true
     compact = false
 
     [sidebar.avatar]
-        enabled = true
+        enabled = false
         local   = true
         src     = "img/avatar.png"
 
