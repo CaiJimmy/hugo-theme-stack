@@ -5,13 +5,12 @@
 *   @website: https://jimmycai.com
 *   @link: https://github.com/CaiJimmy/hugo-theme-stack
 */
-import StackGallery from "ts/gallery";
-import { getColor } from 'ts/color';
-import menu from 'ts/menu';
-import createElement from 'ts/createElement';
-import StackColorScheme from 'ts/colorScheme';
-import { setupScrollspy } from 'ts/scrollspy';
-import { setupSmoothAnchors } from "ts/smoothAnchors";
+import { getColor } from './color';
+import menu from './menu';
+import createElement from './createElement';
+import StackColorScheme from './colorScheme';
+import { setupScrollspy } from './scrollspy';
+import { setupSmoothAnchors } from './smoothAnchors';
 
 let Stack = {
     init: () => {
@@ -22,7 +21,6 @@ let Stack = {
 
         const articleContent = document.querySelector('.article-content') as HTMLElement;
         if (articleContent) {
-            new StackGallery(articleContent);
             setupSmoothAnchors();
             setupScrollspy();
         }
@@ -91,7 +89,7 @@ let Stack = {
             });
         });
 
-        new StackColorScheme(document.getElementById('dark-mode-toggle'));
+        new StackColorScheme(document.getElementById('dark-mode-toggle')!);
     }
 }
 
