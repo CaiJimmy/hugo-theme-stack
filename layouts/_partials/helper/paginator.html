@@ -1,10 +1,13 @@
-{{- $pages := "" -}}
+{{- $pages := slice -}}
+{{- $hasPages := false -}}
 
 {{- if .IsHome -}}
     {{ $pages = where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
     {{ $pages = where $pages "Params.hidden" "!=" true }}
+    {{- $hasPages = true -}}
 {{- else if eq .Kind "term" -}}
     {{ $pages = where .Pages "Params.hidden" "!=" true }}
+    {{- $hasPages = true -}}
 {{- else if or (eq .Kind "section") (eq .Kind "taxonomy") -}}
     {{ $subsections := .Sections }}
     {{ $pages = .Pages | complement $subsections }}
@@ -14,9 +17,11 @@
         {{/* See complete logic in list.html */}}
         {{- $pages = $subsections -}}
     {{- end -}}
+    
+    {{- $hasPages = true -}}
 {{- end -}}
 
-{{- if $pages -}}
+{{- if $hasPages -}}
     {{ $pages = .Paginate $pages }}
 {{- end -}}
 
