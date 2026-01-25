@@ -36,10 +36,6 @@ rssFullContent     = true
     site = ""
     card = "summary_large_image"
 
-[defaultImage.opengraph]
-    enabled = false
-    local   = false
-
 [colorScheme]
     toggle  = true
     default = "auto"
