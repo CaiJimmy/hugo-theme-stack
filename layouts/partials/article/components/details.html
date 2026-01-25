@@ -3,7 +3,9 @@
     <header class="article-category">
         {{ range (.GetTerms "categories") }}
             {{ $color := partial "helper/color-from-str" .LinkTitle }}
-            <a href="{{ .RelPermalink }}" style="background-color: {{ $color.BackgroundColor | safeCSS }}; color: {{ $color.TextColor | safeCSS }};">
+            {{ $BackgroundColor := default $color.BackgroundColor .Params.style.background }}
+            {{ $TextColor := default $color.TextColor .Params.style.color }}
+            <a href="{{ .RelPermalink }}" style="background-color: {{ $BackgroundColor | safeCSS }}; color: {{ $TextColor | safeCSS }};">
                 {{ .LinkTitle }}
             </a>
         {{ end }}
