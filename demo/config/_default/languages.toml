@@ -12,11 +12,11 @@
     [zh.params.sidebar]
         subtitle = "演示说明"
 
-[zh_Hant_TW]
+[zh-hant-tw]
     languageName = "正體中文"
     title        = "演示站點"
     weight       = 2
-    [zh_Hant_TW.params.sidebar]
+    [zh-hant-tw.params.sidebar]
         subtitle = "演示說明"
 
 [ja]
