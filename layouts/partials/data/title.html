@@ -8,16 +8,12 @@
     {{- $title = slice $pageTitle -}}
 {{- end -}}
 
-{{- if eq .Kind "term" -}}
-    {{ $title = $title | append (printf "%s: %s" (title .Data.Singular) .Title) }}
-{{- end -}}
-
 {{- if and $paginator $paginator.HasPrev -}}
     <!-- Add page number-->
     {{ $title = $title | append (printf "Page %d" $paginator.PageNumber) }}
 {{- end -}} 
 
-{{- if or (eq .Kind "term") (.IsHome) -}}
+{{- if not .IsPage -}}
     {{ $title = $title | append $siteTitle }}
 {{- end -}}
 
