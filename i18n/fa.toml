@@ -1,0 +1,47 @@
+toggleMenu = "منو"
+darkMode   = "حالت شب"
+
+[list]
+    section = "بخش"
+
+    [list.page]
+        one   = "{{ .Count }} صفحه"
+        other = "{{ .Count }} صفحه"
+
+    [list.subsection]
+        one   = "زیربخش"
+        other = "زیربخش"
+
+[article]
+    back            = "قبلی"
+    tableOfContents = "فهرست"
+    relatedContent  = "مطالب مرتبط"
+    lastUpdatedOn   = "آخرین بروزرسانی در"
+
+    [article.readingTime]
+        one   = "مطالعه در {{ .Count }} دقیقه"
+        other = "مطالعه در {{ .Count }} دقیقه"
+
+[notFound]
+    title    = "یافت نشد"
+    subtitle = "این صحه وجود ندارد"
+
+[widget]
+    [widget.archives]
+        title = "آرشیو"
+        more  = "بیشتر"
+
+    [widget.tagCloud]
+        title = "تگ ها"
+
+    [widget.categoriesCloud]
+        title = "دسته بندی"
+
+[search]
+    title       = "جستجو"
+    placeholder = "تایپ کنید ..."
+    resultTitle = "#PAGES_COUNT صفحه (#TIME_SECONDS ثانیه)"
+
+[footer]
+    builtWith  = "قدرت گرفته از {{ .Generator }}"
+    designedBy = "قالب {{ .Theme }} ساخته شده توسط {{ .DesignedBy }}"

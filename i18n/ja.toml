@@ -1,0 +1,38 @@
+toggleMenu = "メニューを開く・閉じる"
+darkMode   = "ダークモード"
+
+[list]
+    page       = "{{ .Count }} ページ目"
+    section    = "セクション"
+    subsection = "サブセクション"
+
+[article]
+    back            = "前のページ"
+    tableOfContents = "目次"
+    relatedContent  = "関連するコンテンツ"
+    lastUpdatedOn   = "最終更新"
+    readingTime     = "読了時間: {{ .Count }}分"
+
+[notFound]
+    title    = "404 Not Found"
+    subtitle = "指定されたページは存在しません。"
+
+[widget]
+    [widget.archives]
+        title = "アーカイブ"
+        more  = "さらに見る"
+
+    [widget.tagCloud]
+        title = "タグ"
+
+    [widget.categoriesCloud]
+        title = "カテゴリ"
+
+[search]
+    title       = "検索"
+    placeholder = "入力..."
+    resultTitle = "#PAGES_COUNT 件 （#TIME_SECONDS 秒）"
+
+[footer]
+    builtWith  = "{{ .Generator }} で構築されています。"
+    designedBy = "テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。"

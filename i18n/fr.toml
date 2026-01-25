@@ -1,0 +1,47 @@
+toggleMenu = "Afficher le menu"
+darkMode   = "Mode sombre"
+
+[list]
+    section = "Section"
+
+    [list.page]
+        one   = "{{ .Count }} page"
+        other = "{{ .Count }} pages"
+
+    [list.subsection]
+        one   = "Sous-section"
+        other = "Sous-sections"
+
+[article]
+    back            = "Retour"
+    tableOfContents = "Table des matières"
+    relatedContent  = "Contenus liés"
+    lastUpdatedOn   = "Dernière mise à jour le"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minute de lecture"
+        other = "{{ .Count }} minutes de lecture"
+
+[notFound]
+    title    = "Page non trouvée"
+    subtitle = "Cette page n'existe pas."
+
+[widget]
+    [widget.archives]
+        title = "Archives"
+        more  = "Autres"
+
+    [widget.tagCloud]
+        title = "Mots clés"
+
+    [widget.categoriesCloud]
+        title = "Catégories"
+
+[search]
+    title       = "Rechercher"
+    placeholder = "Cherchez un article, une publication, etc."
+    resultTitle = "#PAGES_COUNT pages (#TIME_SECONDS secondes)"
+
+[footer]
+    builtWith  = "Généré avec {{ .Generator }}"
+    designedBy = "Thème {{ .Theme }} conçu par {{ .DesignedBy }}"

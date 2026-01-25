@@ -1,0 +1,47 @@
+toggleMenu = "Menü umschalten"
+darkMode   = "Dunkler Modus"
+
+[list]
+    section = "Abschnitt"
+
+    [list.page]
+        one   = "{{ .Count }} Seite"
+        other = "{{ .Count }} Seiten"
+
+    [list.subsection]
+        one   = "Unterabschnitt"
+        other = "Unterabschnitte"
+
+[article]
+    back            = "Zurück"
+    tableOfContents = "Inhaltsverzeichnis"
+    relatedContent  = "Verwandte Inhalte"
+    lastUpdatedOn   = "Zuletzt aktualisiert am"
+
+    [article.readingTime]
+        one   = "{{ .Count }} Minute Lesezeit"
+        other = "{{ .Count }} Minuten Lesezeit"
+
+[notFound]
+    title    = "Seite nicht gefunden"
+    subtitle = "Diese Seite existiert nicht"
+
+[widget]
+    [widget.archives]
+        title = "Archiv"
+        more  = "Weitere"
+
+    [widget.tagCloud]
+        title = "Schlagwörter"
+
+    [widget.categoriesCloud]
+        title = "Kategorien"
+
+[search]
+    title       = "Suche"
+    placeholder = "Etwas tippen..."
+    resultTitle = "#PAGES_COUNT Seiten (#TIME_SECONDS Sekunden)"
+
+[footer]
+    builtWith  = "Erstellt mit {{ .Generator }}"
+    designedBy = "Theme {{ .Theme }} gestaltet von {{ .DesignedBy }}"

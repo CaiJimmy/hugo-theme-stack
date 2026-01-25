@@ -1,0 +1,47 @@
+toggleMenu = "Skryť menu"
+darkMode   = "Tmavý režim"
+
+[list]
+    section = "Kategórie"
+
+    [list.page]
+        one   = "{{ .Count }} stránka"
+        other = "{{ .Count }} stránok"
+
+    [list.subsection]
+        one   = "Podkategória"
+        other = "Podkategórie"
+
+[article]
+    back            = "Späť"
+    tableOfContents = "Obsah"
+    relatedContent  = "Súvisiace"
+    lastUpdatedOn   = "Naposledy aktualizované"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minúta"
+        other = "{{ .Count }} minút"
+
+[notFound]
+    title    = "Nenájdené"
+    subtitle = "Tato stránka neexistuje"
+
+[widget]
+    [widget.archives]
+        title = "Archívy"
+        more  = "Viac"
+
+    [widget.tagCloud]
+        title = "Štítky"
+
+    [widget.categoriesCloud]
+        title = "Kategórie"
+
+[search]
+    title       = "Hladať"
+    placeholder = "Zadajte niečo..."
+    resultTitle = "#PAGES_COUNT stránok (#TIME_SECONDS sekúnd)"
+
+[footer]
+    builtWith  = "Vytvorené pomocou {{ .Generator }}"
+    designedBy = "Šablóna {{ .Theme }} od {{ .DesignedBy }}"

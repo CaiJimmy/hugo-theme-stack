@@ -1,0 +1,47 @@
+toggleMenu = "Tampilkan Menu"
+darkMode   = "Mode Gelap"
+
+[list]
+    section = "Bagian"
+
+    [list.page]
+        one   = "{{ .Count }} halaman"
+        other = "{{ .Count }} halaman"
+
+    [list.subsection]
+        one   = "Subbagian"
+        other = "Subbagian"
+
+[article]
+    back            = "Kembali"
+    tableOfContents = "Daftar Isi"
+    relatedContent  = "Konten terkait"
+    lastUpdatedOn   = "Terakhir diperbarui pada"
+
+    [article.readingTime]
+        one   = "Waktu Membaca: {{ .Count }} menit"
+        other = "Waktu Membaca: {{ .Count }} menit"
+
+[notFound]
+    title    = "Tidak ditemukan"
+    subtitle = "Halaman yang Anda akses tidak ditemukan."
+
+[widget]
+    [widget.archives]
+        title = "Arsip"
+        more  = "Lebih"
+
+    [widget.tagCloud]
+        title = "Tag"
+
+    [widget.categoriesCloud]
+        title = "Kategori"
+
+[search]
+    title       = "Cari"
+    placeholder = "Ketik sesuatu..."
+    resultTitle = "#PAGES_COUNT halaman (#TIME_SECONDS detik)"
+
+[footer]
+    builtWith  = "Dibangun dengan {{ .Generator }}"
+    designedBy = "Tema {{ .Theme }} dirancang oleh {{ .DesignedBy }}"
