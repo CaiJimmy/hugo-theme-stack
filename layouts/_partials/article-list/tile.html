@@ -9,7 +9,7 @@
         {{ end }}
 
         <div class="article-details"
-            {{- if $image.Resource -}}
+            {{- if and $image $image.Resource -}}
                 {{- $colors := $image.Resource.Colors -}}
                 {{- if $colors -}}
                     {{- $vibrant := index $colors 0 -}}
