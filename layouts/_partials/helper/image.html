@@ -1,61 +1,54 @@
-{{ $result := dict "exists" false "permalink" nil "resource" nil "isDefault" false }}
-{{ $imageField := default "image" .Context.Site.Params.featuredImageField }}
-{{ $imageValue := index .Context.Params $imageField }}
+/// Params:
+///     Resources: Where to search for images
+///     Image: Image URL
 
-{{ if $imageValue }}
-    <!-- If page has `image` field set -->
-    {{ $result = merge $result (dict "exists" true) }}
-    {{ $url := urls.Parse $imageValue }}
+/// Returns:
+///     Local: true if the image is local, false if it is remote
+///     Resource: Hugo image resource object, not nil if the image is local
+///     Permalink: Image URL
+///     Height: Image height
+///     Width: Image width
 
-    {{ if or (eq $url.Scheme "http") (eq $url.Scheme "https") }}
-        <!-- Is an external image -->
-        {{ $result = merge $result (dict "permalink" $imageValue) }}
+{{ $result := dict
+    "Local" false
+    "Resource" nil
+    "Permalink" (.Image | absURL)
+    "Width" nil
+    "Height" nil
+}}
+
+{{ if not .Image }}
+    {{ $result = "" }}
+{{ else }}
+    {{ $url := urls.Parse .Image }}
+    {{ if not (in (slice "https" "http") $url.Scheme) }}
+        {{ $resource := .Resources.Get (printf "%s" (.Image | safeURL)) }}
+        {{ if $resource }}
+            {{ $result = dict
+                "Local" true
+                "Resource" $resource
+                "Permalink" $resource.RelPermalink
+                "Height" $resource.Height
+                "Width" $resource.Width
+            }}
+        {{ end }}
     {{ else }}
-        {{ $pageResourceImage := .Context.Resources.GetMatch (printf "%s" ($imageValue | safeURL)) }}
-        
-        {{ if $pageResourceImage }}
-            <!-- If image is found under page bundle -->
-            {{ $result = merge $result (dict "permalink" $pageResourceImage.RelPermalink) }}
-
-            <!-- Disable SVG image processing, not supported by Hugo -->
-            {{ if ne (path.Ext $imageValue) ".svg" }}
-                {{ $result = merge $result (dict "resource" $pageResourceImage) }}
-            {{ end }}
-        {{ else }}
-            <!-- Can not find the image under page bundle. Could be a relative linked image -->
-            {{ $result = merge $result (dict "permalink" (relURL $imageValue)) }}
-        {{ end }}
-
-    {{ end }}
-
-{{ else if and (ne .Type nil) (index .Context.Site.Params.defaultImage .Type) }}
-    <!-- Type arg is set, check for defaultImage setting -->
-    {{ $defaultImageSetting := index .Context.Site.Params.defaultImage .Type }}
-
-    {{ if $defaultImageSetting.enabled }}
-        {{ $result = merge $result (dict "isDefault" true) }}
-        {{ $result = merge $result (dict "exists" true) }}
-
-        {{ if $defaultImageSetting.local }}
-            {{ $siteResourceImage := resources.GetMatch (printf "%s" ($defaultImageSetting.src | safeURL)) }}
-
-            {{ if $siteResourceImage }}
-                <!-- Try search image under site's assets folder -->
-                {{ $result = merge $result (dict "permalink" $siteResourceImage.RelPermalink) }}
-                {{ $result = merge $result (dict "resource" $siteResourceImage) }}
+        {{ with try (resources.GetRemote $url) }}
+            {{ with .Err }}
+                {{ errorf "%s" . }}
+            {{ else with .Value }}
+                {{ $result = dict
+                    "Local" false
+                    "Resource" .
+                    "Permalink" .RelPermalink
+                    "Height" .Height
+                    "Width" .Width
+                }}
             {{ else }}
-                <!-- Can not find the image -->
-                {{ errorf "Failed loading image: %q" $defaultImageSetting.src }}
-                {{ $result = merge $result (dict "exists" false) }}
+                {{ errorf "Unable to get remote resource %q" $url }}
             {{ end }}
-
-        {{ else }}
-            <!-- External image -->
-            {{ $result = merge $result (dict "permalink" (relURL $defaultImageSetting.src)) }}
-        {{ end }}
-        
+        {{ end }}   
     {{ end }}
-
 {{ end }}
 
 {{ return $result }}
