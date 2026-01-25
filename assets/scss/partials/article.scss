@@ -33,15 +33,6 @@
                 }
             }
         }
-
-        @for $i from 1 through length($defaultTagBackgrounds) {
-            &:nth-child(#{length($defaultTagBackgrounds)}n + #{$i}) {
-                .article-category a {
-                    background: nth($defaultTagBackgrounds, $i);
-                    color: nth($defaultTagColors, $i);
-                }
-            }
-        }
     }
 }
 
