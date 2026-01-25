@@ -8,15 +8,7 @@
 
     {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
     {{- if $image -}}
-        {{- $imagePermalink := "" -}}
-        {{- if and $image.resource (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
-            {{- $thumbnail := $image.resource.Fill "120x120" -}}
-            {{- $imagePermalink = (absURL $thumbnail.Permalink) -}}
-        {{- else -}}
-            {{- $imagePermalink = $image.permalink -}}
-        {{- end -}}
-        
-        {{- $data = merge $data (dict "image" (absURL $imagePermalink)) -}}
+        {{- $data = merge $data (dict "image" $image.Permalink) -}}
     {{- end -}}
 
     {{- $result = $result | append $data -}}
