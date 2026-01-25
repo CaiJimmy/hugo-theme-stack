@@ -1,0 +1,47 @@
+toggleMenu = "Alternar menú"
+darkMode   = "Mòde fosc"
+
+[list]
+    section = "Seccion"
+
+    [list.page]
+        one   = "{{ .Count }} pagina"
+        other = "{{ .Count }} paginas"
+
+    [list.subsection]
+        one   = "Josseccion"
+        other = "Josseccions"
+
+[article]
+    back            = "Tornar"
+    tableOfContents = "Taula de contengut"
+    relatedContent  = "Contenguts relacionats"
+    lastUpdatedOn   = "Darrièra actualizacion"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minuta de lectura"
+        other = "{{ .Count }} minutas de lectura"
+
+[notFound]
+    title    = "Non trobat"
+    subtitle = "Aquesta pagina existís pas"
+
+[widget]
+    [widget.archives]
+        title = "Archiu"
+        more  = "Mai"
+
+    [widget.tagCloud]
+        title = "Etiquetas"
+
+    [widget.categoriesCloud]
+        title = "Categorias"
+
+[search]
+    title       = "Cercar"
+    placeholder = "Picatz quicòm..."
+    resultTitle = "#PAGES_COUNT paginas dins (#TIME_SECONDS segons)"
+
+[footer]
+    builtWith  = "Creat amb {{ .Generator }}"
+    designedBy = "Tàma {{ .Theme }} concebut per {{ .DesignedBy }}"

@@ -1,0 +1,47 @@
+toggleMenu = "اخفي القائمة"
+darkMode   = "الوضع الداكن"
+
+[list]
+    section = "قسم"
+
+    [list.page]
+        one   = "{{ .Count }} صفحه"
+        other = "{{ .Count }} صفحات"
+
+    [list.subsection]
+        one   = "قسم فرعي"
+        other = "اقسام فرعية"
+
+[article]
+    back            = "خلف"
+    tableOfContents = "جدول المحتويات"
+    relatedContent  = "محتوى مشابهه"
+    lastUpdatedOn   = "التعديل الاخير"
+
+    [article.readingTime]
+        one   = "تُقرأ خلال دقيقة"
+        other = "تُقرأ خلال {{ .Count }} دقائق"
+
+[notFound]
+    title    = "غير موجود"
+    subtitle = "تعذر العثور على الصفحة المطلوبة."
+
+[widget]
+    [widget.archives]
+        title = "الارشيفات"
+        more  = "اكثر"
+
+    [widget.tagCloud]
+        title = "وسوم"
+
+    [widget.categoriesCloud]
+        title = "التصنيفات"
+
+[search]
+    title       = "بحث"
+    placeholder = "اكتب..."
+    resultTitle = "#PAGES_COUNT نتيجة (#TIME_SECONDS ثواني)"
+
+[footer]
+    builtWith  = "مبني باستخدام {{ .Generator }}"
+    designedBy = "قالب {{ .Theme }} مصمم من {{ .DesignedBy }}"
