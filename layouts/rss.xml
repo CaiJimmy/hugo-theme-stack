@@ -38,8 +38,8 @@
         {{ with .Site.Params.Author.email }}<author>{{.}}{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</author>{{end}}
         <guid>{{ .Permalink }}</guid>
         <description>
-            {{- $image := partial "helper/image" (dict "Context" . "Type" "rss") -}}
-            {{- if $image.exists -}}
+            {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
+            {{- if $image -}}
                 {{ "<" | html }}img src="{{ $image.permalink | absURL }}" alt="Featured image of post {{ .Title }}" {{ "/>" | html}}
             {{- end -}}{{ $content }}</description>
         </item>
