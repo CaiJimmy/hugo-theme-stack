@@ -1,0 +1,35 @@
+[en]
+    languageName = "English"
+    title        = "Example Site"
+    weight       = 1
+    [en.params.sidebar]
+        subtitle = "Example description"
+
+[zh-cn]
+    languageName = "简体中文"
+    title        = "演示站点"
+    weight       = 2
+    [zh-cn.params.sidebar]
+        subtitle = "演示说明"
+
+[zh-tw]
+    languageName = "正體中文"
+    title        = "演示站點"
+    weight       = 2
+    [zh-tw.params.sidebar]
+        subtitle = "演示說明"
+
+[ja]
+    languageName = "日本語"
+    title        = "サンプルサイト"
+    weight       = 2
+    [ja.params.sidebar]
+        subtitle = "サンプル説明"
+
+[ar]
+    languageName      = "عربي"
+    languagedirection = "rtl"
+    title             = "موقع تجريبي"
+    weight            = 3
+    [ar.params.sidebar]
+        subtitle = "وصف تجريبي"
