@@ -9,7 +9,7 @@
         {{ with .Site.Params.sidebar.avatar }}
             {{- $avatar := partial "helper/image" (dict "Image" . "Resources" resources) -}}
             <figure class="site-avatar">
-                <a href="{{ .Site.Home.RelPermalink }}">
+                <a href="{{ $.Site.Home.RelPermalink }}">
                     <img src="{{ $avatar.Permalink }}" 
                         width="{{ $avatar.Width }}"
                         height="{{ $avatar.Height }}"
