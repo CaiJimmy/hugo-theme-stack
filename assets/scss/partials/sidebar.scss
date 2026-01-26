@@ -11,7 +11,25 @@
     flex-direction: column;
     flex-shrink: 0;
     align-self: stretch;
-    gap: var(--sidebar-element-separation);
+
+    @include respond(md) {
+        gap: var(--sidebar-element-separation);
+    }
+
+    margin-bottom: calc(-1 * var(--sidebar-element-separation));
+
+    @include respond(md) {
+        margin-bottom: 0;
+    }
+
+    &> :not(:last-child) {
+        margin-bottom: var(--sidebar-element-separation);
+
+        @include respond(md) {
+            margin-bottom: 0;
+        }
+    }
+
     max-width: none;
     width: 100%;
     position: relative;
