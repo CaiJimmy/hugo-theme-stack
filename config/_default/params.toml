@@ -12,11 +12,7 @@ rssFullContent     = true
 
 [sidebar]
     compact = false
-
-    [sidebar.avatar]
-        enabled = false
-        local   = true
-        src     = "img/avatar.png"
+    avatar  = ""
 
 [article]
     headingAnchor = false
