@@ -71,7 +71,9 @@ rssFullContent     = true
     [comments.remark42]
         host = ""
         site = ""
-        locale = ""
+        locale = "en"
+        max_shown_comments = 15
+        show_email_subscription = true
 
     [comments.vssue]
         platform = ""
@@ -115,11 +117,15 @@ rssFullContent     = true
         repoID = ""
         category = ""
         categoryID = ""
-        mapping = ""
-        lightTheme = ""
-        darkTheme = ""
+        mapping = "title"
+        lightTheme = "light"
+        darkTheme = "dark_dimmed"
         reactionsEnabled = 1
         emitMetadata = 0
+        inputPosition = "top"
+        lang = "en"
+        strict = 0
+        loading = "lazy"
 
     [comments.gitalk]
         owner = ""
@@ -130,5 +136,5 @@ rssFullContent     = true
         proxy = ""
 
     [comments.cusdis]
-        host = ""
+        host = "https://cusdis.com"
         id = ""

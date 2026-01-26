@@ -1,4 +1,4 @@
-{{- $host := default "https://cusdis.com" .Site.Params.comments.cusdis.host -}}
+{{- $host := .Site.Params.comments.cusdis.host -}}
 <div id="cusdis_thread" data-host="{{ $host }}" data-app-id="{{ .Site.Params.comments.cusdis.id }}"
     data-page-id="{{ .File.UniqueID }}" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}"></div>
 <script async defer src="{{ $host }}/js/cusdis.es.js"></script>

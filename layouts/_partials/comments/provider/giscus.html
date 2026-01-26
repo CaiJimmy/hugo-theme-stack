@@ -5,13 +5,13 @@
     data-repo-id="{{- .repoID -}}"
     data-category="{{- .category -}}"
     data-category-id="{{- .categoryID -}}"
-    data-mapping="{{- default `title` .mapping -}}"
-    data-strict="{{- default 0 .strict -}}"
-    data-reactions-enabled="{{- default 1 .reactionsEnabled -}}"
-    data-emit-metadata="{{- default 0 .emitMetadata -}}"
-    data-input-position="{{- default `top` .inputPosition -}}"
-    data-theme="{{- default `light` .lightTheme -}}"
-    data-lang="{{- default `en` .lang -}}"
+    data-mapping="{{- .mapping -}}"
+    data-strict="{{- .strict -}}"
+    data-reactions-enabled="{{- .reactionsEnabled -}}"
+    data-emit-metadata="{{- .emitMetadata -}}"
+    data-input-position="{{- .inputPosition -}}"
+    data-theme="{{- .lightTheme -}}"
+    data-lang="{{- .lang -}}"
     data-loading="{{- .loading -}}"
     crossorigin="anonymous"
     async
@@ -42,9 +42,9 @@
 
         function handler() {
             if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('{{- default "light" .lightTheme -}}');
+                setGiscusTheme('{{- .lightTheme -}}');
             } else {
-                setGiscusTheme('{{- default "dark_dimmed" .darkTheme -}}');
+                setGiscusTheme('{{- .darkTheme -}}');
             }
         }
     })();
