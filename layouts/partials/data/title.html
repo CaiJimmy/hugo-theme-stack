@@ -4,17 +4,11 @@
 
 {{- $title := slice -}}
 
-{{- if $pageTitle }}
-    {{- $title = slice $pageTitle -}}
-{{- end -}}
-
 {{- if and $paginator $paginator.HasPrev -}}
     <!-- Add page number-->
     {{ $title = $title | append (printf "Page %d" $paginator.PageNumber) }}
-{{- end -}} 
-
-{{- if not .IsPage -}}
-    {{ $title = $title | append $siteTitle }}
 {{- end -}}
+
+{{- $title = $title | append (default $siteTitle $pageTitle) -}}
 
 {{ return delimit $title " - " }}
