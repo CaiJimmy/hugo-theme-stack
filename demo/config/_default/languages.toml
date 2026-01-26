@@ -25,11 +25,3 @@
     weight       = 4
     [ja.params.sidebar]
         subtitle = "ブログ用のカードスタイルの Hugo テーマ"
-
-[ar]
-    languageName      = "عربي"
-    languagedirection = "rtl"
-    title             = "موقع تجريبي"
-    weight            = 5
-    [ar.params.sidebar]
-        subtitle = "وصف تجريبي"
