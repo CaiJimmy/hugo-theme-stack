@@ -19,7 +19,8 @@
 {{- end -}}
 
 {{ with .Site.Params.favicon }}
-    <link rel="shortcut icon" href="{{ . | relURL }}" />
+    {{- $favicon := partial "helper/image" (dict "Image" . "Resources" resources) -}}
+    <link rel="shortcut icon" href="{{ $favicon.Permalink }}" />
 {{ end }}
 
 {{- partial "google_analytics.html" . -}}
