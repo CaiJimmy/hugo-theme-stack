@@ -3,7 +3,7 @@ title: ショートコード
 date: 2026-01-26
 description: Stack テーマでサポートされているさまざまなショートコードを紹介します。
 categories:
-    - 文档
+    - Documentation
 tags:
     - 隐私
 ---

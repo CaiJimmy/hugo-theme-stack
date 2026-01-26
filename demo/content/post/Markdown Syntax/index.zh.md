@@ -8,7 +8,7 @@ tags:
     - html
     - themes
 categories:
-    - 文档
+    - Documentation
 image: pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg
 ---
 
