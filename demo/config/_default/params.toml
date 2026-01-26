@@ -6,7 +6,7 @@ favicon        = ""
     since = 2020
 
 [sidebar]
-    emoji    = "🍥"
+    emoji    = "✏️"
     subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     [sidebar.avatar]
         enabled = true

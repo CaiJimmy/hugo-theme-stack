@@ -1,30 +1,30 @@
 [en]
     languageName = "English"
-    title        = "Example Site"
+    title        = "Hugo Theme Stack"
     weight       = 1
     [en.params.sidebar]
-        subtitle = "Example description"
+        subtitle = "Card-style Hugo theme designed for bloggers"
 
 [zh]
     languageName = "简体中文"
-    title        = "演示站点"
+    title        = "Hugo 主题 Stack"
     weight       = 2
     [zh.params.sidebar]
-        subtitle = "演示说明"
+        subtitle = "为博客设计的卡片式 Hugo 主题"
 
 [zh-hant-tw]
     languageName = "正體中文"
-    title        = "演示站點"
+    title        = "Hugo 主題 Stack"
     weight       = 3
     [zh-hant-tw.params.sidebar]
-        subtitle = "演示說明"
+        subtitle = "為博客設計的卡片式 Hugo 主題"
 
 [ja]
     languageName = "日本語"
-    title        = "サンプルサイト"
+    title        = "Hugo Theme Stack"
     weight       = 4
     [ja.params.sidebar]
-        subtitle = "サンプル説明"
+        subtitle = "ブログ用のカードスタイルの Hugo テーマ"
 
 [ar]
     languageName      = "عربي"

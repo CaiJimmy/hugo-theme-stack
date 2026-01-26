@@ -1,7 +1,6 @@
-baseURL      = "https://example.com/"
+baseURL      = "https://demo.stack.jimmycai.com/"
 languageCode = "en-us"
-title        = "Example Site"
-copyright    = "Example Person"
+title        = "Hugo Theme Stack"
 
 # Theme i18n support
 # See i18n folder for available languages
@@ -12,7 +11,7 @@ defaultContentLanguage = "en"
 hasCJKLanguage = false
 
 [[module.imports]]
-path = "github.com/CaiJimmy/hugo-theme-stack/v3"
+    path = "github.com/CaiJimmy/hugo-theme-stack/v3"
 
 [pagination]
     pagerSize = 3
