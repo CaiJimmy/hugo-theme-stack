@@ -6,7 +6,7 @@
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
         
         <div class="widget--toc">
-            <nav id="TableOfContents">
+            <nav class="toc-nav" id="TableOfContents">
                 {{ partial "article/components/toc" .Context | safeHTML }}
             </nav>
         </div>

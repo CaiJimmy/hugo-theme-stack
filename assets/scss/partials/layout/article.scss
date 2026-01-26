@@ -84,90 +84,147 @@
     }
 }
 
-.widget--toc {
-    background-color: var(--card-background);
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--shadow-l1);
+.toc-nav {
+    overflow-x: auto;
+    max-height: 75vh;
+
+    ol,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    ol {
+        list-style-type: none;
+        counter-reset: item;
+
+        li a:first-of-type::before {
+            counter-increment: item;
+            content: counters(item, ".") ". ";
+            font-weight: bold;
+            margin-right: 5px;
+        }
+    }
+
+    &>ul {
+        padding: 0 1em;
+    }
+
+    li {
+        margin: 15px 0 15px 20px;
+        padding: 5px;
+
+        &>ol,
+        &>ul {
+            margin-top: 10px;
+            padding-left: 10px;
+            margin-bottom: -5px;
+
+            &>li:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    li.active-class>a {
+        border-left: var(--heading-border-size) solid var(--accent-color);
+        font-weight: bold;
+    }
+
+    ul li.active-class>a {
+        display: block;
+    }
+
+    @function repeat($str, $n) {
+        $result: "";
+
+        @for $_ from 0 to $n {
+            $result: $result + $str;
+        }
+
+        @return $result;
+    }
+
+    // Support up to 6 levels of indentation for lists in ToCs
+    @for $i from 0 to 5 {
+        &>ul #{repeat("> li > ul", $i)}>li.active-class>a {
+            $n: 25 + $i * 35;
+            margin-left: calc(-#{$n}px - 1em);
+            padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+        }
+
+        &>ol #{repeat("> li > ol", $i)}>li.active-class>a {
+            $n: 9 + $i * 35;
+            margin-left: calc(-#{$n}px - 1em);
+            padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            display: block;
+        }
+    }
+}
+
+.widget--toc,
+.article-toc {
     display: flex;
     flex-direction: column;
     color: var(--card-text-color-main);
-    overflow: hidden;
 
     ::-webkit-scrollbar-thumb {
         background-color: var(--card-separator-color);
     }
+}
 
-    #TableOfContents {
-        overflow-x: auto;
-        max-height: 75vh;
+.widget--toc {
+    background-color: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+    overflow: hidden;
+}
 
-        ol,
-        ul {
-            margin: 0;
-            padding: 0;
-        }
+.article-toc {
+    padding: 0 var(--card-padding);
+    margin-top: 20px;
 
-        ol {
-            list-style-type: none;
-            counter-reset: item;
+    @include respond(lg) {
+        display: none;
+    }
 
-            li a:first-of-type::before {
-                counter-increment: item;
-                content: counters(item, ".") ". ";
-                font-weight: bold;
-                margin-right: 5px;
-            }
-        }
+    details {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l2);
 
-        & > ul {
-            padding: 0 1em;
-        }
-
-        li {
-            margin: 15px 0 15px 20px;
-            padding: 5px;
-
-            & > ol,
-            & > ul {
-                margin-top: 10px;
-                padding-left: 10px;
-                margin-bottom: -5px;
-
-                & > li:last-child {
-                    margin-bottom: 0;
+        &[open] {
+            .article-toc-title {
+                svg {
+                    transform: rotate(90deg);
                 }
             }
         }
-        li.active-class > a {
-            border-left: var(--heading-border-size) solid var(--accent-color);
-            font-weight: bold;
-        }
 
-        ul li.active-class > a {
-            display: block;
-        }
+        summary {
+            list-style: none;
+            padding: 15px 20px;
+            cursor: pointer;
 
-        @function repeat($str, $n) {
-            $result: "";
-            @for $_ from 0 to $n {
-                $result: $result + $str;
-            }
-            @return $result;
-        }
-
-        // Support up to 6 levels of indentation for lists in ToCs
-        @for $i from 0 to 5 {
-            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
-                $n: 25 + $i * 35;
-                margin-left: calc(-#{$n}px - 1em);
-                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            &::-webkit-details-marker {
+                display: none;
             }
 
-            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
-                $n: 9 + $i * 35;
-                margin-left: calc(-#{$n}px - 1em);
-                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
-                display: block;
+            .article-toc-title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-transform: uppercase;
+                font-size: 1.4rem;
+                font-weight: bold;
+                color: var(--card-text-color-tertiary);
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    stroke-width: 1.33;
+                    transition: transform 0.3s ease;
+                }
             }
         }
     }
@@ -177,7 +234,7 @@
     overflow-x: auto;
     padding-bottom: 15px;
 
-    & > .flex {
+    &>.flex {
         float: left;
     }
 
@@ -208,7 +265,7 @@
     padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
 
-    & > p {
+    &>p {
         margin: 1.5em 0;
     }
 
@@ -316,10 +373,12 @@
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
+
         //  keep Codeblocks LTR
         [dir="rtl"] & {
             direction: ltr;
         }
+
         code {
             color: unset;
             border: none;
@@ -338,10 +397,12 @@
                 opacity: 1;
             }
         }
+
         // keep Codeblocks LTR
         [dir="rtl"] & {
             direction: ltr;
         }
+
         pre {
             margin: initial;
             padding: 0;
@@ -406,8 +467,8 @@
         padding-bottom: 56.25%;
         overflow: hidden;
 
-        & > iframe,
-        & > video {
+        &>iframe,
+        &>video {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -444,7 +505,7 @@
     }
 
     /// Make long KaTeX equations scrollable in the x-axis
-    .katex-display > .katex {
+    .katex-display>.katex {
         overflow-x: auto;
         overflow-y: hidden;
     }
