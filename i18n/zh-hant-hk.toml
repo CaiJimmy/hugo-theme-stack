@@ -2,46 +2,37 @@ toggleMenu = "切換選單"
 darkMode   = "深色模式"
 
 [list]
-    section = "Section"
-
-    [list.page]
-        one   = "第 {{ .Count }} 頁"
-        other = "第 {{ .Count }} 頁"
-
-    [list.subsection]
-        one   = "Subsection"
-        other = "Subsections"
+    page       = "{{ .Count }} 篇文章"
+    section    = "章節"
+    subsection = "子章節"
 
 [article]
     back            = "返回"
     tableOfContents = "目錄"
     relatedContent  = "相關內容"
     lastUpdatedOn   = "上次改過於"
-
-    [article.readingTime]
-        one   = "需要 {{ .Count }} 分鐘閱讀"
-        other = "需要 {{ .Count }} 分鐘閱讀"
+    readingTime     = "閱讀時間 {{ .Count }} 分鐘"
 
 [notFound]
-    title    = "Not Found"
-    subtitle = "頁面不存在"
+    title    = "找不到頁面"
+    subtitle = "本頁面並不存在"
 
 [widget]
     [widget.archives]
-        title = "Archives"
+        title = "歸檔"
         more  = "更多"
 
     [widget.tagCloud]
-        title = "Tags"
+        title = "標籤"
 
     [widget.categoriesCloud]
-        title = "Categories"
+        title = "分類"
 
 [search]
     title       = "搜尋"
-    placeholder = "Type 關鍵字..."
-    resultTitle = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+    placeholder = "輸入關鍵字..."
+    resultTitle = "找到 #PAGES_COUNT 個結果 (用時 #TIME_SECONDS 秒)"
 
 [footer]
-    builtWith  = "Built with {{ .Generator }}"
+    builtWith  = "使用 {{ .Generator }} 建立"
     designedBy = "主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計"

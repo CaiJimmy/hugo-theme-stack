@@ -2,25 +2,16 @@ toggleMenu = "切換選單"
 darkMode   = "夜晚模式"
 
 [list]
-    section = "段落"
-
-    [list.page]
-        one   = "第 {{ .Count }} 頁"
-        other = "第 {{ .Count }} 頁"
-
-    [list.subsection]
-        one   = "小節"
-        other = "小節"
+    section    = "段落"
+    page       = "第 {{ .Count }} 頁"
+    subsection = "小節"
 
 [article]
     back            = "返回"
     tableOfContents = "目錄"
     relatedContent  = "相關文章"
     lastUpdatedOn   = "最後更新"
-
-    [article.readingTime]
-        one   = "閱讀時間: {{ .Count }} 分鐘"
-        other = "閱讀時間: {{ .Count }} 分鐘"
+    readingTime     = "閱讀時間: {{ .Count }} 分鐘"
 
 [notFound]
     title    = "404 錯誤"
