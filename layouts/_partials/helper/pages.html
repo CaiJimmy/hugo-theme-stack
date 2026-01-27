@@ -11,4 +11,8 @@
     {{- end -}}
 {{- end -}}
 
+{{- if eq .Site.Params.SortBy "lastmod" -}}
+    {{- $pages = $pages.ByLastmod.Reverse -}}
+{{- end -}}
+
 {{- return $pages -}}
