@@ -29,13 +29,10 @@
         </div>
     </header>
 
+    {{- $pages := partial "helper/pages.html" . -}}
     {{- $subsections := .Sections -}}
-    {{- $pages := .Pages | complement $subsections -}}
     
-    {{- if eq (len $pages) 0 -}}
-        {{/* If there are no normal pages, display subsections in list style, with pagination */}}
-        {{/* This happens with taxonomies like categories or tags */}}
-        {{- $pages = $subsections -}}
+    {{- if and (eq (len $pages) (len $subsections)) (eq $pages $subsections) -}}
         {{- $subsections = slice -}}
     {{- end -}}
 

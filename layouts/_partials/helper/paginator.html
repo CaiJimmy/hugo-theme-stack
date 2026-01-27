@@ -1,26 +1,8 @@
-{{- $pages := slice -}}
-{{- $hasPages := false -}}
+{{- $result := slice -}}
 
-{{- if .IsHome -}}
-    {{ $pages = where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
-    {{- $hasPages = true -}}
-{{- else if eq .Kind "term" -}}
-    {{ $pages = .Pages }}
-    {{- $hasPages = true -}}
-{{- else if or (eq .Kind "section") (eq .Kind "taxonomy") -}}
-    {{ $subsections := .Sections }}
-    {{ $pages = .Pages | complement $subsections }}
-
-    {{- if eq (len $pages) 0 -}}
-        {{/* See complete logic in list.html */}}
-        {{- $pages = $subsections -}}
-    {{- end -}}
-    
-    {{- $hasPages = true -}}
+{{- if or .IsHome (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") -}}
+    {{- $pages := partial "helper/pages.html" . -}}
+    {{- $result = .Paginate $pages -}}
 {{- end -}}
 
-{{- if $hasPages -}}
-    {{ $pages = .Paginate $pages }}
-{{- end -}}
-
-{{ return $pages }}
+{{- return $result -}}
