@@ -9,7 +9,7 @@
         </div>
         <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
 
-        {{ $pages := where $context.Site.RegularPages "Type" "in" $context.Site.Params.mainSections }}
+        {{ $pages := partial "helper/pages.html" $context.Site.Home }}
         {{ $archives := $pages.GroupByDate "2006" }}
         
         <div class="widget-archive--list">
