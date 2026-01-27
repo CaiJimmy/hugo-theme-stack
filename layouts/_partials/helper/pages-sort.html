@@ -1,0 +1,7 @@
+{{- $pages := .Pages -}}
+
+{{- if eq .Context.Site.Params.SortBy "lastmod" -}}
+    {{- $pages = $pages.ByLastmod.Reverse -}}
+{{- end -}}
+
+{{- return $pages -}}

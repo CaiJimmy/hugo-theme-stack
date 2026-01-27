@@ -11,8 +11,6 @@
     {{- end -}}
 {{- end -}}
 
-{{- if eq .Site.Params.SortBy "lastmod" -}}
-    {{- $pages = $pages.ByLastmod.Reverse -}}
-{{- end -}}
+{{- $pages := partial "helper/pages-sort.html" (dict "Pages" $pages "Context" .) -}}
 
 {{- return $pages -}}
