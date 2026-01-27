@@ -20,7 +20,7 @@ darkMode   = "Dark Mode"
 
     [article.readingTime]
         one   = "{{ .Count }} minute read"
-        other = "{{ .Count }} minute read"
+        other = "{{ .Count }} minutes read"
 
 [notFound]
     title    = "Not Found"
