@@ -31,7 +31,6 @@
 
     {{- $subsections := .Sections -}}
     {{- $pages := .Pages | complement $subsections -}}
-    {{- $pages = where $pages "Params.hidden" "!=" true -}}
     
     {{- if eq (len $pages) 0 -}}
         {{/* If there are no normal pages, display subsections in list style, with pagination */}}

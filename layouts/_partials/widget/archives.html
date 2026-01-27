@@ -10,8 +10,7 @@
         <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
 
         {{ $pages := where $context.Site.RegularPages "Type" "in" $context.Site.Params.mainSections }}
-        {{ $filtered := where $pages "Params.hidden" "!=" true }}
-        {{ $archives := $filtered.GroupByDate "2006" }}
+        {{ $archives := $pages.GroupByDate "2006" }}
         
         <div class="widget-archive--list">
             {{ range $index, $item := first (add $limit 1) ($archives) }}
