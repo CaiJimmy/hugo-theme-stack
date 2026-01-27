@@ -3,15 +3,13 @@
 
 {{- if .IsHome -}}
     {{ $pages = where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
-    {{ $pages = where $pages "Params.hidden" "!=" true }}
     {{- $hasPages = true -}}
 {{- else if eq .Kind "term" -}}
-    {{ $pages = where .Pages "Params.hidden" "!=" true }}
+    {{ $pages = .Pages }}
     {{- $hasPages = true -}}
 {{- else if or (eq .Kind "section") (eq .Kind "taxonomy") -}}
     {{ $subsections := .Sections }}
     {{ $pages = .Pages | complement $subsections }}
-    {{ $pages = where $pages "Params.hidden" "!=" true }}
 
     {{- if eq (len $pages) 0 -}}
         {{/* See complete logic in list.html */}}

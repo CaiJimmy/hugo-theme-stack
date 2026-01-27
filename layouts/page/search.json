@@ -1,9 +1,7 @@
 {{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
-{{- $filtered := where $pages "Params.hidden" "!=" true -}}
-
 {{- $result := slice -}}
 
-{{- range $filtered -}}
+{{- range $pages -}}
     {{- $data := dict "title" .Title "date" .Date "permalink" .RelPermalink "content" (.Plain) -}}
 
     {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
