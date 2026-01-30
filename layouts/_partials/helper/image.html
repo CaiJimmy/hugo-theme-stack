@@ -9,45 +9,44 @@
 ///     Height: Image height
 ///     Width: Image width
 
-{{ $result := dict
-    "Local" false
-    "Resource" nil
-    "Permalink" (.Image | absURL)
-    "Width" nil
-    "Height" nil
-}}
+{{ $result := "" }}
 
-{{ if not .Image }}
-    {{ $result = "" }}
-{{ else }}
+{{ if .Image }}
     {{ $url := urls.Parse .Image }}
+    {{ $resource := "" }}
     {{ if not (in (slice "https" "http") $url.Scheme) }}
-        {{ $resource := .Resources.Get (printf "%s" (.Image | safeURL)) }}
-        {{ if $resource }}
+        {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
+    {{ else }}
+        {{ with try (resources.GetRemote $url) }}
+            {{ with .Err }}
+                {{ errorf "%s" . }}
+            {{ else with .Value }}
+                {{ $resource = . }}
+            {{ else }}
+                {{ errorf "Unable to get remote resource %q" $url }}
+            {{ end }}
+        {{ end }}   
+    {{ end }}
+
+    {{ if $resource }}
+        {{- $isSVG := eq $resource.MediaType.SubType "svg"  -}}
+        {{- if $isSVG -}}
             {{ $result = dict
+                "Local" true
+                "Resource" $resource
+                "Permalink" $resource.RelPermalink
+                "Height" nil
+                "Width" nil
+            }}
+        {{- else -}}            
+            {{- $result = dict
                 "Local" true
                 "Resource" $resource
                 "Permalink" $resource.RelPermalink
                 "Height" $resource.Height
                 "Width" $resource.Width
             }}
-        {{ end }}
-    {{ else }}
-        {{ with try (resources.GetRemote $url) }}
-            {{ with .Err }}
-                {{ errorf "%s" . }}
-            {{ else with .Value }}
-                {{ $result = dict
-                    "Local" false
-                    "Resource" .
-                    "Permalink" .RelPermalink
-                    "Height" .Height
-                    "Width" .Width
-                }}
-            {{ else }}
-                {{ errorf "Unable to get remote resource %q" $url }}
-            {{ end }}
-        {{ end }}   
+        {{- end -}}
     {{ end }}
 {{ end }}
 
