@@ -18,9 +18,9 @@
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{- end -}}
 
-{{ with .Site.Params.favicon }}
-    {{- $favicon := partial "helper/image" (dict "Image" . "Resources" resources) -}}
-    <link rel="shortcut icon" href="{{ $favicon.Permalink }}" />
+{{- $favicon := partial "helper/image" (dict "Image" .Site.Params.favicon "Resources" resources) -}}
+{{ with $favicon }}
+    <link rel="shortcut icon" href="{{ .Permalink }}" />
 {{ end }}
 
 {{- partial "google_analytics.html" . -}}
