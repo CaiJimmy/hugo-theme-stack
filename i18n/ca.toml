@@ -45,3 +45,27 @@ darkMode   = "Mode fosc"
 [footer]
     builtWith  = "Creat amb {{ .Generator }}"
     designedBy = "Tema {{ .Theme }} dissenyat per {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Consentiment de galetes"
+    description       = "Utilitzem galetes per millorar la vostra experiència de navegació i analitzar el trànsit del lloc."
+    acceptAll         = "Acceptar-ho tot"
+    deny              = "Denegar"
+    managePreferences = "Gestionar preferències"
+    settingsTitle     = "Preferències de galetes"
+    savePreferences   = "Desar preferències"
+    cancel            = "Cancel·lar"
+    footerLink        = "Configuració de galetes"
+    commentsDisabled  = "Els comentaris estan desactivats fins que accepteu les galetes funcionals."
+
+    [cookies.necessary]
+        title       = "Necessàries"
+        description = "Aquestes galetes són necessàries perquè el lloc web funcioni i no es poden desactivar."
+
+    [cookies.analytics]
+        title       = "Analítiques"
+        description = "Aquestes galetes ens ajuden a entendre com els visitants interactuen amb el nostre lloc web."
+
+    [cookies.functional]
+        title       = "Funcionals"
+        description = "Aquestes galetes habiliten funcionalitats com comentaris i contingut incrustat."

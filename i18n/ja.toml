@@ -36,3 +36,27 @@ darkMode   = "ダークモード"
 [footer]
     builtWith  = "{{ .Generator }} で構築されています。"
     designedBy = "テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。"
+
+[cookies]
+    title             = "Cookieの同意"
+    description       = "ブラウジング体験を向上させ、サイトトラフィックを分析するためにCookieを使用しています。"
+    acceptAll         = "すべて受け入れる"
+    deny              = "拒否"
+    managePreferences = "設定を管理"
+    settingsTitle     = "Cookie設定"
+    savePreferences   = "設定を保存"
+    cancel            = "キャンセル"
+    footerLink        = "Cookie設定"
+    commentsDisabled  = "機能的なCookieを受け入れるまで、コメントは無効になっています。"
+
+    [cookies.necessary]
+        title       = "必須"
+        description = "これらのCookieはウェブサイトの機能に必要であり、無効にすることはできません。"
+
+    [cookies.analytics]
+        title       = "分析"
+        description = "これらのCookieは、訪問者が当サイトとどのように対話するかを理解するのに役立ちます。"
+
+    [cookies.functional]
+        title       = "機能的"
+        description = "これらのCookieは、コメントや埋め込みコンテンツなどの機能を有効にします。"

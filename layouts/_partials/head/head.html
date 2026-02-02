@@ -23,5 +23,9 @@
     <link rel="shortcut icon" href="{{ .Permalink }}" />
 {{ end }}
 
-{{- partial "google_analytics.html" . -}}
+{{- if .Site.Params.cookies.enabled -}}
+{{- partial "cookies/analytics.html" . -}}
+{{- else -}}
+{{- template "_internal/google_analytics.html" . -}}
+{{- end -}}
 {{- partial "head/custom.html" . -}}

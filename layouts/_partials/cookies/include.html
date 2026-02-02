@@ -1,0 +1,9 @@
+{{- if .Site.Params.cookies.enabled -}}
+    {{/* Render the banner HTML */}}
+    {{ partial "cookies/banner.html" . }}
+
+    {{/* Load the consent manager script */}}
+    {{- $opts := dict "minify" hugo.IsProduction -}}
+    {{- $script := resources.Get "ts/cookies.ts" | js.Build $opts | fingerprint -}}
+    <script type="text/javascript" src="{{ $script.RelPermalink }}" defer></script>
+{{- end -}}
