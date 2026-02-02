@@ -29,6 +29,31 @@ SortBy              = "default"
         enabled = false
         default = "Licensed under CC BY-NC-SA 4.0"
 
+    # Mermaid diagram configuration
+    # Diagrams are only loaded when mermaid code blocks are present
+    # Theme auto-switches based on site light/dark mode
+    [article.mermaid]
+        # Mermaid version from jsDelivr CDN
+        version = "11"
+        # Visual style: classic or handDrawn (sketch style)
+        look = "classic"
+        # Theme for light mode: default, neutral, dark, forest, base, null
+        lightTheme = "default"
+        # Theme for dark mode: default, neutral, dark, forest, base, null
+        darkTheme = "dark"
+        # Custom theme variables for light mode (only works with lightTheme: base)
+        # lightThemeVariables = { primaryColor = "#ff0000" }
+        # Custom theme variables for dark mode (only works with darkTheme: base)
+        # darkThemeVariables = { primaryColor = "#00ff00" }
+        # Security level: strict (default), loose, antiscript, sandbox
+        # Set to "loose" to enable HTML labels like <br/>
+        securityLevel = "strict"
+        # Enable HTML labels in diagrams (requires securityLevel: loose)
+        htmlLabels = true
+        # Make diagram backgrounds transparent (default: false)
+        # Can also be set per-diagram with %%transparent%% directive
+        transparentBackground = false
+
 [widgets]
     homepage = []
     page     = []

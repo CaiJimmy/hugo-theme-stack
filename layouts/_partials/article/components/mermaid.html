@@ -1,9 +1,179 @@
-{{ if .Store.Get "hasMermaid" }}
+{{- if .Store.Get "hasMermaid" -}}
+{{- $cfg := site.Params.article.mermaid | default dict -}}
+{{- $version := $cfg.version | default "11" -}}
+{{- $lightVars := $cfg.lightThemeVariables | default dict -}}
+{{- $darkVars := $cfg.darkThemeVariables | default dict -}}
+
+<div class="mermaid-modal" id="mermaid-modal">
+    <div class="mermaid-modal-header">
+        <div class="mermaid-modal-controls">
+            <button data-zoom="-1">− Zoom Out</button>
+            <button data-zoom="0">Reset (100%)</button>
+            <button data-zoom="1">+ Zoom In</button>
+            <button data-zoom="fit">Fit to Screen</button>
+        </div>
+        <button class="mermaid-modal-close" id="mermaid-modal-close">✕ Close (Esc)</button>
+    </div>
+    <div class="mermaid-modal-body" id="mermaid-modal-body">
+        <div class="mermaid-modal-content" id="mermaid-modal-content"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@{{ $version }}/dist/mermaid.min.js"></script>
 <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.12.2/+esm';
-    mermaid.initialize({
-        startOnLoad: true,
-        theme: 'neutral',
+const transparentBg = {{ if $cfg.transparentBackground }}true{{ else }}false{{ end }};
+const themes = {
+    light: { theme: '{{ $cfg.lightTheme | default "default" }}', themeVariables: { ...{{ $lightVars | jsonify }}, ...(transparentBg ? { background: 'transparent' } : {}) } },
+    dark: { theme: '{{ $cfg.darkTheme | default "dark" }}', themeVariables: { ...{{ $darkVars | jsonify }}, ...(transparentBg ? { background: 'transparent' } : {}) } }
+};
+const baseConfig = {
+    startOnLoad: false,
+    securityLevel: '{{ $cfg.securityLevel | default "strict" }}',
+    look: '{{ $cfg.look | default "classic" }}',
+    flowchart: { htmlLabels: {{ not (eq ($cfg.htmlLabels | default true) false) }}, useMaxWidth: true },
+    gantt: { useWidth: 800 }
+    {{- with $cfg.maxTextSize }}, maxTextSize: {{ . }}{{ end }}
+    {{- with $cfg.maxEdges }}, maxEdges: {{ . }}{{ end }}
+    {{- with $cfg.fontSize }}, fontSize: {{ . }}{{ end }}
+    {{- with $cfg.fontFamily }}, fontFamily: '{{ . }}'{{ end }}
+    {{- with $cfg.curve }}, curve: '{{ . }}'{{ end }}
+    {{- with $cfg.logLevel }}, logLevel: {{ . }}{{ end }}
+};
+
+const elements = document.querySelectorAll('.mermaid');
+const sources = Array.from(elements).map(el => el.innerHTML);
+const perDiagramTransparent = sources.map(src => /%%\s*transparent\s*%%/i.test(src));
+const cache = { light: [], dark: [] };
+const getScheme = () => document.documentElement.dataset.scheme === 'dark' ? 'dark' : 'light';
+
+const initMermaid = (scheme) => {
+    const { theme, themeVariables } = themes[scheme];
+    mermaid.initialize({ ...baseConfig, theme, ...(Object.keys(themeVariables).length && { themeVariables }) });
+};
+
+const applyTransparency = (el, i) => {
+    if (perDiagramTransparent[i]) el.querySelector('svg')?.style.setProperty('background', 'transparent');
+};
+
+// Wrap elements with toolbar
+elements.forEach((el, idx) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'mermaid-wrapper';
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+    wrapper.insertAdjacentHTML('beforeend', `<div class="mermaid-toolbar"><button data-idx="${idx}" title="Open fullscreen with pan/zoom">⛶ Expand</button></div>`);
+});
+
+// Modal state
+const modal = document.getElementById('mermaid-modal');
+const modalBody = document.getElementById('mermaid-modal-body');
+const modalContent = document.getElementById('mermaid-modal-content');
+let pzInstance = null, panzoom = null;
+
+const loadPanzoom = async () => {
+    if (!panzoom) panzoom = (await import('https://cdn.jsdelivr.net/npm/panzoom@9.4.3/+esm')).default;
+    return panzoom;
+};
+
+const fitToScreen = () => {
+    const wrapper = modalContent.querySelector('.mermaid-panzoom-container');
+    if (!pzInstance || !wrapper) return;
+    const { nativeWidth: w, nativeHeight: h } = wrapper.dataset;
+    const rect = modalContent.getBoundingClientRect();
+    const scale = Math.min((rect.width - 60) / w, (rect.height - 60) / h);
+    pzInstance.zoomAbs(0, 0, scale);
+    pzInstance.moveTo((rect.width - w * scale) / 2, (rect.height - h * scale) / 2);
+};
+
+const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    pzInstance?.dispose();
+    pzInstance = null;
+    modalContent.innerHTML = '';
+};
+
+const openModal = async (idx) => {
+    const svg = elements[idx].querySelector('svg');
+    if (!svg) return;
+
+    const svgClone = svg.cloneNode(true);
+    const viewBox = svg.getAttribute('viewBox');
+    const [w, h] = viewBox ? viewBox.split(/[\s,]+/).slice(2).map(Number) : [svg.getBoundingClientRect().width || 800, svg.getBoundingClientRect().height || 600];
+    svgClone.setAttribute('width', w);
+    svgClone.setAttribute('height', h);
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'mermaid-panzoom-container';
+    wrapper.dataset.nativeWidth = w;
+    wrapper.dataset.nativeHeight = h;
+    wrapper.appendChild(svgClone);
+
+    modalContent.innerHTML = '';
+    modalContent.appendChild(wrapper);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    const pz = await loadPanzoom();
+    setTimeout(() => {
+        pzInstance = pz(wrapper, { maxZoom: 10, minZoom: 0.05, bounds: false });
+        fitToScreen();
+        wrapper.classList.add('ready');
+    }, 50);
+};
+
+// Event handlers
+document.addEventListener('click', (e) => {
+    const toolbarBtn = e.target.closest('.mermaid-toolbar button');
+    if (toolbarBtn) return openModal(+toolbarBtn.dataset.idx);
+
+    const zoomBtn = e.target.closest('.mermaid-modal-controls button');
+    if (zoomBtn && pzInstance) {
+        const z = zoomBtn.dataset.zoom;
+        const rect = modalBody.getBoundingClientRect();
+        if (z === 'fit') fitToScreen();
+        else if (z === '0') { pzInstance.moveTo(0, 0); pzInstance.zoomAbs(0, 0, 1); }
+        else pzInstance.smoothZoom(rect.width / 2, rect.height / 2, z === '1' ? 1.5 : 0.67);
+    }
+});
+
+document.getElementById('mermaid-modal-close').addEventListener('click', closeModal);
+modalBody.addEventListener('click', (e) => e.target === modalBody && closeModal());
+document.addEventListener('keydown', (e) => e.key === 'Escape' && modal.classList.contains('active') && closeModal());
+
+// Render
+(async () => {
+    const scheme = getScheme();
+    initMermaid(scheme);
+    await mermaid.run({ nodes: Array.from(elements) });
+    elements.forEach((el, i) => { cache[scheme][i] = el.innerHTML; applyTransparency(el, i); });
+
+    // Pre-render alternate theme
+    const alt = scheme === 'dark' ? 'light' : 'dark';
+    (window.requestIdleCallback ?? (fn => setTimeout(fn, 1000)))(() => {
+        if (cache[alt].length) return;
+        initMermaid(alt);
+        const container = document.createElement('div');
+        container.className = 'mermaid-offscreen';
+        document.body.appendChild(container);
+        const nodes = sources.map(src => { const n = document.createElement('pre'); n.innerHTML = src; container.appendChild(n); return n; });
+        mermaid.run({ nodes }).then(() => { nodes.forEach((n, i) => cache[alt][i] = n.innerHTML); container.remove(); });
     });
+})();
+
+window.addEventListener('onColorSchemeChange', async () => {
+    const scheme = getScheme();
+    if (!cache[scheme].length) {
+        initMermaid(scheme);
+        const container = document.createElement('div');
+        container.className = 'mermaid-offscreen';
+        document.body.appendChild(container);
+        const nodes = sources.map(src => { const n = document.createElement('pre'); n.innerHTML = src; container.appendChild(n); return n; });
+        await mermaid.run({ nodes });
+        nodes.forEach((n, i) => cache[scheme][i] = n.innerHTML);
+        container.remove();
+    }
+    elements.forEach((el, i) => { el.innerHTML = cache[scheme][i]; applyTransparency(el, i); });
+});
 </script>
-{{ end }}
+{{- end -}}
