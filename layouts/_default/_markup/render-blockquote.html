@@ -1,0 +1,22 @@
+{{- $type := .AlertType -}}
+
+<blockquote class="{{ if $type }}alert alert-{{ $type }}{{ end }}">
+  {{- if $type -}}
+    <div class="alert-header">
+      <span class="alert-icon">
+        {{- if eq $type "note" }}📝{{ end -}}
+        {{- if eq $type "tip" }}💡{{ end -}}
+        {{- if eq $type "important" }}📌{{ end -}}
+        {{- if eq $type "warning" }}⚠️{{ end -}}
+        {{- if eq $type "caution" }}🚨{{ end -}}
+      </span>
+      <span class="alert-title">
+        {{- title $type -}}
+      </span>
+    </div>
+  {{- end -}}
+
+  <div class="alert-body">
+    {{ .Text }}
+  </div>
+</blockquote>
