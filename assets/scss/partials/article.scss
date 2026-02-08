@@ -278,6 +278,7 @@
     color: transparent;
 
     &::after {
+        visibility: visible;
         content: "";
         position: absolute;
         top: 50%;

@@ -33,8 +33,6 @@ SortBy              = "default"
     # Diagrams are only loaded when mermaid code blocks are present
     # Theme auto-switches based on site light/dark mode
     [article.mermaid]
-        # Mermaid version from jsDelivr CDN
-        version = "11"
         # Visual style: classic or handDrawn (sketch style)
         look = "classic"
         # Theme for light mode: default, neutral, dark, forest, base, null
