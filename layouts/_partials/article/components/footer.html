@@ -7,11 +7,11 @@
         <span>{{ default .Site.Params.article.license.default .Params.license | markdownify }}</span>
     </section>
     {{ end }}
-	
-	{{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
+    
+    {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
     <section class="article-edit">
         {{ partial "helper/icon" "external-link" }}
-        <span><a style="color: inherit;" href="https://github.com/iwyang/hugo/edit/develop/content/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a></span>
+        <span><a style="color: inherit;" href="https://github.com/iwyang/iwyang.github.io/edit/develop/content/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a></span>
     </section>
     {{ end }}
 
@@ -21,7 +21,7 @@
         <span style="color: #999;">
             更新于 {{ .Lastmod.Format "2006-01-02 15:04" }}
             {{- if .GitInfo -}}
-                <a href="https://github.com/iwyang/hugo/commit/{{ .GitInfo.Hash }}" 
+                <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ .GitInfo.Hash }}" 
                    target="_blank" 
                    rel="noopener noreferrer" 
                    style="color: #1e90ff; font-weight: normal; margin-left: 5px; text-decoration: none;">

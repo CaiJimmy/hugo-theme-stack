@@ -1,7 +1,7 @@
 {{- $pag := $.Paginator -}}
 {{- if gt $pag.TotalPages 1 -}}
 <nav class="pagination" role="navigation" aria-label="pagination">
-    {{- /* Previous page button */ -}}
+    {{- /* 上一页按钮 */ -}}
     <a class="page-link {{ if not $pag.Prev }}disabled{{ end }}"
         {{- if $pag.Prev -}}href="{{ $pag.Prev.URL }}" {{- end -}}
         aria-label="Previous page" 
@@ -9,26 +9,26 @@
         {{ partial "helper/icon" "chevron-left" }}
     </a>
 
-    {{- /* Page numbers logic */ -}}
-    {{- $window := 4 -}}
-    {{- $showFirst := true -}}
-    {{- $showLast := true -}}
-
-    {{- /* First page */ -}}
+    {{- /* ============================================ */ -}}
+    {{- /* 核心配置：窗口大小设为 1，大幅减少手机端页码显示 */ -}}
+    {{- $window := 1 -}}
+    {{- /* ============================================ */ -}}
+    
+    {{- /* 第1页 (总是显示) */ -}}
     <a class="page-link {{ if eq $pag.PageNumber 1 }}current{{ end }}" aria-label="Page 1"
         {{- if eq $pag.PageNumber 1 -}}aria-current="page" {{- end -}}
         {{- if ne $pag.PageNumber 1 -}}href="{{ $pag.First.URL }}"{{- end -}}>
         1
     </a>
 
-    {{- /* Left ellipsis - show if current page is > 3 */ -}}
-    {{- if gt $pag.PageNumber 3 -}}
+    {{- /* 左侧省略号 */ -}}
+    {{- if gt $pag.PageNumber (add $window 2) -}}
     <span class="page-link pagination-link">
         {{ partial "helper/icon" "dots" }}
     </span>
     {{- end -}}
 
-    {{- /* Middle pages - show current and neighbors */ -}}
+    {{- /* 中间页码：只显示当前页的前后 $window 页 */ -}}
     {{- range $pag.Pagers -}}
         {{- if and (gt .PageNumber 1) (lt .PageNumber $pag.TotalPages) -}}
             {{- if and (ge .PageNumber (sub $pag.PageNumber $window)) (le .PageNumber (add $pag.PageNumber $window)) -}}
@@ -41,15 +41,14 @@
         {{- end -}}
     {{- end -}}
 
-    {{- /* Right ellipsis - show if current page is < last-2 */ -}}
-    {{- if lt $pag.PageNumber (sub $pag.TotalPages 2) -}}
+    {{- /* 右侧省略号 */ -}}
+    {{- if lt $pag.PageNumber (sub $pag.TotalPages (add $window 1)) -}}
     <span class="page-link pagination-link">
         {{ partial "helper/icon" "dots" }}
     </span>
     {{- end -}}
 
-    {{- /* Last page (if more than 1 page total) */ -}}
-
+    {{- /* 最后一页 (总是显示) */ -}}
     {{- if gt $pag.TotalPages 1 -}}
     <a class="page-link {{ if eq $pag.PageNumber $pag.TotalPages }}current{{ end }}"
         {{- if ne $pag.PageNumber $pag.TotalPages -}}href="{{ $pag.Last.URL }}" {{- end -}}
@@ -59,7 +58,7 @@
     </a>
     {{- end -}}
 
-    {{- /* Next page button */ -}}
+    {{- /* 下一页按钮 */ -}}
     <a class="page-link {{ if not $pag.Next }}disabled{{ end }}"
         {{- if $pag.Next -}}href="{{ $pag.Next.URL }}" {{- end -}} 
         aria-label="Next page"

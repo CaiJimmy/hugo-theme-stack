@@ -1,14 +1,77 @@
 {{ define "main" }}
-    {{- $paginator := partial "helper/paginator.html" . -}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    {{ $shuoshuo := where .Site.RegularPages "Type" "shuoshuo" }}
+    {{ $latest_shuoshuo := $shuoshuo | first 10 }}
+
+    {{ if gt (len $latest_shuoshuo) 0 }}
+    <div class="notice-board-container">
+        <div class="notice-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <path d="M8 9h8"></path>
+               <path d="M8 13h6"></path>
+               <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z"></path>
+            </svg>
+        </div>
+
+        <div class="swiper myNoticeSwiper">
+            <div class="swiper-wrapper">
+                {{ range $latest_shuoshuo }}
+                <div class="swiper-slide notice-slide">
+                    <a href="/shuoshuo/" class="notice-link">
+                        <span class="notice-text">{{ .Plain | truncate 60 }}</span>
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        
+        <div class="notice-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <polyline points="9 6 15 12 9 18" />
+            </svg>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $pages = where $pages "Type" "!=" "shuoshuo" }}
+    
     <section class="article-list">
-        {{ range $index, $element := $paginator.Pages }}
+        {{ $paginator := .Paginate $pages }}
+        {{ range $paginator.Pages }}
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
 
-    {{- partial "pagination.html" . -}}
-    {{- partial "footer/footer" . -}}
+    {{ partial "pagination.html" . }}
+    {{ partial "footer/footer" . }}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof Swiper !== 'undefined') {
+                new Swiper(".myNoticeSwiper", {
+                    direction: 'vertical',
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    
+                    /* 允许触摸拖动 */
+                    allowTouchMove: true,
+                    /* 允许鼠标滚轮切换 */
+                    mousewheel: true,
+                    
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false, /* 拖动后继续自动播放 */
+                    },
+                    loop: true,
+                });
+            }
+        });
+    </script>
 {{ end }}
 
 {{ define "right-sidebar" }}
