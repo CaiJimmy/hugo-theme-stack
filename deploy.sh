@@ -4,6 +4,7 @@
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 YELLOW='\033[0;33m'
+RED='\033[0;31m'
 NC='\033[0m' # 恢复默认颜色
 
 echo -e "${CYAN}🚀 开始提交并推送代码...${NC}"
@@ -30,14 +31,21 @@ fi
 # 执行提交
 git commit -m "$COMMIT_MSG"
 
-# 3. 推送到远程分支
+# 3. 推送到远程分支并判断成功/失败
 echo ""
 echo -e "${CYAN}正在推送到 origin master...${NC}"
-git push origin master
 
-echo ""
-echo -e "${GREEN}✨ 操作完成！代码已成功推送到远程仓库。${NC}"
-
-# 强行停留，直到你按回车，防止双击运行后直接消失
-echo ""
-read -p "按回车键关闭窗口..."
+if git push origin master; then
+    echo ""
+    echo -e "${GREEN}✨ 操作完成！代码已成功推送到远程仓库。${NC}"
+    sleep 2  # 停留 2 秒让你看清成功提示，然后自动关闭窗口
+    exit 0
+else
+    echo ""
+    echo -e "${RED}❌ [失败] 推送过程中出现错误！${NC}"
+    echo -e "${YELLOW}请检查网络连接，或确认是否有冲突。${NC}"
+    echo ""
+    # 只有失败时才需要按回车
+    read -p "按回车键关闭窗口..."
+    exit 1
+fi

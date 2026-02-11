@@ -15,6 +15,9 @@
     <div class="article-title-wrapper">
         <h2 class="article-title">
             <a href="{{ .RelPermalink }}">
+                {{ if or .Weight .Params.pinned }}
+                <span class="icon-pinned" style="display: inline-block; background: linear-gradient(135deg, #56a3fc 0%, #9e58ff 100%); color: #ffffff; font-size: 0.6em; padding: 2px 6px; border-radius: 4px; vertical-align: 0.2em; margin-right: 8px; font-weight: normal; line-height: 1.2; box-shadow: 0 2px 4px rgba(158, 88, 255, 0.2); flex-shrink: 0;">置顶</span>
+                {{ end }}
                 {{- .Title -}}
             </a>
         </h2>
