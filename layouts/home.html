@@ -21,7 +21,11 @@
                 {{ range $latest_shuoshuo }}
                 <div class="swiper-slide notice-slide">
                     <a href="/shuoshuo/" class="notice-link">
-                        <span class="notice-text">{{ .Plain | truncate 60 }}</span>
+                        <span class="notice-text">
+                            <span class="notice-time-ago" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                                {{ .Date.Format "2006-01-02" }}
+                            </span>：{{ .Plain | truncate 60 }}
+                        </span>
                     </a>
                 </div>
                 {{ end }}
@@ -52,24 +56,49 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // 1. 初始化 Swiper
             if (typeof Swiper !== 'undefined') {
                 new Swiper(".myNoticeSwiper", {
                     direction: 'vertical',
                     slidesPerView: 1,
                     spaceBetween: 0,
-                    
-                    /* 允许触摸拖动 */
                     allowTouchMove: true,
-                    /* 允许鼠标滚轮切换 */
                     mousewheel: true,
-                    
                     autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false, /* 拖动后继续自动播放 */
+                        delay: 2500,
+                        disableOnInteraction: false,
                     },
                     loop: true,
                 });
             }
+
+            // 2. 首页轮播时间计算逻辑
+            const timeElements = document.querySelectorAll('.notice-time-ago');
+            const now = new Date();
+
+            timeElements.forEach(el => {
+                const dateStr = el.getAttribute('datetime');
+                const date = new Date(dateStr);
+                const diff = (now - date) / 1000; // 差距秒数
+
+                let text = el.innerText; // 默认保留原日期 (现在是 2022-08-22 这种格式)
+                
+                if (diff < 60) {
+                    text = '刚刚';
+                } else if (diff < 3600) {
+                    text = Math.floor(diff / 60) + ' 分钟前';
+                } else if (diff < 86400) {
+                    text = Math.floor(diff / 3600) + ' 小时前';
+                } else if (diff < 2592000) { 
+                    text = Math.floor(diff / 86400) + ' 天前';
+                } else if (diff < 31536000) { 
+                    text = Math.floor(diff / 2592000) + ' 个月前';
+                }
+                // 如果 diff > 31536000 (1年)，上面的 if 都不满足
+                // text 依然保持 el.innerText 的初始值 (即 2006-01-02 格式)
+                
+                el.innerText = text;
+            });
         });
     </script>
 {{ end }}
