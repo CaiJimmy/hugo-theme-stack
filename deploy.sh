@@ -11,17 +11,20 @@ echo -e "${CYAN}🚀 开始提交并推送代码...${NC}"
 # 1. 将所有改动添加到暂存区
 git add .
 
+# 动态生成包含当前时间的默认提交信息
+DEFAULT_MSG="更新: $(date +"%Y-%m-%d %H:%M:%S")"
+
 # 2. 提示用户输入提交信息
 echo ""
-echo -e "${YELLOW}👉 请输入本次更新的说明 (直接回车默认使用 '更新'): ${NC}"
+echo -e "${YELLOW}👉 请输入本次更新的说明 (直接回车默认: ${DEFAULT_MSG}): ${NC}"
 read COMMIT_MSG
 
-# 如果用户没有输入任何内容（直接敲了回车），则赋予默认值
+# 如果用户没有输入任何内容（直接敲了回车），则赋予默认的带时间的信息
 if [ -z "$COMMIT_MSG" ]; then
-    COMMIT_MSG="更新"
+    COMMIT_MSG="$DEFAULT_MSG"
     echo -e "未输入内容，已自动使用默认信息: ${GREEN}${COMMIT_MSG}${NC}"
 else
-    echo -e "已记录你的提交信息: ${GREEN}${COMMIT_MSG}${NC}"
+    echo -e "已记录你的自定义提交信息: ${GREEN}${COMMIT_MSG}${NC}"
 fi
 
 # 执行提交
