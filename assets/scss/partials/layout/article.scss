@@ -243,17 +243,37 @@
         flex-shrink: 0;
         overflow: hidden;
         width: 250px;
-        height: 150px;
+        
+        /* 1. 将原本的 height: 150px 改为自适应，消除大片空白 */
+        height: auto;
+        min-height: 80px; /* 设置一个舒适的最小高度 */
 
-        .article-title {
-            font-size: 1.8rem;
-            margin: 0;
+        /* 2. 彻底隐藏图片容器 */
+        .article-image {
+            display: none !important;
         }
 
+        /* 3. 新增详情区域样式：让文字在卡片中垂直/水平居中 */
+        .article-details {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            box-sizing: border-box;
+        }
+
+        .article-title {
+            font-size: 1.6rem; /* 稍微缩小一点字号显得更精致 */
+            margin: 0;
+            text-align: center; /* 文字居中对齐 */
+            color: var(--card-text-color-main) !important; /* 强制文字显示为主题的正常颜色 */
+        }
+
+        /* 4. 移除带图片时附带的黑色半透明渐变遮罩 */
         &.has-image {
             .article-details {
-                padding: 20px;
-                background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+                background: transparent;
             }
         }
     }
