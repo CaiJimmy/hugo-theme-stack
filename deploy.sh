@@ -38,6 +38,7 @@ echo -e "${CYAN}正在推送到 origin master...${NC}"
 if git push origin master; then
     echo ""
     echo -e "${GREEN}✨ 操作完成！代码已成功推送到远程仓库。${NC}"
+    echo -e "窗口将在 2 秒后自动关闭..."  # <--- 新增的提示信息在这里
     sleep 2  # 停留 2 秒让你看清成功提示，然后自动关闭窗口
     exit 0
 else
