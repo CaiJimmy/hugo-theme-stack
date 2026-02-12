@@ -1,4 +1,66 @@
 {{- $ThemeVersion := "4.0.0" -}}
+
+{{/* ===========================================================
+     【核心逻辑：强迫症精准版 - 修复 Hugo v0.141+ 兼容性】
+     1. 获取 Git Hash
+     2. 请求 GitHub API 获取精准时间
+     3. 修复 .Err 字段移除导致的报错
+     =========================================================== */}}
+
+{{- $gitHashFull := "" -}}
+{{- $gitHashShort := "" -}}
+{{- $lastBuildTime := now -}} {{/* 默认兜底 */}}
+
+{{/* --- 1. 获取 Git Hash --- */}}
+{{- if fileExists ".git/HEAD" -}}
+    {{- $head := readFile ".git/HEAD" | strings.TrimSpace -}}
+    {{- if strings.HasPrefix $head "ref: " -}}
+        {{- $ref := strings.TrimPrefix "ref: " $head -}}
+        {{- if fileExists (printf ".git/%s" $ref) -}}
+            {{- $gitHashFull = readFile (printf ".git/%s" $ref) | strings.TrimSpace -}}
+        {{- end -}}
+    {{- else -}}
+        {{- $gitHashFull = $head -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if eq $gitHashFull "" -}}
+    {{- if getenv "GITHUB_SHA" -}}
+        {{- $gitHashFull = getenv "GITHUB_SHA" -}}
+    {{- else if getenv "COMMIT_REF" -}}
+        {{- $gitHashFull = getenv "COMMIT_REF" -}}
+    {{- end -}}
+{{- end -}}
+
+{{/* --- 2. 【核心】使用 Hash 请求 GitHub API 获取精准时间 --- */}}
+{{- if ne $gitHashFull "" -}}
+    {{- $repo := "iwyang/iwyang.github.io" -}} 
+    {{- $apiURL := printf "https://api.github.com/repos/%s/commits/%s" $repo $gitHashFull -}}
+    
+    {{/* 使用 resources.GetRemote 发起请求 */}}
+    {{- $apiData := resources.GetRemote $apiURL -}}
+    
+    {{/* 【修复点】直接判断 $apiData 是否存在 */}}
+    {{- if $apiData -}}
+        {{/* 尝试解析 JSON */}}
+        {{- $json := $apiData.Content | transform.Unmarshal -}}
+        
+        {{/* 只有当 JSON 中确实包含 commit 信息时才更新时间 */}}
+        {{- if $json.commit -}}
+            {{- $lastBuildTime = time.AsTime $json.commit.committer.date -}}
+        {{- end -}}
+    {{- end -}}
+    
+    {{/* 截取短 Hash */}}
+    {{- if ge (len $gitHashFull) 7 -}}
+        {{- $gitHashShort = substr $gitHashFull 0 7 -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{/* ===========================================================
+     【页面展示】
+     =========================================================== */}}
 <footer class="site-footer">
     <section class="copyright">
         &copy; 
@@ -9,7 +71,12 @@
     </section>
     
     <section class="running-time">
-        本博客已运行 <span class="running-days">0</span> 天
+        最近更新：<span id="site-last-update" data-time="{{ $lastBuildTime.Format "2006-01-02T15:04:05Z07:00" }}">--</span>
+
+        {{- if $gitHashShort -}}
+            {{/* 修改点：将 color 改回 #1e90ff，去掉了 opacity */}}
+            <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ $gitHashFull }}" target="_blank" rel="noopener" style="color: #1e90ff; margin-left: 5px; text-decoration: none;">#{{ $gitHashShort }}</a>
+        {{- end -}}
     </section>
     
     <section class="powerby">
@@ -28,13 +95,31 @@
 
 <script>
     (function() {
-        var buildDate = new Date(2020, 3, 25); 
-        var today = new Date();
-        var days = Math.floor((today - buildDate) / (1000 * 60 * 60 * 24));
-        
-        var elements = document.querySelectorAll('.running-days');
-        elements.forEach(function(el) {
-            el.innerText = days;
-        });
+        var updateEl = document.getElementById('site-last-update');
+        if (updateEl) {
+            var lastBuildTime = new Date(updateEl.getAttribute('data-time'));
+            var now = new Date();
+            var diff = (now - lastBuildTime) / 1000; 
+
+            var text = '';
+            
+            // 【修改逻辑】只用相对时间，不再显示具体日期
+            if (diff < 60) {
+                text = '刚刚';
+            } else if (diff < 3600) {
+                text = Math.floor(diff / 60) + ' 分钟前';
+            } else if (diff < 86400) {
+                text = Math.floor(diff / 3600) + ' 小时前';
+            } else if (diff < 2592000) { // 30天
+                text = Math.floor(diff / 86400) + ' 天前';
+            } else if (diff < 31536000) { // 365天
+                text = Math.floor(diff / 2592000) + ' 个月前';
+            } else {
+                // 超过一年，直接显示 X 年前
+                text = Math.floor(diff / 31536000) + ' 年前';
+            }
+            
+            updateEl.innerText = text;
+        }
     })();
 </script>
