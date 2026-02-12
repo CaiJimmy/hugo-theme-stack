@@ -8,6 +8,10 @@
         {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
     </section>
     
+    <section class="running-time">
+        本博客已运行 <span class="running-days">0</span> 天
+    </section>
+    
     <section class="powerby">
         {{ with .Site.Params.footer.customText }}
             {{ . | safeHTML }} <br/>
@@ -17,7 +21,20 @@
         {{- $Theme := printf `<b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="%s">Stack</a></b>` $ThemeVersion -}}
         {{- $DesignedBy := `<a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>` -}}
 
-        {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} <br />
+        {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} | 
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
     </section>
 </footer>
+
+<script>
+    (function() {
+        var buildDate = new Date(2020, 3, 25); 
+        var today = new Date();
+        var days = Math.floor((today - buildDate) / (1000 * 60 * 60 * 24));
+        
+        var elements = document.querySelectorAll('.running-days');
+        elements.forEach(function(el) {
+            el.innerText = days;
+        });
+    })();
+</script>
