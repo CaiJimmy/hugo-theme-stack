@@ -1,5 +1,125 @@
 <article class="{{ if .Params.image }}has-image {{ end }}main-article">
-    {{ partial "article/components/header" . }}
+    
+    {{/* --- 样式补丁：独立元数据样式 --- */}}
+    <style>
+        /* 1. 容器：Flex 布局 */
+        .article-meta-info {
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 15px !important;       
+            margin-top: 12px !important;
+            margin-bottom: 8px !important;
+            
+            /* 强制不透明度为 1 */
+            opacity: 1 !important; 
+            color: var(--card-text-color-secondary) !important;
+        }
+
+        /* 2. 单项：图标+文字 */
+        .article-meta-item {
+            display: flex !important;
+            align-items: center !important;
+            
+            /* 间距保持 8px */
+            gap: 8px !important;        
+            
+            font-size: 14px !important; 
+            line-height: 1 !important;
+            text-decoration: none !important;
+            
+            /* 强制继承容器颜色，且无透明度 */
+            color: inherit !important;
+            opacity: 1 !important;
+        }
+
+        /* 3. 图标：尺寸锁定与颜色继承 */
+        .article-meta-item svg {
+            width: 14px !important;     
+            height: 14px !important;    
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            
+            /* 确保图标不透明 */
+            opacity: 1 !important;
+            color: inherit !important; 
+        }
+
+        /* 4. 文字：强制继承颜色 */
+        .article-meta-item time,
+        .article-meta-item span {
+            font-size: 14px !important;
+            line-height: 1 !important;
+            display: block !important;
+            margin: 0 !important;
+            
+            color: inherit !important;
+            font-weight: normal !important;
+        }
+    </style>
+
+    <header class="article-header">
+        {{- if .Params.image -}}
+            <div class="article-image">
+                <a href="{{ .RelPermalink }}">
+                    <img src="{{ .Params.image }}" loading="lazy" alt="Featured image of article {{ .Title }}" />
+                </a>
+            </div>
+        {{- end -}}
+
+        <div class="article-details">
+            {{/* 1. 顶部分类标签 */}}
+            {{ if .Params.categories }}
+            <header class="article-category">
+                {{ range (.GetTerms "categories") }}
+                    {{ $color := partial "helper/color-from-str" .LinkTitle }}
+                    {{ $BackgroundColor := default $color.BackgroundColor .Params.style.background }}
+                    {{ $TextColor := default $color.TextColor .Params.style.color }}
+                    <a href="{{ .RelPermalink }}" style="background-color: {{ $BackgroundColor | safeCSS }}; color: {{ $TextColor | safeCSS }};">
+                        {{ .LinkTitle }}
+                    </a>
+                {{ end }}
+            </header>
+            {{ end }}
+
+            <h2 class="article-title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h2>
+
+            {{/* 2. 元数据区域 */}}
+            <footer class="article-meta-info">
+                {{/* 发布时间 */}}
+                <div class="article-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <time class="article-time--published">{{ .Date.Format "2006-01-02" }}</time>
+                </div>
+
+                {{/* 更新时间 */}}
+                {{- $updateTime := .Lastmod -}}
+                {{- if .GitInfo -}}{{- $updateTime = .GitInfo.AuthorDate -}}{{- end -}}
+                
+                {{/* 【核心修改】将阈值从 1800 改为 0，只要有更新就立即显示 */}}
+                {{- if gt (sub $updateTime.Unix .Date.Unix) 0 -}}
+                <div class="article-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    <time class="article-time--updated">{{ $updateTime.Format "2006-01-02" }}</time>
+                </div>
+                {{- end -}}
+
+                {{/* 阅读时长 */}}
+                <div class="article-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span class="article-reading-time">
+                        {{ T "article.readingTime" .ReadingTime }}
+                    </span>
+                </div>
+            </footer>
+        </div>
+    </header>
 
     {{ if .Scratch.Get "TOCEnabled" }}
     <aside class="article-toc">
@@ -18,7 +138,6 @@
     {{ end }}
 
     {{ partial "article/components/content" . }}
-
     {{ partial "article/components/footer" . }}
 
     {{ if or .Params.math .Site.Params.article.math }}

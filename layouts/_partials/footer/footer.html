@@ -1,10 +1,10 @@
 {{- $ThemeVersion := "4.0.0" -}}
 
 {{/* ===========================================================
-     【核心逻辑：强迫症精准版 - 修复 Hugo v0.141+ 兼容性】
+     【核心逻辑】
      1. 获取 Git Hash
      2. 请求 GitHub API 获取精准时间
-     3. 修复 .Err 字段移除导致的报错
+     3. 悬停显示精准时间 (无秒版)
      =========================================================== */}}
 
 {{- $gitHashFull := "" -}}
@@ -32,7 +32,7 @@
     {{- end -}}
 {{- end -}}
 
-{{/* --- 2. 【核心】使用 Hash 请求 GitHub API 获取精准时间 --- */}}
+{{/* --- 2. 使用 Hash 请求 GitHub API 获取精准时间 --- */}}
 {{- if ne $gitHashFull "" -}}
     {{- $repo := "iwyang/iwyang.github.io" -}} 
     {{- $apiURL := printf "https://api.github.com/repos/%s/commits/%s" $repo $gitHashFull -}}
@@ -40,12 +40,8 @@
     {{/* 使用 resources.GetRemote 发起请求 */}}
     {{- $apiData := resources.GetRemote $apiURL -}}
     
-    {{/* 【修复点】直接判断 $apiData 是否存在 */}}
     {{- if $apiData -}}
-        {{/* 尝试解析 JSON */}}
         {{- $json := $apiData.Content | transform.Unmarshal -}}
-        
-        {{/* 只有当 JSON 中确实包含 commit 信息时才更新时间 */}}
         {{- if $json.commit -}}
             {{- $lastBuildTime = time.AsTime $json.commit.committer.date -}}
         {{- end -}}
@@ -62,6 +58,70 @@
      【页面展示】
      =========================================================== */}}
 <footer class="site-footer">
+    <style>
+        /* --- [核心样式控制] --- */
+        
+        /* 1. 基础排版统一 (第二行和第三行) */
+        .site-footer .running-time,
+        .site-footer .powerby {
+            font-size: 14px !important;        /* 统一字号 14px */
+            line-height: 1.6 !important;       /* 统一行高 */
+            margin: 10px 0 !important;         /* 统一间距 */
+            display: block !important;
+            font-weight: normal !important;    /* 统一不加粗 */
+        }
+
+        /* 2. 第二行 (最近更新) 强制设为蓝色 #1e90ff (亮色 & 暗色模式) */
+        .site-footer .running-time,
+        .site-footer .running-time *,
+        [data-scheme="dark"] .site-footer .running-time,
+        [data-scheme="dark"] .site-footer .running-time * {
+            color: #1e90ff !important;
+        }
+
+        /* 3. 第三行 (Power By) 样式控制 */
+        /* 亮色模式：静音灰色 */
+        .site-footer .powerby,
+        .site-footer .powerby * {
+            color: var(--sys-color-text-muted) !important;
+        }
+        /* 暗色模式：变亮白，避免看不清 */
+        [data-scheme="dark"] .site-footer .powerby,
+        [data-scheme="dark"] .site-footer .powerby * {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        /* 4. 分隔符样式 */
+        .footer-separator {
+            margin: 0 6px !important;
+            font-size: 14px !important;
+        }
+
+        /* 【核心修改】第二行分隔符：强制蓝色且不透明，完全匹配说说页 list.html */
+        .site-footer .running-time .footer-separator {
+            color: #1e90ff !important;
+            opacity: 1 !important; 
+        }
+        
+        /* 第三行分隔符随第三行文字变色 */
+        .site-footer .powerby .footer-separator {
+            color: inherit !important;
+        }
+
+        /* 5. 链接交互 */
+        .site-footer a {
+            text-decoration: none !important;
+            cursor: pointer;
+        }
+        .site-footer a:hover {
+            text-decoration: underline !important;
+        }
+        /* 第三行链接悬停变为主色调 */
+        .site-footer .powerby a:hover {
+            color: var(--accent-color) !important;
+        }
+    </style>
+
     <section class="copyright">
         &copy; 
         {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
@@ -71,11 +131,17 @@
     </section>
     
     <section class="running-time">
-        最近更新：<span id="site-last-update" data-time="{{ $lastBuildTime.Format "2006-01-02T15:04:05Z07:00" }}">--</span>
+        最近更新：<span id="site-last-update" data-time="{{ $lastBuildTime.Format "2006-01-02T15:04:05Z07:00" }}" title="{{ $lastBuildTime.Format "2006-01-02 15:04" }}">--</span>
 
         {{- if $gitHashShort -}}
-            {{/* 修改点：将 color 改回 #1e90ff，去掉了 opacity */}}
-            <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ $gitHashFull }}" target="_blank" rel="noopener" style="color: #1e90ff; margin-left: 5px; text-decoration: none;">#{{ $gitHashShort }}</a>
+            <span class="footer-separator">|</span>
+            
+            <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ $gitHashFull }}" 
+               target="_blank" 
+               rel="noopener" 
+               title="Commit Hash: {{ $gitHashShort }}">
+               #{{ $gitHashShort }}
+            </a>
         {{- end -}}
     </section>
     
@@ -85,10 +151,11 @@
         {{ end }}
 
         {{- $Generator := `<a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>` -}}
-        {{- $Theme := printf `<b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="%s">Stack</a></b>` $ThemeVersion -}}
+        {{- $Theme := printf `<a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="%s">Stack</a>` $ThemeVersion -}}
         {{- $DesignedBy := `<a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>` -}}
 
-        {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} | 
+        {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} 
+        <span class="footer-separator">|</span> 
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
     </section>
 </footer>
@@ -101,21 +168,28 @@
             var now = new Date();
             var diff = (now - lastBuildTime) / 1000; 
 
-            var text = '';
+            // 生成“年月日 时分”格式
+            var year = lastBuildTime.getFullYear();
+            var month = String(lastBuildTime.getMonth() + 1).padStart(2, '0');
+            var day = String(lastBuildTime.getDate()).padStart(2, '0');
+            var hour = String(lastBuildTime.getHours()).padStart(2, '0');
+            var minute = String(lastBuildTime.getMinutes()).padStart(2, '0');
             
-            // 【修改逻辑】只用相对时间，不再显示具体日期
+            var exactTime = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+            updateEl.setAttribute('title', exactTime);
+
+            var text = '';
             if (diff < 60) {
                 text = '刚刚';
             } else if (diff < 3600) {
                 text = Math.floor(diff / 60) + ' 分钟前';
             } else if (diff < 86400) {
                 text = Math.floor(diff / 3600) + ' 小时前';
-            } else if (diff < 2592000) { // 30天
+            } else if (diff < 2592000) { 
                 text = Math.floor(diff / 86400) + ' 天前';
-            } else if (diff < 31536000) { // 365天
+            } else if (diff < 31536000) { 
                 text = Math.floor(diff / 2592000) + ' 个月前';
             } else {
-                // 超过一年，直接显示 X 年前
                 text = Math.floor(diff / 31536000) + ' 年前';
             }
             

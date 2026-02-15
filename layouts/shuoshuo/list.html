@@ -1,0 +1,259 @@
+{{ define "main" }}
+    <main class="main list-container">
+        <style>
+            /* =========================================
+               统一元数据样式 (说说页)
+               ========================================= */
+
+            /* 1. 容器 Flex 布局 */
+            .meta-wrapper {
+                display: flex !important;
+                align-items: center !important;
+                flex-wrap: wrap !important;
+                line-height: 1 !important; 
+                gap: 20px !important;      
+            }
+
+            /* 2. 单个元数据项 (核心通用样式) */
+            .meta-item, 
+            .shuoshuo-edit-link a,
+            .shuoshuo-time,
+            .shuoshuo-updated-time {
+                display: flex !important;
+                align-items: center !important;
+                
+                /* 间距统一为 8px (与文章页一致) */
+                gap: 8px !important;
+                
+                /* 【核心确认】字号统一为 14px (与文章页 article.html 一致) */
+                font-size: 14px !important;     
+                
+                line-height: 1 !important;
+                text-decoration: none;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                background: none !important;
+                
+                /* 颜色与透明度统一 */
+                color: var(--card-text-color-secondary) !important; 
+                opacity: 1 !important; 
+                
+                -webkit-tap-highlight-color: transparent !important;
+                outline: none !important;
+            }
+
+            /* 3. 统一图标尺寸 */
+            .shuoshuo-meta svg, 
+            .shuoshuo-edit-link svg,
+            .shuoshuo-time svg,
+            .shuoshuo-updated-time svg {
+                width: 14px !important;       
+                height: 14px !important;      
+                min-width: 14px !important;   
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                position: static !important;
+                transform: none !important;
+                
+                opacity: 1 !important;   
+                color: inherit !important;              
+            }
+
+            /* 4. 内部文字标签归零 (双重保险，防止子元素继承错误字号) */
+            .meta-item span, 
+            .meta-item time, 
+            .shuoshuo-updated-time span,
+            .shuoshuo-edit-link span {
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: 1 !important;    
+                
+                /* 【核心确认】强制子元素也为 14px */
+                font-size: 14px !important;   
+                
+                font-family: inherit;
+                font-weight: normal !important;
+                color: inherit !important;
+            }
+
+            /* 5. 底部链接专用颜色 (蓝色) */
+            .shuoshuo-edit-link a,
+            .shuoshuo-edit-link .git-hash-text {
+                color: #1e90ff !important;
+                transition: opacity 0.3s ease;
+            }
+            
+            /* 【修改点】分隔符颜色调整为 #1e90ff，并移除透明度 */
+            .shuoshuo-edit-link .separator {
+                color: #1e90ff !important;
+                opacity: 1 !important;
+            }
+
+            .shuoshuo-edit-link a:hover {
+                opacity: 0.7 !important;
+                text-decoration: underline;
+            }
+        </style>
+
+        <div class="shuoshuo-list">
+            {{ $paginator := .Paginate .Pages }}
+            
+            <div class="waterfall-column">
+                {{ range $index, $element := $paginator.Pages }}
+                    {{ if eq (mod $index 2) 0 }}
+                        {{ partial "shuoshuo-card-logic" . }}
+                    {{ end }}
+                {{ end }}
+            </div>
+
+            <div class="waterfall-column">
+                {{ range $index, $element := $paginator.Pages }}
+                    {{ if eq (mod $index 2) 1 }}
+                        {{ partial "shuoshuo-card-logic" . }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="shuoshuo-pagination">
+            {{ partial "pagination.html" . }}
+        </div>
+
+        {{ partial "footer/footer.html" . }}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const now = new Date();
+                const timeElements = document.querySelectorAll('.shuoshuo-time, .shuoshuo-updated-time');
+                
+                timeElements.forEach(el => {
+                    updateTimeDisplay(el, now);
+                });
+
+                function updateTimeDisplay(el, now) {
+                    const dateStr = el.getAttribute('datetime');
+                    if (!dateStr) return;
+                    
+                    const date = new Date(dateStr);
+                    const diff = (now - date) / 1000;
+                    
+                    const textSpan = el.querySelector('span') || el;
+
+                    const exactTime = formatExactTime(date);
+                    if (!el.hasAttribute('title')) {
+                        const prefix = el.classList.contains('shuoshuo-updated-time') ? "更新于 " : "发布于 ";
+                        el.setAttribute('title', prefix + exactTime);
+                    }
+
+                    textSpan.innerText = getRelativeTime(diff);
+                }
+
+                function formatExactTime(date) {
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const hour = String(date.getHours()).padStart(2, '0');
+                    const minute = String(date.getMinutes()).padStart(2, '0');
+                    return year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+                }
+
+                function getRelativeTime(diff) {
+                    if (diff < 60) { return '刚刚'; }
+                    else if (diff < 3600) { return Math.floor(diff / 60) + ' 分钟前'; }
+                    else if (diff < 86400) { return Math.floor(diff / 3600) + ' 小时前'; }
+                    else if (diff < 2592000) { return Math.floor(diff / 86400) + ' 天前'; }
+                    else if (diff < 31536000) { return Math.floor(diff / 2592000) + ' 个月前'; }
+                    else { return Math.floor(diff / 31536000) + ' 年前'; }
+                }
+            });
+        </script>
+    </main>
+{{ end }}
+
+{{/* --- 核心模具 --- */}}
+{{ define "partials/shuoshuo-card-logic" }}
+{{- $gitHashFull := "" -}}
+{{- $gitHashShort := "" -}}
+{{- $updateTime := .Lastmod -}}
+
+{{- if .GitInfo -}}
+    {{- $gitHashFull = .GitInfo.Hash -}}
+    {{- $gitHashShort = substr .GitInfo.Hash 0 7 -}}
+    {{- $updateTime = .GitInfo.AuthorDate -}}
+{{- end -}}
+
+<article class="shuoshuo-card">
+    <div class="shuoshuo-header">
+        <div class="shuoshuo-meta meta-wrapper">
+            
+            {{/* 1. 发布时间 */}}
+            <time class="shuoshuo-time meta-item" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>{{ .Date.Format "2006-01-02" }}</span>
+            </time>
+
+            {{/* 2. 更新时间 */}}
+            {{ $created := .Date.Unix }}
+            {{ $updated := $updateTime.Unix }}
+            {{ $diff := sub $updated $created }}
+
+            {{ if gt $diff 1800 }}
+                <span class="shuoshuo-updated-time meta-item" 
+                      datetime="{{ $updateTime.Format "2006-01-02T15:04:05Z07:00" }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    <span>{{ $updateTime.Format "2006-01-02" }}</span>
+                </span>
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="shuoshuo-content style-cs-content article-post">
+        {{ .Content }}
+    </div>
+    
+    {{ with .Resources.GetMatch "cover.*" }}
+    <div class="shuoshuo-image photo-gallery">
+        <a href="{{ .RelPermalink }}" target="_blank" class="gallery-link">
+            <img src="{{ .RelPermalink }}" loading="lazy" alt="说说图片" style="border-radius: 8px; margin-top: 10px; width: 100%; height: auto; object-fit: cover;">
+        </a>
+    </div>
+    {{ end }}
+
+    <div class="shuoshuo-footer-info">
+        <div class="shuoshuo-edit-link meta-wrapper" style="gap: 15px !important;">
+            
+            {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
+                {{/* 左下角：编辑链接 */}}
+                <a href="https://github.com/iwyang/iwyang.github.io/edit/develop/content/{{ replace .File.Path "\\" "/" }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="meta-item"
+                   title="前往 GitHub 编辑此页">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>编辑此页</span>
+                </a>
+            {{ end }}
+
+            {{/* 右下角：Git Hash */}}
+            {{- if $gitHashShort -}}
+                {{/* 竖线分隔符 */}}
+                {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
+                    <span class="separator">|</span>
+                {{ end }}
+
+                <a class="meta-item git-hash-text"
+                   href="https://github.com/iwyang/iwyang.github.io/commit/{{ $gitHashFull }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="Commit Hash: {{ $gitHashShort }}">
+                   #{{ $gitHashShort }}
+                </a>
+            {{- end -}}
+
+        </div>
+    </div>
+</article>
+{{ end }}

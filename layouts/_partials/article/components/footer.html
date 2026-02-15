@@ -1,4 +1,29 @@
 <footer class="article-footer">
+    <style>
+        /* 1. 移除移动端点击链接时的长方形高亮背景 */
+        .article-edit-container a {
+            -webkit-tap-highlight-color: transparent !important;
+            outline: none !important;
+        }
+
+        /* 2. 增加悬停下划线效果 */
+        .article-edit-container a:hover {
+            text-decoration: underline !important;
+        }
+
+        /* 3. 核心修改：添加上方虚线分割线，参考说说页面卡片底部样式 */
+        .article-edit-container {
+            border-top: 1px dashed var(--body-background); /* 虚线分割线 */
+            padding-top: 15px;      /* 上内边距，与线保持距离 */
+            margin-top: 20px;       /* 上外边距，与上方版权/标签区域保持距离 */
+            width: 100%;            /* 确保分割线横贯全屏 */
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            flex-wrap: wrap;
+        }
+    </style>
+
     {{ partial "article/components/tags" . }}
 
     {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
@@ -9,26 +34,31 @@
     {{ end }}
     
     {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
-    <section class="article-edit">
-        {{ partial "helper/icon" "external-link" }}
-        <span><a style="color: inherit;" href="https://github.com/iwyang/iwyang.github.io/edit/develop/content/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a></span>
+    <section class="article-edit-container">
+        {{/* 左侧：编辑链接 (颜色 #1e90ff，字号 14px) */}}
+        <a style="color: #1e90ff; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 8px;" 
+           href="https://github.com/iwyang/iwyang.github.io/edit/develop/content/{{ replace .File.Path "\\" "/" }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           title="前往 GitHub 编辑此页">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>编辑此页</span>
+        </a>
+        
+        {{/* 右侧：Git Hash (带竖线) */}}
+        {{- if .GitInfo -}}
+            {{/* 竖线分隔符：颜色改为 #1e90ff，字号 14px */}}
+            <span style="font-size: 14px; color: #1e90ff;">|</span>
+
+            {{- $hash := substr .GitInfo.Hash 0 7 -}}
+            <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ .GitInfo.Hash }}" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               title="Commit Hash: #{{ $hash }}"
+               style="color: #1e90ff; font-weight: normal; text-decoration: none; font-size: 14px;">
+               #{{ $hash }}
+            </a>
+        {{- end -}}
     </section>
     {{ end }}
-
-    {{- if .Lastmod -}}
-    <section class="article-lastmod">
-        {{ partial "helper/icon" "clock" }}
-        <span style="color: #999;">
-            更新于 {{ .Lastmod.Format "2006-01-02 15:04" }}
-            {{- if .GitInfo -}}
-                <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ .GitInfo.Hash }}" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   style="color: #1e90ff; font-weight: normal; margin-left: 5px; text-decoration: none;">
-                   #{{ .GitInfo.AbbreviatedHash }}
-                </a>
-            {{- end -}}
-        </span>
-    </section>
-    {{- end -}}
 </footer>

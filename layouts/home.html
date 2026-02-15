@@ -2,9 +2,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    {{/* 获取最近的 10 条说说 */}}
     {{ $shuoshuo := where .Site.RegularPages "Type" "shuoshuo" }}
     {{ $latest_shuoshuo := $shuoshuo | first 10 }}
 
+    {{/* 只有当存在说说时才显示轮播条 */}}
     {{ if gt (len $latest_shuoshuo) 0 }}
     <div class="notice-board-container">
         <div class="notice-icon">
@@ -41,6 +43,7 @@
     </div>
     {{ end }}
 
+    {{/* 获取文章列表（排除说说） */}}
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     {{ $pages = where $pages "Type" "!=" "shuoshuo" }}
     
@@ -65,8 +68,9 @@
                     allowTouchMove: true,
                     mousewheel: true,
                     autoplay: {
-                        delay: 2500,
+                        delay: 2000,
                         disableOnInteraction: false,
+                        pauseOnMouseEnter: true, // 【功能点1】鼠标悬停时停止自动播放
                     },
                     loop: true,
                 });
@@ -78,10 +82,23 @@
 
             timeElements.forEach(el => {
                 const dateStr = el.getAttribute('datetime');
+                if (!dateStr) return; // 防止报错
                 const date = new Date(dateStr);
                 const diff = (now - date) / 1000; // 差距秒数
 
-                let text = el.innerText; // 默认保留原日期 (现在是 2022-08-22 这种格式)
+                // ===== 【功能点3】生成“年月日 时分”格式 =====
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hour = String(date.getHours()).padStart(2, '0');
+                const minute = String(date.getMinutes()).padStart(2, '0');
+                const exactTime = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+
+                // 设置 title 属性 (实现鼠标悬停显示具体时间)
+                el.setAttribute('title', exactTime);
+
+                // ===== 【功能点2】强制纯相对时间逻辑 =====
+                let text = ''; 
                 
                 if (diff < 60) {
                     text = '刚刚';
@@ -93,9 +110,10 @@
                     text = Math.floor(diff / 86400) + ' 天前';
                 } else if (diff < 31536000) { 
                     text = Math.floor(diff / 2592000) + ' 个月前';
+                } else {
+                    // 超过一年，强制显示“X年前”，不再显示具体日期
+                    text = Math.floor(diff / 31536000) + ' 年前';
                 }
-                // 如果 diff > 31536000 (1年)，上面的 if 都不满足
-                // text 依然保持 el.innerText 的初始值 (即 2006-01-02 格式)
                 
                 el.innerText = text;
             });
