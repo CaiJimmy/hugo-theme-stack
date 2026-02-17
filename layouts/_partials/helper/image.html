@@ -1,0 +1,53 @@
+/// Params:
+///     Resources: Where to search for images
+///     Image: Image URL
+
+/// Returns:
+///     Local: true if the image is local, false if it is remote
+///     Resource: Hugo image resource object, not nil if the image is local
+///     Permalink: Image URL
+///     Height: Image height
+///     Width: Image width
+
+{{ $result := "" }}
+
+{{ if .Image }}
+    {{ $url := urls.Parse .Image }}
+    {{ $resource := "" }}
+    {{ if not (in (slice "https" "http") $url.Scheme) }}
+        {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
+    {{ else }}
+        {{ with try (resources.GetRemote $url) }}
+            {{ with .Err }}
+                {{ errorf "%s" . }}
+            {{ else with .Value }}
+                {{ $resource = . }}
+            {{ else }}
+                {{ errorf "Unable to get remote resource %q" $url }}
+            {{ end }}
+        {{ end }}   
+    {{ end }}
+
+    {{ if $resource }}
+        {{- $isSVG := eq $resource.MediaType.SubType "svg"  -}}
+        {{- if $isSVG -}}
+            {{ $result = dict
+                "Local" true
+                "Resource" $resource
+                "Permalink" $resource.RelPermalink
+                "Height" nil
+                "Width" nil
+            }}
+        {{- else -}}            
+            {{- $result = dict
+                "Local" true
+                "Resource" $resource
+                "Permalink" $resource.RelPermalink
+                "Height" $resource.Height
+                "Width" $resource.Width
+            }}
+        {{- end -}}
+    {{ end }}
+{{ end }}
+
+{{ return $result }}

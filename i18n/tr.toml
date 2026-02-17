@@ -1,0 +1,47 @@
+toggleMenu = "Menüyü Gizle"
+darkMode   = "Koyu Mod"
+
+[list]
+    section = "Bölüm"
+
+    [list.page]
+        one   = "{{ .Count }} makale"
+        other = "{{ .Count }} makale"
+
+    [list.subsection]
+        one   = "Alt bölüm"
+        other = "Alt bölümler"
+
+[article]
+    back            = "Geri"
+    tableOfContents = "İçindekiler"
+    relatedContent  = "Benzer içerikler"
+    lastUpdatedOn   = "Son güncelleme"
+
+    [article.readingTime]
+        one   = "{{ .Count }} dakika okuma süresi"
+        other = "{{ .Count }} dakika okuma süresi"
+
+[notFound]
+    title    = "Bulunamadı"
+    subtitle = "Aradığınız sayfa mevcut değil."
+
+[widget]
+    [widget.archives]
+        title = "Arşiv"
+        more  = "Daha fazla"
+
+    [widget.tagCloud]
+        title = "Etiketler"
+
+    [widget.categoriesCloud]
+        title = "Kategoriler"
+
+[search]
+    title       = "Arama"
+    placeholder = "Birşeyler yazın..."
+    resultTitle = "#PAGES_COUNT sayfa (#TIME_SECONDS saniye)"
+
+[footer]
+    builtWith  = "{{ .Generator }} ile oluşturuldu."
+    designedBy = "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"

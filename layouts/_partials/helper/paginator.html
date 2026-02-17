@@ -1,0 +1,8 @@
+{{- $result := slice -}}
+
+{{- if or .IsHome (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") -}}
+    {{- $pages := partial "helper/pages.html" . -}}
+    {{- $result = .Paginate $pages -}}
+{{- end -}}
+
+{{- return $result -}}

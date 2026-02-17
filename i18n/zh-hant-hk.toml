@@ -1,0 +1,38 @@
+toggleMenu = "切換選單"
+darkMode   = "深色模式"
+
+[list]
+    page       = "{{ .Count }} 篇文章"
+    section    = "章節"
+    subsection = "子章節"
+
+[article]
+    back            = "返回"
+    tableOfContents = "目錄"
+    relatedContent  = "相關內容"
+    lastUpdatedOn   = "上次改過於"
+    readingTime     = "閱讀時間 {{ .Count }} 分鐘"
+
+[notFound]
+    title    = "找不到頁面"
+    subtitle = "本頁面並不存在"
+
+[widget]
+    [widget.archives]
+        title = "歸檔"
+        more  = "更多"
+
+    [widget.tagCloud]
+        title = "標籤"
+
+    [widget.categoriesCloud]
+        title = "分類"
+
+[search]
+    title       = "搜尋"
+    placeholder = "輸入關鍵字..."
+    resultTitle = "找到 #PAGES_COUNT 個結果 (用時 #TIME_SECONDS 秒)"
+
+[footer]
+    builtWith  = "使用 {{ .Generator }} 建立"
+    designedBy = "主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計"

@@ -1,0 +1,47 @@
+toggleMenu = "Toggle Menu"
+darkMode   = "Dark Mode"
+
+[list]
+    section = "Section"
+
+    [list.page]
+        one   = "{{ .Count }} page"
+        other = "{{ .Count }} pages"
+
+    [list.subsection]
+        one   = "Subsection"
+        other = "Subsections"
+
+[article]
+    back            = "Back"
+    tableOfContents = "Table of contents"
+    relatedContent  = "Related content"
+    lastUpdatedOn   = "Last updated on"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minute read"
+        other = "{{ .Count }} minutes read"
+
+[notFound]
+    title    = "Not Found"
+    subtitle = "This page does not exist"
+
+[widget]
+    [widget.archives]
+        title = "Archives"
+        more  = "More"
+
+    [widget.tagCloud]
+        title = "Tags"
+
+    [widget.categoriesCloud]
+        title = "Categories"
+
+[search]
+    title       = "Search"
+    placeholder = "Type something..."
+    resultTitle = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+
+[footer]
+    builtWith  = "Built with {{ .Generator }}"
+    designedBy = "Theme {{ .Theme }} designed by {{ .DesignedBy }}"

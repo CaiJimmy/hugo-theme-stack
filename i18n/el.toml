@@ -1,0 +1,44 @@
+toggleMenu = "Εναλλαγή Μενού"
+darkMode   = "Σκοτεινό θέμα"
+
+[list]
+    section = "Ενότητα"
+
+    [list.page]
+        one   = "{{ .Count }} σελιδα"
+        other = "{{ .Count }} σελιδες"
+
+    [list.subsection]
+        one   = "Υποενότητα"
+        other = "Υποενότητες"
+
+[article]
+    back            = "Πισω"
+    tableOfContents = "Πινακας περιεχομενων"
+    relatedContent  = "Σχετικο περιεχομενο"
+    lastUpdatedOn   = "Τελευταια τροποποιηση στις"
+
+    [article.readingTime]
+        one   = "{{ .Count }} λεπτό ανάγνωσης"
+        other = "{{ .Count }} λεπτά ανάγνωσης"
+
+[notFound]
+    title    = "Δε βρέθηκε"
+    subtitle = "Η σελίδα δε βρέθηκε."
+
+[widget]
+    [widget.archives]
+        title = "Αρχειο"
+        more  = "Περισσότερα"
+
+    [widget.tagCloud]
+        title = "Tags"
+
+[search]
+    title       = "Αναζήτηση"
+    placeholder = "Πληκτρολογήστε κάτι..."
+    resultTitle = "#PAGES_COUNT σελιδες (#TIME_SECONDS δευτερολεπτα)"
+
+[footer]
+    builtWith  = "Δημιουργήθηκε με τη χρήση {{ .Generator }}"
+    designedBy = "Το θέμα {{ .Theme }} σχεδιάστηκε από το {{ .DesignedBy }}"

@@ -1,0 +1,32 @@
+{{- $opts := dict "minify" hugo.IsProduction "format" "esm" -}}
+{{- $galleryScript := resources.Get "ts/gallery.ts" | js.Build $opts -}}
+
+{{ $style := .Site.Data.external.PhotoSwipe.Style }}
+{{ $core := .Site.Data.external.PhotoSwipe.Core }}
+{{ $lightbox := .Site.Data.external.PhotoSwipe.Lightbox }}
+
+<script type="module">
+    import gallery from '{{ $galleryScript.RelPermalink }}';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("{{ $lightbox | safeJS }}")).default;
+        const styleHref = "{{ $style | safeJS }}";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("{{ $core | safeJS }}")
+        });
+        lightbox.init();
+    }
+</script>

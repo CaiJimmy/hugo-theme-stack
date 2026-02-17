@@ -1,0 +1,164 @@
+mainSections       = ["post"]
+featuredImageField = "image"
+rssFullContent     = true
+
+# Accepted values: "default", "lastmod"
+# default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
+# lastmod = sort by last modified date, in descending order
+SortBy              = "default"
+
+[footer]
+    since      = 2026
+    customText = ""
+
+[dateFormat]
+    published   = ":date_full"
+    lastUpdated = ":date_full"
+
+[sidebar]
+    compact = false
+    avatar  = ""
+
+[article]
+    headingAnchor = false
+    math          = false
+    toc           = true
+    readingTime   = true
+
+    [article.license]
+        enabled = false
+        default = "Licensed under CC BY-NC-SA 4.0"
+
+    # Mermaid diagram configuration
+    # Diagrams are only loaded when mermaid code blocks are present
+    # Theme auto-switches based on site light/dark mode
+    [article.mermaid]
+        # Visual style: classic or handDrawn (sketch style)
+        look = "classic"
+        # Theme for light mode: default, neutral, dark, forest, base, null
+        lightTheme = "default"
+        # Theme for dark mode: default, neutral, dark, forest, base, null
+        darkTheme = "dark"
+        # Custom theme variables for light mode (only works with lightTheme: base)
+        # lightThemeVariables = { primaryColor = "#ff0000" }
+        # Custom theme variables for dark mode (only works with darkTheme: base)
+        # darkThemeVariables = { primaryColor = "#00ff00" }
+        # Security level: strict (default), loose, antiscript, sandbox
+        # Set to "loose" to enable HTML labels like <br/>
+        securityLevel = "strict"
+        # Enable HTML labels in diagrams (requires securityLevel: loose)
+        htmlLabels = true
+        # Make diagram backgrounds transparent (default: false)
+        # Can also be set per-diagram with %%transparent%% directive
+        transparentBackground = false
+
+[widgets]
+    homepage = []
+    page     = []
+
+[opengraph.twitter]
+    site = ""
+    card = "summary_large_image"
+
+[colorScheme]
+    toggle  = true
+    default = "auto"
+
+[imageProcessing.cover]
+    enabled = true
+
+[imageProcessing.content]
+    enabled = true
+
+[comments]
+    enabled = true
+    provider = "disqus"
+
+    [comments.disqusjs]
+        shortname = ""
+        apiUrl = ""
+        apiKey = ""
+        admin = ""
+        adminLabel = ""
+
+    [comments.utterances]
+        repo = ""
+        issueTerm = "pathname"
+        label = ""
+
+    [comments.beaudar]
+        repo = ""
+        issueTerm = "pathname"
+        label = ""
+        theme = ""
+
+    [comments.remark42]
+        host = ""
+        site = ""
+        locale = "en"
+        max_shown_comments = 15
+        show_email_subscription = true
+
+    [comments.vssue]
+        platform = ""
+        owner = ""
+        repo = ""
+        clientId = ""
+        clientSecret = ""
+        autoCreateIssue = false
+
+    # Waline client configuration see: https://waline.js.org/en/reference/component.html
+    [comments.waline]
+        serverURL = ""
+        lang = ""
+        pageview = ""
+        emoji = [
+            "https://unpkg.com/@waline/emojis@1.0.1/weibo"
+        ]
+        requiredMeta = [
+            "name",
+            "email",
+            "url"
+        ]
+        [comments.waline.locale]
+            admin = "Admin"
+            placeholder = ""
+
+    [comments.twikoo]
+        envId = ""
+        region = ""
+        path = ""
+        lang = ""
+
+    # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
+    [comments.cactus]
+        defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
+        serverName = "cactus.chat"
+        siteName = "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+
+    [comments.giscus]
+        repo = ""
+        repoID = ""
+        category = ""
+        categoryID = ""
+        mapping = "title"
+        lightTheme = "light"
+        darkTheme = "dark_dimmed"
+        reactionsEnabled = 1
+        emitMetadata = 0
+        inputPosition = "top"
+        lang = "en"
+        strict = 0
+        loading = "lazy"
+
+    [comments.gitalk]
+        owner = ""
+        admin = ""
+        repo = ""
+        clientID = ""
+        clientSecret = ""
+        proxy = ""
+
+    [comments.cusdis]
+        host = "https://cusdis.com"
+        id = ""
