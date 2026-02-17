@@ -12,6 +12,15 @@ const wrap = (figures: HTMLElement[]) => {
     }
 }
 
+const unescapeHtml = (html: string) => {
+    /// Replace special HTML entities with their corresponding characters
+    return html.replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
+}
+
 export default (container: HTMLElement) => {
     /// The process of wrapping image with figure tag is done using JavaScript instead of only Hugo markdown render hook
     /// because it can not detect whether image is being wrapped by a link or not
@@ -64,10 +73,13 @@ export default (container: HTMLElement) => {
         figure.appendChild(el);
 
         /// Add figcaption if it exists
-        const caption = img.getAttribute('title') || img.getAttribute('alt');
+        let caption = img.getAttribute('alt');
+        if (img.getAttribute('data-title-escaped')) {
+            caption = unescapeHtml(img.getAttribute('data-title-escaped')!);
+        }
         if (caption) {
             const figcaption = document.createElement('figcaption');
-            figcaption.innerText = caption;
+            figcaption.innerHTML = caption;
             figure.appendChild(figcaption);
         }
     }
