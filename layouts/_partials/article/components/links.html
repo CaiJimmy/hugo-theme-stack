@@ -1,0 +1,30 @@
+<div class="article-list--compact links">
+    {{ range $i, $link := .Params.links }}
+        <article>
+            <a href="{{ $link.website }}" target="_blank" rel="noopener">
+                <div class="article-details">
+                    <h2 class="article-title">
+                        {{- $link.title -}}
+                    </h2>
+                    <footer class="article-time">
+                        {{ with $link.description }}
+                            {{ . }}
+                        {{ else }}
+                            {{ $link.website }}
+                        {{ end }}
+                    </footer>
+                </div>
+        
+                {{ with $link.image }}
+                    {{ $permalink := . }}
+                    {{ with ($.Resources.GetMatch (printf "%s" (. | safeURL))) }}
+                        {{ $permalink = .RelPermalink }}
+                    {{ end }}
+                    <div class="article-image">
+                        <img src="{{ $permalink }}" loading="lazy"{{ with $link.alt }} alt="{{ . }}"{{ end }}>
+                    </div>
+                {{ end }}
+            </a>
+        </article>
+    {{ end }}
+</div>

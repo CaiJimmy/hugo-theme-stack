@@ -1,0 +1,38 @@
+toggleMenu = "切换菜单"
+darkMode   = "暗色模式"
+
+[list]
+    page       = "{{ .Count }} 个页面"
+    section    = "章节"
+    subsection = "子章节"
+
+[article]
+    back            = "返回"
+    tableOfContents = "目录"
+    relatedContent  = "相关文章"
+    lastUpdatedOn   = "最后更新于"
+    readingTime     = "阅读时长: {{ .Count }} 分钟"
+
+[notFound]
+    title    = "404 错误"
+    subtitle = "页面不存在"
+
+[widget]
+    [widget.archives]
+        title = "归档"
+        more  = "更多"
+
+    [widget.tagCloud]
+        title = "标签云"
+
+    [widget.categoriesCloud]
+        title = "分类"
+
+[search]
+    title       = "搜索"
+    placeholder = "输入关键词..."
+    resultTitle = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
+
+[footer]
+    builtWith  = "使用 {{ .Generator }} 构建"
+    designedBy = "主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计"

@@ -1,0 +1,42 @@
+{{- if .Store.Get "hasMermaid" -}}
+{{- $cfg := site.Params.article.mermaid | default dict -}}
+
+<div class="mermaid-modal" id="mermaid-modal">
+    <div class="mermaid-modal-header">
+        <div class="mermaid-modal-controls">
+            <button data-zoom="-1">− Zoom Out</button>
+            <button data-zoom="0">Reset (100%)</button>
+            <button data-zoom="1">+ Zoom In</button>
+            <button data-zoom="fit">Fit to Screen</button>
+        </div>
+        <button class="mermaid-modal-close" id="mermaid-modal-close">✕ Close (Esc)</button>
+    </div>
+    <div class="mermaid-modal-body" id="mermaid-modal-body">
+        <div class="mermaid-modal-content" id="mermaid-modal-content"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+{{- $opts := dict "minify" hugo.IsProduction "format" "esm" -}}
+{{- $script := resources.Get "ts/mermaid.ts" | js.Build $opts -}}
+{{- $jsConfig := dict
+    "transparentBackground" ($cfg.transparentBackground | default false)
+    "lightTheme"            ($cfg.lightTheme | default "default")
+    "darkTheme"             ($cfg.darkTheme | default "dark")
+    "lightThemeVariables"   ($cfg.lightThemeVariables | default dict)
+    "darkThemeVariables"    ($cfg.darkThemeVariables | default dict)
+    "securityLevel"         ($cfg.securityLevel | default "strict")
+    "look"                  ($cfg.look | default "classic")
+    "htmlLabels"            (not (eq ($cfg.htmlLabels | default true) false))
+-}}
+{{- with $cfg.maxTextSize }}{{ $jsConfig = merge $jsConfig (dict "maxTextSize" .) }}{{ end -}}
+{{- with $cfg.maxEdges }}{{ $jsConfig = merge $jsConfig (dict "maxEdges" .) }}{{ end -}}
+{{- with $cfg.fontSize }}{{ $jsConfig = merge $jsConfig (dict "fontSize" .) }}{{ end -}}
+{{- with $cfg.fontFamily }}{{ $jsConfig = merge $jsConfig (dict "fontFamily" .) }}{{ end -}}
+{{- with $cfg.curve }}{{ $jsConfig = merge $jsConfig (dict "curve" .) }}{{ end -}}
+{{- with $cfg.logLevel }}{{ $jsConfig = merge $jsConfig (dict "logLevel" .) }}{{ end -}}
+<script type="module">
+import { initMermaidPage } from '{{ $script.RelPermalink }}';
+initMermaidPage({{ $jsConfig | jsonify | safeJS }});
+</script>
+{{- end -}}

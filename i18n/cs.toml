@@ -1,0 +1,47 @@
+toggleMenu = "Skrýt menu"
+darkMode   = "Tmavý režim"
+
+[list]
+    section = "Kategorie"
+
+    [list.page]
+        one   = "{{ .Count }} stránka"
+        other = "{{ .Count }} stránek"
+
+    [list.subsection]
+        one   = "Podkategorie"
+        other = "Podkategorie"
+
+[article]
+    back            = "Zpět"
+    tableOfContents = "Obsah"
+    relatedContent  = "Související"
+    lastUpdatedOn   = "Naposledy aktualizováno"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minuta"
+        other = "{{ .Count }} minut"
+
+[notFound]
+    title    = "Nenalezeno"
+    subtitle = "Tato stránka neexistuje"
+
+[widget]
+    [widget.archives]
+        title = "Archivy"
+        more  = "Více"
+
+    [widget.tagCloud]
+        title = "Štítky"
+
+    [widget.categoriesCloud]
+        title = "Kategorie"
+
+[search]
+    title       = "Hledat"
+    placeholder = "Zadejte něco..."
+    resultTitle = "#PAGES_COUNT stránek (#TIME_SECONDS sekund)"
+
+[footer]
+    builtWith  = "Vytvořeno pomocí {{ .Generator }}"
+    designedBy = "Šablona {{ .Theme }} od {{ .DesignedBy }}"

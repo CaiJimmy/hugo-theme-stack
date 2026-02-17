@@ -1,0 +1,44 @@
+toggleMenu = "สลับเมนู"
+darkMode   = "ธีมมืด"
+
+[list]
+    section = "หมวดหมู่"
+
+    [list.page]
+        one   = "{{ .Count }} หน้า"
+        other = "{{ .Count }} หน้า"
+
+    [list.subsection]
+        one   = "หมวดหมู่ย่อย"
+        other = "หมวดหมู่ย่อยอื่นๆ"
+
+[article]
+    back            = "กลับไป"
+    tableOfContents = "สารบัญ"
+    relatedContent  = "เนื้อหาคล้ายคลึงกัน"
+    lastUpdatedOn   = "อัปเดตล่าสุดเมื่อ"
+
+    [article.readingTime]
+        one   = "น่าจะใช้เวลา {{ .Count }} นาทีในการอ่าน"
+        other = "น่าจะใช้เวลา {{ .Count }} นาทีในการอ่าน"
+
+[notFound]
+    title    = "ไม่พบหัวข้อ"
+    subtitle = "ไม่พบหน้านี้ในระบบ"
+
+[widget]
+    [widget.archives]
+        title = "เนื้อหาที่เก็บถาวรแล้ว"
+        more  = "อื่นๆ นอกจากนี้"
+
+    [widget.tagCloud]
+        title = "แท็ก"
+
+[search]
+    title       = "ค้นหา"
+    placeholder = "พิมพ์เพื่อค้นหา ..."
+    resultTitle = "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
+
+[footer]
+    builtWith  = "ถูกสร้างด้วย {{ .Generator }}"
+    designedBy = "ธีม {{ .Theme }} ออกแบบโดย {{ .DesignedBy }}"
