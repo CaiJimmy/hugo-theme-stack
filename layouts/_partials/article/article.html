@@ -99,8 +99,8 @@
                 {{- $updateTime := .Lastmod -}}
                 {{- if .GitInfo -}}{{- $updateTime = .GitInfo.AuthorDate -}}{{- end -}}
                 
-                {{/* 【核心修改】将阈值从 1800 改为 0，只要有更新就立即显示 */}}
-                {{- if gt (sub $updateTime.Unix .Date.Unix) 0 -}}
+                {{/* 【核心修改】设置 30 分钟 (1800s) 容错，避免刚发布就显示更新 */}}
+                {{- if gt (sub $updateTime.Unix .Date.Unix) 1800 -}}
                 <div class="article-meta-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>

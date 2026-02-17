@@ -86,7 +86,7 @@
                 transition: opacity 0.3s ease;
             }
             
-            /* 【修改点】分隔符颜色调整为 #1e90ff，并移除透明度 */
+            /* 分隔符颜色调整为 #1e90ff，并移除透明度 */
             .shuoshuo-edit-link .separator {
                 color: #1e90ff !important;
                 opacity: 1 !important;
@@ -148,6 +148,7 @@
                         el.setAttribute('title', prefix + exactTime);
                     }
 
+                    // 前端JS只负责渲染相对时间文字，不控制显隐逻辑
                     textSpan.innerText = getRelativeTime(diff);
                 }
 
@@ -200,6 +201,7 @@
             {{ $updated := $updateTime.Unix }}
             {{ $diff := sub $updated $created }}
 
+            {{/* 【修改点】设置为 30分钟 (1800s) 容错 */}}
             {{ if gt $diff 1800 }}
                 <span class="shuoshuo-updated-time meta-item" 
                       datetime="{{ $updateTime.Format "2006-01-02T15:04:05Z07:00" }}">
