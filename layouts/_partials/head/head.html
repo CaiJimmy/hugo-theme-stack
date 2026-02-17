@@ -8,7 +8,7 @@
 {{- $title := partial "data/title" . -}}
 <title>{{ $title }}</title>
 
-{{ with .Params.canonicalurl }}
+{{ with .Params.canonicalUrl }}
 <link rel="canonical" href="{{ . }}">
 {{ else }}
 <link rel="canonical" href="{{ .Permalink }}">
