@@ -162,3 +162,15 @@ SortBy              = "default"
     [comments.cusdis]
         host = "https://cusdis.com"
         id = ""
+
+    # Comentario client configuration
+    [comments.comentario]
+        url = ""
+        autoInit = false
+        autoNonInteractiveSso = false
+        cssOverride = ""
+        lang = ""
+        liveUpdate = false
+        maxLevel = 0
+        noFonts = false
+        theme = ""
