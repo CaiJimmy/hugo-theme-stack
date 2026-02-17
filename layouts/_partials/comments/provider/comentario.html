@@ -5,7 +5,7 @@
     live-update="{{ .Site.Params.comments.comentario.liveUpdate }}"
     max-level="{{ .Site.Params.comments.comentario.maxLevel }}"
     no-fonts="{{ .Site.Params.comments.comentario.noFonts }}"
-    theme="{{.Site.Params.comments.comentario.theme}}"></comentario-comments>
+    theme="{{ .Site.Params.comments.comentario.theme }}"></comentario-comments>
 <script>
     window.addEventListener('onColorSchemeChange', (e) => {
         document.querySelector('comentario-comments').setAttribute('theme', e.detail);
