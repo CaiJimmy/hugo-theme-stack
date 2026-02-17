@@ -1,11 +1,10 @@
 mainSections       = ["post"]
 featuredImageField = "image"
 rssFullContent     = true
-
 # Accepted values: "default", "lastmod"
 # default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
 # lastmod = sort by last modified date, in descending order
-SortBy              = "default"
+SortBy             = "default"
 
 [footer]
     since      = 2026
@@ -34,20 +33,20 @@ SortBy              = "default"
     # Theme auto-switches based on site light/dark mode
     [article.mermaid]
         # Visual style: classic or handDrawn (sketch style)
-        look = "classic"
+        look                  = "classic"
         # Theme for light mode: default, neutral, dark, forest, base, null
-        lightTheme = "default"
+        lightTheme            = "default"
         # Theme for dark mode: default, neutral, dark, forest, base, null
-        darkTheme = "dark"
+        darkTheme             = "dark"
         # Custom theme variables for light mode (only works with lightTheme: base)
         # lightThemeVariables = { primaryColor = "#ff0000" }
         # Custom theme variables for dark mode (only works with darkTheme: base)
         # darkThemeVariables = { primaryColor = "#00ff00" }
         # Security level: strict (default), loose, antiscript, sandbox
         # Set to "loose" to enable HTML labels like <br/>
-        securityLevel = "strict"
+        securityLevel         = "strict"
         # Enable HTML labels in diagrams (requires securityLevel: loose)
-        htmlLabels = true
+        htmlLabels            = true
         # Make diagram backgrounds transparent (default: false)
         # Can also be set per-diagram with %%transparent%% directive
         transparentBackground = false
@@ -71,106 +70,101 @@ SortBy              = "default"
     enabled = true
 
 [comments]
-    enabled = true
+    enabled  = true
     provider = "disqus"
 
     [comments.disqusjs]
-        shortname = ""
-        apiUrl = ""
-        apiKey = ""
-        admin = ""
+        shortname  = ""
+        apiUrl     = ""
+        apiKey     = ""
+        admin      = ""
         adminLabel = ""
 
     [comments.utterances]
-        repo = ""
+        repo      = ""
         issueTerm = "pathname"
-        label = ""
+        label     = ""
 
     [comments.beaudar]
-        repo = ""
+        repo      = ""
         issueTerm = "pathname"
-        label = ""
-        theme = ""
+        label     = ""
+        theme     = ""
 
     [comments.remark42]
-        host = ""
-        site = ""
-        locale = "en"
-        max_shown_comments = 15
+        host                    = ""
+        site                    = ""
+        locale                  = "en"
+        max_shown_comments      = 15
         show_email_subscription = true
 
     [comments.vssue]
-        platform = ""
-        owner = ""
-        repo = ""
-        clientId = ""
-        clientSecret = ""
+        platform        = ""
+        owner           = ""
+        repo            = ""
+        clientId        = ""
+        clientSecret    = ""
         autoCreateIssue = false
 
     # Waline client configuration see: https://waline.js.org/en/reference/component.html
     [comments.waline]
-        serverURL = ""
-        lang = ""
-        pageview = ""
-        emoji = [
-            "https://unpkg.com/@waline/emojis@1.0.1/weibo"
-        ]
-        requiredMeta = [
-            "name",
-            "email",
-            "url"
-        ]
+        serverURL    = ""
+        lang         = ""
+        pageview     = ""
+        emoji        = ["https://unpkg.com/@waline/emojis@1.0.1/weibo"]
+        requiredMeta = ["name", "email", "url"]
+
         [comments.waline.locale]
-            admin = "Admin"
+            admin       = "Admin"
             placeholder = ""
 
     [comments.twikoo]
-        envId = ""
+        envId  = ""
         region = ""
-        path = ""
-        lang = ""
+        path   = ""
+        lang   = ""
 
     # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
     [comments.cactus]
         defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
-        serverName = "cactus.chat"
-        siteName = "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+        serverName           = "cactus.chat"
+        siteName             = ""  # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
 
     [comments.giscus]
-        repo = ""
-        repoID = ""
-        category = ""
-        categoryID = ""
-        mapping = "title"
-        lightTheme = "light"
-        darkTheme = "dark_dimmed"
+        repo             = ""
+        repoID           = ""
+        category         = ""
+        categoryID       = ""
+        mapping          = "title"
+        lightTheme       = "light"
+        darkTheme        = "dark_dimmed"
         reactionsEnabled = 1
-        emitMetadata = 0
-        inputPosition = "top"
-        lang = "en"
-        strict = 0
-        loading = "lazy"
+        emitMetadata     = 0
+        inputPosition    = "top"
+        lang             = "en"
+        strict           = 0
+        loading          = "lazy"
 
     [comments.gitalk]
-        owner = ""
-        admin = ""
-        repo = ""
-        clientID = ""
+        owner        = ""
+        admin        = ""
+        repo         = ""
+        clientID     = ""
         clientSecret = ""
-        proxy = ""
+        proxy        = ""
 
     [comments.cusdis]
         host = "https://cusdis.com"
-        id = ""
+        id   = ""
 
     # Comentario client configuration
     [comments.comentario]
-        url = ""
-        autoInit = false
+        url                   = ""
+        autoInit              = false
         autoNonInteractiveSso = false
-        cssOverride = ""
-        lang = ""
-        liveUpdate = false
-        maxLevel = 0
-        noFonts = false
-        theme = ""
+        cssOverride           = ""
+        lang                  = ""
+        liveUpdate            = false
+        maxLevel              = 0
+        noFonts               = false
+        theme                 = ""
