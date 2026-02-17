@@ -2,9 +2,11 @@
     [goldmark.extensions]
         [goldmark.extensions.passthrough]
             enable = true
+
             [goldmark.extensions.passthrough.delimiters]
                 block  = [["\\[", "\\]"], ["$$", "$$"]]
                 inline = [["\\(", "\\)"]]
+
     [goldmark.renderer]
         ## Set to true if you have HTML content inside Markdown
         unsafe = true
