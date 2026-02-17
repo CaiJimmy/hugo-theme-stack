@@ -64,9 +64,10 @@ export default (container: HTMLElement) => {
         figure.appendChild(el);
 
         /// Add figcaption if it exists
-        if (img.hasAttribute('alt')) {
+        const caption = img.getAttribute('title') || img.getAttribute('alt');
+        if (caption) {
             const figcaption = document.createElement('figcaption');
-            figcaption.innerText = img.getAttribute('alt')!;
+            figcaption.innerText = caption;
             figure.appendChild(figcaption);
         }
     }

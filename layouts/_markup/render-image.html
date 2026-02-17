@@ -1,5 +1,6 @@
 {{- $image := partial "helper/image" (dict "Resources" .Page.Resources "Image" .Destination) -}}
 {{- $alt := .PlainText | safeHTML -}}
+{{- $title := .Title -}}
 
 {{/* SVG and external images won't work with gallery layout, because their width and height attributes are unknown */}}
 {{- $galleryImage := and $image.Height $image.Width -}}
@@ -11,6 +12,9 @@
 	{{ with $alt }}
 		alt="{{ . }}"
 	{{ end }}
+    {{ with $title }}
+        title="{{ . }}"
+    {{ end }}
 	{{ if $galleryImage }}
 		class="gallery-image" 
 		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
