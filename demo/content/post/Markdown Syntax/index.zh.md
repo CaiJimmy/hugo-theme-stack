@@ -49,20 +49,23 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ### 带提示的引用
 
-> [!NOTE]  
+> [!NOTE]
 > 突出显示用户在快速浏览时也应注意的信息。
 
 > [!TIP]
 > 可选信息，帮助用户更顺利地完成任务。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 用户成功所必需的关键信息。
 
-> [!WARNING]  
+> [!WARNING]
 > 由于潜在风险而需要用户立即关注的关键内容。
 
 > [!CAUTION]
 > 某个操作可能带来的负面后果。
+
+> [!NOTE] 自定义标题
+> 如果你想使用自定义标题，可以在方括号后面添加标题文本，如上所示。
 
 ## 表格 (Tables)
 
