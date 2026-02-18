@@ -5,7 +5,6 @@
 {{- end -}}
 
 {{- $taxonomyPage := $taxonomy.Page -}}
-
 {{- $limit := default 10 .Params.limit -}}
 {{- $icon := default .Params.taxonomy .Params.icon -}}
 {{- $showLink := default false .Params.showLink -}}
@@ -17,10 +16,10 @@
     <h2 class="widget-title section-title">
         {{ if $showLink }}
             <a href="{{ $taxonomyPage.RelPermalink }}">
-                {{ default .Params.title $taxonomyPage.Title }}
+                {{ .Params.title }}
             </a>
         {{ else }}
-            {{ default .Params.title $taxonomyPage.Title }}
+            {{ .Params.title }}
         {{ end }}
     </h2>
 
