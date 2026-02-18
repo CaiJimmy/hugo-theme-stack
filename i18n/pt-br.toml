@@ -22,6 +22,13 @@ darkMode   = "Modo Escuro"
         one   = "{{ .Count }} minuto de leitura"
         other = "{{ .Count }} minutos de leitura"
 
+    [article.alert]
+        note      = "Nota"
+        tip       = "Dica"
+        important = "Importante"
+        warning   = "Aviso"
+        caution   = "Cuidado"
+
 [notFound]
     title    = "Não Encontrado"
     subtitle = "Esta página não existe."

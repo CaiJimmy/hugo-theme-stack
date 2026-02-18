@@ -22,6 +22,13 @@ darkMode   = "Σκοτεινό θέμα"
         one   = "{{ .Count }} λεπτό ανάγνωσης"
         other = "{{ .Count }} λεπτά ανάγνωσης"
 
+    [article.alert]
+        note      = "Σημείωση"
+        tip       = "Συμβουλή"
+        important = "Σημαντικό"
+        warning   = "Προειδοποίηση"
+        caution   = "Προσοχή"
+
 [notFound]
     title    = "Δε βρέθηκε"
     subtitle = "Η σελίδα δε βρέθηκε."

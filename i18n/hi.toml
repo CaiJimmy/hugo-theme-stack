@@ -22,6 +22,13 @@ darkMode   = "डार्क मोड"
         one   = "{{ .Count }} मिनट पढ़ें"
         other = "{{ .Count }} मिनट पढ़ें"
 
+    [article.alert]
+        note      = "नोट"
+        tip       = "सलाह"
+        important = "महत्वपूर्ण"
+        warning   = "चेतावनी"
+        caution   = "सावधानी"
+
 [notFound]
     title    = "404 नहीं मिला।"
     subtitle = "यह पृष्ठ मौजूद नहीं है।"

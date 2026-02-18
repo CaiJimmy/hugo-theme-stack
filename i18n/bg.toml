@@ -22,6 +22,13 @@ darkMode   = "Тъмен Режим"
         one   = "{{ .Count }} minute read"
         other = "{{ .Count }} minute read"
 
+    [article.alert]
+        note      = "Бележка"
+        tip       = "Съвет"
+        important = "Важно"
+        warning   = "Предупреждение"
+        caution   = "Внимание"
+
 [notFound]
     title    = "Не е намерено"
     subtitle = "Страницата която търсите не е открита"

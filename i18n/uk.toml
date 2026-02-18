@@ -23,6 +23,13 @@ darkMode   = "Темна тема"
         one   = "Час читання: {{ .Count }} хв"
         other = "Час читання: {{ .Count }} хв"
 
+    [article.alert]
+        note      = "Примітка"
+        tip       = "Порада"
+        important = "Важливо"
+        warning   = "Попередження"
+        caution   = "Обережно"
+
 [notFound]
     title    = "Не знайдено"
     subtitle = "Ця сторінка не існує"

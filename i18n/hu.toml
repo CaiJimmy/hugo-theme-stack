@@ -22,6 +22,13 @@ darkMode   = "Sötét Mód"
         one   = "{{ .Count }} percnyi olvasmány"
         other = "{{ .Count }} percnyi olvasmány"
 
+    [article.alert]
+        note      = "Megjegyzés"
+        tip       = "Tipp"
+        important = "Fontos"
+        warning   = "Figyelmeztetés"
+        caution   = "Óvatosság"
+
 [notFound]
     title    = "Nem található"
     subtitle = "Ez az oldal nem létezik"
