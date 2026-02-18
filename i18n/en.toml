@@ -22,7 +22,7 @@ darkMode   = "Dark Mode"
         one   = "{{ .Count }} minute read"
         other = "{{ .Count }} minutes read"
 
-    [alert]
+    [article.alert]
         note      = "Note"
         tip       = "Tip"
         important = "Important"
