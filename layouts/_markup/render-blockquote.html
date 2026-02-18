@@ -1,20 +1,26 @@
-{{- $type := .AlertType -}}
-{{- $icons := site.Params.article.alertIcon -}}
-{{- $icon := index $icons $type -}}
-
-<blockquote class="{{ if $type }}alert alert-{{ $type }}{{ end }}">
-    {{- if $type -}}
+{{ if eq .Type "alert" }}
+    {{- $type := .AlertType -}}
+    {{- $icons := site.Params.article.alertIcon -}}
+    {{- $icon := index $icons $type -}}
+    <blockquote class="alert alert-{{ $type }}">
         <div class="alert-header">
             <span class="alert-icon">
                 {{- $icon -}}
             </span>
             <span class="alert-title">
-                {{- title $type -}}
+                {{- with .AlertTitle -}}
+                    {{ . }}
+                {{- else -}}
+                    {{ or (i18n (printf "article.alert.%s" $type)) (title $type) }}
+                {{- end -}}
             </span>
         </div>
-    {{- end -}}
-
-    <div class="alert-body">
+        <div class="alert-body">
+            {{ .Text }}
+        </div>
+    </blockquote>
+{{ else }}
+    <blockquote>
         {{ .Text }}
-    </div>
-</blockquote>
+    </blockquote>
+{{ end }}

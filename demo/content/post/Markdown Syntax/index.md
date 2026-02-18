@@ -49,16 +49,19 @@ The blockquote element represents content that is quoted from another source, op
 
 ### Blockquote with alert
 
-> [!NOTE]  
+> [!NOTE]
 > Highlights information that users should take into account, even when skimming.
+
+> [!NOTE] Custom title
+> You can also provide a custom title for the note alert.
 
 > [!TIP]
 > Optional information to help a user be more successful.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Crucial information necessary for users to succeed.
 
-> [!WARNING]  
+> [!WARNING]
 > Critical content demanding immediate user attention due to potential risks.
 
 > [!CAUTION]

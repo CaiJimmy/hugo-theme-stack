@@ -22,6 +22,13 @@ darkMode   = "حالت شب"
         one   = "مطالعه در {{ .Count }} دقیقه"
         other = "مطالعه در {{ .Count }} دقیقه"
 
+    [article.alert]
+        note      = "یادداشت"
+        tip       = "نکته"
+        important = "مهم"
+        warning   = "هشدار"
+        caution   = "احتیاط"
+
 [notFound]
     title    = "یافت نشد"
     subtitle = "این صحه وجود ندارد"

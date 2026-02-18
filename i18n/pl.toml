@@ -28,6 +28,13 @@ darkMode   = "Tryb ciemny"
         many  = "Przeczytasz w {{ .Count }} minut"
         other = "Przeczytasz w {{ .Count }} minut"
 
+    [article.alert]
+        note      = "Notatka"
+        tip       = "Wskazówka"
+        important = "Ważne"
+        warning   = "Ostrzeżenie"
+        caution   = "Uwaga"
+
 [notFound]
     title    = "Nie znaleziono"
     subtitle = "Ta strona nie istnieje"

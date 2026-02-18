@@ -22,6 +22,13 @@ darkMode   = "다크 모드"
         one   = "{{ .Count }} 분 정도"
         other = "{{ .Count }} 분 정도"
 
+    [article.alert]
+        note      = "참고"
+        tip       = "팁"
+        important = "중요"
+        warning   = "경고"
+        caution   = "주의"
+
 [notFound]
     title    = "찾을 수 없음"
     subtitle = "페이지를 찾을 수 없습니다."
