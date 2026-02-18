@@ -1,5 +1,5 @@
 {{- $context := .Context -}}
-{{- $taxonomy := index .Context.Site.Taxonomies .Params.taxonomy -}}
+{{- $taxonomy := index $context.Site.Taxonomies .Params.taxonomy -}}
 {{- if not $taxonomy -}}
     {{- warnf "Taxonomy %s not found" .Params.taxonomy -}}
 {{- end -}}
