@@ -1,0 +1,25 @@
+{{- $context := .Context -}}
+{{- $taxonomy := index .Context.Site.Taxonomies .Params.taxonomy -}}
+{{- if not $taxonomy -}}
+    {{- warnf "Taxonomy %s not found" .Params.taxonomy -}}
+{{- end -}}
+
+{{- $taxonomyPage := $taxonomy.Page -}}
+
+{{- $limit := default 10 .Params.limit -}}
+{{- $icon := default .Params.taxonomy .Params.icon -}}
+
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        {{ partial "helper/icon" $icon }}
+    </div>
+    <h2 class="widget-title section-title">{{ default .Params.title $taxonomyPage.Title }}</h2>
+
+    <div class="tagCloud-tags">
+        {{ range first $limit $taxonomy.ByCount }}
+            <a href="{{ .Page.RelPermalink }}">
+                {{ .Page.Title }}
+            </a>
+        {{ end }}
+    </div>
+</section>
