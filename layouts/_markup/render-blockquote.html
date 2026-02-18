@@ -1,14 +1,12 @@
 {{- $type := .AlertType -}}
+{{- $icons := site.Params.article.alertIcon -}}
+{{- $icon := index $icons $type -}}
 
 <blockquote class="{{ if $type }}alert alert-{{ $type }}{{ end }}">
     {{- if $type -}}
         <div class="alert-header">
             <span class="alert-icon">
-                {{- if eq $type "note" }}📝{{ end -}}
-                {{- if eq $type "tip" }}💡{{ end -}}
-                {{- if eq $type "important" }}📌{{ end -}}
-                {{- if eq $type "warning" }}⚠️{{ end -}}
-                {{- if eq $type "caution" }}🚨{{ end -}}
+                {{- $icon -}}
             </span>
             <span class="alert-title">
                 {{- title $type -}}

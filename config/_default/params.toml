@@ -51,6 +51,14 @@ SortBy             = "default"
         # Can also be set per-diagram with %%transparent%% directive
         transparentBackground = false
 
+    [article.alertIcon]
+        # Alert icons for different alert types (note, tip, important, warning, caution)
+        note      = "📝"
+        tip       = "💡"
+        important = "📌"
+        warning   = "⚠️"
+        caution   = "🚨"
+
 [widgets]
     homepage = []
     page     = []
