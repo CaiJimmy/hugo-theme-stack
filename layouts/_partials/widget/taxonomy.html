@@ -8,12 +8,21 @@
 
 {{- $limit := default 10 .Params.limit -}}
 {{- $icon := default .Params.taxonomy .Params.icon -}}
+{{- $showLink := default false .Params.showLink -}}
 
 <section class="widget tagCloud">
     <div class="widget-icon">
         {{ partial "helper/icon" $icon }}
     </div>
-    <h2 class="widget-title section-title">{{ default .Params.title $taxonomyPage.Title }}</h2>
+    <h2 class="widget-title section-title">
+        {{ if $showLink }}
+            <a href="{{ $taxonomyPage.RelPermalink }}">
+                {{ default .Params.title $taxonomyPage.Title }}
+            </a>
+        {{ else }}
+            {{ default .Params.title $taxonomyPage.Title }}
+        {{ end }}
+    </h2>
 
     <div class="tagCloud-tags">
         {{ range first $limit $taxonomy.ByCount }}
