@@ -1,0 +1,26 @@
+{{ $image := partial "helper/image" (dict "Image" .context.Params.image "Resources" .context.Resources) }}
+<article class="{{ if $image }}has-image{{ end }}">
+    <a href="{{ .context.RelPermalink }}">
+        {{ if $image }}
+        <div class="article-image">
+            <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy"
+                alt="Featured image of post {{ .context.Title }}">
+        </div>
+        {{ end }}
+
+        <div class="article-details"
+            {{- if and $image $image.Resource -}}
+                {{- $colors := $image.Resource.Colors -}}
+                {{- if $colors -}}
+                    {{- $vibrant := index $colors 0 -}}
+                    {{- $darkMuted := index $colors 1 | default $vibrant -}}
+                    style="background: linear-gradient(0deg, {{ $darkMuted }}80 0%, {{ $vibrant }}C0 100%);"
+                {{- end -}}
+            {{- end -}}
+        >
+            <h2 class="article-title">
+                {{- .context.Title -}}
+            </h2>
+        </div>
+    </a>
+</article>

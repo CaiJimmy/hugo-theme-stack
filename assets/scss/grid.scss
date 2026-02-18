@@ -4,11 +4,13 @@
 
     .left-sidebar {
         order: -3;
+        width: 100%;
         max-width: var(--left-sidebar-max-width);
     }
 
     .right-sidebar {
         order: -1;
+        width: 100%;
         max-width: var(--right-sidebar-max-width);
 
         /// Display right sidebar when min-width: lg

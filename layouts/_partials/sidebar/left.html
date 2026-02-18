@@ -1,0 +1,99 @@
+<aside class="sidebar left-sidebar sticky {{ if .Site.Params.sidebar.compact }}compact{{ end }}">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="{{ T `toggleMenu` }}">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        {{ with .Site.Params.sidebar.avatar }}
+            {{- $avatar := partial "helper/image" (dict "Image" . "Resources" resources) -}}
+            <figure class="site-avatar">
+                <a href="{{ $.Site.Home.RelPermalink }}">
+                    <img src="{{ $avatar.Permalink }}" 
+                        width="{{ $avatar.Width }}"
+                        height="{{ $avatar.Height }}"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                {{ with $.Site.Params.sidebar.emoji }}
+                    <span class="emoji">{{ . }}</span>
+                {{ end }}
+            </figure>
+        {{ end }}
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
+            <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
+        </div>
+    </header>
+
+    {{- with .Site.Menus.social -}}
+        <ol class="menu-social">
+            {{ range . }}
+                <li>
+                    <a 
+                        href='{{ .URL }}'
+                        {{ if eq (default true .Params.newTab) true }}target="_blank"{{ end }}
+                        {{ with .Name }}title="{{ . }}"{{ end }}
+                        rel="me"
+                    >
+                        {{ $icon := default "link" .Params.Icon }}
+                        {{ with $icon }}
+                            {{ partial "helper/icon" . }}
+                        {{ end }}
+                    </a>
+                </li>
+            {{ end }}
+        </ol>
+    {{- end -}}
+
+    <ol class="menu" id="main-menu">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+        <li {{ if $active }} class='current' {{ end }}>
+            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                {{ $icon := default .Pre .Params.Icon }}
+                {{ if .Pre }}
+                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://stack.jimmycai.com/config/menu" .URL }}
+                {{ end }}
+                {{ with $icon }}
+                    {{ partial "helper/icon" . }}
+                {{ end }}
+                <span>{{- .Name -}}</span>
+            </a>
+        </li>
+        {{ end }}
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                {{- $currentLanguageCode := .Language.Lang -}}
+                {{ if hugo.IsMultilingual }}
+                    <li id="i18n-switch">  
+                        {{ partial "helper/icon" "language" }}
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            {{ range .Site.Home.AllTranslations }}
+                                {{ $target := . }}
+                                {{ range $.AllTranslations }}
+                                    {{ if eq .Language.Lang $target.Language.Lang }}
+                                        {{ $target = . }}
+                                    {{ end }}
+                                {{ end }}
+                                <option value="{{ $target.RelPermalink }}" {{ if eq $target.Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                            {{ end }}
+                        </select>
+                    </li>
+                {{ end }}
+
+                {{ if .Site.Params.colorScheme.toggle }}
+                    <li id="dark-mode-toggle">
+                        {{ partial "helper/icon" "toggle-left" }}
+                        {{ partial "helper/icon" "toggle-right" }}
+                        <span>{{ T "darkMode" }}</span>
+                    </li>
+                {{ end }}
+            </ol>
+        </li>
+    </ol>
+</aside>

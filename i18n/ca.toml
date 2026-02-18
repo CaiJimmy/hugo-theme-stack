@@ -1,0 +1,47 @@
+toggleMenu = "Toggle Menu"
+darkMode   = "Mode fosc"
+
+[list]
+    section = "Secció"
+
+    [list.page]
+        one   = "{{ .Count }} pàgina"
+        other = "{{ .Count }} pàgines"
+
+    [list.subsection]
+        one   = "Subsecció"
+        other = "Subseccions"
+
+[article]
+    back            = "Tornar"
+    tableOfContents = "Taula de contingut"
+    relatedContent  = "Continguts relacionats"
+    lastUpdatedOn   = "Última vegada actualitzat"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minut a llegir"
+        other = "{{ .Count }} minuts a llegir"
+
+[notFound]
+    title    = "No Trobat"
+    subtitle = "Aquesta pàgina no existeix"
+
+[widget]
+    [widget.archives]
+        title = "Arxiu"
+        more  = "Més"
+
+    [widget.tagCloud]
+        title = "Etiquetes"
+
+    [widget.categoriesCloud]
+        title = "Categories"
+
+[search]
+    title       = "Cerca"
+    placeholder = "Tecleja alguna cosa..."
+    resultTitle = "#PAGES_COUNT pàgines en (#TIME_SECONDS segons)"
+
+[footer]
+    builtWith  = "Creat amb {{ .Generator }}"
+    designedBy = "Tema {{ .Theme }} dissenyat per {{ .DesignedBy }}"

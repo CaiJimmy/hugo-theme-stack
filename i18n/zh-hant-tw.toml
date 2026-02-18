@@ -1,0 +1,38 @@
+toggleMenu = "切換選單"
+darkMode   = "夜晚模式"
+
+[list]
+    section    = "段落"
+    page       = "第 {{ .Count }} 頁"
+    subsection = "小節"
+
+[article]
+    back            = "返回"
+    tableOfContents = "目錄"
+    relatedContent  = "相關文章"
+    lastUpdatedOn   = "最後更新"
+    readingTime     = "閱讀時間: {{ .Count }} 分鐘"
+
+[notFound]
+    title    = "404 錯誤"
+    subtitle = "頁面不存在"
+
+[widget]
+    [widget.archives]
+        title = "紀錄"
+        more  = "更多"
+
+    [widget.tagCloud]
+        title = "標籤雲"
+
+    [widget.categoriesCloud]
+        title = "分類"
+
+[search]
+    title       = "搜尋"
+    placeholder = "輸入關鍵字..."
+    resultTitle = "#PAGES_COUNT 個結果 （用時 #TIME_SECONDS 秒）"
+
+[footer]
+    builtWith  = "使用 {{ .Generator }} 建立"
+    designedBy = "主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計"

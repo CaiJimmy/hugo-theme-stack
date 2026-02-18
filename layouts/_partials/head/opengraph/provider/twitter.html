@@ -1,0 +1,16 @@
+{{- with .Site.Params.opengraph.twitter.site -}}
+    <meta name="twitter:site" content="@{{ . }}">
+    <meta name="twitter:creator" content="@{{ . }}">
+{{- end -}}
+
+{{- $title := partialCached "data/title" . .RelPermalink -}}
+{{- $description := partialCached "data/description" . .RelPermalink -}}
+
+<meta name="twitter:title" {{ printf "content=%q" $title | safeHTMLAttr }}>
+<meta name="twitter:description" {{ printf "content=%q" $description | safeHTMLAttr }}>
+
+{{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
+{{- if $image -}}
+    <meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">
+    <meta name="twitter:image" content='{{ absURL $image.permalink }}' />
+{{- end -}}

@@ -1,0 +1,9 @@
+name               = "hugo-theme-stack"
+compatibility_date = "2026-01-25"
+
+[build]
+    command = "chmod a+x ./.ci/build.sh && ./.ci/build.sh"
+
+[assets]
+    directory          = "demo/public"
+    not_found_handling = "404-page"

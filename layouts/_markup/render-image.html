@@ -1,0 +1,24 @@
+{{- $image := partial "helper/image" (dict "Resources" .Page.Resources "Image" .Destination) -}}
+{{- $alt := .PlainText | safeHTML -}}
+{{- $title := .Title | markdownify -}}
+
+{{/* SVG and external images won't work with gallery layout, because their width and height attributes are unknown */}}
+{{- $galleryImage := and $image.Height $image.Width -}}
+
+<img src="{{ $image.Permalink }}"
+	{{ with $image.Width }}width="{{ . }}"{{ end }}
+	{{ with $image.Height }}height="{{ . }}"{{ end }}
+	loading="lazy"
+	{{ with $alt }}
+		alt="{{ . }}"
+	{{ end }}
+    {{ with $title }}
+        title="{{ . }}"
+        data-title-escaped="{{ . | htmlEscape }}"
+    {{ end }}
+	{{ if $galleryImage }}
+		class="gallery-image" 
+		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
+		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
+	{{ end }}
+>

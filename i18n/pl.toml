@@ -1,0 +1,58 @@
+toggleMenu = "Przełącz Menu"
+darkMode   = "Tryb ciemny"
+
+[list]
+    section = "Sekcja"
+
+    [list.page]
+        one   = "{{ .Count }} strona"
+        few   = "{{ .Count }} strony"
+        many  = "{{ .Count }} stron"
+        other = "{{ .Count }} stron"
+
+    [list.subsection]
+        one   = "Podsekcja"
+        few   = "Podsekcje"
+        many  = "Podsekcji"
+        other = "Podsekcji"
+
+[article]
+    back            = "Wróć"
+    tableOfContents = "Spis treści"
+    relatedContent  = "Powiązane artykuły"
+    lastUpdatedOn   = "Ostatnio zaktualizowany"
+
+    [article.readingTime]
+        one   = "Przeczytasz w {{ .Count }} minutę"
+        few   = "Przeczytasz w {{ .Count }} minuty"
+        many  = "Przeczytasz w {{ .Count }} minut"
+        other = "Przeczytasz w {{ .Count }} minut"
+
+[notFound]
+    title    = "Nie znaleziono"
+    subtitle = "Ta strona nie istnieje"
+
+[widget]
+    [widget.archives]
+        title = "Archiwum"
+        more  = "Więcej"
+
+    [widget.tagCloud]
+        title = "Tagi"
+
+    [widget.categoriesCloud]
+        title = "Kategorie"
+
+[search]
+    title       = "Szukaj"
+    placeholder = "Wpisz coś..."
+
+    [search.resultTitle]
+        one   = "#PAGES_COUNT strona (#TIME_SECONDS sekund)"
+        few   = "#PAGES_COUNT strony (#TIME_SECONDS sekund)"
+        many  = "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
+        other = "#PAGES_COUNT stron (#TIME_SECONDS sekund)"
+
+[footer]
+    builtWith  = "Zbudowano z {{ .Generator }}"
+    designedBy = "Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}"

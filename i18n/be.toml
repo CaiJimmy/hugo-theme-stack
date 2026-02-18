@@ -1,0 +1,45 @@
+toggleMenu = "Паказаць/схаваць меню"
+darkMode   = "Цёмны рэжым"
+
+[list]
+    section = "Раздзел"
+
+    [list.page]
+        one   = "{{ .Count }} старонка"
+        few   = "{{ .Count }} старонкі"
+        many  = "{{ .Count }} старонак"
+        other = "{{ .Count }} старонкі"
+
+    [list.subsection]
+        one   = "Падраздзел"
+        few   = "Падраздзелы"
+        many  = "Падраздзелы"
+        other = "Падраздзелы"
+
+[article]
+    back            = "Назад"
+    relatedContent  = "Таксама рэкамендуем"
+    lastUpdatedOn   = "Абноўлена"
+    tableOfContents = "Змест"
+    readingTime     = "Час чытання: {{ .Count }} хв."
+
+[notFound]
+    title    = "Не знойдзена"
+    subtitle = "Запытваемая старонка не існуе"
+
+[widget]
+    [widget.archives]
+        title = "Архівы"
+        more  = "Яшчэ"
+
+    [widget.tagCloud]
+        title = "Тэгі"
+
+[search]
+    title       = "Пошук"
+    placeholder = "Увядзіце нешта..."
+    resultTitle = "Знайдзена #PAGES_COUNT старонак (за #TIME_SECONDS с.)"
+
+[footer]
+    builtWith  = "Створана пры дапамозе {{ .Generator }}"
+    designedBy = "Тэма {{ .Theme }}, дызайн {{ .DesignedBy }}"

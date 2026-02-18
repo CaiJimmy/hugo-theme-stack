@@ -1,0 +1,13 @@
+<script defer src="{{ .Site.Params.comments.comentario.url }}/comentario.js"></script>
+<comentario-comments auto-init="{{ .Site.Params.comments.comentario.autoInit }}"
+    auto-non-interactive-sso="{{ .Site.Params.comments.comentario.autoNonInteractiveSSO }}"
+    css-override="{{ .Site.Params.comments.comentario.cssOverride }}" lang="{{ .Site.Params.comments.comentario.lang }}"
+    live-update="{{ .Site.Params.comments.comentario.liveUpdate }}"
+    max-level="{{ .Site.Params.comments.comentario.maxLevel }}"
+    no-fonts="{{ .Site.Params.comments.comentario.noFonts }}"
+    theme="{{ .Site.Params.comments.comentario.theme }}"></comentario-comments>
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        document.querySelector('comentario-comments').setAttribute('theme', e.detail);
+    })
+</script>

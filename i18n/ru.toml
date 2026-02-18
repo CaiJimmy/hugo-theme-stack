@@ -1,0 +1,48 @@
+toggleMenu = "Показать/скрыть меню"
+darkMode   = "Тёмный режим"
+
+[list]
+    section = "Раздел"
+
+    [list.page]
+        one   = "{{ .Count }} страница"
+        few   = "{{ .Count }} страницы"
+        many  = "{{ .Count }} страниц"
+        other = "{{ .Count }} страниц"
+
+    [list.subsection]
+        one   = "Подраздел"
+        few   = "Подразделы"
+        many  = "Подразделы"
+        other = "Подразделы"
+
+[article]
+    back            = "Назад"
+    relatedContent  = "Также рекомендуем"
+    lastUpdatedOn   = "Обновлено"
+    tableOfContents = "Содержание"
+    readingTime     = "Время чтения: {{ .Count }} мин."
+
+[notFound]
+    title    = "Не найдено"
+    subtitle = "Запрашиваемая страница не существует"
+
+[widget]
+    [widget.archives]
+        title = "Архивы"
+        more  = "Ещё"
+
+    [widget.tagCloud]
+        title = "Теги"
+
+    [widget.categoriesCloud]
+        title = "Категории"
+
+[search]
+    title       = "Поиск"
+    placeholder = "Введите что-нибудь..."
+    resultTitle = "Найдено #PAGES_COUNT страниц (за #TIME_SECONDS с.)"
+
+[footer]
+    builtWith  = "Создано при помощи {{ .Generator }}"
+    designedBy = "Тема {{ .Theme }}, дизайн {{ .DesignedBy }}"

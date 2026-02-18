@@ -1,0 +1,22 @@
+baseURL                = "https://demo.stack.cai.im/"
+languageCode           = "en-us"
+title                  = "Hugo Theme Stack"
+# Theme i18n support
+# See i18n folder for available languages
+defaultContentLanguage = "en"
+# Set hasCJKLanguage to true if DefaultContentLanguage is a CJK language
+# This will make .Summary and .WordCount behave correctly
+hasCJKLanguage         = false
+
+[[module.imports]]
+    path = "github.com/CaiJimmy/hugo-theme-stack/v3"
+
+[pagination]
+    pagerSize = 5
+
+[permalinks]
+    post = "/p/:slug/"
+    page = "/:slug/"
+
+[services.disqus]
+    shortname = "hugo-theme-stack"

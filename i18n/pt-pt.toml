@@ -1,0 +1,47 @@
+toggleMenu = "Alternar Menu"
+darkMode   = "Modo Escuro"
+
+[list]
+    section = "Secção"
+
+    [list.page]
+        one   = "{{ .Count }} página"
+        other = "{{ .Count }} páginas"
+
+    [list.subsection]
+        one   = "Subsecção"
+        other = "Subsecções"
+
+[article]
+    back            = "Voltar"
+    tableOfContents = "Índice"
+    relatedContent  = "Conteúdo relacionado"
+    lastUpdatedOn   = "Última atualização a"
+
+    [article.readingTime]
+        one   = "{{ .Count }} minuto de leitura"
+        other = "{{ .Count }} minutos de leitura"
+
+[notFound]
+    title    = "Não Encontrado"
+    subtitle = "Esta página não existe."
+
+[widget]
+    [widget.archives]
+        title = "Arquivos"
+        more  = "Mais"
+
+    [widget.tagCloud]
+        title = "Tags"
+
+    [widget.categoriesCloud]
+        title = "Categorias"
+
+[search]
+    title       = "Pesquisa"
+    placeholder = "Escreva algo..."
+    resultTitle = "#PAGES_COUNT páginas (#TIME_SECONDS segundos)"
+
+[footer]
+    builtWith  = "Criado com {{ .Generator }}"
+    designedBy = "Tema {{ .Theme }} desenvolvido por {{ .DesignedBy }}"

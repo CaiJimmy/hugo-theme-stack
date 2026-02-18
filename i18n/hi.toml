@@ -1,0 +1,47 @@
+toggleMenu = "मेनू टॉगल करें"
+darkMode   = "डार्क मोड"
+
+[list]
+    section = "अनुभाग"
+
+    [list.page]
+        one   = "{{ .Count }} पेज"
+        other = "{{ .Count }} पेज"
+
+    [list.subsection]
+        one   = "उपधारा"
+        other = "उपखंड"
+
+[article]
+    back            = "पीछे"
+    tableOfContents = "विषयसूची"
+    relatedContent  = "संबंधित सामग्री"
+    lastUpdatedOn   = "अंतिम बार अपडेट किया गया"
+
+    [article.readingTime]
+        one   = "{{ .Count }} मिनट पढ़ें"
+        other = "{{ .Count }} मिनट पढ़ें"
+
+[notFound]
+    title    = "404 नहीं मिला।"
+    subtitle = "यह पृष्ठ मौजूद नहीं है।"
+
+[widget]
+    [widget.archives]
+        title = "अभिलेखागार"
+        more  = "अधिक"
+
+    [widget.tagCloud]
+        title = "टैग"
+
+    [widget.categoriesCloud]
+        title = "श्रेणियाँ"
+
+[search]
+    title       = "खोज"
+    placeholder = "कुछ लिखें..."
+    resultTitle = "#PAGES_COUNT पेज (#TIME_SECONDS सेकंड)"
+
+[footer]
+    builtWith  = "निर्मित {{ .Generator }} के साथ"
+    designedBy = "थीम {{ .Theme }} द्वारा डिज़ाइन किया गया {{ .DesignedBy }}"
