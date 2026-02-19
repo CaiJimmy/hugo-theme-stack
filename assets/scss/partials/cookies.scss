@@ -59,8 +59,8 @@
 }
 
 .cookie-banner__settings-link {
-    width: 100%;
-    text-align: center;
+    width: auto;
+    align-self: flex-start;
     background: none;
     border: none;
     color: var(--accent-color);
@@ -75,6 +75,7 @@
     @include respond(md) {
         width: auto;
         margin-left: auto;
+        align-self: center;
     }
 }
 
@@ -110,7 +111,6 @@
 
 // Cookie settings panel
 .cookie-settings {
-    margin-top: 20px;
     padding-top: 20px;
     border-top: 1.5px solid var(--card-separator-color);
 
