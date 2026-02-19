@@ -82,7 +82,8 @@
 }
 
 .article-time,
-.article-translations {
+.article-translations,
+.article-header-tags {
     display: flex;
     color: var(--card-text-color-tertiary);
     gap: 15px;
@@ -112,7 +113,8 @@
     flex-wrap: wrap;
 }
 
-.article-translations {
+.article-translations,
+.article-header-tags {
     & > div {
         flex-wrap: wrap;
     }

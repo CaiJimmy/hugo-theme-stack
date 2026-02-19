@@ -1,7 +1,9 @@
+{{- $IsList := .IsList -}}
+{{- $Page := .Page -}}
 <div class="article-details">
-    {{ if .Params.categories }}
+    {{ if $Page.Params.categories }}
     <header class="article-category">
-        {{ range (.GetTerms "categories") }}
+        {{ range ($Page.GetTerms "categories") }}
             {{ $color := partial "helper/color-from-str" .LinkTitle }}
             {{ $BackgroundColor := default $color.BackgroundColor .Params.style.background }}
             {{ $TextColor := default $color.TextColor .Params.style.color }}
@@ -14,28 +16,28 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="{{ .RelPermalink }}">
-                {{- .Title -}}
+            <a href="{{ $Page.RelPermalink }}">
+                {{- $Page.Title -}}
             </a>
         </h2>
     
-        {{ with .Params.description }}
+        {{ with $Page.Params.description }}
         <h3 class="article-subtitle">
             {{ . }}
         </h3>
         {{ end }}
     </div>
 
-    {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
-    {{ $showDate := not .Date.IsZero }}
+    {{ $showReadingTime := $Page.Params.readingTime | default (.Site.Params.article.readingTime) }}
+    {{ $showDate := not $Page.Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
             <div>
                 {{ partial "helper/icon" "date" }}
-                <time class="article-time--published" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- .Date | time.Format .Site.Params.dateFormat.published -}}
+                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                    {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
                 </time>
             </div>
         {{ end }}
@@ -44,19 +46,30 @@
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
-                    {{ T "article.readingTime" .ReadingTime }}
+                    {{ T "article.readingTime" $Page.ReadingTime }}
                 </time>
             </div>
         {{ end }}
     </footer>
     {{ end }}
 
-    {{ if .IsTranslated }}
+    {{ if $Page.IsTranslated }}
         <footer class="article-translations">
             {{ partial "helper/icon" "language" }}
             <div>
-                {{ range .Translations }}
+                {{ range $Page.Translations }}
                     <a href="{{ .RelPermalink }}" class="link">{{ .Language.LanguageName }}</a>
+                {{ end }}
+            </div>
+        </footer>
+    {{ end }}
+
+    {{ if and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
+        <footer class="article-header-tags">
+            {{ partial "helper/icon" "tag" }}
+            <div>
+                {{ range ($Page.GetTerms "tags") }}
+                    <a href="{{ .RelPermalink }}" class="link">{{ .LinkTitle }}</a>
                 {{ end }}
             </div>
         </footer>
