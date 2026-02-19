@@ -349,6 +349,34 @@
         }
     }
 
+    blockquote.alert {
+        .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-weight: bold;
+        }
+
+        .alert-body {
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        $alert-types: note, tip, important, warning, caution;
+
+        @each $type in $alert-types {
+            &.alert-#{$type} {
+                border-color: var(--alert-#{$type}-color);
+                background-color: var(--alert-#{$type}-background);
+
+                .alert-title {
+                    color: var(--alert-#{$type}-color);
+                }
+            }
+        }
+    }
+
     hr {
         width: 100px;
         margin: 40px auto;

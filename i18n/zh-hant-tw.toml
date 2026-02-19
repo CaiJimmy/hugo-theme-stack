@@ -13,6 +13,13 @@ darkMode   = "夜晚模式"
     lastUpdatedOn   = "最後更新"
     readingTime     = "閱讀時間: {{ .Count }} 分鐘"
 
+    [article.alert]
+        note      = "備註"
+        tip       = "提示"
+        important = "重要"
+        warning   = "警告"
+        caution   = "注意"
+
 [notFound]
     title    = "404 錯誤"
     subtitle = "頁面不存在"
