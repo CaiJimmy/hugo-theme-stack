@@ -47,3 +47,27 @@ darkMode   = "Donkere modus"
 [footer]
     builtWith  = "Gemaakt met {{ .Generator }}"
     designedBy = "Theme {{ .Theme }} ontworpen door {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Cookie-toestemming"
+    text              = "We gebruiken cookies om uw browse-ervaring te verbeteren en siteverkeer te analyseren."
+    acceptAll         = "Accepteer alles"
+    deny              = "Weigeren"
+    managePreferences = "Voorkeuren beheren"
+    settingsTitle     = "Cookie-voorkeuren"
+    savePreferences   = "Voorkeuren opslaan"
+    cancel            = "Annuleren"
+    footerLink        = "Cookie-instellingen"
+    commentsDisabled  = "Reacties zijn uitgeschakeld totdat u functionele cookies accepteert."
+
+    [cookies.necessary]
+        title = "Noodzakelijk"
+        text  = "Deze cookies zijn vereist voor de werking van de website en kunnen niet worden uitgeschakeld."
+
+    [cookies.analytics]
+        title = "Analyse"
+        text  = "Deze cookies helpen ons begrijpen hoe bezoekers omgaan met onze website."
+
+    [cookies.functional]
+        title = "Functioneel"
+        text  = "Deze cookies maken functies mogelijk zoals reacties en ingesloten inhoud."

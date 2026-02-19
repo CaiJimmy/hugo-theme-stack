@@ -77,6 +77,16 @@ SortBy             = "default"
 [imageProcessing.content]
     enabled = true
 
+# GDPR Cookie Consent Configuration
+# When enabled, analytics and functional cookies require user consent
+[cookies]
+    enabled      = false
+    showSettings = true
+
+    [cookies.categories]
+        analytics  = true
+        functional = true
+
 [comments]
     enabled  = true
     provider = "disqus"

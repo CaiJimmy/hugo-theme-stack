@@ -43,3 +43,27 @@ darkMode   = "夜晚模式"
 [footer]
     builtWith  = "使用 {{ .Generator }} 建立"
     designedBy = "主題 {{ .Theme }} 由 {{ .DesignedBy }} 設計"
+
+[cookies]
+    title             = "Cookie 同意"
+    text              = "我們使用 Cookie 來增強您的瀏覽體驗並分析網站流量。"
+    acceptAll         = "接受全部"
+    deny              = "拒絕"
+    managePreferences = "管理偏好設定"
+    settingsTitle     = "Cookie 偏好設定"
+    savePreferences   = "儲存偏好設定"
+    cancel            = "取消"
+    footerLink        = "Cookie 設定"
+    commentsDisabled  = "評論已停用，直到您接受功能性 Cookie。"
+
+    [cookies.necessary]
+        title = "必要"
+        text  = "這些 Cookie 是網站運作所必需的，無法停用。"
+
+    [cookies.analytics]
+        title = "分析"
+        text  = "這些 Cookie 幫助我們了解訪客如何與我們的網站互動。"
+
+    [cookies.functional]
+        title = "功能性"
+        text  = "這些 Cookie 啟用評論和嵌入內容等功能."

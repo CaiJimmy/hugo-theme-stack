@@ -1,3 +1,47 @@
 {{ if .Site.Params.comments.enabled }}
-    {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
+    {{- $needsConsent := and .Site.Params.cookies.enabled .Site.Params.cookies.categories.functional -}}
+    {{- if $needsConsent -}}
+        {{/* Consent-gated comments - show placeholder until functional consent */}}
+        <div id="comments-consent-placeholder" class="consent-placeholder">
+            <p>{{ T "cookies.commentsDisabled" }}</p>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="reopen">
+                {{ T "cookies.managePreferences" }}
+            </button>
+        </div>
+        <div id="comments-container" style="display: none;">
+            {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
+        </div>
+        <script>
+        (function() {
+            var placeholder = document.getElementById('comments-consent-placeholder');
+            var container = document.getElementById('comments-container');
+
+            function showComments() {
+                if (placeholder) placeholder.style.display = 'none';
+                if (container) container.style.display = 'block';
+            }
+
+            function hideComments() {
+                if (placeholder) placeholder.style.display = 'block';
+                if (container) container.style.display = 'none';
+            }
+
+            window.addEventListener('onCookieConsentChange', function(e) {
+                if (e.detail && e.detail.functional) {
+                    showComments();
+                } else {
+                    hideComments();
+                }
+            });
+
+            // Check if already consented
+            if (window.cookieConsent && window.cookieConsent.hasConsent('functional')) {
+                showComments();
+            }
+        })();
+        </script>
+    {{- else -}}
+        {{/* No consent required - load comments normally */}}
+        {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
+    {{- end -}}
 {{ end }}

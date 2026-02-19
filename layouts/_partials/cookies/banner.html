@@ -1,0 +1,68 @@
+{{- $cfg := .Site.Params.cookies -}}
+{{- $categories := $cfg.categories -}}
+
+<div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">{{ T "cookies.title" }}</strong>
+            <p>{{ T "cookies.text" }}</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                {{ T "cookies.deny" }}
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                {{ T "cookies.acceptAll" }}
+            </button>
+        </div>
+
+        {{- if $cfg.showSettings }}
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            {{ T "cookies.managePreferences" }}
+        </button>
+        {{- end }}
+
+        {{/* Settings panel */}}
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>{{ T "cookies.settingsTitle" }}</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>{{ T "cookies.necessary.title" }}</strong>
+                </label>
+                <p>{{ T "cookies.necessary.text" }}</p>
+            </div>
+
+            {{- if $categories.analytics -}}
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>{{ T "cookies.analytics.title" }}</strong>
+                </label>
+                <p>{{ T "cookies.analytics.text" }}</p>
+            </div>
+            {{- end -}}
+
+            {{- if $categories.functional -}}
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>{{ T "cookies.functional.title" }}</strong>
+                </label>
+                <p>{{ T "cookies.functional.text" }}</p>
+            </div>
+            {{- end -}}
+
+            <div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    {{ T "cookies.cancel" }}
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    {{ T "cookies.savePreferences" }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -28,3 +28,12 @@ favicon        = "img/avatar.png"
     # See complete configuration in config/_default/params.toml
     enabled  = true
     provider = "disqus"
+
+# GDPR Cookie Consent Configuration
+# When enabled, analytics and functional cookies require user consent
+[cookies]
+    enabled = true
+
+    [cookies.categories]
+        analytics  = true
+        functional = true

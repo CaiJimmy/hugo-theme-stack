@@ -63,3 +63,27 @@ darkMode   = "Tryb ciemny"
 [footer]
     builtWith  = "Zbudowano z {{ .Generator }}"
     designedBy = "Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Zgoda na pliki cookie"
+    text              = "Używamy plików cookie, aby poprawić Twoje wrażenia z przeglądania i analizować ruch w witrynie."
+    acceptAll         = "Akceptuj wszystkie"
+    deny              = "Odrzuć"
+    managePreferences = "Zarządzaj preferencjami"
+    settingsTitle     = "Preferencje plików cookie"
+    savePreferences   = "Zapisz preferencje"
+    cancel            = "Anuluj"
+    footerLink        = "Ustawienia plików cookie"
+    commentsDisabled  = "Komentarze są wyłączone, dopóki nie zaakceptujesz funkcjonalnych plików cookie."
+
+    [cookies.necessary]
+        title = "Niezbędne"
+        text  = "Te pliki cookie są wymagane do działania witryny i nie można ich wyłączyć."
+
+    [cookies.analytics]
+        title = "Analityczne"
+        text  = "Te pliki cookie pomagają nam zrozumieć, jak odwiedzający wchodzą w interakcję z naszą witryną."
+
+    [cookies.functional]
+        title = "Funkcjonalne"
+        text  = "Te pliki cookie włączają funkcje takie jak komentarze i osadzone treści."
