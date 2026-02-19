@@ -55,8 +55,7 @@
         {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
         <li {{ if $active }} class='current'{{ end }}>
             <a href='{{ .URL }}' {{ if .Params.newTab }}target="_blank"{{ end }}>
-                {{ $icon := .Params.Icon }}
-                {{ with $icon }}
+                {{ with .Params.Icon }}
                     {{ partial "helper/icon" . }}
                 {{ end }}
                 <span>{{- .Name -}}</span>
