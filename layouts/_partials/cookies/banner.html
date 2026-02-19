@@ -1,5 +1,5 @@
 {{- $cfg := .Site.Params.cookies -}}
-{{- $categories := $cfg.categories | default dict -}}
+{{- $categories := $cfg.categories -}}
 
 <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
     <div class="cookie-banner__content">
@@ -17,7 +17,7 @@
             </button>
         </div>
 
-        {{- if default true $cfg.banner.showSettings }}
+        {{- if $cfg.banner.showSettings }}
         <button class="cookie-banner__settings-link" data-cookie-action="settings">
             {{ T "cookies.managePreferences" }}
         </button>
@@ -35,7 +35,7 @@
                 <p>{{ T "cookies.necessary.description" }}</p>
             </div>
 
-            {{- if default true $categories.analytics }}
+            {{- if $categories.analytics }}
             <div class="cookie-category">
                 <label>
                     <input type="checkbox" name="analytics" data-cookie-category="analytics" />
@@ -45,7 +45,7 @@
             </div>
             {{- end }}
 
-            {{- if default true $categories.functional }}
+            {{- if $categories.functional }}
             <div class="cookie-category">
                 <label>
                     <input type="checkbox" name="functional" data-cookie-category="functional" />
