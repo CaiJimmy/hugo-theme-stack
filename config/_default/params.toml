@@ -25,7 +25,8 @@ SortBy             = "default"
     readingTime   = true
 
     [article.list]
-        showTags = true
+        # Showing article tags in the list view (e.g. homepage, section pages)
+        showTags = false
 
     [article.license]
         enabled = false
