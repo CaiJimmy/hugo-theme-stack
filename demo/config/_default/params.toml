@@ -32,7 +32,7 @@ favicon        = "img/avatar.png"
 # GDPR Cookie Consent Configuration
 # When enabled, analytics and functional cookies require user consent
 [cookies]
-    enabled = true
+    enabled = false
 
     [cookies.categories]
         analytics  = true
