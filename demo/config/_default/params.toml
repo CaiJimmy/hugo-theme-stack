@@ -33,6 +33,7 @@ favicon        = "img/avatar.png"
 # When enabled, analytics and functional cookies require user consent
 [cookies]
     enabled = true
+
     [cookies.categories]
         analytics  = true
         functional = true
