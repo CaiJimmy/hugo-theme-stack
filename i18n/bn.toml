@@ -22,6 +22,13 @@ darkMode   = "ডার্ক মোড"
         one   = "{{ .Count }} মিনিটে পড়া যাবে"
         other = "{{ .Count }} মিনিটে পড়া যাবে"
 
+    [article.alert]
+        note      = "টীকা"
+        tip       = "পরামর্শ"
+        important = "গুরুত্বপূর্ণ"
+        warning   = "সতর্কতা"
+        caution   = "সাবধানতা"
+
 [notFound]
     title    = "পাওয়া যায়নি"
     subtitle = "এই পাতাটি বিদ্যমান নেই"

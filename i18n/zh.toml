@@ -13,6 +13,13 @@ darkMode   = "暗色模式"
     lastUpdatedOn   = "最后更新于"
     readingTime     = "阅读时长: {{ .Count }} 分钟"
 
+    [article.alert]
+        note      = "备注"
+        tip       = "提示"
+        important = "重要"
+        warning   = "警告"
+        caution   = "注意"
+
 [notFound]
     title    = "404 错误"
     subtitle = "页面不存在"

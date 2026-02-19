@@ -23,6 +23,13 @@ darkMode   = "Цёмны рэжым"
     tableOfContents = "Змест"
     readingTime     = "Час чытання: {{ .Count }} хв."
 
+    [article.alert]
+        note      = "Заўвага"
+        tip       = "Парада"
+        important = "Важна"
+        warning   = "Папярэджанне"
+        caution   = "Асцярога"
+
 [notFound]
     title    = "Не знойдзена"
     subtitle = "Запытваемая старонка не існуе"

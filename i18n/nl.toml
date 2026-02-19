@@ -17,6 +17,13 @@ darkMode   = "Donkere modus"
     lastUpdatedOn  = "Laatst bijgewerkt op"
     readingTime    = "{{ .Count }} leestijd"
 
+    [article.alert]
+        note      = "Opmerking"
+        tip       = "Tip"
+        important = "Belangrijk"
+        warning   = "Waarschuwing"
+        caution   = "Let op"
+
 [notFound]
     title    = "Niet gevonden"
     subtitle = "Deze pagina bestaat niet."

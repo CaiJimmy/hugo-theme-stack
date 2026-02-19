@@ -13,6 +13,13 @@ darkMode   = "ダークモード"
     lastUpdatedOn   = "最終更新"
     readingTime     = "読了時間: {{ .Count }}分"
 
+    [article.alert]
+        note      = "注記"
+        tip       = "ヒント"
+        important = "重要"
+        warning   = "警告"
+        caution   = "注意"
+
 [notFound]
     title    = "404 Not Found"
     subtitle = "指定されたページは存在しません。"
