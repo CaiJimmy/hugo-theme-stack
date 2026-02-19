@@ -55,7 +55,7 @@ darkMode   = "Sötét Mód"
 
 [cookies]
     title             = "Süti hozzájárulás"
-    description       = "Sütiket használunk a böngészési élmény javítása és a webhely forgalmának elemzése érdekében."
+    text       = "Sütiket használunk a böngészési élmény javítása és a webhely forgalmának elemzése érdekében."
     acceptAll         = "Összes elfogadása"
     deny              = "Elutasítás"
     managePreferences = "Beállítások kezelése"
@@ -67,12 +67,12 @@ darkMode   = "Sötét Mód"
 
     [cookies.necessary]
         title       = "Szükséges"
-        description = "Ezek a sütik szükségesek a webhely működéséhez és nem lehet őket letiltani."
+        text = "Ezek a sütik szükségesek a webhely működéséhez és nem lehet őket letiltani."
 
     [cookies.analytics]
         title       = "Analitikai"
-        description = "Ezek a sütik segítenek megérteni, hogyan lépnek kapcsolatba a látogatók a weboldalunkkal."
+        text = "Ezek a sütik segítenek megérteni, hogyan lépnek kapcsolatba a látogatók a weboldalunkkal."
 
     [cookies.functional]
         title       = "Funkcionális"
-        description = "Ezek a sütik olyan funkciókat tesznek lehetővé, mint a hozzászólások és a beágyazott tartalom."
+        text = "Ezek a sütik olyan funkciókat tesznek lehetővé, mint a hozzászólások és a beágyazott tartalom."

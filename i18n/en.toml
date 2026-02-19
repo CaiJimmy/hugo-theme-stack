@@ -22,13 +22,6 @@ darkMode   = "Dark Mode"
         one   = "{{ .Count }} minute read"
         other = "{{ .Count }} minutes read"
 
-    [article.alert]
-        note      = "Note"
-        tip       = "Tip"
-        important = "Important"
-        warning   = "Warning"
-        caution   = "Caution"
-
 [notFound]
     title    = "Not Found"
     subtitle = "This page does not exist"
@@ -55,7 +48,7 @@ darkMode   = "Dark Mode"
 
 [cookies]
     title             = "Cookie Consent"
-    description       = "We use cookies to enhance your browsing experience and analyze site traffic."
+    text              = "We use cookies to enhance your browsing experience and analyze site traffic."
     acceptAll         = "Accept All"
     deny              = "Deny"
     managePreferences = "Manage preferences"
@@ -66,13 +59,13 @@ darkMode   = "Dark Mode"
     commentsDisabled  = "Comments are disabled until you accept functional cookies."
 
     [cookies.necessary]
-        title       = "Necessary"
-        description = "These cookies are required for the website to function and cannot be disabled."
+        title = "Necessary"
+        text  = "These cookies are required for the website to function and cannot be disabled."
 
     [cookies.analytics]
-        title       = "Analytics"
-        description = "These cookies help us understand how visitors interact with our website."
+        title = "Analytics"
+        text  = "These cookies help us understand how visitors interact with our website."
 
     [cookies.functional]
-        title       = "Functional"
-        description = "These cookies enable features like comments and embedded content."
+        title = "Functional"
+        text  = "These cookies enable features like comments and embedded content."

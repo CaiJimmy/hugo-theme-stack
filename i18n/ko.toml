@@ -55,7 +55,7 @@ darkMode   = "다크 모드"
 
 [cookies]
     title             = "쿠키 동의"
-    description       = "브라우징 경험을 향상시키고 사이트 트래픽을 분석하기 위해 쿠키를 사용합니다."
+    text       = "브라우징 경험을 향상시키고 사이트 트래픽을 분석하기 위해 쿠키를 사용합니다."
     acceptAll         = "모두 허용"
     deny              = "거부"
     managePreferences = "설정 관리"
@@ -67,12 +67,12 @@ darkMode   = "다크 모드"
 
     [cookies.necessary]
         title       = "필수"
-        description = "이 쿠키는 웹사이트 기능에 필요하며 비활성화할 수 없습니다."
+        text = "이 쿠키는 웹사이트 기능에 필요하며 비활성화할 수 없습니다."
 
     [cookies.analytics]
         title       = "분석"
-        description = "이 쿠키는 방문자가 웹사이트와 상호작용하는 방식을 이해하는 데 도움이 됩니다."
+        text = "이 쿠키는 방문자가 웹사이트와 상호작용하는 방식을 이해하는 데 도움이 됩니다."
 
     [cookies.functional]
         title       = "기능적"
-        description = "이 쿠키는 댓글 및 임베디드 콘텐츠와 같은 기능을 활성화합니다."
+        text = "이 쿠키는 댓글 및 임베디드 콘텐츠와 같은 기능을 활성화합니다."

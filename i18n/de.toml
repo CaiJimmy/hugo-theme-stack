@@ -55,7 +55,7 @@ darkMode   = "Dunkler Modus"
 
 [cookies]
     title             = "Cookie-Einwilligung"
-    description       = "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern und den Website-Traffic zu analysieren."
+    text       = "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern und den Website-Traffic zu analysieren."
     acceptAll         = "Alle akzeptieren"
     deny              = "Ablehnen"
     managePreferences = "Einstellungen verwalten"
@@ -67,12 +67,12 @@ darkMode   = "Dunkler Modus"
 
     [cookies.necessary]
         title       = "Notwendig"
-        description = "Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden."
+        text = "Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden."
 
     [cookies.analytics]
         title       = "Analyse"
-        description = "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
+        text = "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
 
     [cookies.functional]
         title       = "Funktional"
-        description = "Diese Cookies ermöglichen Funktionen wie Kommentare und eingebettete Inhalte."
+        text = "Diese Cookies ermöglichen Funktionen wie Kommentare und eingebettete Inhalte."

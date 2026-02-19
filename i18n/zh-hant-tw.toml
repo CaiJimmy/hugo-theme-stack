@@ -46,7 +46,7 @@ darkMode   = "夜晚模式"
 
 [cookies]
     title             = "Cookie 同意"
-    description       = "我們使用 Cookie 來增強您的瀏覽體驗並分析網站流量。"
+    text       = "我們使用 Cookie 來增強您的瀏覽體驗並分析網站流量。"
     acceptAll         = "接受全部"
     deny              = "拒絕"
     managePreferences = "管理偏好設定"
@@ -58,12 +58,12 @@ darkMode   = "夜晚模式"
 
     [cookies.necessary]
         title       = "必要"
-        description = "這些 Cookie 是網站運作所必需的，無法停用。"
+        text = "這些 Cookie 是網站運作所必需的，無法停用。"
 
     [cookies.analytics]
         title       = "分析"
-        description = "這些 Cookie 幫助我們了解訪客如何與我們的網站互動。"
+        text = "這些 Cookie 幫助我們了解訪客如何與我們的網站互動。"
 
     [cookies.functional]
         title       = "功能性"
-        description = "這些 Cookie 啟用評論和嵌入內容等功能。"
+        text = "這些 Cookie 啟用評論和嵌入內容等功能."

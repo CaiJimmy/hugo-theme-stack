@@ -46,7 +46,7 @@ darkMode   = "ダークモード"
 
 [cookies]
     title             = "Cookieの同意"
-    description       = "ブラウジング体験を向上させ、サイトトラフィックを分析するためにCookieを使用しています。"
+    text       = "ブラウジング体験を向上させ、サイトトラフィックを分析するためにCookieを使用しています。"
     acceptAll         = "すべて受け入れる"
     deny              = "拒否"
     managePreferences = "設定を管理"
@@ -58,12 +58,12 @@ darkMode   = "ダークモード"
 
     [cookies.necessary]
         title       = "必須"
-        description = "これらのCookieはウェブサイトの機能に必要であり、無効にすることはできません。"
+        text = "これらのCookieはウェブサイトの機能に必要であり、無効にすることはできません。"
 
     [cookies.analytics]
         title       = "分析"
-        description = "これらのCookieは、訪問者が当サイトとどのように対話するかを理解するのに役立ちます。"
+        text = "これらのCookieは、訪問者が当サイトとどのように対話するかを理解するのに役立ちます。"
 
     [cookies.functional]
         title       = "機能的"
-        description = "これらのCookieは、コメントや埋め込みコンテンツなどの機能を有効にします。"
+        text = "これらのCookieは、コメントや埋め込みコンテンツなどの機能を有効にします."

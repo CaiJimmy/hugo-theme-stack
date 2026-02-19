@@ -55,7 +55,7 @@ darkMode   = "Mode Gelap"
 
 [cookies]
     title             = "Persetujuan Cookie"
-    description       = "Kami menggunakan cookie untuk meningkatkan pengalaman browsing Anda dan menganalisis lalu lintas situs."
+    text       = "Kami menggunakan cookie untuk meningkatkan pengalaman browsing Anda dan menganalisis lalu lintas situs."
     acceptAll         = "Terima Semua"
     deny              = "Tolak"
     managePreferences = "Kelola preferensi"
@@ -67,12 +67,12 @@ darkMode   = "Mode Gelap"
 
     [cookies.necessary]
         title       = "Diperlukan"
-        description = "Cookie ini diperlukan agar situs web berfungsi dan tidak dapat dinonaktifkan."
+        text = "Cookie ini diperlukan agar situs web berfungsi dan tidak dapat dinonaktifkan."
 
     [cookies.analytics]
         title       = "Analitik"
-        description = "Cookie ini membantu kami memahami bagaimana pengunjung berinteraksi dengan situs web kami."
+        text = "Cookie ini membantu kami memahami bagaimana pengunjung berinteraksi dengan situs web kami."
 
     [cookies.functional]
         title       = "Fungsional"
-        description = "Cookie ini mengaktifkan fitur seperti komentar dan konten yang disematkan."
+        text = "Cookie ini mengaktifkan fitur seperti komentar dan konten yang disematkan."

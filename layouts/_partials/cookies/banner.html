@@ -5,7 +5,7 @@
     <div class="cookie-banner__content">
         <div class="cookie-banner__text">
             <strong id="cookie-banner-title">{{ T "cookies.title" }}</strong>
-            <p>{{ T "cookies.description" }}</p>
+            <p>{{ T "cookies.text" }}</p>
         </div>
 
         <div class="cookie-banner__actions">
@@ -32,7 +32,7 @@
                     <input type="checkbox" name="necessary" checked disabled />
                     <strong>{{ T "cookies.necessary.title" }}</strong>
                 </label>
-                <p>{{ T "cookies.necessary.description" }}</p>
+                <p>{{ T "cookies.necessary.text" }}</p>
             </div>
 
             {{- if $categories.analytics }}
@@ -41,7 +41,7 @@
                     <input type="checkbox" name="analytics" data-cookie-category="analytics" />
                     <strong>{{ T "cookies.analytics.title" }}</strong>
                 </label>
-                <p>{{ T "cookies.analytics.description" }}</p>
+                <p>{{ T "cookies.analytics.text" }}</p>
             </div>
             {{- end }}
 
@@ -51,7 +51,7 @@
                     <input type="checkbox" name="functional" data-cookie-category="functional" />
                     <strong>{{ T "cookies.functional.title" }}</strong>
                 </label>
-                <p>{{ T "cookies.functional.description" }}</p>
+                <p>{{ T "cookies.functional.text" }}</p>
             </div>
             {{- end }}
 

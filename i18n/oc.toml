@@ -55,7 +55,7 @@ darkMode   = "Mòde fosc"
 
 [cookies]
     title             = "Consentiment de cookies"
-    description       = "Utilizem cookies per melhorar vòstra experiéncia de navegacion e analisar lo trafic del site."
+    text       = "Utilizem cookies per melhorar vòstra experiéncia de navegacion e analisar lo trafic del site."
     acceptAll         = "Acceptar tot"
     deny              = "Refusar"
     managePreferences = "Gerir las preferéncias"
@@ -67,12 +67,12 @@ darkMode   = "Mòde fosc"
 
     [cookies.necessary]
         title       = "Necessaris"
-        description = "Aquestes cookies son necessàrias pel foncionament del site web e se pòdon pas desactivar."
+        text = "Aquestes cookies son necessàrias pel foncionament del site web e se pòdon pas desactivar."
 
     [cookies.analytics]
         title       = "Analiticas"
-        description = "Aquestes cookies nos ajudan a comprendre cossí los visitaires interagisson amb nòstre site web."
+        text = "Aquestes cookies nos ajudan a comprendre cossí los visitaires interagisson amb nòstre site web."
 
     [cookies.functional]
         title       = "Foncionalas"
-        description = "Aquestes cookies activan de foncionalitats coma los comentaris e lo contengut incorporat."
+        text = "Aquestes cookies activan de foncionalitats coma los comentaris e lo contengut incorporat."

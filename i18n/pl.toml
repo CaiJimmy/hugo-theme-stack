@@ -66,7 +66,7 @@ darkMode   = "Tryb ciemny"
 
 [cookies]
     title             = "Zgoda na pliki cookie"
-    description       = "Używamy plików cookie, aby poprawić Twoje wrażenia z przeglądania i analizować ruch w witrynie."
+    text       = "Używamy plików cookie, aby poprawić Twoje wrażenia z przeglądania i analizować ruch w witrynie."
     acceptAll         = "Akceptuj wszystkie"
     deny              = "Odrzuć"
     managePreferences = "Zarządzaj preferencjami"
@@ -78,12 +78,12 @@ darkMode   = "Tryb ciemny"
 
     [cookies.necessary]
         title       = "Niezbędne"
-        description = "Te pliki cookie są wymagane do działania witryny i nie można ich wyłączyć."
+        text = "Te pliki cookie są wymagane do działania witryny i nie można ich wyłączyć."
 
     [cookies.analytics]
         title       = "Analityczne"
-        description = "Te pliki cookie pomagają nam zrozumieć, jak odwiedzający wchodzą w interakcję z naszą witryną."
+        text = "Te pliki cookie pomagają nam zrozumieć, jak odwiedzający wchodzą w interakcję z naszą witryną."
 
     [cookies.functional]
         title       = "Funkcjonalne"
-        description = "Te pliki cookie włączają funkcje takie jak komentarze i osadzone treści."
+        text = "Te pliki cookie włączają funkcje takie jak komentarze i osadzone treści."
