@@ -55,7 +55,7 @@ darkMode   = "Tmavý režim"
 
 [cookies]
     title             = "Súhlas s cookies"
-    text       = "Používame cookies na zlepšenie vášho prehliadania a analýzu návštevnosti webu."
+    text              = "Používame cookies na zlepšenie vášho prehliadania a analýzu návštevnosti webu."
     acceptAll         = "Prijať všetko"
     deny              = "Odmietnuť"
     managePreferences = "Spravovať predvoľby"
@@ -66,13 +66,13 @@ darkMode   = "Tmavý režim"
     commentsDisabled  = "Komentáre sú zakázané, kým neprijmete funkčné cookies."
 
     [cookies.necessary]
-        title       = "Nutné"
-        text = "Tieto cookies sú nutné pre fungovanie webu a nemožno ich zakázať."
+        title = "Nutné"
+        text  = "Tieto cookies sú nutné pre fungovanie webu a nemožno ich zakázať."
 
     [cookies.analytics]
-        title       = "Analytické"
-        text = "Tieto cookies nám pomáhajú pochopiť, ako návštevníci interagujú s naším webom."
+        title = "Analytické"
+        text  = "Tieto cookies nám pomáhajú pochopiť, ako návštevníci interagujú s naším webom."
 
     [cookies.functional]
-        title       = "Funkčné"
-        text = "Tieto cookies umožňujú funkcie ako komentáre a vložený obsah."
+        title = "Funkčné"
+        text  = "Tieto cookies umožňujú funkcie ako komentáre a vložený obsah."

@@ -50,7 +50,7 @@ darkMode   = "Donkere modus"
 
 [cookies]
     title             = "Cookie-toestemming"
-    text       = "We gebruiken cookies om uw browse-ervaring te verbeteren en siteverkeer te analyseren."
+    text              = "We gebruiken cookies om uw browse-ervaring te verbeteren en siteverkeer te analyseren."
     acceptAll         = "Accepteer alles"
     deny              = "Weigeren"
     managePreferences = "Voorkeuren beheren"
@@ -61,13 +61,13 @@ darkMode   = "Donkere modus"
     commentsDisabled  = "Reacties zijn uitgeschakeld totdat u functionele cookies accepteert."
 
     [cookies.necessary]
-        title       = "Noodzakelijk"
-        text = "Deze cookies zijn vereist voor de werking van de website en kunnen niet worden uitgeschakeld."
+        title = "Noodzakelijk"
+        text  = "Deze cookies zijn vereist voor de werking van de website en kunnen niet worden uitgeschakeld."
 
     [cookies.analytics]
-        title       = "Analyse"
-        text = "Deze cookies helpen ons begrijpen hoe bezoekers omgaan met onze website."
+        title = "Analyse"
+        text  = "Deze cookies helpen ons begrijpen hoe bezoekers omgaan met onze website."
 
     [cookies.functional]
-        title       = "Functioneel"
-        text = "Deze cookies maken functies mogelijk zoals reacties en ingesloten inhoud."
+        title = "Functioneel"
+        text  = "Deze cookies maken functies mogelijk zoals reacties en ingesloten inhoud."

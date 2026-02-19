@@ -55,7 +55,7 @@ darkMode   = "Mode fosc"
 
 [cookies]
     title             = "Consentiment de galetes"
-    text       = "Utilitzem galetes per millorar la vostra experiència de navegació i analitzar el trànsit del lloc."
+    text              = "Utilitzem galetes per millorar la vostra experiència de navegació i analitzar el trànsit del lloc."
     acceptAll         = "Acceptar-ho tot"
     deny              = "Denegar"
     managePreferences = "Gestionar preferències"
@@ -66,13 +66,13 @@ darkMode   = "Mode fosc"
     commentsDisabled  = "Els comentaris estan desactivats fins que accepteu les galetes funcionals."
 
     [cookies.necessary]
-        title       = "Necessàries"
-        text = "Aquestes galetes són necessàries perquè el lloc web funcioni i no es poden desactivar."
+        title = "Necessàries"
+        text  = "Aquestes galetes són necessàries perquè el lloc web funcioni i no es poden desactivar."
 
     [cookies.analytics]
-        title       = "Analítiques"
-        text = "Aquestes galetes ens ajuden a entendre com els visitants interactuen amb el nostre lloc web."
+        title = "Analítiques"
+        text  = "Aquestes galetes ens ajuden a entendre com els visitants interactuen amb el nostre lloc web."
 
     [cookies.functional]
-        title       = "Funcionals"
-        text = "Aquestes galetes habiliten funcionalitats com comentaris i contingut incrustat."
+        title = "Funcionals"
+        text  = "Aquestes galetes habiliten funcionalitats com comentaris i contingut incrustat."

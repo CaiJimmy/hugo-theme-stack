@@ -55,7 +55,7 @@ darkMode   = "Koyu Mod"
 
 [cookies]
     title             = "Çerez Onayı"
-    text       = "Tarayıcı deneyiminizi iyileştirmek ve site trafiğini analiz etmek için çerezler kullanıyoruz."
+    text              = "Tarayıcı deneyiminizi iyileştirmek ve site trafiğini analiz etmek için çerezler kullanıyoruz."
     acceptAll         = "Tümünü Kabul Et"
     deny              = "Reddet"
     managePreferences = "Tercihleri yönet"
@@ -66,13 +66,13 @@ darkMode   = "Koyu Mod"
     commentsDisabled  = "İşlevsel çerezleri kabul edene kadar yorumlar devre dışıdır."
 
     [cookies.necessary]
-        title       = "Gerekli"
-        text = "Bu çerezler web sitesinin çalışması için gereklidir ve devre dışı bırakılamaz."
+        title = "Gerekli"
+        text  = "Bu çerezler web sitesinin çalışması için gereklidir ve devre dışı bırakılamaz."
 
     [cookies.analytics]
-        title       = "Analitik"
-        text = "Bu çerezler, ziyaretçilerin web sitemizle nasıl etkileşimde bulunduğunu anlamamıza yardımcı olur."
+        title = "Analitik"
+        text  = "Bu çerezler, ziyaretçilerin web sitemizle nasıl etkileşimde bulunduğunu anlamamıza yardımcı olur."
 
     [cookies.functional]
-        title       = "İşlevsel"
-        text = "Bu çerezler, yorumlar ve gömülü içerik gibi özellikleri etkinleştirir."
+        title = "İşlevsel"
+        text  = "Bu çerezler, yorumlar ve gömülü içerik gibi özellikleri etkinleştirir."

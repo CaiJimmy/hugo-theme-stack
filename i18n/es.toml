@@ -55,7 +55,7 @@ darkMode   = "Modo oscuro"
 
 [cookies]
     title             = "Consentimiento de cookies"
-    text       = "Utilizamos cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio."
+    text              = "Utilizamos cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio."
     acceptAll         = "Aceptar todo"
     deny              = "Rechazar"
     managePreferences = "Gestionar preferencias"
@@ -66,13 +66,13 @@ darkMode   = "Modo oscuro"
     commentsDisabled  = "Los comentarios están desactivados hasta que acepte las cookies funcionales."
 
     [cookies.necessary]
-        title       = "Necesarias"
-        text = "Estas cookies son necesarias para el funcionamiento del sitio web y no se pueden desactivar."
+        title = "Necesarias"
+        text  = "Estas cookies son necesarias para el funcionamiento del sitio web y no se pueden desactivar."
 
     [cookies.analytics]
-        title       = "Analíticas"
-        text = "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web."
+        title = "Analíticas"
+        text  = "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web."
 
     [cookies.functional]
-        title       = "Funcionales"
-        text = "Estas cookies permiten funciones como comentarios y contenido incrustado."
+        title = "Funcionales"
+        text  = "Estas cookies permiten funciones como comentarios y contenido incrustado."
