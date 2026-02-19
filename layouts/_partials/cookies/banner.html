@@ -35,7 +35,7 @@
                 <p>{{ T "cookies.necessary.text" }}</p>
             </div>
 
-            {{- if $categories.analytics }}
+            {{- if $categories.analytics -}}
             <div class="cookie-category">
                 <label>
                     <input type="checkbox" name="analytics" data-cookie-category="analytics" />
@@ -43,9 +43,9 @@
                 </label>
                 <p>{{ T "cookies.analytics.text" }}</p>
             </div>
-            {{- end }}
+            {{- end -}}
 
-            {{- if $categories.functional }}
+            {{- if $categories.functional -}}
             <div class="cookie-category">
                 <label>
                     <input type="checkbox" name="functional" data-cookie-category="functional" />
@@ -53,7 +53,7 @@
                 </label>
                 <p>{{ T "cookies.functional.text" }}</p>
             </div>
-            {{- end }}
+            {{- end -}}
 
             <div class="cookie-settings__actions">
                 <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
