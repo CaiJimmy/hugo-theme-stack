@@ -35,7 +35,7 @@
                 <li>
                     <a 
                         href='{{ .URL }}'
-                        {{ if eq (default true .Params.newTab) true }}target="_blank"{{ end }}
+                        {{ if .Params.newTab }}target="_blank"{{ end }}
                         {{ with .Name }}title="{{ . }}"{{ end }}
                         rel="me"
                     >
@@ -53,12 +53,9 @@
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
         {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
-        <li {{ if $active }} class='current' {{ end }}>
-            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
-                {{ $icon := default .Pre .Params.Icon }}
-                {{ if .Pre }}
-                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://stack.jimmycai.com/config/menu" .URL }}
-                {{ end }}
+        <li {{ if $active }} class='current'{{ end }}>
+            <a href='{{ .URL }}' {{ if .Params.newTab }}target="_blank"{{ end }}>
+                {{ $icon := .Params.Icon }}
                 {{ with $icon }}
                     {{ partial "helper/icon" . }}
                 {{ end }}
