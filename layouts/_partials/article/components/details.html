@@ -1,7 +1,9 @@
+{{- $IsList := .IsList -}}
+{{- $Page := .Page -}}
 <div class="article-details">
-    {{ if .Params.categories }}
+    {{ if $Page.Params.categories }}
     <header class="article-category">
-        {{ range (.GetTerms "categories") }}
+        {{ range ($Page.GetTerms "categories") }}
             {{ $color := partial "helper/color-from-str" .LinkTitle }}
             {{ $BackgroundColor := default $color.BackgroundColor .Params.style.background }}
             {{ $TextColor := default $color.TextColor .Params.style.color }}
@@ -14,23 +16,23 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="{{ .RelPermalink }}">
-                {{ if or .Weight .Params.pinned }}
+            <a href="{{ $Page.RelPermalink }}">
+                {{ if or $Page.Weight $Page.Params.pinned }}
                 <span class="icon-pinned" style="display: inline-block; background: linear-gradient(135deg, #56a3fc 0%, #9e58ff 100%); color: #ffffff; font-size: 0.6em; padding: 2px 6px; border-radius: 4px; vertical-align: 0.2em; margin-right: 8px; font-weight: normal; line-height: 1.2; box-shadow: 0 2px 4px rgba(158, 88, 255, 0.2); flex-shrink: 0;">置顶</span>
                 {{ end }}
-                {{- .Title -}}
+                {{- $Page.Title -}}
             </a>
         </h2>
     
-        {{ with .Params.description }}
+        {{ with $Page.Params.description }}
         <h3 class="article-subtitle">
             {{ . }}
         </h3>
         {{ end }}
     </div>
 
-    {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
-    {{ $showDate := not .Date.IsZero }}
+    {{ $showReadingTime := $Page.Params.readingTime | default (.Site.Params.article.readingTime) }}
+    {{ $showDate := not $Page.Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
     {{/* 调整说明：
@@ -43,8 +45,8 @@
             {{/* 调整：将 SVG 的 opacity 从 0.8 改为 1 */}}
             <div style="display: flex; align-items: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <time class="article-time--published" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}' style="color: inherit;">
-                    {{- .Date | time.Format .Site.Params.dateFormat.published -}}
+                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}' style="color: inherit;">
+                    {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
                 </time>
             </div>
         {{ end }}
@@ -54,19 +56,30 @@
             <div style="display: flex; align-items: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 <time class="article-time--reading" style="color: inherit;">
-                    {{ T "article.readingTime" .ReadingTime }}
+                    {{ T "article.readingTime" $Page.ReadingTime }}
                 </time>
             </div>
         {{ end }}
     </footer>
     {{ end }}
 
-    {{ if .IsTranslated }}
+    {{ if $Page.IsTranslated }}
         <footer class="article-translations">
             {{ partial "helper/icon" "language" }}
             <div>
-                {{ range .Translations }}
+                {{ range $Page.Translations }}
                     <a href="{{ .RelPermalink }}" class="link">{{ .Language.LanguageName }}</a>
+                {{ end }}
+            </div>
+        </footer>
+    {{ end }}
+
+    {{ if and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
+        <footer class="article-header-tags">
+            {{ partial "helper/icon" "tag" }}
+            <div>
+                {{ range ($Page.GetTerms "tags") }}
+                    <a href="{{ .RelPermalink }}" class="link">{{ .LinkTitle }}</a>
                 {{ end }}
             </div>
         </footer>

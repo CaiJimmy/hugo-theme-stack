@@ -53,3 +53,27 @@ darkMode   = "Тёмный режим"
 [footer]
     builtWith  = "Создано при помощи {{ .Generator }}"
     designedBy = "Тема {{ .Theme }}, дизайн {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Согласие на использование файлов cookie"
+    text              = "Мы используем файлы cookie для улучшения вашего опыта просмотра и анализа трафика сайта."
+    acceptAll         = "Принять все"
+    deny              = "Отклонить"
+    managePreferences = "Управление настройками"
+    settingsTitle     = "Настройки файлов cookie"
+    savePreferences   = "Сохранить настройки"
+    cancel            = "Отмена"
+    footerLink        = "Настройки файлов cookie"
+    commentsDisabled  = "Комментарии отключены, пока вы не примете функциональные файлы cookie."
+
+    [cookies.necessary]
+        title = "Необходимые"
+        text  = "Эти файлы cookie необходимы для работы сайта и не могут быть отключены."
+
+    [cookies.analytics]
+        title = "Аналитика"
+        text  = "Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим сайтом."
+
+    [cookies.functional]
+        title = "Функциональные"
+        text  = "Эти файлы cookie включают такие функции, как комментарии и встроенный контент."

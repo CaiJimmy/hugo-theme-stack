@@ -52,3 +52,27 @@ darkMode   = "Sötét Mód"
 [footer]
     builtWith  = "{{ .Generator }} használatával készült"
     designedBy = "A {{ .Theme }} dizájnt {{ .DesignedBy }} tervezte"
+
+[cookies]
+    title             = "Süti hozzájárulás"
+    text              = "Sütiket használunk a böngészési élmény javítása és a webhely forgalmának elemzése érdekében."
+    acceptAll         = "Összes elfogadása"
+    deny              = "Elutasítás"
+    managePreferences = "Beállítások kezelése"
+    settingsTitle     = "Süti beállítások"
+    savePreferences   = "Beállítások mentése"
+    cancel            = "Mégse"
+    footerLink        = "Süti beállítások"
+    commentsDisabled  = "A hozzászólások le vannak tiltva, amíg nem fogadja el a funkcionális sütiket."
+
+    [cookies.necessary]
+        title = "Szükséges"
+        text  = "Ezek a sütik szükségesek a webhely működéséhez és nem lehet őket letiltani."
+
+    [cookies.analytics]
+        title = "Analitikai"
+        text  = "Ezek a sütik segítenek megérteni, hogyan lépnek kapcsolatba a látogatók a weboldalunkkal."
+
+    [cookies.functional]
+        title = "Funkcionális"
+        text  = "Ezek a sütik olyan funkciókat tesznek lehetővé, mint a hozzászólások és a beágyazott tartalom."

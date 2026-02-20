@@ -1,0 +1,199 @@
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: var(--container-padding);
+
+    &[aria-hidden="true"] {
+        display: none;
+    }
+}
+
+.cookie-banner__content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l3);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @include respond(md) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.cookie-banner__text {
+    flex: 1;
+    min-width: 200px;
+
+    strong {
+        display: block;
+        color: var(--card-text-color-main);
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+    }
+
+    p {
+        color: var(--card-text-color-secondary);
+        font-size: 1.4rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+}
+
+.cookie-banner__actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.cookie-banner__settings-link {
+    width: auto;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 5px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    @include respond(md) {
+        width: auto;
+        margin-left: auto;
+        align-self: center;
+    }
+}
+
+.cookie-btn {
+    padding: 10px 20px;
+    border-radius: var(--tag-border-radius);
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+
+    &--primary {
+        background: var(--accent-color);
+        color: var(--accent-color-text);
+
+        &:hover {
+            background: var(--accent-color-darker);
+        }
+    }
+
+    &--secondary {
+        background: transparent;
+        color: var(--card-text-color-main);
+        border: 1.5px solid var(--card-separator-color);
+
+        &:hover {
+            background: var(--card-background-selected);
+        }
+    }
+}
+
+// Cookie settings panel
+.cookie-settings {
+    padding-top: 20px;
+    border-top: 1.5px solid var(--card-separator-color);
+
+    &[aria-hidden="true"] {
+        display: none;
+    }
+
+    h3 {
+        color: var(--card-text-color-main);
+        font-size: 1.6rem;
+        margin: 0 0 15px 0;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+    }
+}
+
+.cookie-category {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--card-separator-color);
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-color);
+            cursor: pointer;
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+        }
+
+        strong {
+            color: var(--card-text-color-main);
+            font-size: 1.5rem;
+        }
+    }
+
+    p {
+        color: var(--card-text-color-secondary);
+        font-size: 1.3rem;
+        margin: 8px 0 0 28px;
+        line-height: 1.5;
+    }
+}
+
+// Footer link for reopening settings
+.cookie-settings-link {
+    display: inline-block;
+    color: var(--body-text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+
+    &:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+}
+
+// Comments placeholder when consent not given
+.consent-placeholder {
+    background: var(--card-background);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    color: var(--card-text-color-secondary);
+    font-size: 1.4rem;
+
+    p {
+        margin: 0 0 15px 0;
+    }
+}

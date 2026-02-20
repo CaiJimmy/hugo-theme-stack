@@ -24,6 +24,10 @@ SortBy             = "default"
     toc           = true
     readingTime   = true
 
+    [article.list]
+        # Showing article tags in the list view (e.g. homepage, section pages)
+        showTags = false
+
     [article.license]
         enabled = false
         default = "Licensed under CC BY-NC-SA 4.0"
@@ -76,6 +80,16 @@ SortBy             = "default"
 
 [imageProcessing.content]
     enabled = true
+
+# GDPR Cookie Consent Configuration
+# When enabled, analytics and functional cookies require user consent
+[cookies]
+    enabled      = false
+    showSettings = true
+
+    [cookies.categories]
+        analytics  = true
+        functional = true
 
 [comments]
     enabled  = true
