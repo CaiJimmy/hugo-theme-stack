@@ -52,3 +52,27 @@ darkMode   = "Dark Mode"
 [footer]
     builtWith  = "Built with {{ .Generator }}"
     designedBy = "Theme {{ .Theme }} designed by {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Cookie Consent"
+    text              = "We use cookies to enhance your browsing experience and analyze site traffic."
+    acceptAll         = "Accept All"
+    deny              = "Deny"
+    managePreferences = "Manage preferences"
+    settingsTitle     = "Cookie Preferences"
+    savePreferences   = "Save preferences"
+    cancel            = "Cancel"
+    footerLink        = "Cookie settings"
+    commentsDisabled  = "Comments are disabled until you accept functional cookies."
+
+    [cookies.necessary]
+        title = "Necessary"
+        text  = "These cookies are required for the website to function and cannot be disabled."
+
+    [cookies.analytics]
+        title = "Analytics"
+        text  = "These cookies help us understand how visitors interact with our website."
+
+    [cookies.functional]
+        title = "Functional"
+        text  = "These cookies enable features like comments and embedded content."

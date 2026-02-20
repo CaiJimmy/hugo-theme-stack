@@ -15,12 +15,12 @@ darkMode   = "ডার্ক মোড"
 [article]
     back            = "পেছনে"
     tableOfContents = "সূচিপত্র"
-    relatedContent  = "সম্পর্কিত বিষয়বস্তু"
+    relatedContent  = "সম্পর্কিত বিষয়বস্তু"
     lastUpdatedOn   = "সর্বশেষ আপডেট করা হয়েছে"
 
     [article.readingTime]
-        one   = "{{ .Count }} মিনিটে পড়া যাবে"
-        other = "{{ .Count }} মিনিটে পড়া যাবে"
+        one   = "{{ .Count }} মিনিটে পড়া যাবে"
+        other = "{{ .Count }} মিনিটে পড়া যাবে"
 
     [article.alert]
         note      = "টীকা"
@@ -30,7 +30,7 @@ darkMode   = "ডার্ক মোড"
         caution   = "সাবধানতা"
 
 [notFound]
-    title    = "পাওয়া যায়নি"
+    title    = "পাওয়া যায়নি"
     subtitle = "এই পাতাটি বিদ্যমান নেই"
 
 [widget]
@@ -50,5 +50,29 @@ darkMode   = "ডার্ক মোড"
     resultTitle = "#PAGES_COUNT পাতা (#TIME_SECONDS সেকেন্ড)"
 
 [footer]
-    builtWith  = "{{ .Generator }} দিয়ে নির্মিত"
+    builtWith  = "{{ .Generator }} দিয়ে নির্মিত"
     designedBy = "থিম {{ .Theme }} ডিজাইন করেছেন {{ .DesignedBy }}"
+
+[cookies]
+    title             = "কুকি সম্মতি"
+    text              = "আমরা আপনার ব্রাউজিং অভিজ্ঞতা উন্নত করতে এবং সাইট ট্রাফিক বিশ্লেষণ করতে কুকি ব্যবহার করি।"
+    acceptAll         = "সবগুলো গ্রহণ করুন"
+    deny              = "প্রত্যাখ্যান"
+    managePreferences = "পছন্দসমূহ পরিচালনা করুন"
+    settingsTitle     = "কুকি পছন্দসমূহ"
+    savePreferences   = "পছন্দসমূহ সংরক্ষণ করুন"
+    cancel            = "বাতিল"
+    footerLink        = "কুকি সেটিংস"
+    commentsDisabled  = "আপনি কার্যকরী কুকি গ্রহণ না করা পর্যন্ত মন্তব্য অক্ষম করা আছে।"
+
+    [cookies.necessary]
+        title = "প্রয়োজনীয়"
+        text  = "এই কুকিগুলি ওয়েবসাইট কাজ করার জন্য প্রয়োজনীয় এবং নিষ্ক্রিয় করা যায় না।"
+
+    [cookies.analytics]
+        title = "বিশ্লেষণ"
+        text  = "এই কুকিগুলি আমাদের বুঝতে সাহায্য করে যে দর্শকরা কীভাবে আমাদের ওয়েবসাইটের সাথে ইন্টারঅ্যাক্ট করে।"
+
+    [cookies.functional]
+        title = "কার্যকরী"
+        text  = "এই কুকিগুলি মন্তব্য এবং এম্বেড করা বিষয়বস্তুর মতো বৈশিষ্ট্যগুলি সক্ষম করে."

@@ -52,3 +52,27 @@ darkMode   = "Modalità scura"
 [footer]
     builtWith  = "Realizzato con {{ .Generator }}"
     designedBy = "Tema {{ .Theme }} realizzato da {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Consenso ai cookie"
+    text              = "Utilizziamo i cookie per migliorare la tua esperienza di navigazione e analizzare il traffico del sito."
+    acceptAll         = "Accetta tutti"
+    deny              = "Rifiuta"
+    managePreferences = "Gestisci preferenze"
+    settingsTitle     = "Preferenze cookie"
+    savePreferences   = "Salva preferenze"
+    cancel            = "Annulla"
+    footerLink        = "Impostazioni cookie"
+    commentsDisabled  = "I commenti sono disabilitati finché non accetti i cookie funzionali."
+
+    [cookies.necessary]
+        title = "Necessari"
+        text  = "Questi cookie sono necessari per il funzionamento del sito web e non possono essere disattivati."
+
+    [cookies.analytics]
+        title = "Analitici"
+        text  = "Questi cookie ci aiutano a capire come i visitatori interagiscono con il nostro sito web."
+
+    [cookies.functional]
+        title = "Funzionali"
+        text  = "Questi cookie abilitano funzionalità come commenti e contenuti incorporati."
