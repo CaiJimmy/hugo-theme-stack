@@ -29,8 +29,9 @@
     {{ end }}
 
     {{ if $resource }}
-        {{- $isSVG := eq $resource.MediaType.SubType "svg"  -}}
-        {{- if $isSVG -}}
+        {{- $isSVG := eq $resource.MediaType.SubType "svg" -}}
+        {{- $isImage := strings.HasPrefix $resource.MediaType.Type "image" -}}
+        {{- if or $isSVG (not $isImage) -}}
             {{ $result = dict
                 "Local" true
                 "Resource" $resource
@@ -38,7 +39,7 @@
                 "Height" nil
                 "Width" nil
             }}
-        {{- else -}}            
+        {{- else -}}
             {{- $result = dict
                 "Local" true
                 "Resource" $resource
