@@ -7,7 +7,11 @@
         <div class="widget-icon">
             {{ partial "helper/icon" "infinity" }}
         </div>
-        <h2 class="widget-title section-title">{{ T "widget.archives.title" }}</h2>
+        <h2 class="widget-title section-title">
+            <a href="{{ $archivesPage.RelPermalink }}">
+                {{ T "widget.archives.title" }}
+            </a>
+        </h2>
 
         {{ $pages := partial "helper/pages.html" $context.Site.Home }}
         {{ $archives := $pages.GroupByDate "2006" }}
