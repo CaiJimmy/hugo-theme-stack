@@ -2,7 +2,7 @@
     <main class="main list-container">
 
         {{/* =========================================
-             1. 智能计算说说专属标签数量 (使用 Hugo 原生高性能 API)
+             1. 智能计算说说专属标签数量
              ========================================= */}}
         <div class="shuoshuo-tags-nav">
             {{ $totalShuo := len (where .Site.RegularPages "Section" "shuoshuo") }}
@@ -39,8 +39,8 @@
         {{ partial "footer/footer.html" . }}
 
         {{/* 灯箱及脚本 */}}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+        <link rel="stylesheet" href="/css/fancybox.css" />
+        <script src="/js/fancybox.umd.js"></script>
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
@@ -92,8 +92,13 @@
 
                 if (typeof Fancybox !== "undefined") {
                     Fancybox.bind('[data-fancybox^="gallery-"]', { 
-                        Hash: false, Thumbs: { autoStart: false }, 
-                        Toolbar: { display: { left: ["infobar"], middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW"], right: ["slideshow", "download", "close"] } } 
+                        Hash: false, 
+                        Thumbs: { autoStart: false }, 
+                        Toolbar: { display: { left: ["infobar"], middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW"], right: ["slideshow", "download", "close"] } },
+                        // 1. 允许点击背景空白处关闭
+                        backdropClick: "close",
+                        // 2. 强制关闭移动端的“紧凑模式”，防止它屏蔽点击事件
+                        compact: false
                     });
                 }
 
@@ -107,29 +112,32 @@
                             (leftCol.offsetHeight <= rightCol.offsetHeight ? leftCol : rightCol).appendChild(item);
                         });
                     }
-                    masonryContainer.style.opacity = 1;
+                    masonryContainer.style.opacity = 1; // 只要执行过一次，立刻解除白屏
                 }
 
-                // 添加防抖(Debounce)优化性能
-                let resizeTimer;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(applyMasonryLayout, 150);
-                });
+                // 使用防抖(Debounce)优化性能，合并频繁的重排请求
+                let layoutTimer;
+                const debouncedLayout = () => {
+                    clearTimeout(layoutTimer);
+                    layoutTimer = setTimeout(applyMasonryLayout, 150);
+                };
 
-                /* 3. 监听图片加载 */
+                window.addEventListener('resize', debouncedLayout);
+
+                /* 3. 核心修复：立即显示 + 监听图片动态重排 */
+                // 第一步：不等待图片，立即展示文字和框架！解决白屏问题。
+                applyMasonryLayout();
+
+                // 第二步：监听图片加载。图片撑开容器时，动态调整瀑布流防止长短不齐。
                 const images = masonryContainer.querySelectorAll('img');
-                let loadedCount = 0;
                 if (images.length > 0) {
                     images.forEach(img => {
-                        if (img.complete) { loadedCount++; if (loadedCount === images.length) applyMasonryLayout(); } 
-                        else {
-                            const checkLoad = () => { loadedCount++; if (loadedCount === images.length) applyMasonryLayout(); };
-                            img.addEventListener('load', checkLoad);
-                            img.addEventListener('error', checkLoad);
+                        if (!img.complete) {
+                            img.addEventListener('load', debouncedLayout);
+                            img.addEventListener('error', debouncedLayout);
                         }
                     });
-                } else { applyMasonryLayout(); }
+                }
 
                 /* 4. 处理相对时间 */
                 const now = new Date();
@@ -208,7 +216,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                     <span>编辑此页</span>
                 </a>
-                {{- if $gitHashShort -}}<span class="separator">|</span>{{- end -}}
+                {{- if $gitHashShort -}}<span class="separator" style="color: #1e90ff;">|</span>{{- end -}}
             {{ end }}
             {{- if $gitHashShort -}}
                 <a class="meta-item git-hash-text" href="https://github.com/iwyang/iwyang.github.io/commit/{{ $gitHashFull }}" target="_blank" rel="noopener noreferrer" title="Commit Hash: {{ $gitHashShort }}">
