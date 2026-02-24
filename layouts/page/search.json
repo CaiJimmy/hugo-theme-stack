@@ -1,8 +1,21 @@
-{{- $pages := partial "helper/pages.html" .Site.Home -}}
+{{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
 {{- $result := slice -}}
 
 {{- range $pages -}}
-    {{- $data := dict "title" .Title "date" .Date "permalink" .RelPermalink "content" (.Plain) -}}
+    {{- $title := .Title -}}
+    {{- $permalink := .RelPermalink -}}
+    {{- $type := "article" -}}
+
+    {{- if eq .Section "shuoshuo" -}}
+        {{- $type = "shuoshuo" -}}
+        {{- if .Title -}}
+            {{- $title = print "💬 " .Title -}}
+        {{- else -}}
+            {{- $title = print "💬 " (.Plain | truncate 15) -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $data := dict "title" $title "date" .Date "permalink" $permalink "content" (.Plain) "type" $type -}}
 
     {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
     {{- if $image -}}

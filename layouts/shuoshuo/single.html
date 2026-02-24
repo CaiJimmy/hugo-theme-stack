@@ -1,0 +1,88 @@
+{{ define "main" }}
+    <main class="main list-container">
+
+        <div class="shuoshuo-list" id="masonry-container" style="opacity: 0; transition: opacity 0.4s ease;">
+            <div class="waterfall-column" id="waterfall-left">
+                {{ partial "shuoshuo-card-logic" . }}
+            </div>
+            <div class="waterfall-column" id="waterfall-right"></div>
+        </div>
+
+        {{ partial "footer/footer.html" . }}
+
+        <link rel="stylesheet" href="/css/fancybox.css" />
+        <script src="/js/fancybox.umd.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const masonryContainer = document.getElementById('masonry-container');
+
+                document.querySelectorAll('.shuoshuo-card').forEach((card, index) => {
+                    const galleryId = 'gallery-' + index;
+                    const contentImages = card.querySelectorAll('.shuoshuo-content img');
+                    if (!contentImages.length) return;
+
+                    let galleries = new Map();
+                    contentImages.forEach(img => {
+                        let fileName = decodeURIComponent(img.src.split('/').pop().split('?')[0].split('#')[0]) || '图片';
+                        let wrapperA = img.closest('a');
+                        if (!wrapperA) {
+                            wrapperA = document.createElement('a');
+                            wrapperA.href = img.src;
+                            img.parentNode.insertBefore(wrapperA, img);
+                            wrapperA.appendChild(img);
+                        }
+                        wrapperA.setAttribute('data-fancybox', galleryId);
+                        if (!wrapperA.hasAttribute('data-caption')) wrapperA.setAttribute('data-caption', img.alt || img.title || fileName);
+                        wrapperA.classList.add('shuoshuo-image');
+                        const imgParent = wrapperA.parentElement;
+                        if (!galleries.has(imgParent)) galleries.set(imgParent, []);
+                        galleries.get(imgParent).push(wrapperA);
+                    });
+
+                    galleries.forEach((wrappers, parent) => {
+                        const galleryDiv = document.createElement('div');
+                        galleryDiv.className = 'shuoshuo-image-gallery';
+                        parent.insertBefore(galleryDiv, wrappers[0]);
+                        wrappers.forEach(w => galleryDiv.appendChild(w));
+                        if (parent.tagName === 'P' && parent.textContent.trim() === '') {
+                            parent.parentNode.insertBefore(galleryDiv, parent);
+                            parent.remove();
+                        }
+                    });
+                });
+
+                if (typeof Fancybox !== "undefined") {
+                    Fancybox.bind('[data-fancybox^="gallery-"]', {
+                        Hash: false,
+                        Thumbs: { autoStart: false },
+                        Toolbar: { display: { left: ["infobar"], middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW"], right: ["slideshow", "download", "close"] } },
+                        backdropClick: "close",
+                        compact: false
+                    });
+                }
+
+                masonryContainer.style.opacity = 1;
+
+                const now = new Date();
+                document.querySelectorAll('.shuoshuo-time, .shuoshuo-updated-time').forEach(el => {
+                    const dateStr = el.getAttribute('datetime');
+                    if (!dateStr) return;
+                    const date = new Date(dateStr);
+                    const diff = (now - date) / 1000;
+                    if (!el.hasAttribute('title')) {
+                        const exactTime = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+                        el.setAttribute('title', (el.classList.contains('shuoshuo-updated-time') ? "更新于 " : "发布于 ") + exactTime);
+                    }
+                    let text = '刚刚';
+                    if (diff >= 31536000) text = Math.floor(diff / 31536000) + ' 年前';
+                    else if (diff >= 2592000) text = Math.floor(diff / 2592000) + ' 个月前';
+                    else if (diff >= 86400) text = Math.floor(diff / 86400) + ' 天前';
+                    else if (diff >= 3600) text = Math.floor(diff / 3600) + ' 小时前';
+                    else if (diff >= 60) text = Math.floor(diff / 60) + ' 分钟前';
+                    (el.querySelector('span') || el).innerText = text;
+                });
+            });
+        </script>
+    </main>
+{{ end }}

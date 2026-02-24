@@ -2,6 +2,7 @@
 
 {{- if .IsHome -}}
     {{- $pages = where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+    {{- $pages = where $pages "Section" "!=" "shuoshuo" -}}
 {{- else if or (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") -}}
     {{- $subsections := .Sections -}}
     {{- $pages = .Pages | complement $subsections -}}
