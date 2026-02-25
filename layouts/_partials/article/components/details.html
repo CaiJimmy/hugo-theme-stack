@@ -1,19 +1,7 @@
 {{- $IsList := .IsList -}}
 {{- $Page := .Page -}}
 <div class="article-details">
-    {{ if $Page.Params.categories }}
-    <header class="article-category">
-        {{ range ($Page.GetTerms "categories") }}
-            {{ $color := partial "helper/color-from-str" .LinkTitle }}
-            {{ $BackgroundColor := default $color.BackgroundColor .Params.style.background }}
-            {{ $TextColor := default $color.TextColor .Params.style.color }}
-            <a href="{{ .RelPermalink }}" style="background-color: {{ $BackgroundColor | safeCSS }}; color: {{ $TextColor | safeCSS }};">
-                {{ .LinkTitle }}
-            </a>
-        {{ end }}
-    </header>
-    {{ end }}
-
+    {{/* 1. 标题与置顶部分 */}}
     <div class="article-title-wrapper">
         <h2 class="article-title">
             <a href="{{ $Page.RelPermalink }}">
@@ -31,15 +19,17 @@
         {{ end }}
     </div>
 
+    {{/* 2. 元数据统计栏 (时间、分类、阅读时间) */}}
     {{ $showReadingTime := $Page.Params.readingTime | default (.Site.Params.article.readingTime) }}
     {{ $showDate := not $Page.Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
     <footer class="article-meta-info" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; color: var(--card-text-color-secondary) !important; opacity: 1 !important; margin-top: 12px;">
+        
+        {{/* 2.1 发布时间 */}}
         {{ if $showDate }}
             <div style="display: flex; align-items: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                {{/* 发布时间（相对时间 + hover 提示具体精确到分钟的时间） */}}
                 <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}' title='发布于 {{ $Page.Date.Format "2006-01-02 15:04" }}' style="color: inherit;">
                     {{- $duration := sub now.Unix $Page.Date.Unix -}}
                     {{- if lt $duration 0 -}}刚刚
@@ -54,6 +44,21 @@
             </div>
         {{ end }}
 
+        {{/* 2.2 分类 (新增图标与 title) */}}
+        {{ if $Page.Params.categories }}
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <div style="display: flex; gap: 5px;">
+                {{ range ($Page.GetTerms "categories") }}
+                    <a href="{{ .RelPermalink }}" title="查看分类：{{ .LinkTitle }}" style="color: inherit; text-decoration: none; font-size: inherit;">
+                        {{ .LinkTitle }}
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{/* 2.3 阅读时间 */}}
         {{ if $showReadingTime }}
             <div style="display: flex; align-items: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -65,6 +70,7 @@
     </footer>
     {{ end }}
 
+    {{/* 3. 多语言版本 */}}
     {{ if $Page.IsTranslated }}
         <footer class="article-translations">
             {{ partial "helper/icon" "language" }}
@@ -76,6 +82,7 @@
         </footer>
     {{ end }}
 
+    {{/* 4. 底部标签栏 */}}
     {{ if and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
         <footer class="article-header-tags">
             {{ partial "helper/icon" "tag" }}

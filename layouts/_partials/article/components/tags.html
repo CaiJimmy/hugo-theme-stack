@@ -1,7 +1,67 @@
-{{ if .Params.Tags }}
-    <section class="article-tags">
-        {{ range (.GetTerms "tags") }}
-            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        {{ end }}
-    </section>
-{{ end }}
+<section class="article-tags">
+    <style>
+        .article-tags {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* 基础样式：保持 14px 和胶囊形状 */
+        .article-tags .tag-link {
+            display: inline-flex !important;
+            align-items: center !important;
+            padding: 4px 16px !important; 
+            background-color: rgba(30, 144, 255, 0.08) !important; 
+            color: #1e90ff !important; 
+            border-radius: 999px !important; 
+            text-decoration: none !important;
+            font-size: 14px !important; 
+            font-weight: 500 !important;
+            border: 1px solid rgba(30, 144, 255, 0.2) !important; 
+            transition: all 0.3s ease !important;
+        }
+
+        .article-tags .tag-link::before {
+            content: "#" !important;
+            margin-right: 4px !important;
+            color: inherit !important;
+            font-weight: 700 !important;
+        }
+
+        .article-tags .tag-link:hover {
+            background-color: #1e90ff !important;
+            color: #ffffff !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.35) !important;
+            border-color: #1e90ff !important;
+        }
+
+        /* --- 核心优化：暗色模式对比度增强 --- */
+        @media (prefers-color-scheme: dark) {
+            .article-tags .tag-link {
+                /* 1. 稍微调亮背景气泡的透明度 */
+                background-color: rgba(88, 166, 255, 0.15) !important; 
+                /* 2. 使用亮度更高的蓝色 (#58a6ff)，增强在黑底上的可读性 */
+                color: #58a6ff !important; 
+                /* 3. 增加字重到 600，让字体笔画更清晰 */
+                font-weight: 600 !important; 
+                border-color: rgba(88, 166, 255, 0.3) !important;
+            }
+            /* 悬停时保持原有高亮 */
+            .article-tags .tag-link:hover {
+                background-color: #1e90ff !important;
+                color: #ffffff !important;
+                box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4) !important;
+            }
+        }
+    </style>
+
+    {{ range .GetTerms "tags" }}
+        <a href="{{ .RelPermalink }}" class="tag-link" title="查看标签：{{ .LinkTitle }}">
+            {{ .LinkTitle }}
+        </a>
+    {{ end }}
+</section>
