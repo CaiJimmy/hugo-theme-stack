@@ -35,24 +35,26 @@
     {{ $showDate := not $Page.Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
-    {{/* 调整说明：
-        1. 移除了 'article-time' 类名，防止主题默认 CSS 施加透明度。
-        2. 增加了 opacity: 1 !important 确保完全不透明。
-        3. 增加了 margin-top: 12px 补充间距。
-    */}}
     <footer class="article-meta-info" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; color: var(--card-text-color-secondary) !important; opacity: 1 !important; margin-top: 12px;">
         {{ if $showDate }}
-            {{/* 调整：将 SVG 的 opacity 从 0.8 改为 1 */}}
             <div style="display: flex; align-items: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}' style="color: inherit;">
-                    {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
+                {{/* 发布时间（相对时间 + hover 提示具体精确到分钟的时间） */}}
+                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}' title='发布于 {{ $Page.Date.Format "2006-01-02 15:04" }}' style="color: inherit;">
+                    {{- $duration := sub now.Unix $Page.Date.Unix -}}
+                    {{- if lt $duration 0 -}}刚刚
+                    {{- else if lt $duration 60 -}}刚刚
+                    {{- else if lt $duration 3600 -}}{{ div $duration 60 }} 分钟前
+                    {{- else if lt $duration 86400 -}}{{ div $duration 3600 }} 小时前
+                    {{- else if lt $duration 2592000 -}}{{ div $duration 86400 }} 天前
+                    {{- else if lt $duration 31536000 -}}{{ div $duration 2592000 }} 个月前
+                    {{- else -}}{{ div $duration 31536000 }} 年前
+                    {{- end -}}
                 </time>
             </div>
         {{ end }}
 
         {{ if $showReadingTime }}
-            {{/* 调整：将 SVG 的 opacity 从 0.8 改为 1 */}}
             <div style="display: flex; align-items: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 <time class="article-time--reading" style="color: inherit;">
