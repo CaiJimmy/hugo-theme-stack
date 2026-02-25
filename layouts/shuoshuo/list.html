@@ -1,36 +1,86 @@
 {{ define "main" }}
     <main class="main list-container">
 
-        {{/* =========================================
-             1. 智能计算说说专属标签数量
-             ========================================= */}}
-        <div class="shuoshuo-tags-nav">
-            {{ $totalShuo := len (where .Site.RegularPages "Section" "shuoshuo") }}
-            <a href="/shuoshuo/" class="{{ if not $.Data.Term }}active{{ end }}">
-                🏷️ 全部 <span class="tag-count">{{ $totalShuo }}</span>
-            </a>
+        {{/* 🌟 杀手锏：加一个 Wrapper 把标签和列表包在一起，阻断主题默认 gap 的干扰 */}}
+        <div class="shuoshuo-layout-wrapper" style="display: block; width: 100%;">
             
-            {{/* 直接调用原生 Taxonomy 并按数量降序排列 */}}
-            {{ range .Site.Taxonomies.shuoshuotags.ByCount }}
-                <a href="{{ .Page.RelPermalink }}" 
-                   class="{{ if eq ($.Data.Term | default "") (.Page.Title | lower) }}active{{ end }}">
-                    #{{ .Page.Title }} <span class="tag-count">{{ .Count }}</span>
-                </a>
-            {{ end }}
-        </div>
+            <style>
+                .shuoshuo-tags-nav {
+                    --tab-bg: #ffffff; --tab-border: #e2e8f0; --tab-text: #64748b; 
+                    --tab-active-bg: #1e90ff; --tab-active-text: #ffffff; 
+                    --count-bg: #f1f5f9; --count-text: #64748b; 
+                    --count-active-bg: #ffffff; --count-active-text: #1e90ff; 
+                    display: flex; align-items: center; flex-wrap: wrap; gap: 10px; 
+                    
+                    /* 🌟 修改点：去掉虚线，去掉内边距，只保留纯粹的 20px 外边距，完美对齐卡片间距！ */
+                    margin-bottom: 20px !important; 
+                }
+                [data-scheme="dark"] .shuoshuo-tags-nav {
+                    --tab-bg: rgba(255, 255, 255, 0.04); --tab-border: rgba(255, 255, 255, 0.15); --tab-text: #a1a1aa; 
+                    --tab-active-bg: #1e90ff; --tab-active-text: #ffffff; 
+                    --count-bg: rgba(255, 255, 255, 0.12); --count-text: #e4e4e7; 
+                    --count-active-bg: #ffffff; --count-active-text: #1e90ff; 
+                }
+                .shuoshuo-tags-nav .filter-tab {
+                    text-decoration: none; cursor: pointer; padding: 5px 12px 5px 16px; 
+                    border-radius: 50px; font-size: 1.35rem; font-weight: 500; 
+                    color: var(--tab-text); background: var(--tab-bg); 
+                    border: 1px solid var(--tab-border); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+                    display: inline-flex; align-items: center; gap: 8px; user-select: none; line-height: 1.2;
+                }
+                .shuoshuo-tags-nav .filter-tab:hover {
+                    border-color: #1e90ff; color: #1e90ff; background: rgba(30, 144, 255, 0.05);
+                }
+                .shuoshuo-tags-nav .filter-tab:active {
+                    transform: scale(0.96); opacity: 0.8;
+                }
+                .shuoshuo-tags-nav .filter-tab.active {
+                    background: var(--tab-active-bg); border-color: var(--tab-active-bg); 
+                    color: var(--tab-active-text); font-weight: 600; 
+                    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3); pointer-events: none;
+                }
+                .shuoshuo-tags-nav .filter-count {
+                    font-size: 1.15rem; padding: 3px 8px; border-radius: 50px; 
+                    background: var(--count-bg); color: var(--count-text); 
+                    font-weight: 600; min-width: 24px; text-align: center;
+                }
+                .shuoshuo-tags-nav .filter-tab.active .filter-count {
+                    background: var(--count-active-bg); color: var(--count-active-text);
+                }
+                .shuoshuo-list {
+                    margin-top: 0 !important;
+                }
+            </style>
 
-        {{/* =========================================
-             2. 瀑布流容器及渲染
-             ========================================= */}}
-        <div class="shuoshuo-list" id="masonry-container" style="opacity: 0; transition: opacity 0.4s ease;">
-            {{ $paginator := .Paginate .Pages }}
-            <div class="waterfall-column" id="waterfall-left">
-                {{ range $paginator.Pages }}
-                    {{ partial "shuoshuo-card-logic" . }}
+            <div class="shuoshuo-tags-nav">
+                {{ $totalShuo := len (where .Site.RegularPages "Section" "shuoshuo") }}
+                <a href="/shuoshuo/" class="filter-tab {{ if not $.Data.Term }}active{{ end }}">
+                    全部 <span class="filter-count">{{ $totalShuo }}</span>
+                </a>
+                
+                {{/* 直接调用原生 Taxonomy 并按数量降序排列 */}}
+                {{ range .Site.Taxonomies.shuoshuotags.ByCount }}
+                    <a href="{{ .Page.RelPermalink }}" 
+                       class="filter-tab {{ if eq ($.Data.Term | default "") (.Page.Title | lower) }}active{{ end }}">
+                        {{ .Page.Title }} <span class="filter-count">{{ .Count }}</span>
+                    </a>
                 {{ end }}
             </div>
-            <div class="waterfall-column" id="waterfall-right"></div>
-        </div>
+
+            {{/* =========================================
+                 2. 瀑布流容器及渲染
+                 ========================================= */}}
+            <div class="shuoshuo-list" id="masonry-container" style="opacity: 0; transition: opacity 0.4s ease;">
+                {{ $paginator := .Paginate .Pages }}
+                <div class="waterfall-column" id="waterfall-left">
+                    {{ range $paginator.Pages }}
+                        {{ partial "shuoshuo-card-logic" . }}
+                    {{ end }}
+                </div>
+                <div class="waterfall-column" id="waterfall-right"></div>
+            </div>
+            
+        </div> {{/* 🌟 Wrapper 结束标签 */}}
 
         <div class="shuoshuo-pagination">
             {{ partial "pagination.html" . }}
@@ -95,9 +145,7 @@
                         Hash: false, 
                         Thumbs: { autoStart: false }, 
                         Toolbar: { display: { left: ["infobar"], middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW"], right: ["slideshow", "download", "close"] } },
-                        // 1. 允许点击背景空白处关闭
                         backdropClick: "close",
-                        // 2. 强制关闭移动端的“紧凑模式”，防止它屏蔽点击事件
                         compact: false
                     });
                 }
@@ -112,10 +160,9 @@
                             (leftCol.offsetHeight <= rightCol.offsetHeight ? leftCol : rightCol).appendChild(item);
                         });
                     }
-                    masonryContainer.style.opacity = 1; // 只要执行过一次，立刻解除白屏
+                    masonryContainer.style.opacity = 1; 
                 }
 
-                // 使用防抖(Debounce)优化性能，合并频繁的重排请求
                 let layoutTimer;
                 const debouncedLayout = () => {
                     clearTimeout(layoutTimer);
@@ -123,12 +170,8 @@
                 };
 
                 window.addEventListener('resize', debouncedLayout);
-
-                /* 3. 核心修复：立即显示 + 监听图片动态重排 */
-                // 第一步：不等待图片，立即展示文字和框架！解决白屏问题。
                 applyMasonryLayout();
 
-                // 第二步：监听图片加载。图片撑开容器时，动态调整瀑布流防止长短不齐。
                 const images = masonryContainer.querySelectorAll('img');
                 if (images.length > 0) {
                     images.forEach(img => {
