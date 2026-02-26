@@ -252,7 +252,8 @@
     </div>
     {{ end }}
 
-    <div class="shuoshuo-footer-info">
+    {{/* 🌟 这里是修改的核心：为 Footer 添加顶边框，同时给适当的外边距和内边距，达到红框标注的一致视觉效果 */}}
+    <div class="shuoshuo-footer-info" style="border-top: 1px dashed rgba(128, 128, 128, 0.15); margin-top: 12px; padding-top: 12px;">
         <div class="shuoshuo-edit-link meta-wrapper" style="gap: 15px !important;">
             {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
                 <a href="https://github.com/iwyang/iwyang.github.io/edit/develop/content/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener noreferrer" class="meta-item" title="前往 GitHub 编辑此页">

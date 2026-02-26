@@ -3,13 +3,13 @@
 {{/* ===========================================================
      【核心逻辑】
      1. 获取 Git Hash
-     2. 请求 GitHub API 获取精准时间
-     3. 悬停显示精准时间 (无秒版)
+     2. 使用 try 模式请求 GitHub API (适配 Hugo v0.141.0+)
+     3. 悬停显示精准时间
      =========================================================== */}}
 
 {{- $gitHashFull := "" -}}
 {{- $gitHashShort := "" -}}
-{{- $lastBuildTime := now -}} {{/* 默认兜底 */}}
+{{- $lastBuildTime := now -}} 
 
 {{/* --- 1. 获取 Git Hash --- */}}
 {{- if fileExists ".git/HEAD" -}}
@@ -32,18 +32,36 @@
     {{- end -}}
 {{- end -}}
 
-{{/* --- 2. 使用 Hash 请求 GitHub API 获取精准时间 --- */}}
+{{/* --- 2. 使用 Hash 请求 GitHub API (最新 try 语法) --- */}}
 {{- if ne $gitHashFull "" -}}
     {{- $repo := "iwyang/iwyang.github.io" -}} 
     {{- $apiURL := printf "https://api.github.com/repos/%s/commits/%s" $repo $gitHashFull -}}
     
-    {{/* 使用 resources.GetRemote 发起请求 */}}
-    {{- $apiData := resources.GetRemote $apiURL -}}
+    {{- $ghToken := getenv "GITHUB_TOKEN" -}}
+    {{- $resp := "" -}}
+
+    {{/* 根据是否有 Token 发起带 try 的请求 */}}
+    {{- if ne $ghToken "" -}}
+        {{- $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" $ghToken)) -}}
+        {{- $resp = try (resources.GetRemote $apiURL $opts) -}}
+    {{- else -}}
+        {{- $resp = try (resources.GetRemote $apiURL) -}}
+    {{- end -}}
     
-    {{- if $apiData -}}
-        {{- $json := $apiData.Content | transform.Unmarshal -}}
-        {{- if $json.commit -}}
-            {{- $lastBuildTime = time.AsTime $json.commit.committer.date -}}
+    {{/* 处理 try 的返回结果 */}}
+    {{- with $resp -}}
+        {{- if .Err -}}
+            {{/* 如果请求失败，打印警告并走兜底时间 */}}
+            {{- warnf "获取 Commit 时间失败: %s" .Err -}}
+        {{- else -}}
+            {{/* 请求成功，.Value 即为获取到的资源 */}}
+            {{- $apiData := .Value -}}
+            {{- if $apiData -}}
+                {{- $json := $apiData.Content | transform.Unmarshal -}}
+                {{- if and $json $json.commit -}}
+                    {{- $lastBuildTime = time.AsTime $json.commit.committer.date -}}
+                {{- end -}}
+            {{- end -}}
         {{- end -}}
     {{- end -}}
     
@@ -53,25 +71,20 @@
     {{- end -}}
 {{- end -}}
 
-
 {{/* ===========================================================
      【页面展示】
      =========================================================== */}}
 <footer class="site-footer">
     <style>
-        /* --- [核心样式控制] --- */
-        
-        /* 1. 基础排版统一 (第二行和第三行) */
         .site-footer .running-time,
         .site-footer .powerby {
-            font-size: 14px !important;        /* 统一字号 14px */
-            line-height: 1.6 !important;       /* 统一行高 */
-            margin: 10px 0 !important;         /* 统一间距 */
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            margin: 10px 0 !important;
             display: block !important;
-            font-weight: normal !important;    /* 统一不加粗 */
+            font-weight: normal !important;
         }
 
-        /* 2. 第二行 (最近更新) 强制设为蓝色 #1e90ff (亮色 & 暗色模式) */
         .site-footer .running-time,
         .site-footer .running-time *,
         [data-scheme="dark"] .site-footer .running-time,
@@ -79,36 +92,29 @@
             color: #1e90ff !important;
         }
 
-        /* 3. 第三行 (Power By) 样式控制 */
-        /* 亮色模式：静音灰色 */
         .site-footer .powerby,
         .site-footer .powerby * {
             color: var(--sys-color-text-muted) !important;
         }
-        /* 暗色模式：变亮白，避免看不清 */
         [data-scheme="dark"] .site-footer .powerby,
         [data-scheme="dark"] .site-footer .powerby * {
             color: rgba(255, 255, 255, 0.7) !important;
         }
 
-        /* 4. 分隔符样式 */
         .footer-separator {
             margin: 0 6px !important;
             font-size: 14px !important;
         }
 
-        /* 【核心修改】第二行分隔符：强制蓝色且不透明，完全匹配说说页 list.html */
         .site-footer .running-time .footer-separator {
             color: #1e90ff !important;
             opacity: 1 !important; 
         }
         
-        /* 第三行分隔符随第三行文字变色 */
         .site-footer .powerby .footer-separator {
             color: inherit !important;
         }
 
-        /* 5. 链接交互 */
         .site-footer a {
             text-decoration: none !important;
             cursor: pointer;
@@ -116,7 +122,6 @@
         .site-footer a:hover {
             text-decoration: underline !important;
         }
-        /* 第三行链接悬停变为主色调 */
         .site-footer .powerby a:hover {
             color: var(--accent-color) !important;
         }
@@ -135,7 +140,6 @@
 
         {{- if $gitHashShort -}}
             <span class="footer-separator">|</span>
-            
             <a href="https://github.com/iwyang/iwyang.github.io/commit/{{ $gitHashFull }}" 
                target="_blank" 
                rel="noopener" 
@@ -168,7 +172,6 @@
             var now = new Date();
             var diff = (now - lastBuildTime) / 1000; 
 
-            // 生成“年月日 时分”格式
             var year = lastBuildTime.getFullYear();
             var month = String(lastBuildTime.getMonth() + 1).padStart(2, '0');
             var day = String(lastBuildTime.getDate()).padStart(2, '0');
