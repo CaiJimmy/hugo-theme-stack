@@ -194,7 +194,8 @@
    9. KOReader 书摘典藏卡片版 (Book Note Card)
    ================================================================= */
 .book-note-card {
-    padding: 1.8rem;
+    /* 👇 这里把底部的 padding 极限压缩到了 1.2rem，因为没有虚线了 👇 */
+    padding: 1.8rem 1.8rem 1.2rem 1.8rem !important;
     margin: 2rem 0;
     background: rgba(128, 128, 128, 0.05); 
     border: 1px solid rgba(128, 128, 128, 0.1); 
@@ -205,6 +206,13 @@
     &:hover {
         transform: translateY(-3px);
         box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    /* 绝对抹杀可能存在的幽灵空行 */
+    p:empty, p:has(br:only-child) {
+        display: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     h3 {
@@ -236,31 +244,23 @@
     blockquote {
         position: relative;
         background: rgba(246, 140, 126, 0.06) !important;
-        
-        /* 👇 核心修改1：改为四角全圆角，让左侧背景也不再是死板的直角 👇 */
         border-radius: 8px 12px 12px 8px !important; 
-        
-        /* 👇 核心修改2：彻底删除原来的无脑 border-left 边框 👇 */
-        /* border-left: 4px solid #f68c7e !important; */
-        
         padding: 0.8rem 1.5rem 0.8rem 2.6rem !important; 
         margin: 1.5rem 0 !important;
         opacity: 0.95;
         color: var(--card-text-color-main) !important;
 
-        /* 👇 核心修改3：用这个空出来的 ::after 伪元素，单独画一条与文字等高的“胶囊红线” 👇 */
         &::after {
             content: "" !important;
             position: absolute;
             left: 0;
-            top: 0.8rem !important;    /* 精准扣掉上内边距，完全对齐第一行文字的头 */
-            bottom: 0.8rem !important; /* 精准扣掉下内边距，完全对齐最后一行文字的尾 */
+            top: 0.8rem !important;    
+            bottom: 0.8rem !important; 
             width: 4px !important;
             background-color: #f68c7e !important;
-            border-radius: 4px !important; /* 加点微小圆角，呈现精致胶囊感 */
+            border-radius: 4px !important; 
         }
         
-        /* 左上角小引号 */
         &::before {
             content: "“" !important;
             position: absolute;
@@ -288,7 +288,6 @@
         p:last-child {
             margin-bottom: 0 !important;
             
-            /* 行云流水的右下角行内闭合小引号 */
             &::after {
                 content: "”" !important;
                 font-size: 3em !important;   
@@ -305,13 +304,29 @@
         }
     }
 
-    blockquote + p {
-        margin-top: 1.5rem !important;
-        padding-top: 1.5rem !important;
-        border-top: 1px dashed rgba(128, 128, 128, 0.25);
+    /* 👇 核心大招：完全隐形的空气墙！只提供极其微小的上下留白 👇 */
+    hr.note-divider {
+        border: none !important;
+        margin: 0.5rem 0 !important;
+        padding: 0 !important;
+        height: 0 !important;
+        background: transparent !important;
+    }
+
+    /* 👇 隐形墙下方紧跟的所有段落（个人想法）统一排版 👇 */
+    hr.note-divider ~ p {
         color: var(--card-text-color-main) !important;
-        opacity: 0.9;
-        font-size: 0.95em;
-        line-height: 1.8;
+        opacity: 0.9 !important;
+        font-size: 0.95em !important;
+        line-height: 1.8 !important;
+    }
+    
+    hr.note-divider + p {
+        margin-top: 0 !important; 
+    }
+
+    /* 👇 终极兜底：卡片内最后一个可见元素的底部外边距强制清零 👇 */
+    > :last-child, > p:last-of-type {
+        margin-bottom: 0 !important;
     }
 }
