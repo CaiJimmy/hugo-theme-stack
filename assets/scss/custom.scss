@@ -33,26 +33,14 @@
     
     a { color: var(--accent-color); text-decoration: none; &:hover { text-decoration: underline; } }
     
-    /* 👇 修正：精准定位行内代码，绝对不污染多行代码块 👇 */
     p code, li code {
-        background-color: rgba(128, 128, 128, 0.08); /* 稍微调淡一点背景色，更自然 */
-        color: #e83e8c; /* 经典的行内代码粉红色 */
+        background-color: rgba(128, 128, 128, 0.08); 
+        color: #e83e8c; 
         font-family: Consolas, Monaco, "Courier New", monospace;
         padding: 0.2em 0.4em;
         margin: 0 0.2em;
         border-radius: 4px;
         font-size: 0.85em;
-    }
-    
-    blockquote {
-        position: relative; margin: 10px 0; padding: 0 0 0 46px; 
-        background: none !important; border: none !important; color: var(--card-text-color-main);
-        &::before {
-            content: "“"; position: absolute; left: 4px; top: -12px; 
-            font-size: 64px; line-height: 1; font-family: Georgia, serif;
-            color: var(--accent-color); opacity: 0.5; 
-        }
-        p { margin: 0; line-height: 1.6; font-size: 0.95em; }
     }
 }
 
@@ -73,7 +61,6 @@
 /* 图片处理与九宫格 */
 .shuoshuo-content p:has(.shuoshuo-image) br { display: none !important; }
 
-/* 单图模式 */
 .shuoshuo-content p:has(.shuoshuo-image:only-child),
 .shuoshuo-content p:has(img):not(:has(img ~ img)) {
     display: flex; justify-content: center; margin-top: 10px;
@@ -82,7 +69,6 @@
     &:hover img { transform: scale(1.03); }
 }
 
-/* 多图/网格模式 (永远九宫格: 一行3张) */
 .shuoshuo-image-gallery {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0;
     .shuoshuo-image { display: block !important; aspect-ratio: 1/1; overflow: hidden; border-radius: 8px; text-decoration: none; }
@@ -192,21 +178,9 @@
 .article-list article { transition: transform 0.3s ease, box-shadow 0.3s ease !important; &:hover { transform: translateY(-5px) !important; box-shadow: var(--shadow-l2) !important; } }
 .article-list--tile article { transition: .6s ease; &:hover { transform: scale(1.03); } }
 
-/* 右侧导航栏及其他小部件动画重构 */
-.search-form.widget {
-    transition: transform 0.6s ease;
-    &:hover { transform: scale(1.1); }
-}
-
-.widget.archives .widget-archive--list {
-    transition: transform 0.3s ease;
-    &:hover { transform: scale(1.05); }
-}
-
-.tagCloud .tagCloud-tags a {
-    border-radius: 10px; font-size: 1.4rem; transition: transform 0.3s ease;
-    &:hover { transform: scale(1.1); }
-}
+.search-form.widget { transition: transform 0.6s ease; &:hover { transform: scale(1.1); } }
+.widget.archives .widget-archive--list { transition: transform 0.3s ease; &:hover { transform: scale(1.05); } }
+.tagCloud .tagCloud-tags a { border-radius: 10px; font-size: 1.4rem; transition: transform 0.3s ease; &:hover { transform: scale(1.1); } }
 
 /* =================================================================
    8. 文章元数据及头部样式补丁 (Article Meta Info)
@@ -215,3 +189,129 @@
 .article-meta-item { display: flex !important; align-items: center !important; gap: 8px !important; font-size: 14px !important; line-height: 1 !important; text-decoration: none !important; color: inherit !important; opacity: 1 !important; }
 .article-meta-item svg { width: 14px !important; height: 14px !important; display: block !important; margin: 0 !important; padding: 0 !important; opacity: 1 !important; color: inherit !important; }
 .article-meta-item time, .article-meta-item span { font-size: 14px !important; line-height: 1 !important; display: block !important; margin: 0 !important; color: inherit !important; font-weight: normal !important; }
+
+/* =================================================================
+   9. KOReader 书摘典藏卡片版 (Book Note Card)
+   ================================================================= */
+.book-note-card {
+    padding: 1.8rem;
+    margin: 2rem 0;
+    background: rgba(128, 128, 128, 0.05); 
+    border: 1px solid rgba(128, 128, 128, 0.1); 
+    border-radius: 16px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    h3 {
+        margin-top: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        color: var(--card-text-color-main) !important;
+        
+        small {
+            margin-left: 0 !important; 
+            opacity: 0.95;
+            color: var(--card-text-color-main);
+            @media (min-width: 600px) {
+                margin-left: 12px !important;
+            }
+        }
+    }
+
+    .book-note-meta {
+        font-size: 0.9em;
+        font-weight: normal;
+        opacity: 0.95;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--card-text-color-main); 
+    }
+
+    blockquote {
+        position: relative;
+        background: rgba(246, 140, 126, 0.06) !important;
+        
+        /* 👇 核心修改1：改为四角全圆角，让左侧背景也不再是死板的直角 👇 */
+        border-radius: 8px 12px 12px 8px !important; 
+        
+        /* 👇 核心修改2：彻底删除原来的无脑 border-left 边框 👇 */
+        /* border-left: 4px solid #f68c7e !important; */
+        
+        padding: 0.8rem 1.5rem 0.8rem 2.6rem !important; 
+        margin: 1.5rem 0 !important;
+        opacity: 0.95;
+        color: var(--card-text-color-main) !important;
+
+        /* 👇 核心修改3：用这个空出来的 ::after 伪元素，单独画一条与文字等高的“胶囊红线” 👇 */
+        &::after {
+            content: "" !important;
+            position: absolute;
+            left: 0;
+            top: 0.8rem !important;    /* 精准扣掉上内边距，完全对齐第一行文字的头 */
+            bottom: 0.8rem !important; /* 精准扣掉下内边距，完全对齐最后一行文字的尾 */
+            width: 4px !important;
+            background-color: #f68c7e !important;
+            border-radius: 4px !important; /* 加点微小圆角，呈现精致胶囊感 */
+        }
+        
+        /* 左上角小引号 */
+        &::before {
+            content: "“" !important;
+            position: absolute;
+            font-size: 3em !important;
+            line-height: 1;
+            top: 0.3rem !important;      
+            left: 0.6rem !important;     
+            opacity: 0.6 !important; 
+            color: #f68c7e !important; 
+            display: inline-block;
+            font-family: Georgia, serif !important;
+            pointer-events: none;
+        }
+        
+        p {
+            margin: 0.8rem 0 !important;
+            position: relative;
+            z-index: 1; 
+        }
+
+        p:first-child {
+            margin-top: 0 !important;
+        }
+
+        p:last-child {
+            margin-bottom: 0 !important;
+            
+            /* 行云流水的右下角行内闭合小引号 */
+            &::after {
+                content: "”" !important;
+                font-size: 3em !important;   
+                line-height: 0;           
+                position: relative;
+                top: 0.3em;               
+                margin-left: 6px;         
+                opacity: 0.6 !important; 
+                color: #f68c7e !important; 
+                display: inline-block;
+                font-family: Georgia, serif !important;
+                pointer-events: none; 
+            }
+        }
+    }
+
+    blockquote + p {
+        margin-top: 1.5rem !important;
+        padding-top: 1.5rem !important;
+        border-top: 1px dashed rgba(128, 128, 128, 0.25);
+        color: var(--card-text-color-main) !important;
+        opacity: 0.9;
+        font-size: 0.95em;
+        line-height: 1.8;
+    }
+}
