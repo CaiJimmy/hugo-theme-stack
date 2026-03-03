@@ -209,7 +209,6 @@
 
 .search-form.widget { transition: transform 0.6s ease; &:hover { transform: scale(1.1); } }
 .widget.archives .widget-archive--list { transition: transform 0.3s ease; &:hover { transform: scale(1.05); } }
-.tagCloud .tagCloud-tags a { border-radius: 10px; font-size: 1.4rem; transition: transform 0.3s ease; &:hover { transform: scale(1.1); } }
 
 /* =================================================================
    8. 文章元数据及头部样式补丁 (Article Meta Info)
@@ -358,4 +357,31 @@
     > :last-child, > p:last-of-type {
         margin-bottom: 0 !important;
     }
+}
+
+/* =================================================================
+   10. 分类与标签云：统一卡片式 UI 风格
+   ================================================================= */
+.tagCloud-tags a {
+    /* 调用主题自带的卡片背景、文字颜色和圆角 */
+    background-color: var(--card-background) !important;
+    color: var(--card-text-color-main) !important;
+    border-radius: var(--card-border-radius) !important; 
+    
+    /* 调用主题自带的卡片阴影，和下方文章卡片完全一致 */
+    box-shadow: var(--shadow-l1) !important;
+    
+    padding: 10px 18px !important;
+    border: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease !important;
+    
+    /* 统一字体大小，去掉大小不一的杂乱感，看起来更像规整的卡片 */
+    font-size: 1.5rem !important; 
+}
+
+/* 鼠标悬浮时的交互效果 */
+.tagCloud-tags a:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-l2) !important; /* 悬浮时阴影加深 */
+    color: var(--accent-color) !important; /* 文字变成主题的强调色 */
 }

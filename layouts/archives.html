@@ -1,19 +1,35 @@
 {{ define "body-class" }}template-archives{{ end }}
 {{ define "main" }}
-    <header>
-        {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
-        {{- $terms := $taxonomy.Pages -}}
-        {{ if $terms }}
-        <h2 class="section-title">{{ T "widget.categoriesCloud.title" }}</h2>
-        <div class="subsection-list">
-            <div class="article-list--tile">
-                {{ range $terms }}
-                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
+    
+    {{ if .Site.Taxonomies.categories }}
+    <div class="archives-group">
+        <h2 class="section-title">{{ T "widget.categoriesCloud.title" | default "分类" }}</h2>
+        <div class="widget tagCloud" style="background: transparent; box-shadow: none; padding: 0;">
+            <div class="tagCloud-tags">
+                {{ range .Site.Taxonomies.categories.ByCount }}
+                    <a href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
+                        {{ .Page.Title }}
+                    </a>
                 {{ end }}
             </div>
         </div>
-        {{ end }}
-    </header>
+    </div>
+    {{ end }}
+
+    {{ if .Site.Taxonomies.tags }}
+    <div class="archives-group">
+        <h2 class="section-title">{{ T "widget.tagCloud.title" | default "标签云" }}</h2>
+        <div class="widget tagCloud" style="background: transparent; box-shadow: none; padding: 0;">
+            <div class="tagCloud-tags">
+                {{ range .Site.Taxonomies.tags.ByCount }}
+                    <a href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
+                        {{ .Page.Title }}
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    {{ end }}
 
     {{ $pages := partial "helper/pages.html" .Site.Home }}
 
