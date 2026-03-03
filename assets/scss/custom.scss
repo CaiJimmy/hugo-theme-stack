@@ -385,3 +385,24 @@
     box-shadow: var(--shadow-l2) !important; /* 悬浮时阴影加深 */
     color: var(--accent-color) !important; /* 文字变成主题的强调色 */
 }
+
+/* =================================================================
+   11. 归档页标题视觉大小统一 (Archive Titles Visual Alignment)
+   ================================================================= */
+
+/* 1. 恢复精致小字号：分类、标签云标题 */
+.template-archives .section-title {
+    font-size: 1.5rem !important; /* 从 2.2rem 大幅缩小到 1.5rem */
+    font-weight: bold !important;
+    letter-spacing: 0.5px !important; /* 字间距也相应调小一点 */
+}
+
+/* 2. 年份数字的微调补偿 */
+.template-archives .archives-date {
+    font-size: 1.6rem !important; /* 从 2.4rem 缩小到 1.6rem，依然比汉字大 0.1rem 以保持视觉平衡 */
+    color: var(--body-text-color) !important; 
+}
+
+.template-archives .archives-date a {
+    color: inherit !important;
+}
