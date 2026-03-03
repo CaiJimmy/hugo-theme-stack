@@ -42,6 +42,35 @@
         border-radius: 4px;
         font-size: 0.85em;
     }
+
+    /* 🌟 新增：说说引用块 (PS补充内容) - 蓝色背景效果 🌟 */
+    blockquote {
+        position: relative;
+        background: rgba(30, 144, 255, 0.08) !important; /* 浅蓝色透明背景 */
+        border-radius: 8px 12px 12px 8px !important; 
+        /* 移除了左侧多余的引号留白，调整为更紧凑的 1.2rem */
+        padding: 0.8rem 1.5rem 0.8rem 1.2rem !important; 
+        margin: 1.5rem 0 !important;
+        color: var(--card-text-color-main) !important;
+
+        /* 左侧蓝色指示条 */
+        &::after {
+            content: "" !important;
+            position: absolute;
+            left: 0;
+            top: 0.8rem !important;    
+            bottom: 0.8rem !important; 
+            width: 4px !important;
+            background-color: #1e90ff !important; /* 主题蓝 */
+            border-radius: 4px !important; 
+        }
+        
+        p {
+            margin: 0 !important;
+            position: relative;
+            z-index: 1; 
+        }
+    }
 }
 
 /* 说说专属标签栏 */
