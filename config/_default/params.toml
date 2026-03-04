@@ -75,11 +75,13 @@ SortBy             = "default"
     toggle  = true
     default = "auto"
 
-[imageProcessing.cover]
-    enabled = true
+[imageProcessing]
+    [imageProcessing.content]
+        widths  = [800, 1600, 2400]
+        enabled = true
 
-[imageProcessing.content]
-    enabled = true
+    [imageProcessing.thumbnail]
+        enabled = true
 
 # GDPR Cookie Consent Configuration
 # When enabled, analytics and functional cookies require user consent

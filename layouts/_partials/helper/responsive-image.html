@@ -1,0 +1,33 @@
+{{- /*
+Params:
+    Resource: Hugo image resource object (Optional, for processing)
+    Widths: Slice of widths to generate for srcset
+    Attributes: Map of HTML attributes for the <img> tag
+*/ -}}
+
+{{- $resource := .Resource -}}
+{{- $widths := .Widths -}}
+{{- $attributes := .Attributes | default dict -}}
+
+{{/* Generate srcset if Resource and Widths are provided */}}
+{{- if and $widths $resource (reflect.IsImageResourceProcessable $resource) -}}
+    {{- $srcset := slice -}}
+    {{- range $widths -}}
+        {{- if lt . $resource.Width -}}
+            {{- $resized := $resource.Resize (printf "%dx" .) -}}
+            {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink .) -}}
+        {{- end -}}
+    {{- end -}}
+    
+    {{- if gt (len $srcset) 0 -}}
+        {{- $permalink := default $resource.RelPermalink (index $attributes "src") -}}
+        {{- $srcset = $srcset | append (printf "%s %dw" $permalink $resource.Width) -}}
+        {{- $attributes = merge $attributes (dict "srcset" (delimit $srcset ", ")) -}}
+    {{- end -}}
+{{- end -}}
+
+<img {{- range $k, $v := $attributes -}}
+    {{- if $v -}}
+        {{- printf " %s=%q" (lower $k) (printf "%v" $v) | safeHTMLAttr -}}
+    {{- end -}}
+{{- end -}}>

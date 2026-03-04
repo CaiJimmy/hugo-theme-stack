@@ -14,8 +14,19 @@
         {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
         {{ if $image }}
         <div class="article-image">
-            <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"
-                loading="lazy">
+            {{ partial "helper/thumbnail-image" (dict 
+                "Resource" $image.Resource
+                "Width" 60
+                "Height" 60
+                "Resize" .Site.Params.ImageProcessing.Thumbnail.Enabled
+                "Attributes" (dict
+                    "src" $image.Permalink
+                    "alt" .Title
+                    "loading" "lazy"
+                    "width" $image.Width
+                    "height" $image.Height
+                )
+            ) }}
         </div>
         {{ end }}
     </a>
