@@ -3,8 +3,7 @@
 ///     Image: Image URL
 
 /// Returns:
-///     Local: true if the image is local, false if it is remote
-///     Resource: Hugo image resource object, not nil if the image is local
+///     Resource: Hugo image resource object
 ///     Permalink: Image URL
 ///     Height: Image height
 ///     Width: Image width
@@ -13,10 +12,15 @@
 
 {{ if .Image }}
     {{ $url := urls.Parse .Image }}
+    {{ $permalink := .Image }}
     {{ $resource := "" }}
+
     {{ if not (in (slice "https" "http") $url.Scheme) }}
+        {{/* Local image */}}
         {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
+        {{ $permalink = $resource.RelPermalink }}
     {{ else }}
+        {{/* Remote image */}}
         {{ with try (resources.GetRemote $url) }}
             {{ with .Err }}
                 {{ errorf "%s" . }}
@@ -28,25 +32,22 @@
         {{ end }}   
     {{ end }}
 
-    {{ if $resource }}
-        {{- $isSVG := eq $resource.MediaType.SubType "svg"  -}}
-        {{- if $isSVG -}}
+    {{ with $resource }}
+        {{ if reflect.IsImageResourceProcessable . }}
             {{ $result = dict
-                "Local" true
                 "Resource" $resource
-                "Permalink" $resource.RelPermalink
-                "Height" nil
-                "Width" nil
-            }}
-        {{- else -}}            
-            {{- $result = dict
-                "Local" true
-                "Resource" $resource
-                "Permalink" $resource.RelPermalink
+                "Permalink" $permalink
                 "Height" $resource.Height
                 "Width" $resource.Width
             }}
-        {{- end -}}
+        {{ else }}
+            {{ $result = dict
+                "Resource" $resource
+                "Permalink" $permalink
+                "Height" nil
+                "Width" nil
+            }}
+        {{ end }}
     {{ end }}
 {{ end }}
 
