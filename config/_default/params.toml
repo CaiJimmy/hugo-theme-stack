@@ -77,8 +77,8 @@ SortBy             = "default"
 
 [imageProcessing]
     [imageProcessing.content]
-        widths = [480, 800, 1200, 2000]
-        enabled = false
+        widths  = [800, 1600, 2400]
+        enabled = true
 
     [imageProcessing.thumbnail]
         enabled = true
