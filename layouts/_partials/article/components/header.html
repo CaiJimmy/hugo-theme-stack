@@ -7,7 +7,7 @@
         <a href="{{ $Page.RelPermalink }}">
             {{ partial "helper/responsive-image" (dict
                 "Resource" $image.Resource
-                "Widths" (cond $Page.Site.Params.ImageProcessing.Thumbnail.Enabled $Page.Site.Params.ImageProcessing.Content.Widths nil)
+                "Widths" (cond $Page.Site.Params.ImageProcessing.Content.Enabled $Page.Site.Params.ImageProcessing.Content.Widths nil)
                 "Attributes" (dict
                     "src" $image.Permalink
                     "width" $image.Width
