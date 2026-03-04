@@ -7,12 +7,22 @@
 
 {{- $attributes := dict -}}
 {{- if $galleryImage -}}
-    {{- $attributes = dict "data-flex-grow" (div (mul $image.Width 100) $image.Height) "data-flex-basis" (printf "%dpx" (div (mul $image.Width 240) $image.Height)) -}}
+    {{- $attributes = (dict 
+        "data-flex-grow" (div (mul $image.Width 100) $image.Height) 
+        "data-flex-basis" (printf "%dpx" (div (mul $image.Width 240) $image.Height))
+    ) -}}
 {{- end -}}
 
-{{ partial "helper/responsive-image" (merge $image (dict 
-    "Alt" $alt 
-    "Title" $title 
-    "Class" (cond $galleryImage "gallery-image" "")
-    "Attributes" $attributes
-)) }}
+{{ partial "helper/responsive-image" (dict 
+    "Resource" $image.Resource
+    "Widths" .Page.Site.Params.ImageProcessing.Content.Widths
+    "Attributes" (merge $attributes (dict 
+        "src" $image.Permalink
+        "width" $image.Width
+        "height" $image.Height
+        "alt" $alt
+        "title" $title
+        "class" (cond $galleryImage "gallery-image" "")
+        "loading" "lazy"
+    ))
+) }}
