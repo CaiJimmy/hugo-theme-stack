@@ -20,7 +20,8 @@ Params:
     {{- end -}}
     
     {{- if gt (len $srcset) 0 -}}
-        {{- $srcset = $srcset | append (printf "%s %dw" $resource.RelPermalink $resource.Width) -}}
+        {{- $permalink := default $resource.RelPermalink (index $attributes "src") -}}
+        {{- $srcset = $srcset | append (printf "%s %dw" $permalink $resource.Width) -}}
         {{- $attributes = merge $attributes (dict "srcset" (delimit $srcset ", ")) -}}
     {{- end -}}
 {{- end -}}
