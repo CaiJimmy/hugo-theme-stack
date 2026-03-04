@@ -12,6 +12,8 @@
                     "src" $image.Permalink
                     "alt" (printf "Featured image of post %s" .context.Title)
                     "loading" "lazy"
+                    "width" $image.Width
+                    "height" $image.Height
                 )
             ) }}
         </div>
