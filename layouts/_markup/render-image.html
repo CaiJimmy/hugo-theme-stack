@@ -15,7 +15,7 @@
 
 {{ partial "helper/responsive-image" (dict 
     "Resource" $image.Resource
-    "Widths" .Page.Site.Params.ImageProcessing.Content.Widths
+    "Widths" (cond .Page.Site.Params.ImageProcessing.Content.Enabled .Page.Site.Params.ImageProcessing.Content.Widths nil)
     "Attributes" (merge $attributes (dict 
         "src" $image.Permalink
         "width" $image.Width
