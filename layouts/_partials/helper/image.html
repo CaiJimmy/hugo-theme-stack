@@ -9,7 +9,7 @@
 ///     Height: Image height
 ///     Width: Image width
 
-{{ $result := "" }}
+{{ $result := dict }}
 
 {{ if .Image }}
     {{ $url := urls.Parse .Image }}
