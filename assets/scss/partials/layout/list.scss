@@ -48,10 +48,11 @@
     overflow-x: auto;
     margin-left: -24px;
     margin-right: -24px;
-
+    margin-bottom: -34px;
+    
     .article-list--tile {
         display: flex;
-        padding: var(--spacing-xs) 24px 24px var(--spacing-xl);
+        padding: var(--spacing-xs) 24px 34px 24px;
         width: max-content;
         gap: var(--spacing-lg);
 
