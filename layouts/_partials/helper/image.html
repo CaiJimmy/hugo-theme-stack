@@ -32,8 +32,10 @@
         {{ end }}   
     {{ end }}
 
-    {{ with $resource }}
-        {{ if reflect.IsImageResourceWithMeta . }}
+    {{ if $resource }}
+        {{ $filter := images.AutoOrient }}
+        {{ $resource = $resource | images.Filter $filter }}
+        {{ if reflect.IsImageResourceWithMeta $resource }}
             {{ $result = dict
                 "Resource" $resource
                 "Permalink" $permalink
