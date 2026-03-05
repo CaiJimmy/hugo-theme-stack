@@ -79,3 +79,9 @@
     }
 
 }
+
+.search-result {
+    &.hidden {
+        display: none;
+    }
+}
