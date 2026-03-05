@@ -1,6 +1,6 @@
 {{ $related := (.Site.RegularPages.Related .) | first 5 }}
 {{ with $related }}
-<aside class="related-content">
+<aside>
     <h2 class="section-title">{{ T "article.relatedContent" }}</h2>
     <div class="subsection-list">
         <div class="flex article-list--tile">
