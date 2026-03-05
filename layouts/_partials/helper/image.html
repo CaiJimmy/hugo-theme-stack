@@ -33,7 +33,7 @@
     {{ end }}
 
     {{ with $resource }}
-        {{ if reflect.IsImageResourceProcessable . }}
+        {{ if reflect.IsImageResourceWithMeta . }}
             {{ $result = dict
                 "Resource" $resource
                 "Permalink" $permalink
