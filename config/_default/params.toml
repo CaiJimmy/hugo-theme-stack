@@ -1,10 +1,9 @@
-mainSections       = ["post"]
-featuredImageField = "image"
-rssFullContent     = true
+mainSections   = ["post"]
+rssFullContent = true
 # Accepted values: "default", "lastmod"
 # default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
 # lastmod = sort by last modified date, in descending order
-SortBy             = "default"
+SortBy         = "default"
 
 [footer]
     since      = 2026
