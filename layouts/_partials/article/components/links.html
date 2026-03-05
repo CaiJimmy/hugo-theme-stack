@@ -16,12 +16,15 @@
                 </div>
         
                 {{ with $link.image }}
-                    {{ $permalink := . }}
-                    {{ with ($.Resources.GetMatch (printf "%s" (. | safeURL))) }}
-                        {{ $permalink = .RelPermalink }}
-                    {{ end }}
+                    {{- $image := partial "helper/image" (dict "Image" . "Resources" $.Resources) -}}
                     <div class="article-image">
-                        <img src="{{ $permalink }}" loading="lazy"{{ with $link.alt }} alt="{{ . }}"{{ end }}>
+                        <img 
+                            src="{{ $image.Permalink }}" 
+                            loading="lazy"
+                            {{ with $link.alt }} alt="{{ . }}"{{ end }}
+                            {{ with $image.Width }} width="{{ . }}"{{ end }}
+                            {{ with $image.Height }} height="{{ . }}"{{ end }}
+                        >
                     </div>
                 {{ end }}
             </a>
