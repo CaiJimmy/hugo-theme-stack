@@ -1,8 +1,6 @@
 .pagination {
     display: flex;
-    background-color: var(--card-background);
-    box-shadow: var(--shadow-l1);
-    border-radius: var(--card-border-radius);
+    @include card-style;
     overflow: hidden;
 
     .page-link {

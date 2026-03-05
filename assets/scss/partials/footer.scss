@@ -1,5 +1,5 @@
 footer.site-footer {
-    padding: 20px 0 var(--section-separation) 0;
+    padding: var(--spacing-lg) 0 var(--section-separation) 0;
     font-size: 1.4rem;
     line-height: 1.75;
 
@@ -9,13 +9,13 @@ footer.site-footer {
         height: 3px;
         width: 50px;
         background: var(--body-text-color);
-        margin-bottom: 20px;
+        margin-bottom: var(--spacing-lg);
     }
 
     .copyright {
         color: var(--accent-color);
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: var(--spacing-xs);
     }
 
     .powerby {
