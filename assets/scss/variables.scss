@@ -168,9 +168,11 @@
 :root {
     --menu-icon-separation: 40px;
     --container-padding: 15px;
+
     @include respond(md) {
         --container-padding: 20px;
     }
+
     --widget-separation: var(--section-separation);
 
     /* Spacing tokens */
@@ -184,9 +186,11 @@
 
     /* Article image height variables */
     --article-image-height: 150px;
+
     @include respond(md) {
         --article-image-height: 200px;
     }
+
     @include respond(xl) {
         --article-image-height: 250px;
     }
@@ -199,8 +203,17 @@
     --mermaid-modal-btn-bg: #fff;
     --mermaid-modal-btn-hover: #ddd;
 
+    &[data-scheme="dark"] {
+        --mermaid-toolbar-btn-bg: rgba(0, 0, 0, 0.85);
+        --mermaid-toolbar-btn-text: #eee;
+        --mermaid-modal-content-bg: #1e1e1e;
+        --mermaid-modal-btn-bg: #333;
+        --mermaid-modal-btn-hover: #444;
+    }
+
     /* Article compact image size */
     --article-compact-image-size: 50px;
+
     @include respond(md) {
         --article-compact-image-size: 60px;
     }
@@ -215,12 +228,6 @@
     --article-tile-text-color: #fff;
 
     &[data-scheme="dark"] {
-        --mermaid-toolbar-btn-bg: rgba(0, 0, 0, 0.85);
-        --mermaid-toolbar-btn-text: #eee;
-        --mermaid-modal-content-bg: #1e1e1e;
-        --mermaid-modal-btn-bg: #333;
-        --mermaid-modal-btn-hover: #444;
-
         --article-tile-overlay-bg: rgba(0, 0, 0, 0.45);
     }
 }
