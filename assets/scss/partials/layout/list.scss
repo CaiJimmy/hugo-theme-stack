@@ -1,11 +1,9 @@
 .section-card {
-    border-radius: var(--card-border-radius);
-    background-color: var(--card-background);
+    @include card-style;
     padding: var(--small-card-padding);
-    box-shadow: var(--shadow-l1);
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--spacing-lg);
 
     --separation: 15px;
 
@@ -52,11 +50,11 @@
 
     .article-list--tile {
         display: flex;
-        padding: 8px 0 34px 24px;
+        padding: var(--spacing-xs) 0 var(--spacing-xxl) var(--spacing-xl);
         width: max-content;
 
         article {
-            margin-right: 20px;
+            margin-right: var(--spacing-lg);
             flex-shrink: 0;
 
             .article-title {
@@ -65,7 +63,7 @@
             }
 
             .article-details {
-                padding: 20px;
+                padding: var(--spacing-lg);
             }
         }
     }

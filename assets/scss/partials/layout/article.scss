@@ -111,14 +111,14 @@
     }
 
     li {
-        margin: 15px 0 15px 20px;
-        padding: 5px;
+        margin: var(--spacing-md) 0 var(--spacing-md) var(--spacing-lg);
+        padding: var(--spacing-xs);
 
         &>ol,
         &>ul {
-            margin-top: 10px;
-            padding-left: 10px;
-            margin-bottom: -5px;
+            margin-top: var(--spacing-sm);
+            padding-left: var(--spacing-sm);
+            margin-bottom: calc(var(--spacing-xs) * -1);
 
             &>li:last-child {
                 margin-bottom: 0;
@@ -182,7 +182,7 @@
 
 .article-toc {
     padding: 0 var(--card-padding);
-    margin-top: 20px;
+    margin-top: var(--spacing-lg);
 
     @include respond(lg) {
         display: none;
@@ -203,7 +203,7 @@
 
         summary {
             list-style: none;
-            padding: 15px 20px;
+            padding: var(--spacing-md) var(--spacing-lg);
             cursor: pointer;
 
             &::-webkit-details-marker {
@@ -213,7 +213,7 @@
             .article-toc-title {
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: var(--spacing-sm);
                 text-transform: uppercase;
                 font-size: 1.4rem;
                 font-weight: bold;
@@ -232,14 +232,14 @@
 
 .related-content {
     overflow-x: auto;
-    padding-bottom: 15px;
+    padding-bottom: var(--spacing-md);
 
     &>.flex {
         float: left;
     }
 
     article {
-        margin-right: 15px;
+        margin-right: var(--spacing-md);
         flex-shrink: 0;
         overflow: hidden;
 
@@ -313,7 +313,7 @@
         position: relative;
         margin: 1.5em 0;
         border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
+        padding: var(--spacing-md) calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
 
         .cite {
@@ -383,7 +383,7 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
-        gap: 10px;
+        gap: var(--spacing-sm);
 
         figure {
             margin: 0;
