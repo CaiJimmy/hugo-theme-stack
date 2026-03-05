@@ -11,7 +11,7 @@
                 {{- $description = $description | default (T "list.page" (len .Pages)) -}}
             {{- end -}}
             {{- if or $description (not .Date.IsZero) -}}
-                <footer class="article-footer">
+                <footer class="article-meta">
                     {{- if not .Date.IsZero -}}
                         <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                             {{- .Date | time.Format .Site.Params.dateFormat.published -}}
