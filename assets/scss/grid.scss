@@ -60,14 +60,10 @@
     display: flex;
     flex-direction: row;
 
-    &.column {
-        flex-direction: column;
-    }
-
     &.on-phone--column {
         flex-direction: column;
         @include respond(md) {
-            flex-direction: unset;
+            flex-direction: row;
         }
     }
 

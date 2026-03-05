@@ -418,6 +418,10 @@
         padding: var(--card-padding);
         position: relative;
 
+        pre {
+            background-color: transparent;
+        }
+
         &:hover {
             .copyCodeButton {
                 opacity: 1;
@@ -430,7 +434,6 @@
         }
 
         pre {
-            margin: initial;
             padding: 0;
             margin: 0;
             width: auto;
