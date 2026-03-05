@@ -45,41 +45,7 @@
 
         .article-footer {
             margin: var(--card-padding);
-            margin-top: 0;
-
-            section:not(:first-child) {
-                margin-top: var(--card-padding);
-            }
-
-            section {
-                color: var(--card-text-color-tertiary);
-                text-transform: uppercase;
-                display: flex;
-                align-items: center;
-                font-size: 1.4rem;
-                gap: 15px;
-
-                svg {
-                    width: 20px;
-                    height: 20px;
-                    stroke-width: 1.33;
-                }
-            }
-
-            .article-tags {
-                text-transform: unset;
-            }
-
-            .article-copyright,
-            .article-lastmod {
-                a {
-                    color: var(--body-text-color);
-                }
-
-                a.link {
-                    box-shadow: unset;
-                }
-            }
+            gap: var(--spacing-2xl);
         }
     }
 }

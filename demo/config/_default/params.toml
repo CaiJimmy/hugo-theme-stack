@@ -13,7 +13,7 @@ favicon        = "img/avatar.png"
 [article]
     [article.license]
         enabled = true
-        default = "Licensed under CC BY-NC-SA 4.0"
+        default = "Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
 
 [widgets]
     homepage = [
