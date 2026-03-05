@@ -9,9 +9,7 @@
 ///     Height: Image height
 ///     Width: Image width
 
-{{ $result := dict
-    "Permalink" .Image
-}}
+{{ $result := dict }}
 
 {{ if .Image }}
     {{ $url := urls.Parse .Image }}
