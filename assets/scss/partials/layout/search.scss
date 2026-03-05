@@ -12,7 +12,7 @@
 
         input {
             font-size: 1.5rem;
-            padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
+            padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
         }
     }
 
@@ -30,7 +30,7 @@
     }
 
     input {
-        padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-lg);
+        padding: 40px 20px 20px;
         @include card-style;
         color: var(--card-text-color-main);
         width: 100%;

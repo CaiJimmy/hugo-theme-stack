@@ -139,7 +139,7 @@
     display: none;
     margin: 0 calc(var(--container-padding) * -1);
 
-    padding: var(--spacing-xxl);
+    padding: var(--spacing-2xl);
 
     @include respond(xl) {
         padding: 15px 0;
@@ -148,7 +148,7 @@
     &,
     .menu-bottom-section ol {
         flex-direction: column;
-        gap: var(--spacing-xxl);
+        gap: var(--spacing-2xl);
 
         @include respond(xl) {
             gap: var(--spacing-xl);
