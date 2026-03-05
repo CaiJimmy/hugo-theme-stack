@@ -45,14 +45,20 @@
 }
 
 .subsection-list {
+    --shadow-overlap-x: calc(var(--shadow-l2-blur) + 4px);
+    --shadow-overlap-y: calc(var(--shadow-l2-blur) + var(--shadow-l2-y) + 4px);
+
     overflow-x: auto;
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -34px;
+
+    /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2))
+    /// so that the shadow is not cut off
+    margin-left: calc(var(--shadow-overlap-x) * -1);
+    margin-right: calc(var(--shadow-overlap-x) * -1);
+    margin-bottom: calc(var(--shadow-overlap-y) * -1);
     
     .article-list--tile {
         display: flex;
-        padding: var(--spacing-xs) 24px 34px 24px;
+        padding: var(--spacing-xs) var(--shadow-overlap-x) var(--shadow-overlap-y) var(--shadow-overlap-x);
         width: max-content;
         gap: var(--spacing-lg);
 
