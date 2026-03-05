@@ -1,6 +1,7 @@
 /// Params:
 ///     Resources: Where to search for images
 ///     Image: Image URL
+///     Context: page context (used to access the configuration)
 
 /// Returns:
 ///     Resource: Hugo image resource object
@@ -14,6 +15,7 @@
     {{ $url := urls.Parse .Image }}
     {{ $permalink := .Image }}
     {{ $resource := "" }}
+    {{ $local := true }}
 
     {{ if not (in (slice "https" "http") $url.Scheme) }}
         {{/* Local image */}}
@@ -26,14 +28,23 @@
                 {{ errorf "%s" . }}
             {{ else with .Value }}
                 {{ $resource = . }}
+                {{ $local = false }}
             {{ else }}
                 {{ errorf "Unable to get remote resource %q" $url }}
             {{ end }}
         {{ end }}   
     {{ end }}
 
-    {{ with $resource }}
-        {{ if reflect.IsImageResourceWithMeta . }}
+    {{ if $resource }}
+        {{ if and .Context.Site.Params.imageProcessing.autoOrient (reflect.IsImageResourceProcessable $resource) }}
+            {{ $filter := images.AutoOrient }}
+            {{ $resource = $resource | images.Filter $filter }}
+            {{ if $local }}
+                {{ $permalink = $resource.RelPermalink }}
+            {{ end }}
+        {{ end }}
+        
+        {{ if reflect.IsImageResourceWithMeta $resource }}
             {{ $result = dict
                 "Resource" $resource
                 "Permalink" $permalink

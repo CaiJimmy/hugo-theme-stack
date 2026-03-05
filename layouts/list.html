@@ -17,7 +17,7 @@
                 {{ end }}
             </div>
     
-            {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
+            {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
             {{ if $image }}
                 <div class="section-image">
                     {{ partial "helper/thumbnail-image" (dict 

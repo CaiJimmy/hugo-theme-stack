@@ -23,7 +23,7 @@
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{- end -}}
 
-{{- $favicon := partial "helper/image" (dict "Image" .Site.Params.favicon "Resources" resources) -}}
+{{- $favicon := partial "helper/image" (dict "Image" .Site.Params.favicon "Resources" resources "Context" .) -}}
 {{ with $favicon }}
     <link rel="shortcut icon" href="{{ .Permalink }}" />
 {{ end }}

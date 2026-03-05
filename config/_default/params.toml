@@ -76,6 +76,8 @@ SortBy             = "default"
     default = "auto"
 
 [imageProcessing]
+    autoOrient = false
+
     [imageProcessing.content]
         widths  = [800, 1600, 2400]
         enabled = true

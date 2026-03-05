@@ -15,7 +15,7 @@
                     </footer>
                 </div>
 
-                {{- $image := partial "helper/image" (dict "Image" $link.image "Resources" $.Resources) -}}
+                {{- $image := partial "helper/image" (dict "Image" $link.image "Resources" $.Resources "Context" .) -}}
                 {{- with $image -}}
                     <div class="article-image">
                        {{ partial "helper/thumbnail-image" (dict 
