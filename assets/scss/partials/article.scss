@@ -7,9 +7,9 @@
     article {
         display: flex;
         flex-direction: column;
-        background-color: var(--card-background);
-        box-shadow: var(--shadow-l1);
-        border-radius: var(--card-border-radius);
+        display: flex;
+        flex-direction: column;
+        @include card-style;
         overflow: hidden;
 
         transition: box-shadow 0.3s ease;
@@ -59,7 +59,7 @@
         color: var(--card-text-color-main);
 
         &:hover {
-            color: var(--card-text-color-main);
+            opacity: 0.8;
         }
     }
 }
@@ -144,9 +144,7 @@
 
 /* Compact style article list */
 .article-list--compact {
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--shadow-l1);
-    background-color: var(--card-background);
+    @include card-style;
     --image-size: 50px;
 
     @include respond(md) {
@@ -204,14 +202,12 @@
 /* Tile style article list */
 .article-list--tile {
     article {
-        border-radius: var(--card-border-radius);
-        overflow: hidden;
         position: relative;
         width: 250px;
         height: 150px;
-        box-shadow: var(--shadow-l1);
+        @include card-style;
+        overflow: hidden;
         transition: box-shadow 0.3s ease;
-        background-color: var(--card-background);
 
         &:hover {
             box-shadow: var(--shadow-l2);

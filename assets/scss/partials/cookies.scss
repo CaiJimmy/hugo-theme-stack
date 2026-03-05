@@ -16,7 +16,7 @@
     margin: 0 auto;
     background: var(--card-background);
     border-radius: var(--card-border-radius);
-    box-shadow: var(--shadow-l3);
+    box-shadow: var(--shadow-l2);
     padding: var(--card-padding);
     display: flex;
     flex-direction: column;
@@ -70,7 +70,6 @@
     }
 
     @include respond(md) {
-        width: auto;
         margin-left: auto;
         align-self: center;
     }
@@ -186,8 +185,7 @@
 
 // Comments placeholder when consent not given
 .consent-placeholder {
-    background: var(--card-background);
-    border-radius: var(--card-border-radius);
+    @include card-style;
     padding: var(--card-padding);
     text-align: center;
     color: var(--card-text-color-secondary);
