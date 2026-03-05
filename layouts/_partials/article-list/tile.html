@@ -1,4 +1,4 @@
-{{ $image := partial "helper/image" (dict "Image" .context.Params.image "Resources" .context.Resources) }}
+{{ $image := partial "helper/image" (dict "Image" .context.Params.image "Resources" .context.Resources "Context" .context) }}
 <article class="{{ if $image }}has-image{{ end }}">
     <a href="{{ .context.RelPermalink }}">
         {{ if $image }}

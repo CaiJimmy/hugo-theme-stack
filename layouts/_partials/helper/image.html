@@ -1,6 +1,7 @@
 /// Params:
 ///     Resources: Where to search for images
 ///     Image: Image URL
+///     Context: page context (used to access the configuration)
 
 /// Returns:
 ///     Resource: Hugo image resource object
@@ -35,7 +36,7 @@
     {{ end }}
 
     {{ if $resource }}
-        {{ if reflect.IsImageResourceProcessable $resource }}
+        {{ if and .Context.Site.Params.imageProcessing.autoOrient (reflect.IsImageResourceProcessable $resource) }}
             {{ $filter := images.AutoOrient }}
             {{ $resource = $resource | images.Filter $filter }}
             {{ if $local }}

@@ -1,4 +1,4 @@
-{{- $image := partial "helper/image" (dict "Resources" .Page.Resources "Image" .Destination) -}}
+{{- $image := partial "helper/image" (dict "Resources" .Page.Resources "Image" .Destination "Context" .Page) -}}
 {{- $alt := .PlainText | safeHTML -}}
 {{- $title := .Title | markdownify -}}
 
