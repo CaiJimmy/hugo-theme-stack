@@ -1,5 +1,5 @@
 <div class="article-list--compact links">
-    {{ range $i, $link := .Params.links }}
+    {{ range $link := .Params.links }}
         <article>
             <a href="{{ $link.website }}" target="_blank" rel="noopener">
                 <div class="article-details">
@@ -18,13 +18,19 @@
                 {{- $image := partial "helper/image" (dict "Image" $link.image "Resources" $.Resources) -}}
                 {{- with $image -}}
                     <div class="article-image">
-                        <img 
-                            src="{{ .Permalink }}" 
-                            loading="lazy"
-                            {{ with $link.alt }} alt="{{ . }}"{{ end }}
-                            {{ with .Width }} width="{{ . }}"{{ end }}
-                            {{ with .Height }} height="{{ . }}"{{ end }}
-                        >
+                       {{ partial "helper/thumbnail-image" (dict 
+                            "Resource" .Resource
+                            "Width" 60
+                            "Height" 60
+                            "Resize" $.Site.Params.ImageProcessing.Thumbnail.Enabled
+                            "Attributes" (dict
+                                "src" $image.Permalink
+                                "alt" $link.Title
+                                "loading" "lazy"
+                                "width" .Width
+                                "height" .Height
+                            )
+                        ) }}
                     </div>
                 {{ end }}
             </a>
