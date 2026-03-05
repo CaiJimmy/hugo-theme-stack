@@ -47,14 +47,15 @@
 .subsection-list {
     overflow-x: auto;
     margin-left: -24px;
+    margin-right: -24px;
 
     .article-list--tile {
         display: flex;
-        padding: var(--spacing-xs) 0 var(--spacing-2xl) var(--spacing-xl);
+        padding: var(--spacing-xs) 24px 24px var(--spacing-xl);
         width: max-content;
+        gap: var(--spacing-lg);
 
         article {
-            margin-right: var(--spacing-lg);
             flex-shrink: 0;
 
             .article-title {

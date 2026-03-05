@@ -1,8 +1,8 @@
 {{ $related := (.Site.RegularPages.Related .) | first 5 }}
 {{ with $related }}
-<aside class="related-content--wrapper">
+<aside class="related-content">
     <h2 class="section-title">{{ T "article.relatedContent" }}</h2>
-    <div class="related-content">
+    <div class="subsection-list">
         <div class="flex article-list--tile">
             {{ range . }}
                 {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "articleList") }}

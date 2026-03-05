@@ -230,33 +230,6 @@
     }
 }
 
-.related-content {
-    overflow-x: auto;
-    padding-bottom: var(--spacing-md);
-
-    &>.flex {
-        float: left;
-    }
-
-    article {
-        margin-right: var(--spacing-md);
-        flex-shrink: 0;
-        overflow: hidden;
-
-        .article-title {
-            font-size: 1.8rem;
-            margin: 0;
-        }
-
-        &.has-image {
-            .article-details {
-                padding: 20px;
-                background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
-            }
-        }
-    }
-}
-
 .article-content {
     font-family: var(--article-font-family);
     font-size: var(--article-font-size);
