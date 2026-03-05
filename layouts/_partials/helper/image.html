@@ -14,6 +14,7 @@
     {{ $url := urls.Parse .Image }}
     {{ $permalink := .Image }}
     {{ $resource := "" }}
+    {{ $local := true }}
 
     {{ if not (in (slice "https" "http") $url.Scheme) }}
         {{/* Local image */}}
@@ -26,6 +27,7 @@
                 {{ errorf "%s" . }}
             {{ else with .Value }}
                 {{ $resource = . }}
+                {{ $local = false }}
             {{ else }}
                 {{ errorf "Unable to get remote resource %q" $url }}
             {{ end }}
@@ -33,14 +35,21 @@
     {{ end }}
 
     {{ if $resource }}
-        {{ $filter := images.AutoOrient }}
-        {{ $resource = $resource | images.Filter $filter }}
+        {{ if reflect.IsImageResourceProcessable $resource }}
+            {{ $filter := images.AutoOrient }}
+            {{ $resource = $resource | images.Filter $filter }}
+            {{ if $local }}
+                {{ $permalink = $resource.RelPermalink }}
+            {{ end }}
+        {{ end }}
+        
         {{ if reflect.IsImageResourceWithMeta $resource }}
             {{ $result = dict
                 "Resource" $resource
                 "Permalink" $permalink
                 "Height" $resource.Height
                 "Width" $resource.Width
+                "Local" $local
             }}
         {{ else }}
             {{ $result = dict
