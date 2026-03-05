@@ -3,7 +3,7 @@
 <aside>
     <h2 class="section-title">{{ T "article.relatedContent" }}</h2>
     <div class="subsection-list">
-        <div class="flex article-list--tile">
+        <div class="article-list--tile">
             {{ range . }}
                 {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "articleList") }}
             {{ end }}
