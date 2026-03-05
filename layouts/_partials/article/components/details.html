@@ -32,7 +32,7 @@
     {{ $showDate := not $Page.Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
-    <footer class="article-time">
+    <footer class="article-footer">
         {{ if $showDate }}
             <div>
                 {{ partial "helper/icon" "date" }}
