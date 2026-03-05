@@ -20,7 +20,6 @@
     {{ if not (in (slice "https" "http") $url.Scheme) }}
         {{/* Local image */}}
         {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
-        {{ $permalink = $resource.RelPermalink }}
     {{ else }}
         {{/* Remote image */}}
         {{ with try (resources.GetRemote $url) }}
@@ -39,11 +38,12 @@
         {{ if and .Context.Site.Params.imageProcessing.autoOrient (reflect.IsImageResourceProcessable $resource) }}
             {{ $filter := images.AutoOrient }}
             {{ $resource = $resource | images.Filter $filter }}
-            {{ if $local }}
-                {{ $permalink = $resource.RelPermalink }}
-            {{ end }}
         {{ end }}
-        
+
+        {{ if $local }}
+            {{ $permalink = $resource.RelPermalink }}
+        {{ end }}
+
         {{ if reflect.IsImageResourceWithMeta $resource }}
             {{ $result = dict
                 "Resource" $resource
