@@ -19,7 +19,7 @@ a {
 .section-title {
     text-transform: uppercase;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: var(--spacing-sm);
     display: block;
     font-size: 1.6rem;
     font-weight: bold;

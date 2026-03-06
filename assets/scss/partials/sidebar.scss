@@ -35,7 +35,7 @@
     position: relative;
 
     --sidebar-avatar-size: 100px;
-    --sidebar-element-separation: 20px;
+    --sidebar-element-separation: var(--spacing-lg);
     --emoji-size: 40px;
     --emoji-font-size: 20px;
 
@@ -48,7 +48,7 @@
 
     @include respond(2xl) {
         --sidebar-avatar-size: 120px;
-        --sidebar-element-separation: 25px;
+        --sidebar-element-separation: var(--spacing-xl);
         --emoji-size: 40px;
     }
 
@@ -67,7 +67,7 @@
             }
 
             .site-meta {
-                gap: 5px;
+                gap: var(--spacing-xs);
             }
 
             .site-name {
@@ -144,7 +144,7 @@
     .site-meta {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--spacing-sm);
         justify-content: center;
     }
 

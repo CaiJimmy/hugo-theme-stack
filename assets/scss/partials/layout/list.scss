@@ -1,11 +1,9 @@
 .section-card {
-    border-radius: var(--card-border-radius);
-    background-color: var(--card-background);
+    @include card-style;
     padding: var(--small-card-padding);
-    box-shadow: var(--shadow-l1);
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--spacing-lg);
 
     --separation: 15px;
 
@@ -47,18 +45,24 @@
 }
 
 .subsection-list {
-    overflow-x: auto;
-    margin-left: -24px;
+    --shadow-overlap-x: calc(var(--shadow-l2-blur) + 4px);
+    --shadow-overlap-y: calc(var(--shadow-l2-blur) + var(--shadow-l2-y) + 4px);
 
+    overflow-x: auto;
+
+    /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2)
+    /// so that the shadow is not cut off
+    margin-left: calc(var(--shadow-overlap-x) * -1);
+    margin-right: calc(var(--shadow-overlap-x) * -1);
+    margin-bottom: calc(var(--shadow-overlap-y) * -1);
+    
     .article-list--tile {
         display: flex;
-        padding: 8px 0 34px 24px;
+        padding: var(--spacing-xs) var(--shadow-overlap-x) var(--shadow-overlap-y) var(--shadow-overlap-x);
         width: max-content;
+        gap: var(--spacing-lg);
 
         article {
-            width: 250px;
-            height: 150px;
-            margin-right: 20px;
             flex-shrink: 0;
 
             .article-title {
@@ -67,7 +71,7 @@
             }
 
             .article-details {
-                padding: 20px;
+                padding: var(--spacing-lg);
             }
         }
     }

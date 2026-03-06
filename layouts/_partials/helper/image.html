@@ -1,27 +1,33 @@
 /// Params:
 ///     Resources: Where to search for images
 ///     Image: Image URL
+///     Context: page context (used to access the configuration)
 
 /// Returns:
-///     Local: true if the image is local, false if it is remote
-///     Resource: Hugo image resource object, not nil if the image is local
+///     Resource: Hugo image resource object
 ///     Permalink: Image URL
 ///     Height: Image height
 ///     Width: Image width
 
-{{ $result := "" }}
+{{ $result := dict }}
 
 {{ if .Image }}
     {{ $url := urls.Parse .Image }}
+    {{ $permalink := .Image }}
     {{ $resource := "" }}
+    {{ $local := true }}
+
     {{ if not (in (slice "https" "http") $url.Scheme) }}
+        {{/* Local image */}}
         {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
     {{ else }}
+        {{/* Remote image */}}
         {{ with try (resources.GetRemote $url) }}
             {{ with .Err }}
                 {{ errorf "%s" . }}
             {{ else with .Value }}
                 {{ $resource = . }}
+                {{ $local = false }}
             {{ else }}
                 {{ errorf "Unable to get remote resource %q" $url }}
             {{ end }}
@@ -29,24 +35,30 @@
     {{ end }}
 
     {{ if $resource }}
-        {{- $isSVG := eq $resource.MediaType.SubType "svg"  -}}
-        {{- if $isSVG -}}
+        {{ if and .Context.Site.Params.imageProcessing.autoOrient (reflect.IsImageResourceProcessable $resource) }}
+            {{ $filter := images.AutoOrient }}
+            {{ $resource = $resource | images.Filter $filter }}
+        {{ end }}
+
+        {{ if $local }}
+            {{ $permalink = $resource.RelPermalink }}
+        {{ end }}
+
+        {{ if reflect.IsImageResourceWithMeta $resource }}
             {{ $result = dict
-                "Local" true
                 "Resource" $resource
-                "Permalink" $resource.RelPermalink
-                "Height" nil
-                "Width" nil
-            }}
-        {{- else -}}            
-            {{- $result = dict
-                "Local" true
-                "Resource" $resource
-                "Permalink" $resource.RelPermalink
+                "Permalink" $permalink
                 "Height" $resource.Height
                 "Width" $resource.Width
             }}
-        {{- end -}}
+        {{ else }}
+            {{ $result = dict
+                "Resource" $resource
+                "Permalink" $permalink
+                "Height" nil
+                "Width" nil
+            }}
+        {{ end }}
     {{ end }}
 {{ end }}
 

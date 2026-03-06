@@ -120,9 +120,6 @@
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
 
-    --pre-background-color: #272822;
-    --pre-text-color: #f8f8f2;
-
     --code-background-color: rgba(0, 0, 0, 0.12);
     --code-text-color: #808080;
 
@@ -147,11 +144,13 @@
 *   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
 */
 :root {
-    --shadow-l1: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l2: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-        0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l1-y: 4px;
+    --shadow-l1-blur: 8px;
+    --shadow-l2-y: 10px;
+    --shadow-l2-blur: 20px;
+
+    --shadow-l1: 0px var(--shadow-l1-y) var(--shadow-l1-blur) rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l2: 0px var(--shadow-l2-y) var(--shadow-l2-blur) rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
 [data-scheme="light"] {
@@ -169,5 +168,66 @@
 :root {
     --menu-icon-separation: 40px;
     --container-padding: 15px;
+
+    @include respond(md) {
+        --container-padding: 20px;
+    }
+
     --widget-separation: var(--section-separation);
+
+    /* Spacing tokens */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 25px;
+    --spacing-2xl: 30px;
+    --spacing-3xl: 40px;
+
+    /* Article image height variables */
+    --article-image-height: 150px;
+
+    @include respond(md) {
+        --article-image-height: 200px;
+    }
+
+    @include respond(xl) {
+        --article-image-height: 250px;
+    }
+
+    /* Mermaid component variables */
+    --mermaid-toolbar-btn-bg: rgba(255, 255, 255, 0.95);
+    --mermaid-toolbar-btn-text: #333;
+    --mermaid-modal-bg: rgba(0, 0, 0, 0.95);
+    --mermaid-modal-content-bg: #fff;
+    --mermaid-modal-btn-bg: #fff;
+    --mermaid-modal-btn-hover: #ddd;
+
+    &[data-scheme="dark"] {
+        --mermaid-toolbar-btn-bg: rgba(0, 0, 0, 0.85);
+        --mermaid-toolbar-btn-text: #eee;
+        --mermaid-modal-content-bg: #1e1e1e;
+        --mermaid-modal-btn-bg: #333;
+        --mermaid-modal-btn-hover: #444;
+    }
+
+    /* Article compact image size */
+    --article-compact-image-size: 50px;
+
+    @include respond(md) {
+        --article-compact-image-size: 60px;
+    }
+
+    /* Widget icon size */
+    --widget-icon-size: 32px;
+
+    /* Article list tile variables */
+    --article-tile-width: 250px;
+    --article-tile-height: 150px;
+    --article-tile-overlay-bg: rgba(0, 0, 0, 0.25);
+    --article-tile-text-color: #fff;
+
+    &[data-scheme="dark"] {
+        --article-tile-overlay-bg: rgba(0, 0, 0, 0.45);
+    }
 }

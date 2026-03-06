@@ -1,4 +1,5 @@
-{{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- /* 1. 使用新版统一的页面获取方式 */ -}}
+{{- $pages := partial "helper/pages.html" .Site.Home -}}
 {{- $result := slice -}}
 
 {{- range $pages -}}
@@ -6,6 +7,7 @@
     {{- $permalink := .RelPermalink -}}
     {{- $type := "article" -}}
 
+    {{- /* 2. 恢复你的核心逻辑：特殊处理“说说”分类 */ -}}
     {{- if eq .Section "shuoshuo" -}}
         {{- $type = "shuoshuo" -}}
         {{- if .Title -}}
@@ -17,7 +19,8 @@
 
     {{- $data := dict "title" $title "date" .Date "permalink" $permalink "content" (.Plain) "type" $type -}}
 
-    {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
+    {{- /* 3. 使用新版图片处理函数（包含 Context 参数） */ -}}
+    {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
     {{- if $image -}}
         {{- $data = merge $data (dict "image" $image.Permalink) -}}
     {{- end -}}
