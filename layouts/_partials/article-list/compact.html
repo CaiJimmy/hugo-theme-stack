@@ -4,53 +4,27 @@
             <h2 class="article-title">
                 {{- .Title -}}
             </h2>
-            
-            {{/* 1. 集成新版：支持显示描述文字或分类下的文章数 */}}
-            {{- $description := .Params.description -}}
-            {{- $IsTerm := in .Kind "term" -}}
-            {{- if $IsTerm -}}
-                {{- $description = $description | default (T "list.page" (len .Pages)) -}}
-            {{- end -}}
-
-            {{- if or $description (not .Date.IsZero) -}}
-                <footer class="article-meta">
-                    {{- if or $IsTerm .Date.IsZero -}}
-                        <span class="article-description">{{- $description -}}</span>
-                    {{- else if not .Date.IsZero -}}
-                        {{/* 2. 恢复你的自定义：相对时间逻辑 + Hover 提示 */}}
-                        <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}' title='发布于 {{ .Date.Format "2006-01-02 15:04" }}'>
-                            {{- $duration := sub now.Unix .Date.Unix -}}
-                            {{- if lt $duration 0 -}}刚刚
-                            {{- else if lt $duration 60 -}}刚刚
-                            {{- else if lt $duration 3600 -}}{{ div $duration 60 }} 分钟前
-                            {{- else if lt $duration 86400 -}}{{ div $duration 3600 }} 小时前
-                            {{- else if lt $duration 2592000 -}}{{ div $duration 86400 }} 天前
-                            {{- else if lt $duration 31536000 -}}{{ div $duration 2592000 }} 个月前
-                            {{- else -}}{{ div $duration 31536000 }} 年前
-                            {{- end -}}
-                        </time>
-                    {{- end }}
-                </footer>
-            {{- end -}}
+            <footer class="article-time">
+                {{/* 修改为相对时间，并增加 hover 提示具体精确到分钟的时间 */}}
+                <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}' title='发布于 {{ .Date.Format "2006-01-02 15:04" }}'>
+                    {{- $duration := sub now.Unix .Date.Unix -}}
+                    {{- if lt $duration 0 -}}刚刚
+                    {{- else if lt $duration 60 -}}刚刚
+                    {{- else if lt $duration 3600 -}}{{ div $duration 60 }} 分钟前
+                    {{- else if lt $duration 86400 -}}{{ div $duration 3600 }} 小时前
+                    {{- else if lt $duration 2592000 -}}{{ div $duration 86400 }} 天前
+                    {{- else if lt $duration 31536000 -}}{{ div $duration 2592000 }} 个月前
+                    {{- else -}}{{ div $duration 31536000 }} 年前
+                    {{- end -}}
+                </time>
+            </footer>
         </div>
 
-        {{/* 3. 集成新版：使用更高效的缩略图处理函数 */}}
-        {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
+        {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
         {{ if $image }}
         <div class="article-image">
-            {{ partial "helper/thumbnail-image" (dict 
-                "Resource" $image.Resource
-                "Width" 60
-                "Height" 60
-                "Resize" .Site.Params.ImageProcessing.Thumbnail.Enabled
-                "Attributes" (dict
-                    "src" $image.Permalink
-                    "alt" .Title
-                    "loading" "lazy"
-                    "width" $image.Width
-                    "height" $image.Height
-                )
-            ) }}
+            <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"
+                loading="lazy">
         </div>
         {{ end }}
     </a>

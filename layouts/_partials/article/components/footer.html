@@ -1,4 +1,4 @@
-<footer class="article-meta article-footer">
+<footer class="article-footer">
     <style>
         /* 1. 移除移动端点击链接时的长方形高亮背景 */
         .article-edit-container a {
@@ -11,12 +11,12 @@
             text-decoration: underline !important;
         }
 
-        /* 3. 核心修改：添加上方虚线分割线 */
+        /* 3. 核心修改：添加上方虚线分割线，参考说说页面卡片底部样式 */
         .article-edit-container {
-            border-top: 1px dashed var(--card-separator-color); /* 使用主题变量代替硬编码 */
-            padding-top: 15px;      
-            margin-top: 20px;       
-            width: 100%;            
+            border-top: 1px dashed var(--body-background); /* 虚线分割线 */
+            padding-top: 15px;      /* 上内边距，与线保持距离 */
+            margin-top: 20px;       /* 上外边距，与上方版权/标签区域保持距离 */
+            width: 100%;            /* 确保分割线横贯全屏 */
             display: flex; 
             align-items: center; 
             gap: 10px; 
@@ -24,31 +24,18 @@
         }
     </style>
 
-    {{/* 1. 标签部分 (标准组件) */}}
     {{ partial "article/components/tags" . }}
 
-    {{/* 2. 版权声明 (采用新版 inline-meta 类名) */}}
     {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
-    <section class="article-copyright inline-meta">
+    <section class="article-copyright">
         {{ partial "helper/icon" "copyright" }}
         <span>{{ default .Site.Params.article.license.default .Params.license | markdownify }}</span>
     </section>
     {{ end }}
-
-    {{/* 3. 最后更新时间 (新版本功能) */}}
-    {{- if ne .Lastmod .Date -}}
-    <section class="article-lastmod inline-meta">
-        {{ partial "helper/icon" "clock" }}
-        <span>
-            {{ T "article.lastUpdatedOn" }} {{ .Lastmod | time.Format .Site.Params.dateFormat.lastUpdated }}
-        </span>
-    </section>
-    {{- end -}}
     
-    {{/* 4. GitHub 编辑与 Git Hash (恢复你的自定义内容) */}}
     {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
     <section class="article-edit-container">
-        {{/* 左侧：编辑链接 */}}
+        {{/* 左侧：编辑链接 (颜色 #1e90ff，字号 14px) */}}
         <a style="color: #1e90ff; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 8px;" 
            href="https://github.com/iwyang/iwyang.github.io/edit/develop/content/{{ replace .File.Path "\\" "/" }}" 
            target="_blank" 
@@ -58,8 +45,9 @@
             <span>编辑此页</span>
         </a>
         
-        {{/* 右侧：Git Hash */}}
+        {{/* 右侧：Git Hash (带竖线) */}}
         {{- if .GitInfo -}}
+            {{/* 竖线分隔符：颜色改为 #1e90ff，字号 14px */}}
             <span style="font-size: 14px; color: #1e90ff;">|</span>
 
             {{- $hash := substr .GitInfo.Hash 0 7 -}}

@@ -1,26 +1,12 @@
 {{- $IsList := .IsList -}}
 {{- $Page := .Page -}}
 <div class="article-details">
-    {{/* 1. 分类标签 (采用新版彩色背景逻辑) */}}
-    {{ if $Page.Params.categories }}
-    <header class="article-category">
-        {{ range ($Page.GetTerms "categories") }}
-            {{ $color := partial "helper/color-from-str" .LinkTitle }}
-            {{ $BackgroundColor := default $color.BackgroundColor .Params.style.background }}
-            {{ $TextColor := default $color.TextColor .Params.style.color }}
-            <a href="{{ .RelPermalink }}" style="background-color: {{ $BackgroundColor | safeCSS }}; color: {{ $TextColor | safeCSS }};">
-                {{ .LinkTitle }}
-            </a>
-        {{ end }}
-    </header>
-    {{ end }}
-
-    {{/* 2. 标题与置顶 (恢复你的置顶样式) */}}
+    {{/* 1. 标题与置顶部分 */}}
     <div class="article-title-wrapper">
         <h2 class="article-title">
             <a href="{{ $Page.RelPermalink }}">
                 {{ if or $Page.Weight $Page.Params.pinned }}
-                    <span class="icon-pinned" style="display: inline-block; background: linear-gradient(135deg, #56a3fc 0%, #9e58ff 100%); color: #ffffff; font-size: 0.6em; padding: 2px 6px; border-radius: 4px; vertical-align: 0.2em; margin-right: 8px; font-weight: normal; line-height: 1.2; box-shadow: 0 2px 4px rgba(158, 88, 255, 0.2); flex-shrink: 0;">置顶</span>
+                <span class="icon-pinned" style="display: inline-block; background: linear-gradient(135deg, #56a3fc 0%, #9e58ff 100%); color: #ffffff; font-size: 0.6em; padding: 2px 6px; border-radius: 4px; vertical-align: 0.2em; margin-right: 8px; font-weight: normal; line-height: 1.2; box-shadow: 0 2px 4px rgba(158, 88, 255, 0.2); flex-shrink: 0;">置顶</span>
                 {{ end }}
                 {{- $Page.Title -}}
             </a>
@@ -33,62 +19,78 @@
         {{ end }}
     </div>
 
-    {{/* 3. 元数据统计栏 (合并你的相对时间逻辑与新版布局) */}}
-    {{ $showReadingTime := $Page.Params.readingTime | default ($Page.Site.Params.article.readingTime) }}
+    {{/* 2. 元数据统计栏 (时间、分类、阅读时间) */}}
+    {{ $showReadingTime := $Page.Params.readingTime | default (.Site.Params.article.readingTime) }}
     {{ $showDate := not $Page.Date.IsZero }}
-    {{ $showTime := or $showDate $showReadingTime }}
-    {{ $showTranslations := $Page.IsTranslated }}
-    {{ $showTags := and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
-    
-    {{ if or $showTime $showTranslations $showTags }}
-    <footer class="article-meta">
-        {{ if $showTime }}
-            <div class="inline-meta">
-                {{/* 发布时间 + 你的相对时间计算 */}}
-                {{ if $showDate }}
-                    {{ partial "helper/icon" "date" }}
-                    <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}' title='发布于 {{ $Page.Date.Format "2006-01-02 15:04" }}'>
-                        {{- $duration := sub now.Unix $Page.Date.Unix -}}
-                        {{- if lt $duration 0 -}}刚刚
-                        {{- else if lt $duration 60 -}}刚刚
-                        {{- else if lt $duration 3600 -}}{{ div $duration 60 }} 分钟前
-                        {{- else if lt $duration 86400 -}}{{ div $duration 3600 }} 小时前
-                        {{- else if lt $duration 2592000 -}}{{ div $duration 86400 }} 天前
-                        {{- else if lt $duration 31536000 -}}{{ div $duration 2592000 }} 个月前
-                        {{- else -}}{{ div $duration 31536000 }} 年前
-                        {{- end -}}
-                    </time>
-                {{ end }}
-
-                {{/* 阅读时间 */}}
-                {{ if $showReadingTime }}
-                    {{ partial "helper/icon" "clock" }}
-                    <time class="article-time--reading">
-                        {{ T "article.readingTime" $Page.ReadingTime }}
-                    </time>
-                {{ end }}
+    {{ $showFooter := or $showDate $showReadingTime }}
+    {{ if $showFooter }}
+    <footer class="article-meta-info" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; color: var(--card-text-color-secondary) !important; opacity: 1 !important; margin-top: 12px;">
+        
+        {{/* 2.1 发布时间 */}}
+        {{ if $showDate }}
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}' title='发布于 {{ $Page.Date.Format "2006-01-02 15:04" }}' style="color: inherit;">
+                    {{- $duration := sub now.Unix $Page.Date.Unix -}}
+                    {{- if lt $duration 0 -}}刚刚
+                    {{- else if lt $duration 60 -}}刚刚
+                    {{- else if lt $duration 3600 -}}{{ div $duration 60 }} 分钟前
+                    {{- else if lt $duration 86400 -}}{{ div $duration 3600 }} 小时前
+                    {{- else if lt $duration 2592000 -}}{{ div $duration 86400 }} 天前
+                    {{- else if lt $duration 31536000 -}}{{ div $duration 2592000 }} 个月前
+                    {{- else -}}{{ div $duration 31536000 }} 年前
+                    {{- end -}}
+                </time>
             </div>
         {{ end }}
 
-        {{/* 多语言版本 */}}
-        {{ if $showTranslations }}
-            <div class="inline-meta">
-                {{ partial "helper/icon" "language" }}
+        {{/* 2.2 分类 (新增图标与 title) */}}
+        {{ if $Page.Params.categories }}
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <div style="display: flex; gap: 5px;">
+                {{ range ($Page.GetTerms "categories") }}
+                    <a href="{{ .RelPermalink }}" title="查看分类：{{ .LinkTitle }}" style="color: inherit; text-decoration: none; font-size: inherit;">
+                        {{ .LinkTitle }}
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{/* 2.3 阅读时间 */}}
+        {{ if $showReadingTime }}
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; opacity: 1;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <time class="article-time--reading" style="color: inherit;">
+                    {{ T "article.readingTime" $Page.ReadingTime }}
+                </time>
+            </div>
+        {{ end }}
+    </footer>
+    {{ end }}
+
+    {{/* 3. 多语言版本 */}}
+    {{ if $Page.IsTranslated }}
+        <footer class="article-translations">
+            {{ partial "helper/icon" "language" }}
+            <div>
                 {{ range $Page.Translations }}
                     <a href="{{ .RelPermalink }}" class="link">{{ .Language.LanguageName }}</a>
                 {{ end }}
             </div>
-        {{ end }}
+        </footer>
+    {{ end }}
 
-        {{/* 底部标签 */}}
-        {{ if $showTags }}
-            <div class="article-tags inline-meta">
-                {{ partial "helper/icon" "tag" }}
+    {{/* 4. 底部标签栏 */}}
+    {{ if and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
+        <footer class="article-header-tags">
+            {{ partial "helper/icon" "tag" }}
+            <div>
                 {{ range ($Page.GetTerms "tags") }}
                     <a href="{{ .RelPermalink }}" class="link">{{ .LinkTitle }}</a>
                 {{ end }}
             </div>
-        {{ end }}
-    </footer>
+        </footer>
     {{ end }}
 </div>

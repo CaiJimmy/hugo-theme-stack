@@ -45,10 +45,7 @@
 
         .article-footer {
             margin: var(--card-padding);
-            // 采用新版本的 gap 变量，同时保留旧版本的 section 样式
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-2xl);
+            margin-top: 0;
 
             section:not(:first-child) {
                 margin-top: var(--card-padding);
@@ -114,15 +111,14 @@
     }
 
     li {
-        // 使用新版本的 spacing 变量
-        margin: var(--spacing-md) 0 var(--spacing-md) var(--spacing-lg);
-        padding: var(--spacing-xs);
+        margin: 15px 0 15px 20px;
+        padding: 5px;
 
         &>ol,
         &>ul {
-            margin-top: var(--spacing-sm);
-            padding-left: var(--spacing-sm);
-            margin-bottom: calc(var(--spacing-xs) * -1);
+            margin-top: 10px;
+            padding-left: 10px;
+            margin-bottom: -5px;
 
             &>li:last-child {
                 margin-bottom: 0;
@@ -141,12 +137,15 @@
 
     @function repeat($str, $n) {
         $result: "";
+
         @for $_ from 0 to $n {
             $result: $result + $str;
         }
+
         @return $result;
     }
 
+    // Support up to 6 levels of indentation for lists in ToCs
     @for $i from 0 to 5 {
         &>ul #{repeat("> li > ul", $i)}>li.active-class>a {
             $n: 25 + $i * 35;
@@ -183,7 +182,7 @@
 
 .article-toc {
     padding: 0 var(--card-padding);
-    margin-top: var(--spacing-lg);
+    margin-top: 20px;
 
     @include respond(lg) {
         display: none;
@@ -204,7 +203,7 @@
 
         summary {
             list-style: none;
-            padding: var(--spacing-md) var(--spacing-lg);
+            padding: 15px 20px;
             cursor: pointer;
 
             &::-webkit-details-marker {
@@ -214,7 +213,7 @@
             .article-toc-title {
                 display: flex;
                 align-items: center;
-                gap: var(--spacing-sm);
+                gap: 10px;
                 text-transform: uppercase;
                 font-size: 1.4rem;
                 font-weight: bold;
@@ -231,7 +230,6 @@
     }
 }
 
-// 恢复你之前的 related-content 自定义修改
 .related-content {
     overflow-x: auto;
     padding-bottom: 15px;
@@ -245,13 +243,17 @@
         flex-shrink: 0;
         overflow: hidden;
         width: 250px;
+        
+        /* 1. 将原本的 height: 150px 改为自适应，消除大片空白 */
         height: auto;
-        min-height: 80px;
+        min-height: 80px; /* 设置一个舒适的最小高度 */
 
+        /* 2. 彻底隐藏图片容器 */
         .article-image {
             display: none !important;
         }
 
+        /* 3. 新增详情区域样式：让文字在卡片中垂直/水平居中 */
         .article-details {
             padding: 20px;
             display: flex;
@@ -262,12 +264,13 @@
         }
 
         .article-title {
-            font-size: 1.6rem;
+            font-size: 1.6rem; /* 稍微缩小一点字号显得更精致 */
             margin: 0;
-            text-align: center;
-            color: var(--card-text-color-main) !important;
+            text-align: center; /* 文字居中对齐 */
+            color: var(--card-text-color-main) !important; /* 强制文字显示为主题的正常颜色 */
         }
 
+        /* 4. 移除带图片时附带的黑色半透明渐变遮罩 */
         &.has-image {
             .article-details {
                 background: transparent;
@@ -286,7 +289,12 @@
         margin: 1.5em 0;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         margin-inline-start: calc((var(--card-padding)) * -1);
         padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
         border-inline-start: var(--heading-border-size) solid var(--accent-color);
@@ -316,6 +324,7 @@
 
     figure {
         text-align: center;
+
         figcaption {
             font-size: 1.4rem;
             color: var(--card-text-color-secondary);
@@ -326,40 +335,16 @@
         position: relative;
         margin: 1.5em 0;
         border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: var(--spacing-md) calc(var(--card-padding) - var(--blockquote-border-size));
+        padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
 
         .cite {
             display: block;
             text-align: right;
             font-size: 0.75em;
-            a { text-decoration: underline; }
-        }
-    }
 
-    // 新增：支持主题的 Alert 样式
-    blockquote.alert {
-        .alert-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-            font-weight: bold;
-        }
-
-        .alert-body {
-            > :last-child {
-                margin-bottom: 0;
-            }
-        }
-
-        $alert-types: note, tip, important, warning, caution;
-        @each $type in $alert-types {
-            &.alert-#{$type} {
-                border-color: var(--alert-#{$type}-color);
-                background-color: var(--alert-#{$type}-background);
-                .alert-title {
-                    color: var(--alert-#{$type}-color);
-                }
+            a {
+                text-decoration: underline;
             }
         }
     }
@@ -381,7 +366,8 @@
         font-family: var(--code-font-family);
     }
 
-    a, code {
+    a,
+    code {
         word-break: break-word;
     }
 
@@ -391,9 +377,11 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
-        gap: var(--spacing-sm);
+        gap: 10px;
 
-        figure { margin: 0; }
+        figure {
+            margin: 0;
+        }
     }
 
     pre {
@@ -406,7 +394,10 @@
         word-break: break-all;
         padding: var(--card-padding);
 
-        [dir="rtl"] & { direction: ltr; }
+        //  keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
 
         code {
             color: unset;
@@ -421,15 +412,19 @@
         padding: var(--card-padding);
         position: relative;
 
-        pre { background-color: transparent; }
-
         &:hover {
-            .copyCodeButton { opacity: 1; }
+            .copyCodeButton {
+                opacity: 1;
+            }
         }
 
-        [dir="rtl"] & { direction: ltr; }
+        // keep Codeblocks LTR
+        [dir="rtl"] & {
+            direction: ltr;
+        }
 
         pre {
+            margin: initial;
             padding: 0;
             margin: 0;
             width: auto;
@@ -466,13 +461,16 @@
         font-size: 0.96em;
     }
 
-    th, td {
+    th,
+    td {
         text-align: left;
         padding: 4px 8px 4px 10px;
         border: 1px solid var(--table-border-color);
     }
 
-    td { vertical-align: top; }
+    td {
+        vertical-align: top;
+    }
 
     tr:nth-child(even) {
         background-color: var(--tr-even-background-color);
@@ -489,7 +487,8 @@
         padding-bottom: 56.25%;
         overflow: hidden;
 
-        &>iframe, &>video {
+        &>iframe,
+        &>video {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -499,13 +498,33 @@
         }
     }
 
+    .gitlab-embed-snippets {
+        margin: 0 !important;
+
+        .file-holder.snippet-file-content {
+            margin-block-end: 0 !important;
+            margin-block-start: 0 !important;
+            margin-left: calc((var(--card-padding)) * -1) !important;
+            margin-right: calc((var(--card-padding)) * -1) !important;
+            padding: 0 var(--card-padding) !important;
+        }
+    }
+
     /// Negative margins
-    blockquote, figure, .highlight, pre, .gallery, .video-wrapper, .table-wrapper, .s_video_simple {
+    blockquote,
+    figure,
+    .highlight,
+    pre,
+    .gallery,
+    .video-wrapper,
+    .table-wrapper,
+    .s_video_simple {
         margin-left: calc((var(--card-padding)) * -1);
         margin-right: calc((var(--card-padding)) * -1);
         width: calc(100% + var(--card-padding) * 2);
     }
 
+    /// Make long KaTeX equations scrollable in the x-axis
     .katex-display>.katex {
         overflow-x: auto;
         overflow-y: hidden;
