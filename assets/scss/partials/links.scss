@@ -1,0 +1,178 @@
+.link-category {
+  & + & {
+    margin-top: 0;
+  }
+
+  &__title {
+    margin: 0 0 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--card-text-color-main);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--card-background-selected);
+  }
+}
+
+.link-grid {
+  // Mobile: list-compact container style
+  display: flex;
+  flex-direction: column;
+  @include card-style;
+  opacity: 0;
+
+  &.shuffled {
+    opacity: 1;
+  }
+
+  @include respond(md) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background-color: unset;
+    border-radius: unset;
+    box-shadow: none;
+  }
+
+  @include respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.link-grid--compact {
+  // Override the mobile list-container style from .link-grid
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: unset;
+  border-radius: unset;
+  box-shadow: none;
+
+  @include respond(md) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  @include respond(lg) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+}
+
+.link-card {
+  // Mobile: no independent card appearance, flat rows inside shared container
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+
+  &:not(:last-child) {
+    border-bottom: 1.5px solid var(--card-separator-color);
+  }
+
+  @include respond(md) {
+    @include card-style;
+
+    &:not(:last-child) {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--small-card-padding);
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--card-text-color-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include respond(md) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--card-text-color-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    background-color: var(--card-background-selected);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__avatar--placeholder {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--card-text-color-secondary);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  &--compact {
+    // Restore independent card appearance (compact grid has no shared container)
+    @include card-style;
+
+    &:not(:last-child) {
+      border-bottom: none;
+    }
+
+    a {
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px 8px;
+      gap: 8px;
+    }
+
+    .link-card__avatar {
+      width: 40px;
+      height: 40px;
+    }
+
+    .link-card__title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+}

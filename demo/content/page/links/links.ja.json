@@ -1,0 +1,46 @@
+[
+  {
+    "title": "友達",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "GitHub",
+        "description": "GitHubは、世界最大のソフトウェア開発プラットフォームです。",
+        "website": "https://github.com",
+        "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      }
+    ]
+  },
+  {
+    "title": "便利なリソース",
+    "links": [
+      {
+        "title": "TypeScript",
+        "description": "TypeScriptは、JavaScriptの静的型付けされたスーパーセットで、純粋なJavaScriptにコンパイルされます。",
+        "website": "https://www.typescriptlang.org",
+        "image": "ts-logo-128.jpg"
+      }
+    ]
+  },
+  {
+    "title": "冷凍冬眠ポッド",
+    "compact": true,
+    "links": [
+      {
+        "title": "Zenn",
+        "website": "https://zenn.dev",
+        "image": "https://zenn.dev/favicon.ico"
+      },
+      {
+        "title": "Qiita",
+        "website": "https://qiita.com",
+        "image": "https://qiita.com/favicon.ico"
+      },
+      {
+        "title": "note",
+        "website": "https://note.com",
+        "image": "https://note.com/favicon.ico"
+      }
+    ]
+  }
+]
