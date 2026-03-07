@@ -406,3 +406,21 @@
 .template-archives .archives-date a {
     color: inherit !important;
 }
+
+/* =================================================================
+   12. 彻底隐藏文章底部的“相关文章”板块并消除多余间距
+   ================================================================= */
+/* 针对新版主题：隐藏包含相关文章列表的无名 aside 容器，彻底消除因为隐藏内容导致的占位空白 */
+aside:has(.article-list--tile) {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 兼容老版本主题的类名，以防万一 */
+.related-content,
+aside.related-content {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
