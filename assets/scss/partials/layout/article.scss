@@ -488,9 +488,3 @@
         display: inline-block;
     }
 }
-
-/* 彻底隐藏“相关文章”板块及其标题 */
-.related-content,
-aside:has(.article-list--tile) {
-    display: none !important;
-}
