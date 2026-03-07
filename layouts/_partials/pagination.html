@@ -8,7 +8,6 @@
         {{- end -}}
     {{- end -}}
 
-
     <nav
         class="pagination"
         role="navigation"
@@ -70,12 +69,8 @@
                 {{- $diff := sub .PageNumber $curr -}}
                 {{- if lt $diff 0 -}}{{- $diff = mul $diff -1 -}}{{- end -}}
                 <a
-                    class="page-link {{ if eq .PageNumber $curr }}
-                        current
-                    {{ end }} {{ if gt $diff 1 }}hide-on-mobile{{ end }}"
-                    {{- if eq .PageNumber $curr -}}
-                        aria-current="page"
-                    {{- end -}}
+                    class="page-link {{ if eq .PageNumber $curr }}current{{ end }} {{ if gt $diff 1 }}hide-on-mobile{{ end }}"
+                    {{- if eq .PageNumber $curr -}}aria-current="page"{{- end -}}
                     href="{{ .URL }}"
                     aria-label="Page {{ .PageNumber }}">
                     {{ .PageNumber }}
@@ -125,16 +120,14 @@
                     max="{{ $pag.TotalPages }}"
                     autofocus
                     autocomplete="off"
-                    required />
+                    required>
                 <button type="submit" class="btn btn-primary">
                     {{ i18n "pagination.jump" | default "Go" }}
                 </button>
             </div>
             <div class="pagination-jump-hint">
                 <kbd>Enter</kbd>
-                <span
-                    >{{ i18n "pagination.pressEnter" | default "Press Enter to jump" }}</span
-                >
+                <span>{{ i18n "pagination.pressEnter" | default "Press Enter to jump" }}</span>
             </div>
         </form>
     </dialog>
