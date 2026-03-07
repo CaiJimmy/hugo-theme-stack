@@ -55,8 +55,7 @@ Use an array of category objects. Each object has a `title`, a `links` array, an
 
 Both category styles can be mixed freely in the same array.
 
-## Flat array format (legacy)
-
+## Flat array format
 A flat array of link objects (without `title`/`links` wrapper) is also supported and will be rendered as a single uncategorized standard grid:
 
 ```json
