@@ -9,27 +9,36 @@
 ///     Height: Image height
 ///     Width: Image width
 
-{{ $result := dict }}
+{{ $result := "" }}
 
 {{ if .Image }}
     {{ $url := urls.Parse .Image }}
     {{ $permalink := .Image }}
     {{ $resource := "" }}
     {{ $local := true }}
+    {{ $result = dict
+        "Resource" nil
+        "Permalink" $permalink
+        "Height" nil
+        "Width" nil
+    }}
 
     {{ if not (in (slice "https" "http") $url.Scheme) }}
         {{/* Local image */}}
         {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
+        {{ if $resource }}
+            {{ $permalink = $resource.RelPermalink }}
+        {{ end }}
     {{ else }}
         {{/* Remote image */}}
-        {{ with try (resources.GetRemote $url) }}
+        {{ with try (resources.GetRemote $url (dict "timeout" "10s")) }}
             {{ with .Err }}
-                {{ errorf "%s" . }}
+                {{ warnf "Failed to fetch remote resource %q: %s" $url . }}
             {{ else with .Value }}
                 {{ $resource = . }}
                 {{ $local = false }}
             {{ else }}
-                {{ errorf "Unable to get remote resource %q" $url }}
+                {{ warnf "Unable to get remote resource %q" $url }}
             {{ end }}
         {{ end }}   
     {{ end }}
@@ -38,10 +47,6 @@
         {{ if and .Context.Site.Params.imageProcessing.autoOrient (reflect.IsImageResourceProcessable $resource) }}
             {{ $filter := images.AutoOrient }}
             {{ $resource = $resource | images.Filter $filter }}
-        {{ end }}
-
-        {{ if $local }}
-            {{ $permalink = $resource.RelPermalink }}
         {{ end }}
 
         {{ if reflect.IsImageResourceWithMeta $resource }}
