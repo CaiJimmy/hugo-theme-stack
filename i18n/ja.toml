@@ -67,3 +67,8 @@ darkMode   = "ダークモード"
     [cookies.functional]
         title = "機能的"
         text  = "これらのCookieは、コメントや埋め込みコンテンツなどの機能を有効にします."
+
+[pagination]
+    jumpToPage = "ページにジャンプ"
+    jump       = "ジャンプ"
+    pressEnter = "Enter キーでジャンプ"
