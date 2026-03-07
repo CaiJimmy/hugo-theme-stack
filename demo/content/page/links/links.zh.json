@@ -1,0 +1,121 @@
+[
+  {
+    "title": "好伙伴",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "GitHub",
+        "description": "GitHub 是世界上最大的软件开发平台。",
+        "website": "https://github.com",
+        "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      },
+      {
+        "title": "Bilibili",
+        "description": "国内最知名的视频弹幕网站。",
+        "website": "https://www.bilibili.com",
+        "image": "https://www.bilibili.com/favicon.ico"
+      },
+      {
+        "title": "知乎",
+        "description": "中文互联网高质量的问答社区与创作者聚集的原创内容平台。",
+        "website": "https://www.zhihu.com",
+        "image": "https://static.zhihu.com/heifetz/favicon.ico"
+      },
+      {
+        "title": "少数派",
+        "description": "高质量数字生活指南，分享高效工作方法与优质应用。",
+        "website": "https://sspai.com",
+        "image": "https://cdn-static.sspai.com/favicon/sspai.ico"
+      }
+    ]
+  },
+  {
+    "title": "单向关注",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "阮一峰的网络日志",
+        "description": "科技、文化和工作，来自一个普通人的视角。",
+        "website": "https://www.ruanyifeng.com/blog/",
+        "image": "https://www.ruanyifeng.com/favicon.ico"
+      },
+      {
+        "title": "Randy's Blog",
+        "description": "关于软件工程、产品思维与个人成长的博客。",
+        "website": "https://lutaonan.com",
+        "image": "https://lutaonan.com/favicon.ico"
+      },
+      {
+        "title": "Piglei",
+        "description": "关于编程和人生的碎碎念。",
+        "website": "https://www.piglei.com",
+        "image": "https://www.piglei.com/favicon.ico"
+      }
+    ]
+  },
+  {
+    "title": "有用的资源",
+    "links": [
+      {
+        "title": "TypeScript",
+        "description": "TypeScript 是 JavaScript 的一个超集，它可以编译成纯 JavaScript。",
+        "website": "https://www.typescriptlang.org",
+        "image": "ts-logo-128.jpg"
+      },
+      {
+        "title": "MDN Web Docs",
+        "description": "Web 技术权威参考文档，涵盖 HTML、CSS 和 JavaScript。",
+        "website": "https://developer.mozilla.org",
+        "image": "https://developer.mozilla.org/favicon.ico"
+      },
+      {
+        "title": "Hugo",
+        "description": "世界上最快的网站构建框架，本博客主题基于 Hugo 构建。",
+        "website": "https://gohugo.io",
+        "image": "https://gohugo.io/favicon.ico"
+      },
+      {
+        "title": "Cloudflare",
+        "description": "全球领先的网络安全和性能优化服务平台。",
+        "website": "https://www.cloudflare.com",
+        "image": "https://www.cloudflare.com/favicon.ico"
+      }
+    ]
+  },
+  {
+    "title": "冷冻休眠舱",
+    "compact": true,
+    "links": [
+      {
+        "title": "V2EX",
+        "website": "https://www.v2ex.com",
+        "image": "https://www.v2ex.com/favicon.ico"
+      },
+      {
+        "title": "即刻",
+        "website": "https://okjike.com",
+        "image": "https://web.okjike.com/favicon.ico"
+      },
+      {
+        "title": "豆瓣",
+        "website": "https://www.douban.com",
+        "image": "https://www.douban.com/favicon.ico"
+      },
+      {
+        "title": "微博",
+        "website": "https://weibo.com",
+        "image": "https://weibo.com/favicon.ico"
+      },
+      {
+        "title": "掘金",
+        "website": "https://juejin.cn",
+        "image": "https://juejin.cn/favicon.ico"
+      },
+      {
+        "title": "CSDN",
+        "website": "https://www.csdn.net",
+        "image": "https://www.csdn.net/favicon.ico"
+      }
+    ]
+  }
+]

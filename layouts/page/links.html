@@ -1,0 +1,36 @@
+{{ define "body-class" }}
+    article-page
+{{ end }}
+
+{{ define "main" }}
+    {{ partial "article/components/links" . }}
+
+    {{ partial "article/article.html" . }}
+
+    {{ partial "article/components/related-content" . }}
+
+    {{ if not (eq .Params.comments false) }}
+        {{ partial "comments/include" . }}
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+
+    {{ partialCached "article/components/photoswipe" . }}
+    {{ partial "article/components/mermaid" . }}
+
+    {{- $opts := dict "minify" hugo.IsProduction -}}
+    {{- $linksScript := resources.Get "ts/links.ts" | js.Build $opts | fingerprint -}}
+    <script
+        src="{{ $linksScript.RelPermalink }}"
+        integrity="{{ $linksScript.Data.Integrity }}"
+        defer></script>
+    <noscript
+        ><style>
+            .link-grid {
+                opacity: 1 !important;
+            }
+        </style></noscript
+    >
+{{ end }}
+
+{{ define "right-sidebar" }}{{ end }}

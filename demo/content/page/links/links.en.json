@@ -1,0 +1,121 @@
+[
+  {
+    "title": "Friends",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "GitHub",
+        "description": "GitHub is the world's largest software development platform.",
+        "website": "https://github.com",
+        "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      },
+      {
+        "title": "DEV Community",
+        "description": "A constructive and inclusive social network for software developers.",
+        "website": "https://dev.to",
+        "image": "https://dev.to/favicon.ico"
+      },
+      {
+        "title": "Hacker News",
+        "description": "A social news website focusing on computer science and entrepreneurship.",
+        "website": "https://news.ycombinator.com",
+        "image": "https://news.ycombinator.com/favicon.ico"
+      },
+      {
+        "title": "Lobsters",
+        "description": "A technology-focused link aggregation site with active discussions.",
+        "website": "https://lobste.rs",
+        "image": "https://lobste.rs/favicon.ico"
+      }
+    ]
+  },
+  {
+    "title": "One-way Follow",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "Overreacted",
+        "description": "Personal blog by Dan Abramov, co-author of Redux and Create React App.",
+        "website": "https://overreacted.io",
+        "image": "https://overreacted.io/favicon.ico"
+      },
+      {
+        "title": "Julia Evans",
+        "description": "Zines and blog posts about programming, debugging, and learning.",
+        "website": "https://jvns.ca",
+        "image": "https://jvns.ca/favicon.ico"
+      },
+      {
+        "title": "Hillel Wayne",
+        "description": "Writes about formal methods, software correctness, and history of computing.",
+        "website": "https://www.hillelwayne.com",
+        "image": "https://www.hillelwayne.com/favicon.ico"
+      }
+    ]
+  },
+  {
+    "title": "Useful Resources",
+    "links": [
+      {
+        "title": "TypeScript",
+        "description": "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.",
+        "website": "https://www.typescriptlang.org",
+        "image": "ts-logo-128.jpg"
+      },
+      {
+        "title": "MDN Web Docs",
+        "description": "The definitive reference for web technologies: HTML, CSS, and JavaScript.",
+        "website": "https://developer.mozilla.org",
+        "image": "https://developer.mozilla.org/favicon.ico"
+      },
+      {
+        "title": "Hugo",
+        "description": "The world's fastest framework for building websites, powering this theme.",
+        "website": "https://gohugo.io",
+        "image": "https://gohugo.io/favicon.ico"
+      },
+      {
+        "title": "Cloudflare",
+        "description": "The leading network security and performance platform.",
+        "website": "https://www.cloudflare.com",
+        "image": "https://www.cloudflare.com/favicon.ico"
+      }
+    ]
+  },
+  {
+    "title": "Cryosleep Pod",
+    "compact": true,
+    "links": [
+      {
+        "title": "Reddit",
+        "website": "https://www.reddit.com",
+        "image": "https://www.reddit.com/favicon.ico"
+      },
+      {
+        "title": "Twitter",
+        "website": "https://twitter.com",
+        "image": "https://twitter.com/favicon.ico"
+      },
+      {
+        "title": "Mastodon",
+        "website": "https://joinmastodon.org",
+        "image": "https://joinmastodon.org/favicon.ico"
+      },
+      {
+        "title": "Bluesky",
+        "website": "https://bsky.app",
+        "image": "https://bsky.app/favicon.ico"
+      },
+      {
+        "title": "Lemmy",
+        "website": "https://join-lemmy.org",
+        "image": "https://join-lemmy.org/favicon.ico"
+      },
+      {
+        "title": "Tildes",
+        "website": "https://tildes.net",
+        "image": "https://tildes.net/favicon.ico"
+      }
+    ]
+  }
+]

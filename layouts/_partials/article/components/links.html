@@ -1,39 +1,149 @@
-<div class="article-list--compact links">
-    {{ range $link := .Params.links }}
-        <article>
-            <a href="{{ $link.website }}" target="_blank" rel="noopener">
-                <div class="article-details">
-                    <h2 class="article-title">
-                        {{- $link.title -}}
-                    </h2>
-                    <footer class="article-meta">
-                        {{ with $link.description }}
-                            {{ . }}
-                        {{ else }}
-                            {{ $link.website }}
-                        {{ end }}
-                    </footer>
-                </div>
+{{- $page := . -}}
+{{- $data := false -}}
+{{- $dataFile := printf "links.%s.json" .Language.Lang -}}
+{{- with .Resources.GetMatch $dataFile -}}
+    {{- $data = . | transform.Unmarshal -}}
+{{- end -}}
 
-                {{- $image := partial "helper/image" (dict "Image" $link.image "Resources" $.Resources "Context" .) -}}
-                {{- with $image -}}
-                    <div class="article-image">
-                       {{ partial "helper/thumbnail-image" (dict 
-                            "Resource" .Resource
-                            "Width" 60
-                            "Height" 60
-                            "Resize" $.Site.Params.ImageProcessing.Thumbnail.Enabled
-                            "Attributes" (dict
-                                "src" $image.Permalink
-                                "alt" $link.title
-                                "loading" "lazy"
-                                "width" .Width
-                                "height" .Height
-                            )
-                        ) }}
-                    </div>
+{{ if $data }}
+    {{- $isFlat := false -}}
+    {{- with index $data 0 -}}
+        {{- if not .links -}}
+            {{- $isFlat = true -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{ if $isFlat }}
+        {{/* Legacy flat array format — render as a single standard grid with no category title */}}
+        <section class="link-category">
+            <div class="link-grid">
+                {{ range $link := $data }}
+                    {{- $alt := or $link.alt $link.title -}}
+                    <article class="link-card">
+                        <a
+                            href="{{ $link.website }}"
+                            target="_blank"
+                            rel="noopener">
+                            <div class="link-card__info">
+                                <h3 class="link-card__title">
+                                    {{ $link.title }}
+                                </h3>
+                                <p class="link-card__description">
+                                    {{ with $link.description }}
+                                        {{ . }}
+                                    {{ else }}
+                                        {{ $link.website }}
+                                    {{ end }}
+                                </p>
+                            </div>
+                            <div class="link-card__avatar">
+                                {{ with $link.image }}
+                                    {{ $permalink := . }}
+                                    {{ with ($page.Resources.GetMatch (printf "%s" (. | safeURL))) }}
+                                        {{ $permalink = .RelPermalink }}
+                                    {{ end }}
+                                    <img
+                                        src="{{ $permalink }}"
+                                        loading="lazy"
+                                        alt="{{ $alt }}" />
+                                {{ else }}
+                                    <span class="link-card__avatar--placeholder"
+                                        >{{ strings.SliceString $link.title 0 1 | upper }}</span
+                                    >
+                                {{ end }}
+                            </div>
+                        </a>
+                    </article>
                 {{ end }}
-            </a>
-        </article>
+            </div>
+        </section>
+    {{ else }}
+        {{/* Categorized array format: each element is { title, links, compact?, shuffle? } */}}
+        {{ range $category := $data }}
+            {{- $compact := $category.compact -}}
+            {{- $shuffle := $category.shuffle -}}
+            {{- $gridClass := "link-grid" -}}
+            {{- if $compact -}}
+                {{- $gridClass = "link-grid link-grid--compact" -}}
+            {{- end -}}
+            <section class="link-category">
+                <h2 class="link-category__title">{{ $category.title }}</h2>
+                <div class="{{ $gridClass }}"{{ if $shuffle }} data-shuffle{{ end }}>
+                    {{ if $compact }}
+                        {{ range $link := $category.links }}
+                            {{- $alt := or $link.alt $link.title -}}
+                            <article class="link-card link-card--compact">
+                                <a
+                                    href="{{ $link.website }}"
+                                    target="_blank"
+                                    rel="noopener"
+                                    title="{{ $link.title }}">
+                                    <div class="link-card__avatar">
+                                        {{ with $link.image }}
+                                            {{ $permalink := . }}
+                                            {{ with ($page.Resources.GetMatch (printf "%s" (. | safeURL))) }}
+                                                {{ $permalink = .RelPermalink }}
+                                            {{ end }}
+                                            <img
+                                                src="{{ $permalink }}"
+                                                loading="lazy"
+                                                alt="{{ $alt }}" />
+                                        {{ else }}
+                                            <span
+                                                class="link-card__avatar--placeholder"
+                                                >{{ strings.SliceString $link.title 0 1 | upper }}</span
+                                            >
+                                        {{ end }}
+                                    </div>
+                                    <span class="link-card__title"
+                                        >{{ $link.title }}</span
+                                    >
+                                </a>
+                            </article>
+                        {{ end }}
+                    {{ else }}
+                        {{ range $link := $category.links }}
+                            {{- $alt := or $link.alt $link.title -}}
+                            <article class="link-card">
+                                <a
+                                    href="{{ $link.website }}"
+                                    target="_blank"
+                                    rel="noopener">
+                                    <div class="link-card__info">
+                                        <h3 class="link-card__title">
+                                            {{ $link.title }}
+                                        </h3>
+                                        <p class="link-card__description">
+                                            {{ with $link.description }}
+                                                {{ . }}
+                                            {{ else }}
+                                                {{ $link.website }}
+                                            {{ end }}
+                                        </p>
+                                    </div>
+                                    <div class="link-card__avatar">
+                                        {{ with $link.image }}
+                                            {{ $permalink := . }}
+                                            {{ with ($page.Resources.GetMatch (printf "%s" (. | safeURL))) }}
+                                                {{ $permalink = .RelPermalink }}
+                                            {{ end }}
+                                            <img
+                                                src="{{ $permalink }}"
+                                                loading="lazy"
+                                                alt="{{ $alt }}" />
+                                        {{ else }}
+                                            <span
+                                                class="link-card__avatar--placeholder"
+                                                >{{ strings.SliceString $link.title 0 1 | upper }}</span
+                                            >
+                                        {{ end }}
+                                    </div>
+                                </a>
+                            </article>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </section>
+        {{ end }}
     {{ end }}
-</div>
+{{ end }}

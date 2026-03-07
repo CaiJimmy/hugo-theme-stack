@@ -1,0 +1,46 @@
+[
+  {
+    "title": "好夥伴",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "GitHub",
+        "description": "GitHub 是世界上最大的軟件開發平台。",
+        "website": "https://github.com",
+        "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      }
+    ]
+  },
+  {
+    "title": "有用的資源",
+    "links": [
+      {
+        "title": "TypeScript",
+        "description": "TypeScript 是 JavaScript 的一個超集，它可以編譯成純 JavaScript。",
+        "website": "https://www.typescriptlang.org",
+        "image": "ts-logo-128.jpg"
+      }
+    ]
+  },
+  {
+    "title": "冷凍休眠艙",
+    "compact": true,
+    "links": [
+      {
+        "title": "PTT",
+        "website": "https://www.ptt.cc",
+        "image": "https://www.ptt.cc/favicon.ico"
+      },
+      {
+        "title": "Dcard",
+        "website": "https://www.dcard.tw",
+        "image": "https://www.dcard.tw/favicon.ico"
+      },
+      {
+        "title": "iThome",
+        "website": "https://www.ithome.com.tw",
+        "image": "https://www.ithome.com.tw/favicon.ico"
+      }
+    ]
+  }
+]
