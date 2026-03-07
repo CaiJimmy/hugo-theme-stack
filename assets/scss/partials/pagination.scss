@@ -1,48 +1,259 @@
 .pagination {
-    display: flex;
-    @include card-style;
-    overflow: hidden;
+  display: flex;
+  @include card-style;
+  overflow: hidden;
 
-    .page-link {
-        padding: 16px 0;
-        margin: 0;
-        border-radius: 0;
+  .hide-on-mobile {
+    display: none;
+
+    @include respond(md) {
+      display: flex;
+    }
+  }
+
+  .pagination-link {
+    display: none;
+
+    @include respond(md) {
+      display: flex;
+    }
+  }
+
+  .page-link {
+    padding: 12px 0;
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 36px;
+    color: var(--card-text-color-secondary);
+    text-decoration: none;
+
+    @include respond(md) {
+      min-width: 48px;
+      padding: 16px 0;
+    }
+
+    &:first-child,
+    &:last-child {
+      flex: 0 0 40px;
+      padding: 12px 8px;
+
+      @include respond(md) {
+        flex: 0 0 48px;
+        padding: 16px;
+      }
+    }
+
+    &:hover:not(.current):not(.disabled) {
+      background-color: var(--card-background-selected);
+      opacity: 0.8;
+    }
+
+    &.current {
+      background-color: var(--card-background-selected);
+      color: var(--card-text-color-main);
+      font-weight: bold;
+      cursor: default;
+    }
+
+    &.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+      color: var(--card-text-color-secondary);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.pagination-jump-trigger {
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--card-background-selected);
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+#pagination-jump-dialog {
+  border: none;
+  border-radius: var(--card-border-radius);
+  background-color: var(--card-background);
+  padding: 24px;
+  box-shadow: var(--shadow-l2);
+  color: var(--body-text-color);
+  margin: auto; // Center dialog
+  width: 100%;
+  max-width: 320px;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &[open] {
+    animation: scale-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+    &::backdrop {
+      opacity: 1;
+    }
+  }
+
+  &.closing {
+    animation: scale-down 0.2s ease forwards;
+
+    &::backdrop {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  .pagination-jump-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 8px;
+      margin-bottom: 2px;
+
+      label {
         display: flex;
+        align-items: baseline;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--card-text-color-main);
+        margin: 0;
+      }
+
+      .subtitle {
+        font-size: 1.4rem;
+        color: var(--card-text-color-tertiary);
+      }
+    }
+
+    .pagination-jump-input-group {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+
+      input[type="number"] {
+        flex: 1;
+        width: 100%;
+        min-width: 0;
+        padding: 0 16px;
+        height: 44px; // Explicit height for perfect alignment
+        border: 1px solid var(--card-separator-color);
+        border-radius: 8px;
+        background-color: var(--body-background);
+        color: var(--card-text-color-main);
+        font-size: 1.6rem;
+        outline: none;
+        transition: all 0.3s ease;
+
+        /* Hide spinner */
+        -moz-appearance: textfield;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        &:focus {
+          border-color: var(--accent-color);
+          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+        }
+      }
+
+      .btn-primary {
+        flex-shrink: 0;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        flex: 1 1 auto;
-        min-width: 48px;
-        color: var(--card-text-color-secondary);
-        text-decoration: none;
+        padding: 0 24px;
+        height: 44px; // Match input height
+        background-color: var(--accent-color);
+        color: var(--accent-color-text);
+        border: none;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
 
-        &:first-child,
-        &:last-child {
-            flex: 0 0 48px;
-            padding: 16px;
+        &:hover {
+          background-color: var(--accent-color-darker);
+          transform: translateY(-1px);
+          box-shadow: var(--shadow-l1);
         }
 
-        &:hover:not(.current):not(.disabled) {
-            background-color: var(--card-background-selected);
-            opacity: 0.8;
+        &:active {
+          transform: translateY(0);
+          box-shadow: none;
         }
-
-        &.current {
-            background-color: var(--card-background-selected);
-            color: var(--card-text-color-main);
-            font-weight: bold;
-            cursor: default;
-        }
-
-        &.disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            pointer-events: none;
-            color: var(--card-text-color-secondary);
-        }
-
-        svg {
-            width: 20px;
-            height: 20px;
-        }
+      }
     }
+
+    .pagination-jump-hint {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      font-size: 1.3rem;
+      color: var(--card-text-color-tertiary);
+      margin-top: -6px;
+
+      kbd {
+        background-color: var(--body-background);
+        border: 1px solid var(--card-separator-color);
+        border-radius: 4px;
+        padding: 3px 6px;
+        font-family: var(--base-font-family);
+        font-size: 1.1rem;
+        box-shadow: 0 2px 0 var(--card-separator-color);
+        color: var(--card-text-color-main);
+        font-weight: 600;
+        line-height: 1;
+      }
+    }
+  }
+
+  @keyframes scale-up {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scale-down {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
 }
