@@ -10,6 +10,7 @@ import createElement from './createElement';
 import StackColorScheme from './colorScheme';
 import { setupScrollspy } from './scrollspy';
 import { setupSmoothAnchors } from './smoothAnchors';
+import { setupPaginationJump } from './pagination';
 
 let Stack = {
     init: () => {
@@ -23,6 +24,8 @@ let Stack = {
             setupSmoothAnchors();
             setupScrollspy();
         }
+
+        setupPaginationJump();
 
         /**
          * Add copy button to code block
