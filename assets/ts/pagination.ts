@@ -9,12 +9,16 @@ export function setupPaginationJump() {
     const form = dialog.querySelector('.pagination-jump-form') as HTMLFormElement;
 
     const closeDialog = () => {
+        if (dialog.classList.contains('closing')) return;
         dialog.classList.add('closing');
-        dialog.addEventListener('animationend', function handleAnimationEnd() {
-            dialog.classList.remove('closing');
-            dialog.close();
-            dialog.removeEventListener('animationend', handleAnimationEnd);
-        });
+        dialog.addEventListener(
+            'animationend',
+            () => {
+                dialog.classList.remove('closing');
+                dialog.close();
+            },
+            { once: true }
+        );
     };
 
     // Open dialog when triggers are clicked
