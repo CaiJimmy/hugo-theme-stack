@@ -25,8 +25,8 @@
         </a>
 
         {{- /* Page numbers logic */ -}}
-        {{- /* Compute the visible middle window [start, end] (excludes first and last page) so that */ -}}
-        {{- /* exactly 3 middle pages are shown, keeping the total visible count at 5. */ -}}
+        {{- /* Compute the visible middle window [start, end] (excluding first and last page) so that */ -}}
+        {{- /* exactly 3 middle pages are shown; overall visible controls (prev/next, ellipsis, etc.) may exceed 5. */ -}}
         {{- $curr := $pag.PageNumber -}}
         {{- $total := $pag.TotalPages -}}
         {{- $start := sub $curr 1 -}}
