@@ -27,7 +27,7 @@
         {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
     {{ else }}
         {{/* Remote image */}}
-        {{ with try (resources.GetRemote $url (dict "timeout" "10s")) }}
+        {{ with try (resources.GetRemote $url (dict "timeout" .Context.Site.Params.imageProcessing.external.timeout)) }}
             {{ with .Err }}
                 {{ warnf "Failed to fetch remote resource %q: %s" $url . }}
             {{ else with .Value }}
