@@ -104,10 +104,10 @@
         </a>
     </nav>
 
-    <dialog id="pagination-jump-dialog">
+    <dialog id="pagination-jump-dialog" aria-labelledby="pagination-jump-title">
         <form method="dialog" class="pagination-jump-form">
             <header>
-                <label class="title" for="pagination-jump-input">
+                <label id="pagination-jump-title" class="title" for="pagination-jump-input">
                     {{ i18n "pagination.jumpToPage" | default "Jump to page:" }}
                 </label>
                 <span class="subtitle">(1 - {{ $pag.TotalPages }})</span>
