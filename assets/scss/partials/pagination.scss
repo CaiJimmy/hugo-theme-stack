@@ -20,7 +20,7 @@
     }
 
     .page-link {
-        padding: 12px 0;
+        padding: var(--spacing-sm) 0;
         margin: 0;
         border-radius: 0;
         display: flex;
@@ -33,17 +33,17 @@
 
         @include respond(md) {
             min-width: 48px;
-            padding: 16px 0;
+            padding: var(--spacing-md) 0;
         }
 
         &:first-child,
         &:last-child {
-            flex: 0 0 40px;
-            padding: 12px 8px;
+            flex: 0 0 var(--spacing-3xl);
+            padding: var(--spacing-sm);
 
             @include respond(md) {
                 flex: 0 0 48px;
-                padding: 16px;
+                padding: var(--spacing-md);
             }
         }
 
@@ -84,14 +84,13 @@
 
 #pagination-jump-dialog {
     border: none;
-    border-radius: var(--card-border-radius);
-    background-color: var(--card-background);
-    padding: 24px;
+    @include card-style;
     box-shadow: var(--shadow-l2);
     color: var(--body-text-color);
     margin: auto; // Center dialog
     width: 100%;
     max-width: 320px;
+    padding: var(--card-padding);
 
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.4);
@@ -120,53 +119,51 @@
     .pagination-jump-form {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: var(--spacing-md);
 
         header {
             display: flex;
-            align-items: baseline;
-            justify-content: flex-start;
-            gap: 8px;
-            margin-bottom: 2px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
 
             label {
-                display: flex;
-                align-items: baseline;
-                gap: 8px;
                 cursor: pointer;
             }
 
             .title {
-                font-size: 1.8rem;
-                font-weight: bold;
+                font-size: 1.6rem;
+                font-weight: 600;
                 color: var(--card-text-color-main);
                 margin: 0;
             }
 
             .subtitle {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
                 color: var(--card-text-color-tertiary);
             }
         }
 
         .pagination-jump-input-group {
             display: flex;
-            gap: 12px;
+            gap: var(--spacing-sm);
             align-items: stretch;
 
             input[type="number"] {
                 flex: 1;
                 width: 100%;
                 min-width: 0;
-                padding: 0 16px;
+                padding: 0 var(--spacing-md);
                 height: 44px; // Explicit height for perfect alignment
-                border: 1px solid var(--card-separator-color);
-                border-radius: 8px;
+                border: 1.5px solid var(--card-separator-color);
+                border-radius: 6px;
                 background-color: var(--body-background);
                 color: var(--card-text-color-main);
                 font-size: 1.6rem;
                 outline: none;
-                transition: all 0.3s ease;
+                -webkit-appearance: none;
+                appearance: none;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
                 /* Hide spinner */
                 -moz-appearance: textfield;
@@ -176,9 +173,11 @@
                     margin: 0;
                 }
 
-                &:focus {
+                &:focus,
+                &:focus-visible {
+                    outline: none;
                     border-color: var(--accent-color);
-                    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 20%, transparent);
                 }
             }
 
@@ -187,25 +186,23 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                padding: 0 24px;
+                padding: 0 var(--spacing-xl);
                 height: 44px; // Match input height
                 background-color: var(--accent-color);
                 color: var(--accent-color-text);
                 border: none;
-                border-radius: 8px;
+                border-radius: 6px;
                 font-size: 1.5rem;
                 font-weight: bold;
                 cursor: pointer;
-                transition: all 0.2s ease;
+                transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
                 &:hover {
                     background-color: var(--accent-color-darker);
-                    transform: translateY(-1px);
                     box-shadow: var(--shadow-l1);
                 }
 
                 &:active {
-                    transform: translateY(0);
                     box-shadow: none;
                 }
             }
@@ -215,10 +212,10 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 8px;
+            gap: var(--spacing-sm);
             font-size: 1.3rem;
             color: var(--card-text-color-tertiary);
-            margin-top: -6px;
+            margin-top: calc(var(--spacing-xs) * -1);
 
             kbd {
                 background-color: var(--body-background);
