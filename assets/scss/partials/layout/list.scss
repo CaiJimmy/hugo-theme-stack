@@ -50,15 +50,19 @@
 
     overflow-x: auto;
 
-    /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2)
-    /// so that the shadow is not cut off
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: calc(var(--shadow-overlap-y) * -1);
+    /// Limit the horizontal overlap to the container padding to prevent page overflow on mobile.
+    /// On desktop, it still allows the full shadow to be visible.
+    --overlap-x: min(var(--shadow-overlap-x), var(--container-padding));
 
+    /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2)
+    /// so that the shadow is not cut off, while staying within the viewport on small screens.
+    margin-left: calc(var(--overlap-x) * -1);
+    margin-right: calc(var(--overlap-x) * -1);
+    margin-bottom: calc(var(--shadow-overlap-y) * -1);
+    
     .article-list--tile {
         display: flex;
-        padding: var(--spacing-xs) 0 var(--shadow-overlap-y) 0;
+        padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--overlap-x);
         width: max-content;
         gap: var(--spacing-lg);
 
