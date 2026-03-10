@@ -1,0 +1,80 @@
+{{- $style := resources.Get "scss/partials/comments/artalk.scss" | toCSS | minify -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+<div id="Comments" class="artalk-container"></div>
+<script>
+    (function() {
+        const cssUrl = 'https://testingcf.jsdelivr.net/npm/artalk@2/dist/Artalk.css';
+        const jsUrl = 'https://testingcf.jsdelivr.net/npm/artalk@2/dist/Artalk.js';
+
+        function loadCSS(href) {
+            return new Promise((resolve, reject) => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                link.onload = () => resolve();
+                link.onerror = () => reject(new Error('Failed to load CSS: ' + href));
+                document.head.appendChild(link);
+            });
+        }
+
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = false;
+                script.defer = false;
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error('Failed to load script: ' + src));
+                document.body.appendChild(script);
+            });
+        }
+
+        function initArtalk() {
+            if (typeof Artalk === 'undefined') {
+                console.error('Artalk script not loaded.');
+                return;
+            }
+
+            const getThemeMode = () => {
+                const theme = document.documentElement.dataset.scheme;
+                return theme === 'dark';
+            };
+
+            const artalkInstance = Artalk.init({
+                el: '#Comments',
+                pageKey: '{{ .Page.RelPermalink }}',
+                pageTitle: '{{ .Title }}',
+                server: '{{ .Site.Params.comments.artalk.serverUrl }}',
+                site: '{{ .Site.Params.comments.artalk.site }}',
+                darkMode: getThemeMode(),
+                locale: 'auto',
+            });
+
+            window.addEventListener('onColorSchemeChange', (e) => {
+                try {
+                    artalkInstance.setDarkMode(e.detail === 'dark');
+                } catch (err) {
+                    console.warn('Failed to set Artalk dark mode', err);
+                }
+            });
+        }
+
+        function start() {
+            loadCSS(cssUrl)
+                .catch((err) => {
+                    console.warn(err);
+                })
+                .then(() => loadScript(jsUrl))
+                .then(() => initArtalk())
+                .catch((err) => console.error('Failed to load Artalk assets:', err));
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', start);
+        } else {
+            start();
+        }
+    })();
+</script>
+
