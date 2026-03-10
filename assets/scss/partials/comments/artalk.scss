@@ -1,0 +1,80 @@
+@import "../../breakpoints";
+@import "../../mixins";
+
+.artalk-container {
+    @include card-style;
+    padding: 5px;
+
+    @include respond(md) {
+        padding: var(--card-padding);
+    }
+}
+
+.artalk {
+    --at-color-bg: var(--card-background);
+    --at-color-font: var(--card-text-color-main);
+    --at-color-sub: var(--card-text-color-secondary);
+    --at-color-main: var(--accent-color);
+    --at-color-border: var(--card-separator-color);
+    --at-border-radius: var(--card-border-radius);
+    --at-color-link: var(--accent-color);
+}
+
+.artalk a {
+    color: var(--at-color-link);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--accent-color-darker);
+    }
+}
+
+.artalk .atk-content a,
+.artalk .atk-editor-plug-preview a {
+    color: var(--accent-color);
+    box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: var(--accent-color-darker);
+        box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+    }
+}
+
+[data-scheme="dark"] .artalk {
+    --at-color-main: var(--accent-color);
+    --at-color-link: var(--accent-color);
+    --at-color-bg: var(--card-background);
+    --at-color-bg-transl: rgba(66, 66, 66, 0.95);
+    --at-color-bg-grey: rgba(255, 255, 255, 0.08);
+    --at-color-bg-grey-transl: rgba(255, 255, 255, 0.06);
+    --at-color-bg-light: rgba(255, 255, 255, 0.08);
+    --at-color-border: var(--card-separator-color);
+    --at-color-font: var(--card-text-color-main);
+    --at-color-deep: var(--card-text-color-main);
+    --at-color-sub: var(--card-text-color-secondary);
+    --at-color-meta: var(--card-text-color-secondary);
+    --at-color-grey: var(--card-text-color-secondary);
+    --at-color-gradient: linear-gradient(
+        180deg,
+        transparent,
+        var(--card-background)
+    );
+}
+
+.artalk code {
+    font-family: var(--code-font-family);
+}
+
+.artalk .atk-avatar img {
+    border-radius: var(--card-border-radius);
+}
+
+[data-scheme="dark"] .artalk .atk-avatar img {
+    filter: brightness(0.75);
+}
+
+[data-scheme="dark"] .artalk .atk-send-btn {
+    color: var(--accent-color-text);
+}
