@@ -56,15 +56,32 @@
 
     /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2)
     /// so that the shadow is not cut off, while staying within the viewport on small screens.
-    margin-left: calc(var(--overlap-x) * -1);
+    /// The left margin expands to the full shadow width to align the card to the main article,
+    /// while the right margin is clamped to prevent page overflow.
+    margin-left: calc(var(--shadow-overlap-x) * -1);
     margin-right: calc(var(--overlap-x) * -1);
     margin-bottom: calc(var(--shadow-overlap-y) * -1);
+
+    /// Smooth fade out for the right edge to avoid a hard cut where the shadow is clamped.
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 80px);
+    mask-image: linear-gradient(to left, transparent 0%, black 80px);
+
+    [dir="rtl"] & {
+        margin-left: calc(var(--overlap-x) * -1);
+        margin-right: calc(var(--shadow-overlap-x) * -1);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 80px);
+        mask-image: linear-gradient(to right, transparent 0%, black 80px);
+    }
     
     .article-list--tile {
         display: flex;
-        padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--overlap-x);
+        padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--shadow-overlap-x);
         width: max-content;
         gap: var(--spacing-lg);
+
+        [dir="rtl"] & {
+            padding: var(--spacing-xs) var(--shadow-overlap-x) var(--shadow-overlap-y) var(--overlap-x);
+        }
 
         article {
             flex-shrink: 0;
