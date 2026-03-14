@@ -2,12 +2,17 @@
 {{- if gt $pag.TotalPages 1 -}}
 <nav class="pagination" role="navigation" aria-label="pagination">
     {{- /* Previous page button */ -}}
-    <a class="page-link {{ if not $pag.Prev }}disabled{{ end }}"
-        {{- if $pag.Prev -}}href="{{ $pag.Prev.URL }}" {{- end -}}
-        aria-label="Previous page" 
-        {{- if not $pag.Prev -}}aria-disabled="true"{{- end -}}>
+    {{- if $pag.Prev -}}
+    <a class="page-link"
+       href="{{ $pag.Prev.URL }}"
+       aria-label="Previous page">
         {{ partial "helper/icon" "chevron-left" }}
     </a>
+    {{- else -}}
+    <span class="page-link disabled">
+        {{ partial "helper/icon" "chevron-left" }}
+    </span>
+    {{- end -}}
 
     {{- /* Page numbers logic */ -}}
     {{- $window := 4 -}}
@@ -60,11 +65,16 @@
     {{- end -}}
 
     {{- /* Next page button */ -}}
-    <a class="page-link {{ if not $pag.Next }}disabled{{ end }}"
-        {{- if $pag.Next -}}href="{{ $pag.Next.URL }}" {{- end -}} 
-        aria-label="Next page"
-        {{- if not $pag.Next -}}aria-disabled="true"{{- end -}}>
+    {{- if $pag.Next -}}
+    <a class="page-link"
+       href="{{ $pag.Next.URL }}"
+       aria-label="Next page">
         {{ partial "helper/icon" "chevron-right" }}
     </a>
+    {{- else -}}
+    <span class="page-link disabled">
+        {{ partial "helper/icon" "chevron-right" }}
+    </span>
+    {{- end -}}
 </nav>
 {{- end -}}
