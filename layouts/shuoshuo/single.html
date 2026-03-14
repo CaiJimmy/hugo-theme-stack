@@ -54,6 +54,7 @@
 
                 if (typeof Fancybox !== "undefined") {
                     Fancybox.bind('[data-fancybox^="gallery-"]', {
+                        hideScrollbar: false, // 🌟 补上了这一行，防止单页面的滚动条跳动
                         Hash: false,
                         Thumbs: { autoStart: false },
                         Toolbar: { display: { left: ["infobar"], middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW"], right: ["slideshow", "download", "close"] } },
