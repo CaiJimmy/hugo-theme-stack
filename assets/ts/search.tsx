@@ -148,12 +148,34 @@ class Search {
         const rawData = await this.getData();
         const results: pageData[] = [];
 
-        const regex = new RegExp(keywords.filter((v, index, arr) => {
-            arr[index] = escapeRegExp(v);
-            return v.trim() !== '';
-        }).join('|'), 'gi');
+        // 1. 过滤掉空白关键词并获取有效关键词数组
+        const validKeywords = keywords
+            .map(v => v.trim())
+            .filter(v => v !== '');
+
+        if (validKeywords.length === 0) return [];
+
+        // 将关键词转义，防止正则报错
+        const escapedKeywords = validKeywords.map(v => escapeRegExp(v));
+
+        // 2. 用于高亮的正则表达式（仍然是“或”逻辑，以便把所有匹配的关键词都高亮）
+        const highlightRegex = new RegExp(escapedKeywords.join('|'), 'gi');
 
         for (const item of rawData) {
+            // 3. 【核心修改】检查当前文章是否包含所有的关键词 (AND逻辑)
+            let containsAllKeywords = true;
+            for (const keyword of escapedKeywords) {
+                const keywordRegex = new RegExp(keyword, 'i');
+                // 如果标题和内容里都没有找到这个关键词，说明不满足“全部包含”的条件
+                if (!keywordRegex.test(item.title) && !keywordRegex.test(item.content)) {
+                    containsAllKeywords = false;
+                    break;
+                }
+            }
+
+            // 如果没有包含所有关键词，直接跳过这篇文章
+            if (!containsAllKeywords) continue;
+
             const titleMatches: match[] = [],
                 contentMatches: match[] = [];
 
@@ -163,16 +185,19 @@ class Search {
                 matchCount: 0
             }
 
-            const contentMatchAll = item.content.matchAll(regex);
+            // 4. 获取高亮匹配项
+            const contentMatchAll = item.content.matchAll(highlightRegex);
             for (const match of Array.from(contentMatchAll)) {
+                // @ts-ignore
                 contentMatches.push({
                     start: match.index,
                     end: match.index + match[0].length
                 });
             }
 
-            const titleMatchAll = item.title.matchAll(regex);
+            const titleMatchAll = item.title.matchAll(highlightRegex);
             for (const match of Array.from(titleMatchAll)) {
+                // @ts-ignore
                 titleMatches.push({
                     start: match.index,
                     end: match.index + match[0].length
