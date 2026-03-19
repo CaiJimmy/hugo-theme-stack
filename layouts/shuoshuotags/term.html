@@ -1,7 +1,6 @@
 {{ define "main" }}
     <main class="main list-container">
 
-        {{/* 🌟 杀手锏：加一个 Wrapper 把标签和列表包在一起，阻断主题默认 gap 的干扰 */}}
         <div class="shuoshuo-layout-wrapper" style="display: block; width: 100%;">
             
             <style>
@@ -11,8 +10,6 @@
                     --count-bg: #f1f5f9; --count-text: #64748b; 
                     --count-active-bg: #ffffff; --count-active-text: #1e90ff; 
                     display: flex; align-items: center; flex-wrap: wrap; gap: 10px; 
-                    
-                    /* 🌟 修改点：去掉虚线，去掉内边距，只保留纯粹的 20px 外边距，完美对齐卡片间距！ */
                     margin-bottom: 20px !important; 
                 }
                 [data-scheme="dark"] .shuoshuo-tags-nav {
@@ -58,7 +55,6 @@
                     全部 <span class="filter-count">{{ $totalShuo }}</span>
                 </a>
                 
-                {{/* 直接调用原生 Taxonomy 并按数量降序排列 */}}
                 {{ range .Site.Taxonomies.shuoshuotags.ByCount }}
                     <a href="{{ .Page.RelPermalink }}" 
                        class="filter-tab {{ if eq ($.Data.Term | default "") (.Page.Title | lower) }}active{{ end }}">
@@ -67,9 +63,6 @@
                 {{ end }}
             </div>
 
-            {{/* =========================================
-                 2. 瀑布流容器及渲染
-                 ========================================= */}}
             <div class="shuoshuo-list" id="masonry-container" style="opacity: 0; transition: opacity 0.4s ease;">
                 {{ $paginator := .Paginate .Pages }}
                 <div class="waterfall-column" id="waterfall-left">
@@ -80,7 +73,7 @@
                 <div class="waterfall-column" id="waterfall-right"></div>
             </div>
             
-        </div> {{/* 🌟 Wrapper 结束标签 */}}
+        </div>
 
         <div class="shuoshuo-pagination">
             {{ partial "pagination.html" . }}
@@ -88,7 +81,6 @@
 
         {{ partial "footer/footer.html" . }}
 
-        {{/* 灯箱及脚本 */}}
         <link rel="stylesheet" href="/css/fancybox.css" />
         <script src="/js/fancybox.umd.js"></script>
 
@@ -99,7 +91,6 @@
                 const rightCol = document.getElementById('waterfall-right');
                 const masonryItems = Array.from(leftCol.querySelectorAll('.shuoshuo-card'));
 
-                /* 1. 处理图片结构、相册绑定和九宫格布局 */
                 document.querySelectorAll('.shuoshuo-card').forEach((card, index) => {
                     const galleryId = 'gallery-' + index;
                     const contentImages = card.querySelectorAll('.shuoshuo-content img');
@@ -151,7 +142,6 @@
                     });
                 }
 
-                /* 2. 瀑布流布局计算 */
                 function applyMasonryLayout() {
                     if (window.innerWidth <= 768) {
                         masonryItems.forEach(item => leftCol.appendChild(item));
@@ -183,7 +173,6 @@
                     });
                 }
 
-                /* 4. 处理相对时间 */
                 const now = new Date();
                 document.querySelectorAll('.shuoshuo-time, .shuoshuo-updated-time').forEach(el => {
                     const dateStr = el.getAttribute('datetime');
@@ -205,12 +194,61 @@
                     
                     (el.querySelector('span') || el).innerText = text;
                 });
+
+                /* 🌟 代码块复制功能 🌟 */
+                const highlightBlocks = document.querySelectorAll('.shuoshuo-content .highlight');
+                const purePreBlocks = Array.from(document.querySelectorAll('.shuoshuo-content pre')).filter(pre => !pre.closest('.highlight'));
+                const allCodeBlocks = [...highlightBlocks, ...purePreBlocks];
+
+                allCodeBlocks.forEach(block => {
+                    let container = block;
+                    
+                    if (block.tagName === 'PRE') {
+                        container = document.createElement('div');
+                        container.className = 'code-wrapper';
+                        block.parentNode.insertBefore(container, block);
+                        container.appendChild(block);
+                    }
+                    
+                    container.style.position = 'relative';
+
+                    if (container.querySelector('.copy-code-btn')) return;
+
+                    const btn = document.createElement('button');
+                    btn.className = 'copy-code-btn';
+                    btn.title = '复制代码';
+                    const iconCopy = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+                    const iconCheck = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    
+                    btn.innerHTML = iconCopy;
+                    container.appendChild(btn);
+
+                    btn.addEventListener('click', () => {
+                        let text = "";
+                        const table = block.querySelector('table.lntable');
+                        if (table) {
+                            const codeTd = table.querySelector('.lntd:nth-child(2)');
+                            text = codeTd ? codeTd.innerText : block.innerText;
+                        } else {
+                            const code = block.querySelector('code');
+                            text = code ? code.innerText : block.innerText;
+                        }
+                        
+                        navigator.clipboard.writeText(text).then(() => {
+                            btn.innerHTML = iconCheck;
+                            btn.classList.add('copied');
+                            setTimeout(() => {
+                                btn.innerHTML = iconCopy;
+                                btn.classList.remove('copied');
+                            }, 2000);
+                        }).catch(err => console.error('复制代码失败:', err));
+                    });
+                });
             });
         </script>
     </main>
 {{ end }}
 
-{{/* --- 核心模具：卡片渲染 --- */}}
 {{ define "partials/shuoshuo-card-logic" }}
 {{- $gitHashFull := "" -}}
 {{- $gitHashShort := "" -}}
@@ -253,7 +291,6 @@
     </div>
     {{ end }}
 
-    {{/* 🌟 这里是修改的核心：为 Footer 添加顶边框，同时给适当的外边距和内边距，达到红框标注的一致视觉效果 */}}
     <div class="shuoshuo-footer-info" style="border-top: 1px dashed rgba(128, 128, 128, 0.15); margin-top: 12px; padding-top: 12px;">
         <div class="shuoshuo-edit-link meta-wrapper" style="gap: 15px !important;">
             {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}

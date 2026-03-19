@@ -43,17 +43,14 @@
         font-size: 0.85em;
     }
 
-    /* 🌟 新增：说说引用块 (PS补充内容) - 蓝色背景效果 🌟 */
     blockquote {
         position: relative;
-        background: rgba(30, 144, 255, 0.08) !important; /* 浅蓝色透明背景 */
+        background: rgba(30, 144, 255, 0.08) !important;
         border-radius: 8px 12px 12px 8px !important; 
-        /* 移除了左侧多余的引号留白，调整为更紧凑的 1.2rem */
         padding: 0.8rem 1.5rem 0.8rem 1.2rem !important; 
         margin: 1.5rem 0 !important;
         color: var(--card-text-color-main) !important;
 
-        /* 左侧蓝色指示条 */
         &::after {
             content: "" !important;
             position: absolute;
@@ -61,7 +58,7 @@
             top: 0.8rem !important;    
             bottom: 0.8rem !important; 
             width: 4px !important;
-            background-color: #1e90ff !important; /* 主题蓝 */
+            background-color: #1e90ff !important;
             border-radius: 4px !important; 
         }
         
@@ -70,6 +67,68 @@
             position: relative;
             z-index: 1; 
         }
+    }
+
+    /* 🌟 修复：代码块复制按钮与行号布局兼容问题 🌟 */
+    .code-wrapper, .highlight {
+        position: relative;
+        margin: 1rem 0;
+        
+        /* 为了防止按钮遮挡真正的代码，右侧预留空间 */
+        pre {
+            padding-right: 40px !important;
+        }
+
+        /* ⚠️ 核心修复：针对 Hugo 行号表格，取消左侧“行号列”的 40px 间距 */
+        table.lntable .lntd:first-child pre {
+            padding-right: 10px !important;
+        }
+
+        /* 鼠标悬浮才显示按钮 */
+        &:hover .copy-code-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+/* 🌟 复制按钮本体样式调整 🌟 */
+.copy-code-btn {
+    position: absolute;
+    top: 6px;    
+    right: 6px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--card-background);
+    color: var(--card-text-color-secondary);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    
+    &:hover {
+        color: #1e90ff; 
+        border-color: #1e90ff;
+        background: rgba(30, 144, 255, 0.05);
+        transform: scale(1.05);
+    }
+    
+    &.copied {
+        color: #10b981; 
+        border-color: #10b981;
+        background: rgba(16, 185, 129, 0.05);
+    }
+
+    svg {
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -127,9 +186,7 @@
     .shuoshuo-content { font-size: 1.5rem; }
 }
 
-/* =================================================================
-   3. 首页通知条 (Notice Board) 
-   ================================================================= */
+/* 首页通知条 (Notice Board) */
 .notice-board-container {
     background: var(--card-background); border-radius: var(--card-border-radius); border: none !important;
     box-shadow: var(--shadow-l1); height: 54px !important; margin-bottom: var(--section-gap) !important;
@@ -146,9 +203,7 @@
 @keyframes arrow-move { 0%, 100% { transform: translateX(0); opacity: 0.9; } 50% { transform: translateX(4px); opacity: 1; } }
 .notice-arrow { margin-left: 10px; color: var(--card-text-color-main) !important; opacity: 0.9; display: flex; align-items: center; height: 100%; transition: all 0.3s ease; svg { animation: arrow-move 1.5s infinite ease-in-out; color: inherit; } }
 
-/* =================================================================
-   4. 分页条 (Pagination)
-   ================================================================= */
+/* 分页条 (Pagination) */
 .shuoshuo-pagination { display: flex; justify-content: center; width: 100%; margin-top: var(--section-gap); margin-bottom: 0 !important; }
 .pagination {
     width: fit-content !important; max-width: 100% !important; margin: 0 auto !important; height: 54px !important; display: flex !important; align-items: center !important;
@@ -169,9 +224,7 @@
 @media (min-width: 769px) { .pagination { padding: 0 35px !important; margin-top: 30px !important; margin-bottom: 50px !important; } .shuoshuo-pagination { margin-bottom: 0 !important; } }
 @media (max-width: 768px) { .pagination { padding: 0 10px !important; margin-bottom: 40px !important; } .shuoshuo-pagination { margin-top: 20px; margin-bottom: 0 !important; } }
 
-/* =================================================================
-   5. 侧边栏与头部 (Sidebar & Header)
-   ================================================================= */
+/* 侧边栏与头部 (Sidebar & Header) */
 @media (min-width: 1024px) {
     .sidebar header { .site-avatar, .site-name { margin: 0 auto; } .site-description { margin: 0 auto; font-size: 1.3rem; @media (min-width: 1400px) { font-size: 1.6rem; } } }
     .menu-social { margin: 0 auto; width: fit-content; display: flex; justify-content: center; }
@@ -186,9 +239,7 @@
 .sidebar header .site-avatar .site-logo { transition: transform 1.65s ease-in-out; }
 .sidebar header .site-avatar .site-logo:hover { transform: rotate(360deg); }
 
-/* =================================================================
-   6. 页脚 (Footer)
-   ================================================================= */
+/* 页脚 (Footer) */
 .site-footer { width: 100%; text-align: center !important; padding-bottom: 30px; padding-top: 20px; }
 .site-footer::before { content: ""; display: block; width: 50px; height: 2px; background: var(--card-text-color-secondary); opacity: 0.5; margin: 0 auto 20px auto !important; }
 .site-footer .running-time { font-size: 1.4rem !important; color: var(--sys-color-text-muted) !important; margin: 10px 0; line-height: 1.6; display: block; }
@@ -196,9 +247,7 @@
 .footer-separator { margin: 0 8px; opacity: 0.6; font-size: 0.9em; }
 @media (max-width: 768px) { .site-footer { padding-top: 0px !important; } }
 
-/* =================================================================
-   7. 组件与动画细节 (Widgets & Animation)
-   ================================================================= */
+/* 组件与动画细节 (Widgets & Animation) */
 @media (min-width: 1024px) {
     .article-list--compact.links, .article-list--compact { display: grid; grid-template-columns: 1fr 1fr; background: none; box-shadow: none; gap: 1rem; }
     .article-list--compact article { background: var(--card-background); border: none; box-shadow: var(--shadow-l1); border-radius: 16px; transition: transform 0.3s ease, box-shadow 0.3s ease; &:hover { transform: translateY(-5px); box-shadow: var(--shadow-l2); } }
@@ -210,19 +259,14 @@
 .search-form.widget { transition: transform 0.6s ease; &:hover { transform: scale(1.1); } }
 .widget.archives .widget-archive--list { transition: transform 0.3s ease; &:hover { transform: scale(1.05); } }
 
-/* =================================================================
-   8. 文章元数据及头部样式补丁 (Article Meta Info)
-   ================================================================= */
+/* 文章元数据及头部样式补丁 (Article Meta Info) */
 .article-meta-info { display: flex !important; align-items: center !important; flex-wrap: wrap !important; gap: 15px !important; margin-top: 12px !important; margin-bottom: 8px !important; opacity: 1 !important; color: var(--card-text-color-secondary) !important; }
 .article-meta-item { display: flex !important; align-items: center !important; gap: 8px !important; font-size: 14px !important; line-height: 1 !important; text-decoration: none !important; color: inherit !important; opacity: 1 !important; }
 .article-meta-item svg { width: 14px !important; height: 14px !important; display: block !important; margin: 0 !important; padding: 0 !important; opacity: 1 !important; color: inherit !important; }
 .article-meta-item time, .article-meta-item span { font-size: 14px !important; line-height: 1 !important; display: block !important; margin: 0 !important; color: inherit !important; font-weight: normal !important; }
 
-/* =================================================================
-   9. KOReader 书摘典藏卡片版 (Book Note Card)
-   ================================================================= */
+/* KOReader 书摘典藏卡片版 (Book Note Card) */
 .book-note-card {
-    /* 👇 这里把底部的 padding 极限压缩到了 1.2rem，因为没有虚线了 👇 */
     padding: 1.8rem 1.8rem 1.2rem 1.8rem !important;
     margin: 2rem 0;
     background: rgba(128, 128, 128, 0.05); 
@@ -236,7 +280,6 @@
         box-shadow: 0 6px 20px rgba(0,0,0,0.06);
     }
 
-    /* 绝对抹杀可能存在的幽灵空行 */
     p:empty, p:has(br:only-child) {
         display: none !important;
         margin: 0 !important;
@@ -332,7 +375,6 @@
         }
     }
 
-    /* 👇 核心大招：完全隐形的空气墙！只提供极其微小的上下留白 👇 */
     hr.note-divider {
         border: none !important;
         margin: 0.5rem 0 !important;
@@ -341,7 +383,6 @@
         background: transparent !important;
     }
 
-    /* 👇 隐形墙下方紧跟的所有段落（个人想法）统一排版 👇 */
     hr.note-divider ~ p {
         color: var(--card-text-color-main) !important;
         opacity: 0.9 !important;
@@ -353,53 +394,38 @@
         margin-top: 0 !important; 
     }
 
-    /* 👇 终极兜底：卡片内最后一个可见元素的底部外边距强制清零 👇 */
     > :last-child, > p:last-of-type {
         margin-bottom: 0 !important;
     }
 }
 
-/* =================================================================
-   10. 分类与标签云：统一卡片式 UI 风格
-   ================================================================= */
+/* 分类与标签云：统一卡片式 UI 风格 */
 .tagCloud-tags a {
-    /* 调用主题自带的卡片背景、文字颜色和圆角 */
     background-color: var(--card-background) !important;
     color: var(--card-text-color-main) !important;
     border-radius: var(--card-border-radius) !important; 
-    
-    /* 调用主题自带的卡片阴影，和下方文章卡片完全一致 */
     box-shadow: var(--shadow-l1) !important;
-    
     padding: 10px 18px !important;
     border: none !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease !important;
-    
-    /* 统一字体大小，去掉大小不一的杂乱感，看起来更像规整的卡片 */
     font-size: 1.5rem !important; 
 }
 
-/* 鼠标悬浮时的交互效果 */
 .tagCloud-tags a:hover {
     transform: translateY(-3px) !important;
-    box-shadow: var(--shadow-l2) !important; /* 悬浮时阴影加深 */
-    color: var(--accent-color) !important; /* 文字变成主题的强调色 */
+    box-shadow: var(--shadow-l2) !important;
+    color: var(--accent-color) !important;
 }
 
-/* =================================================================
-   11. 归档页标题视觉大小统一 (Archive Titles Visual Alignment)
-   ================================================================= */
-
-/* 1. 恢复精致小字号：分类、标签云标题 */
+/* 归档页标题视觉大小统一 */
 .template-archives .section-title {
-    font-size: 1.5rem !important; /* 从 2.2rem 大幅缩小到 1.5rem */
+    font-size: 1.5rem !important; 
     font-weight: bold !important;
-    letter-spacing: 0.5px !important; /* 字间距也相应调小一点 */
+    letter-spacing: 0.5px !important; 
 }
 
-/* 2. 年份数字的微调补偿 */
 .template-archives .archives-date {
-    font-size: 1.6rem !important; /* 从 2.4rem 缩小到 1.6rem，依然比汉字大 0.1rem 以保持视觉平衡 */
+    font-size: 1.6rem !important; 
     color: var(--body-text-color) !important; 
 }
 
@@ -407,17 +433,13 @@
     color: inherit !important;
 }
 
-/* =================================================================
-   12. 彻底隐藏文章底部的“相关文章”板块并消除多余间距
-   ================================================================= */
-/* 针对新版主题：隐藏包含相关文章列表的无名 aside 容器，彻底消除因为隐藏内容导致的占位空白 */
+/* 彻底隐藏文章底部的“相关文章”板块并消除多余间距 */
 aside:has(.article-list--tile) {
     display: none !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* 兼容老版本主题的类名，以防万一 */
 .related-content,
 aside.related-content {
     display: none !important;

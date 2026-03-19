@@ -54,7 +54,7 @@
 
                 if (typeof Fancybox !== "undefined") {
                     Fancybox.bind('[data-fancybox^="gallery-"]', {
-                        hideScrollbar: false, // 🌟 补上了这一行，防止单页面的滚动条跳动
+                        hideScrollbar: false, 
                         Hash: false,
                         Thumbs: { autoStart: false },
                         Toolbar: { display: { left: ["infobar"], middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW"], right: ["slideshow", "download", "close"] } },
@@ -82,6 +82,56 @@
                     else if (diff >= 3600) text = Math.floor(diff / 3600) + ' 小时前';
                     else if (diff >= 60) text = Math.floor(diff / 60) + ' 分钟前';
                     (el.querySelector('span') || el).innerText = text;
+                });
+
+                /* 🌟 代码块复制功能 🌟 */
+                const highlightBlocks = document.querySelectorAll('.shuoshuo-content .highlight');
+                const purePreBlocks = Array.from(document.querySelectorAll('.shuoshuo-content pre')).filter(pre => !pre.closest('.highlight'));
+                const allCodeBlocks = [...highlightBlocks, ...purePreBlocks];
+
+                allCodeBlocks.forEach(block => {
+                    let container = block;
+                    
+                    if (block.tagName === 'PRE') {
+                        container = document.createElement('div');
+                        container.className = 'code-wrapper';
+                        block.parentNode.insertBefore(container, block);
+                        container.appendChild(block);
+                    }
+                    
+                    container.style.position = 'relative';
+
+                    if (container.querySelector('.copy-code-btn')) return;
+
+                    const btn = document.createElement('button');
+                    btn.className = 'copy-code-btn';
+                    btn.title = '复制代码';
+                    const iconCopy = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+                    const iconCheck = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    
+                    btn.innerHTML = iconCopy;
+                    container.appendChild(btn);
+
+                    btn.addEventListener('click', () => {
+                        let text = "";
+                        const table = block.querySelector('table.lntable');
+                        if (table) {
+                            const codeTd = table.querySelector('.lntd:nth-child(2)');
+                            text = codeTd ? codeTd.innerText : block.innerText;
+                        } else {
+                            const code = block.querySelector('code');
+                            text = code ? code.innerText : block.innerText;
+                        }
+                        
+                        navigator.clipboard.writeText(text).then(() => {
+                            btn.innerHTML = iconCheck;
+                            btn.classList.add('copied');
+                            setTimeout(() => {
+                                btn.innerHTML = iconCopy;
+                                btn.classList.remove('copied');
+                            }, 2000);
+                        }).catch(err => console.error('复制代码失败:', err));
+                    });
                 });
             });
         </script>
