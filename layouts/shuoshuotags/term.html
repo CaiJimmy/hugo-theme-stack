@@ -161,7 +161,39 @@
                 };
 
                 window.addEventListener('resize', debouncedLayout);
-                applyMasonryLayout();
+                
+                // 🌟 核心：只给长说说添加折叠。先判断，折叠完成后再调用 applyMasonryLayout() 展现页面 🌟
+                setTimeout(() => {
+                    const MAX_HEIGHT_THRESHOLD = 400;
+                    document.querySelectorAll('.shuoshuo-content').forEach(content => {
+                        if (content.scrollHeight > MAX_HEIGHT_THRESHOLD + 20) {
+                            content.classList.add('is-collapsed');
+                            
+                            const expandBtn = document.createElement('button');
+                            expandBtn.className = 'shuoshuo-expand-btn';
+                            expandBtn.innerHTML = `<span>展开全文</span><div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div>`;
+                            content.parentNode.insertBefore(expandBtn, content.nextSibling);
+                            
+                            expandBtn.addEventListener('click', () => {
+                                const card = content.closest('.shuoshuo-card');
+                                const offsetTopBefore = card.getBoundingClientRect().top;
+                                
+                                const isNowCollapsed = content.classList.toggle('is-collapsed');
+                                expandBtn.querySelector('span').innerText = isNowCollapsed ? '展开全文' : '收起';
+                                expandBtn.querySelector('svg').style.transform = isNowCollapsed ? 'rotate(0deg)' : 'rotate(180deg)';
+                                
+                                applyMasonryLayout(); 
+                                
+                                window.scrollTo({
+                                    top: window.scrollY + (card.getBoundingClientRect().top - offsetTopBefore),
+                                    behavior: 'instant'
+                                });
+                            });
+                        }
+                    });
+                    
+                    applyMasonryLayout(); // 此时所有该折叠的长说说都已经有了 class，再执行布局和透明度展现
+                }, 50);
 
                 const images = masonryContainer.querySelectorAll('img');
                 if (images.length > 0) {

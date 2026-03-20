@@ -69,7 +69,7 @@
         }
     }
 
-    /* 🌟 修复：代码块复制按钮与行号布局兼容问题 🌟 */
+    /* 修复：代码块复制按钮与行号布局兼容问题 */
     .code-wrapper, .highlight {
         position: relative;
         margin: 1rem 0;
@@ -79,7 +79,7 @@
             padding-right: 40px !important;
         }
 
-        /* ⚠️ 核心修复：针对 Hugo 行号表格，取消左侧“行号列”的 40px 间距 */
+        /* 针对 Hugo 行号表格，取消左侧“行号列”的 40px 间距 */
         table.lntable .lntd:first-child pre {
             padding-right: 10px !important;
         }
@@ -90,9 +90,30 @@
             visibility: visible;
         }
     }
+
+    /* 🌟 新增：只给长说说添加的折叠状态（不影响短说说）🌟 */
+    &.is-collapsed {
+        max-height: 400px;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    }
 }
 
-/* 🌟 复制按钮本体样式调整 🌟 */
+/* 🌟 新增：展开/收起按钮的独立样式 🌟 */
+.shuoshuo-expand-btn {
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    width: 100%; margin-top: 15px; padding: 10px 0;
+    background: rgba(128, 128, 128, 0.04);
+    border: 1px dashed rgba(128, 128, 128, 0.2);
+    border-radius: 8px; color: var(--accent-color, #1e90ff);
+    font-size: 1.4rem; cursor: pointer; transition: all 0.3s ease;
+    
+    &:hover { background: rgba(30, 144, 255, 0.08); border-color: rgba(30, 144, 255, 0.3); }
+    svg { transition: transform 0.3s ease; }
+}
+
+/* 复制按钮本体样式调整 */
 .copy-code-btn {
     position: absolute;
     top: 6px;    
