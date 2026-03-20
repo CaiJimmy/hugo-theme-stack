@@ -91,7 +91,7 @@
         }
     }
 
-    /* 🌟 说说长文截断折叠状态（不影响短说说）🌟 */
+    /* 🌟 保留：只给长说说添加的折叠状态（不影响短说说）🌟 */
     &.is-collapsed {
         max-height: 400px;
         overflow: hidden;
@@ -100,7 +100,7 @@
     }
 }
 
-/* 说说长文展开/收起按钮的独立样式 */
+/* 🌟 保留：说说展开/收起按钮的独立样式 🌟 */
 .shuoshuo-expand-btn {
     display: flex; align-items: center; justify-content: center; gap: 4px;
     width: 100%; margin-top: 15px; padding: 10px 0;
@@ -469,14 +469,11 @@ aside.related-content {
 }
 
 /* =================================================================
-   🌟 核心修复：文章内长代码块折叠样式 🌟
+   🌟 核心修复：仅文章内长代码块折叠样式（排除了说说） 🌟
    ================================================================= */
 .article-content .highlight, 
 .article-content .code-wrapper,
-.article-content > pre,
-.shuoshuo-content .highlight, 
-.shuoshuo-content .code-wrapper,
-.shuoshuo-content > pre {
+.article-content > pre {
     position: relative;
     transition: max-height 0.3s ease;
     

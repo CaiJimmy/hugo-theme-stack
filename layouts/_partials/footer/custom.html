@@ -205,12 +205,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-/* 🌟 核心修复：长代码块自动折叠逻辑 🌟 */
+/* 🌟 核心修复：仅针对文章内长代码块的折叠逻辑（已排除说说）🌟 */
 function initCodeFolding() {
     const CODE_MAX_HEIGHT = 400; 
     
-    // 修复点 1：补全了 Hugo 默认单篇文章内容的类名 .article-content，确保全站都能抓取到代码块
-    const codeBlocks = document.querySelectorAll(".article-content .highlight, .article-content > pre, .shuoshuo-content .highlight, .shuoshuo-content > pre, .code-wrapper");
+    // 只抓取文章内容 (.article-content) 下的长代码块，完全排除了说说区域
+    const codeBlocks = document.querySelectorAll(".article-content .highlight, .article-content .code-wrapper, .article-content > pre");
     
     codeBlocks.forEach(block => {
         // 防止重复添加按钮
@@ -243,9 +243,8 @@ function initCodeFolding() {
     });
 }
 
-// 修复点 2：增加轻微延迟，等待代码高亮等内部元素真正排版完成后，再进行高度检测
 document.addEventListener("DOMContentLoaded", () => setTimeout(initCodeFolding, 150));
-window.addEventListener("load", initCodeFolding); // 增加双重保险防错
+window.addEventListener("load", initCodeFolding); 
 ` -}}
 
 <script>
