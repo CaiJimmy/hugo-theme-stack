@@ -204,6 +204,48 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+/* 🌟 核心修复：长代码块自动折叠逻辑 🌟 */
+function initCodeFolding() {
+    const CODE_MAX_HEIGHT = 400; 
+    
+    // 修复点 1：补全了 Hugo 默认单篇文章内容的类名 .article-content，确保全站都能抓取到代码块
+    const codeBlocks = document.querySelectorAll(".article-content .highlight, .article-content > pre, .shuoshuo-content .highlight, .shuoshuo-content > pre, .code-wrapper");
+    
+    codeBlocks.forEach(block => {
+        // 防止重复添加按钮
+        if (block.nextElementSibling && block.nextElementSibling.classList.contains("code-expand-btn")) return;
+        
+        if (block.scrollHeight > CODE_MAX_HEIGHT + 30) {
+            block.classList.add("is-collapsed-code");
+            
+            const expandBtn = document.createElement("button");
+            expandBtn.className = "code-expand-btn";
+            expandBtn.innerHTML = "<span>展开代码</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>";
+            
+            block.parentNode.insertBefore(expandBtn, block.nextSibling);
+
+            expandBtn.addEventListener("click", () => {
+                const isCollapsed = block.classList.toggle("is-collapsed-code");
+                if (isCollapsed) {
+                    expandBtn.querySelector("span").innerText = "展开代码";
+                    expandBtn.classList.remove("expanded");
+                    const blockTop = block.getBoundingClientRect().top + window.scrollY;
+                    if (window.scrollY > blockTop) {
+                        window.scrollTo({ top: blockTop - 80, behavior: "smooth" });
+                    }
+                } else {
+                    expandBtn.querySelector("span").innerText = "收起代码";
+                    expandBtn.classList.add("expanded");
+                }
+            });
+        }
+    });
+}
+
+// 修复点 2：增加轻微延迟，等待代码高亮等内部元素真正排版完成后，再进行高度检测
+document.addEventListener("DOMContentLoaded", () => setTimeout(initCodeFolding, 150));
+window.addEventListener("load", initCodeFolding); // 增加双重保险防错
 ` -}}
 
 <script>

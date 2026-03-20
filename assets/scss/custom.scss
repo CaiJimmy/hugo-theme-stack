@@ -91,7 +91,7 @@
         }
     }
 
-    /* 🌟 新增：只给长说说添加的折叠状态（不影响短说说）🌟 */
+    /* 🌟 说说长文截断折叠状态（不影响短说说）🌟 */
     &.is-collapsed {
         max-height: 400px;
         overflow: hidden;
@@ -100,7 +100,7 @@
     }
 }
 
-/* 🌟 新增：展开/收起按钮的独立样式 🌟 */
+/* 说说长文展开/收起按钮的独立样式 */
 .shuoshuo-expand-btn {
     display: flex; align-items: center; justify-content: center; gap: 4px;
     width: 100%; margin-top: 15px; padding: 10px 0;
@@ -466,4 +466,36 @@ aside.related-content {
     display: none !important;
     margin: 0 !important;
     padding: 0 !important;
+}
+
+/* =================================================================
+   🌟 核心修复：文章内长代码块折叠样式 🌟
+   ================================================================= */
+.article-content .highlight, 
+.article-content .code-wrapper,
+.article-content > pre,
+.shuoshuo-content .highlight, 
+.shuoshuo-content .code-wrapper,
+.shuoshuo-content > pre {
+    position: relative;
+    transition: max-height 0.3s ease;
+    
+    &.is-collapsed-code {
+        max-height: 400px; 
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    }
+}
+
+.code-expand-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    width: 100%; margin-top: 5px; margin-bottom: 25px; padding: 8px 0;
+    background: rgba(128, 128, 128, 0.05); border: 1px dashed rgba(128, 128, 128, 0.2);
+    border-radius: 8px; color: var(--accent-color, #1e90ff); font-size: 1.4rem;
+    cursor: pointer; transition: all 0.3s ease;
+    
+    &:hover { background: rgba(30, 144, 255, 0.08); border-color: rgba(30, 144, 255, 0.3); }
+    svg { transition: transform 0.3s ease; }
+    &.expanded svg { transform: rotate(180deg); }
 }
