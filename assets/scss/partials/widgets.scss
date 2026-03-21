@@ -1,66 +1,201 @@
+/* Maximalist Chaos Widgets */
+
 .widget {
     display: flex;
     flex-direction: column;
+    background: var(--card-background);
+    backdrop-filter: blur(20px);
+    border-radius: var(--card-border-radius);
+    border: var(--card-border);
+    box-shadow: var(--shadow-l2);
+    padding: var(--card-padding);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #d946ef, #6366f1, #f472b6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--border-pattern);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-float);
+
+        &::before {
+            opacity: 1;
+        }
+
+        &::after {
+            opacity: 0.3;
+        }
+    }
 
     .widget-icon {
+        margin-bottom: 16px;
+
         svg {
-            width: 32px;
-            height: 32px;
-            stroke-width: 1.6;
-            color: var(--body-text-color);
+            width: 36px;
+            height: 36px;
+            stroke-width: 1.5;
+            stroke: #d946ef;
+            filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.4));
+            transition: all 0.3s ease;
         }
+    }
+
+    &:hover .widget-icon svg {
+        transform: scale(1.15) rotate(5deg);
+        filter: drop-shadow(0 0 15px rgba(217, 70, 239, 0.6));
     }
 }
 
-/* Tag cloud widget */
+/* Tag cloud widget - Maximalist */
 .tagCloud {
     .tagCloud-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 12px;
 
         a {
-            background: var(--card-background);
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.15), rgba(99, 102, 241, 0.15));
+            border: 1px solid rgba(217, 70, 239, 0.3);
             box-shadow: var(--shadow-l1);
             border-radius: var(--tag-border-radius);
-            padding: 8px 20px;
+            padding: 10px 22px;
             color: var(--card-text-color-main);
             font-size: 1.4rem;
-            transition: box-shadow 0.3s ease;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: left 0.5s ease;
+            }
 
             &:hover {
-                box-shadow: var(--shadow-l2);
+                background: linear-gradient(135deg, #d946ef, #6366f1);
+                color: #fff;
+                transform: translateY(-4px) scale(1.05);
+                box-shadow: 0 10px 30px rgba(217, 70, 239, 0.4);
+
+                &::before {
+                    left: 100%;
+                }
             }
         }
     }
 }
 
-/* Archives widget */
+/* Archives widget - Maximalist */
 .widget.archives {
     .widget-archive--list {
         border-radius: var(--card-border-radius);
         box-shadow: var(--shadow-l1);
-        background-color: var(--card-background);
+        background: linear-gradient(135deg, rgba(217, 70, 239, 0.05), rgba(99, 102, 241, 0.05));
+        overflow: hidden;
+        border: 1px solid rgba(217, 70, 239, 0.2);
     }
 
     .archives-year {
+        position: relative;
+        transition: all 0.3s ease;
+
         &:not(:last-of-type) {
-            border-bottom: 1.5px solid var(--card-separator-color);
+            border-bottom: 2px solid var(--card-separator-color);
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(217, 70, 239, 0.3), transparent);
+            }
         }
 
         a {
-            font-size: 1.4rem;
-            padding: 18px 25px;
+            font-size: 1.5rem;
+            padding: 20px 24px;
             display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                background: linear-gradient(180deg, #d946ef, #6366f1);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            &:hover {
+                background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(99, 102, 241, 0.1));
+                padding-left: 32px;
+
+                &::before {
+                    opacity: 1;
+                }
+
+                span.year {
+                    color: #d946ef;
+                    text-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
+                }
+
+                span.count {
+                    transform: scale(1.1);
+                    background: linear-gradient(135deg, rgba(217, 70, 239, 0.3), rgba(99, 102, 241, 0.3));
+                }
+            }
 
             span.year {
                 flex: 1;
                 color: var(--card-text-color-main);
-                font-weight: bold;
+                font-weight: 700;
+                font-family: var(--base-font-family);
+                transition: all 0.3s ease;
             }
 
             span.count {
-                color: var(--card-text-color-tertiary);
+                color: var(--accent-color);
+                font-weight: 600;
+                padding: 4px 12px;
+                border-radius: 20px;
+                background: linear-gradient(135deg, rgba(217, 70, 239, 0.15), rgba(99, 102, 241, 0.15));
+                border: 1px solid rgba(217, 70, 239, 0.3);
+                transition: all 0.3s ease;
             }
         }
     }

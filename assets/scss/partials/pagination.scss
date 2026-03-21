@@ -1,38 +1,88 @@
+/* Maximalist Chaos Pagination */
+
 .pagination {
     display: flex;
-    background-color: var(--card-background);
-    box-shadow: var(--shadow-l1);
+    background: var(--card-background);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-l2);
     border-radius: var(--card-border-radius);
     overflow: hidden;
+    border: var(--card-border);
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #d946ef, #6366f1, #f472b6, #60a5fa);
+        background-size: 200% 100%;
+        animation: shimmer 4s linear infinite;
+    }
 
     .page-link {
-        padding: 16px 0;
+        padding: 18px 0;
         margin: 0;
         border-radius: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 1 1 auto;
-        min-width: 48px;
+        min-width: 52px;
         color: var(--card-text-color-secondary);
         text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.2), rgba(99, 102, 241, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
         &:first-child,
         &:last-child {
-            flex: 0 0 48px;
-            padding: 16px;
+            flex: 0 0 56px;
+            padding: 18px;
         }
 
         &:hover:not(.current):not(.disabled) {
-            background-color: var(--card-background-selected);
-            opacity: 0.8;
+            color: #d946ef;
+            background-color: transparent;
+
+            &::before {
+                opacity: 1;
+            }
+
+            svg {
+                stroke: #d946ef;
+                filter: drop-shadow(0 0 8px rgba(217, 70, 239, 0.6));
+                transform: scale(1.2);
+            }
         }
 
         &.current {
-            background-color: var(--card-background-selected);
-            color: var(--card-text-color-main);
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.3), rgba(99, 102, 241, 0.3));
+            color: #d946ef;
             font-weight: bold;
             cursor: default;
+            text-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #d946ef, #6366f1);
+            }
         }
 
         &.disabled {
@@ -43,8 +93,19 @@
         }
 
         svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
+            stroke-width: 1.5;
+            transition: all 0.3s ease;
         }
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 0%;
     }
 }

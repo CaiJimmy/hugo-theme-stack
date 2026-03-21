@@ -1,18 +1,15 @@
 /*!
- * Hamburgers
- * @description Tasty CSS-animated hamburgers
- * @author Jonathan Suh @jonsuh
- * @site https://jonsuh.com/hamburgers
- * @link https://github.com/jonsuh/hamburgers
+ * Hamburgers - Maximalist Chaos Edition
+ * Tasty CSS-animated hamburgers with glow effects
  */
 
 .hamburger {
-    padding-top: 10px;
+    padding-top: 12px;
     display: inline-block;
     cursor: pointer;
-    transition-property: opacity, filter;
-    transition-duration: 0.15s;
-    transition-timing-function: linear;
+    transition-property: opacity, filter, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     font: inherit;
     color: inherit;
     text-transform: none;
@@ -23,22 +20,25 @@
 }
 
 .hamburger:hover {
-    opacity: 0.7;
+    opacity: 0.8;
+    transform: scale(1.1);
 }
 
 .hamburger.is-active:hover {
-    opacity: 0.7;
+    opacity: 0.9;
+    transform: scale(1.15);
 }
 
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-    background-color: #000;
+    background: linear-gradient(135deg, #d946ef, #6366f1);
+    box-shadow: 0 0 15px rgba(217, 70, 239, 0.6);
 }
 
 .hamburger-box {
-    width: 30px;
-    height: 24px;
+    width: 36px;
+    height: 28px;
     display: inline-block;
     position: relative;
 }
@@ -46,20 +46,21 @@
 .hamburger-inner {
     display: block;
     top: 50%;
-    margin-top: -2px;
+    margin-top: -3px;
 }
 
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-    width: 30px;
-    height: 2px;
+    width: 36px;
+    height: 3px;
     background-color: var(--card-text-color-main);
     border-radius: 4px;
     position: absolute;
-    transition-property: transform;
-    transition-duration: 0.15s;
+    transition-property: transform, background;
+    transition-duration: 0.25s;
     transition-timing-function: ease;
+    box-shadow: 0 0 10px rgba(217, 70, 239, 0.3);
 }
 
 .hamburger-inner::before,
@@ -69,24 +70,24 @@
 }
 
 .hamburger-inner::before {
-    top: -10px;
+    top: -12px;
 }
 
 .hamburger-inner::after {
-    bottom: -10px;
+    bottom: -12px;
 }
 
 .hamburger--spin .hamburger-inner {
-    transition-duration: 0.22s;
-    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transition-duration: 0.35s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .hamburger--spin .hamburger-inner::before {
-    transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+    transition: top 0.15s 0.25s ease-in, opacity 0.15s ease-in, background 0.3s ease;
 }
 
 .hamburger--spin .hamburger-inner::after {
-    transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transition: bottom 0.15s 0.25s ease-in, transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55), background 0.3s ease;
 }
 
 .hamburger--spin.is-active .hamburger-inner {
@@ -98,13 +99,13 @@
 .hamburger--spin.is-active .hamburger-inner::before {
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+    transition: top 0.15s ease-out, opacity 0.15s 0.12s ease-out;
 }
 
 .hamburger--spin.is-active .hamburger-inner::after {
     bottom: 0;
     transform: rotate(-90deg);
-    transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: bottom 0.15s ease-out, transform 0.35s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 #toggle-menu {
@@ -116,11 +117,6 @@
     z-index: 2;
     cursor: pointer;
 
-    [dir="rtl"] & {
-        left: 0;
-        right: auto;
-    }
-
     @include respond(md) {
         display: none;
     }
@@ -128,40 +124,65 @@
     outline: none;
 
     &.is-active {
-
         .hamburger-inner,
         .hamburger-inner::before,
         .hamburger-inner::after {
-            background-color: var(--accent-color);
+            background: linear-gradient(135deg, #d946ef, #f472b6);
+            box-shadow: 0 0 20px rgba(217, 70, 239, 0.7);
         }
     }
 }
 
-/* Menu style */
+/* Menu style - Maximalist Chaos */
 #main-menu {
     list-style: none;
     overflow-y: auto;
     flex-grow: 1;
-    font-size: 1.4rem;
-    background-color: var(--card-background);
-
-    box-shadow: var(--shadow-l1);
+    font-size: 1.5rem;
+    background: var(--card-background);
+    backdrop-filter: blur(20px);
+    border-radius: var(--card-border-radius);
+    border: var(--card-border);
+    box-shadow: var(--shadow-l3);
     display: none;
     margin: 0 calc(var(--container-padding) * -1);
+    padding: 35px;
 
-    padding: 30px 30px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #d946ef, #6366f1, #f472b6, #60a5fa);
+        animation: shimmer 4s linear infinite;
+        background-size: 200% 100%;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--border-pattern);
+        opacity: 0.15;
+        pointer-events: none;
+    }
 
     @include respond(xl) {
-        padding: 15px 0;
+        padding: 25px 0;
     }
 
     &,
     .menu-bottom-section ol {
         flex-direction: column;
-        gap: 30px;
+        gap: 35px;
 
         @include respond(xl) {
-            gap: 25px;
+            gap: 30px;
         }
     }
 
@@ -176,6 +197,13 @@
         padding: 0;
         box-shadow: none;
         margin: 0;
+        border-radius: 0;
+        border: none;
+
+        &::before,
+        &::after {
+            display: none;
+        }
     }
 
     li {
@@ -188,10 +216,12 @@
         }
 
         svg {
-            stroke: currentColor;
-            stroke-width: 1.33;
-            width: 20px;
-            height: 20px;
+            stroke: #d946ef;
+            stroke-width: 1.5;
+            width: 22px;
+            height: 22px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 5px rgba(217, 70, 239, 0.4));
         }
 
         a {
@@ -200,6 +230,39 @@
             align-items: center;
             color: var(--body-text-color);
             gap: var(--menu-icon-separation);
+            padding: 12px 16px;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(217, 70, 239, 0.2), rgba(99, 102, 241, 0.2));
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                border-radius: 10px;
+            }
+
+            &:hover {
+                color: #d946ef;
+                transform: translateX(8px);
+
+                &::before {
+                    opacity: 1;
+                }
+
+                svg {
+                    stroke: #f472b6;
+                    filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.6));
+                    transform: scale(1.15);
+                }
+            }
         }
 
         span {
@@ -208,8 +271,20 @@
 
         &.current {
             a {
-                color: var(--accent-color);
-                font-weight: bold;
+                color: #d946ef;
+                font-weight: 700;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 16px;
+                    right: 16px;
+                    height: 3px;
+                    background: linear-gradient(90deg, #d946ef, #6366f1);
+                    border-radius: 2px;
+                    box-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+                }
             }
         }
 
@@ -230,12 +305,37 @@
     margin: 0;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 16px;
+
+    li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--card-background);
+        border: var(--card-border);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.3), rgba(99, 102, 241, 0.3));
+            border-color: rgba(217, 70, 239, 0.5);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-l3);
+
+            svg {
+                stroke: #d946ef;
+                filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.6));
+            }
+        }
+    }
 
     svg {
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
         stroke: var(--body-text-color);
-        stroke-width: 1.33;
+        stroke-width: 1.5;
+        transition: all 0.3s ease;
     }
 }

@@ -9,6 +9,9 @@ html {
 
 body {
     background: var(--body-background);
+    background-image:
+        var(--gradient-mesh),
+        var(--noise-overlay);
     margin: 0;
     font-family: var(--base-font-family);
     font-size: 1.6rem;
@@ -17,25 +20,104 @@ body {
     -ms-text-autospace: ideograph-alpha;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* scrollbar styles for Firefox */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(217, 70, 239, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(244, 114, 182, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+    66% {
+        transform: translateY(-5px) rotate(-1deg);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: var(--shadow-l1);
+    }
+    50% {
+        box-shadow: var(--shadow-glow);
+    }
+}
+
+@keyframes border-flow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 200%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
 * {
     scrollbar-width: auto;
-    scrollbar-color: var(--scrollbar-thumb) transparent;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
-/**/
 
-/* scrollbar styles for Chromium */
 ::-webkit-scrollbar {
     height: auto;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb);
+    background: var(--scrollbar-thumb);
+    border-radius: 6px;
+    border: 2px solid var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: var(--scrollbar-track);
 }
-/**/
+
+::selection {
+    background: rgba(217, 70, 239, 0.4);
+    color: #fff;
+}
+
+::-moz-selection {
+    background: rgba(217, 70, 239, 0.4);
+    color: #fff;
+}

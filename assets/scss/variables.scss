@@ -1,173 +1,208 @@
 /*
-*   Global style
+*   Maximalist Chaos Theme - Global Variables
+*   Bold colors, dramatic gradients, layered effects
 */
 :root {
     --main-top-padding: 35px;
 
     @include respond(xl) {
-        --main-top-padding: 50px;
+        --main-top-padding: 60px;
     }
 
-    --body-background: #f5f5fa;
+    --body-background: #0f0a1a;
+    --gradient-mesh: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f3460 100%);
+    --noise-overlay: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
 
-    --accent-color: #34495e;
-    --accent-color-darker: #2c3e50;
+    --accent-color: #d946ef;
+    --accent-color-darker: #a855f7;
     --accent-color-text: #fff;
-    --body-text-color: #707070;
+    --accent-glow: 0 0 30px rgba(217, 70, 239, 0.5), 0 0 60px rgba(217, 70, 239, 0.3);
 
-    --tag-border-radius: 4px;
+    --body-text-color: #e2e8f0;
+    --text-gradient: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
 
-    --section-separation: 40px;
+    --tag-border-radius: 8px;
+    --section-separation: 50px;
 
-    --scrollbar-thumb: hsl(0, 0%, 85%);
-    --scrollbar-track: var(--body-background);
+    --scrollbar-thumb: linear-gradient(180deg, #d946ef, #6366f1);
+    --scrollbar-track: rgba(15, 10, 26, 0.8);
+
+    --border-art-deco: 3px solid;
+    --border-pattern: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(217, 70, 239, 0.1) 10px,
+        rgba(217, 70, 239, 0.1) 20px
+    );
 
     &[data-scheme="dark"] {
-        --body-background: #303030;
-        --accent-color: #ecf0f1;
-        --accent-color-darker: #bdc3c7;
-        --accent-color-text: #000;
-        --body-text-color: rgba(255, 255, 255, 0.7);
-        --scrollbar-thumb: hsl(0, 0%, 40%);
-        --scrollbar-track: var(--body-background);
+        --body-background: #0f0a1a;
+        --accent-color: #f0abfc;
+        --accent-color-darker: #e879f9;
+        --accent-color-text: #0f0a1a;
+        --body-text-color: #e2e8f0;
+        --scrollbar-thumb: linear-gradient(180deg, #f0abfc, #818cf8);
+        --scrollbar-track: rgba(15, 10, 26, 0.8);
     }
 }
 
 /**
-*   Global font family
+*   Maximalist Font Stack
+*   Abril Fatface for display, Source Serif for body, JetBrains Mono for code
 */
 :root {
-    --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
-    --base-font-family: "Lato", var(--sys-font-family), sans-serif;
-    --code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --display-font-family: "Abril Fatface", var(--sys-font-family), serif;
+    --base-font-family: "Source Serif 4", Georgia, var(--sys-font-family), serif;
+    --code-font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 /*
-*   Card style
+*   Card System - Layered & Dramatic
 */
 :root {
-    --card-background: #fff;
-    --card-background-selected: #eaeaea;
+    --card-background: linear-gradient(145deg, rgba(30, 20, 50, 0.95), rgba(15, 10, 26, 0.98));
+    --card-background-selected: rgba(217, 70, 239, 0.2);
+    --card-glass: rgba(255, 255, 255, 0.05);
+    --card-glass-border: rgba(255, 255, 255, 0.1);
 
-    --card-text-color-main: #000;
-    --card-text-color-secondary: #747474;
-    --card-text-color-tertiary: #767676;
-    --card-separator-color: rgba(218, 218, 218, 0.5);
+    --card-text-color-main: #f8fafc;
+    --card-text-color-secondary: #cbd5e1;
+    --card-text-color-tertiary: #94a3b8;
+    --card-separator-color: rgba(217, 70, 239, 0.3);
 
-    --card-border-radius: 10px;
+    --card-border-radius: 16px;
+    --card-border: 1px solid rgba(217, 70, 239, 0.3);
+    --card-glow: 0 8px 32px rgba(217, 70, 239, 0.2), 0 0 0 1px rgba(217, 70, 239, 0.1);
+    --card-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
-    --card-padding: 20px;
+    --card-padding: 28px;
 
     @include respond(md) {
-        --card-padding: 25px;
+        --card-padding: 35px;
     }
 
     @include respond(xl) {
-        --card-padding: 30px;
+        --card-padding: 42px;
     }
 
-    --small-card-padding: 25px 20px;
+    --small-card-padding: 28px 24px;
 
     @include respond(md) {
-        --small-card-padding: 25px;
+        --small-card-padding: 32px 28px;
     }
 
     &[data-scheme="dark"] {
-        --card-background: #424242;
-        --card-background-selected: rgba(255, 255, 255, 0.16);
-        --card-text-color-main: rgba(255, 255, 255, 0.9);
-        --card-text-color-secondary: rgba(255, 255, 255, 0.7);
-        --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
-        --card-separator-color: rgba(255, 255, 255, 0.12);
+        --card-background: linear-gradient(145deg, rgba(30, 20, 50, 0.95), rgba(15, 10, 26, 0.98));
+        --card-background-selected: rgba(240, 171, 252, 0.15);
+        --card-text-color-main: #f8fafc;
+        --card-text-color-secondary: #cbd5e1;
+        --card-text-color-tertiary: #94a3b8;
+        --card-separator-color: rgba(240, 171, 252, 0.25);
     }
 }
 
 /**
-*   Article content font settings
+*   Article Typography - Dramatic Scale
 */
 :root {
     --article-font-family: var(--base-font-family);
-    --article-font-size: 1.6rem;
+    --article-font-size: 1.75rem;
 
     @include respond(md) {
-        --article-font-size: 1.7rem;
+        --article-font-size: 1.9rem;
     }
 
-    --article-line-height: 1.85;
+    --article-line-height: 1.8;
+    --article-heading-font: var(--display-font-family);
 }
 
 /*
-*   Article content style
+*   Article Content - Rich & Layered
 */
 :root {
-    --blockquote-border-size: 4px;
-    --blockquote-background-color: rgb(248 248 248);
+    --blockquote-border-size: 5px;
+    --blockquote-background-color: rgba(217, 70, 239, 0.1);
+    --blockquote-border-gradient: linear-gradient(180deg, #d946ef, #6366f1);
+    --heading-border-size: 5px;
+    --heading-gradient: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
 
-    --heading-border-size: 4px;
+    --alert-note-color: #38bdf8;
+    --alert-note-background: rgba(56, 189, 248, 0.1);
+    --alert-tip-color: #4ade80;
+    --alert-tip-background: rgba(74, 222, 128, 0.1);
+    --alert-important-color: #c084fc;
+    --alert-important-background: rgba(192, 132, 252, 0.1);
+    --alert-warning-color: #fbbf24;
+    --alert-warning-background: rgba(251, 191, 36, 0.1);
+    --alert-caution-color: #f87171;
+    --alert-caution-background: rgba(248, 113, 113, 0.1);
 
-    --alert-note-color: #4da3ff;
-    --alert-note-background: rgba(77, 163, 255, 0.08);
-    --alert-tip-color: #3fb950;
-    --alert-tip-background: rgba(63, 185, 80, 0.08);
-    --alert-important-color: #8457d9;
-    --alert-important-background: rgba(130, 80, 223, 0.08);
-    --alert-warning-color: #d29922;
-    --alert-warning-background: rgba(210, 153, 34, 0.1);
-    --alert-caution-color: #f85149;
-    --alert-caution-background: rgba(248, 81, 73, 0.1);
+    --link-background-color: 217, 70, 239;
+    --link-background-opacity: 0.3;
+    --link-background-opacity-hover: 0.5;
 
-    --link-background-color: 189, 195, 199;
-    --link-background-opacity: 0.5;
-    --link-background-opacity-hover: 0.7;
+    --pre-background-color: #1e1b4b;
+    --pre-text-color: #e2e8f0;
+    --pre-glow: 0 0 40px rgba(217, 70, 239, 0.3);
 
-    --pre-background-color: #272822;
-    --pre-text-color: #f8f8f2;
+    --code-background-color: rgba(217, 70, 239, 0.15);
+    --code-text-color: #f0abfc;
+    --code-border: 1px solid rgba(217, 70, 239, 0.3);
+    --code-glow: 0 0 15px rgba(217, 70, 239, 0.2);
 
-    --code-background-color: rgba(0, 0, 0, 0.12);
-    --code-text-color: #808080;
+    --table-border-color: rgba(217, 70, 239, 0.4);
+    --tr-even-background-color: rgba(217, 70, 239, 0.08);
 
-    --table-border-color: #dadada;
-    --tr-even-background-color: #efefee;
-
-    --kbd-border-color: #dadada;
+    --kbd-border-color: rgba(217, 70, 239, 0.5);
+    --kbd-background: rgba(217, 70, 239, 0.1);
+    --kbd-glow: 0 0 10px rgba(217, 70, 239, 0.3);
 
     &[data-scheme="dark"] {
-        --code-background-color: #272822;
-        --code-text-color: rgba(255, 255, 255, 0.9);
-
-        --table-border-color: #717171;
-        --tr-even-background-color: #545454;
-
-        --blockquote-background-color: rgb(75 75 75);
+        --code-background-color: rgba(240, 171, 252, 0.15);
+        --code-text-color: #f0abfc;
+        --table-border-color: rgba(240, 171, 252, 0.4);
+        --tr-even-background-color: rgba(240, 171, 252, 0.08);
+        --blockquote-background-color: rgba(240, 171, 252, 0.08);
     }
 }
 
 /*
-*   Shadow style
+*   Shadow System - Dramatic & Layered
 *   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
 */
 :root {
-    --shadow-l1: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l2: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-        0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l1: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(217, 70, 239, 0.1);
+    --shadow-l2: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(217, 70, 239, 0.15), 0 0 30px rgba(217, 70, 239, 0.1);
+    --shadow-l3: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(217, 70, 239, 0.2), 0 0 50px rgba(217, 70, 239, 0.15);
+    --shadow-l4: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(217, 70, 239, 0.25), 0 0 80px rgba(217, 70, 239, 0.2);
+    --shadow-glow: 0 0 40px rgba(217, 70, 239, 0.4), 0 0 80px rgba(217, 70, 239, 0.2);
+    --shadow-float: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 100px rgba(217, 70, 239, 0.15);
 }
 
 [data-scheme="light"] {
-    --pre-text-color: #272822;
-    --pre-background-color: #fafafa;
+    --pre-text-color: #1e1b4b;
+    --pre-background-color: #f8f7ff;
     @import "partials/highlight/light.scss";
 }
 
 [data-scheme="dark"] {
-    --pre-text-color: #f8f8f2;
-    --pre-background-color: #272822;
+    --pre-text-color: #e2e8f0;
+    --pre-background-color: #1e1b4b;
     @import "partials/highlight/dark.scss";
 }
 
 :root {
-    --menu-icon-separation: 40px;
+    --menu-icon-separation: 50px;
     --container-padding: 15px;
     --widget-separation: var(--section-separation);
+    --decorative-line: 3px solid;
+    --decorative-pattern: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 8px,
+        rgba(217, 70, 239, 0.15) 8px,
+        rgba(217, 70, 239, 0.15) 16px
+    );
 }

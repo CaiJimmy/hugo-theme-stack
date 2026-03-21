@@ -1,17 +1,22 @@
+/* Maximalist Chaos General Styles */
+
 a {
     text-decoration: none;
     color: var(--accent-color);
+    transition: all 0.3s ease;
 
     &:hover {
-        color: var(--accent-color-darker);
+        color: #f472b6;
+        text-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
     }
 
     &.link {
-        box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
-        transition: all 0.3s ease;
+        box-shadow: 0px -3px 0px rgba(217, 70, 239, 0.4) inset;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
-            box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+            box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(217, 70, 239, 0.6) inset;
+            color: #f472b6;
         }
     }
 }
@@ -19,13 +24,42 @@ a {
 .section-title {
     text-transform: uppercase;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     display: block;
-    font-size: 1.6rem;
-    font-weight: bold;
+    font-size: 1.7rem;
+    font-weight: 700;
     color: var(--body-text-color);
+    letter-spacing: 2px;
+    font-family: var(--base-font-family);
+    position: relative;
+    padding-left: 20px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 24px;
+        background: linear-gradient(180deg, #d946ef, #6366f1);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+    }
 
     a {
         color: var(--body-text-color);
+        background: linear-gradient(135deg, var(--body-text-color) 0%, var(--accent-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+
+        &:hover {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
     }
 }
