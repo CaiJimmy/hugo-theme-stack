@@ -164,7 +164,7 @@
                 
                 // 🌟 核心：只给长说说添加折叠。先判断，折叠完成后再调用 applyMasonryLayout() 展现页面 🌟
                 setTimeout(() => {
-                    const MAX_HEIGHT_THRESHOLD = 400;
+                    const MAX_HEIGHT_THRESHOLD = 300;
                     document.querySelectorAll('.shuoshuo-content').forEach(content => {
                         if (content.scrollHeight > MAX_HEIGHT_THRESHOLD + 20) {
                             content.classList.add('is-collapsed');

@@ -93,7 +93,7 @@
 
     /* 🌟 保留：只给长说说添加的折叠状态（不影响短说说）🌟 */
     &.is-collapsed {
-        max-height: 400px;
+        max-height: 300px;
         overflow: hidden;
         -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
         mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
@@ -309,28 +309,20 @@
 
     h3 {
         margin-top: 0 !important;
+        margin-bottom: 1.6rem !important; 
         display: flex;
         flex-wrap: wrap;
         align-items: baseline;
+        gap: 12px; 
         color: var(--card-text-color-main) !important;
         
         small {
             margin-left: 0 !important; 
-            opacity: 0.95;
-            color: var(--card-text-color-main);
-            @media (min-width: 600px) {
-                margin-left: 12px !important;
-            }
+            font-size: 0.75em !important; /* 🌟 字体已缩小 */
+            color: var(--card-text-color-main) !important; /* 🌟 颜色已调成和正文主标题一致 */
+            font-weight: normal;
+            opacity: 1 !important; /* 确保不透明度正常，颜色纯正 */
         }
-    }
-
-    .book-note-meta {
-        font-size: 0.9em;
-        font-weight: normal;
-        opacity: 0.95;
-        margin-top: -0.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--card-text-color-main); 
     }
 
     blockquote {
