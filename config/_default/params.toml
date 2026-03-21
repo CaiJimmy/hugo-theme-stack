@@ -1,10 +1,9 @@
-mainSections       = ["post"]
-featuredImageField = "image"
-rssFullContent     = true
+mainSections   = ["post"]
+rssFullContent = true
 # Accepted values: "default", "lastmod"
 # default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
 # lastmod = sort by last modified date, in descending order
-SortBy             = "default"
+SortBy         = "default"
 
 [footer]
     since      = 2026
@@ -75,11 +74,18 @@ SortBy             = "default"
     toggle  = true
     default = "auto"
 
-[imageProcessing.cover]
-    enabled = true
+[imageProcessing]
+    autoOrient = false
 
-[imageProcessing.content]
-    enabled = true
+    [imageProcessing.external]
+        timeout = "5s"
+
+    [imageProcessing.content]
+        widths  = [800, 1600, 2400]
+        enabled = true
+
+    [imageProcessing.thumbnail]
+        enabled = true
 
 # GDPR Cookie Consent Configuration
 # When enabled, analytics and functional cookies require user consent

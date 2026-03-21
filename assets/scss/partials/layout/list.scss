@@ -138,13 +138,22 @@
 }
 
 .subsection-list {
-    overflow-x: auto;
-    margin-left: -24px;
+    --shadow-overlap-x: calc(var(--shadow-l2-blur) + 4px);
+    --shadow-overlap-y: calc(var(--shadow-l2-blur) + var(--shadow-l2-y) + 4px);
 
+    overflow-x: auto;
+
+    /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2)
+    /// so that the shadow is not cut off
+    margin-left: calc(var(--shadow-overlap-x) * -1);
+    margin-right: calc(var(--shadow-overlap-x) * -1);
+    margin-bottom: calc(var(--shadow-overlap-y) * -1);
+    
     .article-list--tile {
         display: flex;
         padding: 12px 0 40px 24px;
         width: max-content;
+        gap: var(--spacing-lg);
 
         article {
             width: 280px;

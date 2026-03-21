@@ -1,12 +1,12 @@
 <div class="article-list--compact links">
-    {{ range $i, $link := .Params.links }}
+    {{ range $link := .Params.links }}
         <article>
             <a href="{{ $link.website }}" target="_blank" rel="noopener">
                 <div class="article-details">
                     <h2 class="article-title">
                         {{- $link.title -}}
                     </h2>
-                    <footer class="article-time">
+                    <footer class="article-meta">
                         {{ with $link.description }}
                             {{ . }}
                         {{ else }}
@@ -14,14 +14,23 @@
                         {{ end }}
                     </footer>
                 </div>
-        
-                {{ with $link.image }}
-                    {{ $permalink := . }}
-                    {{ with ($.Resources.GetMatch (printf "%s" (. | safeURL))) }}
-                        {{ $permalink = .RelPermalink }}
-                    {{ end }}
+
+                {{- $image := partial "helper/image" (dict "Image" $link.image "Resources" $.Resources "Context" .) -}}
+                {{- with $image -}}
                     <div class="article-image">
-                        <img src="{{ $permalink }}" loading="lazy"{{ with $link.alt }} alt="{{ . }}"{{ end }}>
+                       {{ partial "helper/thumbnail-image" (dict 
+                            "Resource" .Resource
+                            "Width" 60
+                            "Height" 60
+                            "Resize" $.Site.Params.ImageProcessing.Thumbnail.Enabled
+                            "Attributes" (dict
+                                "src" $image.Permalink
+                                "alt" $link.title
+                                "loading" "lazy"
+                                "width" .Width
+                                "height" .Height
+                            )
+                        ) }}
                     </div>
                 {{ end }}
             </a>

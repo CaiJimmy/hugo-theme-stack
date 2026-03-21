@@ -196,6 +196,11 @@
 :root {
     --menu-icon-separation: 50px;
     --container-padding: 15px;
+
+    @include respond(md) {
+        --container-padding: 20px;
+    }
+
     --widget-separation: var(--section-separation);
     --decorative-line: 3px solid;
     --decorative-pattern: repeating-linear-gradient(

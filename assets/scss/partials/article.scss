@@ -73,6 +73,7 @@
                 @include respond(xl) {
                     height: 320px;
                 }
+
             }
 
             &::after {
@@ -168,9 +169,7 @@
     }
 }
 
-.article-time,
-.article-translations,
-.article-header-tags {
+.article-meta {
     display: flex;
     color: var(--card-text-color-tertiary);
     gap: 20px;
@@ -184,6 +183,7 @@
         stroke: #d946ef;
     }
 
+    &,
     time,
     a {
         font-size: 1.5rem;
@@ -191,7 +191,7 @@
         transition: color 0.3s ease;
     }
 
-    & > div {
+    & > .inline-meta {
         display: inline-flex;
         align-items: center;
         gap: 20px;
@@ -206,6 +206,8 @@
 .article-header-tags {
     & > div {
         flex-wrap: wrap;
+        align-items: center;
+        gap: var(--spacing-md);
     }
 }
 
@@ -374,8 +376,6 @@
 /* Tile style article list - Maximalist version */
 .article-list--tile {
     article {
-        border-radius: var(--card-border-radius);
-        overflow: hidden;
         position: relative;
         height: 400px;
         width: 300px;

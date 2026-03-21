@@ -28,50 +28,49 @@
         {{ end }}
     </div>
 
-    {{ $showReadingTime := $Page.Params.readingTime | default (.Site.Params.article.readingTime) }}
+    {{ $showReadingTime := $Page.Params.readingTime | default ($Page.Site.Params.article.readingTime) }}
     {{ $showDate := not $Page.Date.IsZero }}
-    {{ $showFooter := or $showDate $showReadingTime }}
-    {{ if $showFooter }}
-    <footer class="article-time">
-        {{ if $showDate }}
-            <div>
-                {{ partial "helper/icon" "date" }}
-                <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
-                </time>
+    {{ $showTime := or $showDate $showReadingTime }}
+    {{ $showTranslations := $Page.IsTranslated }}
+    {{ $showTags := and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
+    
+    {{ if or $showTime $showTranslations $showTags }}
+    <footer class="article-meta">
+        {{ if $showTime }}
+            <div class="inline-meta">
+                {{ if $showDate }}
+                    {{ partial "helper/icon" "date" }}
+                    <time class="article-time--published" datetime='{{ $Page.Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                        {{- $Page.Date | time.Format $Page.Site.Params.dateFormat.published -}}
+                    </time>
+                {{ end }}
+
+                {{ if $showReadingTime }}
+                    {{ partial "helper/icon" "clock" }}
+                    <time class="article-time--reading">
+                        {{ T "article.readingTime" $Page.ReadingTime }}
+                    </time>
+                {{ end }}
             </div>
         {{ end }}
 
-        {{ if $showReadingTime }}
-            <div>
-                {{ partial "helper/icon" "clock" }}
-                <time class="article-time--reading">
-                    {{ T "article.readingTime" $Page.ReadingTime }}
-                </time>
-            </div>
-        {{ end }}
-    </footer>
-    {{ end }}
-
-    {{ if $Page.IsTranslated }}
-        <footer class="article-translations">
-            {{ partial "helper/icon" "language" }}
-            <div>
+        {{ if $showTranslations }}
+            <div class="inline-meta">
+                {{ partial "helper/icon" "language" }}
                 {{ range $Page.Translations }}
                     <a href="{{ .RelPermalink }}" class="link">{{ .Language.LanguageName }}</a>
                 {{ end }}
             </div>
-        </footer>
-    {{ end }}
+        {{ end }}
 
-    {{ if and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}
-        <footer class="article-header-tags">
-            {{ partial "helper/icon" "tag" }}
-            <div>
+        {{ if $showTags }}
+            <div class="article-tags inline-meta">
+                {{ partial "helper/icon" "tag" }}
                 {{ range ($Page.GetTerms "tags") }}
                     <a href="{{ .RelPermalink }}" class="link">{{ .LinkTitle }}</a>
                 {{ end }}
             </div>
-        </footer>
+        {{ end }}
+    </footer>
     {{ end }}
 </div>

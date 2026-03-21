@@ -4,7 +4,7 @@
 {{- range $pages -}}
     {{- $data := dict "title" .Title "date" .Date "permalink" .RelPermalink "content" (.Plain) -}}
 
-    {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
+    {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
     {{- if $image -}}
         {{- $data = merge $data (dict "image" $image.Permalink) -}}
     {{- end -}}

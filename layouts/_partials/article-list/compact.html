@@ -4,18 +4,45 @@
             <h2 class="article-title">
                 {{- .Title -}}
             </h2>
-            <footer class="article-time">
-                <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-                </time>
-            </footer>
+            
+            {{- $description := .Params.description -}}
+            {{- $IsTerm := in .Kind "term" -}}
+            {{- if $IsTerm -}}
+                {{- $description = $description | default (T "list.page" (len .Pages)) -}}
+            {{- end -}}
+            {{- if or $description (not .Date.IsZero) -}}
+                {{/* 
+                    If it's a term, the date is extracted from the first page of the collection, which is not very useful.
+                    In that case, we prefer to display the description (if set), or the number of pages within the collection.
+                */}}
+                <footer class="article-meta">
+                    {{- if or $IsTerm .Date.IsZero -}}
+                        <span class="article-description">{{- $description -}}</span>
+                    {{- else if not .Date.IsZero -}}
+                        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                            {{- .Date | time.Format .Site.Params.dateFormat.published -}}
+                        </time>
+                    {{- end }}
+                </footer>
+            {{- end -}}
         </div>
 
-        {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) -}}
+        {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
         {{ if $image }}
         <div class="article-image">
-            <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"
-                loading="lazy">
+            {{ partial "helper/thumbnail-image" (dict 
+                "Resource" $image.Resource
+                "Width" 60
+                "Height" 60
+                "Resize" .Site.Params.ImageProcessing.Thumbnail.Enabled
+                "Attributes" (dict
+                    "src" $image.Permalink
+                    "alt" .Title
+                    "loading" "lazy"
+                    "width" $image.Width
+                    "height" $image.Height
+                )
+            ) }}
         </div>
         {{ end }}
     </a>

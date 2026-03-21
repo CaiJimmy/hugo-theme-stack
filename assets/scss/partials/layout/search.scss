@@ -7,12 +7,12 @@
 
         label {
             font-size: 1.3rem;
-            top: 10px;
+            top: var(--spacing-sm);
         }
 
         input {
             font-size: 1.5rem;
-            padding: 30px 20px 15px 20px;
+            padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
         }
     }
 
@@ -23,21 +23,20 @@
 
     label {
         position: absolute;
-        top: 15px;
-        inset-inline-start: 20px;
+        top: var(--spacing-md);
+        inset-inline-start: var(--spacing-lg);
         font-size: 1.4rem;
         color: var(--card-text-color-tertiary);
     }
 
     input {
         padding: 40px 20px 20px;
-        border-radius: var(--card-border-radius);
-        background-color: var(--card-background);
-        box-shadow: var(--shadow-l1);
+        @include card-style;
         color: var(--card-text-color-main);
         width: 100%;
         border: 0;
         -webkit-appearance: none;
+        appearance: none;
 
         transition: box-shadow 0.3s ease;
 
@@ -79,4 +78,10 @@
         }
     }
 
+}
+
+.search-result {
+    &.hidden {
+        display: none;
+    }
 }
