@@ -310,18 +310,16 @@
     h3 {
         margin-top: 0 !important;
         margin-bottom: 1.6rem !important; 
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        gap: 12px; 
+        /* 🌟 此处移除了 display: flex 和 flex-wrap，使其内联自然换行 */
+        line-height: 1.5;
         color: var(--card-text-color-main) !important;
         
         small {
-            margin-left: 0 !important; 
-            font-size: 0.75em !important; /* 🌟 字体已缩小 */
-            color: var(--card-text-color-main) !important; /* 🌟 颜色已调成和正文主标题一致 */
+            margin-left: 10px !important; /* 🌟 替代原来的 gap: 12px 效果 */
+            font-size: 0.75em !important; 
+            color: var(--card-text-color-main) !important; 
             font-weight: normal;
-            opacity: 1 !important; /* 确保不透明度正常，颜色纯正 */
+            opacity: 1 !important; 
         }
     }
 
