@@ -305,23 +305,21 @@
                     <span>{{ $updateTime.Format "2006-01-02" }}</span>
                 </span>
             {{ end }}
+            
+            {{ if .Params.shuoshuotags }}
+                {{ range .Params.shuoshuotags }}
+                    <a href="{{ "shuoshuotags/" | relLangURL }}{{ . | urlize }}/" class="meta-item shuoshuo-tag" title="查看标签: {{ . }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <span>{{ . }}</span>
+                    </a>
+                {{ end }}
+            {{ end }}
         </div>
     </div>
 
     <div class="shuoshuo-content style-cs-content article-post">
         {{ .Content }}
     </div>
-    
-    {{ if .Params.shuoshuotags }}
-    <div class="shuoshuo-tags meta-wrapper" style="margin-top: 15px !important; margin-bottom: 5px !important; gap: 10px !important;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; color: var(--card-text-color-secondary);"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-        {{ range .Params.shuoshuotags }}
-            <a href="{{ "shuoshuotags/" | relLangURL }}{{ . | urlize }}/" class="meta-item shuoshuo-tag" title="查看标签: {{ . }}">
-                <span>#{{ . }}</span>
-            </a>
-        {{ end }}
-    </div>
-    {{ end }}
 
     <div class="shuoshuo-footer-info" style="border-top: 1px dashed rgba(128, 128, 128, 0.15); margin-top: 12px; padding-top: 12px;">
         <div class="shuoshuo-edit-link meta-wrapper" style="gap: 15px !important;">
