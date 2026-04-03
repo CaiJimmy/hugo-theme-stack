@@ -94,25 +94,19 @@
 
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(2px);
         opacity: 0;
-        transition: opacity 0.3s ease;
+        animation: backdrop-fade-in 0.3s ease forwards;
     }
 
     &[open] {
         animation: scale-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-
-        &::backdrop {
-            opacity: 1;
-        }
     }
 
     &.closing {
         animation: scale-down 0.2s ease forwards;
 
         &::backdrop {
-            opacity: 0;
-            transition: opacity 0.2s ease;
+            animation: backdrop-fade-out 0.2s ease forwards;
         }
     }
 
@@ -251,6 +245,24 @@
         to {
             opacity: 0;
             transform: scale(0.95);
+        }
+    }
+
+    @keyframes backdrop-fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes backdrop-fade-out {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
         }
     }
 }
