@@ -12,5 +12,5 @@
 {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
 {{- if $image -}}
     <meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">
-    <meta name="twitter:image" content='{{ absURL $image.permalink }}' />
+    <meta name="twitter:image" content='{{ absURL $image.Permalink }}' />
 {{- end -}}
