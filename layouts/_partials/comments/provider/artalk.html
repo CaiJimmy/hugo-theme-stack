@@ -7,18 +7,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.js"></script>
 <script>
-    (function() {
-        function getArtalkDarkMode() {
+        function isDarkMode() {
             return document.documentElement.dataset.scheme === 'dark';
-        }
-
-        const commentsContainer = document.getElementById('Comments');
-        if (!commentsContainer) return;
-        if (commentsContainer.dataset.artalkLoaded === 'true') return;
-
-        if (typeof Artalk === 'undefined') {
-            console.error('Artalk script not loaded.');
-            return;
         }
 
         const artalkInstance = Artalk.init({
@@ -27,16 +17,13 @@
             pageTitle: '{{ $.Title }}',
             server: '{{ .serverUrl }}',
             site: '{{ .site }}',
-            darkMode: getArtalkDarkMode(),
+            darkMode: isDarkMode(),
             locale: 'auto',
         });
-
-        commentsContainer.dataset.artalkLoaded = 'true';
 
         window.addEventListener('onColorSchemeChange', (e) => {
             if (!artalkInstance || typeof artalkInstance.setDarkMode !== 'function') return;
             artalkInstance.setDarkMode(e.detail === 'dark');
         });
-    })();
 </script>
 {{- end -}}
