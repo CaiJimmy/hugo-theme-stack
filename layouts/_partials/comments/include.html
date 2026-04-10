@@ -12,68 +12,9 @@
         <template id="comments-template">
             {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
         </template>
-        <script>
-        (function() {
-            var placeholder = document.getElementById('comments-consent-placeholder');
-            var container = document.getElementById('comments-container');
-            var template = document.getElementById('comments-template');
-            var commentsLoaded = false;
-
-            function loadScriptsInOrder(scripts, index, callback) {
-                if (index >= scripts.length) {
-                    if (callback) callback();
-                    return;
-                }
-                var s = scripts[index];
-                var newScript = document.createElement('script');
-                Array.from(s.attributes).forEach(function(attr) {
-                    newScript.setAttribute(attr.name, attr.value);
-                });
-                newScript.text = s.text;
-
-                if (s.src) {
-                    newScript.onload = newScript.onerror = function() {
-                        loadScriptsInOrder(scripts, index + 1, callback);
-                    };
-                    s.parentNode.replaceChild(newScript, s);
-                } else {
-                    s.parentNode.replaceChild(newScript, s);
-                    loadScriptsInOrder(scripts, index + 1, callback);
-                }
-            }
-
-            function showComments() {
-                if (placeholder) placeholder.style.display = 'none';
-                if (container) container.style.display = 'block';
-
-                if (!commentsLoaded && template) {
-                    commentsLoaded = true;
-                    var clone = template.content.cloneNode(true);
-                    var scripts = Array.from(clone.querySelectorAll('script'));
-                    container.appendChild(clone);
-                    loadScriptsInOrder(scripts, 0);
-                }
-            }
-
-            function hideComments() {
-                if (placeholder) placeholder.style.display = 'block';
-                if (container) container.style.display = 'none';
-            }
-
-            window.addEventListener('onCookieConsentChange', function(e) {
-                if (e.detail && e.detail.functional) {
-                    showComments();
-                } else {
-                    hideComments();
-                }
-            });
-
-            // Check if already consented
-            if (window.cookieConsent && window.cookieConsent.hasConsent('functional')) {
-                showComments();
-            }
-        })();
-        </script>
+        {{- $opts := dict "minify" hugo.IsProduction -}}
+        {{- $commentsScript := resources.Get "ts/commentsConsent.ts" | js.Build $opts | fingerprint -}}
+        <script type="text/javascript" src="{{ $commentsScript.RelPermalink }}" defer></script>
     {{- else -}}
         {{/* No consent required - load comments normally */}}
         {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
