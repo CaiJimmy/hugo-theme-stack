@@ -1,11 +1,11 @@
 {{- with .Site.Params.comments.artalk -}}
 {{- $style := resources.Get "scss/partials/comments/artalk.scss" | toCSS | minify -}}
-<link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/artalk@2/dist/Artalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.css">
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
 <div id="Comments" class="artalk-container"></div>
 
-<script src="https://testingcf.jsdelivr.net/npm/artalk@2/dist/Artalk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.js"></script>
 <script>
     (function() {
         function getArtalkDarkMode() {
