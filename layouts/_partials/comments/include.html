@@ -14,7 +14,7 @@
         </template>
         {{- $opts := dict "minify" hugo.IsProduction -}}
         {{- $commentsScript := resources.Get "ts/commentsConsent.ts" | js.Build $opts | fingerprint -}}
-        <script type="text/javascript" src="{{ $commentsScript.RelPermalink }}" defer></script>
+        <script type="text/javascript" src="{{ $commentsScript.RelPermalink }}" integrity="{{ $commentsScript.Data.Integrity }}" defer></script>
     {{- else -}}
         {{/* No consent required - load comments normally */}}
         {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
