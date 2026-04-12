@@ -1,3 +1,8 @@
+{{/*
+    Comments include entry.
+    - If functional cookie consent is required, render a placeholder + template and load commentsConsent.ts.
+    - Otherwise, render provider partial directly.
+*/}}
 {{ if .Site.Params.comments.enabled }}
     {{- $needsConsent := and .Site.Params.cookies.enabled .Site.Params.cookies.categories.functional -}}
     {{- if $needsConsent -}}
@@ -13,6 +18,7 @@
             {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
         </template>
         {{- $opts := dict "minify" hugo.IsProduction -}}
+        {{/* commentsConsent.ts is intentionally built and loaded here as an independent entry */}}
         {{- $commentsScript := resources.Get "ts/commentsConsent.ts" | js.Build $opts | fingerprint -}}
         <script type="text/javascript" src="{{ $commentsScript.RelPermalink }}" integrity="{{ $commentsScript.Data.Integrity }}" defer></script>
     {{- else -}}

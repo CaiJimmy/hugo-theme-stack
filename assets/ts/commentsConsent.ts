@@ -1,10 +1,26 @@
-interface ConsentDetail {
+/*
+ * Consent-gated comments bootstrap.
+ *
+ * This module controls whether third-party comments are rendered based on
+ * functional cookie consent, and injects template scripts in sequence to
+ * avoid eager or duplicate script execution.
+ */
+
+/**
+ * Consent event payload used by the comments gate.
+ * It mirrors cookie consent state shape but keeps optional fields for safety.
+ */
+interface CommentsConsentState {
     necessary?: boolean;
     analytics?: boolean;
     functional?: boolean;
     timestamp?: number;
 }
 
+/**
+ * Serialized script data extracted from a template fragment.
+ * We keep a marker so scripts can be re-inserted in a controlled order.
+ */
 interface ScriptPayload {
     marker: Comment;
     attributes: Array<{
@@ -14,7 +30,11 @@ interface ScriptPayload {
     text: string;
 }
 
-const hasFunctionalConsent = (consentDetail?: ConsentDetail | null): boolean => {
+/**
+ * Resolve functional consent with layered fallback:
+ * 1) explicit event detail, 2) CookieConsent public API, 3) dataset mirror.
+ */
+const hasFunctionalConsent = (consentDetail?: CommentsConsentState | null): boolean => {
     if (typeof consentDetail?.functional === 'boolean') {
         return consentDetail.functional;
     }
@@ -33,6 +53,7 @@ const hasFunctionalConsent = (consentDetail?: ConsentDetail | null): boolean => 
 };
 
 const extractScripts = (fragment: DocumentFragment): ScriptPayload[] => {
+    // Extract scripts before appending to DOM to avoid eager/duplicate execution.
     return Array.from(fragment.querySelectorAll('script')).map((script: HTMLScriptElement) => {
         const marker = document.createComment('comments-script-marker');
         const payload: ScriptPayload = {
@@ -57,6 +78,7 @@ const loadScriptsInOrder = (
     index: number,
     callback?: () => void
 ): void => {
+    // Inject scripts sequentially so third-party embeds can rely on execution order.
     if (index >= scripts.length) {
         callback?.();
         return;
@@ -100,6 +122,7 @@ const loadScriptsInOrder = (
 };
 
 const initCommentsConsent = (): void => {
+    // Main entry: gate comments rendering by functional cookie consent.
     const placeholder = document.getElementById('comments-consent-placeholder') as HTMLElement | null;
     const container = document.getElementById('comments-container') as HTMLElement | null;
     const template = document.getElementById('comments-template') as HTMLTemplateElement | null;
@@ -119,6 +142,7 @@ const initCommentsConsent = (): void => {
             return;
         }
 
+        // Prevent duplicate template hydration while scripts are still loading.
         commentsLoading = true;
 
         const clone = template.content.cloneNode(true) as DocumentFragment;
@@ -137,7 +161,8 @@ const initCommentsConsent = (): void => {
     };
 
     window.addEventListener('onCookieConsentChange', (event: Event) => {
-        const customEvent = event as CustomEvent<ConsentDetail | null>;
+        // Cross-module contract: this event is dispatched by cookies.ts.
+        const customEvent = event as CustomEvent<CommentsConsentState | null>;
         if (hasFunctionalConsent(customEvent.detail)) {
             showComments();
         } else {
