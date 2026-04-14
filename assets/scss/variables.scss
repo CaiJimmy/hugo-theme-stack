@@ -181,7 +181,6 @@
 
     /* Article image height variables */
     --article-image-height: 150px;
-    --mobile-toc-animation-duration: 300ms;
 
     @include respond(md) {
         --article-image-height: 200px;

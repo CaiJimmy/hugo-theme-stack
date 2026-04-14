@@ -187,7 +187,7 @@
                     width: 20px;
                     height: 20px;
                     stroke-width: 1.33;
-                    transition: transform var(--mobile-toc-animation-duration) ease;
+                    transition: transform 300ms ease;
                 }
             }
         }
