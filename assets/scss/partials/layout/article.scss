@@ -155,7 +155,7 @@
         border-radius: var(--card-border-radius);
         box-shadow: var(--shadow-l2);
 
-        &[open] {
+        &[open]:not(.toc-collapsing) {
             .article-toc-title {
                 svg {
                     transform: rotate(90deg);

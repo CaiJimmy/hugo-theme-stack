@@ -37,6 +37,7 @@ function stopPendingAnimation(details: HTMLDetailsElement, tocNav: HTMLElement, 
     clearPendingAnimation(tocNav, animationState);
 
     details.classList.remove('transiting');
+    details.classList.remove('toc-collapsing');
     clearAnimatedStyles(tocNav);
 }
 
@@ -70,6 +71,7 @@ function completeWithTransitionLifecycle(tocNav: HTMLElement, animationState: Mo
 }
 
 function openToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationState: MobileTocAnimationState): void {
+    details.classList.remove('toc-collapsing');
     details.classList.add('transiting');
     details.setAttribute('open', '');
 
@@ -98,12 +100,14 @@ function openToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationStat
 
 function closeToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationState: MobileTocAnimationState): void {
     details.classList.add('transiting');
+    details.classList.add('toc-collapsing');
 
     if (prefersReducedMotion()) {
         clearPendingAnimation(tocNav, animationState);
         details.removeAttribute('open');
         clearAnimatedStyles(tocNav);
         details.classList.remove('transiting');
+        details.classList.remove('toc-collapsing');
         return;
     }
 
@@ -119,6 +123,7 @@ function closeToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationSta
         details.removeAttribute('open');
         clearAnimatedStyles(tocNav);
         details.classList.remove('transiting');
+        details.classList.remove('toc-collapsing');
     });
 }
 
