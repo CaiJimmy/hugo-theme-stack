@@ -10,6 +10,7 @@ import createElement from './createElement';
 import StackColorScheme from './colorScheme';
 import { setupScrollspy } from './scrollspy';
 import { setupSmoothAnchors } from './smoothAnchors';
+import { setupMobileToc } from './mobileToc';
 
 let Stack = {
     init: () => {
@@ -23,6 +24,8 @@ let Stack = {
             setupSmoothAnchors();
             setupScrollspy();
         }
+
+        setupMobileToc();
 
         /**
          * Add copy button to code block
