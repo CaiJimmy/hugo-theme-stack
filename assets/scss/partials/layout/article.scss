@@ -169,6 +169,7 @@
             list-style: none;
             padding: var(--spacing-md) var(--spacing-lg);
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
 
             &::-webkit-details-marker {
                 display: none;
@@ -178,6 +179,7 @@
                 display: flex;
                 align-items: center;
                 gap: var(--spacing-sm);
+                user-select: none;
                 text-transform: uppercase;
                 font-size: 1.4rem;
                 font-weight: bold;
