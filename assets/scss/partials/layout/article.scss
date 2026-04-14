@@ -168,11 +168,6 @@
             padding: var(--spacing-md) var(--spacing-lg);
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
-            transition: background-color 120ms ease;
-
-            &:active {
-                background-color: var(--card-background-selected);
-            }
 
             &::-webkit-details-marker {
                 display: none;
