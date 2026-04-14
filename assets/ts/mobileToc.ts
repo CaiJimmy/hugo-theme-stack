@@ -1,4 +1,4 @@
-const mobileTocAnimationDuration = 300;
+const fallbackMobileTocAnimationDuration = 300;
 const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
 
 interface MobileTocAnimationState {
@@ -12,6 +12,35 @@ function isMobileTocVisible(articleToc: HTMLElement): boolean {
 
 function prefersReducedMotion(): boolean {
     return window.matchMedia(reducedMotionQuery).matches;
+}
+
+function parseCssDurationToMilliseconds(value: string): number | null {
+    const matchedDuration = value.trim().match(/^(-?\d*\.?\d+)(ms|s)$/i);
+    if (!matchedDuration) {
+        return null;
+    }
+
+    const numericValue = Number.parseFloat(matchedDuration[1]);
+    if (Number.isNaN(numericValue) || numericValue < 0) {
+        return null;
+    }
+
+    const unit = matchedDuration[2].toLowerCase();
+    return unit === 's' ? numericValue * 1000 : numericValue;
+}
+
+function getMobileTocAnimationDuration(articleToc: HTMLElement): number {
+    const durationValue = window
+        .getComputedStyle(articleToc)
+        .getPropertyValue('--mobile-toc-animation-duration')
+        .trim();
+
+    const duration = parseCssDurationToMilliseconds(durationValue);
+    if (duration === null) {
+        return fallbackMobileTocAnimationDuration;
+    }
+
+    return duration;
 }
 
 function clearAnimatedStyles(target: HTMLElement): void {
@@ -41,7 +70,12 @@ function stopPendingAnimation(details: HTMLDetailsElement, tocNav: HTMLElement, 
     clearAnimatedStyles(tocNav);
 }
 
-function completeWithTransitionLifecycle(tocNav: HTMLElement, animationState: MobileTocAnimationState, onComplete: () => void): void {
+function completeWithTransitionLifecycle(
+    tocNav: HTMLElement,
+    animationState: MobileTocAnimationState,
+    animationDuration: number,
+    onComplete: () => void
+): void {
     let isCompleted = false;
 
     const finish = (): void => {
@@ -67,10 +101,10 @@ function completeWithTransitionLifecycle(tocNav: HTMLElement, animationState: Mo
     tocNav.addEventListener('transitionend', transitionEndHandler);
     animationState.timerId = window.setTimeout(() => {
         finish();
-    }, mobileTocAnimationDuration + 100);
+    }, animationDuration + 100);
 }
 
-function openToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationState: MobileTocAnimationState): void {
+function openToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationState: MobileTocAnimationState, animationDuration: number): void {
     details.classList.remove('toc-collapsing');
     details.classList.add('transiting');
     details.setAttribute('open', '');
@@ -89,16 +123,16 @@ function openToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationStat
     tocNav.offsetHeight;
 
     tocNav.style.transitionProperty = 'height';
-    tocNav.style.transitionDuration = `${mobileTocAnimationDuration}ms`;
+    tocNav.style.transitionDuration = `${animationDuration}ms`;
     tocNav.style.height = `${targetHeight}px`;
 
-    completeWithTransitionLifecycle(tocNav, animationState, () => {
+    completeWithTransitionLifecycle(tocNav, animationState, animationDuration, () => {
         clearAnimatedStyles(tocNav);
         details.classList.remove('transiting');
     });
 }
 
-function closeToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationState: MobileTocAnimationState): void {
+function closeToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationState: MobileTocAnimationState, animationDuration: number): void {
     details.classList.add('transiting');
     details.classList.add('toc-collapsing');
 
@@ -116,10 +150,10 @@ function closeToc(details: HTMLDetailsElement, tocNav: HTMLElement, animationSta
     tocNav.offsetHeight;
 
     tocNav.style.transitionProperty = 'height';
-    tocNav.style.transitionDuration = `${mobileTocAnimationDuration}ms`;
+    tocNav.style.transitionDuration = `${animationDuration}ms`;
     tocNav.style.height = '0';
 
-    completeWithTransitionLifecycle(tocNav, animationState, () => {
+    completeWithTransitionLifecycle(tocNav, animationState, animationDuration, () => {
         details.removeAttribute('open');
         clearAnimatedStyles(tocNav);
         details.classList.remove('transiting');
@@ -149,6 +183,8 @@ export function setupMobileToc(): void {
         transitionEndHandler: null
     };
 
+    const animationDuration = getMobileTocAnimationDuration(articleToc);
+
     summary.addEventListener('click', (event: MouseEvent) => {
         if (!isMobileTocVisible(articleToc)) {
             return;
@@ -161,11 +197,11 @@ export function setupMobileToc(): void {
         }
 
         if (details.open) {
-            closeToc(details, tocNav, animationState);
+            closeToc(details, tocNav, animationState, animationDuration);
             return;
         }
 
-        openToc(details, tocNav, animationState);
+        openToc(details, tocNav, animationState, animationDuration);
     });
 
     window.addEventListener('resize', () => {

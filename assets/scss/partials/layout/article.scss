@@ -143,6 +143,8 @@
 }
 
 .article-toc {
+    --mobile-toc-animation-duration: 300ms;
+
     padding: 0 var(--card-padding);
     margin-top: var(--spacing-lg);
 
@@ -185,7 +187,7 @@
                     width: 20px;
                     height: 20px;
                     stroke-width: 1.33;
-                    transition: transform 0.3s ease;
+                    transition: transform var(--mobile-toc-animation-duration) ease;
                 }
             }
         }
