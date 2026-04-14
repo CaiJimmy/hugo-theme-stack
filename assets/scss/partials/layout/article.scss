@@ -143,8 +143,6 @@
 }
 
 .article-toc {
-    --mobile-toc-animation-duration: 300ms;
-
     padding: 0 var(--card-padding);
     margin-top: var(--spacing-lg);
 
@@ -170,6 +168,11 @@
             padding: var(--spacing-md) var(--spacing-lg);
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
+            transition: background-color 120ms ease;
+
+            &:active {
+                background-color: var(--card-background-selected);
+            }
 
             &::-webkit-details-marker {
                 display: none;
