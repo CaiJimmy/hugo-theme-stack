@@ -19,7 +19,7 @@
         server: '{{ .serverUrl }}',
         site: '{{ .site }}',
         darkMode: isDarkMode(),
-        locale: '{{ .locale | default $.Lang | default "en" }}',
+        locale: 'auto',
     });
 
     window.addEventListener('onColorSchemeChange', (e) => {
