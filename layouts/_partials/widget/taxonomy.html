@@ -20,7 +20,7 @@
         {{ partial "helper/icon" $icon }}
     </div>
     <h2 class="widget-title section-title">
-        {{ if $showLink }}
+        {{ if and $showLink $taxonomyPage }}
             <a href="{{ $taxonomyPage.RelPermalink }}">
                 {{ $widgetTitle }}
             </a>

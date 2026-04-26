@@ -29,6 +29,10 @@ darkMode   = "ธีมมืด"
         warning   = "คำเตือน"
         caution   = "ระวัง"
 
+    [article.codeblock]
+        copy   = "คัดลอก"
+        copied = "คัดลอกแล้ว!"
+
 [notFound]
     title    = "ไม่พบหัวข้อ"
     subtitle = "ไม่พบหน้านี้ในระบบ"

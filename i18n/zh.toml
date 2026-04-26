@@ -20,6 +20,10 @@ darkMode   = "暗色模式"
         warning   = "警告"
         caution   = "注意"
 
+    [article.codeblock]
+        copy   = "复制"
+        copied = "已复制！"
+
 [notFound]
     title    = "404 错误"
     subtitle = "页面不存在"
@@ -67,3 +71,8 @@ darkMode   = "暗色模式"
     [cookies.functional]
         title = "功能性"
         text  = "这些 Cookie 启用评论和嵌入内容等功能."
+
+[pagination]
+    jumpToPage = "跳转到页码"
+    jump       = "跳转"
+    pressEnter = "按 Enter 键跳转"

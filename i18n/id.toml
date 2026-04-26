@@ -29,6 +29,10 @@ darkMode   = "Mode Gelap"
         warning   = "Peringatan"
         caution   = "Perhatian"
 
+    [article.codeblock]
+        copy   = "Salin"
+        copied = "Disalin!"
+
 [notFound]
     title    = "Tidak ditemukan"
     subtitle = "Halaman yang Anda akses tidak ditemukan."
