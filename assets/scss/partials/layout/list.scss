@@ -50,11 +50,18 @@
     initial-value: 0px;
 }
 
+@property --right-edge-fade-size {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 64px;
+}
+
 .subsection-list {
     --shadow-overlap-x: calc(var(--shadow-l2-blur) + 4px);
     --shadow-overlap-y: calc(var(--shadow-l2-blur) + var(--shadow-l2-y) + 4px);
-    --edge-fade-size: 40px;
+    --edge-fade-size: 64px;
     --left-edge-fade-size: 0px;
+    --right-edge-fade-size: var(--edge-fade-size);
 
     overflow-x: auto;
 
@@ -73,22 +80,27 @@
     --subsection-mask-image: linear-gradient(
         to right,
         transparent 0%,
-        rgb(0 0 0 / 0.12) calc(var(--left-edge-fade-size) * 0.2),
-        rgb(0 0 0 / 0.45) calc(var(--left-edge-fade-size) * 0.55),
+        rgb(0 0 0 / 0.06) calc(var(--left-edge-fade-size) * 0.12),
+        rgb(0 0 0 / 0.2) calc(var(--left-edge-fade-size) * 0.3),
+        rgb(0 0 0 / 0.45) calc(var(--left-edge-fade-size) * 0.52),
+        rgb(0 0 0 / 0.72) calc(var(--left-edge-fade-size) * 0.76),
         black var(--left-edge-fade-size),
-        black calc(100% - var(--edge-fade-size)),
-        rgb(0 0 0 / 0.45) calc(100% - (var(--edge-fade-size) * 0.55)),
-        rgb(0 0 0 / 0.12) calc(100% - (var(--edge-fade-size) * 0.2)),
+        black calc(100% - var(--right-edge-fade-size)),
+        rgb(0 0 0 / 0.72) calc(100% - (var(--right-edge-fade-size) * 0.76)),
+        rgb(0 0 0 / 0.45) calc(100% - (var(--right-edge-fade-size) * 0.52)),
+        rgb(0 0 0 / 0.2) calc(100% - (var(--right-edge-fade-size) * 0.3)),
+        rgb(0 0 0 / 0.06) calc(100% - (var(--right-edge-fade-size) * 0.12)),
         transparent 100%
     );
     -webkit-mask-image: var(--subsection-mask-image);
     mask-image: var(--subsection-mask-image);
 
-    // CSS-only: left fade ramps in quickly once horizontal scrolling starts.
-    animation: subsection-left-fade linear both;
+    // CSS-only: left fade ramps in quickly once horizontal scrolling starts,
+    // and right fade turns off near the end of horizontal scroll.
+    animation: subsection-left-fade linear both, subsection-right-fade linear both;
     animation-timeline: scroll(self inline);
-    animation-range: 1px 24px;
-    animation-timing-function: ease-out;
+    animation-range: 1px 24px, 0% 100%;
+    animation-timing-function: ease-out, linear;
 
     [dir="rtl"] & {
         margin-left: calc(var(--overlap-x) * -1);
@@ -126,5 +138,15 @@
     }
     to {
         --left-edge-fade-size: var(--edge-fade-size);
+    }
+}
+
+@keyframes subsection-right-fade {
+    0%,
+    92% {
+        --right-edge-fade-size: var(--edge-fade-size);
+    }
+    100% {
+        --right-edge-fade-size: 0px;
     }
 }
