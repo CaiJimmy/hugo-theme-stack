@@ -15,10 +15,9 @@
     {{ $url := urls.Parse .Image }}
     {{ $permalink := .Image }}
 
-    {{/* AbsURL is here to support referencing images to the `/static` folder */}}
     {{ $result = dict
         "Resource" nil
-        "Permalink" (urls.AbsURL $permalink)
+        "Permalink" $permalink
         "Height" nil
         "Width" nil
     }}
