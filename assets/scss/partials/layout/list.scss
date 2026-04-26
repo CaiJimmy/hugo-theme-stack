@@ -44,9 +44,17 @@
     }
 }
 
+@property --left-edge-fade-size {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
 .subsection-list {
     --shadow-overlap-x: calc(var(--shadow-l2-blur) + 4px);
     --shadow-overlap-y: calc(var(--shadow-l2-blur) + var(--shadow-l2-y) + 4px);
+    --edge-fade-size: 40px;
+    --left-edge-fade-size: 0px;
 
     overflow-x: auto;
 
@@ -56,31 +64,45 @@
 
     /// These values are computed from the shadow of the article-list--tile (which uses shadow-l1 and shadow-l2)
     /// so that the shadow is not cut off, while staying within the viewport on small screens.
-    /// The left margin expands to the full shadow width to align the card to the main article,
-    /// while the right margin is clamped to prevent page overflow.
-    margin-left: calc(var(--shadow-overlap-x) * -1);
+    /// Clamp both sides to prevent page-level horizontal overflow.
+    margin-left: calc(var(--overlap-x) * -1);
     margin-right: calc(var(--overlap-x) * -1);
     margin-bottom: calc(var(--shadow-overlap-y) * -1);
 
-    /// Smooth fade out for the right edge to avoid a hard cut where the shadow is clamped.
-    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 80px);
-    mask-image: linear-gradient(to left, transparent 0%, black 80px);
+    /// Smooth fade on both horizontal edges to avoid hard cuts where shadows are clamped.
+    --subsection-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgb(0 0 0 / 0.12) calc(var(--left-edge-fade-size) * 0.2),
+        rgb(0 0 0 / 0.45) calc(var(--left-edge-fade-size) * 0.55),
+        black var(--left-edge-fade-size),
+        black calc(100% - var(--edge-fade-size)),
+        rgb(0 0 0 / 0.45) calc(100% - (var(--edge-fade-size) * 0.55)),
+        rgb(0 0 0 / 0.12) calc(100% - (var(--edge-fade-size) * 0.2)),
+        transparent 100%
+    );
+    -webkit-mask-image: var(--subsection-mask-image);
+    mask-image: var(--subsection-mask-image);
+
+    // CSS-only: left fade ramps in quickly once horizontal scrolling starts.
+    animation: subsection-left-fade linear both;
+    animation-timeline: scroll(self inline);
+    animation-range: 1px 24px;
+    animation-timing-function: ease-out;
 
     [dir="rtl"] & {
         margin-left: calc(var(--overlap-x) * -1);
-        margin-right: calc(var(--shadow-overlap-x) * -1);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 80px);
-        mask-image: linear-gradient(to right, transparent 0%, black 80px);
+        margin-right: calc(var(--overlap-x) * -1);
     }
     
     .article-list--tile {
         display: flex;
-        padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--shadow-overlap-x);
+        padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--overlap-x);
         width: max-content;
         gap: var(--spacing-lg);
 
         [dir="rtl"] & {
-            padding: var(--spacing-xs) var(--shadow-overlap-x) var(--shadow-overlap-y) var(--overlap-x);
+            padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--overlap-x);
         }
 
         article {
@@ -95,5 +117,14 @@
                 padding: var(--spacing-lg);
             }
         }
+    }
+}
+
+@keyframes subsection-left-fade {
+    from {
+        --left-edge-fade-size: 0px;
+    }
+    to {
+        --left-edge-fade-size: var(--edge-fade-size);
     }
 }
