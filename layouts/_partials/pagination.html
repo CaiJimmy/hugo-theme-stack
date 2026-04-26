@@ -18,8 +18,10 @@
         {{- /* Previous page button */ -}}
         <a
             class="page-link {{ if not $pag.Prev }}disabled{{ end }}"
-            {{- if $pag.Prev -}}href="{{ $pag.Prev.URL }}"{{- end -}}
-            aria-label="Previous page"
+            {{- if $pag.Prev -}}
+                href="{{ $pag.Prev.URL }}"
+                aria-label="Previous page"
+            {{- end -}}
             {{- if not $pag.Prev -}}aria-disabled="true"{{- end -}}>
             {{ partial "helper/icon" "chevron-left" }}
         </a>
@@ -101,8 +103,10 @@
         {{- /* Next page button */ -}}
         <a
             class="page-link {{ if not $pag.Next }}disabled{{ end }}"
-            {{- if $pag.Next -}}href="{{ $pag.Next.URL }}"{{- end -}}
-            aria-label="Next page"
+            {{- if $pag.Next -}}
+                href="{{ $pag.Next.URL }}"
+                aria-label="Next page"
+            {{- end -}}
             {{- if not $pag.Next -}}aria-disabled="true"{{- end -}}>
             {{ partial "helper/icon" "chevron-right" }}
         </a>
