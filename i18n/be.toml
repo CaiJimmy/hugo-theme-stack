@@ -30,6 +30,10 @@ darkMode   = "Цёмны рэжым"
         warning   = "Папярэджанне"
         caution   = "Асцярога"
 
+    [article.codeblock]
+        copy   = "Капіяваць"
+        copied = "Скапіявана!"
+
 [notFound]
     title    = "Не знойдзена"
     subtitle = "Запытваемая старонка не існуе"

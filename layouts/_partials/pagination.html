@@ -1,70 +1,142 @@
 {{- $pag := $.Paginator -}}
 {{- if gt $pag.TotalPages 1 -}}
-<nav class="pagination" role="navigation" aria-label="pagination">
-    {{- /* Previous page button */ -}}
-    <a class="page-link {{ if not $pag.Prev }}disabled{{ end }}"
-        {{- if $pag.Prev -}}href="{{ $pag.Prev.URL }}" {{- end -}}
-        aria-label="Previous page" 
-        {{- if not $pag.Prev -}}aria-disabled="true"{{- end -}}>
-        {{ partial "helper/icon" "chevron-left" }}
-    </a>
-
-    {{- /* Page numbers logic */ -}}
-    {{- $window := 4 -}}
-    {{- $showFirst := true -}}
-    {{- $showLast := true -}}
-
-    {{- /* First page */ -}}
-    <a class="page-link {{ if eq $pag.PageNumber 1 }}current{{ end }}" aria-label="Page 1"
-        {{- if eq $pag.PageNumber 1 -}}aria-current="page" {{- end -}}
-        {{- if ne $pag.PageNumber 1 -}}href="{{ $pag.First.URL }}"{{- end -}}>
-        1
-    </a>
-
-    {{- /* Left ellipsis - show if current page is > 3 */ -}}
-    {{- if gt $pag.PageNumber 3 -}}
-    <span class="page-link pagination-link">
-        {{ partial "helper/icon" "dots" }}
-    </span>
-    {{- end -}}
-
-    {{- /* Middle pages - show current and neighbors */ -}}
+    {{- /* Find page 2's URL to extract the pagination base path for JavaScript */ -}}
+    {{- $page2Url := "" -}}
     {{- range $pag.Pagers -}}
-        {{- if and (gt .PageNumber 1) (lt .PageNumber $pag.TotalPages) -}}
-            {{- if and (ge .PageNumber (sub $pag.PageNumber $window)) (le .PageNumber (add $pag.PageNumber $window)) -}}
-            <a class="page-link {{ if eq .PageNumber $pag.PageNumber }}current{{ end }}"
-                {{- if eq .PageNumber $pag.PageNumber -}}aria-current="page" {{- end -}} href="{{ .URL }}"
-                aria-label="Page {{ .PageNumber }}">
-                {{ .PageNumber }}
-            </a>
-            {{- end -}}
+        {{- if eq .PageNumber 2 -}}
+            {{- $page2Url = .URL -}}
         {{- end -}}
     {{- end -}}
 
-    {{- /* Right ellipsis - show if current page is < last-2 */ -}}
-    {{- if lt $pag.PageNumber (sub $pag.TotalPages 2) -}}
-    <span class="page-link pagination-link">
-        {{ partial "helper/icon" "dots" }}
-    </span>
-    {{- end -}}
+    <nav
+        class="pagination"
+        role="navigation"
+        aria-label="pagination"
+        data-total="{{ $pag.TotalPages }}"
+        data-first-url="{{ $pag.First.URL }}"
+        data-format-url="{{ $page2Url }}">
+        {{- /* Previous page button */ -}}
+        <a
+            class="page-link {{ if not $pag.Prev }}disabled{{ end }}"
+            {{- if $pag.Prev -}}
+                href="{{ $pag.Prev.URL }}"
+                aria-label="Previous page"
+            {{- end -}}
+            {{- if not $pag.Prev -}}aria-disabled="true"{{- end -}}>
+            {{ partial "helper/icon" "chevron-left" }}
+        </a>
 
-    {{- /* Last page (if more than 1 page total) */ -}}
+        {{- /* Page numbers logic */ -}}
+        {{- /* Compute visible middle window [start, end] (excluding first and last page). */ -}}
+        {{- /* Keep 3 middle pages when possible; if total <= 5, show all middle pages. */ -}}
+        {{- $curr := $pag.PageNumber -}}
+        {{- $total := $pag.TotalPages -}}
+        {{- $middleMinPage := 2 -}}
+        {{- $middleMaxPage := sub $total 1 -}}
+        {{- $start := $middleMinPage -}}
+        {{- $end := $middleMaxPage -}}
 
-    {{- if gt $pag.TotalPages 1 -}}
-    <a class="page-link {{ if eq $pag.PageNumber $pag.TotalPages }}current{{ end }}"
-        {{- if ne $pag.PageNumber $pag.TotalPages -}}href="{{ $pag.Last.URL }}" {{- end -}}
-        aria-label="Page {{ $pag.TotalPages }}" 
-        {{- if eq $pag.PageNumber $pag.TotalPages -}}aria-current="page"{{- end -}}>
-        {{ $pag.TotalPages }}
-    </a>
-    {{- end -}}
+        {{- if gt $total 5 -}}
+            {{- $start = sub $curr 1 -}}
+            {{- if lt $start $middleMinPage -}}
+                {{- $start = $middleMinPage -}}
+            {{- end -}}
+            {{- $end = add $start 2 -}}
+            {{- if gt $end $middleMaxPage -}}
+                {{- $end = $middleMaxPage -}}
+                {{- $start = sub $end 2 -}}
+            {{- end -}}
+        {{- end -}}
 
-    {{- /* Next page button */ -}}
-    <a class="page-link {{ if not $pag.Next }}disabled{{ end }}"
-        {{- if $pag.Next -}}href="{{ $pag.Next.URL }}" {{- end -}} 
-        aria-label="Next page"
-        {{- if not $pag.Next -}}aria-disabled="true"{{- end -}}>
-        {{ partial "helper/icon" "chevron-right" }}
-    </a>
-</nav>
+        {{- /* First page */ -}}
+        <a
+            class="page-link {{ if eq $curr 1 }}current{{ end }}"
+            aria-label="Page 1"
+            {{- if eq $curr 1 -}}aria-current="page"{{- end -}}
+            {{- if ne $curr 1 -}}href="{{ $pag.First.URL }}"{{- end -}}>
+            1
+        </a>
+
+        {{- /* Left ellipsis - show if the window start is beyond page 2 */ -}}
+        {{- if gt $start $middleMinPage -}}
+            <button
+                type="button"
+                class="page-link pagination-link pagination-jump-trigger"
+                aria-label="{{ i18n "pagination.jumpToPage" | default "Jump to page" }}">
+                {{ partial "helper/icon" "dots" }}
+            </button>
+        {{- end -}}
+
+        {{- /* Middle pages - show pages in [start, end] */ -}}
+        {{- range $pag.Pagers -}}
+            {{- if and (ge .PageNumber $start) (le .PageNumber $end) -}}
+                {{- $hideOnMobile := and (ne .PageNumber $curr) (ne .PageNumber (sub $curr 1)) (ne .PageNumber (add $curr 1)) -}}
+                <a
+                    class="page-link {{ if eq .PageNumber $curr }}current{{ end }} {{ if $hideOnMobile }}hide-on-mobile{{ end }}"
+                    {{- if eq .PageNumber $curr -}}aria-current="page"{{- end -}}
+                    href="{{ .URL }}"
+                    aria-label="Page {{ .PageNumber }}">
+                    {{ .PageNumber }}
+                </a>
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Right ellipsis - show if the window end is before the second-to-last page */ -}}
+        {{- if lt $end $middleMaxPage -}}
+            <button
+                type="button"
+                class="page-link pagination-link pagination-jump-trigger"
+                aria-label="{{ i18n "pagination.jumpToPage" | default "Jump to page" }}">
+                {{ partial "helper/icon" "dots" }}
+            </button>
+        {{- end -}}
+
+        {{- /* Last page */ -}}
+        <a
+            class="page-link {{ if eq $curr $total }}current{{ end }}"
+            {{- if ne $curr $total -}}href="{{ $pag.Last.URL }}"{{- end -}}
+            aria-label="Page {{ $total }}"
+            {{- if eq $curr $total -}}aria-current="page"{{- end -}}>
+            {{ $total }}
+        </a>
+
+        {{- /* Next page button */ -}}
+        <a
+            class="page-link {{ if not $pag.Next }}disabled{{ end }}"
+            {{- if $pag.Next -}}
+                href="{{ $pag.Next.URL }}"
+                aria-label="Next page"
+            {{- end -}}
+            {{- if not $pag.Next -}}aria-disabled="true"{{- end -}}>
+            {{ partial "helper/icon" "chevron-right" }}
+        </a>
+    </nav>
+
+    <dialog id="pagination-jump-dialog" aria-labelledby="pagination-jump-title">
+        <form method="dialog" class="pagination-jump-form">
+            <header>
+                <label id="pagination-jump-title" class="title" for="pagination-jump-input">
+                    {{ i18n "pagination.jumpToPage" | default "Jump to page:" }}
+                </label>
+                <span class="subtitle">(1 - {{ $pag.TotalPages }})</span>
+            </header>
+            <div class="pagination-jump-input-group">
+                <input
+                    type="number"
+                    id="pagination-jump-input"
+                    min="1"
+                    max="{{ $pag.TotalPages }}"
+                    autofocus
+                    autocomplete="off"
+                    required>
+                <button type="submit" class="btn btn-primary">
+                    {{ i18n "pagination.jump" | default "Go" }}
+                </button>
+            </div>
+            <div class="pagination-jump-hint">
+                <kbd>Enter</kbd>
+                <span>{{ i18n "pagination.pressEnter" | default "Press Enter to jump" }}</span>
+            </div>
+        </form>
+    </dialog>
 {{- end -}}

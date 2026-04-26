@@ -29,6 +29,10 @@ darkMode   = "डार्क मोड"
         warning   = "चेतावनी"
         caution   = "सावधानी"
 
+    [article.codeblock]
+        copy   = "कॉपी"
+        copied = "कॉपी हो गया!"
+
 [notFound]
     title    = "404 नहीं मिला।"
     subtitle = "यह पृष्ठ मौजूद नहीं है।"

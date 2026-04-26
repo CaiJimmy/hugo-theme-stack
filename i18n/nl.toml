@@ -24,6 +24,10 @@ darkMode   = "Donkere modus"
         warning   = "Waarschuwing"
         caution   = "Let op"
 
+    [article.codeblock]
+        copy   = "Kopiëren"
+        copied = "Gekopieerd!"
+
 [notFound]
     title    = "Niet gevonden"
     subtitle = "Deze pagina bestaat niet."

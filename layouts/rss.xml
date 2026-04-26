@@ -52,7 +52,7 @@
                 {{- end -}}
                 {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
                 {{- if $image -}}
-                    {{- $imgTag := printf "<img src=\"%s\" alt=\"Featured image of post %s\" />" ($image.permalink | absURL) .Title -}}
+                    {{- $imgTag := printf "<img src=\"%s\" alt=\"Featured image of post %s\" />" ($image.Permalink | absURL) .Title -}}
                     {{- $content = printf "%s%s" $imgTag $content -}}
                 {{- end -}}
                 {{- $content | transform.XMLEscape | safeHTML -}}

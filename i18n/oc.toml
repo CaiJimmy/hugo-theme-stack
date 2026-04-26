@@ -29,6 +29,10 @@ darkMode   = "Mòde fosc"
         warning   = "Avertiment"
         caution   = "Atencion"
 
+    [article.codeblock]
+        copy   = "Copiar"
+        copied = "Copiat!"
+
 [notFound]
     title    = "Non trobat"
     subtitle = "Aquesta pagina existís pas"
