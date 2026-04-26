@@ -8,6 +8,7 @@ export function setupPaginationJump() {
     const input = document.getElementById('pagination-jump-input') as HTMLInputElement;
     const form = dialog.querySelector('.pagination-jump-form') as HTMLFormElement;
     const supportsDialog = typeof dialog.showModal === 'function' && typeof dialog.close === 'function';
+    let lastFocusedElement: HTMLElement | null = null;
 
     if (!supportsDialog || !nav || !input || !form) return;
 
@@ -19,6 +20,9 @@ export function setupPaginationJump() {
             () => {
                 dialog.classList.remove('closing');
                 dialog.close();
+                if (lastFocusedElement?.isConnected) {
+                    lastFocusedElement.focus();
+                }
             },
             { once: true }
         );
@@ -27,6 +31,8 @@ export function setupPaginationJump() {
     // Open dialog when triggers are clicked
     triggers.forEach((trigger) => {
         trigger.addEventListener('click', () => {
+            const activeElement = document.activeElement;
+            lastFocusedElement = activeElement instanceof HTMLElement ? activeElement : trigger;
             dialog.showModal();
             input.value = '';
             input.focus();
