@@ -30,6 +30,10 @@ darkMode   = "Темна тема"
         warning   = "Попередження"
         caution   = "Обережно"
 
+    [article.codeblock]
+        copy   = "Копіювати"
+        copied = "Скопійовано!"
+
 [notFound]
     title    = "Не знайдено"
     subtitle = "Ця сторінка не існує"

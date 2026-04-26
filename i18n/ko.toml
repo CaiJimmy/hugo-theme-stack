@@ -29,6 +29,10 @@ darkMode   = "다크 모드"
         warning   = "경고"
         caution   = "주의"
 
+    [article.codeblock]
+        copy   = "복사"
+        copied = "복사됨!"
+
 [notFound]
     title    = "찾을 수 없음"
     subtitle = "페이지를 찾을 수 없습니다."

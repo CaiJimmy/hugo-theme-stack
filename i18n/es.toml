@@ -29,6 +29,10 @@ darkMode   = "Modo oscuro"
         warning   = "Advertencia"
         caution   = "Precaución"
 
+    [article.codeblock]
+        copy   = "Copiar"
+        copied = "¡Copiado!"
+
 [notFound]
     title    = "No Encontrado"
     subtitle = "Esta página no existe"
