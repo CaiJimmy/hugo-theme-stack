@@ -1,10 +1,12 @@
+import * as params from '@params';
+
 export function setupCodeCopy() {
     /**
      * Add copy button to code block
     */
     const highlights = document.querySelectorAll('.article-content div.highlight');
-    const copyText = `Copy`,
-        copiedText = `Copied!`;
+    const copyText = params.codeblock.copy,
+        copiedText = params.codeblock.copied;
 
     if (!navigator.clipboard) {
         /// Clipboard API is only supported in secure contexts (HTTPS)
