@@ -58,9 +58,12 @@
 
         {{- /* Left ellipsis - show if the window start is beyond page 2 */ -}}
         {{- if gt $start 2 -}}
-            <span class="page-link pagination-link pagination-jump-trigger">
+            <button
+                type="button"
+                class="page-link pagination-link pagination-jump-trigger"
+                aria-label="{{ i18n "pagination.jumpToPage" | default "Jump to page" }}">
                 {{ partial "helper/icon" "dots" }}
-            </span>
+            </button>
         {{- end -}}
 
         {{- /* Middle pages - show pages in [start, end] */ -}}
@@ -80,9 +83,12 @@
 
         {{- /* Right ellipsis - show if the window end is before the second-to-last page */ -}}
         {{- if lt $end (sub $total 1) -}}
-            <span class="page-link pagination-link pagination-jump-trigger">
+            <button
+                type="button"
+                class="page-link pagination-link pagination-jump-trigger"
+                aria-label="{{ i18n "pagination.jumpToPage" | default "Jump to page" }}">
                 {{ partial "helper/icon" "dots" }}
-            </span>
+            </button>
         {{- end -}}
 
         {{- /* Last page */ -}}
