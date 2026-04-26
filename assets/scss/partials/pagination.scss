@@ -91,7 +91,7 @@
     box-shadow: var(--shadow-l2);
     color: var(--body-text-color);
     margin: auto; // Center dialog
-    width: 100%;
+    width: calc(100% - (var(--container-padding) * 2));
     max-width: 320px;
     padding: var(--card-padding);
 
