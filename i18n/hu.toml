@@ -29,6 +29,10 @@ darkMode   = "Sötét Mód"
         warning   = "Figyelmeztetés"
         caution   = "Óvatosság"
 
+    [article.codeblock]
+        copy   = "Másolás"
+        copied = "Másolva!"
+
 [notFound]
     title    = "Nem található"
     subtitle = "Ez az oldal nem létezik"

@@ -29,6 +29,10 @@ darkMode   = "Σκοτεινό θέμα"
         warning   = "Προειδοποίηση"
         caution   = "Προσοχή"
 
+    [article.codeblock]
+        copy   = "Αντιγραφή"
+        copied = "Αντιγράφηκε!"
+
 [notFound]
     title    = "Δε βρέθηκε"
     subtitle = "Η σελίδα δε βρέθηκε."

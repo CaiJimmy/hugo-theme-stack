@@ -1,4 +1,12 @@
-{{- $opts := dict "minify" hugo.IsProduction -}}
+{{- $opts := dict
+    "minify" hugo.IsProduction
+    "params" (dict
+        "codeblock" (dict
+            "copy" (i18n "article.codeblock.copy")
+            "copied" (i18n "article.codeblock.copied")
+        )
+    )
+-}}
 {{- $script := resources.Get "ts/main.ts" | js.Build $opts | fingerprint -}}
 
 <script type="text/javascript" src="{{ $script.RelPermalink }}" defer></script>

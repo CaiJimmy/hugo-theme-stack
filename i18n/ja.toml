@@ -20,6 +20,10 @@ darkMode   = "ダークモード"
         warning   = "警告"
         caution   = "注意"
 
+    [article.codeblock]
+        copy   = "コピー"
+        copied = "コピーしました!"
+
 [notFound]
     title    = "404 Not Found"
     subtitle = "指定されたページは存在しません。"

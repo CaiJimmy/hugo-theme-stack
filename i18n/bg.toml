@@ -29,6 +29,10 @@ darkMode   = "Тъмен Режим"
         warning   = "Предупреждение"
         caution   = "Внимание"
 
+    [article.codeblock]
+        copy   = "Копирай"
+        copied = "Копирано!"
+
 [notFound]
     title    = "Не е намерено"
     subtitle = "Страницата която търсите не е открита"

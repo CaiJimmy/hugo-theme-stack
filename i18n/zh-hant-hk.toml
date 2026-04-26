@@ -20,6 +20,10 @@ darkMode   = "深色模式"
         warning   = "警告"
         caution   = "注意"
 
+    [article.codeblock]
+        copy   = "複製"
+        copied = "已複製！"
+
 [notFound]
     title    = "找不到頁面"
     subtitle = "本頁面並不存在"

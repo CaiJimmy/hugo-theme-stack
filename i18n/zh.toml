@@ -20,6 +20,10 @@ darkMode   = "暗色模式"
         warning   = "警告"
         caution   = "注意"
 
+    [article.codeblock]
+        copy   = "复制"
+        copied = "已复制！"
+
 [notFound]
     title    = "404 错误"
     subtitle = "页面不存在"
