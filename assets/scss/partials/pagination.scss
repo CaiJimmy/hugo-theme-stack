@@ -3,14 +3,7 @@
     @include card-style;
     overflow: hidden;
 
-    .hide-on-mobile {
-        display: none;
-
-        @include respond(md) {
-            display: flex;
-        }
-    }
-
+    .hide-on-mobile,
     .pagination-link {
         display: none;
 
@@ -76,11 +69,6 @@
 
         &.pagination-jump-trigger {
             cursor: pointer;
-
-            &:hover {
-                background-color: var(--card-background-selected);
-                opacity: 0.8;
-            }
         }
     }
 }
