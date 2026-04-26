@@ -1,12 +1,12 @@
 {{- $style := resources.Get "scss/partials/comments/artalk.scss" | toCSS | minify -}}
 {{- with .Site.Params.comments.artalk -}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/artalk@2.9.1/dist/Artalk.css">
+<link rel="stylesheet" href="{{ hugo.Data.external.Artalk.Style }}">
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
 <div id="Comments" class="artalk-container"></div>
 
 <script type="module">
-    import Artalk from 'https://cdn.jsdelivr.net/npm/artalk@2.9.1/+esm';
+    import Artalk from '{{ hugo.Data.external.Artalk.Script }}';
 
     function isDarkMode() {
         return document.documentElement.dataset.scheme === 'dark';

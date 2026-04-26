@@ -13,3 +13,7 @@ Cactus = [
     Style    = "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css"
     Core     = "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js"
     Lightbox = "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js"
+
+[Artalk]
+    Style  = "https://cdn.jsdelivr.net/npm/artalk@2.9.1/dist/Artalk.css"
+    Script = "https://cdn.jsdelivr.net/npm/artalk@2.9.1/+esm"
