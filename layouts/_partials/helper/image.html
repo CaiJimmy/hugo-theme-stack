@@ -14,12 +14,14 @@
 {{ if .Image }}
     {{ $url := urls.Parse .Image }}
     {{ $permalink := .Image }}
-    {{ $resource := dict
+
+    {{ $result = dict
         "Resource" nil
         "Permalink" $permalink
         "Height" nil
         "Width" nil
     }}
+    {{ $resource := dict }} 
     {{ $local := true }}
 
     {{ if not (in (slice "https" "http") $url.Scheme) }}
