@@ -29,6 +29,10 @@ darkMode   = "حالت شب"
         warning   = "هشدار"
         caution   = "احتیاط"
 
+    [article.codeblock]
+        copy   = "کپی"
+        copied = "کپی شد!"
+
 [notFound]
     title    = "یافت نشد"
     subtitle = "این صحه وجود ندارد"

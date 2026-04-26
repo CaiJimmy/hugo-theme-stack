@@ -29,6 +29,10 @@ darkMode   = "Koyu Mod"
         warning   = "Uyarı"
         caution   = "Dikkat"
 
+    [article.codeblock]
+        copy   = "Kopyala"
+        copied = "Kopyalandı!"
+
 [notFound]
     title    = "Bulunamadı"
     subtitle = "Aradığınız sayfa mevcut değil."

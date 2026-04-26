@@ -29,6 +29,10 @@ darkMode   = "Tmavý režim"
         warning   = "Varování"
         caution   = "Upozornění"
 
+    [article.codeblock]
+        copy   = "Kopírovat"
+        copied = "Zkopírováno!"
+
 [notFound]
     title    = "Nenalezeno"
     subtitle = "Tato stránka neexistuje"
