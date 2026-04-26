@@ -67,3 +67,8 @@ darkMode   = "深色模式"
     [cookies.functional]
         title = "功能性"
         text  = "這些 Cookie 啟用評論和嵌入內容等功能."
+
+[pagination]
+    jumpToPage = "跳轉到頁碼"
+    jump       = "跳轉"
+    pressEnter = "按 Enter 鍵跳轉"
