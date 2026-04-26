@@ -29,6 +29,10 @@ darkMode   = "Dark Mode"
         warning   = "Warning"
         caution   = "Caution"
 
+    [article.codeblock]
+        copy   = "Copy"
+        copied = "Copied!"
+
 [notFound]
     title    = "Not Found"
     subtitle = "This page does not exist"
@@ -76,3 +80,8 @@ darkMode   = "Dark Mode"
     [cookies.functional]
         title = "Functional"
         text  = "These cookies enable features like comments and embedded content."
+
+[pagination]
+    jumpToPage = "Jump to page"
+    jump       = "Go"
+    pressEnter = "Press Enter to jump"

@@ -20,6 +20,10 @@ darkMode   = "深色模式"
         warning   = "警告"
         caution   = "注意"
 
+    [article.codeblock]
+        copy   = "複製"
+        copied = "已複製！"
+
 [notFound]
     title    = "找不到頁面"
     subtitle = "本頁面並不存在"
@@ -67,3 +71,8 @@ darkMode   = "深色模式"
     [cookies.functional]
         title = "功能性"
         text  = "這些 Cookie 啟用評論和嵌入內容等功能."
+
+[pagination]
+    jumpToPage = "跳轉到頁碼"
+    jump       = "跳轉"
+    pressEnter = "按 Enter 鍵跳轉"

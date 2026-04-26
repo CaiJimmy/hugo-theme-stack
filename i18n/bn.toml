@@ -29,6 +29,10 @@ darkMode   = "ডার্ক মোড"
         warning   = "সতর্কতা"
         caution   = "সাবধানতা"
 
+    [article.codeblock]
+        copy   = "কপি"
+        copied = "কপি হয়েছে!"
+
 [notFound]
     title    = "পাওয়া যায়নি"
     subtitle = "এই পাতাটি বিদ্যমান নেই"

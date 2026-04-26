@@ -35,6 +35,10 @@ darkMode   = "Tryb ciemny"
         warning   = "Ostrzeżenie"
         caution   = "Uwaga"
 
+    [article.codeblock]
+        copy   = "Kopiuj"
+        copied = "Skopiowano!"
+
 [notFound]
     title    = "Nie znaleziono"
     subtitle = "Ta strona nie istnieje"
