@@ -1,4 +1,4 @@
-{{- $List := index .Context.Site.Data.external .Namespace -}}
+{{- $List := index hugo.Data.external .Namespace -}}
 {{- with $List -}}
     {{- range . -}}
         {{- if eq .type "script" -}}
