@@ -175,6 +175,7 @@ class CookieConsent {
     }
 
     private dispatchConsentEvent(): void {
+        // Cross-module event consumed by consent-gated features (for example commentsConsent.ts).
         const event = new CustomEvent('onCookieConsentChange', {
             detail: this.state
         });

@@ -5,6 +5,7 @@
     right: 0;
     z-index: 9999;
     padding: var(--container-padding);
+    pointer-events: none;
 
     &[aria-hidden="true"] {
         display: none;
@@ -21,6 +22,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    pointer-events: auto;
 
     @include respond(md) {
         flex-direction: row;

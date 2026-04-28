@@ -101,6 +101,10 @@ SortBy         = "default"
     enabled  = true
     provider = "disqus"
 
+    [comments.artalk]
+        serverUrl = ""
+        site      = ""
+
     [comments.disqusjs]
         shortname  = ""
         apiUrl     = ""

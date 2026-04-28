@@ -29,6 +29,10 @@ darkMode   = "الوضع الداكن"
         warning   = "تحذير"
         caution   = "تنبيه"
 
+    [article.codeblock]
+        copy   = "نسخ"
+        copied = "تم النسخ!"
+
 [notFound]
     title    = "غير موجود"
     subtitle = "تعذر العثور على الصفحة المطلوبة."

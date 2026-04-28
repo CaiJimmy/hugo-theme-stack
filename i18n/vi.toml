@@ -29,6 +29,10 @@ darkMode   = "Chế độ nền tối"
         warning   = "Cảnh báo"
         caution   = "Thận trọng"
 
+    [article.codeblock]
+        copy   = "Sao chép"
+        copied = "Đã sao chép!"
+
 [notFound]
     title    = "Không tìm thấy"
     subtitle = "Trang này không tồn tại"

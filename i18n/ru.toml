@@ -30,6 +30,10 @@ darkMode   = "Тёмный режим"
         warning   = "Предупреждение"
         caution   = "Осторожно"
 
+    [article.codeblock]
+        copy   = "Копировать"
+        copied = "Скопировано!"
+
 [notFound]
     title    = "Не найдено"
     subtitle = "Запрашиваемая страница не существует"

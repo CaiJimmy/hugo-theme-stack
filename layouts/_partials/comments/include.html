@@ -1,3 +1,8 @@
+{{/*
+    Comments include entry.
+    - If functional cookie consent is required, render a placeholder + template and load commentsConsent.ts.
+    - Otherwise, render provider partial directly.
+*/}}
 {{ if .Site.Params.comments.enabled }}
     {{- $needsConsent := and .Site.Params.cookies.enabled .Site.Params.cookies.categories.functional -}}
     {{- if $needsConsent -}}
@@ -8,38 +13,14 @@
                 {{ T "cookies.managePreferences" }}
             </button>
         </div>
-        <div id="comments-container" style="display: none;">
+        <div id="comments-container" style="display: none;"></div>
+        <template id="comments-template">
             {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}
-        </div>
-        <script>
-        (function() {
-            var placeholder = document.getElementById('comments-consent-placeholder');
-            var container = document.getElementById('comments-container');
-
-            function showComments() {
-                if (placeholder) placeholder.style.display = 'none';
-                if (container) container.style.display = 'block';
-            }
-
-            function hideComments() {
-                if (placeholder) placeholder.style.display = 'block';
-                if (container) container.style.display = 'none';
-            }
-
-            window.addEventListener('onCookieConsentChange', function(e) {
-                if (e.detail && e.detail.functional) {
-                    showComments();
-                } else {
-                    hideComments();
-                }
-            });
-
-            // Check if already consented
-            if (window.cookieConsent && window.cookieConsent.hasConsent('functional')) {
-                showComments();
-            }
-        })();
-        </script>
+        </template>
+        {{- $opts := dict "minify" hugo.IsProduction -}}
+        {{/* commentsConsent.ts is intentionally built and loaded here as an independent entry */}}
+        {{- $commentsScript := resources.Get "ts/commentsConsent.ts" | js.Build $opts | fingerprint -}}
+        <script type="text/javascript" src="{{ $commentsScript.RelPermalink }}" integrity="{{ $commentsScript.Data.Integrity }}" defer></script>
     {{- else -}}
         {{/* No consent required - load comments normally */}}
         {{ partial (printf "comments/provider/%s" .Site.Params.comments.provider) . }}

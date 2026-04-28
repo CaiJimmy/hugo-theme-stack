@@ -1,0 +1,30 @@
+{{- $style := resources.Get "scss/partials/comments/artalk.scss" | toCSS | minify -}}
+{{- with .Site.Params.comments.artalk -}}
+<link rel="stylesheet" href="{{ hugo.Data.external.Artalk.Style }}">
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+<div id="Comments" class="artalk-container"></div>
+
+<script type="module">
+    import Artalk from '{{ hugo.Data.external.Artalk.Script }}';
+
+    function isDarkMode() {
+        return document.documentElement.dataset.scheme === 'dark';
+    }
+
+    const artalkInstance = Artalk.init({
+        el: '#Comments',
+        pageKey: '{{ $.RelPermalink }}',
+        pageTitle: '{{ $.Title }}',
+        server: '{{ .serverUrl }}',
+        site: '{{ .site }}',
+        darkMode: isDarkMode(),
+        locale: 'auto',
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!artalkInstance || typeof artalkInstance.setDarkMode !== 'function') return;
+        artalkInstance.setDarkMode(e.detail === 'dark');
+    });
+</script>
+{{- end -}}
