@@ -64,7 +64,7 @@
         {{ end }}
         <li class="menu-bottom-section">
             <ol class="menu">
-                {{- $currentLanguageCode := .Language.Lang -}}
+                {{- $currentLanguageCode := .Language.Name -}}
                 {{ if hugo.IsMultilingual }}
                     <li id="i18n-switch">  
                         {{ partial "helper/icon" "language" }}
@@ -72,11 +72,11 @@
                             {{ range .Site.Home.AllTranslations }}
                                 {{ $target := . }}
                                 {{ range $.AllTranslations }}
-                                    {{ if eq .Language.Lang $target.Language.Lang }}
+                                    {{ if eq .Language.Name $target.Language.Name }}
                                         {{ $target = . }}
                                     {{ end }}
                                 {{ end }}
-                                <option value="{{ $target.RelPermalink }}" {{ if eq $target.Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                                <option value="{{ $target.RelPermalink }}" {{ if eq $target.Language.Name $currentLanguageCode }}selected{{ end }}>{{ .Language.Label }}</option>
                             {{ end }}
                         </select>
                     </li>
