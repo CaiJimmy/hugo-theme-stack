@@ -95,18 +95,11 @@
     -webkit-mask-image: var(--subsection-mask-image);
     mask-image: var(--subsection-mask-image);
 
-    // CSS-only: left fade ramps in quickly once horizontal scrolling starts,
-    // and right fade turns off near the end of horizontal scroll.
-    animation: subsection-left-fade linear both, subsection-right-fade linear both;
-    animation-timeline: scroll(self inline);
-    animation-range: 1px 24px, 0% 100%;
-    animation-timing-function: ease-out, linear;
-
     [dir="rtl"] & {
         margin-left: calc(var(--overlap-x) * -1);
         margin-right: calc(var(--overlap-x) * -1);
     }
-    
+
     .article-list--tile {
         display: flex;
         padding: var(--spacing-xs) var(--overlap-x) var(--shadow-overlap-y) var(--overlap-x);
@@ -129,6 +122,18 @@
                 padding: var(--spacing-lg);
             }
         }
+    }
+}
+
+// Only apply scroll-driven edge fades in browsers that support scroll timelines.
+// Browsers without support (e.g. Firefox) fall back to the static right-edge fade
+// defined by the explicit CSS variable declarations above.
+@supports (animation-timeline: scroll(self inline)) {
+    .subsection-list {
+        animation: subsection-left-fade linear both, subsection-right-fade linear both;
+        animation-timeline: scroll(self inline);
+        animation-range: 1px 24px, 0% 100%;
+        animation-timing-function: ease-out, linear;
     }
 }
 
