@@ -155,7 +155,7 @@
         border-radius: var(--card-border-radius);
         box-shadow: var(--shadow-l2);
 
-        &[open] {
+        &[open]:not(.toc-collapsing) {
             .article-toc-title {
                 svg {
                     transform: rotate(90deg);
@@ -167,6 +167,7 @@
             list-style: none;
             padding: var(--spacing-md) var(--spacing-lg);
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
 
             &::-webkit-details-marker {
                 display: none;
@@ -176,6 +177,7 @@
                 display: flex;
                 align-items: center;
                 gap: var(--spacing-sm);
+                user-select: none;
                 text-transform: uppercase;
                 font-size: 1.4rem;
                 font-weight: bold;
@@ -185,7 +187,7 @@
                     width: 20px;
                     height: 20px;
                     stroke-width: 1.33;
-                    transition: transform 0.3s ease;
+                    transition: transform 300ms ease;
                 }
             }
         }

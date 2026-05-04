@@ -10,6 +10,7 @@ import createElement from './createElement';
 import StackColorScheme from './colorScheme';
 import { setupScrollspy } from './scrollspy';
 import { setupSmoothAnchors } from './smoothAnchors';
+import { setupMobileToc } from './mobileToc';
 import { setupPaginationJump } from './pagination';
 import { setupCodeCopy } from './code-copy';
 
@@ -27,6 +28,7 @@ let Stack = {
             setupCodeCopy();
         }
 
+        setupMobileToc();
         setupPaginationJump();
 
         new StackColorScheme(document.getElementById('dark-mode-toggle')!);
