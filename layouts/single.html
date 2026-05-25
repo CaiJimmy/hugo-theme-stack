@@ -15,7 +15,7 @@
         {{- end -}}
     {{- end -}}
 
-    {{- $TOCManuallyDisabled := eq .Params.toc false -}}
+    {{- $TOCManuallyDisabled := eq (default .Site.Params.Article.toc .Params.toc) false -}}
     {{- $TOCEnabled := and (not $TOCManuallyDisabled) $TOCWidgetEnabled -}}
     {{- $hasTOC := ge (len .TableOfContents) 100 -}}
     {{- .Scratch.Set "TOCEnabled" (and $TOCEnabled $hasTOC) -}}
