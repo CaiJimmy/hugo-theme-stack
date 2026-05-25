@@ -1,47 +1,47 @@
 {{ define "body-class" }}
-    article-page
-    {{/* 
-        Enable the right sidebar if
-            - Widget different from 'TOC' is enabled
-            - TOC is enabled and not empty
-    */}}
-    {{- $HasWidgetNotTOC := false -}}
-    {{- $TOCWidgetEnabled := false -}}
-    {{- range .Site.Params.widgets.page -}}
-        {{- if ne .type "toc" -}}
-            {{ $HasWidgetNotTOC = true -}}
-        {{- else -}}
-            {{ $TOCWidgetEnabled = true -}}
-        {{- end -}}
-    {{- end -}}
+article-page
+{{/*
+Enable the right sidebar if
+- Widget different from 'TOC' is enabled
+- TOC is enabled and not empty
+*/}}
+{{- $HasWidgetNotTOC := false -}}
+{{- $TOCWidgetEnabled := false -}}
+{{- range .Site.Params.widgets.page -}}
+{{- if ne .type "toc" -}}
+{{ $HasWidgetNotTOC = true -}}
+{{- else -}}
+{{ $TOCWidgetEnabled = true -}}
+{{- end -}}
+{{- end -}}
 
-    {{- $TOCManuallyDisabled := eq (default .Site.Params.Article.toc .Params.toc) false -}}
-    {{- $TOCEnabled := and (not $TOCManuallyDisabled) $TOCWidgetEnabled -}}
-    {{- $hasTOC := ge (len .TableOfContents) 100 -}}
-    {{- .Scratch.Set "TOCEnabled" (and $TOCEnabled $hasTOC) -}}
-    
-    {{- .Scratch.Set "hasWidget" (or $HasWidgetNotTOC (and $TOCEnabled $hasTOC)) -}}
+{{- $TOCManuallyDisabled := eq (default .Site.Params.article.toc .Params.toc) false -}}
+{{- $TOCEnabled := and (not $TOCManuallyDisabled) $TOCWidgetEnabled -}}
+{{- $hasTOC := ge (len .TableOfContents) 100 -}}
+{{- .Scratch.Set "TOCEnabled" (and $TOCEnabled $hasTOC) -}}
+
+{{- .Scratch.Set "hasWidget" (or $HasWidgetNotTOC (and $TOCEnabled $hasTOC)) -}}
 {{ end }}
 
 {{ define "main" }}
-    {{ partial "article/article.html" . }}
+{{ partial "article/article.html" . }}
 
-    {{ if .Params.links }}
-        {{ partial "article/components/links" . }}
-    {{ end }}
+{{ if .Params.links }}
+{{ partial "article/components/links" . }}
+{{ end }}
 
-    {{ partial "article/components/related-content" . }}
-     
-    {{ if not (eq .Params.comments false) }}
-        {{ partial "comments/include" . }}
-    {{ end }}
+{{ partial "article/components/related-content" . }}
 
-    {{ partialCached "footer/footer" . }}
+{{ if not (eq .Params.comments false) }}
+{{ partial "comments/include" . }}
+{{ end }}
 
-    {{ partialCached "article/components/photoswipe" . }}
-    {{ partial "article/components/mermaid" . }}
+{{ partialCached "footer/footer" . }}
+
+{{ partialCached "article/components/photoswipe" . }}
+{{ partial "article/components/mermaid" . }}
 {{ end }}
 
 {{ define "right-sidebar" }}
-    {{ if .Scratch.Get "hasWidget" }}{{ partial "sidebar/right.html" (dict "Context" . "Scope" "page") }}{{ end}}
+{{ if .Scratch.Get "hasWidget" }}{{ partial "sidebar/right.html" (dict "Context" . "Scope" "page") }}{{ end}}
 {{ end }}
