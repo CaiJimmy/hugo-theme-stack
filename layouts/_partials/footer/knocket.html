@@ -1,0 +1,5 @@
+{{- with .Site.Params.knocket -}}
+{{- if .identifier -}}
+<script async src="https://trtc.io/knocket-sdk/sdk.js?identifier={{ .identifier }}"></script>
+{{- end -}}
+{{- end -}}
