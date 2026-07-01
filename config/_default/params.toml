@@ -200,3 +200,8 @@ SortBy         = "default"
         maxLevel              = 0
         noFonts               = false
         theme                 = ""
+
+# Knocket live chat — https://trtc.io/solutions/knocket
+# Free forever, no seat limits. Set your identifier to enable.
+[knocket]
+    identifier = ""
