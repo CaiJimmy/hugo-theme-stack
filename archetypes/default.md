@@ -3,6 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 description: 
 date: {{ .Date }}
 image: 
+imgalt:
 math: 
 license: 
 comments: true
