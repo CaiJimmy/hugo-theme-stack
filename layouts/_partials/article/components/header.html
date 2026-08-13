@@ -12,7 +12,7 @@
                     "src" $image.Permalink
                     "width" $image.Width
                     "height" $image.Height
-                    "alt" (printf "Featured image of post %s" $Page.Title)
+                    "alt" ($Page.Params.imgalt | default (printf "Featured image of post %s" $Page.Title))
                     "loading" "lazy"
                     "sizes" "(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"
                 )
