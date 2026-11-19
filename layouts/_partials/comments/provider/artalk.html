@@ -1,4 +1,4 @@
-{{- $style := resources.Get "scss/partials/comments/artalk.scss" | toCSS | minify -}}
+{{- $style := resources.Get "scss/partials/comments/artalk.scss" | toCSS (dict "transpiler" "dartsass") | minify -}}
 {{- with .Site.Params.comments.artalk -}}
 <link rel="stylesheet" href="{{ hugo.Data.external.Artalk.Style }}">
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
