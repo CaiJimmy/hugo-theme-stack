@@ -1,0 +1,87 @@
+toggleMenu = "Tampilkan Menu"
+darkMode   = "Mod Gelap"
+
+[list]
+    section = "Bahagian"
+
+    [list.page]
+        one   = "{{ .Count }} halaman"
+        other = "{{ .Count }} halaman"
+
+    [list.subsection]
+        one   = "Subbahagian"
+        other = "Subbahagian"
+
+[article]
+    back            = "Kembali"
+    tableOfContents = "Isi Kandungan"
+    relatedContent  = "Kandungan berkaitan"
+    lastUpdatedOn   = "Baru dikemas kini pada"
+
+    [article.readingTime]
+        one   = "Tempoh Membaca: {{ .Count }} minit"
+        other = "Tempoh Membaca: {{ .Count }} minit"
+
+    [article.alert]
+        note      = "Catatan"
+        tip       = "Petunjuk"
+        important = "Penting"
+        warning   = "Amaran"
+        caution   = "Peringatan"
+
+    [article.codeblock]
+        copy   = "Salin"
+        copied = "Disalin!"
+
+[notFound]
+    title    = "Tidak ditemukan"
+    subtitle = "Halaman ini tidak wujud."
+
+[widget]
+    [widget.archives]
+        title = "Arkib"
+        more  = "Lanjut"
+
+    [widget.tagCloud]
+        title = "Tag"
+
+    [widget.categoriesCloud]
+        title = "Kategori"
+
+[search]
+    title       = "Cari"
+    placeholder = "Taipkan sesuatu..."
+    resultTitle = "#PAGES_COUNT halaman (#TIME_SECONDS saat)"
+
+[footer]
+    builtWith  = "Dibina dengan {{ .Generator }}"
+    designedBy = "Tema {{ .Theme }} direka bentuk oleh {{ .DesignedBy }}"
+
+[cookies]
+    title             = "Persetujuan cookie"
+    text              = "Kami menggunakan cookie demi menambah baik pengalaman melayari Internet anda dan menganalisis trafik laman web."
+    acceptAll         = "Terima Semua"
+    deny              = "Tolak"
+    managePreferences = "Uruskan pilihan"
+    settingsTitle     = "Pilihan cookie"
+    savePreferences   = "Simpan pilihan"
+    cancel            = "Batalkan"
+    footerLink        = "Tetapan cookie"
+    commentsDisabled  = "Komen telah ditutup melainkan anda menerima cookie fungsian."
+
+    [cookies.necessary]
+        title = "Wajib"
+        text  = "Cookie-cookie ini adalah diwajibkan dan tidak boleh ditutup agar laman web ini berfungsi."
+
+    [cookies.analytics]
+        title = "Analitik"
+        text  = "Cookie-cookie ini membantu kami memahami bagaimana para pengunjung berinteraksi dengan laman web kami."
+
+    [cookies.functional]
+        title = "Fungsian"
+        text  = "Cookie-cookie ini membolehkan fungsi-fungsi seperti komen dan kandungan yang disematkan."
+
+[pagination]
+    jumpToPage = "Loncat ke halaman"
+    jump       = "Pergi"
+    pressEnter = "Tekan Enter untuk meloncat"
